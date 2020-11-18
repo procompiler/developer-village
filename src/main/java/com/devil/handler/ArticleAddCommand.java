@@ -19,11 +19,12 @@ public class ArticleAddCommand implements Command {
 
   @Override
   public void execute(Map<String,Object> context) {
+    int no = 200;
     System.out.println("[게시물 등록]");
-
-    ArrayList<Article> articleList = new ArrayList<>();
     try {
-      String URL = "http://www.saramin.co.kr/zf_user/search/recruit?searchword=%EA%B0%9C%EB%B0%9C%EC%9E%90&go=&flag=n&searchMode=1&searchType=search&search_done=y&search_optional_item=n&recruitPage=3&recruitSort=relation&recruitPageCount=40&inner_com_type=&company_cd=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C9%2C10&quick_apply=&except_read=";
+      String URL = "http://www.saramin.co.kr/zf_user/search/recruit?search_area=main&search_done=y&search_optional_item=n&searchType=default_mysearch&searchword=%EA%B0%9C%EB%B0%9C%EC%9E%90&recruitPage=2&recruitSort=relation&recruitPageCount=" 
+          + no 
+          + "&inner_com_type=&company_cd=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C9%2C10&quick_apply=&except_read=";
       org.jsoup.Connection conn = Jsoup.connect(URL);
       Document doc = conn.get();
       //Element jobs = doc.select();
@@ -33,7 +34,7 @@ public class ArticleAddCommand implements Command {
       titles.attr("title");
       System.out.println(titles.size());
       
-      for (int i = 0; i < 40; i++) {
+      for (int i = 0; i < no; i++) {
         Article article = new Article();
         article.setNo(i + 1);
         article.setTitle(titles.get(i).attr("title"));
@@ -44,6 +45,7 @@ public class ArticleAddCommand implements Command {
         //article.setCompany(companyName.get(i).attr("title"));
         articleDao.insert(article);
       }
+      System.out.println("크롤링이 끝났습니다! 입력된 데이터 개수:" + no);
 
     } catch(Exception e) {
       e.printStackTrace();
@@ -52,7 +54,7 @@ public class ArticleAddCommand implements Command {
   }
   
   public String parseDate(String rawDate) {
-    if (rawDate.equals("채용시") || rawDate.equals("상시채용")) {
+    if (!rawDate.split(" ")[0].equals("~")) {
       return "1996-09-02";
     }
     return "2020-" + rawDate.split(" ")[1].split("\\(")[0].replace("/", "-");
