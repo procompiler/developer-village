@@ -22,11 +22,25 @@ repositories {
 }
 
 dependencies {
+    // Mybatis 퍼시스턴스 프레임워크
+    implementation 'org.mybatis:mybatis:3.5.6'
+
+
+    // MariaDB JDBC 드라이버
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.0'
+
+    // JSON 라이브러리
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'
+    
+    // Use Jsoup crawler framework
+    implementation 'org.jsoup:jsoup:1.13.1'
 }
 
 application {
