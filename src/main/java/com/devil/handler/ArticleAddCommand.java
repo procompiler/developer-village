@@ -8,6 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
+import com.devil.util.Prompt;
 
 public class ArticleAddCommand implements Command {
 
@@ -19,8 +20,8 @@ public class ArticleAddCommand implements Command {
 
   @Override
   public void execute(Map<String,Object> context) {
-    int no = 200;
-    System.out.println("[게시물 등록]");
+    System.out.println("[채용공고 등록]");
+    int no = Prompt.inputInt("사람인으로부터 몇 개의 채용공고를 가져오시겠습니까?");
     try {
       String URL = "http://www.saramin.co.kr/zf_user/search/recruit?search_area=main&search_done=y&search_optional_item=n&searchType=default_mysearch&searchword=%EA%B0%9C%EB%B0%9C%EC%9E%90&recruitPage=2&recruitSort=relation&recruitPageCount=" 
           + no 

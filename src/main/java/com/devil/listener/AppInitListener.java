@@ -15,7 +15,7 @@ import com.devil.util.SqlSessionFactoryProxy;
 public class AppInitListener implements ApplicationContextListener {
   @Override
   public void contextInitialized(Map<String,Object> context) {
-    System.out.println("프로젝트 관리 시스템(PMS)에 오신 걸 환영합니다!");
+    System.out.println("DEVIL에 오신 것을 환영합니다!");
 
     // 시스템에서 사용할 객체를 준비한다.
     try {
