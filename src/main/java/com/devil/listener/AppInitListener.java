@@ -9,6 +9,7 @@ import com.devil.dao.ArticleDao;
 import com.devil.dao.mariadb.ArticleDaoImpl;
 import com.devil.handler.ArticleAddCommand;
 import com.devil.handler.Command;
+import com.devil.handler.Crawl;
 import com.devil.util.SqlSessionFactoryProxy;
 
 public class AppInitListener implements ApplicationContextListener {
@@ -29,7 +30,8 @@ public class AppInitListener implements ApplicationContextListener {
       // Command 구현체 생성 및 commandMap 객체 준비
       Map<String,Command> commandMap = new HashMap<>();
       
-      commandMap.put("/article/add", new ArticleAddCommand(articleDao));
+      //commandMap.put("/article/add", new ArticleAddCommand(articleDao));
+      commandMap.put("/crawl", new Crawl(articleDao));
       context.put("commandMap", commandMap);
     } catch (Exception e) {
       System.out.println("시스템이 사용할 객체를 준비하는 중에 오류 발생");

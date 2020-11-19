@@ -35,12 +35,4 @@ public class ArticleListCommand implements Command{
       e.printStackTrace();
     }
   }
-
-  
-  public String parseDate(String rawDate) {
-    if (!rawDate.split(" ")[0].equals("~")) {
-      return "1996-09-02";
-    }
-    return "2020-" + rawDate.split(" ")[1].split("\\(")[0].replace("/", "-");
-  }
 }

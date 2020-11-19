@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ArticleDao">
-
+<!--
   <resultMap type="project" id="ProjectMap">
     <id column="arno"           property="no"/>
     <result column="title"    property="title"/>
@@ -13,7 +13,7 @@
     <result column="content"  property="content"/>
     <result column="cano"      property="categoryNo"/>
   </resultMap>
-
+-->
 
   <insert id="insert" parameterType="article">
     insert into article(arno,title,writer,rc_edt,content,cano) 
