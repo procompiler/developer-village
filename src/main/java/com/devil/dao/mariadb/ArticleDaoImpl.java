@@ -1,5 +1,6 @@
 package com.devil.dao.mariadb;
 
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.ArticleDao;
@@ -16,6 +17,13 @@ public class ArticleDaoImpl implements ArticleDao {
   public int insert(Article article) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.insert("ArticleDao.insert", article);
+    }
+  }
+  
+  @Override
+  public List<Article> findAll(String keyword) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findAll", keyword);
     }
   }
 }
