@@ -82,6 +82,4 @@ public class User {
   public void setNoti(boolean noti) {
     this.noti = noti;
   }
-  
-  
 }

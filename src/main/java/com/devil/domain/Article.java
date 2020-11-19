@@ -7,6 +7,8 @@ public class Article {
   private String content;
   private int categoryNo;
   private String endDate;
+  private int status;
+  
   public int getNo() {
     return no;
   }
@@ -42,6 +44,12 @@ public class Article {
   }
   public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+  public int getStatus() {
+    return status;
+  }
+  public void setStatus(int status) {
+    this.status = status;
   }
   
   

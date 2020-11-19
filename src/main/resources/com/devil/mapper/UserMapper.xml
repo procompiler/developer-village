@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDao">
+
+  <resultMap type="user" id="UserMap">
+    <id column="uno"           property="no"/>
+    <result column="email"    property="email"/>
+    <result column="nick"      property="nickname"/>
+    <result column="name" property="name"/>
+    <result column="password"  property="password"/>
+    <result column="cdt"      property="createdDate"/>
+    
+    <collection property="url"
+    
+    <result column="blocked" property="blocked"/>
+    <result column="tech" property="tech"/>
+    <result column="auth" property="auth"/>
+    <result column="noti" property="noti"/>
+  </resultMap>
+
+
+  <insert id="insert" parameterType="article">
+    insert into article(arno,title,writer,rc_edt,content,cano) 
+    values(#{no}, #{title}, #{writer}, #{endDate}, #{content}, #{categoryNo})
+  </insert>
+  
+  <sql id="sql1">
+    select 
+    	a.arno, 
+      a.title,
+      a.cdt,  
+      a.vw_cnt, 
+      a.rc_edt,
+      u.name
+    from 
+      article a
+      inner join user u on a.writer=u.no
+  </sql>
+  
+  <select id="findAll" resultMap="ArticleMap" parameterType="string">
+  	<include refid="sql1"/>
+  	<if test="keyword != null">
+  	where
+  		a.title like concat('%', #{keyword}, '%')
+  		or m.name like concat('%', #{keyword}, '%')
+  	</if>
+  	order by a.arno desc
+  </select>
+</mapper>
