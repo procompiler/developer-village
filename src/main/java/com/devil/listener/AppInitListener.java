@@ -9,7 +9,6 @@ import com.devil.dao.ArticleDao;
 import com.devil.dao.mariadb.ArticleDaoImpl;
 import com.devil.handler.ArticleAddCommand;
 import com.devil.handler.Command;
-
 import com.devil.util.SqlSessionFactoryProxy;
 
 public class AppInitListener implements ApplicationContextListener {

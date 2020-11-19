@@ -4,6 +4,7 @@
 package com.devil;
 
 import org.junit.Test;
+import com.devil.App;
 import static org.junit.Assert.*;
 
 public class AppTest {
