@@ -27,7 +27,6 @@ public class ArticleAddCommand implements Command {
     article.setContent(Prompt.inputString("내용? "));
     article.setContent(Prompt.inputString("회원번호? "));
     article.setEndDate(Prompt.inputString("날짜? " ));
-    article
 
     article.setNo(i + 1);
     article.setTitle(titles.get(i).attr("title"));
@@ -43,12 +42,11 @@ public class ArticleAddCommand implements Command {
     e.printStackTrace();
   }
 
-}
 
-public String parseDate(String rawDate) {
-  if (!rawDate.split(" ")[0].equals("~")) {
-    return "1996-09-02";
+  public String parseDate(String rawDate) {
+    if (!rawDate.split(" ")[0].equals("~")) {
+      return "1996-09-02";
+    }
+    return "2020-" + rawDate.split(" ")[1].split("\\(")[0].replace("/", "-");
   }
-  return "2020-" + rawDate.split(" ")[1].split("\\(")[0].replace("/", "-");
-}
 }
