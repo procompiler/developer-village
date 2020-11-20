@@ -55,6 +55,7 @@ public class Crawl implements Command{
     }
    
     
+    
     for (String positionUrl : urls) {
       //System.out.println(positionUrl);
 
@@ -64,18 +65,43 @@ public class Crawl implements Command{
       } catch (IOException e) {
         e.printStackTrace();
       }
-      String rawDate = positionDoc.select("table.table-information tbody tr").text();
-      System.out.println(rawDate);
-      /*
-      .get(4).text();
-      String parsedDate = rawDate;
-      if (rawDate.contains("까지") && rawDate.contains("부터")) {
-        parsedDate = rawDate.split(" ")[3];
+      Elements elements = positionDoc.select("table.table-information tbody tr ");
+      System.out.println("====================");
+      System.out.printf("제목: %s\n", positionDoc.select("h2.title").text());
+      System.out.printf("회사명: %s\n", positionDoc.select("h4.sub-title").text());
+      for (Element ele : elements) {
+        String raw = ele.text();
+        if (raw.startsWith("기간 ")) {
+          //System.out.println(raw);
+          String parsed = raw.replace("기간 ", "");
+          if (raw.contains("까지") && raw.contains("부터")) {
+            parsed = raw.split(" ")[4];
+          }
+          System.out.printf("기간: %s\n", parsed);
+          break;
+        }
       }
-      System.out.println(parsedDate);
-      System.out.println(positionDoc.select("h2.title").text());
-      System.out.println(positionDoc.select("h4.sub-title").text());
-      */
+      System.out.println("내용: ");
+      Element element = positionDoc.select("div.page-show-detail").select("div.content-body").get(0);
+      Elements sections = new Elements();
+      sections.addAll(element.select("section.section-position"));
+      sections.addAll(element.select("section.section-requirements"));
+      sections.addAll(element.select("section.section-preference"));
+      for (Element section : sections) {
+        String title = section.select("h5.section-title").text();
+        System.out.println("[" + section.select("h5.section-title").text()+ "]");
+        Elements lis = section.select("li");
+        for (Element li : lis) {
+          System.out.println("   " + li.text());;
+        }
+        if (lis.size() == 0) {
+          for (Element p : section.select("p")) {
+            System.out.println(p.text());            
+          }
+        }
+        
+      }
+      System.out.println("====================");
     }
 
   }
