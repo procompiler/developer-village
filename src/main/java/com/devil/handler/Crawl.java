@@ -1,19 +1,22 @@
 package com.devil.handler;
 
+import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Document.OutputSettings;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import com.devil.dao.ArticleDao;
 
 public class Crawl implements Command{
-  ArticleDao articleDao;
+  ArticleService articleService;
 
-  public Crawl(ArticleDao articleDao) {
-    this.articleDao = articleDao;
+  public Crawl(ArticleService articleService) {
+    this.articleService = articleService;
   }
 
   @Override
@@ -54,7 +57,7 @@ public class Crawl implements Command{
       } 
     }
    
-    
+    System.out.println(urls.size());
     
     for (String positionUrl : urls) {
       //System.out.println(positionUrl);
@@ -65,10 +68,12 @@ public class Crawl implements Command{
       } catch (IOException e) {
         e.printStackTrace();
       }
+      positionDoc.outputSettings(new OutputSettings().prettyPrint(false));
+
       Elements elements = positionDoc.select("table.table-information tbody tr ");
       System.out.println("====================");
-      System.out.printf("제목: %s\n", positionDoc.select("h2.title").text());
-      System.out.printf("회사명: %s\n", positionDoc.select("h4.sub-title").text());
+      System.out.printf("제목: [%s] ", positionDoc.select("h4.sub-title").text());
+      System.out.printf("%s\n", positionDoc.select("h2.title").text());
       for (Element ele : elements) {
         String raw = ele.text();
         if (raw.startsWith("기간 ")) {
@@ -87,17 +92,22 @@ public class Crawl implements Command{
       sections.addAll(element.select("section.section-position"));
       sections.addAll(element.select("section.section-requirements"));
       sections.addAll(element.select("section.section-preference"));
+      sections.addAll(element.select("section.section-description"));
       for (Element section : sections) {
         String title = section.select("h5.section-title").text();
-        System.out.println("[" + section.select("h5.section-title").text()+ "]");
+        if (title.length() != 0) {
+        	System.out.println("[" + title+ "]");
+        } else {
+        	System.out.println("[회사소개]");
+        }
+        // <li> 태그로 묶인 글을 한 줄씩 출력한다.
         Elements lis = section.select("li");
         for (Element li : lis) {
-          System.out.println("   " + li.text());;
+        	System.out.println(li.wholeText());
         }
-        if (lis.size() == 0) {
-          for (Element p : section.select("p")) {
-            System.out.println(p.text());            
-          }
+        // <p> 태그로 묶인 글을 한 줄씩 출력한다. 
+        for (Element p : section.select("p")) {
+          System.out.println(p.wholeText());    
         }
         
       }
@@ -105,7 +115,7 @@ public class Crawl implements Command{
     }
 
   }
-
 }
+
 
 

@@ -1,16 +1,17 @@
 package com.devil.handler;
 
 import java.util.Map;
-import com.devil.dao.ArticleDao;
+
 import com.devil.domain.Article;
+import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
 
 public class ArticleAddCommand implements Command {
 
   ArticleService articleService;
 
-  public ArticleAddCommand(ArticleDao articleDao) {
-    this.articleDao = articleDao;
+  public ArticleAddCommand(ArticleService articleService) {
+    this.articleService = articleService;
   }
 
   @Override
