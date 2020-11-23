@@ -1,12 +1,14 @@
 package com.devil.domain;
 
+import java.sql.Date;
+
 public class Article {
   private int no;
   private int writer;
   private String title;
   private String content;
   private int categoryNo;
-  private String endDate;
+  private Date endDate;
   private int status;
   
   public int getNo() {
@@ -39,10 +41,10 @@ public class Article {
   public void setCategoryNo(int categoryNo) {
     this.categoryNo = categoryNo;
   }
-  public String getEndDate() {
+  public Date getEndDate() {
     return endDate;
   }
-  public void setEndDate(String endDate) {
+  public void setEndDate(Date endDate) {
     this.endDate = endDate;
   }
   public int getStatus() {
