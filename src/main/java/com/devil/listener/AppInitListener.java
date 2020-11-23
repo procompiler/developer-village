@@ -8,7 +8,7 @@ import com.devil.context.ApplicationContextListener;
 import com.devil.dao.ArticleDao;
 import com.devil.dao.mariadb.ArticleDaoImpl;
 import com.devil.handler.Command;
-import com.devil.handler.Crawl;
+import com.devil.handler.CrawlRCArticleCommand;
 import com.devil.service.ArticleService;
 import com.devil.service.DefaultArticleService;
 import com.devil.util.SqlSessionFactoryProxy;
@@ -33,7 +33,7 @@ public class AppInitListener implements ApplicationContextListener {
       
       //commandMap.put("/article/add", new ArticleAddCommand(articleDao));
       ArticleService articleService = new DefaultArticleService(articleDao);
-      commandMap.put("/crawl", new Crawl(articleService));
+      commandMap.put("/crawl", new CrawlRCArticleCommand(articleService));
       context.put("commandMap", commandMap);
     } catch (Exception e) {
       System.out.println("시스템이 사용할 객체를 준비하는 중에 오류 발생");

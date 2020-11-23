@@ -13,10 +13,10 @@ import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
 
-public class Crawl implements Command{
+public class CrawlRCArticleCommand implements Command{
   ArticleService articleService;
 
-  public Crawl(ArticleService articleService) {
+  public CrawlRCArticleCommand(ArticleService articleService) {
     this.articleService = articleService;
   }
 
