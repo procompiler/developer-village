@@ -1,7 +1,7 @@
 package com.devil.handler;
 
-import java.util.List;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
 import org.jsoup.Jsoup;
@@ -9,8 +9,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Document.OutputSettings;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import com.devil.dao.ArticleDao;
+import com.devil.domain.Article;
+import com.devil.service.ArticleService;
+import com.devil.util.Prompt;
 
 public class Crawl implements Command{
   ArticleService articleService;
@@ -40,7 +41,6 @@ public class Crawl implements Command{
 
     Elements pages = listDoc.select("ul.pagination li.page-item a");
     int lastPage = Integer.parseInt(pages.get(7).attr("href").split("=")[1]);
-    System.out.println(lastPage);
 
     Document doc = null;    
     // 크롤링할 목록 한 페이지의 URL 알아내기
@@ -56,37 +56,42 @@ public class Crawl implements Command{
         urls.add("https://programmers.co.kr" + element.attr("href"));
       } 
     }
-   
-    System.out.println(urls.size());
-    
-    for (String positionUrl : urls) {
-      //System.out.println(positionUrl);
-
+    int totalArticles = urls.size();
+    int input = Prompt.inputInt(totalArticles + "개의 데이터를 입력할 수 있습니다. 몇 개의 데이터를 입력하시겠습니까?");
+    System.out.println(input + "개의 데이터를 입력합니다.");
+    for (int i = 0; i < input; i++) {
       Document positionDoc = null;
       try {
-        positionDoc = Jsoup.connect(positionUrl).get();
+        positionDoc = Jsoup.connect(urls.get(i)).get();
       } catch (IOException e) {
         e.printStackTrace();
       }
       positionDoc.outputSettings(new OutputSettings().prettyPrint(false));
 
+      Article article = new Article();
+      String title, companyName, date = "";
       Elements elements = positionDoc.select("table.table-information tbody tr ");
-      System.out.println("====================");
-      System.out.printf("제목: [%s] ", positionDoc.select("h4.sub-title").text());
-      System.out.printf("%s\n", positionDoc.select("h2.title").text());
+      title = positionDoc.select("h2.title").text();
+      companyName = positionDoc.select("h4.sub-title").text();
+      article.setTitle(String.format("[%s]%s", companyName, title));
+      System.out.println(article.getTitle());
+      
       for (Element ele : elements) {
         String raw = ele.text();
         if (raw.startsWith("기간 ")) {
-          //System.out.println(raw);
           String parsed = raw.replace("기간 ", "");
           if (raw.contains("까지") && raw.contains("부터")) {
             parsed = raw.split(" ")[4];
+            date = parsed;
+          } else {
+            date = "2099-12-31";
           }
-          System.out.printf("기간: %s\n", parsed);
           break;
         }
       }
-      System.out.println("내용: ");
+      article.setEndDate(Date.valueOf(date));
+      
+      StringBuilder content = new StringBuilder();
       Element element = positionDoc.select("div.page-show-detail").select("div.content-body").get(0);
       Elements sections = new Elements();
       sections.addAll(element.select("section.section-position"));
@@ -94,26 +99,35 @@ public class Crawl implements Command{
       sections.addAll(element.select("section.section-preference"));
       sections.addAll(element.select("section.section-description"));
       for (Element section : sections) {
-        String title = section.select("h5.section-title").text();
-        if (title.length() != 0) {
-        	System.out.println("[" + title+ "]");
-        } else {
-        	System.out.println("[회사소개]");
+        String sectionTitle = section.select("h5.section-title").text();
+        if (sectionTitle.length() == 0) {
+          sectionTitle = "회사소개";
         }
-        // <li> 태그로 묶인 글을 한 줄씩 출력한다.
+        content.append("## " + sectionTitle + "\n");
+        // <li> 태그로 묶인 글 add.
         Elements lis = section.select("li");
         for (Element li : lis) {
-        	System.out.println(li.wholeText());
+        	content.append("- " + li.wholeText() + "\n");
         }
-        // <p> 태그로 묶인 글을 한 줄씩 출력한다. 
-        for (Element p : section.select("p")) {
-          System.out.println(p.wholeText());    
+        if (lis.size() == 0) {
+          // <p> 태그로 묶인 글 add. 
+          for (Element p : section.select("p")) {
+            content.append(p.wholeText() + "\n");    
+          }          
         }
-        
+        content.append("\n");
       }
-      System.out.println("====================");
+      article.setContent(content.toString());
+      article.setCategoryNo(3);
+      article.setWriter(2);
+      // add
+      try {
+        articleService.add(article);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
-
+    
   }
 }
 

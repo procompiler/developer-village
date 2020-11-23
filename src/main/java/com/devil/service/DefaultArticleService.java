@@ -7,11 +7,9 @@ import com.devil.util.SqlSessionFactoryProxy;
 
 public class DefaultArticleService implements ArticleService {
   ArticleDao articleDao;
-  SqlSessionFactoryProxy factoryProxy;
   
-  public DefaultArticleService(ArticleDao articleDao, SqlSessionFactoryProxy factoryProxy) {
+  public DefaultArticleService(ArticleDao articleDao) {
     this.articleDao = articleDao;
-    this.factoryProxy = factoryProxy;
   }
   
   @Override

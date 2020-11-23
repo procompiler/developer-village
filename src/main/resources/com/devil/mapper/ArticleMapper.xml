@@ -16,8 +16,8 @@
 -->
 
   <insert id="insert" parameterType="article">
-    insert into article(arno,title,writer,rc_edt,content,cano) 
-    values(#{no}, #{title}, #{writer}, #{endDate}, #{content}, #{categoryNo})
+    insert into article(title,writer,rc_edt,content,cano) 
+    values(#{title}, #{writer}, #{endDate}, #{content}, #{categoryNo})
   </insert>
   
   <sql id="sql1">
@@ -32,7 +32,7 @@
       article a
       inner join user u on a.writer=u.no
   </sql>
-  
+  <!--
   <select id="findAll" resultMap="ArticleMap" parameterType="string">
   	<include refid="sql1"/>
   	<if test="keyword != null">
@@ -42,4 +42,5 @@
   	</if>
   	order by a.arno desc
   </select>
+  -->
 </mapper>
