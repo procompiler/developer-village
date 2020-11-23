@@ -1,10 +1,18 @@
 package com.devil;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Table {
-  public static void main(String[] args) {
-    String[] tables = {"arc_pht", "arc_tag", "article", "badge", "bdg_eva", "bdg_stan", "block", "category", "comment", "follow", "noti", "region", "relo", "repo_arc", "repo_comt", "repo_type", "report", "tag", "user", "usr_bdg", "usr_bmk_arc", "usr_tag"};
-    for (int i = 0; i < tables.length; i++) {
-      System.out.printf("alter table %s convert to character set utf8;\n", tables[i]);
-    }
+  public static void main(String[] args) throws Exception {
+	Date date = new Date();
+	String from = "2018-09-20 15:27:27";
+	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date to = transFormat.parse(from);
+	Time time = Time.valueOf("15:27:27");
+	
+	System.out.println(time);
+    System.out.println(to.toString());
   }
 }

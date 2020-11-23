@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Document.OutputSettings;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import com.devil.domain.Article;
+import com.devil.domain.Comment;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
 
@@ -39,6 +41,7 @@ public class CrawlComuArticleCommand implements Command{
     for (Element element : titles) {
       urls.add("https://okky.kr" + element.attr("href"));
     }
+    
 
     int totalArticles = urls.size();
     System.out.println("사용자가 입력한 숫자: " + input);
@@ -51,8 +54,40 @@ public class CrawlComuArticleCommand implements Command{
       } catch (IOException e) {
         e.printStackTrace();
       }
-      String title = doc.select("h2.panel-title").text();
-      System.out.println(title);
+      String writer = doc.selectFirst("a.nickname").attr("title");
+      StringBuilder content = new StringBuilder();
+      Article article = new Article();
+      article.setTitle(doc.select("h2.panel-title").text());
+      Elements ps = doc.selectFirst("article.content-text").select("p");
+      for (Element p : ps) {
+    	  content.append(p.text() + "\n");
+      }
+      article.setContent(content.toString());
+      article.setCreatedDate(doc.selectFirst("span.timeago").text());
+      System.out.println("===========================");
+      System.out.println("제목: " + article.getTitle());
+      System.out.println("내용: " + article.getContent());
+      System.out.println("작성일: " + article.getCreatedDate());
+      
+      //List<Comment> comments = new ArrayList<>();
+      System.out.println("[댓글]");
+      Elements lis = doc.select("ul.list-group").select("li.note-item");
+      for (Element li : lis) {
+    	  Comment comment = new Comment();
+    	  String commentWriter = li.select("div.avatar-info").select("a.nickname").attr("title");
+    	  
+    	  if (commentWriter.equals(writer)) {
+    		  System.out.print("작성자: ");
+    	  } else {
+    		  System.out.print("다른이: ");
+    	  } 
+    	  
+    	  comment.setCreatedDate(li.select("span.timeago").text());
+    	  comment.setContent(li.select("article.list-group-item-text").text());
+    	  System.out.println(comment.getContent());
+      }
+      System.out.println("===========================");
+
       /*
       Article article = new Article();
       String title, companyName, date = "";
