@@ -5,6 +5,7 @@ import com.devil.domain.Article;
 
 public interface ArticleDao {
   public int insert(Article article) throws Exception;
-
-  public List<Article> findAll(String keyword);
+  public int update(Article article) throws Exception;
+  public List<Article> findAll(String keyword) throws Exception;
+  public int delete(int no) throws Exception;
 }

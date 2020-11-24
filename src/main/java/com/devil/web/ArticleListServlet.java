@@ -18,13 +18,12 @@ public class ArticleListServlet implements Command{
   public void execute(Map<String,Object> context) {
     System.out.println("[게시물 목록]");
     try {
-      System.out.println("번호, 제목, 작성자, 등록일, 조회수");
+      System.out.println("번호, 제목, 등록일, 조회수");
       List<Article> list = articleDao.findAll(null);
       for (Article article : list) {
-        System.out.printf("%d, %s, %s, %s, %d\n",
+        System.out.printf("%d, %s, %s, %d\n",
             article.getNo(),
             article.getTitle(),
-            article.getWriter().getName(),
             article.getCreatedDate(),
             article.getViewCount());
       }

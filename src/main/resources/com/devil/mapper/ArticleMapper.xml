@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ArticleDao">
-  <resultMap type="article" id="ArticletMap">
+  <resultMap type="article" id="ArticleMap">
     <id column="arno"           property="no"/>
     <result column="cano"       property="categoryNo"/>
     <result column="title"      property="title"/>
@@ -14,8 +14,9 @@
     <result column="udt"        property="updatedDate"/>
     <result column="ddt"        property="deletedDate"/>
     <result column="status"     property="status"/>
-    <result column="st_status"  property="content"/>
+    <result column="st_status"  property="studyStatus"/>
     <result column="rc_edt"     property="endDate"/>
+    <result column="writer"     property="writer"/>
 
     <!-- 
     <association property="writer" javaType="com.devil.domain.User">
@@ -37,7 +38,7 @@
       a.title,
       a.cdt,  
       a.vw_cnt, 
-      u.uno writer_no,
+      a.writer,
       u.nick writer_nick
     from 
       article a
@@ -54,4 +55,19 @@
   	order by a.arno desc
   </select>
   
+   <update id="update" parameterType="article">
+    update article
+    <set>
+      <if test="title != null">title = #{title},</if>
+      <if test="content != null">content = #{content},</if>
+      
+    </set>
+    where no = #{no}
+  </update>
+    
+     <delete id="delete" parameterType="int">
+    delete from article
+    where no=#{no}
+  </delete>
+    
 </mapper>

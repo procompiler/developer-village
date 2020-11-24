@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Article {
   private int no;
-  private User writer;
+  private int writer;
   private int categoryNo;
   private String title;
   private String content;
@@ -44,10 +44,10 @@ public class Article {
   public void setNo(int no) {
     this.no = no;
   }
-  public User getWriter() {
+  public int getWriter() {
     return writer;
   }
-  public void setWriter(User writer) {
+  public void setWriter(int writer) {
     this.writer = writer;
   }
   public String getTitle() {
