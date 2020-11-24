@@ -5,6 +5,7 @@
 
 <mapper namespace="UserDao">
 
+<!--
   <resultMap type="user" id="UserMap">
     <id column="uno"           property="no"/>
     <result column="email"    property="email"/>
@@ -20,7 +21,6 @@
     <result column="auth" property="auth"/>
     <result column="noti" property="noti"/>
   </resultMap>
-
 
   <insert id="insert" parameterType="article">
     insert into article(arno,title,writer,rc_edt,content,cano) 
@@ -49,4 +49,5 @@
   	</if>
   	order by a.arno desc
   </select>
+-->
 </mapper>

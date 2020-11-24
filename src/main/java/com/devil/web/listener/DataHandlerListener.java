@@ -19,7 +19,6 @@ public class DataHandlerListener implements ServletContextListener {
   public void contextInitialized(ServletContextEvent sce) {
     // 시스템에서 사용할 객체를 준비한다.
     try {
-      System.out.println("데이터핸들러리스너,,,");
       // Mybatis 객체 준비
       SqlSessionFactoryProxy sqlSessionFactory = new SqlSessionFactoryProxy(
           new SqlSessionFactoryBuilder().build(

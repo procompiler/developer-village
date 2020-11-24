@@ -16,30 +16,28 @@
     <result column="status"     property="status"/>
     <result column="st_status"  property="studyStatus"/>
     <result column="rc_edt"     property="endDate"/>
-    <result column="writer"     property="writer"/>
 
-    <!-- 
-    <association property="writer" javaType="com.devil.domain.User">
-      <id column="writer_no"          property="no"/>
-      <result column="writer_nick"     property="nickname"/>
+    <association property="writer" javaType="user">
+      <id column="uno"          property="no"/>
+      <result column="nick"     property="nickname"/>
     </association>
-     -->
+    
     
   </resultMap>
   
   <insert id="insert" parameterType="article">
     insert into article(title,writer,rc_edt,content,cano) 
-    values(#{title}, #{writer}, #{endDate}, #{content}, #{categoryNo})
+    values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
   </insert>
   
   <sql id="sql1">
     select 
-    	a.arno, 
+      a.arno, 
       a.title,
       a.cdt,  
       a.vw_cnt, 
       a.writer,
-      u.nick writer_nick
+      u.nick
     from 
       article a
       inner join user u on a.writer=u.uno
