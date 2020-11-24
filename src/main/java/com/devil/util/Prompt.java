@@ -19,8 +19,8 @@ public class Prompt {
   public static Date inputDate(String title) {
     return Date.valueOf(inputString(title));
   }
-  
-  // 프롬프트의 사용이 모두 끝났으면 
+
+  // 프롬프트의 사용이 모두 끝났으면
   // 이 메서드를 호출하여 System.in 입력 스트림 자원을 해제하도록 한다.
   public static void close() {
     keyboardScan.close();

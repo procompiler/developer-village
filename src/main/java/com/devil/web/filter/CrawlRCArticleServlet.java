@@ -1,4 +1,4 @@
-package com.devil.handler;
+package com.devil.web.filter;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -13,10 +13,10 @@ import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
 
-public class CrawlRCArticleCommand implements Command{
+public class CrawlRCArticleServlet implements Command{
   ArticleService articleService;
 
-  public CrawlRCArticleCommand(ArticleService articleService) {
+  public CrawlRCArticleServlet(ArticleService articleService) {
     this.articleService = articleService;
   }
 
@@ -42,7 +42,7 @@ public class CrawlRCArticleCommand implements Command{
     Elements pages = listDoc.select("ul.pagination li.page-item a");
     int lastPage = Integer.parseInt(pages.get(7).attr("href").split("=")[1]);
 
-    Document doc = null;    
+    Document doc = null;
     // 크롤링할 목록 한 페이지의 URL 알아내기
     for (int i = 1; i <= lastPage; i++) {
       try {
@@ -54,7 +54,7 @@ public class CrawlRCArticleCommand implements Command{
       for (Element element : titles) {
         //System.out.println(element.attr("href"));
         urls.add("https://programmers.co.kr" + element.attr("href"));
-      } 
+      }
     }
     int totalArticles = urls.size();
     int input = Prompt.inputInt(totalArticles + "개의 데이터를 입력할 수 있습니다. 몇 개의 데이터를 입력하시겠습니까?");
@@ -75,7 +75,7 @@ public class CrawlRCArticleCommand implements Command{
       companyName = positionDoc.select("h4.sub-title").text();
       article.setTitle(String.format("[%s]%s", companyName, title));
       System.out.println(article.getTitle());
-      
+
       for (Element ele : elements) {
         String raw = ele.text();
         if (raw.startsWith("기간 ")) {
@@ -90,7 +90,7 @@ public class CrawlRCArticleCommand implements Command{
         }
       }
       article.setEndDate(Date.valueOf(date));
-      
+
       StringBuilder content = new StringBuilder();
       Element element = positionDoc.select("div.page-show-detail").select("div.content-body").get(0);
       Elements sections = new Elements();
@@ -107,13 +107,13 @@ public class CrawlRCArticleCommand implements Command{
         // <li> 태그로 묶인 글 add.
         Elements lis = section.select("li");
         for (Element li : lis) {
-        	content.append("- " + li.wholeText() + "\n");
+          content.append("- " + li.wholeText() + "\n");
         }
         if (lis.size() == 0) {
-          // <p> 태그로 묶인 글 add. 
+          // <p> 태그로 묶인 글 add.
           for (Element p : section.select("p")) {
-            content.append(p.wholeText() + "\n");    
-          }          
+            content.append(p.wholeText() + "\n");
+          }
         }
         content.append("\n");
       }
@@ -127,7 +127,7 @@ public class CrawlRCArticleCommand implements Command{
         e.printStackTrace();
       }
     }
-    
+
   }
 }
 

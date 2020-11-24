@@ -1,8 +1,6 @@
-package com.devil.filter;
+package com.devil.web.filter;
 
 import java.util.Map;
-import com.devil.handler.Command;
-import com.devil.handler.Request;
 
 
 // 필터 역할:

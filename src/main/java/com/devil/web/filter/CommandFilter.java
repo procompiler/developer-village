@@ -1,7 +1,6 @@
-package com.devil.filter;
+package com.devil.web.filter;
 
 import java.util.Map;
-import com.devil.handler.Request;
 
 public interface CommandFilter {
   // 기존 구현체에 영향을 주지 않고 새 규칙을 추가하는 방법

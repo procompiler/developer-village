@@ -1,18 +1,15 @@
-package com.devil.handler;
+package com.devil.web.filter;
 
+import java.util.List;
 import java.util.Map;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
-import com.devil.util.Prompt;
 
-public class ArticleListCommand implements Command{
+public class ArticleListServlet implements Command{
 
   ArticleDao articleDao;
 
-  public ArticleListCommand(ArticleDao articleDao) {
+  public ArticleListServlet(ArticleDao articleDao) {
     this.articleDao = articleDao;
   }
 
@@ -27,7 +24,7 @@ public class ArticleListCommand implements Command{
             article.getNo(),
             article.getTitle(),
             article.getWriter().getName(),
-            article.getRegisteredDate(),
+            article.getCreatedDate(),
             article.getViewCount());
       }
     } catch (Exception e) {

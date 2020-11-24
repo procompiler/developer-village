@@ -1,24 +1,21 @@
-package com.devil.handler;
+package com.devil.web.filter;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import com.devil.domain.Article;
 import com.devil.domain.Comment;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
 
-public class CrawlComuArticleCommand implements Command{
+public class CrawlComuArticleServlet implements Command{
   ArticleService articleService;
 
-  public CrawlComuArticleCommand(ArticleService articleService) {
+  public CrawlComuArticleServlet(ArticleService articleService) {
     this.articleService = articleService;
   }
 
@@ -41,12 +38,12 @@ public class CrawlComuArticleCommand implements Command{
     for (Element element : titles) {
       urls.add("https://okky.kr" + element.attr("href"));
     }
-    
+
 
     int totalArticles = urls.size();
     System.out.println("사용자가 입력한 숫자: " + input);
     System.out.println("실제 insert될 데이터: " + (urls.size()-2));
-    
+
     for (int i = 2; i < totalArticles; i++) {
       Document doc = null;
       try {
@@ -60,7 +57,7 @@ public class CrawlComuArticleCommand implements Command{
       article.setTitle(doc.select("h2.panel-title").text());
       Elements ps = doc.selectFirst("article.content-text").select("p");
       for (Element p : ps) {
-    	  content.append(p.text() + "\n");
+        content.append(p.text() + "\n");
       }
       article.setContent(content.toString());
       article.setCreatedDate(doc.selectFirst("span.timeago").text());
@@ -68,23 +65,23 @@ public class CrawlComuArticleCommand implements Command{
       System.out.println("제목: " + article.getTitle());
       System.out.println("내용: " + article.getContent());
       System.out.println("작성일: " + article.getCreatedDate());
-      
+
       //List<Comment> comments = new ArrayList<>();
       System.out.println("[댓글]");
       Elements lis = doc.select("ul.list-group").select("li.note-item");
       for (Element li : lis) {
-    	  Comment comment = new Comment();
-    	  String commentWriter = li.select("div.avatar-info").select("a.nickname").attr("title");
-    	  
-    	  if (commentWriter.equals(writer)) {
-    		  System.out.print("작성자: ");
-    	  } else {
-    		  System.out.print("다른이: ");
-    	  } 
-    	  
-    	  comment.setCreatedDate(li.select("span.timeago").text());
-    	  comment.setContent(li.select("article.list-group-item-text").text());
-    	  System.out.println(comment.getContent());
+        Comment comment = new Comment();
+        String commentWriter = li.select("div.avatar-info").select("a.nickname").attr("title");
+
+        if (commentWriter.equals(writer)) {
+          System.out.print("작성자: ");
+        } else {
+          System.out.print("다른이: ");
+        }
+
+        comment.setCreatedDate(li.select("span.timeago").text());
+        comment.setContent(li.select("article.list-group-item-text").text());
+        System.out.println(comment.getContent());
       }
       System.out.println("===========================");
 
@@ -96,7 +93,7 @@ public class CrawlComuArticleCommand implements Command{
       companyName = positionDoc.select("h4.sub-title").text();
       article.setTitle(String.format("[%s]%s", companyName, title));
       System.out.println(article.getTitle());
-      
+
       for (Element ele : elements) {
         String raw = ele.text();
         if (raw.startsWith("기간 ")) {
@@ -111,7 +108,7 @@ public class CrawlComuArticleCommand implements Command{
         }
       }
       article.setEndDate(Date.valueOf(date));
-      
+
       StringBuilder content = new StringBuilder();
       Element element = positionDoc.select("div.page-show-detail").select("div.content-body").get(0);
       Elements sections = new Elements();
@@ -131,10 +128,10 @@ public class CrawlComuArticleCommand implements Command{
         	content.append("- " + li.wholeText() + "\n");
         }
         if (lis.size() == 0) {
-          // <p> 태그로 묶인 글 add. 
+          // <p> 태그로 묶인 글 add.
           for (Element p : section.select("p")) {
-            content.append(p.wholeText() + "\n");    
-          }          
+            content.append(p.wholeText() + "\n");
+          }
         }
         content.append("\n");
       }
@@ -147,9 +144,9 @@ public class CrawlComuArticleCommand implements Command{
       } catch (Exception e) {
         e.printStackTrace();
       }
-      */
+       */
     }
-    
+
   }
 }
 

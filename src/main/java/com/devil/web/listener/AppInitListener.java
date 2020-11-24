@@ -1,4 +1,4 @@
-package com.devil.listener;
+package com.devil.web.listener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,12 +7,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.devil.context.ApplicationContextListener;
 import com.devil.dao.ArticleDao;
 import com.devil.dao.mariadb.ArticleDaoImpl;
-import com.devil.handler.Command;
-import com.devil.handler.CrawlComuArticleCommand;
-import com.devil.handler.CrawlRCArticleCommand;
 import com.devil.service.ArticleService;
 import com.devil.service.DefaultArticleService;
 import com.devil.util.SqlSessionFactoryProxy;
+import com.devil.web.filter.Command;
+import com.devil.web.filter.CrawlComuArticleServlet;
+import com.devil.web.filter.CrawlRCArticleServlet;
 
 public class AppInitListener implements ApplicationContextListener {
   @Override
@@ -31,23 +31,23 @@ public class AppInitListener implements ApplicationContextListener {
 
       // Command 구현체 생성 및 commandMap 객체 준비
       Map<String,Command> commandMap = new HashMap<>();
-      
+
       //commandMap.put("/article/add", new ArticleAddCommand(articleDao));
       ArticleService articleService = new DefaultArticleService(articleDao);
-      commandMap.put("/crawl/community", new CrawlRCArticleCommand(articleService));
-      commandMap.put("/crawl/community", new CrawlComuArticleCommand(articleService));
+      commandMap.put("/crawl/community", new CrawlRCArticleServlet(articleService));
+      commandMap.put("/crawl/community", new CrawlComuArticleServlet(articleService));
       context.put("commandMap", commandMap);
     } catch (Exception e) {
       System.out.println("시스템이 사용할 객체를 준비하는 중에 오류 발생");
       e.printStackTrace();
     }
   }
-    
 
-    @Override
-    public void contextDestroyed(Map<String,Object> context) {
-      System.out.println("프로젝트 관리 시스템(PMS)을 종료합니다!");
-    }
-    
-    
+
+  @Override
+  public void contextDestroyed(Map<String,Object> context) {
+    System.out.println("프로젝트 관리 시스템(PMS)을 종료합니다!");
+  }
+
+
 }
