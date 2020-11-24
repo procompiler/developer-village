@@ -1,4 +1,4 @@
-package com.devil.web.filter;
+package com.devil.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import com.devil.domain.Article;
 import com.devil.domain.Comment;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
+import com.devil.web.filter.Command;
 
 public class CrawlComuArticleServlet implements Command{
   ArticleService articleService;

@@ -1,10 +1,11 @@
-package com.devil.web.filter;
+package com.devil.web;
 
 import java.sql.Date;
 import java.util.Map;
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
+import com.devil.web.filter.Command;
 
 public class ArticleAddServlet implements Command {
 

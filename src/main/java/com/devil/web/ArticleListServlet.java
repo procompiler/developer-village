@@ -1,9 +1,10 @@
-package com.devil.web.filter;
+package com.devil.web;
 
 import java.util.List;
 import java.util.Map;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
+import com.devil.web.filter.Command;
 
 public class ArticleListServlet implements Command{
 

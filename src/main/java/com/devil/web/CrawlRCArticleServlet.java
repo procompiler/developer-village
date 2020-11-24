@@ -1,4 +1,4 @@
-package com.devil.web.filter;
+package com.devil.web;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 import com.devil.util.Prompt;
+import com.devil.web.filter.Command;
 
 public class CrawlRCArticleServlet implements Command{
   ArticleService articleService;
