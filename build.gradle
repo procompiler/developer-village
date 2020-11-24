@@ -7,12 +7,9 @@
  */
 
 plugins {
-    // Apply the java plugin to add support for Java
     id 'java'
-
-    // Apply the application plugin to add support for building a CLI application.
-    id 'application'
-    id 'eclipse'
+    id 'eclipse-wtp'
+    id 'war'
 }
 
 repositories {
@@ -23,29 +20,27 @@ repositories {
 
 dependencies {
 
-  // Thumbnailator 썸네일 생성 라이브러리
-  implementation 'net.coobird:thumbnailator:0.4.13'
-  
-  // Apache의 파일업로드 처리 라이브러리
-  implementation 'commons-fileupload:commons-fileupload:1.4'
-  
-  // Servlet-API
-  // => 컴파일 할 때만 사용한다.
-  // => 배치할 때는 포함하지 않는다.
-  // => 왜? 서버에 이미 이 라이브러리가 있기 때문이다.
-  // 
-  compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
-  
+    // Thumbnailator 썸네일 생성 라이브러리
+    implementation 'net.coobird:thumbnailator:0.4.13'
+    
+    // Apache의 파일업로드 처리 라이브러리
+    implementation 'commons-fileupload:commons-fileupload:1.4'
+    
+    // Servlet-API
+    // => 컴파일 할 때만 사용한다.
+    // => 배치할 때는 포함하지 않는다.
+    // => 왜? 서버에 이미 이 라이브러리가 있기 때문이다.
+    // 
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    
     // Mybatis 퍼시스턴스 프레임워크
     implementation 'org.mybatis:mybatis:3.5.6'
-
 
     // MariaDB JDBC 드라이버
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.0'
 
     // JSON 라이브러리
     implementation 'com.google.code.gson:gson:2.8.6'
-
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
@@ -57,7 +52,3 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.13.1'
 }
 
-application {
-    // Define the main class for the application.
-    mainClassName = 'com.devil.App'
-}
