@@ -39,13 +39,13 @@ public class ArticleListServlet extends HttpServlet {
       out.println("<table border='1'>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
-          + "<th>제목</th>" + "<th>등록일</th>" + "<th>조회수</th>" + "</tr>");
+          + "<th>제목</th>" + "<th>작성자</th>" + "<th>등록일</th>" + "<th>조회수</th>" + "</tr>");
 
       for (Article article : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
+            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
                 + "</tr>\n",
-            article.getNo(), article.getTitle(),
+            article.getNo(), article.getTitle(), article.getWriter().getNickname(),
             article.getCreatedDate(), article.getViewCount());
       }
       out.println("</table>");
