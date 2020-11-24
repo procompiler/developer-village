@@ -1,5 +1,8 @@
 package com.devil.service;
 
-public interface UserService {
+import java.util.List;
+import com.devil.domain.User;
 
+public interface UserService {
+  List<User> list (String keyword) throws Exception;
 }

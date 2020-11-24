@@ -10,12 +10,15 @@ public class User {
   private String name;
   private String password;
   private Date createdDate;
+  private Date recentVisitedDate;
+  private String loginType;
+  private String photo;
   private Map<String, String> url;
   private boolean blocked;
   private String tech;
   private boolean auth;
   private boolean noti;
-  
+
   public int getNo() {
     return no;
   }
@@ -82,4 +85,29 @@ public class User {
   public void setNoti(boolean noti) {
     this.noti = noti;
   }
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+  }
+  public Date getRecentVisitedDate() {
+    return recentVisitedDate;
+  }
+  public void setRecentVisitedDate(Date recentVisitedDate) {
+    this.recentVisitedDate = recentVisitedDate;
+  }
+  public String getLoginType() {
+    return loginType;
+  }
+  public void setLoginType(String loginType) {
+    this.loginType = loginType;
+  }
+  public String getPhoto() {
+    return photo;
+  }
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
+
 }

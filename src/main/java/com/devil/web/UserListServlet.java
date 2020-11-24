@@ -1,23 +1,21 @@
-package com.devil.web.filter;
+package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.devil.domain.User;
+import com.devil.service.UserService;
 
-import com.devil.domain.Article;
-import com.devil.service.ArticleService;
-
-@WebServlet("/article/list")
-public class ArticleListServlet extends HttpServlet {
+@WebServlet("/user/list")
+public class UserListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -25,33 +23,33 @@ public class ArticleListServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
+    UserService userService = (UserService) ctx.getAttribute("userService");
 
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    out.println("<head><title>게시글목록</title></head>");
-    out.println("<style> table { border-top: 1px solid #444444; border-collapse: collapse;}" + 
-    		"  th, td { border-bottom: 1px solid #444444; padding: 10px;} </style>");
+    out.println("<head><title>유저 목록</title></head>");
+    out.println("<style> table { border-top: 1px solid #444444; border-collapse: collapse;}" +
+        "  th, td { border-bottom: 1px solid #444444; padding: 10px;} </style>");
     out.println("<body>");
     try {
-      out.println("<h1>게시물 목록</h1>");
+      out.println("<h1>유저 목록</h1>");
 
-      List<Article> list = articleService.list(null);
+      List<User> list = userService.list(null);
       out.println("<table border='1'>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
-          + "<th>제목</th>" + "<th>작성자</th>" + "<th>등록일</th>" + "<th>조회수</th>" + "</tr>");
+          + "<th>이메일</th>" + "<th>닉네임</th>" + "<th>이름</th>" + "<th>가입일</th>" + "<th>로그인타입</th>" + "</tr>");
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-      for (Article article : list) {
+      for (User user : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
+            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%s</td>"
                 + "</tr>\n",
-            article.getNo(), article.getTitle(), article.getWriter().getNickname(),
-            formatter.format(article.getCreatedDate()), article.getViewCount());
+                user.getNo(), user.getEmail(), user.getNickname(),
+                user.getName(), formatter.format(user.getCreatedDate()), user.getLoginType());
       }
       out.println("</table>");
 

@@ -5,49 +5,58 @@
 
 <mapper namespace="UserDao">
 
-<!--
   <resultMap type="user" id="UserMap">
-    <id column="uno"           property="no"/>
-    <result column="email"    property="email"/>
-    <result column="nick"      property="nickname"/>
-    <result column="name" property="name"/>
-    <result column="password"  property="password"/>
-    <result column="cdt"      property="createdDate"/>
+    <id column="uno"            property="no"/>
+    <result column="email"      property="email"/>
+    <result column="nick"       property="nickname"/>
+    <result column="name"       property="name"/>
+    <result column="pwd"        property="password"/>
+    <result column="cdt"        property="createdDate"/>
+    <result column="rnt_vsdt"   property="recentVisitedDate"/>
+    <result column="log_type"   property="loginType"/>
+    <result column="photo"      property="photo"/>
+    <result column="blocked"    property="blocked"/>
+    <result column="tech"       property="tech"/>
+    <result column="auth"       property="auth"/>
+    <result column="noti"       property="noti"/>
     
-    <collection property="url"
-    
-    <result column="blocked" property="blocked"/>
-    <result column="tech" property="tech"/>
-    <result column="auth" property="auth"/>
-    <result column="noti" property="noti"/>
+    <!--
+    <collection property="url" ofType="string">
+    <result column="hp_url"     property="url"/>
+    <result column="gh_url"     property="url"/>
+    <result column="in_url"     property="url"/>
+    <result column="tw_url"     property="url"/>
+    </collection>
+    -->
   </resultMap>
 
-  <insert id="insert" parameterType="article">
-    insert into article(arno,title,writer,rc_edt,content,cano) 
-    values(#{no}, #{title}, #{writer}, #{endDate}, #{content}, #{categoryNo})
+  <insert id="insert" parameterType="user">
+    insert into user(email,nick,name,pwd,log_type) 
+    values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType})
   </insert>
   
   <sql id="sql1">
     select 
-    	a.arno, 
-      a.title,
-      a.cdt,  
-      a.vw_cnt, 
-      a.rc_edt,
-      u.name
+      uno, 
+      email, 
+      nick,
+      name, 
+      pwd, 
+      cdt,
+      log_type
     from 
-      article a
-      inner join user u on a.writer=u.no
+      user
+    order by 
+      uno desc
   </sql>
   
-  <select id="findAll" resultMap="ArticleMap" parameterType="string">
+  <select id="findAll" resultMap="UserMap" parameterType="string">
   	<include refid="sql1"/>
   	<if test="keyword != null">
   	where
-  		a.title like concat('%', #{keyword}, '%')
-  		or m.name like concat('%', #{keyword}, '%')
+  		email like concat('%', #{keyword}, '%')
+  		or nick like concat('%', #{keyword}, '%')
   	</if>
   	order by a.arno desc
   </select>
--->
 </mapper>
