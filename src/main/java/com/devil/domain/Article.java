@@ -1,20 +1,43 @@
 package com.devil.domain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class Article {
   private int no;
   private User writer;
+  private int categoryNo;
   private String title;
   private String content;
-  private int categoryNo;
-  private Date endDate;
-  private int status;
-  private List<Comment> comments;
-  private String createdDate;
+  private Date createdDate;
   private int viewCount;
+  private Date updatedDate;
+  private Date deletedDate;
+  private int status;
+  private int studyStatus;
+  private Date endDate;
+  private List<Comment> comments;
 
+
+
+  public int getStudyStatus() {
+    return studyStatus;
+  }
+  public void setStudyStatus(int studyStatus) {
+    this.studyStatus = studyStatus;
+  }
+  public Date getDeletedDate() {
+    return deletedDate;
+  }
+  public void setDeletedDate(Date deletedDate) {
+    this.deletedDate = deletedDate;
+  }
+  public Date getUpdatedDate() {
+    return updatedDate;
+  }
+  public void setUpdatedDate(Date updatedDate) {
+    this.updatedDate = updatedDate;
+  }
   public int getNo() {
     return no;
   }
@@ -63,10 +86,10 @@ public class Article {
   public void setComments(List<Comment> comments) {
     this.comments = comments;
   }
-  public String getCreatedDate() {
+  public Date getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(String createdDate) {
+  public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
   }
   public int getViewCount() {

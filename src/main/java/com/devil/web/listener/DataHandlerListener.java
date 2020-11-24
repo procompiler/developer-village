@@ -17,7 +17,7 @@ public class DataHandlerListener implements ServletContextListener {
       // Mybatis 객체 준비
       SqlSessionFactoryProxy sqlSessionFactory = new SqlSessionFactoryProxy(
           new SqlSessionFactoryBuilder().build(
-              Resources.getResourceAsStream("com/eomcs/pms/conf/mybatis-config.xml")));
+              Resources.getResourceAsStream("com/devil/conf/mybatis-config.xml")));
 
       // DAO 구현체 생성
       //BoardDao boardDao = new BoardDaoImpl(sqlSessionFactory);
