@@ -1,7 +1,6 @@
 package com.devil.domain;
 
 import java.sql.Date;
-import java.util.Map;
 
 public class User {
   private int no;
@@ -13,7 +12,10 @@ public class User {
   private Date recentVisitedDate;
   private String loginType;
   private String photo;
-  private Map<String, String> url;
+  private String hompageURL;
+  private String githubURL;
+  private String instarURL;
+  private String twitterURL;
   private boolean blocked;
   private String tech;
   private boolean auth;
@@ -55,11 +57,29 @@ public class User {
   public void setCdt(Date cdt) {
     this.createdDate = cdt;
   }
-  public Map<String, String> getUrl() {
-    return url;
+  public String getHompageURL() {
+    return hompageURL;
   }
-  public void setUrl(Map<String, String> url) {
-    this.url = url;
+  public void setHompageURL(String hompageURL) {
+    this.hompageURL = hompageURL;
+  }
+  public String getGithubURL() {
+    return githubURL;
+  }
+  public void setGithubURL(String githubURL) {
+    this.githubURL = githubURL;
+  }
+  public String getInstarURL() {
+    return instarURL;
+  }
+  public void setInstarURL(String instarURL) {
+    this.instarURL = instarURL;
+  }
+  public String getTwitterURL() {
+    return twitterURL;
+  }
+  public void setTwitterURL(String twitterURL) {
+    this.twitterURL = twitterURL;
   }
   public boolean isBlocked() {
     return blocked;

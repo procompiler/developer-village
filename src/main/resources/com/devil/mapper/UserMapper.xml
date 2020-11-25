@@ -15,19 +15,15 @@
     <result column="rnt_vsdt"   property="recentVisitedDate"/>
     <result column="log_type"   property="loginType"/>
     <result column="photo"      property="photo"/>
+    <result column="hp_url"     property="hompageURL"/>
+    <result column="gh_url"     property="githubURL"/>
+    <result column="in_url"     property="instarURL"/>
+    <result column="tw_url"     property="twitterURL"/>
     <result column="blocked"    property="blocked"/>
     <result column="tech"       property="tech"/>
     <result column="auth"       property="auth"/>
     <result column="noti"       property="noti"/>
     
-    <!--
-    <collection property="url" ofType="string">
-    <result column="hp_url"     property="url"/>
-    <result column="gh_url"     property="url"/>
-    <result column="in_url"     property="url"/>
-    <result column="tw_url"     property="url"/>
-    </collection>
-    -->
   </resultMap>
 
   <insert id="insert" parameterType="user">
