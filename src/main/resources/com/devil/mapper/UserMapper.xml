@@ -42,8 +42,6 @@
       log_type
     from 
       user
-    order by 
-      uno desc
   </sql>
   
   <select id="findAll" resultMap="UserMap" parameterType="string">

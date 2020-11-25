@@ -27,6 +27,7 @@
   </environments>
   
   <mappers>
+    <mapper resource="com/devil/mapper/UserMapper.xml"/>
     <mapper resource="com/devil/mapper/ArticleMapper.xml"/>
   </mappers>
 
