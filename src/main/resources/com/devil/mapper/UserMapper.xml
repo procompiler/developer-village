@@ -57,6 +57,6 @@
   		email like concat('%', #{keyword}, '%')
   		or nick like concat('%', #{keyword}, '%')
   	</if>
-  	order by a.arno desc
+  	order by uno desc
   </select>
 </mapper>
