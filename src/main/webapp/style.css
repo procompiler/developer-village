@@ -1,0 +1,26 @@
+body {
+	color: white;
+	background-color: #37393E;
+}
+
+table { 
+	border-collapse: collapse;
+	border-radius: 30px;
+	border-style: hidden;
+	box-shadow: 0 0 1px black;
+	display: block;
+} 
+
+tbody tr {
+	background-color: #2E3034;
+}
+thead tr{
+	background-color: #6C5DDF;	
+}
+
+
+th, td { 
+	border-left: hidden;
+	border-right: hidden;
+	padding: 10px;
+}

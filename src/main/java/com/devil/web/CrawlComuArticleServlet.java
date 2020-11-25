@@ -65,7 +65,8 @@ public class CrawlComuArticleServlet implements Command{
         content.append(p.text() + "\n");
       }
       article.setContent(content.toString());
-      article.setCreatedDate(doc.selectFirst("span.timeago").text());
+      System.out.println(doc.selectFirst("span.timeago").text());
+      article.setCreatedDate();
       User user = new User();
       //user.setNo(s)
       System.out.println("===========================");

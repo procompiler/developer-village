@@ -32,19 +32,20 @@ public class ArticleListServlet extends HttpServlet {
     PrintWriter out = response.getWriter();
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    out.println("<head><title>게시글목록</title></head>");
-    out.println("<style> table { border-top: 1px solid #444444; border-collapse: collapse;}" + 
-    		"  th, td { border-bottom: 1px solid #444444; padding: 10px;} </style>");
+    out.println("<head><title>게시글목록</title>");
+    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
     out.println("<body>");
     try {
       out.println("<h1>게시물 목록</h1>");
 
       List<Article> list = articleService.list(null);
       out.println("<table border='1'>");
+      out.println("<thead>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
           + "<th>제목</th>" + "<th>작성자</th>" + "<th>등록일</th>" + "<th>조회수</th>" + "</tr>");
-
+      out.println("</thead>");
+      out.println("<tbody>");
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (Article article : list) {
         out.printf(
@@ -53,6 +54,7 @@ public class ArticleListServlet extends HttpServlet {
             article.getNo(), article.getTitle(), article.getWriter().getNickname(),
             formatter.format(article.getCreatedDate()), article.getViewCount());
       }
+      out.println("</tbody>");
       out.println("</table>");
 
     } catch (Exception e) {
