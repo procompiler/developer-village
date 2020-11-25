@@ -1,123 +1,152 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<title>HTML5 Basic</title>
+	<title>HTML5 Basic</title>
 </head>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 <style>
-body {
-	background-color: #37393E;
-	color: white;
-	line-height: 2em;
-}
+	@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+	body {
+		background-color: #37393E;
+		color: white;
+		line-height: 2em;
+	}
 
 
-header {
-	background-color: #2E3034;
-	color: #6C5DDF;
-	text-align: center;
-	box-shadow: 5px 5px 7px 3px #212327;
-	float: right;
-	left: 240px;
-	position:fixed;
-	top: 0px;
-	right: 0px;
-	padding: 10px;
-}
+	header {
+		background-color: #2E3034;
+		color: #6C5DDF;
+		text-align: center;
+		box-shadow: 5px 5px 7px 3px #212327;
+		float: right;
+		left: 240px;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		padding: 10px;
+	}
 
 
-nav {
-	height: 100%;
-	width: 240px;
-	position: fixed;
-	z-index: 1;
-	top: 0px;
-	left: 0px;
-	background-color: #212327;
-	overflow-x: hidden;
-	margin: 0px 10px 0px 0px;
-	line-height: 3em;
-	font-size: 1.2em;
-	text-align: left;
-	font-weight: bold;
-}
+	nav {
+		height: 100%;
+		width: 240px;
+		position: fixed;
+		z-index: 1;
+		top: 0px;
+		left: 0px;
+		background-color: #212327;
+		overflow-x: hidden;
+		margin: 0px 10px 0px 0px;
+		line-height: 3em;
+		font-size: 1.2em;
+		text-align: left;
+		font-weight: bold;
+	}
 
-#search {
-	border-radius: 10px;
-	border: 0px;
-	padding: 10px;
-	background-color: #3b3b3b;
-	background-image: url("search.png");
-	background-size: 30px;
-	background-position: 5px 4px;
-	background-repeat: no-repeat;
-}
+	#search {
+		border-radius: 10px;
+		border: 0px;
+		padding: 10px;
+		background-color: #3b3b3b;
+		background-image: url("search.png");
+		background-size: 30px;
+		background-position: 5px 4px;
+		background-repeat: no-repeat;
+	}
 
-nav ul hr {
-	border: 1px solid #3b3b3b;
-}
+	nav ul hr {
+		border: 1px solid #3b3b3b;
+	}
 
-ul {
-	padding-left: 0;
-	text-align: center;
-}
+	ul {
+		padding-left: 0;
+		text-align: center;
+	}
 
-nav a {
-	color: white;
-	text-decoration: none;
-}
+	nav a {
+		color: white;
+		text-decoration: none;
+	}
 
-nav a:hover {
-	color: #6C5DDF;
-}
+	nav a:hover {
+		color: #6C5DDF;
+	}
 
-article {
-	margin-left: 280px;
-	padding-left: 10px;
-	background-color: #2E3034;
-	color: white;
-	padding: 20px;
-	text-align:initial;
-	margin-top: 100px;
-	margin-right: 30px;
-	float: left;
-}
+	article {
+		margin-left: 280px;
+		padding-left: 10px;
+		background-color: #2E3034;
+		color: white;
+		padding: 20px;
+		text-align: initial;
+		margin-top: 100px;
+		margin-right: 30px;
+		float: left;
+	}
 
-.date {
-	font-size: 0.8em;
-}
+	.date {
+		font-size: 0.8em;
+	}
 
-footer {
-	margin-left: 300px;
-}
+	footer {
+		margin-left: 300px;
+		font-size: 12px;
+		line-height: 20px;
+	}
 
-li img {
-	text-align: center;
-	padding-top: 30px;
-}
+	footer hr {
+		border: 1px solid #535353;
+	}
 
-img {
-	width: 77px;
-}
+	footer img {
+		width: 43px;
+	}
 
-i {
-	padding-right: 10px;
-}
+	li img {
+		text-align: center;
+		padding-top: 30px;
+	}
 
-.buttons li {
-	text-align: left;
-	padding-left: 40px;
-}
-div
-	padding: 20px 10px;
-}
+	img {
+		width: 77px;
+	}
+
+	i {
+		padding-right: 10px;
+	}
+
+	.buttons li {
+		text-align: left;
+		padding-left: 40px;
+	}
+
+	#sitename {
+		padding-bottom: 50px;
+		/*sitename div태그를 적용하기 위해 필요한 블록*/
+	}
+
+	.s-font {
+		font-family: 'Aldrich';
+		line-height: 40px;
+		font-weight: normal;
+		font-size: 24px;
+	}
 
 </style>
 
 <body>
 	<nav>
 		<ul>
-			<div id="logo"><li><img src="devil.png"/></li></div>
+			<div id="logo">
+				<li><img src="devil.png" /></li>
+			</div>
+			<div id="sitename">
+				<li class="s-font"><span style="color: #6C5DDF;">D</span>eveloper</li>
+				<li class="s-font"><span style="color: #6C5DDF;">V</span>illage</li>
+			</div>
 			<div class="buttons">
 				<li><i class="fas fa-user-friends"></i><a href="#">커뮤니티</a></li>
 				<li><i class="fas fa-question"></i><a href="#">질문</a></li>
@@ -125,15 +154,15 @@ div
 				<li><i class="fas fa-pencil-alt"></i><a href="#">스터디</a></li>
 			</div>
 			<hr>
-				<div class="buttons">
-					<li><i class="fas fa-tags"></i><a href="#">태그</a></li>
-					<div id="tag">
-						<li><i class="fas fa-hashtag"></i><a href="#">Java</a></li>
-						<li><i class="fas fa-hashtag"></i><a href="#">JavaScript</a></li>
-						<li><i class="fas fa-hashtag"></i><a href="#">Ruby</a></li>
-						<li><i class="fas fa-hashtag"></i><a href="#">Kotlin</a></li>
-					</div>
+			<div class="buttons">
+				<li><i class="fas fa-tags"></i><a href="#">태그</a></li>
+				<div id="tag">
+					<li><i class="fas fa-hashtag"></i><a href="#">Java</a></li>
+					<li><i class="fas fa-hashtag"></i><a href="#">JavaScript</a></li>
+					<li><i class="fas fa-hashtag"></i><a href="#">Ruby</a></li>
+					<li><i class="fas fa-hashtag"></i><a href="#">Kotlin</a></li>
 				</div>
+			</div>
 		</ul>
 	</nav>
 	<header>
@@ -143,49 +172,61 @@ div
 		<!--<i class="fas fa-bell"></i>-->
 	</header>
 	<article>
-				<h1>자바를 자바자바</h1>
-				<p class="date">2020-10-20</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-					ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-					sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
-					consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
-					adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
-					elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
-					ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-					sit amet, consectetur adipiscing elit</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-					ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-					sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
-					consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
-					adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
-					elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
-					ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum 
-					sit amet, consectetur adipiscing elit</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-					ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-					sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
-					consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
-					adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
-					elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
-					ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-					sit amet, consectetur adipiscing elit</p>
-		</article>
-		<div id="comment" class="content">
-			<ul>
-				<li>댓글댓글댓글댓글</li>
-				<li>댓글댓글댓글댓글</li>
-				<li>댓글댓글댓글댓글</li>
-				<li>댓글댓글댓글댓글</li>
-				<li>댓글댓글댓글댓글</li>
-			</ul>
-		</div>
+		<h1>자바를 자바자바</h1>
+		<p class="date">2020-10-20</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+			ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
+			sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
+			consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
+			adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
+			elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
+			ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
+			sit amet, consectetur adipiscing elit</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+			ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
+			sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
+			consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
+			adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
+			elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
+			ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum
+			sit amet, consectetur adipiscing elit</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+			ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
+			sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
+			consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
+			adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
+			elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
+			ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
+			sit amet, consectetur adipiscing elit</p>
+	</article>
+	<div id="comment" class="content">
+		<ul>
+			<li>댓글댓글댓글댓글</li>
+			<li>댓글댓글댓글댓글</li>
+			<li>댓글댓글댓글댓글</li>
+			<li>댓글댓글댓글댓글</li>
+			<li>댓글댓글댓글댓글</li>
+		</ul>
+	</div>
 	<footer>
-		<img src="devil.png"/>
-		Developer’s Village<br>
-		Devil Community Copy right 2020<br>
-		문의 :  test1@gmail.com<br>
-		주소 : 서울시 어쩌구 어쩌라고 180-28 오호라빌딩 27층<br>
-		대표명 : 유관순
+		<hr>
+		<div style="float: left; margin-bottom: 40px; margin-right: 30px; margin-top: 30px;">
+			<img src="devil.png" />
+		</div>
+		<div style="margin-top: 30px; text-align:left;">
+			<b>Developer’s Village</b><span style="float:right; margin-right: 30px;">Made with love and <span style="color: #6C5DDF;">Procompiler</span></span><br>
+			Devil Community Copy right 2020<span style="float:right; margin-top: 10px; margin-right: 30px;"><img style="
+				border-radius: 70px;
+				-moz-border-radius: 70px;
+				-khtml-border-radius: 70px;
+				-webkit-border-radius: 70px;
+				"src="procompiler.png"/></span><br>
+			문의 : test1@gmail.com<br>
+			주소 : 서울시 어쩌구 어쩌라고 180-28 오호라빌딩 27층<br>
+			대표명 : 유관순
+		</div>
+			
 	</footer>
 </body>
+
 </html>
