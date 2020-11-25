@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TagDao">
+  <resultMap type="tag" id="TagMap">
+    <id column="tno"           property="no"/>
+    <result column="name"       property="name"/>
+	<result column="photo"		property="photo"/>
+	<result column="color"		property="color"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="tag">
+    insert into tag(tno, name, photo, color) 
+    values(#{no}, #{name}, #{photo}, #{color})
+  </insert>
+  
+  <sql id="sql1">
+    select 
+      tno,
+	  name,
+	  photo,
+	  color
+    from 
+      tag
+  </sql>
+  
+  <select id="findAll" resultMap="TagMap" parameterType="string">
+  	<include refid="sql1"/>
+  	<if test="keyword != null">
+  	where
+  		name like concat('%', #{keyword}, '%')
+  	</if>
+  	<!--order by tno desc-->
+  </select>
+  
+   <update id="update" parameterType="tag">
+    update tag
+    <set>
+      <if test="name != null">name = #{name},</if>
+      <if test="photo != null">photo = #{photo},</if>
+      <if test="color != null">color = #{color},</if>
+    </set>
+    where no = #{no}
+  </update>
+    
+     <delete id="delete" parameterType="int">
+    delete from tag
+    where no=#{no}
+  </delete>
+    
+</mapper>

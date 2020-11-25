@@ -24,3 +24,8 @@ th, td {
 	border-right: hidden;
 	padding: 10px;
 }
+
+#color {
+	color: #2E3034;
+	font-weight: bold;
+}

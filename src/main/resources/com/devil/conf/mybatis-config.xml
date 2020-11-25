@@ -29,6 +29,7 @@
   <mappers>
     <mapper resource="com/devil/mapper/UserMapper.xml"/>
     <mapper resource="com/devil/mapper/ArticleMapper.xml"/>
+<mapper resource="com/devil/mapper/TagMapper.xml"/>
   </mappers>
 
 </configuration>
