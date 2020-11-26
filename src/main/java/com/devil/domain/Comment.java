@@ -1,25 +1,51 @@
 package com.devil.domain;
 
-import java.util.Date;
-
 public class Comment {
 	private int no;
-	private int writer;
+	private User writer;
 	private String content;
 	private String createdDate;
 	private int ord;
 	private int step;
-	
-	public int getNo() {
+	private String updatedDate;
+	private String deletedDate;
+	private boolean status;
+	private boolean selected;
+
+	public String getUpdatedDate() {
+    return updatedDate;
+  }
+  public void setUpdatedDate(String updatedDate) {
+    this.updatedDate = updatedDate;
+  }
+  public String getDeletedDate() {
+    return deletedDate;
+  }
+  public void setDeletedDate(String deletedDate) {
+    this.deletedDate = deletedDate;
+  }
+  public boolean isStatus() {
+    return status;
+  }
+  public void setStatus(boolean status) {
+    this.status = status;
+  }
+  public boolean isSelected() {
+    return selected;
+  }
+  public void setSelected(boolean selected) {
+    this.selected = selected;
+  }
+  public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public int getWriter() {
+	public User getWriter() {
 		return writer;
 	}
-	public void setWriter(int writer) {
+	public void setWriter(User writer) {
 		this.writer = writer;
 	}
 	public String getContent() {
@@ -46,6 +72,6 @@ public class Comment {
 	public void setStep(int step) {
 		this.step = step;
 	}
-	
-	
+
+
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Article;
+import com.devil.domain.Comment;
 import com.devil.service.ArticleService;
 
 @WebServlet("/article/detail")
@@ -41,7 +42,6 @@ public class ArticleDetailServlet extends HttpServlet {
       try {
         out.println("<h1>[게시물 조회]</h1>");
 
-
         Article article = articleService.get(no);
 
         if (article == null) {
@@ -50,12 +50,18 @@ public class ArticleDetailServlet extends HttpServlet {
         }
         System.out.println(article.getTitle());
 
-        out.printf("제목: %s<br>", article.getTitle());
-        out.printf("내용: %s<br>", article.getContent());
-        out.printf("작성자: %s<br>", article.getWriter().getNickname());
-        out.printf("등록일: %s<br>", article.getCreatedDate());
-        out.printf("조회수: %d<br>", article.getViewCount());
+        out.printf("<p>제목: %s</p>", article.getTitle());
+        out.printf("<p>작성자: %s</p>", article.getWriter().getNickname());
+        out.printf("<p>카테고리: %s</p>", article.getCategoryNo());
+        out.printf("<p>등록일: %s</p>", article.getCreatedDate());
+        out.printf("<p>조회수: %d</p>", article.getViewCount());
+        out.printf("<p>내용: %s</p>", article.getContent());
 
+        for (Comment comment : article.getComments()) {
+          out.printf("<p>댓글작성자: %s</p>", comment.getWriter().getNickname());
+          out.printf("<p>댓글내용: %s</p>", comment.getContent());
+
+        }
       } catch (Exception e) {
         out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
         StringWriter errOut = new StringWriter();

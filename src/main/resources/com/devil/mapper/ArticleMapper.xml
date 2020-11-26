@@ -16,12 +16,22 @@
     <result column="status"     property="status"/>
     <result column="st_status"  property="studyStatus"/>
     <result column="rc_edt"     property="endDate"/>
+    
 
     <association property="writer" javaType="user">
       <id column="uno"          property="no"/>
       <result column="nick"     property="nickname"/>
     </association>
     
+    <collection property="comments" ofType="comment">
+      <id column="cno" property="no"/>
+      <result column="comment_content" property="content"/>
+      
+      <association property="writer" javaType="user">
+	      <id column="uno"          property="no"/>
+	      <result column="nick"     property="nickname"/>
+      </association>
+    </collection>
     
   </resultMap>
   
@@ -41,6 +51,7 @@
     from 
       article a
       inner join user u on a.writer=u.uno
+      
   </sql>
   
   <select id="findAll" resultMap="ArticleMap" parameterType="string">
@@ -69,11 +80,17 @@
       a.title,
       a.content,
       a.cdt,  
+      a.cano,
+      u.nick,
       a.vw_cnt, 
-      u.nick
+      c.content comment_content,
+      c.uno,
+      u2.nick
     from 
       article a
       inner join user u on a.writer=u.uno   
+      left outer join comment c on a.arno=c.arno
+      left outer join user u2 on c.uno = u2.uno
      where a.arno=#{no}  
     </select>
     
@@ -83,9 +100,9 @@
       where arno=#{no}  
     </update>
     
-     <delete id="delete" parameterType="int">
-    delete from article
-    where no=#{no}
-  </delete>
+	  <delete id="delete" parameterType="int">
+	    delete from article
+	    where no=#{no}
+	  </delete>
     
 </mapper>
