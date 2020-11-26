@@ -30,7 +30,7 @@ public class ArticleListServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head><title>게시글목록</title>");
-    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
+    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../images/style.css'></head>");
     out.println("<body>");
     try {
       out.println("<h1>게시물 목록</h1>");

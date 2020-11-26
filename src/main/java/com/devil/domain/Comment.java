@@ -1,5 +1,7 @@
 package com.devil.domain;
 
+import java.util.Date;
+
 public class Comment {
 	private int no;
 	private User writer;

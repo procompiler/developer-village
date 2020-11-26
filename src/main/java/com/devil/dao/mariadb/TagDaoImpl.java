@@ -43,4 +43,11 @@ public class TagDaoImpl implements TagDao{
 	      return sqlSession.delete("TagDao.delete", no);
 	    }
 	  }
+
+	@Override
+	public Tag findByNo(int no) throws Exception {
+	    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+	        return sqlSession.selectOne("TagDao.findByNo", no);
+	      }
+	}
 }

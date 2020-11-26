@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devil.dao.TagDao;
 import com.devil.domain.Tag;
+import com.devil.domain.Tag;
 
 public class DefaultTagService implements TagService {
   TagDao tagDao;
@@ -21,5 +22,10 @@ public class DefaultTagService implements TagService {
   public List<Tag> list(String keyword) throws Exception {
     return tagDao.findAll(keyword);
   }
+
+@Override
+public Tag get(int no) throws Exception {
+    return tagDao.findByNo(no);
+}
   
 }

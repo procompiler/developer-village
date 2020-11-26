@@ -37,6 +37,7 @@ public class TagListServlet extends HttpServlet {
     out.println("<body>");
     try {
       out.println("<h1>태그 목록</h1>");
+      out.println("<button><a href='form.html'>태그 추가</a><br></button>");
 
       List<Tag> list = tagService.list(null);
       out.println("<table border='1'>");
@@ -48,8 +49,8 @@ public class TagListServlet extends HttpServlet {
       out.println("<tbody>");
       for (Tag tag : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td id=\"title\">%s</td>"+ "<td><img style=\"width:80px\" src=\"../%s\"</td>" + "<td>#%s</td>" + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>" + "</tr>\n",
-            tag.getNo(), tag.getName(), tag.getPhoto(),tag.getColor(), tag.getColor(), tag.getName());
+            "<tr>" + "<td>%d</td>" + "<td id=\"title\"><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"+ "<td><img style=\"width:80px\" src=\"../images/%s\"</td>" + "<td>#%s</td>" + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>" + "</tr>\n",
+            tag.getNo(), tag.getName(), tag.getPhoto(), tag.getColor(), tag.getColor(), tag.getName());
       }
       out.println("</tbody>");
       out.println("</table>");
