@@ -43,13 +43,13 @@ public class TagListServlet extends HttpServlet {
       out.println("<thead>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
-          + "<th>태그이름</th>" + "<th>태그사진</th>" + "<th>태그색</th>" + "</tr>");
+          + "<th>태그이름</th>" + "<th>태그사진</th>" + "<th>태그색</th>" + "<th>미리보기</th>" + "</tr>");
       out.println("</thead>");
       out.println("<tbody>");
       for (Tag tag : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td><img style=\"width:80px\" src=\"../%s\"</td>" + "<td id=\"color\" style=\"background-color:#%s;\">#%s</td>" + "</tr>\n",
-            tag.getNo(), tag.getName(), tag.getPhoto(),tag.getColor(), tag.getColor());
+            "<tr>" + "<td>%d</td>" + "<td id=\"title\">%s</td>"+ "<td><img style=\"width:80px\" src=\"../%s\"</td>" + "<td>#%s</td>" + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>" + "</tr>\n",
+            tag.getNo(), tag.getName(), tag.getPhoto(),tag.getColor(), tag.getColor(), tag.getName());
       }
       out.println("</tbody>");
       out.println("</table>");
