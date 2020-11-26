@@ -22,9 +22,23 @@ public class ArticleDaoImpl implements ArticleDao {
   }
 
   @Override
+  public Article findByNo(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("ArticleDao.findByNo", no);
+    }
+  }
+
+  @Override
   public List<Article> findAll(String keyword) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("ArticleDao.findAll", keyword);
+    }
+  }
+
+  @Override
+  public int updateViewCount(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.update("ArticleDao.updateViewCount", no);
     }
   }
 

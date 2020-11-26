@@ -63,6 +63,26 @@
     where no = #{no}
   </update>
     
+    <select id="findByNo" resultMap="ArticleMap" parameterType="int">
+    select 
+      a.arno, 
+      a.title,
+      a.content,
+      a.cdt,  
+      a.vw_cnt, 
+      u.nick
+    from 
+      article a
+      inner join user u on a.writer=u.uno   
+     where a.arno=#{no}  
+    </select>
+    
+    <update id="updateViewCount" parameterType="int">
+      update article set 
+        vw_cnt = vw_cnt+1
+      where arno=#{no}  
+    </update>
+    
      <delete id="delete" parameterType="int">
     delete from article
     where no=#{no}

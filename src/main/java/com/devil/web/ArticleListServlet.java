@@ -5,14 +5,12 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 
@@ -27,7 +25,6 @@ public class ArticleListServlet extends HttpServlet {
     ServletContext ctx = request.getServletContext();
     ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
 
-
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("<!DOCTYPE html>");
@@ -37,6 +34,7 @@ public class ArticleListServlet extends HttpServlet {
     out.println("<body>");
     try {
       out.println("<h1>게시물 목록</h1>");
+      out.println("<a href='form.html'>게시글 쓰기</a><br>");
 
       List<Article> list = articleService.list(null);
       out.println("<table border='1'>");
@@ -46,10 +44,12 @@ public class ArticleListServlet extends HttpServlet {
           + "<th>제목</th>" + "<th>작성자</th>" + "<th>등록일</th>" + "<th>조회수</th>" + "</tr>");
       out.println("</thead>");
       out.println("<tbody>");
+
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (Article article : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
+            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
+
                 + "</tr>\n",
             article.getNo(), article.getTitle(), article.getWriter().getNickname(),
             formatter.format(article.getCreatedDate()), article.getViewCount());
