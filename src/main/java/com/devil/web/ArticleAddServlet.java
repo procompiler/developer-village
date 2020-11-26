@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import com.devil.domain.Article;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
@@ -31,8 +30,6 @@ public class ArticleAddServlet extends HttpServlet {
     article.setTitle(request.getParameter("title"));
     article.setContent(request.getParameter("content"));
 
-    // 회원 정보가 들어있는 세션 객체를 얻는다.
-    HttpSession session = request.getSession();
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
