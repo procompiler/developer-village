@@ -20,16 +20,18 @@
 
     <association property="writer" javaType="user">
       <id column="uno"          property="no"/>
-      <result column="nick"     property="nickname"/>
+      <result column="article_nick"     property="nickname"/>
     </association>
     
     <collection property="comments" ofType="comment">
       <id column="cno" property="no"/>
       <result column="comment_content" property="content"/>
+    
       
       <association property="writer" javaType="user">
-	      <id column="uno"          property="no"/>
-	      <result column="nick"     property="nickname"/>
+	      <id column="uno"                   property="no"/>
+	      <result column="comment_nick"      property="nickname"/>
+	      <result column="comment_photo"     property="photo"/>
       </association>
     </collection>
     
@@ -46,8 +48,8 @@
       a.title,
       a.cdt,  
       a.vw_cnt, 
-      a.writer,
-      u.nick
+      u.uno,
+      u.nick article_nick
     from 
       article a
       inner join user u on a.writer=u.uno
@@ -71,7 +73,7 @@
       <if test="content != null">content = #{content},</if>
       
     </set>
-    where no = #{no}
+    where arno = #{no}
   </update>
     
     <select id="findByNo" resultMap="ArticleMap" parameterType="int">
@@ -81,11 +83,12 @@
       a.content,
       a.cdt,  
       a.cano,
-      u.nick,
+      u.nick article_nick,
       a.vw_cnt, 
       c.content comment_content,
       c.uno,
-      u2.nick
+      u2.nick comment_nick,
+      u2.photo comment_photo
     from 
       article a
       inner join user u on a.writer=u.uno   
@@ -102,7 +105,7 @@
     
 	  <delete id="delete" parameterType="int">
 	    delete from article
-	    where no=#{no}
+	    where arno=#{no}
 	  </delete>
     
 </mapper>

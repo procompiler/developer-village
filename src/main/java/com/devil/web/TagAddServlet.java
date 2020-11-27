@@ -3,15 +3,19 @@ package com.devil.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import com.devil.domain.Tag;
 import com.devil.service.TagService;
 
+@MultipartConfig(maxFileSize = 1024 * 1024 *10)
 @WebServlet("/tag/add")
 public class TagAddServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -46,11 +50,24 @@ public class TagAddServlet extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       tag.setName(request.getParameter("name"));
       tag.setColor(request.getParameter("color").split("#")[1]);
-      tag.setPhoto(request.getParameter("photo"));
+
+      Part photoPart = request.getPart("photo");
+
+      // 회원 사진을 저장할 위치를 알아낸다.
+      //  => 컨텍스트 루트/upload/파일
+      //  => 파일을 저장할 때 사용할 파일명을 준비한다.
+      String filename = UUID.randomUUID().toString();
+      String saveFilePath = ctx.getRealPath(
+          "/upload/tag/" + filename);
+
+      // 해당 위치에 업로드된 사진 파일을 저장한다.
+      photoPart.write(saveFilePath);
+
+      // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
+      tag.setPhoto(filename);
 
       tagService.add(tag);
-
-      out.println("태그를 등록했습니다.");
+      out.println("<p>태그를 등록했습니다.</p>");
 
     } catch (Exception e) {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());

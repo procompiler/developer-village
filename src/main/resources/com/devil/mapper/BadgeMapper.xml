@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BadgeDao">
-  <resultMap type="badge" id="BadgeMap">
-    <id column="bno"           property="no"/>
+<!--
+  <resultMap type="badge"       id="BadgeMap">
+    <id column="bno"            property="no"/>
     <result column="name"       property="categoryNo"/>
     <result column="photo"      property="title"/>
-    
 
-    <result column="tno"    property="content"/>
+     <result column="tno"    property="content"/>
     <association property="writer" javaType="user">
       <id column="uno"          property="no"/>
       <result column="nick"     property="nickname"/>
@@ -25,7 +25,8 @@
 	      <result column="nick"     property="nickname"/>
       </association>
     </collection>
-    
+
+     
   </resultMap>
   
   <insert id="insert" parameterType="badge">
@@ -83,5 +84,6 @@
 	    delete from badge
 	    where no=#{no}
 	  </delete>
-    
+-->
+
 </mapper>

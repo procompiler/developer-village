@@ -26,8 +26,6 @@ public class UserListServlet extends HttpServlet {
     UserService userService = (UserService) ctx.getAttribute("userService");
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    out.println(userService);
-
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
@@ -42,22 +40,44 @@ public class UserListServlet extends HttpServlet {
       out.println("<table border='1'>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
-          + "<th>이메일</th>" + "<th>닉네임</th>" + "<th>이름</th>" + "<th>가입일</th>" + "<th>로그인타입</th>" + "</tr>");
+          + "<th>이메일</th>"
+          + "<th>닉네임</th>"
+          + "<th>이름</th>"
+          + "<th>가입일</th>"
+          + "<th>로그인타입</th>" + "</tr>");
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (User user : list) {
         String loginType = null;
-        switch(user.getLoginType()) {
-          case "1" : loginType = "기본"; break;
-          case "2" : loginType = "구글"; break;
-          case "3" : loginType = "깃허브"; break;
+        switch (user.getLoginType()) {
+          case "1":
+            loginType = "기본";
+            break;
+          case "2":
+            loginType = "구글";
+            break;
+          case "3":
+            loginType = "깃허브";
+            break;
         }
 
-        out.printf(
-            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td><a href='detail?no=%1$d' style='color:blue;'>%s</a></td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%s</td>"
+        out.printf("<tr>"
+                + "<td>%d</td>"
+                + "<td>%s</td>"
+                + "<td><a href='detail?no=%d' style='color:grey;'><img src='../upload/%s' alt='[%s]' height='30px'>%s</a></td>"
+                + "<td>%s</td>"
+                + "<td>%s</td>"
+                + "<td>%s</td>"
                 + "</tr>\n",
-                user.getNo(), user.getEmail(), user.getNickname(),
-                user.getName(), formatter.format(user.getCreatedDate()), loginType);
+            user.getNo(),
+            user.getEmail(),
+            user.getNo(),
+            user.getPhoto(),
+            user.getPhoto(),
+            user.getNickname(),
+            user.getName(),
+            formatter.format(user.getCreatedDate()),
+            loginType);
       }
       out.println("</table>");
 

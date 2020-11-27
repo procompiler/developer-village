@@ -9,64 +9,60 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import com.devil.domain.Article;
-import com.devil.domain.User;
 import com.devil.service.ArticleService;
 
-@WebServlet("/article/add")
-public class ArticleAddServlet extends HttpServlet {
+@WebServlet("/article/update")
+public class ArticleUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    ServletContext ctx = request.getServletContext();
-    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
-
     request.setCharacterEncoding("UTF-8");
 
-    Article article = new Article();
-    article.setTitle(request.getParameter("title"));
-    article.setContent(request.getParameter("content"));
-
-    HttpSession session = request.getSession();
+    // Servlet container에 들어 있는 ArticleService를 꺼낸다.
+    ServletContext ctx = request.getServletContext();
+    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    // 웹브라우저 제목에 출력될 내용
     out.println("<head>");
-    out.println("<meta http-equiv='Refresh' content='2;url=list'>");
-    out.println("<title>게시글 등록</title></head>");
+    out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+    out.println("<title>게시글 변경</title></head>");
     out.println("<body>");
 
     try {
-      out.println("<h1>[게시물 등록]</h1>");
+      out.println("<h1>게시물 변경</h1>");
 
-      request.setCharacterEncoding("UTF-8");
+      Article article = new Article();
+      article.setNo(Integer.parseInt(request.getParameter("no")));
       article.setTitle(request.getParameter("title"));
       article.setContent(request.getParameter("content"));
-      article.setCategoryNo(Integer.parseInt(request.getParameter("categoryNo")));
-      User loginUser = (User) session.getAttribute("loginUser");
-      if (loginUser != null) {
-        article.setWriter(loginUser);
-        articleService.add(article);
-        out.println("게시글을 등록했습니다.");
+      int count = articleService.update(article);
+
+      if (count == 0) {
+        out.println("<p>해당 번호의 게시글이 없습니다.</p>");
       } else {
-        out.println("로그인을 해주세요!");
+        out.println("<p>게시글을 변경하였습니다.</p>");
       }
 
-    }catch (Exception e) {
-      out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
+    } catch (Exception e) {
+      out.println("<h2>작업 처리 중 오류 발생!</h2>");
+      out.printf("<pre>%s</pre>\n", e.getMessage());
+
       StringWriter errOut = new StringWriter();
       e.printStackTrace(new PrintWriter(errOut));
+      out.println("<h3>상세 오류 내용</h3>");
       out.printf("<pre>%s</pre>\n", errOut.toString());
     }
+
     out.println("</body>");
     out.println("</html>");
   }
+
 }

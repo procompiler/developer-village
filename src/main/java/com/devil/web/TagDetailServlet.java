@@ -50,9 +50,9 @@ public class TagDetailServlet extends HttpServlet {
 
         out.printf("<p>태그명: %s</p>", tag.getNo());
         out.printf("<p>태그명: %s</p>", tag.getName());
-        out.printf("<p>태그사진: %s</p>", tag.getPhoto());
-        out.printf("<p>태그색: %s</p>", tag.getColor());
-        
+        out.printf("<img src='../upload/tag/%s' alt='[%1$s]' height='100px'><br>", tag.getPhoto());
+        out.printf("<p><span id='color' style='background-color:#%s'>%1$s</span></p>", tag.getColor());
+        out.println("<p><a href='list' style='color:white;'>태그 목록으로</a></p>");
 
       } catch (Exception e) {
         out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());

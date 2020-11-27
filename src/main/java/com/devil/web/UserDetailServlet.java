@@ -68,7 +68,7 @@ public class UserDetailServlet extends HttpServlet {
       }
 
       out.printf("<p>기술 목록: %s</p>", user.getTech());
-      out.printf("<p>사진: %s</p>", user.getPhoto());
+      out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", user.getPhoto());
       out.printf("<p>개인 홈페이지: %s</p>", user.getHompageURL());
 
       out.println("<a href='list' style='color:blue;'>목록으로</a>");

@@ -3,16 +3,13 @@ package com.devil.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.devil.domain.Tag;
 import com.devil.service.TagService;
 
@@ -35,9 +32,10 @@ public class TagListServlet extends HttpServlet {
     out.println("<head><title>태그목록</title>");
     out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
     out.println("<body>");
+
     try {
       out.println("<h1>태그 목록</h1>");
-      out.println("<button href='from.html'>태그 추가</button>");
+      out.println("<button><a href='form.html'>태그 추가</a></button>");
 
       List<Tag> list = tagService.list(null);
       out.println("<table border='1'>");
@@ -49,8 +47,19 @@ public class TagListServlet extends HttpServlet {
       out.println("<tbody>");
       for (Tag tag : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td id=\"title\"><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"+ "<td><img style=\"width:80px\" src=\"../images/%s\"</td>" + "<td>#%s</td>" + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>" + "</tr>\n",
-            tag.getNo(), tag.getName(), tag.getPhoto(), tag.getColor(), tag.getColor(), tag.getName());
+            "<tr>"
+        + "<td>%d</td>"
+        + "<td id=\"title\"><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"
+        + "<td><img style=\"width:80px\" src=\"../upload/tag/%s\"</td>"
+        + "<td>#%s</td>"
+        + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>"
+        + "</tr>\n",
+            tag.getNo(),
+            tag.getName(),
+            tag.getPhoto(),
+            tag.getColor(),
+            tag.getColor(),
+            tag.getName());
       }
       out.println("</tbody>");
       out.println("</table>");

@@ -30,5 +30,13 @@ public class DefaultArticleService implements ArticleService {
     return article;
   }
 
+  @Override
+  public int update(Article article) throws Exception {
+    return articleDao.update(article);
+  }
 
+  @Override
+  public int delete(int no) throws Exception {
+    return articleDao.delete(no);
+  }
 }

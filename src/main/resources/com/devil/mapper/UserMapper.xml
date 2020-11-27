@@ -27,8 +27,8 @@
   </resultMap>
 
   <insert id="insert" parameterType="user">
-    insert into user(email,nick,name,pwd,log_type) 
-    values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType})
+    insert into user(email,nick,name,pwd,log_type, photo) 
+    values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
   </insert>
   
   <sql id="sql1">
@@ -38,6 +38,7 @@
       nick,
       name, 
       pwd, 
+      photo,
       cdt,
       log_type
     from 
@@ -69,5 +70,24 @@
     from 
       user
     where uno=#{no}
+  </select>
+  
+  <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
+    select
+      uno, 
+      email, 
+      nick,
+      name,
+      pwd, 
+      cdt, 
+      log_type,
+      photo,
+      hp_url,
+      tech
+    from 
+      user
+    where
+     email = #{email}
+     and pwd = password(#{password})
   </select>
 </mapper>

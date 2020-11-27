@@ -30,7 +30,9 @@ public class LoginServlet extends HttpServlet {
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    out.println("<head><title>로그인</title></head>");
+    out.println("<head>");
+    out.println("<meta http-equiv='Refresh' content='2;url=loginUser'>");
+    out.println("<title>로그인</title></head>");
     out.println("<body>");
 
     try {
@@ -56,7 +58,7 @@ public class LoginServlet extends HttpServlet {
           // 로그인이 성공했으면 회원 정보를
           // 각 클라이언트의 전용 보관소인 session에 저장한다.
           session.setAttribute("loginUser", user);
-          out.printf("<p>%s 님 반갑습니다.</p>\n", user.getName());
+          out.printf("<p>%s 님 반갑습니다.</p>\n", user.getNickname());
         }
       }
 

@@ -26,6 +26,8 @@ public class UserAddServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
 
     User user = new User();
     request.setCharacterEncoding("UTF-8");
@@ -50,9 +52,6 @@ public class UserAddServlet extends HttpServlet {
 
     // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
     user.setPhoto(filename);
-
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
