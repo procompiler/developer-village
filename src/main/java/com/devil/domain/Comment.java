@@ -3,18 +3,18 @@ package com.devil.domain;
 import java.util.Date;
 
 public class Comment {
-	private int no;
-	private User writer;
-	private String content;
-	private Date createdDate;
-	private int ord;
-	private int step;
-	private String updatedDate;
-	private String deletedDate;
-	private boolean status;
-	private boolean selected;
+  private int no;
+  private User writer;
+  private String content;
+  private Date createdDate;
+  private int ord;
+  private int step;
+  private String updatedDate;
+  private String deletedDate;
+  private boolean status;
+  private boolean selected;
 
-	public String getUpdatedDate() {
+  public String getUpdatedDate() {
     return updatedDate;
   }
   public void setUpdatedDate(String updatedDate) {
