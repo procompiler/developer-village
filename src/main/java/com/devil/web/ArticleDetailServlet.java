@@ -3,8 +3,6 @@ package com.devil.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +36,6 @@ public class ArticleDetailServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head><title>게시글 조회</title>");
-    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
     out.println("<body>");
 
     try {
@@ -50,18 +47,28 @@ public class ArticleDetailServlet extends HttpServlet {
         out.println("해당 번호의 게시글이 없습니다.");
         return;
       }
-      out.printf("<p>제목: %s</p>", article.getTitle());
-      out.printf("<p>작성자: %s</p>", article.getWriter().getNickname());
-      out.printf("<p>카테고리: %s</p>", article.getCategoryNo());
 
-      DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-      out.printf("<p>등록일: %s</p>", format.format(article.getCreatedDate()));
+      out.printf("<h2>%s</h2>", article.getTitle());
+      out.printf("<p>작성자: %s</p>", article.getWriter().getNickname());
+
+      int categoryNo = article.getCategoryNo();
+      String categoryName = null;
+      switch (categoryNo) {
+        case 1: categoryName = "커뮤니티"; break;
+        case 2: categoryName = "QnA"; break;
+        case 3: categoryName = "채용공고"; break;
+        default :categoryName = "스터디"; break;
+      }
+      out.printf("<p>카테고리: %s</p>", categoryName);
+      out.printf("<p>등록일: %s</p>", article.getCreatedDate());
       out.printf("<p>조회수: %d</p>", article.getViewCount());
       out.printf("<p>내용: %s</p>", article.getContent());
+      out.println();
 
+      out.println("<h3>Comments</h3>");
       for (Comment comment : article.getComments()) {
-        out.printf("<p>댓글작성자: %s</p>", comment.getWriter().getNickname());
-        out.printf("<p>댓글내용: %s</p>", comment.getContent());
+        out.printf("<p>작성자: %s<br>", comment.getWriter().getNickname());
+        out.printf("<t>%s</p>", comment.getContent());
 
       }
     } catch (Exception e) {
@@ -75,5 +82,3 @@ public class ArticleDetailServlet extends HttpServlet {
     out.println("</html>");
   }
 }
-
-

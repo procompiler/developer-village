@@ -9,4 +9,5 @@ public interface TagDao {
   public int update(Tag tag) throws Exception;
   public List<Tag> findAll(String keyword) throws Exception;
   public int delete(int no) throws Exception;
+  public Tag findByNo(int no) throws Exception;
 }

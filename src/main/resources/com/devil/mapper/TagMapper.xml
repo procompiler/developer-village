@@ -45,9 +45,13 @@
     where no = #{no}
   </update>
     
-     <delete id="delete" parameterType="int">
+   <delete id="delete" parameterType="int">
     delete from tag
     where no=#{no}
   </delete>
-    
+
+    <select id="findByNo" resultMap="TagMap" parameterType="int">
+	<include refid="sql1"/>
+     	where tno=#{no}  
+    </select>
 </mapper>

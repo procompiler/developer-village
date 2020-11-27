@@ -1,18 +1,20 @@
 package com.devil.domain;
 
-public class Comment {
-	private int no;
-	private User writer;
-	private String content;
-	private String createdDate;
-	private int ord;
-	private int step;
-	private String updatedDate;
-	private String deletedDate;
-	private boolean status;
-	private boolean selected;
+import java.util.Date;
 
-	public String getUpdatedDate() {
+public class Comment {
+  private int no;
+  private User writer;
+  private String content;
+  private Date createdDate;
+  private int ord;
+  private int step;
+  private String updatedDate;
+  private String deletedDate;
+  private boolean status;
+  private boolean selected;
+
+  public String getUpdatedDate() {
     return updatedDate;
   }
   public void setUpdatedDate(String updatedDate) {
@@ -54,10 +56,10 @@ public class Comment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 	public int getOrd() {
