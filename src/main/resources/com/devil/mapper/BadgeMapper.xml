@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BadgeDao">
+  <resultMap type="badge" id="BadgeMap">
+    <id column="bno"           property="no"/>
+    <result column="name"       property="categoryNo"/>
+    <result column="photo"      property="title"/>
+    
+
+    <result column="tno"    property="content"/>
+    <association property="writer" javaType="user">
+      <id column="uno"          property="no"/>
+      <result column="nick"     property="nickname"/>
+    </association>
+    
+    <collection property="comments" ofType="comment">
+      <id column="cno" property="no"/>
+      <result column="comment_content" property="content"/>
+      
+      <association property="writer" javaType="user">
+	      <id column="uno"          property="no"/>
+	      <result column="nick"     property="nickname"/>
+      </association>
+    </collection>
+    
+  </resultMap>
+  
+  <insert id="insert" parameterType="badge">
+    insert into badge(name,photo,no,pno) 
+    values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
+  </insert>
+  
+  <sql id="sql1">
+    select 
+      a.arno, 
+      a.title,
+      a.cdt,  
+
+    from 
+      article a
+      inner join user u on a.writer=u.uno
+      
+  </sql>
+  
+  <select id="findAll" resultMap="ArticleMap" parameterType="string">
+  	<include refid="sql1"/>
+  	<if test="keyword != null">
+  	where
+  		a.title like concat('%', #{keyword}, '%')
+  		or u.nick like concat('%', #{keyword}, '%')
+  	</if>
+  	order by a.arno desc
+  </select>
+  
+   <update id="update" parameterType="article">
+    update article
+    <set>
+      <if test="title != null">title = #{title},</if>
+      <if test="content != null">content = #{content},</if>
+      
+    </set>
+    where no = #{no}
+  </update>
+    
+    <select id="findByNo" resultMap="BadgeMap" parameterType="int">
+    select 
+      b.arno, 
+      b.title,
+      b.content,
+      b.cdt,  
+      a.cano,
+    from 
+      badge a
+      inner join user u on a.writer=u.uno   
+     where b.bno=#{no}  
+    </select>
+    
+
+	  <delete id="delete" parameterType="int">
+	    delete from badge
+	    where no=#{no}
+	  </delete>
+    
+</mapper>

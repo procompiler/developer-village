@@ -5,6 +5,7 @@ public class Badge {
   private String name;
   private String photo;
   private int tagNo;
+
   public int getNo() {
     return no;
   }
@@ -29,6 +30,6 @@ public class Badge {
   public void setTagNo(int tagNo) {
     this.tagNo = tagNo;
   }
-  
-  
+
+
 }
