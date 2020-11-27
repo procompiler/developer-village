@@ -24,10 +24,11 @@ public class UserListServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
-
-
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    out.println(userService);
+
+
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head><title>유저 목록</title></head>");

@@ -25,4 +25,9 @@ public class DefaultUserService implements UserService {
   public User get(int no) throws Exception {
     return userDao.findByNo(no);
   }
+
+  @Override
+  public User get(String email, String password) throws Exception {
+    return userDao.findByEmailPassword(email, password);
+  }
 }
