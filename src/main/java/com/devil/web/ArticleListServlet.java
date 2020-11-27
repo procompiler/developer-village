@@ -48,11 +48,11 @@ public class ArticleListServlet extends HttpServlet {
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (Article article : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
+            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d' style='color:blue;'>%s</a></td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
 
                 + "</tr>\n",
-            article.getNo(), article.getTitle(), article.getWriter().getNickname(),
-            formatter.format(article.getCreatedDate()), article.getViewCount());
+                article.getNo(), article.getTitle(), article.getWriter().getNickname(),
+                formatter.format(article.getCreatedDate()), article.getViewCount());
       }
       out.println("</tbody>");
       out.println("</table>");

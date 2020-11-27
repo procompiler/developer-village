@@ -31,11 +31,11 @@ public class UserListServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head><title>유저 목록</title></head>");
-    out.println("<style> table { border-top: 1px solid #444444; border-collapse: collapse;}" +
-        "  th, td { border-bottom: 1px solid #444444; padding: 10px;} </style>");
+    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
     out.println("<body>");
     try {
       out.println("<h1>유저 목록</h1>");
+      out.println("<a href='form.html' style='color:green;'>회원 가입</a><br>");
 
       List<User> list = userService.list(null);
       out.println("<table border='1'>");
@@ -45,11 +45,18 @@ public class UserListServlet extends HttpServlet {
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (User user : list) {
+        String loginType = null;
+        switch(user.getLoginType()) {
+          case "1" : loginType = "기본"; break;
+          case "2" : loginType = "구글"; break;
+          case "3" : loginType = "깃허브"; break;
+        }
+
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%s</td>"
+            "<tr>" + "<td>%d</td>" + "<td>%s</td>"+ "<td><a href='detail?no=%1$d' style='color:blue;'>%s</a></td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%s</td>"
                 + "</tr>\n",
                 user.getNo(), user.getEmail(), user.getNickname(),
-                user.getName(), formatter.format(user.getCreatedDate()), user.getLoginType());
+                user.getName(), formatter.format(user.getCreatedDate()), loginType);
       }
       out.println("</table>");
 
