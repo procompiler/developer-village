@@ -37,7 +37,7 @@ public class TagListServlet extends HttpServlet {
     out.println("<body>");
     try {
       out.println("<h1>태그 목록</h1>");
-      out.println("<button><a href='form.html'>태그 추가</a><br></button>");
+      out.println("<button href='from.html'>태그 추가</button>");
 
       List<Tag> list = tagService.list(null);
       out.println("<table border='1'>");
