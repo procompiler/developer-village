@@ -45,7 +45,7 @@ public class TagAddServlet extends HttpServlet {
 
       request.setCharacterEncoding("UTF-8");
       tag.setName(request.getParameter("name"));
-      tag.setColor(request.getParameter("color"));
+      tag.setColor(request.getParameter("color").split("#")[1]);
       tag.setPhoto(request.getParameter("photo"));
 
       tagService.add(tag);
