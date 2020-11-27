@@ -12,7 +12,17 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  public int add(User user) throws Exception {
+    return userDao.insert(user);
+  }
+
+  @Override
   public List<User> list(String keyword) throws Exception {
     return userDao.findAll(keyword);
+  }
+
+  @Override
+  public User get(int no) throws Exception {
+    return userDao.findByNo(no);
   }
 }

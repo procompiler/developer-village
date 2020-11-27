@@ -11,21 +11,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.domain.Article;
-import com.devil.domain.Comment;
-import com.devil.service.ArticleService;
+import com.devil.domain.User;
+import com.devil.service.UserService;
 
-@WebServlet("/article/detail")
-public class ArticleDetailServlet extends HttpServlet {
+@WebServlet("/user/detail")
+public class UserDetailServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    // Servlet container에 들어 있는 ArticleService를 꺼낸다.
+    // Servlet container에 들어 있는 UserService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
-    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
+    UserService userService = (UserService) ctx.getAttribute("userService");
 
     // 웹주소에 동봉된 데이터(Query String: qs)를 읽는다.
     // 클라이언트가 URL에 데이터를 포함해서 보낸다.
@@ -37,33 +36,42 @@ public class ArticleDetailServlet extends HttpServlet {
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    out.println("<head><title>게시글 조회</title>");
+    out.println("<head><title>회원 조회</title>");
     out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
     out.println("<body>");
 
     try {
-      out.println("<h1>[게시물 조회]</h1>");
+      out.println("<h1>[회원 상세조회]</h1>");
 
-      Article article = articleService.get(no);
+      User user = userService.get(no);
 
-      if (article == null) {
-        out.println("해당 번호의 게시글이 없습니다.");
+      if (user == null) {
+        out.println("해당 번호의 회원이 없습니다.");
         return;
       }
-      out.printf("<p>제목: %s</p>", article.getTitle());
-      out.printf("<p>작성자: %s</p>", article.getWriter().getNickname());
-      out.printf("<p>카테고리: %s</p>", article.getCategoryNo());
+
+      out.printf("<p>번호: %s</p>", user.getNo());
+      out.printf("<p>이메일: %s</p>", user.getEmail());
+      out.printf("<p>닉네임: %s</p>", user.getNickname());
+      out.printf("<p>이름: %s</p>", user.getName());
 
       DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-      out.printf("<p>등록일: %s</p>", format.format(article.getCreatedDate()));
-      out.printf("<p>조회수: %d</p>", article.getViewCount());
-      out.printf("<p>내용: %s</p>", article.getContent());
+      out.printf("<p>가입일: %s</p>", format.format(user.getCreatedDate()));
 
-      for (Comment comment : article.getComments()) {
-        out.printf("<p>댓글작성자: %s</p>", comment.getWriter().getNickname());
-        out.printf("<p>댓글내용: %s</p>", comment.getContent());
-
+      int loginType = Integer.parseInt(user.getLoginType());
+      if(loginType == 1) {
+        out.println("<p>로그인 유형: 기본 가입회원</p>");
+      } else if (loginType == 2) {
+        out.println("<p>로그인 유형: 구글 가입회원</p>");
+      } else if (loginType == 3) {
+        out.println("<p>로그인 유형: 깃허브 가입회원</p>");
       }
+
+      out.printf("<p>기술 목록: %s</p>", user.getTech());
+      out.printf("<p>사진: %s</p>", user.getPhoto());
+      out.printf("<p>개인 홈페이지: %s</p>", user.getHompageURL());
+
+      out.println("<a href='list' style='color:blue;'>목록으로</a>");
     } catch (Exception e) {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
       StringWriter errOut = new StringWriter();

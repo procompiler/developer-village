@@ -53,4 +53,21 @@
   	</if>
   	order by uno desc
   </select>
+  
+  <select id="findByNo" resultMap="UserMap" parameterType="int">
+    select 
+      uno, 
+      email, 
+      nick,
+      name,
+      pwd, 
+      cdt, 
+      log_type,
+      photo,
+      hp_url,
+      tech
+    from 
+      user
+    where uno=#{no}
+  </select>
 </mapper>

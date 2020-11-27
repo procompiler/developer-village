@@ -1,6 +1,6 @@
 package com.devil.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class User {
   private int no;

@@ -58,7 +58,6 @@ public class UserDaoImpl implements UserDao {
     }
   }
 
-
   @Override
   public User findByEmailPassword(String email, String password) throws Exception {
     HashMap<String,Object> map = new HashMap<>();
