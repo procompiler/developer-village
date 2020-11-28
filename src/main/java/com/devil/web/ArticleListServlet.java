@@ -34,7 +34,7 @@ public class ArticleListServlet extends HttpServlet {
     out.println("<body>");
     try {
       out.println("<h1>게시물 목록</h1>");
-      out.println("<a href='form.html'>게시글 쓰기</a><br>");
+      out.println("<button type='button' onclick=\"location.href='form.html'\">글쓰기</button>");
 
       List<Article> list = articleService.list(null);
       out.println("<table border='1'>");
@@ -48,7 +48,7 @@ public class ArticleListServlet extends HttpServlet {
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (Article article : list) {
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d' style='color:blue;'>%s</a></td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
+            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d'>%s</a></td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
 
                 + "</tr>\n",
                 article.getNo(), article.getTitle(), article.getWriter().getNickname(),

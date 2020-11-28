@@ -72,8 +72,8 @@ public class ArticleDetailServlet extends HttpServlet {
       out.printf("<p>등록일: %s</p>", formatter.format(article.getCreatedDate()));
       out.printf("<p>조회수: %d</p>", article.getViewCount());
       out.printf("<textarea name='content'>%s</textarea><br>\n", article.getContent());
-      out.println("<button>게시글 수정</button>");
-      out.printf("<a href='delete?no=%d'>게시글 삭제</a>", article.getNo());
+      out.println("<button>수정</button>");
+      out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
       out.println("</form>");
       out.println("<h3>Comments</h3>");
       List<Comment> comments = article.getComments();
