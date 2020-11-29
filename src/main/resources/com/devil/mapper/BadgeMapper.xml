@@ -10,6 +10,7 @@
     <id column="bno"            property="no"/>
     <result column="name"       property="name"/>
     <result column="photo"      property="photo"/>
+    <result column="content"    property="content"/>
    
     <!-- 
     <association property="tagNo" javaType="tag">
@@ -56,7 +57,13 @@
      -->
   </sql>
   <select id="findAll" resultMap="BadgeMap" parameterType="string">
-  	<include refid="sql1"/>
+  	<!-- <include refid="sql1"/> -->
+    select
+      bno,
+      name, 
+      photo,
+      content
+    from badge
   	<!-- 
   	<if test="keyword != null">
   	where
