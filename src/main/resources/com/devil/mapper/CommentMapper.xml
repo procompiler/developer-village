@@ -4,17 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="ArticleDao">
-  <insert id="insert" parameterType="article">
+<mapper namespace="CommentDao">
+
+<!--
+
+  <insert id="insert" parameterType="comment">
   </insert>
 
-  <select id="findAll" resultMap="ArticleMap"	parameterType="string">
+  <select id="findAll" resultMap="CommentMap"	parameterType="string">
   </select>
  
-  <update id="update" parameterType="article">
+  <update id="update" parameterType="comment">
   </update>
 
-  <select id="findByNo" resultMap="ArticleMap" parameterType="int">
+  <select id="findByNo" resultMap="CommentMap" parameterType="int">
   </select>
 
   <update id="updateViewCount" parameterType="int">
@@ -23,4 +26,8 @@
   <delete id="delete" parameterType="int">
   </delete>
 
+  -->
+  
+  
+  
 </mapper>
