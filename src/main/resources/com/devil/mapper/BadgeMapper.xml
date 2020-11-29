@@ -67,23 +67,14 @@
   	 -->
   </select>
   
-  <!-- 
   <insert id="insert" parameterType="badge">
-    insert into badge(name,photo,no,pno) 
-    values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
+    insert into badge(bno,name,photo,content) 
+    values(#{no},#{name}, #{photo}, #{content})
   </insert>
   
-  <sql id="sql1">
-    select 
-      a.arno, 
-      a.title,
-      a.cdt,  
-
-    from 
-      article a
-      inner join user u on a.writer=u.uno
-      
-  </sql>
+ 
+ 
+  <!-- 
   
   
    <update id="update" parameterType="badge">
