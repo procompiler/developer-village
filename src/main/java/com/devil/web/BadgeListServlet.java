@@ -44,6 +44,7 @@ public class BadgeListServlet extends HttpServlet {
 			out.println("<th>번호</th>");
 			out.println("<th>뱃지이름</th>");
 			out.println("<th>뱃지사진</th>");
+			out.println("<th>뱃지내용</th>");
 			out.println("</tr>");
 			out.println("</thead>");
 			out.println("<tbody>");
@@ -53,10 +54,12 @@ public class BadgeListServlet extends HttpServlet {
 				  "<tr>"
 				+ "<td>%d</td>"
 				+ "<td id=\"title\"><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"
-				+ "<td><img style=\"width:80px\" src=\"../upload/badge/%s\"</td>",
+				+ "<td><img style=\"width:80px\" src=\"../upload/badge/%s\"</td>"
+				+ "<td>%s</td>",
 						badge.getNo(),
 						badge.getName(),
-						badge.getPhoto());
+						badge.getPhoto(),
+						badge.getContent());
 			}
 			out.println("</tbody>");
 			out.println("</table>");

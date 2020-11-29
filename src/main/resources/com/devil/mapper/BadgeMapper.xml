@@ -35,6 +35,7 @@
 		b.bno, 
 		b.name,
         b.photo,
+        b.content,
         t.tno,
         t.name,
         t.photo,
