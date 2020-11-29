@@ -29,7 +29,6 @@ public class BadgeDaoImpl implements BadgeDao {
   }
 
   @Override
-
   public List<Badge> findAll(String keyword) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("BadgeDao.findAll", keyword);
