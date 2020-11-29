@@ -8,16 +8,17 @@
 
   <resultMap type="badge"       id="BadgeMap">
     <id column="bno"            property="no"/>
-    <result column="b_name"       property="name"/>
-    <result column="b_photo"      property="photo"/>
-    
-    <association property="tag" javaType="tag">
-		<result column="tno"      property="no"/>
+    <result column="name"       property="name"/>
+    <result column="photo"      property="photo"/>
+   
+    <!-- 
+    <association property="tagNo" javaType="tag">
+		<result column="tno"      property="tagNo"/>
    	 	<result column="t_name"      property="name"/>
    	 	<result column="t_photo"      property="photo"/>
 	    <result column="color"      property="color"/>
     </association>
-    
+     -->
 <!-- 
     <association property="tno" javaType="tag">
       <id column="tno"          property="no"/>
@@ -31,13 +32,13 @@
   
     <sql id="sql1">
 	select 
-		b.bno bno, 
-		b.name b_name,
-        b.photo b_photo,
-        t.tno tno,
-        t.name t_name,
-        t.photo t_photo,
-        t.color color
+		b.bno, 
+		b.name,
+        b.photo,
+        t.tno,
+        t.name,
+        t.photo,
+        t.color
 	from badge b
 	inner join tag t on t.tno = b.tno
     <!-- 
