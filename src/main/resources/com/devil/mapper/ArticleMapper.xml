@@ -49,6 +49,14 @@
     values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
   </insert>
   
+  <insert id="insertTags" parameterType="article">
+    insert into arc_tag(tno, arno) 
+    values
+    <foreach collection="tags" item="tag" separator=",">
+      (#{tno},#{no})
+    </foreach>
+  </insert>
+  
   <sql id="sql1">
     select 
       a.arno, 
