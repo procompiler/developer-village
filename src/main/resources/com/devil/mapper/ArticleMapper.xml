@@ -44,7 +44,8 @@
     
   </resultMap>
   
-  <insert id="insert" parameterType="article">
+  <insert id="insert" parameterType="article" 
+  useGeneratedKeys="true" keyColumn="arno" keyProperty="no">
     insert into article(title,writer,rc_edt,content,cano) 
     values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
   </insert>
@@ -53,7 +54,7 @@
     insert into arc_tag(tno, arno) 
     values
     <foreach collection="tags" item="tag" separator=",">
-      (#{tno},#{no})
+      (#{tag.no},#{no})
     </foreach>
   </insert>
   
