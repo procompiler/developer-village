@@ -50,11 +50,11 @@ public class ArticleListServlet extends HttpServlet {
       for (Article article : list) {
         
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d'>%s</a></td>", article.getNo(), article.getTitle());
+            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d'>%s</a>", article.getNo(), article.getTitle());
         List<Tag> tags = article.getTags();
         out.println("<td>");
         for (Tag tag : tags) {
-          out.printf("<span id='color' style='background-color: #%s; color: #%s>%s</span>" , tag.getTagColor(), tag.getFontColor(), tag.getName());
+          out.printf("<span id='color' style='background-color: #%s; color: #%s>%s</span></td>" , tag.getTagColor(), tag.getFontColor(), tag.getName());
         }
         out.println("</td>");
         out.printf("<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>", 
