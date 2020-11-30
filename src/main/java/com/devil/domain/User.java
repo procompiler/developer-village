@@ -12,7 +12,7 @@ public class User {
   private Date recentVisitedDate;
   private String loginType;
   private String photo;
-  private String hompageURL;
+  private String homepageURL;
   private String githubURL;
   private String instarURL;
   private String twitterURL;
@@ -57,11 +57,11 @@ public class User {
   public void setCdt(Date cdt) {
     this.createdDate = cdt;
   }
-  public String getHompageURL() {
-    return hompageURL;
+  public String getHomepageURL() {
+    return homepageURL;
   }
-  public void setHompageURL(String hompageURL) {
-    this.hompageURL = hompageURL;
+  public void setHomepageURL(String homepageURL) {
+    this.homepageURL = homepageURL;
   }
   public String getGithubURL() {
     return githubURL;

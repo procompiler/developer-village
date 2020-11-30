@@ -57,7 +57,7 @@ public class LoginUserServlet extends HttpServlet {
 
     out.printf("<p>기술 목록: %s</p>", user.getTech());
     out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", user.getPhoto());
-    out.printf("<p>개인 홈페이지: %s</p>", user.getHompageURL());
+    out.printf("<p>개인 홈페이지: %s</p>", user.getHomepageURL());
 
     out.println("<a href='logout'>로그아웃</a>");
 

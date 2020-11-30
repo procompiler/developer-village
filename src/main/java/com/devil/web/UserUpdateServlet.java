@@ -32,7 +32,7 @@ public class UserUpdateServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
-    //out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+    out.println("<meta http-equiv='Refresh' content='1;url=list'>");
     out.println("<title>회원정보 수정</title></head>");
     out.println("<body>");
 
@@ -43,7 +43,7 @@ public class UserUpdateServlet extends HttpServlet {
       user.setNo(Integer.parseInt(request.getParameter("no")));
       user.setNickname(request.getParameter("nickname"));
       user.setPassword(request.getParameter("password"));
-      user.setHompageURL(request.getParameter("homepage"));
+      user.setHomepageURL(request.getParameter("homepage"));
       user.setGithubURL(request.getParameter("github"));
       user.setInstarURL(request.getParameter("instar"));
       user.setTwitterURL(request.getParameter("twitter"));
