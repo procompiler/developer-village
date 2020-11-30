@@ -8,12 +8,13 @@
     <id column="tno"           property="no"/>
     <result column="name"       property="name"/>
 	<result column="photo"		property="photo"/>
-	<result column="color"		property="color"/>
+	<result column="tag_color"		property="tagColor"/>
+  <result column="font_color"   property="fontColor"/>
   </resultMap>
   
   <insert id="insert" parameterType="tag">
-    insert into tag(tno, name, photo, color) 
-    values(#{no}, #{name}, #{photo}, #{color})
+    insert into tag(tno, name, photo, tag_color, font_color) 
+    values(#{no}, #{name}, #{photo}, #{tagColor}, #{fontColor})
   </insert>
   
   <sql id="sql1">
@@ -21,7 +22,8 @@
       tno,
 	  name,
 	  photo,
-	  color
+	  tag_color,
+    font_color
     from 
       tag
   </sql>
@@ -40,14 +42,15 @@
     <set>
       <if test="name != null">name = #{name},</if>
       <if test="photo != null">photo = #{photo},</if>
-      <if test="color != null">color = #{color},</if>
+      <if test="tagColor != null">tag_color = #{tagColor},</if>
+      <if test="fontColor != null">font_color = #{fontColor},</if>
     </set>
-    where no = #{no}
+    where tno = #{no}
   </update>
     
    <delete id="delete" parameterType="int">
     delete from tag
-    where no=#{no}
+    where tno=#{no}
   </delete>
 
     <select id="findByNo" resultMap="TagMap" parameterType="int">
