@@ -35,7 +35,7 @@ public class ArticleListServlet extends HttpServlet {
     out.println("<body>");
     try {
       out.println("<h1>게시물 목록</h1>");
-      out.println("<button type='button' onclick=\"location.href='form.html'\">글쓰기</button>");
+      out.println("<button type='button' onclick=\"location.href='form'\">글쓰기</button>");
 
       List<Article> list = articleService.list(null);
       out.println("<table border='1'>");
