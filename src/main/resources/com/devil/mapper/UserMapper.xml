@@ -90,4 +90,19 @@
      email = #{email}
      and pwd = password(#{password})
   </select>
+  
+    <update id="update" parameterType="user">
+    update user
+    <set>
+      <if test="nick != null">nick = #{nickname},</if>
+      <if test="pwd != ''">pwd = password(#{password}),</if>
+      <if test="photo != ''">photo = #{photo},</if>
+      <if test="hp_url != null">hp_url = #{hp_url},</if>
+      <if test="gh_url != ''">gh_url = #{gh_url},</if>
+      <if test="in_url != ''">in_url = #{in_url},</if>
+      <if test="tech != ''">tech = #{tech},</if>
+      <if test="photo != ''">photo = #{photo}</if>
+    </set>
+    where uno = #{no}
+  </update>
 </mapper>

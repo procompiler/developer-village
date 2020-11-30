@@ -50,9 +50,11 @@ public class UserDetailServlet extends HttpServlet {
         return;
       }
 
-      out.printf("<p>번호: %s</p>", user.getNo());
+      out.println("<form action='update' method='post'>");
+      out.printf("<p>회원번호: <input type='text' name='no' value='%d' readonly style='display:hidden;'></p>", user.getNo());
+      out.printf("<p>닉네임: <input type='text' name='title' value='%s'></p>", user.getNickname());
+
       out.printf("<p>이메일: %s</p>", user.getEmail());
-      out.printf("<p>닉네임: %s</p>", user.getNickname());
       out.printf("<p>이름: %s</p>", user.getName());
 
       DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
@@ -67,11 +69,18 @@ public class UserDetailServlet extends HttpServlet {
         out.println("<p>로그인 유형: 깃허브 가입회원</p>");
       }
 
-      out.printf("<p>기술 목록: %s</p>", user.getTech());
+      out.printf("<p>기술: <input type='text' name='tech' value='%s'></p>", user.getTech());
       out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", user.getPhoto());
-      out.printf("<p>개인 홈페이지: %s</p>", user.getHompageURL());
+      out.printf("<p>개인 홈페이지: <input type='text' name='homepage' value='%s'></p>", user.getHompageURL());
+      out.printf("<p>깃허브: <input type='text' name='github' value='%s'></p>", user.getGithubURL());
+      out.printf("<p>인스타그램: <input type='text' name='instar' value='%s'></p>", user.getInstarURL());
+      out.printf("<p>트위터: <input type='text' name='twitter' value='%s'></p>", user.getTwitterURL());
 
-      out.println("<a href='list' style='color:blue;'>목록으로</a>");
+      out.println("<button>정보 수정</button>");
+      out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">회원 삭제</button>", user.getNo());
+
+      out.println("<a href='list' style='color:blue;'>회원 목록으로</a>");
+      out.println("</form>");
     } catch (Exception e) {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
       StringWriter errOut = new StringWriter();

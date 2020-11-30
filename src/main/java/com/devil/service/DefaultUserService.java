@@ -30,4 +30,8 @@ public class DefaultUserService implements UserService {
   public User get(String email, String password) throws Exception {
     return userDao.findByEmailPassword(email, password);
   }
+  @Override
+  public int update(User user) throws Exception {
+    return userDao.update(user);
+  }
 }
