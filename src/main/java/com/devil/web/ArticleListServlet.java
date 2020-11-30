@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Article;
+import com.devil.domain.Tag;
 import com.devil.service.ArticleService;
 
 @WebServlet("/article/list")
@@ -47,11 +48,17 @@ public class ArticleListServlet extends HttpServlet {
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (Article article : list) {
+        
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d'>%s</a></td>"+ "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>"
-
-                + "</tr>\n",
-                article.getNo(), article.getTitle(), article.getWriter().getNickname(),
+            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d'>%s</a></td>", article.getNo(), article.getTitle());
+        List<Tag> tags = article.getTags();
+        out.println("<td>");
+        for (Tag tag : tags) {
+          out.printf("<span id='color' style='background-color: #%s; color: #%s>%s</span>" , tag.getTagColor(), tag.getFontColor(), tag.getName());
+        }
+        out.println("</td>");
+        out.printf("<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>", 
+                article.getWriter().getNickname(),
                 formatter.format(article.getCreatedDate()), article.getViewCount());
       }
       out.println("</tbody>");

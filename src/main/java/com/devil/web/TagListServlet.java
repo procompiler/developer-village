@@ -49,7 +49,7 @@ public class TagListServlet extends HttpServlet {
         out.printf(
             "<tr>"
         + "<td>%d</td>"
-        + "<td id=\"title\"><a href='detail?no=%1$d' style='color:white;'>%s</a></td>"
+        + "<td id=\"title\"><a href='detail?no=%1$d'>%s</a></td>"
         + "<td><img style=\"width:80px\" src=\"../upload/tag/%s\"</td>"
         + "<td>#%s</td>"
         + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>"
@@ -57,8 +57,8 @@ public class TagListServlet extends HttpServlet {
             tag.getNo(),
             tag.getName(),
             tag.getPhoto(),
-            tag.getColor(),
-            tag.getColor(),
+            tag.getTagColor(),
+            tag.getFontColor(),
             tag.getName());
       }
       out.println("</tbody>");

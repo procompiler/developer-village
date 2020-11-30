@@ -201,8 +201,8 @@ CREATE TABLE `tag` (
   `tno`        INTEGER      NOT NULL, -- 태그번호
   `name`       VARCHAR(50)  NOT NULL, -- 태그이름
   `photo`      VARCHAR(255) NULL,     -- 사진
-  `tag_color`  VARCHAR(50)  NOT NULL DEFAULT "#6C5DDF", -- 태그색
-  `font_color` VARCHAR(50)  NULL     DEFAULT #6C5DDF -- 폰트색
+  `tag_color`  VARCHAR(50)  NOT NULL DEFAULT '6C5DDF', -- 태그색
+  `font_color` VARCHAR(50)  NOT NULL DEFAULT '37393E' -- 폰트색
 );
 
 -- 태그

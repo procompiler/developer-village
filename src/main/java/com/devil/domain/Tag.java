@@ -4,7 +4,8 @@ public class Tag {
   private int no;
   private String name;
   private String photo;
-  private String color;
+  private String tagColor;
+  private String fontColor;
   
   public int getNo() {
     return no;
@@ -24,11 +25,18 @@ public class Tag {
   public void setPhoto(String photo) {
     this.photo = photo;
   }
-  public String getColor() {
-    return color;
+  public String getTagColor() {
+    return tagColor;
   }
-  public void setColor(String color) {
-    this.color = color;
+  public void setTagColor(String tagColor) {
+    this.tagColor = tagColor;
   }
+  public String getFontColor() {
+    return fontColor;
+  }
+  public void setFontColor(String fontColor) {
+    this.fontColor = fontColor;
+  }
+  
 
 }
