@@ -5,6 +5,9 @@ import com.devil.domain.Badge;
 
 public interface BadgeService {
   int add(Badge badge) throws Exception;
-  List<Badge> list (int no) throws Exception;
-  //Article get(int no) throws Exception;
+  List<Badge> list (String keyword) throws Exception;
+  Badge get(int no) throws Exception;
+  int update(Badge badge) throws Exception;
+  int delete(int no) throws Exception;
+  
 }

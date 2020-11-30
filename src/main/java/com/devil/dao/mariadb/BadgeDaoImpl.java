@@ -17,7 +17,7 @@ public class BadgeDaoImpl implements BadgeDao {
   @Override
   public int insert(Badge badge) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.insert("badgeDao.insert", badge);
+      return sqlSession.insert("BadgeDao.insert", badge);
     }
   }
 
@@ -29,7 +29,6 @@ public class BadgeDaoImpl implements BadgeDao {
   }
 
   @Override
-
   public List<Badge> findAll(String keyword) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("BadgeDao.findAll", keyword);
@@ -40,14 +39,14 @@ public class BadgeDaoImpl implements BadgeDao {
   @Override
   public int update(Badge badge) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.update("badgeDao.update", badge);
+      return sqlSession.update("BadgeDao.update", badge);
     }
   }
 
   @Override
   public int delete(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.delete("badgeDao.delete", no);
+      return sqlSession.delete("BadgeDao.delete", no);
     }
   }
 

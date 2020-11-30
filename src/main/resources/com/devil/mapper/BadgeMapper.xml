@@ -4,59 +4,87 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BadgeDao">
-<!--
+
+
   <resultMap type="badge"       id="BadgeMap">
     <id column="bno"            property="no"/>
-    <result column="name"       property="categoryNo"/>
-    <result column="photo"      property="title"/>
-
-     <result column="tno"    property="content"/>
-    <association property="writer" javaType="user">
-      <id column="uno"          property="no"/>
-      <result column="nick"     property="nickname"/>
+    <result column="name"       property="name"/>
+    <result column="photo"      property="photo"/>
+    <result column="content"    property="content"/>
+   
+    <!-- 
+    <association property="tagNo" javaType="tag">
+		<result column="tno"      property="tagNo"/>
+   	 	<result column="t_name"      property="name"/>
+   	 	<result column="t_photo"      property="photo"/>
+	    <result column="color"      property="color"/>
     </association>
+     -->
+<!-- 
+    <association property="tno" javaType="tag">
+      <id column="tno"          property="no"/>
+      <result column="name"     property="name"/>
+      <result column="photo"     property="photo"/>
+      <result column="color"     property="color"/>
+    </association>
+ -->
     
-    <collection property="comments" ofType="comment">
-      <id column="cno" property="no"/>
-      <result column="comment_content" property="content"/>
-      
-      <association property="writer" javaType="user">
-	      <id column="uno"          property="no"/>
-	      <result column="nick"     property="nickname"/>
-      </association>
-    </collection>
-
-     
   </resultMap>
   
-  <insert id="insert" parameterType="badge">
-    insert into badge(name,photo,no,pno) 
-    values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
-  </insert>
-  
-  <sql id="sql1">
+    <sql id="sql1">
+	select 
+		b.bno, 
+		b.name,
+        b.photo,
+        b.content,
+        t.tno,
+        t.name,
+        t.photo,
+        t.color
+	from badge b
+	inner join tag t on t.tno = b.tno
+    <!-- 
     select 
-      a.arno, 
-      a.title,
-      a.cdt,  
-
+      b.bno, 
+      b.name,
+      b.photo,  
+      b.tno, 
+      b.content,
+      t.tno
     from 
-      article a
-      inner join user u on a.writer=u.uno
-      
+      badge a
+      inner join tag t on b.tno=t.tno
+     -->
   </sql>
-  
-  <select id="findAll" resultMap="ArticleMap" parameterType="string">
-  	<include refid="sql1"/>
+  <select id="findAll" resultMap="BadgeMap" parameterType="string">
+  	<!-- <include refid="sql1"/> -->
+    select
+      bno,
+      name, 
+      photo,
+      content
+    from badge
+  	<!-- 
   	<if test="keyword != null">
   	where
-  		a.title like concat('%', #{keyword}, '%')
-  		or u.nick like concat('%', #{keyword}, '%')
+  		b.name like concat('%', #{keyword}, '%')
+  		or t.name like concat('%', #{keyword}, '%')
   	</if>
-  	order by a.arno desc
+  	order by a.bno desc
+  	 -->
   </select>
   
-   <update id="update" parameterType="article">
+  <insert id="insert" parameterType="badge">
+    insert into badge(bno,name,photo,content) 
+    values(#{no},#{name}, #{photo}, #{content})
+  </insert>
+  
+ 
+ 
+  <!-- 
+  
+  
+   <update id="update" parameterType="badge">
     update article
     <set>
       <if test="title != null">title = #{title},</if>
@@ -78,12 +106,11 @@
       inner join user u on a.writer=u.uno   
      where b.bno=#{no}  
     </select>
-    
+     
 
 	  <delete id="delete" parameterType="int">
 	    delete from badge
 	    where no=#{no}
 	  </delete>
--->
-
+ -->
 </mapper>

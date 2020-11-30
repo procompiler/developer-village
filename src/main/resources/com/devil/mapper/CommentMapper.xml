@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="CommentDao">
+
+<!--
+
+  <insert id="insert" parameterType="comment">
+  </insert>
+
+  <select id="findAll" resultMap="CommentMap"	parameterType="string">
+  </select>
+ 
+  <update id="update" parameterType="comment">
+  </update>
+
+  <select id="findByNo" resultMap="CommentMap" parameterType="int">
+  </select>
+
+  <update id="updateViewCount" parameterType="int">
+  </update>
+
+  <delete id="delete" parameterType="int">
+  </delete>
+
+  -->
+  
+  
+  
+</mapper>

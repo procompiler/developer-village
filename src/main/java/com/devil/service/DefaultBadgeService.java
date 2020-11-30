@@ -1,34 +1,41 @@
 package com.devil.service;
 
 import java.util.List;
-import com.devil.dao.ArticleDao;
-import com.devil.domain.Article;
 
-public class DefaultArticleService implements ArticleService {
-  ArticleDao articleDao;
+import com.devil.dao.BadgeDao;
+import com.devil.domain.Badge;
 
-  public DefaultArticleService(ArticleDao articleDao) {
-    this.articleDao = articleDao;
+public class DefaultBadgeService implements BadgeService {
+  BadgeDao badgeDao;
+
+  public DefaultBadgeService(BadgeDao badgeDao) {
+    this.badgeDao = badgeDao;
   }
 
   @Override
-  public int add(Article article) throws Exception {
-    return articleDao.insert(article);
+  public int add(Badge badge) throws Exception {
+    return badgeDao.insert(badge);
   }
 
   @Override
-  public List<Article> list(String keyword) throws Exception {
-    return articleDao.findAll(keyword);
+  public List<Badge> list(String keyword) throws Exception {
+    return badgeDao.findAll(keyword);
   }
 
   @Override
-  public Article get(int no) throws Exception {
-    Article article = articleDao.findByNo(no);
-    if (article != null) {
-      articleDao.updateViewCount(no);
-    }
-    return article;
+  public Badge get(int no) throws Exception {
+    Badge badge = badgeDao.findByNo(no);
+    return badge;
   }
 
+@Override
+public int update(Badge badge) throws Exception {
+	return badgeDao.update(badge);
+}
+
+@Override
+public int delete(int no) throws Exception {
+	return badgeDao.delete(no);
+}
 
 }
