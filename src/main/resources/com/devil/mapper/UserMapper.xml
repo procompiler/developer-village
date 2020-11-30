@@ -15,7 +15,7 @@
     <result column="rnt_vsdt"   property="recentVisitedDate"/>
     <result column="log_type"   property="loginType"/>
     <result column="photo"      property="photo"/>
-    <result column="hp_url"     property="hompageURL"/>
+    <result column="hp_url"     property="homepageURL"/>
     <result column="gh_url"     property="githubURL"/>
     <result column="in_url"     property="instarURL"/>
     <result column="tw_url"     property="twitterURL"/>
@@ -94,12 +94,13 @@
     <update id="update" parameterType="user">
     update user
     <set>
-      <if test="nick != null">nick = #{nickname},</if>
-      <if test="pwd != ''">pwd = password(#{password}),</if>
+      <if test="nickname != null">nick = #{nickname},</if>
+      <if test="password != ''">pwd = password(#{password}),</if>
       <if test="photo != ''">photo = #{photo},</if>
-      <if test="hp_url != null">hp_url = #{hp_url},</if>
-      <if test="gh_url != ''">gh_url = #{gh_url},</if>
-      <if test="in_url != ''">in_url = #{in_url},</if>
+      <if test="homepageURL != ''">hp_url = #{homepageURL},</if>
+      <if test="githubURL != ''">gh_url = #{githubURL},</if>
+      <if test="instarURL != ''">in_url = #{instarURL},</if>
+      <if test="twitterURL != ''">tw_url = #{twitterURL},</if>
       <if test="tech != ''">tech = #{tech},</if>
       <if test="photo != ''">photo = #{photo}</if>
     </set>

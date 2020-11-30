@@ -52,7 +52,7 @@ public class UserDetailServlet extends HttpServlet {
 
       out.println("<form action='update' method='post'>");
       out.printf("<p>회원번호: <input type='text' name='no' value='%d' readonly style='display:hidden;'></p>", user.getNo());
-      out.printf("<p>닉네임: <input type='text' name='title' value='%s'></p>", user.getNickname());
+      out.printf("<p>닉네임: <input type='text' name='nickname' value='%s'></p>", user.getNickname());
 
       out.printf("<p>이메일: %s</p>", user.getEmail());
       out.printf("<p>이름: %s</p>", user.getName());
@@ -71,7 +71,7 @@ public class UserDetailServlet extends HttpServlet {
 
       out.printf("<p>기술: <input type='text' name='tech' value='%s'></p>", user.getTech());
       out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", user.getPhoto());
-      out.printf("<p>개인 홈페이지: <input type='text' name='homepage' value='%s'></p>", user.getHompageURL());
+      out.printf("<p>개인 홈페이지: <input type='text' name='homepage' value='%s'></p>", user.getHomepageURL());
       out.printf("<p>깃허브: <input type='text' name='github' value='%s'></p>", user.getGithubURL());
       out.printf("<p>인스타그램: <input type='text' name='instar' value='%s'></p>", user.getInstarURL());
       out.printf("<p>트위터: <input type='text' name='twitter' value='%s'></p>", user.getTwitterURL());
