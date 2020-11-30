@@ -223,7 +223,7 @@ ALTER TABLE `tag`
 
 -- 게시글_태그
 CREATE TABLE `arc_tag` (
-  `cano` INTEGER NOT NULL, -- 게시글번호
+  `arno` INTEGER NOT NULL, -- 게시글번호
   `tno`  INTEGER NOT NULL  -- 태그번호
 );
 
@@ -231,7 +231,7 @@ CREATE TABLE `arc_tag` (
 ALTER TABLE `arc_tag`
   ADD CONSTRAINT `PK_arc_tag` -- 게시글_태그 기본키
     PRIMARY KEY (
-      `cano`, -- 게시글번호
+      `arno`, -- 게시글번호
       `tno`   -- 태그번호
     );
 
@@ -575,7 +575,7 @@ ALTER TABLE `bdg_stan`
 ALTER TABLE `arc_tag`
   ADD CONSTRAINT `FK_article_TO_arc_tag` -- 게시글 -> 게시글_태그
     FOREIGN KEY (
-      `cano` -- 게시글번호
+      `arno` -- 게시글번호
     )
     REFERENCES `article` ( -- 게시글
       `arno` -- 게시글번호
