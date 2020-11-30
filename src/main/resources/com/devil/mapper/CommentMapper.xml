@@ -5,11 +5,30 @@
 
 
 <mapper namespace="CommentDao">
-
-<!--
+  <resultMap type="comment"   id="CommentMap">
+    <id column="cno"          property="no"/>
+    <result column="content"  property="content"/>
+    <result column="cdt"      property="createdDate"/>
+    <result column="ord"      property="ord"/>
+    <result column="step"     property="step"/>
+    <result column="udt"      property="updatedDate"/>
+    <result column="status"   property="deletedDate"/>
+    <result column="selected" property="selected"/>
+    
+    <association property="writer" javaType="user">
+      <id column="uno"                   property="no"/>
+      <result column="comment_nick"      property="nickname"/>
+      <result column="comment_photo"     property="photo"/>
+    </association>
+    
+  </resultMap>
 
   <insert id="insert" parameterType="comment">
+    insert into comment(cno, content, uno, cdt) 
+    values(#{no}, #{content}, #{uno} now())
   </insert>
+
+<!--
 
   <select id="findAll" resultMap="CommentMap"	parameterType="string">
   </select>
