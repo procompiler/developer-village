@@ -26,8 +26,8 @@
     <collection property="tags" ofType="tag">
       <id column="tno" property="no"/>
       <result column="tag_name" property="name"/>
-      <result column="tag_color"    property="color"/>
-      <result column="font_color"    property="color"/>
+      <result column="tag_color"    property="tagColor"/>
+      <result column="font_color"    property="fontColor"/>
     </collection>
     
     <collection property="comments" ofType="comment">
