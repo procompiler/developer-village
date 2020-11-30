@@ -35,6 +35,20 @@
       </association>
     </collection>
     
+    <collection property="tags" ofType="tag">
+      <id column="tno" property="no"/>
+      <result column="tag_name" property="name"/>
+      <result column="tag_photo"    property="photo"/>
+      <result column="color"    property="color"/>
+    
+      
+      <association property="writer" javaType="user">
+        <id column="uno"                   property="no"/>
+        <result column="comment_nick"      property="nickname"/>
+        <result column="comment_photo"     property="photo"/>
+      </association>
+    </collection>
+    
   </resultMap>
   
   <insert id="insert" parameterType="article">
