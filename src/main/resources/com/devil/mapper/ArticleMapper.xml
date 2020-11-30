@@ -97,11 +97,11 @@
       a.cano,
       u.nick article_nick,
       a.vw_cnt, 
+      c.cno,
       c.content comment_content,
       c.uno,
       u2.nick comment_nick,
       u2.photo comment_photo
-      t
     from 
       article a
       inner join user u on a.writer=u.uno   
