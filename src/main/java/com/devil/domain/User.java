@@ -24,110 +24,127 @@ public class User {
   public int getNo() {
     return no;
   }
-  public void setNo(int no) {
+  public User setNo(int no) {
     this.no = no;
+    return this;
   }
   public String getEmail() {
     return email;
   }
-  public void setEmail(String email) {
+  public User setEmail(String email) {
     this.email = email;
+    return this;
   }
   public String getNickname() {
     return nickname;
   }
-  public void setNickname(String nickname) {
+  public User setNickname(String nickname) {
     this.nickname = nickname;
+    return this;
   }
   public String getName() {
     return name;
   }
-  public void setName(String name) {
+  public User setName(String name) {
     this.name = name;
+    return this;
   }
   public String getPassword() {
     return password;
   }
-  public void setPassword(String password) {
+  public User setPassword(String password) {
     this.password = password;
+    return this;
   }
   public Date getCdt() {
     return createdDate;
   }
-  public void setCdt(Date cdt) {
+  public User setCdt(Date cdt) {
     this.createdDate = cdt;
+    return this;
   }
   public String getHomepageURL() {
     return homepageURL;
   }
-  public void setHomepageURL(String homepageURL) {
+  public User setHomepageURL(String homepageURL) {
     this.homepageURL = homepageURL;
+    return this;
   }
   public String getGithubURL() {
     return githubURL;
   }
-  public void setGithubURL(String githubURL) {
+  public User setGithubURL(String githubURL) {
     this.githubURL = githubURL;
+    return this;
   }
   public String getInstarURL() {
     return instarURL;
   }
-  public void setInstarURL(String instarURL) {
+  public User setInstarURL(String instarURL) {
     this.instarURL = instarURL;
+    return this;
   }
   public String getTwitterURL() {
     return twitterURL;
   }
-  public void setTwitterURL(String twitterURL) {
+  public User setTwitterURL(String twitterURL) {
     this.twitterURL = twitterURL;
+    return this;
   }
   public boolean isBlocked() {
     return blocked;
   }
-  public void setBlocked(boolean blocked) {
+  public User setBlocked(boolean blocked) {
     this.blocked = blocked;
+    return this;
   }
   public String getTech() {
     return tech;
   }
-  public void setTech(String tech) {
+  public User setTech(String tech) {
     this.tech = tech;
+    return this;
   }
   public boolean isAuth() {
     return auth;
   }
-  public void setAuth(boolean auth) {
+  public User setAuth(boolean auth) {
     this.auth = auth;
+    return this;
   }
   public boolean isNoti() {
     return noti;
   }
-  public void setNoti(boolean noti) {
+  public User setNoti(boolean noti) {
     this.noti = noti;
+    return this;
   }
   public Date getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(Date createdDate) {
+  public User setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+    return this;
   }
   public Date getRecentVisitedDate() {
     return recentVisitedDate;
   }
-  public void setRecentVisitedDate(Date recentVisitedDate) {
+  public User setRecentVisitedDate(Date recentVisitedDate) {
     this.recentVisitedDate = recentVisitedDate;
+    return this;
   }
   public String getLoginType() {
     return loginType;
   }
-  public void setLoginType(String loginType) {
+  public User setLoginType(String loginType) {
     this.loginType = loginType;
+    return this;
   }
   public String getPhoto() {
     return photo;
   }
-  public void setPhoto(String photo) {
+  public User setPhoto(String photo) {
     this.photo = photo;
+    return this;
   }
-
 }

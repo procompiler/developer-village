@@ -9,4 +9,5 @@ public interface UserService {
   User get(String email, String password) throws Exception;
   int add(User user) throws Exception;
   int update(User user) throws Exception;
+  int delete(int no) throws Exception;
 }

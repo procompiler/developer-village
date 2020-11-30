@@ -9,20 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.domain.User;
 import com.devil.service.UserService;
 
-@WebServlet("/user/update")
-public class UserUpdateServlet extends HttpServlet {
+@WebServlet("/user/delete")
+public class UserDeleteServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    request.setCharacterEncoding("UTF-8");
-
-    // Servlet container에 들어 있는 UserService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
 
@@ -33,34 +29,23 @@ public class UserUpdateServlet extends HttpServlet {
     out.println("<html>");
     out.println("<head>");
     out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-    out.println("<title>회원정보 수정</title></head>");
+    out.println("<title>유저 삭제</title></head>");
     out.println("<body>");
 
     try {
-      out.println("<h1>회원정보 수정</h1>");
+      out.println("<h1>유저 삭제</h1>");
 
-      User user = new User();
-      user.setNo(Integer.parseInt(request.getParameter("no")));
-      user.setNickname(request.getParameter("nickname"));
-      user.setPassword(request.getParameter("password"));
-      user.setHomepageURL(request.getParameter("homepage"));
-      user.setGithubURL(request.getParameter("githubURL"));
-      user.setInstarURL(request.getParameter("instarURL"));
-      user.setTwitterURL(request.getParameter("twitterURL"));
-      user.setTech(request.getParameter("tech"));
+      int no = Integer.parseInt(request.getParameter("no"));
 
-      user.setPhoto(request.getParameter("photo"));
-      int count = userService.update(user);
-
-      if (count == 0) {
-        out.println("<p>해당 번호의 회원이 없습니다.</p>");
+      if (userService.delete(no) == 0) {
+        out.println("<p>해당 번호의 유저가 없습니다.</p>");
       } else {
-        out.println("<p>회원정보를 수정하였습니다.</p>");
+        out.println("<p>유저를 삭제하였습니다.</p>");
       }
 
     } catch (Exception e) {
       out.println("<h2>작업 처리 중 오류 발생!</h2>");
-      out.printf("<pre>%s</pre>\n", e.getMessage());
+      out.printf("<pre>%s</pre>\n",e.getMessage());
 
       StringWriter errOut = new StringWriter();
       e.printStackTrace(new PrintWriter(errOut));
@@ -71,5 +56,5 @@ public class UserUpdateServlet extends HttpServlet {
     out.println("</body>");
     out.println("</html>");
   }
-
 }
+

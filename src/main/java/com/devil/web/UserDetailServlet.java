@@ -72,9 +72,9 @@ public class UserDetailServlet extends HttpServlet {
       out.printf("<p>기술: <input type='text' name='tech' value='%s'></p>", user.getTech());
       out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", user.getPhoto());
       out.printf("<p>개인 홈페이지: <input type='text' name='homepage' value='%s'></p>", user.getHomepageURL());
-      out.printf("<p>깃허브: <input type='text' name='github' value='%s'></p>", user.getGithubURL());
-      out.printf("<p>인스타그램: <input type='text' name='instar' value='%s'></p>", user.getInstarURL());
-      out.printf("<p>트위터: <input type='text' name='twitter' value='%s'></p>", user.getTwitterURL());
+      out.printf("<p>깃허브: <input type='text' name='githubURL' value='%s'></p>", user.getGithubURL());
+      out.printf("<p>인스타그램: <input type='text' name='instarURL' value='%s'></p>", user.getInstarURL());
+      out.printf("<p>트위터: <input type='text' name='twitterURL' value='%s'></p>", user.getTwitterURL());
 
       out.println("<button>정보 수정</button>");
       out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">회원 삭제</button>", user.getNo());

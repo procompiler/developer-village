@@ -64,7 +64,7 @@ public class UserListServlet extends HttpServlet {
         out.printf("<tr>"
                 + "<td>%d</td>"
                 + "<td>%s</td>"
-                + "<td><a href='detail?no=%d' style='color:grey;'><img src='../upload/%s' alt='[%s]' height='30px'>%s</a></td>"
+                + "<td><a href='detail?no=%d' style='color:grey;'><img src='../upload/user-profile%s' alt='[%s]' height='30px'>%s</a></td>"
                 + "<td>%s</td>"
                 + "<td>%s</td>"
                 + "<td>%s</td>"
