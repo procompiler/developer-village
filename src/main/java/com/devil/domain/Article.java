@@ -17,6 +17,7 @@ public class Article {
   private int studyStatus;
   private Date endDate;
   private List<Comment> comments;
+  private List<Tag> tags;
 
 
 
@@ -97,6 +98,12 @@ public class Article {
   }
   public void setViewCount(int viewCount) {
     this.viewCount = viewCount;
+  }
+  public List<Tag> getTags() {
+    return tags;
+  }
+  public void setTags(List<Tag> tags) {
+    this.tags = tags;
   }
 }
 
