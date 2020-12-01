@@ -37,6 +37,6 @@ public class DefaultCommentService implements CommentService {
 
   @Override
   public int delete(int no) throws Exception {
-    return commentDao.delete(no);
+    return commentDao.inactive(no);
   }
 }

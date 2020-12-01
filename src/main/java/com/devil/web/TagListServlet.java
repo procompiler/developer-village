@@ -42,7 +42,7 @@ public class TagListServlet extends HttpServlet {
       out.println("<thead>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
-          + "<th>태그이름</th>" + "<th>태그사진</th>" + "<th>태그색</th>" + "<th>미리보기</th>" + "</tr>");
+          + "<th>태그이름</th>" + "<th>태그사진</th>" + "<th>미리보기</th>" + "</tr>");
       out.println("</thead>");
       out.println("<tbody>");
       for (Tag tag : list) {
@@ -50,9 +50,8 @@ public class TagListServlet extends HttpServlet {
             "<tr>"
         + "<td>%d</td>"
         + "<td id=\"title\"><a href='detail?no=%1$d'>%s</a></td>"
-        + "<td><img style=\"width:80px\" src=\"../upload/tag/%s\"</td>"
-        + "<td>#%s</td>"
-        + "<td><span id=\"color\" style=\"background-color:#%s;\">#%s</span></td>"
+        + "<td><img src='../upload/user/%s_40x40.png' alt='%3$s'></td>"
+        + "<td><span id=\"color\" style=\"background-color:#%s; color:#%s\">%2$s</span></td>"
         + "</tr>\n",
             tag.getNo(),
             tag.getName(),

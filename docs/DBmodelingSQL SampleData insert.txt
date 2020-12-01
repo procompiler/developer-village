@@ -41,6 +41,8 @@ INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (6, 3, 2,nul
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (7, 5, 2,null,'부모님 효도선물로 제격! 발마사지기계','광고');
 
 
+
+
 INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (1,3, 3,'널...null..',1,'0','2020-05-08','2020-09-09',0);
 INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (2,1, 1,'그쵸 재밌는인생',1,'0','2020-11-20','2020-09-08',0);
 INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (3,1, 4,'나도즐거워',2,'0','2020-11-20','2020-09-08',0);
@@ -49,6 +51,7 @@ INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (5,4
 INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (6,6, 6,'오호라오호라오호라오호라',1,'0','2020-11-20','2020-09-08',1);
 INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (7,1, 3,'대댓글테스트입니다.',2,'1','2020-11-20','2020-09-08',0);
 INSERT INTO comment (cno,arno,uno,content,ord,step,udt,ddt,selected) VALUES (8,4, 2,'키보드 끝판왕은 리얼포스죠',1,'0','2020-11-21','2020-09-08',0);
+
 
 
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java.png','E8EBA7','37393E');

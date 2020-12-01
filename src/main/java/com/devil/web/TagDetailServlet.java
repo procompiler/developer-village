@@ -56,7 +56,7 @@ public class TagDetailServlet extends HttpServlet {
         out.println("<button>태그 수정</button>");
         out.println("</form>");
         out.println("<p><a href='list' style='color:white;'>태그 목록으로</a></p>");
-        out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">태그 삭제</button>", tag.getNo());
+        out.printf("<button type='button'onclick=\"location.href='delete?no=%d'\">태그 삭제</button>", tag.getNo());
       } catch (Exception e) {
         out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
         StringWriter errOut = new StringWriter();

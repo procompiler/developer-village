@@ -10,4 +10,5 @@ public interface CommentDao {
   public int delete(int no) throws Exception;
   public Comment findByNo(int no) throws Exception;
   public int updateViewCount(int no) throws Exception;
+  public int inactive(int no) throws Exception;
 }

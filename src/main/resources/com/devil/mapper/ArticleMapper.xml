@@ -13,7 +13,7 @@
     <result column="vw_cnt"     property="viewCount"/>
     <result column="udt"        property="updatedDate"/>
     <result column="ddt"        property="deletedDate"/>
-    <result column="status"     property="status"/>
+    <result column="state"     property="state"/>
     <result column="st_status"  property="studyStatus"/>
     <result column="rc_edt"     property="endDate"/>
     
@@ -33,6 +33,8 @@
     <collection property="comments" ofType="comment">
       <id column="cno" property="no"/>
       <result column="comment_content" property="content"/>
+      <result column="comment_cdt" property="createdDate"/>
+      <result column="comment_state" property="state"/>
     
       
       <association property="writer" javaType="user">
@@ -107,8 +109,10 @@
       u.nick article_nick,
       a.vw_cnt, 
       c.cno,
+      c.cdt comment_cdt,
       c.content comment_content,
       c.uno,
+      c.state comment_state,
       u2.nick comment_nick,
       u2.photo comment_photo
     from 
