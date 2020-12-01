@@ -24,6 +24,7 @@
     <result column="auth"       property="auth"/>
     <result column="noti"       property="noti"/>
     <result column="bio"       property="bio"/>
+    <result column="state"       property="state"/>
     
   </resultMap>
 
