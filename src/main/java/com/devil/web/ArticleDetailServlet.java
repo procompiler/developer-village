@@ -75,6 +75,8 @@ public class ArticleDetailServlet extends HttpServlet {
       out.println("<button>수정</button>");
       out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
       out.println("</form>");
+
+      out.println("<hr>");
       out.println("<h3>Comments</h3>");
       List<Comment> comments = article.getComments();
       if (comments != null) {
@@ -90,7 +92,7 @@ public class ArticleDetailServlet extends HttpServlet {
       }
       out.println("<form method='post' action='../comment/add'>");
       out.printf("<input type='hidden' name=\"arno\" value='%d' readonly><br>", article.getNo());
-      out.println("<input type='text' name='content'><br>");
+      out.println("<input type='text' name='content'>");
       out.println("<button>댓글쓰기</button>");
       out.println("</form>");
 
