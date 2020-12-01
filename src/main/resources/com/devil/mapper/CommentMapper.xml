@@ -41,7 +41,8 @@
   
   <update id="inactive" parameterType="int">
     update comment set
-      state = 0
+      state = 0,
+      ddt=now()
     where cno=#{no}
   </update>
 <!--
@@ -60,7 +61,5 @@
   </delete>
 
   -->
-  
-  
   
 </mapper>
