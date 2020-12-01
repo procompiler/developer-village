@@ -24,9 +24,6 @@ public class TagDetailServlet extends HttpServlet {
       ServletContext ctx = request.getServletContext();
       TagService tagService = (TagService) ctx.getAttribute("tagService");
 
-      // 웹주소에 동봉된 데이터(Query String: qs)를 읽는다.
-      // 클라이언트가 URL에 데이터를 포함해서 보낸다.
-      // 숫자 데이터가 넘어오기 때문에 깨질 염려가 없다.
       int no = Integer.parseInt(request.getParameter("no"));
 
       response.setContentType("text/html;charset=UTF-8");
@@ -34,7 +31,7 @@ public class TagDetailServlet extends HttpServlet {
 
       out.println("<!DOCTYPE html>");
       out.println("<html>");
-      out.println("<head><title>게시글 조회</title>");
+      out.println("<head><title>태그 조회</title>");
       out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
       out.println("<body>");
 
@@ -48,12 +45,18 @@ public class TagDetailServlet extends HttpServlet {
           return;
         }
 
-        out.printf("<p>태그명: %s</p>", tag.getNo());
-        out.printf("<p>태그명: %s</p>", tag.getName());
-        out.printf("<img src='../upload/tag/%s' alt='[%1$s]' height='100px'><br>", tag.getPhoto());
-        out.printf("<p><span id='color' style='background-color:#%s'>%1$s</span></p>", tag.getColor());
+        out.println("<form action='updatePhoto' method='post' enctype='multipart/form-data'>");
+        out.printf("<input type='hidden' name='no' value='%s'>", tag.getNo());
+        out.printf("<img src='../upload/tag/%s_80x80.jpg' alt='[%1$s]'>", tag.getPhoto());
+        out.println("<input type='file' name='photo'><br>");
+        out.println("<button>이미지 변경</button>");
+        out.println("<form action='update' method='post'>");
+        out.printf("<p>태그색: <input type='color' name='tagColor' value='%s'></p>\n", tag.getTagColor());
+        out.printf("<p>폰트색: <input type='color' name='fontColor' value='%s'></p>\n", tag.getFontColor());
+        out.println("<button>태그 수정</button>");
+        out.println("</form>");
         out.println("<p><a href='list' style='color:white;'>태그 목록으로</a></p>");
-
+        out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">태그 삭제</button>", tag.getNo());
       } catch (Exception e) {
         out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
         StringWriter errOut = new StringWriter();
