@@ -68,4 +68,11 @@ public class UserDaoImpl implements UserDao {
       return sqlSession.selectOne("UserDao.findByEmailPassword", map);
     }
   }
+
+  @Override
+  public int inactive(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("UserDao.inactive", no);
+    }
+  }
 }
