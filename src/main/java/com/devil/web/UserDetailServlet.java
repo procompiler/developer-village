@@ -83,7 +83,7 @@ public class UserDetailServlet extends HttpServlet {
       out.printf("<p>인스타그램: <input type='text' name='instarURL' value='%s'></p>\n", user.getInstarURL());
       out.printf("<p>트위터: <input type='text' name='twitterURL' value='%s'></p>\n", user.getTwitterURL());
 
-      out.printf("<p>%s</p>", user.getState() == 1 ? "탈퇴됨" : "탈퇴안됌!");
+      out.printf("<p>%s</p>", user.getState() == 1 ? "탈퇴됨" : "탈퇴안됨!");
       out.println("<button>정보 수정</button>");
       out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">회원 탈퇴</button>\n", user.getNo());
 
