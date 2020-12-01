@@ -53,7 +53,7 @@ public class ArticleDetailServlet extends HttpServlet {
 
       out.println("<form action='update' method='post'>");
       out.printf("<input type='text' name='title' value='%s'><br>", article.getTitle());
-      out.printf("<input type='text' name='no' value='%d' readonly style='display:none;'><br>", article.getNo());
+      out.printf("<input type='hidden' name='no' value='%d' readonly'><br>", article.getNo());
       out.printf("<p>작성자: %s</p>", article.getWriter().getNickname());
 
 
@@ -82,14 +82,14 @@ public class ArticleDetailServlet extends HttpServlet {
           out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", comment.getWriter().getPhoto());
           out.printf("<p><span id='color' style='background-color:black'>%s</span><br>", comment.getWriter().getNickname());
           out.println("<form method='post' action='../comment/update'>");
-          out.printf("<input style='display: none;' type=\"int\" name=\"cno\" value='%d' readonly>", comment.getNo());
-          out.printf("<input style='display: none;'  type=\"int\" name=\"arno\" value='%d' readonly>", article.getNo());
+          out.printf("<input type='hidden' name=\"cno\" value='%d' readonly>", comment.getNo());
+          out.printf("<input type='hidden' name=\"arno\" value='%d' readonly>", article.getNo());
           out.printf("<input type='text' name='content' value='%s'>", comment.getContent());
           out.println("<button>댓글수정</button></form>");
         }
       }
       out.println("<form method='post' action='../comment/add'>");
-      out.printf("<input style='display: none;' type=\"int\" name=\"arno\" value='%d' readonly><br>", article.getNo());
+      out.printf("<input type='hidden' name=\"arno\" value='%d' readonly><br>", article.getNo());
       out.println("<input type='text' name='content'><br>");
       out.println("<button>댓글쓰기</button>");
       out.println("</form>");
