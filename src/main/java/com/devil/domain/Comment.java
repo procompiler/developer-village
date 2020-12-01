@@ -13,7 +13,14 @@ public class Comment {
   private String deletedDate;
   private boolean status;
   private boolean selected;
+  private int articleNo;
 
+  public int getArticleNo() {
+    return articleNo;
+  }
+  public void setArticleNo(int articleNo) {
+    this.articleNo = articleNo;
+  }
   public String getUpdatedDate() {
     return updatedDate;
   }

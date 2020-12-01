@@ -3,17 +3,31 @@ package com.devil.service;
 import java.util.List;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
+import com.devil.util.SqlSessionFactoryProxy;
 
 public class DefaultArticleService implements ArticleService {
   ArticleDao articleDao;
+  SqlSessionFactoryProxy factoryProxy;
 
-  public DefaultArticleService(ArticleDao articleDao) {
+  public DefaultArticleService(ArticleDao articleDao, SqlSessionFactoryProxy factoryProxy) {
     this.articleDao = articleDao;
+    this.factoryProxy = factoryProxy;
   }
 
   @Override
   public int add(Article article) throws Exception {
-    return articleDao.insert(article);
+    try {
+      factoryProxy.startTransaction();
+      articleDao.insert(article);
+      articleDao.insertTags(article);
+      factoryProxy.commit();
+      return 1;
+    } catch (Exception e) {
+      factoryProxy.rollback();
+      throw e;
+    } finally {
+      factoryProxy.endTransaction();
+    }
   }
 
   @Override

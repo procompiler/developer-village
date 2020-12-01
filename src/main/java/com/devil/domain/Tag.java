@@ -10,32 +10,37 @@ public class Tag {
   public int getNo() {
     return no;
   }
-  public void setNo(int no) {
+  public Tag setNo(int no) {
     this.no = no;
+    return this;
   }
   public String getName() {
     return name;
   }
-  public void setName(String name) {
+  public Tag setName(String name) {
     this.name = name;
+    return this;
   }
   public String getPhoto() {
     return photo;
   }
-  public void setPhoto(String photo) {
+  public Tag setPhoto(String photo) {
     this.photo = photo;
+    return this;
   }
   public String getTagColor() {
     return tagColor;
   }
-  public void setTagColor(String tagColor) {
+  public Tag setTagColor(String tagColor) {
     this.tagColor = tagColor;
+    return this;
   }
   public String getFontColor() {
     return fontColor;
   }
-  public void setFontColor(String fontColor) {
+  public Tag setFontColor(String fontColor) {
     this.fontColor = fontColor;
+    return this;
   }
   
 

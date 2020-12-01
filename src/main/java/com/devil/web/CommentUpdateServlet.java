@@ -10,55 +10,57 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Comment;
-import com.devil.domain.User;
 import com.devil.service.CommentService;
-import com.devil.service.UserService;
 
-@WebServlet("/comment/add")
-public class CommentAddServlet extends HttpServlet {
+@WebServlet("/comment/update")
+public class CommentUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    // Servlet container에 들어 있는 CommentService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
     CommentService commentService = (CommentService) ctx.getAttribute("commentService");
-    UserService userService = (UserService) ctx.getAttribute("userService");
-
-    Comment comment = new Comment();
-    comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
-    comment.setContent(request.getParameter("content"));
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
+    Comment comment = new Comment();
+    comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
+    comment.setNo(Integer.parseInt(request.getParameter("cno")));
+    comment.setContent(request.getParameter("content"));
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
     out.printf("<meta http-equiv='Refresh' content='2;url=../article/detail?no=%d'>\n", comment.getArticleNo());
-    out.println("<title>댓글 등록</title></head>");
+    out.println("<title>댓글 수정</title></head>");
     out.println("<body>");
 
     try {
-      out.println("<h1>[댓글 등록]</h1>");
-      User user = userService.get(1);
-      //User loginUser = (User) session.getAttribute("loginUser");
-      comment.setWriter(user);
-      commentService.add(comment);
-      out.println("댓글 등록했습니다.");
-      //if (loginUser != null) {
-      //} else {
-      //  out.println("로그인을 해주세요!");
-    //}
+      out.println("<h1>댓글 수정</h1>");
 
-    }catch (Exception e) {
-      out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
+      int count = commentService.update(comment);
+
+      if (count == 0) {
+        out.println("<p>해당 번호의 댓글이 없습니다.</p>");
+      } else {
+        out.println("<p>댓글을 수정하였습니다.</p>");
+      }
+
+    } catch (Exception e) {
+      out.println("<h2>작업 처리 중 오류 발생!</h2>");
+      out.printf("<pre>%s</pre>\n", e.getMessage());
+
       StringWriter errOut = new StringWriter();
       e.printStackTrace(new PrintWriter(errOut));
+      out.println("<h3>상세 오류 내용</h3>");
       out.printf("<pre>%s</pre>\n", errOut.toString());
     }
+
     out.println("</body>");
     out.println("</html>");
   }
+
 }
