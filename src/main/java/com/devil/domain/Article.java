@@ -13,7 +13,7 @@ public class Article {
   private int viewCount;
   private Date updatedDate;
   private Date deletedDate;
-  private int status;
+  private int state;
   private int studyStatus;
   private Date endDate;
   private List<Comment> comments;
@@ -24,86 +24,101 @@ public class Article {
   public int getStudyStatus() {
     return studyStatus;
   }
-  public void setStudyStatus(int studyStatus) {
+  public Article setStudyStatus(int studyStatus) {
     this.studyStatus = studyStatus;
+    return this;
   }
   public Date getDeletedDate() {
     return deletedDate;
   }
-  public void setDeletedDate(Date deletedDate) {
+  public Article setDeletedDate(Date deletedDate) {
     this.deletedDate = deletedDate;
+    return this;
   }
   public Date getUpdatedDate() {
     return updatedDate;
   }
-  public void setUpdatedDate(Date updatedDate) {
+  public Article setUpdatedDate(Date updatedDate) {
     this.updatedDate = updatedDate;
+    return this;
   }
   public int getNo() {
     return no;
   }
-  public void setNo(int no) {
+  public Article setNo(int no) {
     this.no = no;
+    return this;
   }
   public User getWriter() {
     return writer;
   }
-  public void setWriter(User writer) {
+  public Article setWriter(User writer) {
     this.writer = writer;
+    return this;
   }
   public String getTitle() {
     return title;
   }
-  public void setTitle(String title) {
+  public Article setTitle(String title) {
     this.title = title;
+    return this;
   }
   public String getContent() {
     return content;
   }
-  public void setContent(String content) {
+  public Article setContent(String content) {
     this.content = content;
+    return this;
   }
   public int getCategoryNo() {
     return categoryNo;
   }
-  public void setCategoryNo(int categoryNo) {
+  public Article setCategoryNo(int categoryNo) {
     this.categoryNo = categoryNo;
+    return this;
   }
   public Date getEndDate() {
     return endDate;
   }
-  public void setEndDate(Date endDate) {
+  public Article setEndDate(Date endDate) {
     this.endDate = endDate;
+    return this;
   }
-  public int getStatus() {
-    return status;
+  public int getState() {
+    return state;
   }
-  public void setStatus(int status) {
-    this.status = status;
+  public Article setState(int state) {
+    this.state = state;
+    return this;
   }
   public List<Comment> getComments() {
     return comments;
   }
-  public void setComments(List<Comment> comments) {
+  public Article setComments(List<Comment> comments) {
     this.comments = comments;
+    return this;
   }
   public Date getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(Date createdDate) {
+  public Article setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+    return this;
   }
+
   public int getViewCount() {
     return viewCount;
   }
-  public void setViewCount(int viewCount) {
+  public Article setViewCount(int viewCount) {
     this.viewCount = viewCount;
+    return this;
   }
   public List<Tag> getTags() {
     return tags;
   }
-  public void setTags(List<Tag> tags) {
+  public Article setTags(List<Tag> tags) {
     this.tags = tags;
+    return this;
   }
 }
 

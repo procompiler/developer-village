@@ -11,76 +11,88 @@ public class Comment {
   private int step;
   private String updatedDate;
   private String deletedDate;
-  private boolean status;
+  private int state;
   private boolean selected;
   private int articleNo;
 
   public int getArticleNo() {
     return articleNo;
   }
-  public void setArticleNo(int articleNo) {
+  public Comment setArticleNo(int articleNo) {
     this.articleNo = articleNo;
+    return this;
   }
   public String getUpdatedDate() {
     return updatedDate;
   }
-  public void setUpdatedDate(String updatedDate) {
+  public Comment setUpdatedDate(String updatedDate) {
     this.updatedDate = updatedDate;
+    return this;
+
   }
   public String getDeletedDate() {
     return deletedDate;
   }
-  public void setDeletedDate(String deletedDate) {
+  public Comment setDeletedDate(String deletedDate) {
     this.deletedDate = deletedDate;
+    return this;
   }
-  public boolean isStatus() {
-    return status;
+  public int getState() {
+    return state;
   }
-  public void setStatus(boolean status) {
-    this.status = status;
+  public Comment setState(int state) {
+    this.state = state;
+    return this;
   }
   public boolean isSelected() {
     return selected;
   }
-  public void setSelected(boolean selected) {
+  public Comment setSelected(boolean selected) {
     this.selected = selected;
+    return this;
   }
   public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
-	public User getWriter() {
-		return writer;
-	}
-	public void setWriter(User writer) {
-		this.writer = writer;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	public int getOrd() {
-		return ord;
-	}
-	public void setOrd(int ord) {
-		this.ord = ord;
-	}
-	public int getStep() {
-		return step;
-	}
-	public void setStep(int step) {
-		this.step = step;
-	}
+    return no;
+  }
+  public Comment setNo(int no) {
+    this.no = no;
+    return this;
+  }
+  public User getWriter() {
+    return writer;
+  }
+  public Comment setWriter(User writer) {
+    this.writer = writer;
+    return this;
+  }
+  public String getContent() {
+    return content;
+  }
+  public Comment setContent(String content) {
+    this.content = content;
+    return this;
+  }
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+  public Comment setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+    return this;
+  }
+  public int getOrd() {
+    return ord;
+  }
+  public Comment setOrd(int ord) {
+    this.ord = ord;
+    return this;
+  }
+  public int getStep() {
+    return step;
+  }
+  public Comment setStep(int step) {
+    this.step = step;
+    return this;
+  }
 
 
 }

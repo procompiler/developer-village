@@ -66,24 +66,27 @@ DROP TABLE IF EXISTS `relo` RESTRICT;
 
 -- 유저
 CREATE TABLE `user` (
-  `uno`      INTEGER      NOT NULL, -- 사용자번호
-  `email`    VARCHAR(40)  NOT NULL, -- 이메일
-  `nick`     VARCHAR(50)  NULL,     -- 닉네임
-  `name`     VARCHAR(50)  NOT NULL, -- 이름
-  `pwd`      VARCHAR(255) NULL,     -- 암호
-  `cdt`      DATE         NOT NULL DEFAULT now(), -- 가입일
-  `rnt_vsdt` DATETIME     NULL,     -- 최종방문일
-  `log_type` VARCHAR(50)  NOT NULL, -- 로그인유형
-  `photo`    VARCHAR(255) NULL,     -- 사진
-  `hp_url`   VARCHAR(255) NULL,     -- 개인홈피주소
-  `gh_url`   VARCHAR(255) NULL,     -- 깃허브주소
-  `in_url`   VARCHAR(255) NULL,     -- 인스타주소
-  `tw_url`   VARCHAR(255) NULL,     -- 트위터주소
-  `blocked`  INTEGER      NOT NULL DEFAULT 0, -- 차단여부
-  `tech`     MEDIUMTEXT   NULL,     -- 기술스택
-  `auth`     INTEGER      NOT NULL DEFAULT 0, -- 관리자여부
-  `noti`     INTEGER      NOT NULL DEFAULT 0 -- 알람알림여부
-);
+  `uno`      INTEGER      NOT NULL COMMENT '사용자번호', -- 사용자번호
+  `email`    VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
+  `nick`     VARCHAR(50)  NULL     COMMENT '닉네임', -- 닉네임
+  `name`     VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
+  `pwd`      VARCHAR(255) NULL     COMMENT '암호', -- 암호
+  `cdt`      DATE         NOT NULL DEFAULT now() COMMENT '가입일', -- 가입일
+  `rnt_vsdt` DATETIME     NULL     COMMENT '최종방문일', -- 최종방문일
+  `log_type` VARCHAR(50)  NOT NULL COMMENT '로그인유형', -- 로그인유형
+  `photo`    VARCHAR(255) NULL     COMMENT '사진', -- 사진
+  `hp_url`   VARCHAR(255) NULL     COMMENT '개인홈피주소', -- 개인홈피주소
+  `gh_url`   VARCHAR(255) NULL     COMMENT '깃허브주소', -- 깃허브주소
+  `in_url`   VARCHAR(255) NULL     COMMENT '인스타주소', -- 인스타주소
+  `tw_url`   VARCHAR(255) NULL     COMMENT '트위터주소', -- 트위터주소
+  `blocked`  INTEGER      NOT NULL DEFAULT 0 COMMENT '차단여부', -- 차단여부
+  `tech`     MEDIUMTEXT   NULL     COMMENT '기술스택', -- 기술스택
+  `auth`     INTEGER      NOT NULL DEFAULT 0 COMMENT '관리자여부', -- 관리자여부
+  `noti`     INTEGER      NOT NULL DEFAULT 0 COMMENT '알람알림여부', -- 알람알림여부
+  `bio`      MEDIUMTEXT   NULL     COMMENT '자기소개', -- 자기소개
+  `state`    INTEGER      NOT NULL DEFAULT 1 COMMENT '활성상태`' -- 활성상태`
+)
+COMMENT '유저';
 
 -- 유저
 ALTER TABLE `user`
@@ -105,24 +108,25 @@ CREATE UNIQUE INDEX `UIX_nick`
   );
 
 ALTER TABLE `user`
-  MODIFY COLUMN `uno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `uno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '사용자번호';
 
 -- 게시글
 CREATE TABLE `article` (
-  `arno`      INTEGER      NOT NULL, -- 게시글번호
-  `writer`    INTEGER      NOT NULL, -- 작성자
-  `cano`      INTEGER      NOT NULL, -- 카테고리번호
-  `title`     VARCHAR(255) NOT NULL, -- 게시글제목
-  `content`   MEDIUMTEXT   NULL,     -- 내용
-  `cdt`       DATETIME     NOT NULL DEFAULT now(), -- 등록일자
-  `vw_cnt`    INTEGER      NOT NULL DEFAULT 0, -- 조회수
-  `udt`       DATETIME     NULL,     -- 수정일자
-  `ddt`       DATETIME     NULL,     -- 삭제일자
-  `status`    INTEGER      NOT NULL DEFAULT 0, -- 활성상태
-  `st_relo`   INTEGER      NULL,     -- 시군구번호
-  `st_status` INTEGER      NULL     DEFAULT 0, -- 모집상태
-  `rc_edt`    DATE         NULL      -- 모집마감일
-);
+  `arno`      INTEGER      NOT NULL COMMENT '게시글번호', -- 게시글번호
+  `writer`    INTEGER      NOT NULL COMMENT '작성자', -- 작성자
+  `cano`      INTEGER      NOT NULL COMMENT '카테고리번호', -- 카테고리번호
+  `title`     VARCHAR(255) NOT NULL COMMENT '게시글제목', -- 게시글제목
+  `content`   MEDIUMTEXT   NULL     COMMENT '내용', -- 내용
+  `cdt`       DATETIME     NOT NULL DEFAULT now() COMMENT '등록일자', -- 등록일자
+  `vw_cnt`    INTEGER      NOT NULL DEFAULT 0 COMMENT '조회수', -- 조회수
+  `udt`       DATETIME     NULL     COMMENT '수정일자', -- 수정일자
+  `ddt`       DATETIME     NULL     COMMENT '삭제일자', -- 삭제일자
+  `state`     INTEGER      NOT NULL DEFAULT 1 COMMENT '활성상태', -- 활성상태
+  `st_relo`   INTEGER      NULL     COMMENT '시군구번호', -- 시군구번호
+  `st_status` INTEGER      NULL     DEFAULT 0 COMMENT '모집상태', -- 모집상태
+  `rc_edt`    DATE         NULL     COMMENT '모집마감일' -- 모집마감일
+)
+COMMENT '게시글';
 
 -- 게시글
 ALTER TABLE `article`
@@ -132,22 +136,23 @@ ALTER TABLE `article`
     );
 
 ALTER TABLE `article`
-  MODIFY COLUMN `arno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `arno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '게시글번호';
 
 -- 댓글
 CREATE TABLE `comment` (
-  `cno`      INTEGER    NOT NULL, -- 댓글번호
-  `arno`     INTEGER    NOT NULL, -- 게시글번호
-  `uno`      INTEGER    NOT NULL, -- 작성자
-  `content`  MEDIUMTEXT NOT NULL, -- 내용
-  `cdt`      DATETIME   NOT NULL DEFAULT now(), -- 등록일자
-  `ord`      INTEGER    NULL,     -- 댓글순서
-  `step`     INTEGER    NULL,     -- 댓글단계
-  `udt`      DATETIME   NULL,     -- 수정일자
-  `status`   INTEGER    NOT NULL DEFAULT 0, -- 활성상태
-  `ddt`      DATETIME   NULL,     -- 삭제일자
-  `selected` INTEGER    NOT NULL DEFAULT 0 -- 대표답변여부
-);
+  `cno`      INTEGER    NOT NULL COMMENT '댓글번호', -- 댓글번호
+  `arno`     INTEGER    NOT NULL COMMENT '게시글번호', -- 게시글번호
+  `uno`      INTEGER    NOT NULL COMMENT '작성자', -- 작성자
+  `content`  MEDIUMTEXT NOT NULL COMMENT '내용', -- 내용
+  `cdt`      DATETIME   NOT NULL DEFAULT now() COMMENT '등록일자', -- 등록일자
+  `ord`      INTEGER    NULL     COMMENT '댓글순서', -- 댓글순서
+  `step`     INTEGER    NULL     COMMENT '댓글단계', -- 댓글단계
+  `udt`      DATETIME   NULL     COMMENT '수정일자', -- 수정일자
+  `state`    INTEGER    NOT NULL DEFAULT 1 COMMENT '활성상태', -- 활성상태
+  `ddt`      DATETIME   NULL     COMMENT '삭제일자', -- 삭제일자
+  `selected` INTEGER    NOT NULL DEFAULT 0 COMMENT '대표답변여부' -- 대표답변여부
+)
+COMMENT '댓글';
 
 -- 댓글
 ALTER TABLE `comment`
@@ -157,16 +162,18 @@ ALTER TABLE `comment`
     );
 
 ALTER TABLE `comment`
-  MODIFY COLUMN `cno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `cno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '댓글번호';
 
 -- 뱃지
 CREATE TABLE `badge` (
-  `bno`     INTEGER      NOT NULL, -- 뱃지번호
-  `name`    VARCHAR(50)  NOT NULL, -- 뱃지이름
-  `photo`   VARCHAR(255) NOT NULL, -- 사진
-  `tno`     INTEGER      NULL,     -- 태그번호
-  `content` MEDIUMTEXT   NULL      -- 내용
-);
+  `bno`     INTEGER      NOT NULL COMMENT '뱃지번호', -- 뱃지번호
+  `name`    VARCHAR(50)  NOT NULL COMMENT '뱃지이름', -- 뱃지이름
+  `photo`   VARCHAR(255) NOT NULL COMMENT '사진', -- 사진
+  `tno`     INTEGER      NULL     COMMENT '태그번호', -- 태그번호
+  `state`   INTEGER      NOT NULL DEFAULT 1 COMMENT '활성상태', -- 활성상태
+  `content` MEDIUMTEXT   NULL     COMMENT '내용' -- 내용
+)
+COMMENT '뱃지';
 
 -- 뱃지
 ALTER TABLE `badge`
@@ -176,15 +183,16 @@ ALTER TABLE `badge`
     );
 
 ALTER TABLE `badge`
-  MODIFY COLUMN `bno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `bno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '뱃지번호';
 
 -- 뱃지평가기준
 CREATE TABLE `bdg_stan` (
-  `bsno`   INTEGER NOT NULL, -- 뱃지평가기준번호
-  `bno`    INTEGER NOT NULL, -- 뱃지번호
-  `bsname` INTEGER NOT NULL, -- 뱃지평가명번호
-  `count`  INTEGER NULL      -- 기준횟수
-);
+  `bsno`   INTEGER NOT NULL COMMENT '뱃지평가기준번호', -- 뱃지평가기준번호
+  `bno`    INTEGER NOT NULL COMMENT '뱃지번호', -- 뱃지번호
+  `bsname` INTEGER NOT NULL COMMENT '뱃지평가명번호', -- 뱃지평가명번호
+  `count`  INTEGER NULL     COMMENT '기준횟수' -- 기준횟수
+)
+COMMENT '뱃지평가기준';
 
 -- 뱃지평가기준
 ALTER TABLE `bdg_stan`
@@ -194,16 +202,18 @@ ALTER TABLE `bdg_stan`
     );
 
 ALTER TABLE `bdg_stan`
-  MODIFY COLUMN `bsno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `bsno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '뱃지평가기준번호';
 
 -- 태그
 CREATE TABLE `tag` (
-  `tno`        INTEGER      NOT NULL, -- 태그번호
-  `name`       VARCHAR(50)  NOT NULL, -- 태그이름
-  `photo`      VARCHAR(255) NULL,     -- 사진
-  `tag_color`  VARCHAR(50)  NOT NULL DEFAULT '6C5DDF', -- 태그색
-  `font_color` VARCHAR(50)  NOT NULL DEFAULT '37393E' -- 폰트색
-);
+  `tno`        INTEGER      NOT NULL COMMENT '태그번호', -- 태그번호
+  `name`       VARCHAR(50)  NOT NULL COMMENT '태그이름', -- 태그이름
+  `photo`      VARCHAR(255) NULL     COMMENT '사진', -- 사진
+  `tag_color`  VARCHAR(50)  NOT NULL DEFAULT '6C5DDF' COMMENT '태그색', -- 태그색
+  `font_color` VARCHAR(50)  NOT NULL DEFAULT '37393E' COMMENT '폰트색', -- 폰트색
+  `state`      INTEGER      NOT NULL DEFAULT 1 COMMENT '활성상태' -- 활성상태
+)
+COMMENT '태그';
 
 -- 태그
 ALTER TABLE `tag`
@@ -219,13 +229,14 @@ CREATE UNIQUE INDEX `UIX_tag`
   );
 
 ALTER TABLE `tag`
-  MODIFY COLUMN `tno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `tno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '태그번호';
 
 -- 게시글_태그
 CREATE TABLE `arc_tag` (
-  `arno` INTEGER NOT NULL, -- 게시글번호
-  `tno`  INTEGER NOT NULL  -- 태그번호
-);
+  `arno` INTEGER NOT NULL COMMENT '게시글번호', -- 게시글번호
+  `tno`  INTEGER NOT NULL COMMENT '태그번호' -- 태그번호
+)
+COMMENT '게시글_태그';
 
 -- 게시글_태그
 ALTER TABLE `arc_tag`
@@ -237,10 +248,11 @@ ALTER TABLE `arc_tag`
 
 -- 팔로우
 CREATE TABLE `follow` (
-  `fwing_no` INTEGER  NOT NULL, -- 팔로잉번호
-  `fwer_no`  INTEGER  NOT NULL, -- 팔로워번호
-  `cdt`      DATETIME NOT NULL DEFAULT now() -- 생성일
-);
+  `fwing_no` INTEGER  NOT NULL COMMENT '팔로잉번호', -- 팔로잉번호
+  `fwer_no`  INTEGER  NOT NULL COMMENT '팔로워번호', -- 팔로워번호
+  `cdt`      DATETIME NOT NULL DEFAULT now() COMMENT '생성일' -- 생성일
+)
+COMMENT '팔로우';
 
 -- 팔로우
 ALTER TABLE `follow`
@@ -252,10 +264,11 @@ ALTER TABLE `follow`
 
 -- 유저_뱃지
 CREATE TABLE `usr_bdg` (
-  `uno` INTEGER NOT NULL, -- 사용자번호
-  `bno` INTEGER NOT NULL, -- 뱃지번호
-  `adt` DATE    NOT NULL DEFAULT now() -- 수여일
-);
+  `uno` INTEGER NOT NULL COMMENT '사용자번호', -- 사용자번호
+  `bno` INTEGER NOT NULL COMMENT '뱃지번호', -- 뱃지번호
+  `adt` DATE    NOT NULL DEFAULT now() COMMENT '수여일' -- 수여일
+)
+COMMENT '유저_뱃지';
 
 -- 유저_뱃지
 ALTER TABLE `usr_bdg`
@@ -267,9 +280,10 @@ ALTER TABLE `usr_bdg`
 
 -- 지역
 CREATE TABLE `region` (
-  `rgno` INTEGER     NOT NULL, -- 지역번호
-  `name` VARCHAR(50) NOT NULL  -- 지역명
-);
+  `rgno` INTEGER     NOT NULL COMMENT '지역번호', -- 지역번호
+  `name` VARCHAR(50) NOT NULL COMMENT '지역명' -- 지역명
+)
+COMMENT '지역';
 
 -- 지역
 ALTER TABLE `region`
@@ -286,10 +300,11 @@ CREATE UNIQUE INDEX `UIX_region`
 
 -- 게시글 첨부 사진
 CREATE TABLE `arc_pht` (
-  `pno`  INTEGER      NOT NULL, -- 사진번호
-  `arno` INTEGER      NOT NULL, -- 게시글번호
-  `adr`  VARCHAR(255) NOT NULL  -- 사진주소
-);
+  `pno`  INTEGER      NOT NULL COMMENT '사진번호', -- 사진번호
+  `arno` INTEGER      NOT NULL COMMENT '게시글번호', -- 게시글번호
+  `adr`  VARCHAR(255) NOT NULL COMMENT '사진주소' -- 사진주소
+)
+COMMENT '게시글 첨부 사진';
 
 -- 게시글 첨부 사진
 ALTER TABLE `arc_pht`
@@ -299,17 +314,18 @@ ALTER TABLE `arc_pht`
     );
 
 ALTER TABLE `arc_pht`
-  MODIFY COLUMN `pno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `pno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '사진번호';
 
 -- 신고
 CREATE TABLE `report` (
-  `rpno`   INTEGER  NOT NULL, -- 신고번호
-  `rptno`  INTEGER  NOT NULL, -- 신고유형번호
-  `uno`    INTEGER  NOT NULL, -- 신고자
-  `cdt`    DATETIME NOT NULL DEFAULT now(), -- 신고일
-  `status` INTEGER  NULL     DEFAULT 0, -- 처리상태
-  `pdt`    DATETIME NULL      -- 처리일
-);
+  `rpno`   INTEGER  NOT NULL COMMENT '신고번호', -- 신고번호
+  `rptno`  INTEGER  NOT NULL COMMENT '신고유형번호', -- 신고유형번호
+  `uno`    INTEGER  NOT NULL COMMENT '신고자', -- 신고자
+  `cdt`    DATETIME NOT NULL DEFAULT now() COMMENT '신고일', -- 신고일
+  `status` INTEGER  NOT NULL DEFAULT 0 COMMENT '처리상태', -- 처리상태
+  `pdt`    DATETIME NULL     COMMENT '처리일' -- 처리일
+)
+COMMENT '신고';
 
 -- 신고
 ALTER TABLE `report`
@@ -319,14 +335,15 @@ ALTER TABLE `report`
     );
 
 ALTER TABLE `report`
-  MODIFY COLUMN `rpno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `rpno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '신고번호';
 
 -- 유저_북마크_게시글
 CREATE TABLE `usr_bmk_arc` (
-  `uno`  INTEGER  NOT NULL, -- 사용자번호
-  `arno` INTEGER  NOT NULL, -- 게시글번호
-  `cdt`  DATETIME NOT NULL DEFAULT now() -- 북마크일시
-);
+  `uno`  INTEGER  NOT NULL COMMENT '사용자번호', -- 사용자번호
+  `arno` INTEGER  NOT NULL COMMENT '게시글번호', -- 게시글번호
+  `cdt`  DATETIME NOT NULL DEFAULT now() COMMENT '북마크일시' -- 북마크일시
+)
+COMMENT '유저_북마크_게시글';
 
 -- 유저_북마크_게시글
 ALTER TABLE `usr_bmk_arc`
@@ -338,13 +355,14 @@ ALTER TABLE `usr_bmk_arc`
 
 -- 알람
 CREATE TABLE `noti` (
-  `nno`     INTEGER      NOT NULL, -- 알람번호
-  `uno`     INTEGER      NOT NULL, -- 사용자번호
-  `cdt`     DATETIME     NOT NULL DEFAULT now(), -- 알람생성일
-  `content` MEDIUMTEXT   NULL,     -- 알람내용
-  `type`    VARCHAR(50)  NOT NULL, -- 알람타입
-  `url`     VARCHAR(255) NULL      --  URL
-);
+  `nno`     INTEGER      NOT NULL COMMENT '알람번호', -- 알람번호
+  `uno`     INTEGER      NOT NULL COMMENT '사용자번호', -- 사용자번호
+  `cdt`     DATETIME     NOT NULL DEFAULT now() COMMENT '알람생성일', -- 알람생성일
+  `content` MEDIUMTEXT   NULL     COMMENT '알람내용', -- 알람내용
+  `type`    VARCHAR(50)  NOT NULL COMMENT '알람타입', -- 알람타입
+  `url`     VARCHAR(255) NULL     COMMENT ' URL' --  URL
+)
+COMMENT '알람';
 
 -- 알람
 ALTER TABLE `noti`
@@ -354,14 +372,15 @@ ALTER TABLE `noti`
     );
 
 ALTER TABLE `noti`
-  MODIFY COLUMN `nno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `nno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '알람번호';
 
 -- 유저_팔로우_태그
 CREATE TABLE `usr_tag` (
-  `uno` INTEGER NOT NULL, -- 사용자번호
-  `tno` INTEGER NOT NULL, -- 태그번호
-  `cdt` DATE    NOT NULL DEFAULT now() -- 팔로우일시
-);
+  `uno` INTEGER NOT NULL COMMENT '사용자번호', -- 사용자번호
+  `tno` INTEGER NOT NULL COMMENT '태그번호', -- 태그번호
+  `cdt` DATE    NOT NULL DEFAULT now() COMMENT '팔로우일시' -- 팔로우일시
+)
+COMMENT '유저_팔로우_태그';
 
 -- 유저_팔로우_태그
 ALTER TABLE `usr_tag`
@@ -373,9 +392,10 @@ ALTER TABLE `usr_tag`
 
 -- 신고 유형
 CREATE TABLE `repo_type` (
-  `rptno` INTEGER     NOT NULL, -- 신고유형번호
-  `name`  VARCHAR(50) NOT NULL  -- 신고유형명
-);
+  `rptno` INTEGER     NOT NULL COMMENT '신고유형번호', -- 신고유형번호
+  `name`  VARCHAR(50) NOT NULL COMMENT '신고유형명' -- 신고유형명
+)
+COMMENT '신고 유형';
 
 -- 신고 유형
 ALTER TABLE `repo_type`
@@ -392,9 +412,10 @@ CREATE UNIQUE INDEX `UIX_repo_type`
 
 -- 뱃지평가
 CREATE TABLE `bdg_eva` (
-  `beno`   INTEGER     NOT NULL, -- 뱃지평가명번호
-  `bename` VARCHAR(50) NOT NULL  -- 평가명
-);
+  `beno`   INTEGER     NOT NULL COMMENT '뱃지평가명번호', -- 뱃지평가명번호
+  `bename` VARCHAR(50) NOT NULL COMMENT '평가명' -- 평가명
+)
+COMMENT '뱃지평가';
 
 -- 뱃지평가
 ALTER TABLE `bdg_eva`
@@ -404,13 +425,14 @@ ALTER TABLE `bdg_eva`
     );
 
 ALTER TABLE `bdg_eva`
-  MODIFY COLUMN `beno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `beno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '뱃지평가명번호';
 
 -- 카테고리
 CREATE TABLE `category` (
-  `cano` INTEGER     NOT NULL, -- 카테고리번호
-  `name` VARCHAR(50) NOT NULL  -- 카테고리명
-);
+  `cano` INTEGER     NOT NULL COMMENT '카테고리번호', -- 카테고리번호
+  `name` VARCHAR(50) NOT NULL COMMENT '카테고리명' -- 카테고리명
+)
+COMMENT '카테고리';
 
 -- 카테고리
 ALTER TABLE `category`
@@ -427,9 +449,10 @@ CREATE UNIQUE INDEX `UIX_category`
 
 -- 게시글신고
 CREATE TABLE `repo_arc` (
-  `rpno` INTEGER NOT NULL, -- 신고번호
-  `arno` INTEGER NOT NULL  -- 게시글번호
-);
+  `rpno` INTEGER NOT NULL COMMENT '신고번호', -- 신고번호
+  `arno` INTEGER NOT NULL COMMENT '게시글번호' -- 게시글번호
+)
+COMMENT '게시글신고';
 
 -- 게시글신고
 ALTER TABLE `repo_arc`
@@ -440,9 +463,10 @@ ALTER TABLE `repo_arc`
 
 -- 댓글신고
 CREATE TABLE `repo_comt` (
-  `rpno` INTEGER NOT NULL, -- 신고번호
-  `cno`  INTEGER NOT NULL  -- 댓글번호
-);
+  `rpno` INTEGER NOT NULL COMMENT '신고번호', -- 신고번호
+  `cno`  INTEGER NOT NULL COMMENT '댓글번호' -- 댓글번호
+)
+COMMENT '댓글신고';
 
 -- 댓글신고
 ALTER TABLE `repo_comt`
@@ -453,13 +477,14 @@ ALTER TABLE `repo_comt`
 
 -- 사용자차단
 CREATE TABLE `block` (
-  `blno`     INTEGER    NOT NULL, -- 사용자차단번호
-  `uno`      INTEGER    NOT NULL, -- 사용자번호
-  `cdt`      DATE       NOT NULL DEFAULT now(), -- 차단일자
-  `dates`    INTEGER    NOT NULL, -- 차단일수
-  `bl_rsn`   MEDIUMTEXT NOT NULL, -- 차단사유
-  `unbl_rsn` MEDIUMTEXT NULL      -- 해제사유
-);
+  `blno`     INTEGER    NOT NULL COMMENT '사용자차단번호', -- 사용자차단번호
+  `uno`      INTEGER    NOT NULL COMMENT '사용자번호', -- 사용자번호
+  `cdt`      DATE       NOT NULL DEFAULT now() COMMENT '차단일자', -- 차단일자
+  `dates`    INTEGER    NOT NULL COMMENT '차단일수', -- 차단일수
+  `bl_rsn`   MEDIUMTEXT NOT NULL COMMENT '차단사유', -- 차단사유
+  `unbl_rsn` MEDIUMTEXT NULL     COMMENT '해제사유' -- 해제사유
+)
+COMMENT '사용자차단';
 
 -- 사용자차단
 ALTER TABLE `block`
@@ -469,14 +494,15 @@ ALTER TABLE `block`
     );
 
 ALTER TABLE `block`
-  MODIFY COLUMN `blno` INTEGER NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN `blno` INTEGER NOT NULL AUTO_INCREMENT COMMENT '사용자차단번호';
 
 -- 지역_시군구
 CREATE TABLE `relo` (
-  `relo` INTEGER     NOT NULL, -- 시군구번호
-  `rgno` INTEGER     NOT NULL, -- 지역번호
-  `name` VARCHAR(50) NOT NULL  -- 시군구이름
-);
+  `relo` INTEGER     NOT NULL COMMENT '시군구번호', -- 시군구번호
+  `rgno` INTEGER     NOT NULL COMMENT '지역번호', -- 지역번호
+  `name` VARCHAR(50) NOT NULL COMMENT '시군구이름' -- 시군구이름
+)
+COMMENT '지역_시군구';
 
 -- 지역_시군구
 ALTER TABLE `relo`

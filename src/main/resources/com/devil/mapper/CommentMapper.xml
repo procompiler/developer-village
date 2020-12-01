@@ -38,6 +38,12 @@
     where cno = #{no}
 
   </update>
+  
+  <update id="inactive" parameterType="int">
+    update comment set
+      state = 0
+    where cno=#{no}
+  </update>
 <!--
 
   <select id="findAll" resultMap="CommentMap"	parameterType="string">

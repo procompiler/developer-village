@@ -1,50 +1,55 @@
 package com.devil.domain;
 
 public class Badge {
-	private int no;
-	private String name;
-	private String photo;
-	private int tagNo;
-	private String content;
+  private int no;
+  private String name;
+  private String photo;
+  private int tagNo;
+  private String content;
 
-	public int getNo() {
-		return no;
-	}
+  public int getNo() {
+    return no;
+  }
 
-	public void setNo(int no) {
-		this.no = no;
-	}
+  public Badge setNo(int no) {
+    this.no = no;
+    return this;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public Badge setName(String name) {
+    this.name = name;
+    return this;
+  }
 
-	public String getPhoto() {
-		return photo;
-	}
+  public String getPhoto() {
+    return photo;
+  }
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
+  public Badge setPhoto(String photo) {
+    this.photo = photo;
+    return this;
+  }
 
-	public int getTagNo() {
-		return tagNo;
-	}
+  public int getTagNo() {
+    return tagNo;
+  }
 
-	public void setTagNo(int tagNo) {
-		this.tagNo = tagNo;
-	}
+  public Badge setTagNo(int tagNo) {
+    this.tagNo = tagNo;
+    return this;
+  }
 
-	public String getContent() {
-		return content;
-	}
+  public String getContent() {
+    return content;
+  }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+  public Badge setContent(String content) {
+    this.content = content;
+    return this;
+  }
 
 }

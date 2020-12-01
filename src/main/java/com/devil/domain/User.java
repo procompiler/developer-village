@@ -16,10 +16,10 @@ public class User {
   private String githubURL;
   private String instarURL;
   private String twitterURL;
-  private boolean blocked;
+  private int blocked;
   private String tech;
-  private boolean auth;
-  private boolean noti;
+  private int auth;
+  private int noti;
 
   public int getNo() {
     return no;
@@ -91,10 +91,10 @@ public class User {
     this.twitterURL = twitterURL;
     return this;
   }
-  public boolean isBlocked() {
+  public int isBlocked() {
     return blocked;
   }
-  public User setBlocked(boolean blocked) {
+  public User setBlocked(int blocked) {
     this.blocked = blocked;
     return this;
   }
@@ -105,17 +105,17 @@ public class User {
     this.tech = tech;
     return this;
   }
-  public boolean isAuth() {
+  public int isAuth() {
     return auth;
   }
-  public User setAuth(boolean auth) {
+  public User setAuth(int auth) {
     this.auth = auth;
     return this;
   }
-  public boolean isNoti() {
+  public int isNoti() {
     return noti;
   }
-  public User setNoti(boolean noti) {
+  public User setNoti(int noti) {
     this.noti = noti;
     return this;
   }

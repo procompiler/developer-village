@@ -55,4 +55,11 @@ public class CommentDaoImpl implements CommentDao {
     }
   }
 
+  @Override
+  public int inactive(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("CommentDao.inactive", no);
+    }
+  }
+
 }
