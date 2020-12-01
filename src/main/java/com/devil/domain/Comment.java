@@ -33,7 +33,7 @@ public class Comment {
   public void setDeletedDate(String deletedDate) {
     this.deletedDate = deletedDate;
   }
-  public boolean isStatus() {
+  public boolean getStatus() {
     return status;
   }
   public void setStatus(boolean status) {
