@@ -104,12 +104,11 @@
     <set>
       <if test="nickname != null">nick = #{nickname},</if>
       <if test="password != ''">pwd = password(#{password}),</if>
-      <if test="photo != ''">photo = #{photo},</if>
       <if test="homepageURL != null">hp_url = #{homepageURL},</if>
-      <if test="githubURL != ''">gh_url = #{githubURL},</if>
-      <if test="instarURL != ''">in_url = #{instarURL},</if>
-      <if test="twitterURL != ''">tw_url = #{twitterURL},</if>
-      <if test="tech != ''">tech = #{tech},</if>
+      <if test="githubURL != null">gh_url = #{githubURL},</if>
+      <if test="instarURL != null">in_url = #{instarURL},</if>
+      <if test="twitterURL != null">tw_url = #{twitterURL},</if>
+      <if test="tech != null">tech = #{tech},</if>
       <if test="photo != ''">photo = #{photo}</if>
     </set>
     where uno = #{no}
