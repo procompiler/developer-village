@@ -35,7 +35,7 @@ public class ArticleListServlet extends HttpServlet {
     out.println("<body>");
     try {
       out.println("<h1>게시물 목록</h1>");
-      out.println("<button type='button' onclick=\"location.href='form.html'\">글쓰기</button>");
+      out.println("<button type='button' onclick=\"location.href='form'\">글쓰기</button>");
 
       List<Article> list = articleService.list(null);
       out.println("<table border='1'>");
@@ -50,15 +50,15 @@ public class ArticleListServlet extends HttpServlet {
       for (Article article : list) {
         
         out.printf(
-            "<tr>" + "<td>%d</td>" + "<td><a href='detail?no=%1$d'>%s</a>", article.getNo(), article.getTitle());
+            "<tr>" + "<td>%d</td>", article.getNo());
         List<Tag> tags = article.getTags();
-        out.println("<td>");
+        out.println("<td id='title'><ul id='tags'>");
         for (Tag tag : tags) {
-          out.printf("<span id='color' style='background-color: #%s; color: #%s>%s</span></td>" , tag.getTagColor(), tag.getFontColor(), tag.getName());
+          out.printf("<li id='color' style='background-color: #%s; color: #%s'>%s</li>" , tag.getTagColor(), tag.getFontColor(), tag.getName());
         }
-        out.println("</td>");
-        out.printf("<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>", 
-                article.getWriter().getNickname(),
+        out.println("</ul>");
+        out.printf("<a href='detail?no=%d'>%s</a></td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>", 
+                article.getNo(), article.getTitle(), article.getWriter().getNickname(),
                 formatter.format(article.getCreatedDate()), article.getViewCount());
       }
       out.println("</tbody>");

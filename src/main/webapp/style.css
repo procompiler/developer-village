@@ -16,6 +16,7 @@ table {
 	box-shadow: 0 0 1px black;
 	display: block;
 	margin: 20px 0px;
+	border-color: #37393E;
 }
 
 tbody tr {
@@ -43,13 +44,26 @@ textarea {
 	background-color: grey;
 }
 
+#tags {
+	list-style: none;	
+	padding: unset;
+	margin: 5px 0px;
+}
+
+#tags li {
+	margin-right: 8px;
+	display: inline;	
+	font-size: 14px;
+	text-transform: capitalize;
+}
+
 #color {
 	text-align: center;
 	color: #37393E;
 	border-radius: 6px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	padding: 3px 5px;
 	font-weight: bold;
+  padding: 2px 5px;
 }
 
 button {
@@ -84,8 +98,4 @@ a:hover {
 a:visited {
 	text-decoration: none;
 	color: #6C5DDF;
-}
-
-.btn-danger{
-	
 }

@@ -55,4 +55,11 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.delete("ArticleDao.delete", no);
     }
   }
+
+  @Override
+  public int insertTags(Article article) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("ArticleDao.insertTags", article);
+    }
+  } 
 }

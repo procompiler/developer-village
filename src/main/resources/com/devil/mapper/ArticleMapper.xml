@@ -26,8 +26,8 @@
     <collection property="tags" ofType="tag">
       <id column="tno" property="no"/>
       <result column="tag_name" property="name"/>
-      <result column="tag_color"    property="color"/>
-      <result column="font_color"    property="color"/>
+      <result column="tag_color"    property="tagColor"/>
+      <result column="font_color"    property="fontColor"/>
     </collection>
     
     <collection property="comments" ofType="comment">
@@ -44,9 +44,18 @@
     
   </resultMap>
   
-  <insert id="insert" parameterType="article">
+  <insert id="insert" parameterType="article" 
+  useGeneratedKeys="true" keyColumn="arno" keyProperty="no">
     insert into article(title,writer,rc_edt,content,cano) 
     values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
+  </insert>
+  
+  <insert id="insertTags" parameterType="article">
+    insert into arc_tag(tno, arno) 
+    values
+    <foreach collection="tags" item="tag" separator=",">
+      (#{tag.no},#{no})
+    </foreach>
   </insert>
   
   <sql id="sql1">

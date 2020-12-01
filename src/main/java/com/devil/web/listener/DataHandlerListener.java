@@ -47,7 +47,7 @@ public class DataHandlerListener implements ServletContextListener {
       BadgeDao badgeDao = new BadgeDaoImpl(sqlSessionFactory);
       CommentDao commentDao = new CommentDaoImpl(sqlSessionFactory);
       // Service 구현체 생성
-      ArticleService articleService = new DefaultArticleService(articleDao);
+      ArticleService articleService = new DefaultArticleService(articleDao, sqlSessionFactory);
       UserService userService = new DefaultUserService(userDao);
       TagService tagService = new DefaultTagService(tagDao);
       BadgeService badgeService = new DefaultBadgeService(badgeDao);
