@@ -79,7 +79,7 @@ public class TagAddServlet extends HttpServlet {
     try {
       Thumbnails.of(saveFilePath)
         .size(60, 60)
-        .outputFormat("jpg")
+        .outputFormat("png")
         .crop(Positions.CENTER)
         .toFiles(new Rename() {
         @Override
@@ -90,7 +90,7 @@ public class TagAddServlet extends HttpServlet {
       
       Thumbnails.of(saveFilePath)
         .size(120, 120)
-        .outputFormat("jpg")
+        .outputFormat("png")
         .crop(Positions.CENTER)
         .toFiles(new Rename(){
           @Override
