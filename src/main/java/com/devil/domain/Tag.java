@@ -6,6 +6,7 @@ public class Tag {
   private String photo;
   private String tagColor;
   private String fontColor;
+  private int state;
   
   public int getNo() {
     return no;
@@ -42,6 +43,10 @@ public class Tag {
     this.fontColor = fontColor;
     return this;
   }
-  
-
+  public int getState() {
+    return state;
+  }
+  public void setState(int state) {
+    this.state = state;
+  }
 }

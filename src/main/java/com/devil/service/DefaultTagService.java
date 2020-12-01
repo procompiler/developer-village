@@ -8,11 +8,11 @@ import com.devil.domain.Tag;
 
 public class DefaultTagService implements TagService {
   TagDao tagDao;
-  
+
   public DefaultTagService(TagDao tagDao) {
     this.tagDao = tagDao;
   }
-  
+
   @Override
   public int add(Tag tag) throws Exception {
     return tagDao.insert(tag);
@@ -23,14 +23,19 @@ public class DefaultTagService implements TagService {
     return tagDao.findAll(keyword);
   }
 
-@Override
-public Tag get(int no) throws Exception {
+  @Override
+  public Tag get(int no) throws Exception {
     return tagDao.findByNo(no);
-}
+  }
 
-@Override
-public int update(Tag tag) throws Exception {
-  return tagDao.update(tag);
-}
-  
+  @Override
+  public int update(Tag tag) throws Exception {
+    return tagDao.update(tag);
+  }
+
+  @Override
+  public int delete(int no) throws Exception {
+    return tagDao.inactive(no);
+  }
+
 }

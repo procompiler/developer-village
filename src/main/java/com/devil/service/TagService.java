@@ -9,4 +9,5 @@ public interface TagService {
   List<Tag> list (String keyword) throws Exception;
   Tag get(int no) throws Exception;
   int update(Tag tag) throws Exception;
+  int delete(int no) throws Exception;
 }

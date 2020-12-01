@@ -1,14 +1,12 @@
 package com.devil.dao.mariadb;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-
-import com.devil.dao.TagDao;
 import com.devil.domain.Tag;
+import com.devil.dao.TagDao;
 
-public class TagDaoImpl implements TagDao{
+public class TagDaoImpl implements TagDao {
 
   SqlSessionFactory sqlSessionFactory;
 
@@ -48,6 +46,13 @@ public class TagDaoImpl implements TagDao{
   public Tag findByNo(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectOne("TagDao.findByNo", no);
+    }
+  }
+
+  @Override
+  public int inactive(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.update("TagDao.inactive", no);
     }
   }
 }
