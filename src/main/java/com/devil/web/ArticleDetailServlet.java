@@ -90,8 +90,8 @@ public class ArticleDetailServlet extends HttpServlet {
                 + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
                 + "<td>%s</a></td>"
                 + "<td>%s</td>"
-                + "<td><a href='../comment/delete?no=%2$d&articleNo=%d'>삭제</a></td>"
-                + "<td><a href='../comment/update?no=%2$d&articleNo=%6$d'>수정</a></td>"
+                + "<td><a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>"
+                + "<td><a href='../comment/update?no=%6$d&articleNo=%7$d'>수정</a></td>"
                 + "<td>%s</td>"
                 + "</tr>\n",
                 comment.getWriter().getPhoto(),
@@ -99,6 +99,7 @@ public class ArticleDetailServlet extends HttpServlet {
                 comment.getWriter().getNickname(),
                 comment.getContent(),
                 formatter.format(comment.getCreatedDate()),
+                comment.getNo(),
                 article.getNo(),
                 comment.getState() == 1 ? "삭제안됨" : "삭제됨");
           }
