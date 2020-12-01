@@ -24,37 +24,33 @@ public class UserUpdateServlet extends HttpServlet {
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
 
+    User user = new User();
+    user.setNo(Integer.parseInt(request.getParameter("no")));
+    user.setNickname(request.getParameter("nickname"));
+    user.setPassword(request.getParameter("password"));
+    user.setHomepageURL(request.getParameter("homepage"));
+    user.setGithubURL(request.getParameter("githubURL"));
+    user.setInstarURL(request.getParameter("instarURL"));
+    user.setTwitterURL(request.getParameter("twitterURL"));
+    user.setTech(request.getParameter("tech"));
+    user.setBio(request.getParameter("bio"));
+
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
-    //out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+    out.printf("<meta http-equiv='Refresh' content='1;url=../user/detail?no=%d'>", user.getNo());
     out.println("<title>회원정보 수정</title></head>");
     out.println("<body>");
 
     try {
       out.println("<h1>회원정보 수정</h1>");
 
-      User user = new User();
-      user.setNo(Integer.parseInt(request.getParameter("no")));
-      user.setNickname(request.getParameter("nickname"));
-      user.setPassword(request.getParameter("password"));
-      user.setHomepageURL(request.getParameter("homepage"));
-      user.setGithubURL(request.getParameter("githubURL"));
-      user.setInstarURL(request.getParameter("instarURL"));
-      user.setTwitterURL(request.getParameter("twitterURL"));
-      user.setTech(request.getParameter("tech"));
+      userService.update(user);
 
-      user.setPhoto(request.getParameter("photo"));
-      int count = userService.update(user);
-
-      if (count == 0) {
-        out.println("<p>해당 번호의 회원이 없습니다.</p>");
-      } else {
-        out.println("<p>회원정보를 수정하였습니다.</p>");
-      }
+      out.println("<p>회원정보를 수정하였습니다.</p>");
 
     } catch (Exception e) {
       out.println("<h2>작업 처리 중 오류 발생!</h2>");

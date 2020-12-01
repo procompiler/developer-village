@@ -52,15 +52,15 @@ public class UserDetailServlet extends HttpServlet {
 
       out.println("<form action='updatePhoto' method='post' enctype='multipart/form-data'>");
       out.printf("<input type='hidden' name='no' value='%d'><br>\n", user.getNo());
-      out.printf("<img src='../upload/user/%s_160x160.jpg' alt='[%1$s]'>\n", user.getPhoto());
+      out.printf("<a href='../upload/user/%s'>\n<img src='../upload/user/%1$s_160x160.jpg' alt='[%1$s]'></a><br>\n", user.getPhoto());
       out.println("<input type='file' name='photo'><br>");
       out.println("<button>변경</button>");
       out.println("</form>");
       out.println("<br>");
 
       out.println("<form action='update' method='post'>");
-      out.printf("<p>닉네임: <input type='text' name='nickname' value='%s'></p>\n", user.getNickname());
       out.printf("<input type='hidden' name='no' value='%d'><br>\n", user.getNo());
+      out.printf("<p>닉네임: <input type='text' name='nickname' value='%s'></p>\n", user.getNickname());
       out.printf("<p>이메일: %s</p>\n", user.getEmail());
       out.printf("<p>이름: %s</p>\n", user.getName());
 
@@ -76,14 +76,16 @@ public class UserDetailServlet extends HttpServlet {
         out.println("<p>로그인 유형: 깃허브 가입회원</p>");
       }
 
+      out.printf("<p>소개: <input type='text' name='bio' value='%s'></p>\n", user.getBio());
       out.printf("<p>기술: <input type='text' name='tech' value='%s'></p>\n", user.getTech());
       out.printf("<p>개인 홈페이지: <input type='text' name='homepage' value='%s'></p>\n", user.getHomepageURL());
       out.printf("<p>깃허브: <input type='text' name='githubURL' value='%s'></p>\n", user.getGithubURL());
       out.printf("<p>인스타그램: <input type='text' name='instarURL' value='%s'></p>\n", user.getInstarURL());
       out.printf("<p>트위터: <input type='text' name='twitterURL' value='%s'></p>\n", user.getTwitterURL());
 
+      out.printf("<p>%s</p>", user.getState() == 1 ? "탈퇴됨" : "탈퇴안됌!");
       out.println("<button>정보 수정</button>");
-      out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">회원 삭제</button>\n", user.getNo());
+      out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">회원 탈퇴</button>\n", user.getNo());
 
       out.println("<a href='list' style='color:blue;'>회원 목록으로</a>");
       out.println("</form>\n");

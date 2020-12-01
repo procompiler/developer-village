@@ -37,6 +37,6 @@ public class DefaultUserService implements UserService {
 
   @Override
   public int delete(int no) throws Exception {
-    return userDao.delete(no);
+    return userDao.inactive(no);
   }
 }

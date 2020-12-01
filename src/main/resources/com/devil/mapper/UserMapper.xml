@@ -23,6 +23,7 @@
     <result column="tech"       property="tech"/>
     <result column="auth"       property="auth"/>
     <result column="noti"       property="noti"/>
+    <result column="bio"       property="bio"/>
     
   </resultMap>
 
@@ -41,6 +42,7 @@
       gh_url,
       in_url,
       tw_url,
+      bio,
       pwd, 
       photo,
       cdt,
@@ -69,6 +71,7 @@
       gh_url,
       in_url,
       tw_url,
+      bio,
       pwd, 
       cdt, 
       log_type,
@@ -109,7 +112,8 @@
       <if test="instarURL != null">in_url = #{instarURL},</if>
       <if test="twitterURL != null">tw_url = #{twitterURL},</if>
       <if test="tech != null">tech = #{tech},</if>
-      <if test="photo != ''">photo = #{photo}</if>
+      <if test="bio != null">bio = #{bio},</if>
+      <if test="photo != null">photo = #{photo}</if>
     </set>
     where uno = #{no}
   </update>
@@ -118,4 +122,10 @@
     delete from user
     where uno=#{no}
   </delete>
+  
+    <update id="inactive" parameterType="int">
+    update user set
+      state = 0
+    where uno=#{no}
+  </update>
 </mapper>

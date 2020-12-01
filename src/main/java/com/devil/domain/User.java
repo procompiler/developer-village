@@ -20,6 +20,8 @@ public class User {
   private String tech;
   private int auth;
   private int noti;
+  private String bio;
+  private int state;
 
   public int getNo() {
     return no;
@@ -91,13 +93,7 @@ public class User {
     this.twitterURL = twitterURL;
     return this;
   }
-  public int isBlocked() {
-    return blocked;
-  }
-  public User setBlocked(int blocked) {
-    this.blocked = blocked;
-    return this;
-  }
+
   public String getTech() {
     return tech;
   }
@@ -105,20 +101,7 @@ public class User {
     this.tech = tech;
     return this;
   }
-  public int isAuth() {
-    return auth;
-  }
-  public User setAuth(int auth) {
-    this.auth = auth;
-    return this;
-  }
-  public int isNoti() {
-    return noti;
-  }
-  public User setNoti(int noti) {
-    this.noti = noti;
-    return this;
-  }
+
   public Date getCreatedDate() {
     return createdDate;
   }
@@ -147,4 +130,40 @@ public class User {
     this.photo = photo;
     return this;
   }
+  public String getBio() {
+    return bio;
+  }
+  public User setBio(String bio) {
+    this.bio = bio;
+    return this;
+  }
+  public int getBlocked() {
+    return blocked;
+  }
+  public User setBlocked(int blocked) {
+    this.blocked = blocked;
+    return this;
+  }
+  public int getAuth() {
+    return auth;
+  }
+  public User setAuth(int auth) {
+    this.auth = auth;
+    return this;
+  }
+  public User setNoti(int noti) {
+    this.noti = noti;
+    return this;
+  }
+  public int getNoti() {
+    return noti;
+  }
+  public int getState() {
+    return state;
+  }
+  public User setState(int state) {
+    this.state = state;
+    return this;
+  }
+
 }

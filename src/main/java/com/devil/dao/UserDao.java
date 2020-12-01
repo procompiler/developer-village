@@ -12,5 +12,6 @@ public interface UserDao {
   public List<User> findAll(String keyword) throws Exception;
   public int update(User user) throws Exception;
   public User findByEmailPassword(String email, String password) throws Exception;
+  public int inactive(int no) throws Exception;
 
 }
