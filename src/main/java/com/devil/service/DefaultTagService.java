@@ -27,5 +27,10 @@ public class DefaultTagService implements TagService {
 public Tag get(int no) throws Exception {
     return tagDao.findByNo(no);
 }
+
+@Override
+public int update(Tag tag) throws Exception {
+  return tagDao.update(tag);
+}
   
 }

@@ -19,9 +19,9 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 *10)
-@WebServlet("/tag/add")
-public class TagAddServlet extends HttpServlet {
+@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
+@WebServlet("/tag/updatePhoto")
+public class TagUpdatePhotoServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -29,52 +29,60 @@ public class TagAddServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    TagService tagService = (TagService) ctx.getAttribute("tagService");
-
-    request.setCharacterEncoding("UTF-8");
+    TagService tagService =
+        (TagService) ctx.getAttribute("tagService");
 
     Tag tag = new Tag();
-    tag.setName(request.getParameter("name"));
-    tag.setTagColor(request.getParameter("tagColor").split("#")[1]);
-    tag.setFontColor(request.getParameter("fontColor").split("#")[1]);
-    
+    tag.setNo(Integer.parseInt(request.getParameter("no")));
+
+    // 태그 사진 파일 저장
     Part photoPart = request.getPart("photo");
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = ctx.getRealPath(
-        "/upload/tag/" + filename);
-    // 해당 위치에 업로드된 사진 파일을 저장한다.
-    photoPart.write(saveFilePath);
-    
-    // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
-    tag.setPhoto(filename);
-    
-    generatePhotoThumbnail(saveFilePath);
+    if (photoPart.getSize() > 0) {
+      String filename = UUID.randomUUID().toString();
+      String saveFilePath = ctx.getRealPath("/upload/tag/" + filename);
+      photoPart.write(saveFilePath);
+      tag.setPhoto(filename);
+
+      // 태그 사진의 썸네일 이미지 파일 생성하기
+      generatePhotoThumbnail(saveFilePath);
+    }
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    // 웹브라우저 제목에 출력될 내용
     out.println("<head>");
-    out.println("<meta http-equiv='Refresh' content='2;url=list'>");
-    out.println("<title>태그 등록</title></head>");
+    out.printf("<meta http-equiv='Refresh' content='1;url=detail?no=%d'>",
+        tag.getNo());
+    out.println("<title>태그 사진 수정</title></head>");
     out.println("<body>");
 
     try {
-      out.println("<h1>태그 등록</h1>");
-      tagService.add(tag);
-      out.println("<p>태그를 등록했습니다.</p>");
+      out.println("<h1>태그 사진 수정</h1>");
+
+      if (tag.getPhoto() != null) {
+        tagService.update(tag);
+        out.println("<p>태그 사진을 수정하였습니다.</p>");
+      } else {
+        out.println("<p>사진을 선택하지 않았습니다.</p>");
+      }
+
     } catch (Exception e) {
-      out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
+      e.printStackTrace();
+      out.println("<h2>작업 처리 중 오류 발생!</h2>");
+      out.printf("<pre>%s</pre>\n", e.getMessage());
+
       StringWriter errOut = new StringWriter();
       e.printStackTrace(new PrintWriter(errOut));
+      out.println("<h3>상세 오류 내용</h3>");
       out.printf("<pre>%s</pre>\n", errOut.toString());
     }
+
     out.println("</body>");
     out.println("</html>");
   }
-  
+
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath)//

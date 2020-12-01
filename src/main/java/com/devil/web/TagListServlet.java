@@ -50,7 +50,7 @@ public class TagListServlet extends HttpServlet {
             "<tr>"
         + "<td>%d</td>"
         + "<td id=\"title\"><a href='detail?no=%1$d'>%s</a></td>"
-        + "<td><img src='../upload/tag/%s_60x60.png' alt='%3$s'></td>"
+        + "<td><img src='../upload/tag/%s_80x80.png' alt='%3$s'></td>"
         + "<td><span id=\"color\" style=\"background-color:#%s; color:#%s\">%2$s</span></td>"
         + "</tr>\n",
             tag.getNo(),
