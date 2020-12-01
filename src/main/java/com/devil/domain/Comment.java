@@ -40,6 +40,7 @@ public class Comment {
   public int getState() {
     return state;
   }
+
   public Comment setState(int state) {
     this.state = state;
     return this;

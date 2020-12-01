@@ -66,6 +66,12 @@ public class ArticleDetailServlet extends HttpServlet {
         }
 
         out.printf("<p>카테고리: %s</p>", categoryName);
+        out.println("<table border='1'>");
+
+        out.println("<tbody>");
+
+
+        out.printf("<p>카테고리: %s</p>", categoryName);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         out.printf("<p>등록일: %s</p>", formatter.format(article.getCreatedDate()));
@@ -74,35 +80,32 @@ public class ArticleDetailServlet extends HttpServlet {
         out.println("<button>수정</button>");
         out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
         out.println("</form>");
+
+        out.println("<hr>");
         out.println("<h3>Comments</h3>");
         List<Comment> comments = article.getComments();
+        if (comments != null) {
+          for (Comment comment : comments) {
+            out.printf("<tr>"
+                + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
+                + "<td>%s</a></td>"
+                + "<td>%s</td>"
+                + "<td><a href='../comment/delete?no=%2$d&articleNo=%d'>삭제</a></td>"
+                + "<td><a href='../comment/update?no=%2$d&articleNo=%6$d'>수정</a></td>"
+                + "<td>%s</td>"
+                + "</tr>\n",
+                comment.getWriter().getPhoto(),
+                comment.getWriter().getNo(),
+                comment.getWriter().getNickname(),
+                comment.getContent(),
+                formatter.format(comment.getCreatedDate()),
+                article.getNo(),
+                comment.getState() == 1 ? "삭제안됨" : "삭제됨");
+          }
+          out.println("</tbody>");
+          out.println("</table>");
 
-        out.println("<table border='1'>");
-
-        out.println("<tbody>");
-
-
-        for (Comment comment : comments) {
-          out.printf("<tr>"
-              + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
-              + "<td>%s</a></td>"
-              + "<td>%s</td>"
-              + "<td><a href='../comment/delete?no=%2$d&articleNo=%d'>삭제</a></td>"
-              + "<td><a href='../comment/update?no=%2$d&articleNo=%6$d'>수정</a></td>"
-              + "<td>%s</td>"
-              + "</tr>\n",
-              comment.getWriter().getPhoto(),
-              comment.getWriter().getNo(),
-              comment.getWriter().getNickname(),
-              comment.getContent(),
-              formatter.format(comment.getCreatedDate()),
-              article.getNo(),
-              comment.getState() == 1 ? "삭제안됨" : "삭제됨");
-        }
-        out.println("</tbody>");
-        out.println("</table>");
-
-        /*
+          /*
         if (comments != null) {
           for (Comment comment : comments) {
             out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", comment.getWriter().getPhoto());
@@ -115,13 +118,17 @@ public class ArticleDetailServlet extends HttpServlet {
           }
         }
 
-         */
-        out.println("<form method='post' action='../comment/add'>");
-        out.printf("<input type='hidden' name=\"arno\" value='%d' readonly><br>", article.getNo());
-        out.println("<input type='text' name='content'><br>");
-        out.println("<button>댓글쓰기</button>");
-        out.println("</form>");
+           */
+          out.println("<form method='post' action='../comment/add'>");
+          out.printf("<input type='hidden' name=\"arno\" value='%d' readonly><br>", article.getNo());
+          out.println("<input type='text' name='content'><br>");
+          out.println("<button>댓글쓰기</button>");
+          out.println("</form>");
+        }
       }
+
+      out.println("</body>");
+      out.println("</html>");
 
     } catch (Exception e) {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
@@ -129,9 +136,5 @@ public class ArticleDetailServlet extends HttpServlet {
       e.printStackTrace(new PrintWriter(errOut));
       out.printf("<pre>%s</pre>\n", errOut.toString());
     }
-
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }
