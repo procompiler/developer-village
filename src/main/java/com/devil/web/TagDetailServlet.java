@@ -52,8 +52,8 @@ public class TagDetailServlet extends HttpServlet {
         out.println("<button>이미지 변경</button>");
         out.println("<form action='update' method='post'>");
         out.printf("<input type='hidden' name='no' value='%s'>", tag.getNo());
-        out.printf("<p>태그색: <input type='color' name='tagColor' value='%s'></p>\n", tag.getTagColor());
-        out.printf("<p>폰트색: <input type='color' name='fontColor' value='%s'></p>\n", tag.getFontColor());
+        out.printf("<p>태그색: <input type='color' name='tagColor' value='#%s'></p>\n", tag.getTagColor());
+        out.printf("<p>폰트색: <input type='color' name='fontColor' value='#%s'></p>\n", tag.getFontColor());
         out.println("<button>태그 수정</button>");
         out.println("</form>");
         out.println("<p><a href='list' style='color:white;'>태그 목록으로</a></p>");

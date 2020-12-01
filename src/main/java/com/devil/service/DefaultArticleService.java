@@ -1,6 +1,7 @@
 package com.devil.service;
 
 import java.util.List;
+import java.util.Map;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
 import com.devil.util.SqlSessionFactoryProxy;
@@ -29,10 +30,18 @@ public class DefaultArticleService implements ArticleService {
       factoryProxy.endTransaction();
     }
   }
+  @Override
+  public List<Article> list(Map<String, Object> keywords) {
+    return articleDao.findByDetailKeyword(keywords);
+  }
 
   @Override
   public List<Article> list(String keyword) throws Exception {
     return articleDao.findAll(keyword);
+  }
+  @Override
+  public List<Article> list() throws Exception {
+    return articleDao.findAll((String)null);
   }
 
   @Override
@@ -53,4 +62,6 @@ public class DefaultArticleService implements ArticleService {
   public int delete(int no) throws Exception {
     return articleDao.delete(no);
   }
+
+
 }

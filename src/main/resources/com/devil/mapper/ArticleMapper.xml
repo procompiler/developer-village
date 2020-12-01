@@ -89,6 +89,23 @@
   	order by a.arno desc
   </select>
   
+  <select id="findByDetailKeyword" resultMap="ArticleMap" parameterType="map">
+    <include refid="sql1"/>
+    <where>
+      <if test="title != null">
+        a.title like concat('%', #{title}, '%')
+      </if>
+      <if test="owner != null">
+        and m.nick like concat('%', #{writer}, '%')
+      </if>
+      <if test="tag != null">
+        and t.name like concat('%', #{tag}, '%')
+      </if>
+    </where>
+    order by a.arno desc
+  </select>
+  
+  
    <update id="update" parameterType="article">
     update article
     <set>
