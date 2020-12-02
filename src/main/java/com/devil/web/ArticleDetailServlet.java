@@ -71,7 +71,8 @@ public class ArticleDetailServlet extends HttpServlet {
         out.printf("<textarea name='content'>%s</textarea><br>\n", article.getContent());
         out.println("<button>수정</button>");
         out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
-        out.println("<button><a href='../report/report-article.html'>게시글 신고</a></button>");
+        out.println("<button type='button' class='btn-danger' onclick=\"location.href='../report/report-article.html'\">게시글 신고</a></button>");
+
         out.println("</form>");
 
         out.println("<hr>");
