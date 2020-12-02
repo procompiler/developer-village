@@ -69,14 +69,9 @@ public class TagUpdatePhotoServlet extends HttpServlet {
       }
 
     } catch (Exception e) {
-      e.printStackTrace();
-      out.println("<h2>작업 처리 중 오류 발생!</h2>");
-      out.printf("<pre>%s</pre>\n", e.getMessage());
-
-      StringWriter errOut = new StringWriter();
-      e.printStackTrace(new PrintWriter(errOut));
-      out.println("<h3>상세 오류 내용</h3>");
-      out.printf("<pre>%s</pre>\n", errOut.toString());
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
+      return;
     }
 
     out.println("</body>");

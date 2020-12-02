@@ -3,7 +3,6 @@ package com.devil.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -11,17 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 import com.devil.domain.User;
 import com.devil.service.UserService;
-import net.coobird.thumbnailator.ThumbnailParameter;
-import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Positions;
-import net.coobird.thumbnailator.name.Rename;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/user/updatePhoto")
-public class UserUpdatePhotoServlet extends HttpServlet {
+public class UserFollowTagServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -32,19 +27,19 @@ public class UserUpdatePhotoServlet extends HttpServlet {
     UserService userService =
         (UserService) ctx.getAttribute("userService");
 
+    HttpSession session = request.getSession();
+    User loginUser = session.getAttribute("loginUser");
     User user = new User();
-    user.setNo(Integer.parseInt(request.getParameter("no")));
+    user.setNo(c));
+    user.setNo()
 
-    // 회원 사진 파일 저장
-    Part photoPart = request.getPart("photo");
-    if (photoPart.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
-      String saveFilePath = ctx.getRealPath("/upload/user/" + filename);
-      photoPart.write(saveFilePath);
-      user.setPhoto(filename);
-
-      // 회원 사진의 썸네일 이미지 파일 생성하기
-      generatePhotoThumbnail(saveFilePath);
+    
+    if (loginUser != null) {
+      .setWriter(loginUser);
+      articleService.add(article);
+      out.println("게시글을 등록했습니다.");
+    } else {
+      out.println("로그인을 해주세요!");
     }
 
     response.setContentType("text/html;charset=UTF-8");
@@ -75,43 +70,5 @@ public class UserUpdatePhotoServlet extends HttpServlet {
     }
     out.println("</body>");
     out.println("</html>");
-  }
-
-  private void generatePhotoThumbnail(String saveFilePath) {
-    try {
-      Thumbnails.of(saveFilePath)//
-      .size(40, 40)//
-      .crop(Positions.CENTER)
-      .outputFormat("jpg")//
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
-        }
-      });
-
-      Thumbnails.of(saveFilePath)//
-      .size(80, 80)//
-      .outputFormat("jpg") //
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_80x80";
-        }
-      });
-
-      Thumbnails.of(saveFilePath)
-      .size(160, 160)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_160x160";
-        }
-      });
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 }
