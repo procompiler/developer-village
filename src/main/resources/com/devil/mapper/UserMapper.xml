@@ -45,6 +45,7 @@
       tw_url,
       bio,
       state,
+      blocked,
       pwd, 
       photo,
       cdt,

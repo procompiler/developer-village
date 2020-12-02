@@ -99,7 +99,8 @@ public class UserListServlet extends HttpServlet {
             user.getName(),
             formatter.format(user.getCreatedDate()),
             user.getState() == 1 ? "" : "탈퇴한 회원",
-                loginType);
+                loginType,
+                user.getBlocked() == 1 ? "차단중" : "");
       }
       out.println("</table>");
 
