@@ -1,6 +1,7 @@
 package com.devil.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
   private int no;
@@ -22,6 +23,7 @@ public class User {
   private int noti;
   private String bio;
   private int state;
+  private List<Tag> followingTags;
 
   public int getNo() {
     return no;
@@ -97,6 +99,7 @@ public class User {
   public String getTech() {
     return tech;
   }
+  
   public User setTech(String tech) {
     this.tech = tech;
     return this;
@@ -164,6 +167,13 @@ public class User {
   public User setState(int state) {
     this.state = state;
     return this;
+  }
+  
+  public List<Tag> getFollowingTags() {
+    return followingTags;
+  }
+  public void setFollowingTags(List<Tag> followingTags) {
+    this.followingTags = followingTags;
   }
 
 }
