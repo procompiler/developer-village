@@ -9,4 +9,5 @@ public interface BadgeDao {
   public List<Badge> findAll(String keyword) throws Exception;
   public Badge findByNo(int no) throws Exception;
   public int delete(int no) throws Exception;
+  public int inactive(int no) throws Exception;
 }

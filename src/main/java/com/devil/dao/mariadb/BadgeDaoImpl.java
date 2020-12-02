@@ -49,6 +49,10 @@ public class BadgeDaoImpl implements BadgeDao {
       return sqlSession.delete("BadgeDao.delete", no);
     }
   }
-
-
+  @Override
+  public int inactive(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("BadgeDao.inactive", no);
+    }
+  }
 }
