@@ -1,11 +1,24 @@
 package com.devil.domain;
 
+import java.util.List;
+
 public class Badge {
   private int no;
   private String name;
   private String photo;
-  private int tagNo;
+  private List<Tag> tagNo;
+  private int state;
   private String content;
+
+
+  public int getState() {
+    return state;
+  }
+
+  public Badge setState(int state) {
+    this.state = state;
+    return this;
+  }
 
   public int getNo() {
     return no;
@@ -34,11 +47,11 @@ public class Badge {
     return this;
   }
 
-  public int getTagNo() {
+  public List<Tag> getTagNo() {
     return tagNo;
   }
 
-  public Badge setTagNo(int tagNo) {
+  public Badge setTagNo(List<Tag> tagNo) {
     this.tagNo = tagNo;
     return this;
   }

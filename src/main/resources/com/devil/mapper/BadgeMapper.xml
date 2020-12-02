@@ -5,44 +5,26 @@
 
 <mapper namespace="BadgeDao">
 
-
+    <!--result db의 컬럼이나 별친된 컬럼라벨 
+       property 결과칼럼에 매핑하기위한 필드나 프로퍼
+     -->
+<!--    db컬럼                      필드파라미터    -->
   <resultMap type="badge"       id="BadgeMap">
     <id column="bno"            property="no"/>
     <result column="name"       property="name"/>
     <result column="photo"      property="photo"/>
     <result column="content"    property="content"/>
+    <result column="state"      property="state"/>    
    
-    <!-- 
     <association property="tagNo" javaType="tag">
-		<result column="tno"      property="tagNo"/>
-   	 	<result column="t_name"      property="name"/>
-   	 	<result column="t_photo"      property="photo"/>
-	    <result column="color"      property="color"/>
+      <id column="tno"          property="tagNo"/>
+        <result column="tag_name" property="name"/>
+      <result column="tag_color"    property="tagColor"/>
+      <result column="font_color"    property="fontColor"/>
     </association>
-     -->
-<!-- 
-    <association property="tno" javaType="tag">
-      <id column="tno"          property="no"/>
-      <result column="name"     property="name"/>
-      <result column="photo"     property="photo"/>
-      <result column="color"     property="color"/>
-    </association>
- -->
-    
+   
   </resultMap>
   
-    <sql id="sql1">
-	select 
-		b.bno, 
-		b.name,
-        b.photo,
-        b.content,
-        t.tno,
-        t.name,
-        t.photo,
-        t.color
-	from badge b
-	inner join tag t on t.tno = b.tno
     <!-- 
     select 
       b.bno, 
@@ -55,15 +37,29 @@
       badge a
       inner join tag t on b.tno=t.tno
      -->
-  </sql>
+    <select id="findByNo" resultMap="BadgeMap" parameterType="int">
+    select 
+      b.bno,
+      b.name, 
+      b.photo,
+      b.content
+    from 
+      badge b
+      inner join tag t on t.tno= b.bno 
+     where b.bno=#{no}  
+    </select>
+
   <select id="findAll" resultMap="BadgeMap" parameterType="string">
   	<!-- <include refid="sql1"/> -->
     select
-      bno,
-      name, 
-      photo,
-      content
-    from badge
+      b.bno,
+      b.name, 
+      b.photo,
+      b.content
+      
+    from badge b
+    inner join tag t on t.tno= b.bno
+   
   	<!-- 
   	<if test="keyword != null">
   	where
@@ -93,24 +89,15 @@
     </set>
     where no = #{no}
   </update>
+ -->
+     <update id="inactive" parameterType="int">
+    update badge set
+      state = 0
+    where bno=#{no}
+    </update>
     
-    <select id="findByNo" resultMap="BadgeMap" parameterType="int">
-    select 
-      b.arno, 
-      b.title,
-      b.content,
-      b.cdt,  
-      a.cano,
-    from 
-      badge a
-      inner join user u on a.writer=u.uno   
-     where b.bno=#{no}  
-    </select>
-     
-
 	  <delete id="delete" parameterType="int">
 	    delete from badge
-	    where no=#{no}
+	    where bno=#{no}
 	  </delete>
- -->
 </mapper>

@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -48,6 +47,8 @@ public class BadgeListServlet extends HttpServlet {
       out.println("</tr>");
       out.println("</thead>");
       out.println("<tbody>");
+
+
 
       for (Badge badge : list) {
         out.printf(

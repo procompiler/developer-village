@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +19,7 @@ public class BadgeDeleteServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    BadgeService BadgeService = (BadgeService) ctx.getAttribute("BadgeService");
+    BadgeService badgeService = (BadgeService) ctx.getAttribute("badgeService");
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -37,7 +36,7 @@ public class BadgeDeleteServlet extends HttpServlet {
 
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (BadgeService.delete(no) == 0) {
+      if (badgeService.delete(no) == 0) {
         out.println("<p>해당 번호의 뱃지가 없습니다.</p>");
       } else {
         out.println("<p>뱃지를 삭제하였습니다.</p>");
@@ -48,7 +47,6 @@ public class BadgeDeleteServlet extends HttpServlet {
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-
     out.println("</body>");
     out.println("</html>");
   }

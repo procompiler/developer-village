@@ -1,7 +1,6 @@
 package com.devil.service;
 
 import java.util.List;
-
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 
@@ -28,14 +27,13 @@ public class DefaultBadgeService implements BadgeService {
     return badge;
   }
 
-@Override
-public int update(Badge badge) throws Exception {
-	return badgeDao.update(badge);
-}
+  @Override
+  public int update(Badge badge) throws Exception {
+    return badgeDao.update(badge);
+  }
 
-@Override
-public int delete(int no) throws Exception {
-	return badgeDao.delete(no);
-}
-
+  @Override
+  public int delete(int no) throws Exception {
+    return badgeDao.inactive(no);
+  }
 }
