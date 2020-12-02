@@ -54,7 +54,6 @@ public class ArticleDetailServlet extends HttpServlet {
         out.printf("<input type='text' name='title' value='%s'><br>", article.getTitle());
         out.printf("<p>작성자: %s</p>", article.getWriter().getNickname());
 
-
         int categoryNo = article.getCategoryNo();
         String categoryName = null;
         switch (categoryNo) {
@@ -72,6 +71,7 @@ public class ArticleDetailServlet extends HttpServlet {
         out.printf("<textarea name='content'>%s</textarea><br>\n", article.getContent());
         out.println("<button>수정</button>");
         out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
+        out.println("<button><a href='../report/report-article.html'>게시글 신고</a></button>");
         out.println("</form>");
 
         out.println("<hr>");
@@ -95,33 +95,33 @@ public class ArticleDetailServlet extends HttpServlet {
             out.println("</form>\n");
           }
 
-//        if (comments != null) {
-//          out.println("<table border='1'>");
-//          out.println("<tbody>");
-//          for (Comment comment : comments) {
-//            out.printf("<form action='../comment/update?no=%d&articleNo=%d' method='post'>",
-//                comment.getNo(), article.getNo());
-//            out.printf("<tr>"
-//                + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
-//                + "<td><textarea name='content'>%s</textarea><br></td>"
-//                + "<td>%s</td>"
-//                + "<td><a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>"
-//                + "<td><button>수정</button></td>"
-//                + "<td>%s</td>"
-//                + "</tr>\n",
-//                comment.getWriter().getPhoto(),
-//                comment.getWriter().getNo(),
-//                comment.getWriter().getNickname(),
-//                comment.getContent(),
-//                formatter.format(comment.getCreatedDate()),
-//                comment.getNo(),
-//                article.getNo(),
-//                comment.getState() == 1 ? "삭제안됨" : "삭제됨");
-//            out.println("</form>");
-//          }
-//
-//          out.println("</tbody>");
-//          out.println("</table>");
+          //        if (comments != null) {
+          //          out.println("<table border='1'>");
+          //          out.println("<tbody>");
+          //          for (Comment comment : comments) {
+          //            out.printf("<form action='../comment/update?no=%d&articleNo=%d' method='post'>",
+          //                comment.getNo(), article.getNo());
+          //            out.printf("<tr>"
+          //                + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
+          //                + "<td><textarea name='content'>%s</textarea><br></td>"
+          //                + "<td>%s</td>"
+          //                + "<td><a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>"
+          //                + "<td><button>수정</button></td>"
+          //                + "<td>%s</td>"
+          //                + "</tr>\n",
+          //                comment.getWriter().getPhoto(),
+          //                comment.getWriter().getNo(),
+          //                comment.getWriter().getNickname(),
+          //                comment.getContent(),
+          //                formatter.format(comment.getCreatedDate()),
+          //                comment.getNo(),
+          //                article.getNo(),
+          //                comment.getState() == 1 ? "삭제안됨" : "삭제됨");
+          //            out.println("</form>");
+          //          }
+          //
+          //          out.println("</tbody>");
+          //          out.println("</table>");
 
           /*
         if (comments != null) {
