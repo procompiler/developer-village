@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,9 +46,10 @@ public class TagDetailServlet extends HttpServlet {
 
         out.println("<form action='updatePhoto' method='post' enctype='multipart/form-data'>");
         out.printf("<input type='hidden' name='no' value='%s'>", tag.getNo());
-        out.printf("<img src='../upload/tag/%s_120x120.png' alt='[%1$s]'>", tag.getPhoto());
+        out.printf("<img src='../upload/tag/%s_160x160.png' alt='[%1$s]'>", tag.getPhoto());
         out.println("<input type='file' name='photo'><br>");
         out.println("<button>이미지 변경</button>");
+        out.println("</form>");
         out.println("<form action='update' method='post'>");
         out.printf("<input type='hidden' name='no' value='%s'>", tag.getNo());
         out.printf("<p>태그색: <input type='color' name='tagColor' value='#%s'></p>\n", tag.getTagColor());

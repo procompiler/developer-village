@@ -48,7 +48,7 @@
       <if test="tagColor != null">tag_color = #{tagColor},</if>
       <if test="fontColor != null">font_color = #{fontColor},</if>
     </set>
-    where tno = #{no}
+    where tno=#{no}
   </update>
     
   <delete id="delete" parameterType="int">

@@ -1,8 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -32,39 +30,34 @@ public class TagUpdatePhotoServlet extends HttpServlet {
     TagService tagService =
         (TagService) ctx.getAttribute("tagService");
 
-    Tag tag = new Tag();
-    tag.setNo(Integer.parseInt(request.getParameter("no")));
-
-    // 태그 사진 파일 저장
-    Part photoPart = request.getPart("photo");
-    if (photoPart.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
-      String saveFilePath = ctx.getRealPath("/upload/tag/" + filename);
-      photoPart.write(saveFilePath);
-      tag.setPhoto(filename);
-
-      // 태그 사진의 썸네일 이미지 파일 생성하기
-      generatePhotoThumbnail(saveFilePath);
-    }
-
 
     try {
+      Tag tag = new Tag();
+      tag.setNo(Integer.parseInt(request.getParameter("no")));
 
-      if (tag.getPhoto() != null) {
-        tagService.update(tag);
-        out.println("<p>태그 사진을 수정하였습니다.</p>");
-      } else {
-        out.println("<p>사진을 선택하지 않았습니다.</p>");
+      // 태그 사진 파일 저장
+      Part photoPart = request.getPart("photo");
+      if (photoPart.getSize() > 0) {
+        String filename = UUID.randomUUID().toString();
+        String saveFilePath = ctx.getRealPath("/upload/tag/" + filename);
+        photoPart.write(saveFilePath);
+        tag.setPhoto(filename);
+        
+        // 태그 사진의 썸네일 이미지 파일 생성하기
+        generatePhotoThumbnail(saveFilePath);
       }
+      int count = tagService.update(tag);
+      
+      if (count == 0) {
+        throw new Exception("해당 태그가 없습니다.");
+      }
+      response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
