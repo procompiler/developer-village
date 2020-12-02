@@ -1,8 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -51,27 +49,15 @@ public class TagAddServlet extends HttpServlet {
     generatePhotoThumbnail(saveFilePath);
 
     response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    // 웹브라우저 제목에 출력될 내용
-    out.println("<head>");
-    out.println("<meta http-equiv='Refresh' content='2;url=list'>");
-    out.println("<title>태그 등록</title></head>");
-    out.println("<body>");
 
     try {
-      out.println("<h1>태그 등록</h1>");
       tagService.add(tag);
-      out.println("<p>태그를 등록했습니다.</p>");
+      response.sendRedirect("list");
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-    out.println("</body>");
-    out.println("</html>");
   }
   
   private void generatePhotoThumbnail(String saveFilePath) {

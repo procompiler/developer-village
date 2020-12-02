@@ -15,7 +15,7 @@ import com.devil.domain.User;
 import com.devil.service.UserService;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/user/updatePhoto")
+@WebServlet("/user/followTag")
 public class UserFollowTagServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
