@@ -25,6 +25,12 @@
     <result column="noti"       property="noti"/>
     <result column="bio"       property="bio"/>
     <result column="state"       property="state"/>
+    <collection property="tags" ofType="tag">
+      <id column="tno" property="no"/>
+      <result column="tag_name" property="name"/>
+      <result column="tag_color"    property="tagColor"/>
+      <result column="font_color"    property="fontColor"/>
+    </collection>
     
   </resultMap>
 
@@ -35,83 +41,82 @@
   
   <sql id="sql1">
     select 
-      uno, 
-      email, 
-      nick,
-      name, 
-      hp_url,
-      gh_url,
-      in_url,
-      tw_url,
-      bio,
-      state,
-      blocked,
-      pwd, 
-      photo,
-      cdt,
-      log_type
+      u.uno, 
+      u.email, 
+      u.nick,
+      u.name, 
+      u.hp_url,
+      u.gh_url,
+      u.in_url,
+      u.tw_url,
+      u.bio,
+      u.state,
+      u.pwd, 
+      u.photo,
+      u.cdt,
+      u.log_type,
+      ut.tno,
+      t.name tag_name,
+      t.tag_color,
+      t.font_color
     from 
-      user
+      user u
+      left outer join usr_tag ut on u.uno=ut.uno
+      left outer join tag t on ut.tno = t.tno
   </sql>
   
   <select id="findAll" resultMap="UserMap" parameterType="string">
-  	<include refid="sql1"/>
-  	<if test="keyword != null">
-  	<bind name="pattern" value="'%' + _parameter + '%'" />
-  	where
-  		email like concat('%', #{keyword}, '%')
-  		or nick like concat('%', #{keyword}, '%')
-  	</if>
-  	order by uno desc
+    <include refid="sql1"/>
+    <if test="keyword != null">
+    <bind name="pattern" value="'%' + _parameter + '%'" />
+    where
+      email like concat('%', #{keyword}, '%')
+      or nick like concat('%', #{keyword}, '%')
+    </if>
+    order by uno desc
   </select>
   
   <select id="findByNo" resultMap="UserMap" parameterType="int">
     select 
-      uno, 
-      email, 
-      nick,
-      name,
-      hp_url,
-      gh_url,
-      in_url,
-      tw_url,
-      bio,
-      state,
-      pwd, 
-      cdt, 
-      log_type,
-      photo,
-      hp_url,
-      tech
+      u.uno, 
+      u.email, 
+      u.nick,
+      u.name,
+      u.hp_url,
+      u.gh_url,
+      u.in_url,
+      u.tw_url,
+      u.bio,
+      u.state,
+      u.pwd, 
+      u.cdt, 
+      u.log_type,
+      u.photo,
+      u.hp_url,
+      u.tech,
+      ut.tno,
+      t.name tag_name,
+      t.tag_color,
+      t.font_color
     from 
-      user
+      user u
+      left outer join usr_tag ut on u.uno=ut.uno
+      left outer join tag t on ut.tno = t.tno
     where uno=#{no}
   </select>
   
   <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
-    select
-      uno, 
-      email, 
-      nick,
-      name,
-      pwd, 
-      cdt, 
-      log_type,
-      photo,
-      hp_url,
-      tech
-    from 
-      user
+    <include refid="sql1"/>
     where
      email = #{email}
      and pwd = password(#{password})
   </select>
   
-    <update id="update" parameterType="user">
+  <update id="update" parameterType="user">
     update user
     <set>
       <if test="nickname != null">nick = #{nickname},</if>
-      <if test="password != ''">pwd = password(#{password}),</if>
+      <if test="password != null">pwd = password(#{password}),</if>
       <if test="homepageURL != null">hp_url = #{homepageURL},</if>
       <if test="githubURL != null">gh_url = #{githubURL},</if>
       <if test="instarURL != null">in_url = #{instarURL},</if>

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.UserService;
 
@@ -18,7 +19,7 @@ public class UserFollowTagServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
@@ -27,38 +28,20 @@ public class UserFollowTagServlet extends HttpServlet {
 
     
     User user = (User) request.getSession().getAttribute("loginUser");
-    //    User user = new User();
-    //    user.setNo(c));
-    //    user.setNo()
-    //
-    //
-    //    if (loginUser != null) {
-    //      .setWriter(loginUser);
-    //      articleService.add(article);
-    //      out.println("게시글을 등록했습니다.");
-    //    } else {
-    //      out.println("로그인을 해주세요!");
-    //    }
-
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
+    Tag tag = new Tag();
+    tag.setNo(Integer.parseInt(request.getParameter("tno")));
+    user.getTags().add(tag);
 
     try {
-
-      if (user.getPhoto() != null) {
-        userService.update(user);
-        out.println("<p>회원 사진을 수정하였습니다.</p>");
-      } else {
-        out.println("<p>사진을 선택하지 않았습니다.</p>");
-      }
+      if (userService.update(user) == 0) {
+        throw new Exception("이미 팔로우하고 있는 태그입니다.");
+      } 
+      response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }

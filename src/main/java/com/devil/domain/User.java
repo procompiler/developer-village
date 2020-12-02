@@ -23,7 +23,7 @@ public class User {
   private int noti;
   private String bio;
   private int state;
-  private List<Tag> followingTags;
+  private List<Tag> tags;
 
   public int getNo() {
     return no;
@@ -169,11 +169,11 @@ public class User {
     return this;
   }
   
-  public List<Tag> getFollowingTags() {
-    return followingTags;
+  public List<Tag> getTags() {
+    return tags;
   }
-  public void setFollowingTags(List<Tag> followingTags) {
-    this.followingTags = followingTags;
+  public void setTags(List<Tag> tags) {
+    this.tags = tags;
   }
 
 }
