@@ -23,12 +23,11 @@ public class CommentUpdateServlet extends HttpServlet {
 
     try {
       Comment comment = new Comment();
-      comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
       comment.setNo(Integer.parseInt(request.getParameter("cno")));
+      comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
       comment.setContent(request.getParameter("content"));
-      int count = commentService.update(comment);
 
-      if (count == 0) {
+      if (commentService.update(comment) == 0) {
         throw new Exception("해당 댓글이 없습니다.");
       }
 

@@ -65,19 +65,12 @@ public class ArticleDetailServlet extends HttpServlet {
         }
 
         out.printf("<p>카테고리: %s</p>", categoryName);
-        out.println("<table border='1'>");
-
-        out.println("<tbody>");
-
-
-        out.printf("<p>카테고리: %s</p>", categoryName);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         out.printf("<p>등록일: %s</p>", formatter.format(article.getCreatedDate()));
         out.printf("<p>조회수: %d</p>", article.getViewCount());
         out.printf("<textarea name='content'>%s</textarea><br>\n", article.getContent());
         out.println("<button>수정</button>");
-        out.printf("<button type='button' class='btn-danger' onclick=\"location.href='detail?no=%d'\">수정</button>", article.getNo());
         out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
         out.println("</form>");
 
@@ -86,25 +79,45 @@ public class ArticleDetailServlet extends HttpServlet {
         List<Comment> comments = article.getComments();
         if (comments != null) {
           for (Comment comment : comments) {
-            out.printf("<tr>"
-                + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
-                + "<td>%s</a></td>"
-                + "<td>%s</td>"
-                + "<td><a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>"
-                + "<td><a href='../comment/update?no=%6$d&articleNo=%7$d'>수정</a></td>"
-                + "<td>%s</td>"
-                + "</tr>\n",
-                comment.getWriter().getPhoto(),
-                comment.getWriter().getNo(),
-                comment.getWriter().getNickname(),
-                comment.getContent(),
-                formatter.format(comment.getCreatedDate()),
-                comment.getNo(),
-                article.getNo(),
-                comment.getState() == 1 ? "삭제안됨" : "삭제됨");
+            out.printf("<form action='../comment/update?no=%d&articleNo=%d' method='post'>",
+                comment.getNo(), article.getNo());
+            out.printf("<img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a>",
+                comment.getWriter().getPhoto(), comment.getWriter().getNo(), comment.getWriter().getNickname());
+            out.printf("<textarea name='content'>%s</textarea>", comment.getContent());
+            out.printf("%s</td>", formatter.format(comment.getCreatedDate()));
+            out.printf("<a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>", comment.getNo(), article.getNo());
+            out.println("<button>수정</button>");
+            out.printf("%s</td>", comment.getState() == 1 ? "삭제안됨" : "삭제됨");
+            out.println("</form>");
           }
-          out.println("</tbody>");
-          out.println("</table>");
+
+//        if (comments != null) {
+//          out.println("<table border='1'>");
+//          out.println("<tbody>");
+//          for (Comment comment : comments) {
+//            out.printf("<form action='../comment/update?no=%d&articleNo=%d' method='post'>",
+//                comment.getNo(), article.getNo());
+//            out.printf("<tr>"
+//                + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
+//                + "<td><textarea name='content'>%s</textarea><br></td>"
+//                + "<td>%s</td>"
+//                + "<td><a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>"
+//                + "<td><button>수정</button></td>"
+//                + "<td>%s</td>"
+//                + "</tr>\n",
+//                comment.getWriter().getPhoto(),
+//                comment.getWriter().getNo(),
+//                comment.getWriter().getNickname(),
+//                comment.getContent(),
+//                formatter.format(comment.getCreatedDate()),
+//                comment.getNo(),
+//                article.getNo(),
+//                comment.getState() == 1 ? "삭제안됨" : "삭제됨");
+//            out.println("</form>");
+//          }
+//
+//          out.println("</tbody>");
+//          out.println("</table>");
 
           /*
         if (comments != null) {
