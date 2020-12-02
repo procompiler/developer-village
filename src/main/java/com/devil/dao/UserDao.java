@@ -1,10 +1,10 @@
 package com.devil.dao;
 
 import java.util.List;
+import java.util.Map;
 import com.devil.domain.User;
 
 public interface UserDao {
-
   public int insert(User user) throws Exception;
   public int delete(int no) throws Exception;
   public User findByNo(int no) throws Exception;
@@ -13,5 +13,5 @@ public interface UserDao {
   public int update(User user) throws Exception;
   public User findByEmailPassword(String email, String password) throws Exception;
   public int inactive(int no) throws Exception;
-
+  public int insertTag(Map<String, Object> map) throws Exception;
 }

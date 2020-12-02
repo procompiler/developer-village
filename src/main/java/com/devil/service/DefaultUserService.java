@@ -1,6 +1,7 @@
 package com.devil.service;
 
 import java.util.List;
+import java.util.Map;
 import com.devil.dao.UserDao;
 import com.devil.domain.User;
 
@@ -38,5 +39,15 @@ public class DefaultUserService implements UserService {
   @Override
   public int delete(int no) throws Exception {
     return userDao.inactive(no);
+  }
+
+  @Override
+  public int follow(Map<String, Object> map) throws Exception {
+    if (map.get("tagNo") != null) {
+      return userDao.insertTag(map);
+    } else {
+      //return userDao.insertUser(map);
+    }
+    return 0;
   }
 }

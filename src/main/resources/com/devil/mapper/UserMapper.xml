@@ -128,6 +128,11 @@
     where uno = #{no}
   </update>
   
+  <insert id="insertTag" parameterType="map">
+    insert into usr_tag(uno, tno)
+    values (#{userNo}, #{tagNo});
+  </insert>
+  
   <delete id="delete" parameterType="int">
     delete from user
     where uno=#{no}

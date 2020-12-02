@@ -1,7 +1,8 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -28,15 +29,18 @@ public class UserFollowTagServlet extends HttpServlet {
 
     
     User user = (User) request.getSession().getAttribute("loginUser");
+    Map<String, Object> map = new HashMap<>();
+    map.put("userNo", user.getNo());
+    map.put("tagNo", Integer.parseInt(request.getParameter("tno")));
     Tag tag = new Tag();
     tag.setNo(Integer.parseInt(request.getParameter("tno")));
     user.getTags().add(tag);
 
     try {
-      if (userService.update(user) == 0) {
+      if (userService.follow(map) == 0) {
         throw new Exception("이미 팔로우하고 있는 태그입니다.");
       } 
-      response.sendRedirect("list");
+      response.sendRedirect("../tag/list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

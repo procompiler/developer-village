@@ -1,6 +1,7 @@
 package com.devil.service;
 
 import java.util.List;
+import java.util.Map;
 import com.devil.domain.User;
 
 public interface UserService {
@@ -10,4 +11,5 @@ public interface UserService {
   int add(User user) throws Exception;
   int update(User user) throws Exception;
   int delete(int no) throws Exception;
+  int follow(Map<String, Object> map) throws Exception;
 }
