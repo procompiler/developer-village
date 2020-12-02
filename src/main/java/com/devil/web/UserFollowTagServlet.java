@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.devil.domain.User;
 import com.devil.service.UserService;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
@@ -24,6 +25,8 @@ public class UserFollowTagServlet extends HttpServlet {
     UserService userService =
         (UserService) ctx.getAttribute("userService");
 
+    
+    User user = (User) request.getSession().getAttribute("loginUser");
     //    User user = new User();
     //    user.setNo(c));
     //    user.setNo()
