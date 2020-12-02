@@ -62,7 +62,7 @@ public class UserListServlet extends HttpServlet {
           + "<th>가입일</th>"
           + "<th>상태</th>"
           + "<th>로그인타입</th>"
-          + "<th>신고승인</th>"
+          + "<th>차단상태</th>"
           + "</tr>");
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -87,6 +87,7 @@ public class UserListServlet extends HttpServlet {
             + "<td>%s</td>"
             + "<td>%s</td>"
             + "<td style='color:red;'>%s</td>"
+            + "<td>%s</td>"
             + "<td>%s</td>"
             + "</tr>\n",
             user.getNo(),
