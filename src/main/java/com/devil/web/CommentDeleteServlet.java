@@ -1,8 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,35 +20,20 @@ public class CommentDeleteServlet extends HttpServlet {
     ServletContext ctx = request.getServletContext();
     CommentService commentService = (CommentService) ctx.getAttribute("commentService");
 
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<title>댓글 삭제</title></head>");
-    out.println("<body>");
-
     try {
-      out.println("<h1>댓글 삭제</h1>");
-
       int no = Integer.parseInt(request.getParameter("no"));
 
       if (commentService.delete(no) == 0) {
-        out.println("<p>해당 댓글이 없습니다.</p>");
-      } else {
-        out.println("<p>댓글을 삭제하였습니다.</p>");
+        throw new Exception("해당 댓글이 없습니다.");
       }
-      response.setHeader("Refresh", "1;url=../article/detail?no=" + request.getParameter("articleNo"));
+
+      response.sendRedirect("../article/detail?no=" + request.getParameter("articleNo"));
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }
 
