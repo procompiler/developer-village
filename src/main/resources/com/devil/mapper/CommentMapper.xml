@@ -31,12 +31,15 @@
   </insert>
 
   <update id="update" parameterType="comment">
-  update comment
-  <set>
-      <if test="content != null">content = #{content}</if>
+    update comment
+    <set>
+      <if test="content != null">
+      content = #{content}
+      </if>
     </set>
-    where cno = #{no}
-
+      where 
+      cno=#{no} 
+      <!-- and arno=#{articleNo}  -->
   </update>
   
   <update id="inactive" parameterType="int">

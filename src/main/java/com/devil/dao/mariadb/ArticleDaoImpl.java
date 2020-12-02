@@ -34,7 +34,7 @@ public class ArticleDaoImpl implements ArticleDao {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("ArticleDao.findByDetailKeyword", keywords);
     }
-  } 
+  }
 
   @Override
   public List<Article> findAll(String keyword) throws Exception {
@@ -70,5 +70,10 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.delete("ArticleDao.insertTags", article);
     }
   }
-
+  @Override
+  public int inactive(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("ArticleDao.inactive", no);
+    }
+  }
 }

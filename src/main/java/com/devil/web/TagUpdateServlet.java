@@ -7,32 +7,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.service.ArticleService;
+import com.devil.domain.Tag;
+import com.devil.service.TagService;
 
-@WebServlet("/article/delete")
-public class ArticleDeleteServlet extends HttpServlet {
+@WebServlet("/tag/update")
+public class TagUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    request.setCharacterEncoding("UTF-8");
+
+    // Servlet container에 들어 있는 TagService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
-    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
+    TagService tagService = (TagService) ctx.getAttribute("tagService");
 
-    response.setContentType("text/html;charset=UTF-8");
     try {
+      Tag tag = new Tag();
+      tag.setNo(Integer.parseInt(request.getParameter("no")));
+      tag.setName(request.getParameter("name"));
+      tag.setTagColor(request.getParameter("tagColor"));
+      tag.setFontColor(request.getParameter("fontColor"));
+      int count = tagService.update(tag);
 
-      int no = Integer.parseInt(request.getParameter("no"));
-      if (articleService.delete(no) == 0) {
+      if (count == 0) {
         throw new Exception("해당 번호의 게시글이 없습니다.");
-      }
+      } 
       response.sendRedirect("list");
+
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
   }
-}
 
+}

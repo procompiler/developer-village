@@ -13,4 +13,5 @@ public interface ArticleDao {
   int updateViewCount(int no) throws Exception;
   int insertTags(Article article) throws Exception;
   List<Article> findByDetailKeyword(Map<String, Object> keywords);
+  int inactive(int no) throws Exception;
 }
