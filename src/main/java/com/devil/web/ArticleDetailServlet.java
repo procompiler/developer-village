@@ -95,48 +95,6 @@ public class ArticleDetailServlet extends HttpServlet {
             out.println("</form>\n");
           }
 
-          //        if (comments != null) {
-          //          out.println("<table border='1'>");
-          //          out.println("<tbody>");
-          //          for (Comment comment : comments) {
-          //            out.printf("<form action='../comment/update?no=%d&articleNo=%d' method='post'>",
-          //                comment.getNo(), article.getNo());
-          //            out.printf("<tr>"
-          //                + "<td><img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a></td>"
-          //                + "<td><textarea name='content'>%s</textarea><br></td>"
-          //                + "<td>%s</td>"
-          //                + "<td><a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>"
-          //                + "<td><button>수정</button></td>"
-          //                + "<td>%s</td>"
-          //                + "</tr>\n",
-          //                comment.getWriter().getPhoto(),
-          //                comment.getWriter().getNo(),
-          //                comment.getWriter().getNickname(),
-          //                comment.getContent(),
-          //                formatter.format(comment.getCreatedDate()),
-          //                comment.getNo(),
-          //                article.getNo(),
-          //                comment.getState() == 1 ? "삭제안됨" : "삭제됨");
-          //            out.println("</form>");
-          //          }
-          //
-          //          out.println("</tbody>");
-          //          out.println("</table>");
-
-          /*
-        if (comments != null) {
-          for (Comment comment : comments) {
-            out.printf("<img src='../upload/%s' alt='[%1$s]' height='100px'>", comment.getWriter().getPhoto());
-            out.printf("<p><span id='color' style='background-color:black'>%s</span><br>", comment.getWriter().getNickname());
-            out.println("<form method='post' action='../comment/update'>");
-            out.printf("<input type='hidden' name=\"cno\" value='%d' readonly>", comment.getNo());
-            out.printf("<input type='hidden' name=\"arno\" value='%d' readonly>", article.getNo());
-            out.printf("<input type='text' name='content' value='%s'>", comment.getContent());
-            out.println("<button>댓글수정</button></form>");
-          }
-        }
-
-           */
           out.println("<form method='post' action='../comment/add'>");
           out.printf("<input type='hidden' name=\"arno\" value='%d' readonly><br>", article.getNo());
           out.println("<input type='text' name='content'><br>");
