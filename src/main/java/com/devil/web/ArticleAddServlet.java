@@ -73,10 +73,11 @@ public class ArticleAddServlet extends HttpServlet {
         out.println("로그인을 해주세요!");
       }
 
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
-      return;
+    }catch (Exception e) {
+      out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
+      StringWriter errOut = new StringWriter();
+      e.printStackTrace(new PrintWriter(errOut));
+      out.printf("<pre>%s</pre>\n", errOut.toString());
     }
     out.println("</body>");
     out.println("</html>");
