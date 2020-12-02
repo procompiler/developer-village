@@ -5,9 +5,10 @@ import java.util.List;
 import com.devil.domain.Tag;
 
 public interface TagDao {
-  public int insert(Tag tag) throws Exception;
-  public int update(Tag tag) throws Exception;
-  public List<Tag> findAll(String keyword) throws Exception;
-  public int delete(int no) throws Exception;
-  public Tag findByNo(int no) throws Exception;
+  int insert(Tag tag) throws Exception;
+  int update(Tag tag) throws Exception;
+  List<Tag> findAll(String keyword) throws Exception;
+  int delete(int no) throws Exception;
+  Tag findByNo(int no) throws Exception;
+  int inactive(int no) throws Exception;
 }

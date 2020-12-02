@@ -10,6 +10,7 @@
 	<result column="photo"		property="photo"/>
 	<result column="tag_color"		property="tagColor"/>
   <result column="font_color"   property="fontColor"/>
+  <result column="state"   property="state"/>
   </resultMap>
   
   <insert id="insert" parameterType="tag">
@@ -23,7 +24,8 @@
 	  name,
 	  photo,
 	  tag_color,
-    font_color
+    font_color,
+    state
     from 
       tag
   </sql>
@@ -49,10 +51,16 @@
     where tno = #{no}
   </update>
     
-   <delete id="delete" parameterType="int">
+  <delete id="delete" parameterType="int">
     delete from tag
     where tno=#{no}
   </delete>
+  
+  <update id="inactive" parameterType="int">
+    update tag set
+      state = 0
+    where tno=#{no}
+  </update>
 
     <select id="findByNo" resultMap="TagMap" parameterType="int">
 	<include refid="sql1"/>

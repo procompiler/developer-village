@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -37,7 +38,26 @@ public class ArticleListServlet extends HttpServlet {
       out.println("<h1>게시물 목록</h1>");
       out.println("<button type='button' onclick=\"location.href='form'\">글쓰기</button>");
 
-      List<Article> list = articleService.list(null);
+      List<Article> list = null;
+
+      String keyword = request.getParameter("keyword");
+      String keywordTitle = request.getParameter("keywordTitle");
+      String keywordWriter = request.getParameter("keywordWriter");
+      String keywordTag = request.getParameter("keywordTag");
+      //String keywordCategory = request.getParameter("keywordCategory");
+
+      if (keyword != null) {
+        list = articleService.list(keyword);
+      } else if (keywordTitle != null) {
+        HashMap<String, Object> keywordMap = new HashMap<>();
+        keywordMap.put("title", keywordTitle);
+        keywordMap.put("writer", keywordWriter);
+        keywordMap.put("tag", keywordTag);
+        //keywordMap.put("category", keywordCategory);
+        list = articleService.list(keywordMap);
+      } else {
+        list = articleService.list();
+      }
       out.println("<table border='1'>");
       out.println("<thead>");
       out.println("<tr>" // table row
@@ -64,6 +84,30 @@ public class ArticleListServlet extends HttpServlet {
       out.println("</tbody>");
       out.println("</table>");
 
+      out.println("<p>");
+      
+      out.println("<form action='list' method='get'>");
+      out.printf("검색어: <input type='text' name='keyword' value='%s'>\n",
+          keyword != null ? keyword : "");
+      out.println("<button>검색</button>");
+      out.println("</form>");
+      out.println("</p>");
+
+      out.println("<hr>");
+      out.println("<h2>상세 검색</h2>");
+      out.println("<p>");
+      out.println("<form action='list' method='get'>");
+      out.printf("제목: <input type='text' name='keywordTitle' value='%s'><br>\n",
+          keywordTitle != null ? keywordTitle : "");
+      out.printf("작성자: <input type='text' name='keywordWriter' value='%s'><br>\n",
+          keywordWriter != null ? keywordWriter : "");
+      out.printf("태그: <input type='text' name='keywordTag' value='%s'><br>\n",
+          keywordTag != null ? keywordTag : "");
+      //out.printf("카테고리: <input type='text' name='keywordMember' value='%s'><br>\n",
+      //    keywordTag != null ? keywordTag : "");
+      out.println("<button>검색</button>");
+      out.println("</form>");
+      out.println("</p>");
     } catch (Exception e) {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
 

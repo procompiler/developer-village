@@ -47,12 +47,13 @@ public class TagDetailServlet extends HttpServlet {
 
         out.println("<form action='updatePhoto' method='post' enctype='multipart/form-data'>");
         out.printf("<input type='hidden' name='no' value='%s'>", tag.getNo());
-        out.printf("<img src='../upload/tag/%s_80x80.jpg' alt='[%1$s]'>", tag.getPhoto());
+        out.printf("<img src='../upload/tag/%s_120x120.png' alt='[%1$s]'>", tag.getPhoto());
         out.println("<input type='file' name='photo'><br>");
         out.println("<button>이미지 변경</button>");
         out.println("<form action='update' method='post'>");
-        out.printf("<p>태그색: <input type='color' name='tagColor' value='%s'></p>\n", tag.getTagColor());
-        out.printf("<p>폰트색: <input type='color' name='fontColor' value='%s'></p>\n", tag.getFontColor());
+        out.printf("<input type='hidden' name='no' value='%s'>", tag.getNo());
+        out.printf("<p>태그색: <input type='color' name='tagColor' value='#%s'></p>\n", tag.getTagColor());
+        out.printf("<p>폰트색: <input type='color' name='fontColor' value='#%s'></p>\n", tag.getFontColor());
         out.println("<button>태그 수정</button>");
         out.println("</form>");
         out.println("<p><a href='list' style='color:white;'>태그 목록으로</a></p>");

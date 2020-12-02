@@ -1,6 +1,7 @@
 package com.devil.dao.mariadb;
 
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.ArticleDao;
@@ -27,6 +28,13 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.selectOne("ArticleDao.findByNo", no);
     }
   }
+
+  @Override
+  public List<Article> findByDetailKeyword(Map<String, Object> keywords) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findByDetailKeyword", keywords);
+    }
+  } 
 
   @Override
   public List<Article> findAll(String keyword) throws Exception {
@@ -61,5 +69,6 @@ public class ArticleDaoImpl implements ArticleDao {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("ArticleDao.insertTags", article);
     }
-  } 
+  }
+
 }
