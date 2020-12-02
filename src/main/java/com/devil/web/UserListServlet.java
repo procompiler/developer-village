@@ -34,7 +34,7 @@ public class UserListServlet extends HttpServlet {
     out.println("<body>");
     try {
 
-      out.println("<h1>유저 목록</h1>");
+      out.println("<h1><a href='list' style='text-decoration:none;'>유저 목록</a></h1>");
       out.println("<a href='form.html' style='color:green;'>회원 가입</a><br>");
 
       List<User> list = null;
@@ -48,7 +48,7 @@ public class UserListServlet extends HttpServlet {
 
       out.println("<p>");
       out.println("<form action='list' method='get'>");
-      out.printf("검색어: <input type='text' name='keyword' value='%s'>\n",
+      out.printf("<input type='text' name='keyword' value='%s'>\n",
           keyword != null ? keyword : "");
       out.println("<button>유저 검색</button>");
       out.println("</form>");
@@ -62,7 +62,9 @@ public class UserListServlet extends HttpServlet {
           + "<th>이름</th>"
           + "<th>가입일</th>"
           + "<th>상태</th>"
-          + "<th>로그인타입</th>" + "</tr>");
+          + "<th>로그인타입</th>"
+          + "<th>신고승인</th>"
+          + "</tr>");
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (User user : list) {
