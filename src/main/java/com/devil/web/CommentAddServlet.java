@@ -1,8 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,34 +28,16 @@ public class CommentAddServlet extends HttpServlet {
     comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
     comment.setContent(request.getParameter("content"));
 
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.printf("<meta http-equiv='Refresh' content='2;url=../article/detail?no=%d'>\n", comment.getArticleNo());
-    out.println("<title>댓글 등록</title></head>");
-    out.println("<body>");
-
     try {
-      out.println("<h1>[댓글 등록]</h1>");
-      User user = userService.get(1);
-      //User loginUser = (User) session.getAttribute("loginUser");
+      User user = (User) request.getSession().getAttribute("loginUser");
       comment.setWriter(user);
       commentService.add(comment);
-      out.println("댓글 등록했습니다.");
-      //if (loginUser != null) {
-      //} else {
-      //  out.println("로그인을 해주세요!");
-    //}
+      response.sendRedirect("../article/detail?no=");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }
