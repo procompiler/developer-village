@@ -14,8 +14,8 @@ import com.devil.domain.User;
 import com.devil.service.UserService;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/user/followTag")
-public class UserFollowTagServlet extends HttpServlet {
+@WebServlet("/user/unfollowTag")
+public class UserUnfollowTagServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -33,8 +33,8 @@ public class UserFollowTagServlet extends HttpServlet {
     map.put("tagNo", Integer.parseInt(request.getParameter("tno")));
 
     try {
-      if (userService.follow(map) == 0) {
-        throw new Exception("이미 팔로우하고 있는 태그입니다.");
+      if (userService.unfollow(map) == 0) {
+        throw new Exception("팔로우하지 않은 태그입니다.");
       } 
       loginUser.setTags(userService.get(loginUser.getNo()).getTags());
       response.sendRedirect("../tag/list");

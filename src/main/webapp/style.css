@@ -99,3 +99,22 @@ a:visited {
 	text-decoration: none;
 	color: #6C5DDF;
 }
+
+.btn-hollow {
+	border: 1px solid #DBDBDB;
+	background-color: transparent;
+}
+
+.btn-hollow:hover {
+	background-color: #F56C6E;
+	border: 0px;
+}
+
+.btn-danger {
+	background-color: #F56C6E;
+  color: #37393E;
+}
+
+.btn-danger:hover {
+	background-color: #D24E50;
+}

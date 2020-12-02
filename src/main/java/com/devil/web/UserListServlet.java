@@ -3,6 +3,7 @@ package com.devil.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -23,6 +24,9 @@ public class UserListServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
+    
+    User loginUser = (User) request.getSession().getAttribute("loginUser");
+    
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
@@ -63,10 +67,15 @@ public class UserListServlet extends HttpServlet {
           + "<th>상태</th>"
           + "<th>로그인타입</th>"
           + "<th>차단상태</th>"
+          + "<th></th>"
           + "</tr>");
-
+      List<Integer> userNoList = new ArrayList<>();
+      for (User u : loginUser.getUsers()) {
+        userNoList.add(u.getNo());
+      }
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (User user : list) {
+        boolean followed = userNoList.contains(user.getNo());
         String loginType = null;
         switch (user.getLoginType()) {
           case "1":
@@ -89,6 +98,7 @@ public class UserListServlet extends HttpServlet {
             + "<td style='color:red;'>%s</td>"
             + "<td>%s</td>"
             + "<td>%s</td>"
+            + "<td><button type='button' %s onclick=\"location.href='../user/%sfollowUser?uno=%1$d'\">%s</button></td>"
             + "</tr>\n",
             user.getNo(),
             user.getEmail(),
@@ -100,7 +110,10 @@ public class UserListServlet extends HttpServlet {
             formatter.format(user.getCreatedDate()),
             user.getState() == 1 ? "" : "탈퇴한 회원",
                 loginType,
-                user.getBlocked() == 1 ? "차단중" : "");
+            user.getBlocked() == 1 ? "차단중" : "",
+            followed ? "class='btn-hollow'" : "",
+            followed ? "un" : "",
+            followed ? "언팔로우" : "팔로우");
       }
       out.println("</table>");
 

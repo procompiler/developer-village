@@ -2,6 +2,7 @@ package com.devil.dao.mariadb;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.UserDao;
@@ -75,4 +76,32 @@ public class UserDaoImpl implements UserDao {
       return sqlSession.delete("UserDao.inactive", no);
     }
   }
-}
+
+  @Override
+  public int insertTag(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.insertTag", map);
+    }
+  }
+
+  @Override
+  public int insertUser(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.insertUser", map);
+    }
+  }
+
+  @Override
+  public int deleteTag(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.deleteTag", map);
+    }
+  }
+
+  @Override
+  public int deleteUser(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.deleteUser", map);
+    }
+  }
+}   

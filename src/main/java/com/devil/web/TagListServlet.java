@@ -2,6 +2,7 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Tag;
+import com.devil.domain.User;
 import com.devil.service.TagService;
 
 @WebServlet("/tag/list")
@@ -22,6 +24,8 @@ public class TagListServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     TagService tagService = (TagService) ctx.getAttribute("tagService");
+    
+    User loginUser = (User) request.getSession().getAttribute("loginUser");
 
 
     response.setContentType("text/html;charset=UTF-8");
@@ -44,7 +48,12 @@ public class TagListServlet extends HttpServlet {
           + "<th>태그이름</th>" + "<th>태그사진</th>" + "<th>미리보기</th>" + "<th>삭제여부</th>" + "<th></th></tr>");
       out.println("</thead>");
       out.println("<tbody>");
+      List<Integer> tagNoList = new ArrayList<>();
+      for (Tag t : loginUser.getTags()) {
+        tagNoList.add(t.getNo());
+      }
       for (Tag tag : list) {
+        boolean followed = tagNoList.contains(tag.getNo());
         out.printf(
             "<tr>"
         + "<td>%d</td>"
@@ -52,15 +61,19 @@ public class TagListServlet extends HttpServlet {
         + "<td><img src='../upload/tag/%s_80x80.png' alt='%3$s'></td>"
         + "<td><span id=\"color\" style=\"background-color:#%s; color:#%s\">%2$s</span></td>"
         + "<td>%s</td>"
-        + "<td><a href='../tag/follow?no=%1$d'>팔로우</a>"
+        + "<td><button type='button' %s onclick=\"location.href='../user/%sfollowTag?tno=%1$d'\">%s</button></td>"
         + "</tr>\n",
             tag.getNo(),
             tag.getName(),
             tag.getPhoto(),
             tag.getTagColor(),
             tag.getFontColor(),
-            tag.getState() == 1 ? "" : "삭제됨");
+            tag.getState() == 1 ? "" : "삭제됨",
+            followed ? "class='btn-hollow'" : "",
+            followed ? "un" : "",
+            followed ? "언팔로우" : "팔로우");
       }
+      
       out.println("</tbody>");
       out.println("</table>");
 
