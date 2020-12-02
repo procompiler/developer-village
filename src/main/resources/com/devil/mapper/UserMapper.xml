@@ -44,6 +44,7 @@
       in_url,
       tw_url,
       bio,
+      state,
       pwd, 
       photo,
       cdt,
@@ -55,6 +56,7 @@
   <select id="findAll" resultMap="UserMap" parameterType="string">
   	<include refid="sql1"/>
   	<if test="keyword != null">
+  	<bind name="pattern" value="'%' + _parameter + '%'" />
   	where
   		email like concat('%', #{keyword}, '%')
   		or nick like concat('%', #{keyword}, '%')
@@ -73,6 +75,7 @@
       in_url,
       tw_url,
       bio,
+      state,
       pwd, 
       cdt, 
       log_type,

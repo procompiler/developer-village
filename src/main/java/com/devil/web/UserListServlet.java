@@ -33,10 +33,27 @@ public class UserListServlet extends HttpServlet {
     out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
     out.println("<body>");
     try {
+
       out.println("<h1>유저 목록</h1>");
       out.println("<a href='form.html' style='color:green;'>회원 가입</a><br>");
 
-      List<User> list = userService.list(null);
+      List<User> list = null;
+      String keyword = request.getParameter("keyword");
+
+      if(keyword != null) {
+        list = userService.list(keyword);
+      } else {
+        list = userService.list(null);
+      }
+
+      out.println("<p>");
+      out.println("<form action='list' method='get'>");
+      out.printf("검색어: <input type='text' name='keyword' value='%s'>\n",
+          keyword != null ? keyword : "");
+      out.println("<button>유저 검색</button>");
+      out.println("</form>");
+      out.println("</p>");
+
       out.println("<table border='1'>");
       out.println("<tr>" // table row
           + "<th>번호</th>" // table header
@@ -44,6 +61,7 @@ public class UserListServlet extends HttpServlet {
           + "<th>닉네임</th>"
           + "<th>이름</th>"
           + "<th>가입일</th>"
+          + "<th>상태</th>"
           + "<th>로그인타입</th>" + "</tr>");
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -62,13 +80,14 @@ public class UserListServlet extends HttpServlet {
         }
 
         out.printf("<tr>"
-                + "<td>%d</td>"
-                + "<td>%s</td>"
-                + "<td><a href='detail?no=%d'><img src='../upload/user/%s_40x40.jpg' style='border-radius: 70px' alt='[%s_80x80]'>%s</a></td>"
-                + "<td>%s</td>"
-                + "<td>%s</td>"
-                + "<td>%s</td>"
-                + "</tr>\n",
+            + "<td>%d</td>"
+            + "<td>%s</td>"
+            + "<td><a href='detail?no=%d'><img src='../upload/user/%s_40x40.jpg' style='border-radius: 70px' alt='[%s_80x80]'>%s</a></td>"
+            + "<td>%s</td>"
+            + "<td>%s</td>"
+            + "<td style='color:red;'>%s</td>"
+            + "<td>%s</td>"
+            + "</tr>\n",
             user.getNo(),
             user.getEmail(),
             user.getNo(),
@@ -77,7 +96,8 @@ public class UserListServlet extends HttpServlet {
             user.getNickname(),
             user.getName(),
             formatter.format(user.getCreatedDate()),
-            loginType);
+            user.getState() == 1 ? "" : "탈퇴한 회원",
+                loginType);
       }
       out.println("</table>");
 
