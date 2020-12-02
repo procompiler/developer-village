@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.ServletContext;
@@ -78,6 +77,7 @@ public class ArticleDetailServlet extends HttpServlet {
         out.printf("<p>조회수: %d</p>", article.getViewCount());
         out.printf("<textarea name='content'>%s</textarea><br>\n", article.getContent());
         out.println("<button>수정</button>");
+        out.printf("<button type='button' class='btn-danger' onclick=\"location.href='detail?no=%d'\">수정</button>", article.getNo());
         out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", article.getNo());
         out.println("</form>");
 

@@ -34,9 +34,10 @@
   update comment
   <set>
       <if test="content != null">content = #{content}</if>
-    </set>
-    where cno = #{no}
-
+  </set>
+    where 
+    cno=#{no}
+    areno=#{articleNo}
   </update>
   
   <update id="inactive" parameterType="int">
