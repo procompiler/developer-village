@@ -4,66 +4,66 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="TagDao">
-  <resultMap type="tag" id="TagMap">
-    <id column="tno"           property="no"/>
-    <result column="name"       property="name"/>
-	<result column="photo"		property="photo"/>
-	<result column="tag_color"		property="tagColor"/>
-  <result column="font_color"   property="fontColor"/>
-  <result column="state"   property="state"/>
-  </resultMap>
-  
-  <insert id="insert" parameterType="tag">
-    insert into tag(tno, name, photo, tag_color, font_color) 
-    values(#{no}, #{name}, #{photo}, #{tagColor}, #{fontColor})
-  </insert>
-  
-  <sql id="sql1">
-    select 
-      tno,
-	  name,
-	  photo,
-	  tag_color,
-    font_color,
-    state
-    from 
-      tag
-  </sql>
-  
-  <select id="findAll" resultMap="TagMap" parameterType="string">
-  	<include refid="sql1"/>
-  	<if test="keyword != null">
-  	where
-  		name like concat('%', #{keyword}, '%')
-  	</if>
-  	order by tno desc;
-  </select>
-  
-  
-   <update id="update" parameterType="tag">
-    update tag
-    <set>
-      <if test="name != null">name = #{name},</if>
-      <if test="photo != null">photo = #{photo},</if>
-      <if test="tagColor != null">tag_color = #{tagColor},</if>
-      <if test="fontColor != null">font_color = #{fontColor},</if>
-    </set>
-    where tno=#{no}
-  </update>
-    
-  <delete id="delete" parameterType="int">
-    delete from tag
-    where tno=#{no}
-  </delete>
-  
-  <update id="inactive" parameterType="int">
-    update tag set
-      state = 0
-    where tno=#{no}
-  </update>
+	<resultMap type="tag" id="TagMap">
+		<id column="tno" property="no" />
+		<result column="name" property="name" />
+		<result column="photo" property="photo"/>
+		<result column="tag_color" property="tagColor" />
+		<result column="font_color" property="fontColor" />
+		<result column="state" property="state" />
+	</resultMap>
 
-    <select id="findByNo" resultMap="TagMap" parameterType="int">
-	<include refid="sql1"/>
-     	where tno=#{no}  
-    </select>
+	<insert id="insert" parameterType="tag">
+		insert into tag(tno, name, photo, tag_color, font_color)
+		values(#{no}, #{name}, #{photo}, #{tagColor}, #{fontColor})
+	</insert>
+
+	<sql id="sql1">
+		select
+		tno,
+		name,
+		photo,
+		tag_color,
+		font_color,
+		state
+		from
+		tag
+	</sql>
+
+	<select id="findAll" resultMap="TagMap" parameterType="string">
+		<include refid="sql1" />
+		<if test="keyword != null">
+			where
+			name like concat('%', #{keyword}, '%')
+		</if>
+		order by tno desc;
+	</select>
+
+
+	<update id="update" parameterType="tag">
+		update tag
+		<set>
+			<if test="name != null">name = #{name},</if>
+			<if test="photo != null">photo = #{photo},</if>
+			<if test="tagColor != null">tag_color = #{tagColor},</if>
+			<if test="fontColor != null">font_color = #{fontColor},</if>
+		</set>
+		where tno=#{no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from tag
+		where tno=#{no}
+	</delete>
+
+	<update id="inactive" parameterType="int">
+		update tag set
+		state = 0
+		where tno=#{no}
+	</update>
+
+	<select id="findByNo" resultMap="TagMap" parameterType="int">
+		<include refid="sql1" />
+		where tno=#{no}
+	</select>
 </mapper>

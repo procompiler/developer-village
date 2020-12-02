@@ -60,7 +60,7 @@ public class DefaultArticleService implements ArticleService {
 
   @Override
   public int delete(int no) throws Exception {
-    return articleDao.delete(no);
+    return articleDao.inactive(no);
   }
 
 

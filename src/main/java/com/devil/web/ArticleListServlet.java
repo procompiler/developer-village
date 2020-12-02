@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -60,15 +59,20 @@ public class ArticleListServlet extends HttpServlet {
       }
       out.println("<table border='1'>");
       out.println("<thead>");
-      out.println("<tr>" // table row
-          + "<th>번호</th>" // table header
-          + "<th>제목</th>" + "<th>작성자</th>" + "<th>등록일</th>" + "<th>조회수</th>" + "</tr>");
+      out.println("<tr>"
+          + "<th>번호</th>"
+          + "<th>제목</th>"
+          + "<th>작성자</th>"
+          + "<th>등록일</th>"
+          + "<th>조회수</th>"
+          + "<th>상태</th>"
+          + "</tr>");
       out.println("</thead>");
       out.println("<tbody>");
 
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       for (Article article : list) {
-        
+
         out.printf(
             "<tr>" + "<td>%d</td>", article.getNo());
         List<Tag> tags = article.getTags();
@@ -77,15 +81,23 @@ public class ArticleListServlet extends HttpServlet {
           out.printf("<li id='color' style='background-color: #%s; color: #%s'>%s</li>" , tag.getTagColor(), tag.getFontColor(), tag.getName());
         }
         out.println("</ul>");
-        out.printf("<a href='detail?no=%d'>%s</a></td>" + "<td>%s</td>" + "<td>%s</td>" + "<td>%d</td>", 
-                article.getNo(), article.getTitle(), article.getWriter().getNickname(),
-                formatter.format(article.getCreatedDate()), article.getViewCount());
+        out.printf("<a href='detail?no=%d'>%s</a></td>"
+            + "<td>%s</td>"
+            + "<td>%s</td>"
+            + "<td>%d</td>"
+            + "<td>%s</td>",
+            article.getNo(),
+            article.getTitle(),
+            article.getWriter().getNickname(),
+            formatter.format(article.getCreatedDate()),
+            article.getViewCount(),
+            article.getState() == 1 ? "" : "삭제된 게시글");
       }
       out.println("</tbody>");
       out.println("</table>");
 
       out.println("<p>");
-      
+
       out.println("<form action='list' method='get'>");
       out.printf("검색어: <input type='text' name='keyword' value='%s'>\n",
           keyword != null ? keyword : "");
@@ -103,8 +115,6 @@ public class ArticleListServlet extends HttpServlet {
           keywordWriter != null ? keywordWriter : "");
       out.printf("태그: <input type='text' name='keywordTag' value='%s'><br>\n",
           keywordTag != null ? keywordTag : "");
-      //out.printf("카테고리: <input type='text' name='keywordMember' value='%s'><br>\n",
-      //    keywordTag != null ? keywordTag : "");
       out.println("<button>검색</button>");
       out.println("</form>");
       out.println("</p>");

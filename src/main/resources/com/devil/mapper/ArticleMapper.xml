@@ -66,6 +66,7 @@
       a.title,
       a.cdt,  
       a.vw_cnt, 
+      a.state,
       u.uno,
       u.nick article_nick,
       at.tno,
@@ -123,6 +124,7 @@
       a.content,
       a.cdt,  
       a.cano,
+      a.state,
       u.nick article_nick,
       a.vw_cnt, 
       c.cno,
@@ -150,5 +152,10 @@
 	    delete from article
 	    where arno=#{no}
 	  </delete>
-    
+	  
+    <update id="inactive" parameterType="int">
+    update article set
+      state = 0
+    where arno=#{no}
+  </update>
 </mapper>

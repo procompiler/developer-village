@@ -87,7 +87,7 @@ public class ArticleDetailServlet extends HttpServlet {
                 article.getNo());
             out.printf("<img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a>\n",
                 comment.getWriter().getPhoto(), comment.getWriter().getNo(), comment.getWriter().getNickname());
-            out.printf("<textarea name='content'>%s</textarea>\n", comment.getContent());
+            out.printf("<textarea name='content' style=\"height:100px;width:340px;\">%s</textarea>\n", comment.getContent());
             out.printf("%s", formatter.format(comment.getCreatedDate()));
             out.printf("<button type='button' class='btn-danger' onclick=\"location.href='../comment/delete?no=%d&articleNo=%d'\">삭제</button>", comment.getNo(), article.getNo());
             out.println("<button>수정</button>\n");
