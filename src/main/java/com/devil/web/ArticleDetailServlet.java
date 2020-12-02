@@ -81,14 +81,18 @@ public class ArticleDetailServlet extends HttpServlet {
           for (Comment comment : comments) {
             out.printf("<form action='../comment/update?no=%d&articleNo=%d' method='post'>",
                 comment.getNo(), article.getNo());
-            out.printf("<img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a>",
+            out.printf("<input type='hidden' name='cno' value='%d'>\n",
+                comment.getNo());
+            out.printf("<input type='hidden' name='arno' value='%d'>\n",
+                article.getNo());
+            out.printf("<img src='../upload/user/%s_40x40.jpg' alt='[%1$s]'><a href='../user/detail?no=%d'>%s</a>\n",
                 comment.getWriter().getPhoto(), comment.getWriter().getNo(), comment.getWriter().getNickname());
-            out.printf("<textarea name='content'>%s</textarea>", comment.getContent());
-            out.printf("%s</td>", formatter.format(comment.getCreatedDate()));
-            out.printf("<a href='../comment/delete?no=%d&articleNo=%d'>삭제</a></td>", comment.getNo(), article.getNo());
-            out.println("<button>수정</button>");
-            out.printf("%s</td>", comment.getState() == 1 ? "삭제안됨" : "삭제됨");
-            out.println("</form>");
+            out.printf("<textarea name='content'>%s</textarea>\n", comment.getContent());
+            out.printf("%s", formatter.format(comment.getCreatedDate()));
+            out.printf("<button type='button' class='btn-danger' onclick=\"location.href='../comment/delete?no=%d&articleNo=%d'\">삭제</button>", comment.getNo(), article.getNo());
+            out.println("<button>수정</button>\n");
+            out.printf("%s\n", comment.getState() == 1 ? "삭제안됨" : "삭제됨");
+            out.println("</form>\n");
           }
 
 //        if (comments != null) {
