@@ -61,7 +61,7 @@ public class TagListServlet extends HttpServlet {
         + "<td><img src='../upload/tag/%s_80x80.png' alt='%3$s'></td>"
         + "<td><span id=\"color\" style=\"background-color:#%s; color:#%s\">%2$s</span></td>"
         + "<td>%s</td>"
-        + "<td><button type='button' %s onclick=\"location.href='../user/%sfollowTag?uno=%1$d'\">%s</button></td>"
+        + "<td><button type='button' %s onclick=\"location.href='../user/%sfollowTag?tno=%1$d'\">%s</button></td>"
         + "</tr>\n",
             tag.getNo(),
             tag.getName(),
@@ -71,7 +71,7 @@ public class TagListServlet extends HttpServlet {
             tag.getState() == 1 ? "" : "삭제됨",
             followed ? "class='btn-hollow'" : "",
             followed ? "un" : "",
-            followed ? "팔로우취소" : "팔로우");
+            followed ? "언팔로우" : "팔로우");
       }
       
       out.println("</tbody>");

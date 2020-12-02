@@ -14,8 +14,8 @@ import com.devil.domain.User;
 import com.devil.service.UserService;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/user/followUser")
-public class UserFollowUserServlet extends HttpServlet {
+@WebServlet("/user/unfollowUser")
+public class UserUnfollowUserServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -33,8 +33,8 @@ public class UserFollowUserServlet extends HttpServlet {
     map.put("userNo", Integer.parseInt(request.getParameter("uno")));
 
     try {
-      if (userService.follow(map) == 0) {
-        throw new Exception("이미 팔로우하고 있는 유저입니다.");
+      if (userService.unfollow(map) == 0) {
+        throw new Exception("팔로우하지 않은 유저입니다.");
       } 
       loginUser.setUsers(userService.get(loginUser.getNo()).getUsers());
       response.sendRedirect("../user/list");

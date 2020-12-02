@@ -113,7 +113,7 @@ public class UserListServlet extends HttpServlet {
             user.getBlocked() == 1 ? "차단중" : "",
             followed ? "class='btn-hollow'" : "",
             followed ? "un" : "",
-            followed ? "팔로우취소" : "팔로우");
+            followed ? "언팔로우" : "팔로우");
       }
       out.println("</table>");
 

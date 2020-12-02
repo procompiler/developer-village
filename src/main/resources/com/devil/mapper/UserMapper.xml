@@ -117,7 +117,7 @@
   
   <select id="findByNo" resultMap="UserMap" parameterType="int">
     <include refid="sql2"/>
-    where uno=#{no}
+    where u.uno=#{no}
   </select>
   
   <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
@@ -152,6 +152,16 @@
     insert into follow(fwer_no, fwing_no)
     values (#{loginUserNo}, #{userNo});
   </insert>
+  
+  <delete id="deleteTag" parameterType="map">
+    delete from usr_tag
+    where uno=#{loginUserNo} and tno=#{tagNo}
+  </delete>
+  
+  <delete id="deleteUser" parameterType="map">
+    delete from follow
+    where fwer_no=#{loginUserNo} and fwing_no=#{userNo}
+  </delete>
   
   <delete id="delete" parameterType="int">
     delete from user

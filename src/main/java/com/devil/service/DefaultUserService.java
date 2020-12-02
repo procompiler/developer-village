@@ -45,8 +45,15 @@ public class DefaultUserService implements UserService {
   public int follow(Map<String, Object> map) throws Exception {
     if (map.get("tagNo") != null) {
       return userDao.insertTag(map);
-    } else {
-      return userDao.insertUser(map);
     }
+    return userDao.insertUser(map);
+  }
+
+  @Override
+  public int unfollow(Map<String, Object> map) throws Exception {
+    if (map.get("tagNo") != null) {
+      return userDao.deleteTag(map);
+    } 
+    return userDao.deleteUser(map);
   }
 }

@@ -105,6 +105,11 @@ a:visited {
 	background-color: transparent;
 }
 
+.btn-hollow:hover {
+	background-color: #F56C6E;
+	border: 0px;
+}
+
 .btn-danger {
 	background-color: #F56C6E;
   color: #37393E;

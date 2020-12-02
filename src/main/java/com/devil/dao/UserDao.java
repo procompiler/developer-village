@@ -15,4 +15,6 @@ public interface UserDao {
   public int inactive(int no) throws Exception;
   public int insertTag(Map<String, Object> map) throws Exception;
   public int insertUser(Map<String, Object> map) throws Exception;
+  public int deleteTag(Map<String, Object> map) throws Exception;
+  public int deleteUser(Map<String, Object> map) throws Exception;
 }

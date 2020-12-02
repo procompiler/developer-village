@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.UserService;
 
@@ -32,14 +31,12 @@ public class UserFollowTagServlet extends HttpServlet {
     Map<String, Object> map = new HashMap<>();
     map.put("loginUserNo", loginUser.getNo());
     map.put("tagNo", Integer.parseInt(request.getParameter("tno")));
-    Tag tag = new Tag();
-    tag.setNo(Integer.parseInt(request.getParameter("tno")));
-    loginUser.getTags().add(tag);
 
     try {
       if (userService.follow(map) == 0) {
         throw new Exception("이미 팔로우하고 있는 태그입니다.");
       } 
+      loginUser.setTags(userService.get(loginUser.getNo()).getTags());
       response.sendRedirect("../tag/list");
 
     } catch (Exception e) {

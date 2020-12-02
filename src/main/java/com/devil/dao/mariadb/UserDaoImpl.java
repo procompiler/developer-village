@@ -90,4 +90,18 @@ public class UserDaoImpl implements UserDao {
       return sqlSession.insert("UserDao.insertUser", map);
     }
   }
+
+  @Override
+  public int deleteTag(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.deleteTag", map);
+    }
+  }
+
+  @Override
+  public int deleteUser(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.deleteUser", map);
+    }
+  }
 }   
