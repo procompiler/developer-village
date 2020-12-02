@@ -45,16 +45,8 @@ public class UserFollowTagServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.printf("<meta http-equiv='Refresh' content='1;url=detail?no=%d'>",
-        user.getNo());
-    out.println("<title>회원사진수정</title></head>");
-    out.println("<body>");
 
     try {
-      out.println("<h1>회원 사진 수정</h1>");
 
       if (user.getPhoto() != null) {
         userService.update(user);
