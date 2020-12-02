@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +30,7 @@ public class LoginServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
-    out.println("<meta http-equiv='Refresh' content='2;url=loginUser'>");
+    out.println("<meta http-equiv='Refresh' content='2;url=../index.html'>");
     out.println("<title>로그인</title></head>");
     out.println("<body>");
 
