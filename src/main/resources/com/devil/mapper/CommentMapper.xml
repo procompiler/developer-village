@@ -27,19 +27,22 @@
 -->
   <insert id="insert" parameterType="comment">
     insert into comment(cno, arno, content, uno) 
-    values(#{no}, #{articleNo}, #{content}, #{writer.no})
+    <if test="content != null">
+      values(#{no}, #{articleNo}, #{content}, #{writer.no})
+    </if>
   </insert>
 
   <update id="update" parameterType="comment">
     update comment
+    
     <set>
       <if test="content != null">
-      content = #{content}
+      content = #{content},
       </if>
+      udt = now()
     </set>
       where 
-      cno=#{no} 
-      <!-- and arno=#{articleNo}  -->
+      cno=#{no} and arno=#{articleNo}
   </update>
   
   <update id="inactive" parameterType="int">

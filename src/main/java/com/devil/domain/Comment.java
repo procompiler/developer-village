@@ -8,11 +8,12 @@ public class Comment {
   private String content;
   private Date createdDate;
   private int ord;
-  private int step;
+  private int step; // 댓글 단계 0 댓글 1 대댓글
+  //private int parentNo; // 상위 댓글 번호
   private String updatedDate;
   private String deletedDate;
   private int state;
-  private boolean selected;
+  private boolean selected; // 대표 답변 여부 0 미해결 1 해결
   private int articleNo;
 
   public int getArticleNo() {
