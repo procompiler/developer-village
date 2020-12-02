@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Comment;
 import com.devil.domain.User;
 import com.devil.service.CommentService;
-import com.devil.service.UserService;
 
 @WebServlet("/comment/add")
 public class CommentAddServlet extends HttpServlet {
@@ -22,7 +21,6 @@ public class CommentAddServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     CommentService commentService = (CommentService) ctx.getAttribute("commentService");
-    UserService userService = (UserService) ctx.getAttribute("userService");
 
     Comment comment = new Comment();
     comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
@@ -32,7 +30,8 @@ public class CommentAddServlet extends HttpServlet {
       User user = (User) request.getSession().getAttribute("loginUser");
       comment.setWriter(user);
       commentService.add(comment);
-      response.sendRedirect("../article/detail?no=");
+
+      response.sendRedirect("../article/detail?no="+ comment.getArticleNo());
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
