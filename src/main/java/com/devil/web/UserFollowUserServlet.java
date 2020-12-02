@@ -10,13 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.UserService;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/user/followTag")
-public class UserFollowTagServlet extends HttpServlet {
+@WebServlet("/user/followUser")
+public class UserFollowUserServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -31,16 +30,16 @@ public class UserFollowTagServlet extends HttpServlet {
     User loginUser = (User) request.getSession().getAttribute("loginUser");
     Map<String, Object> map = new HashMap<>();
     map.put("loginUserNo", loginUser.getNo());
-    map.put("tagNo", Integer.parseInt(request.getParameter("tno")));
-    Tag tag = new Tag();
-    tag.setNo(Integer.parseInt(request.getParameter("tno")));
-    loginUser.getTags().add(tag);
+    map.put("userNo", Integer.parseInt(request.getParameter("uno")));
+    User user = new User();
+    user.setNo(Integer.parseInt(request.getParameter("uno")));
+    loginUser.getUsers().add(user);
 
     try {
       if (userService.follow(map) == 0) {
-        throw new Exception("이미 팔로우하고 있는 태그입니다.");
+        throw new Exception("이미 팔로우하고 있는 유저입니다.");
       } 
-      response.sendRedirect("../tag/list");
+      response.sendRedirect("../user/list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

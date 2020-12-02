@@ -14,4 +14,5 @@ public interface UserDao {
   public User findByEmailPassword(String email, String password) throws Exception;
   public int inactive(int no) throws Exception;
   public int insertTag(Map<String, Object> map) throws Exception;
+  public int insertUser(Map<String, Object> map) throws Exception;
 }

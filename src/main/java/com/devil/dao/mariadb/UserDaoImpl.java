@@ -83,4 +83,11 @@ public class UserDaoImpl implements UserDao {
       return sqlSession.insert("UserDao.insertTag", map);
     }
   }
+
+  @Override
+  public int insertUser(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.insertUser", map);
+    }
+  }
 }   

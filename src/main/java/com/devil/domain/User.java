@@ -24,6 +24,7 @@ public class User {
   private String bio;
   private int state;
   private List<Tag> tags;
+  private List<User> users;
 
   public int getNo() {
     return no;
@@ -175,5 +176,10 @@ public class User {
   public void setTags(List<Tag> tags) {
     this.tags = tags;
   }
-
+  public List<User> getUsers() {
+    return users;
+  }
+  public void setUsers(List<User> users) {
+    this.users = users;
+  }
 }

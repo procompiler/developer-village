@@ -46,8 +46,7 @@ public class DefaultUserService implements UserService {
     if (map.get("tagNo") != null) {
       return userDao.insertTag(map);
     } else {
-      //return userDao.insertUser(map);
+      return userDao.insertUser(map);
     }
-    return 0;
   }
 }
