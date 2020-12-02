@@ -34,7 +34,7 @@
   	where
   		name like concat('%', #{keyword}, '%')
   	</if>
-  	<!--order by tno desc-->
+  	order by tno desc;
   </select>
   
   
