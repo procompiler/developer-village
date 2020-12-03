@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <footer>
-	<hr sytle="padding-top: 30px;">
+	<hr style="padding-top: 30px;">
 	<div
 		style="float: left; margin-bottom: 80px; margin-right: 30px; margin-top: 30px;">
 		<img src="../upload/devil.png" />
