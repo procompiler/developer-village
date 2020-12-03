@@ -12,7 +12,7 @@
 		<result column="pdt" property="processDate" />
 		
 		<association property="uno" javaType="user">
-      <id column="uno_uno"          property="no"/>
+      <id column="uno"          property="no"/>
       <result column="uno_nick"    property="nickname"/>
     </association>
     
@@ -20,7 +20,7 @@
 
 	<insert id="insert" parameterType="report">
 		insert into report(rpno, rptno, uno, cdt)
-		values(#{no}, #{name}, #{uno.uno}, #{createdDate})
+		values(#{no}, #{reportTypeNo}, #{reporter.no}, now())
 	</insert>
 
 <!-- 

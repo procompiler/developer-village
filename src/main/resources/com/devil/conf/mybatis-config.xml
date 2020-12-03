@@ -32,6 +32,7 @@
     <mapper resource="com/devil/mapper/TagMapper.xml"/>
     <mapper resource="com/devil/mapper/BadgeMapper.xml"/>
     <mapper resource="com/devil/mapper/CommentMapper.xml"/>
+    <mapper resource="com/devil/mapper/ReportMapper.xml"/>
   </mappers>
 
 </configuration>

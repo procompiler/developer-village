@@ -24,6 +24,13 @@ public class Report {
     this.reportTypeNo = reportTypeNo;
     return this;
   }
+  public User getReporter() {
+    return reporter;
+  }
+  public Report setReporter(User reporter) {
+    this.reporter = reporter;
+    return this;
+  }
   public Date getCreatedDate() {
     return CreatedDate;
   }
@@ -45,12 +52,4 @@ public class Report {
     this.processDate = processDate;
     return this;
   }
-  public User getReporter() {
-    return reporter;
-  }
-  public Report setReporter(User reporter) {
-    this.reporter = reporter;
-    return this;
-  }
-
 }
