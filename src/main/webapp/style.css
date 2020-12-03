@@ -118,3 +118,8 @@ a:visited {
 .btn-danger:hover {
 	background-color: #D24E50;
 }
+
+#menubar {
+  height: 30px;
+  padding: 5px;
+}

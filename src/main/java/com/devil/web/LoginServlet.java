@@ -35,31 +35,18 @@ public class LoginServlet extends HttpServlet {
     out.println("<body>");
 
     try {
-      out.println("<h1>[로그인]</h1>");
+      out.println("<h1>로그인</h1>");
 
-      if (session.getAttribute("loginUser") != null) {
-        out.println("<p>로그인된 상태입니다.</p>");
-      } else {
-        // 클라이언트가 보낸 데이터를 꺼낸다.
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+      String email = request.getParameter("email");
+      String password = request.getParameter("password");
 
-        // 서블릿이 로그인 작업에 사용할 도구를 준비한다.
-        ServletContext ctx = request.getServletContext();
-        UserService userService = (UserService) ctx.getAttribute("userService");
-        // getAttribute()의 리턴 타입은 Object이기 때문에 형변환을 해야 한다.
+      ServletContext ctx = request.getServletContext();
+      UserService userService = (UserService) ctx.getAttribute("userService");
 
-        User user = userService.get(email, password);
+      User user = userService.get(email, password);
 
-        if (user == null) {
-          out.println("<p>사용자 정보가 맞지 않습니다.</p>");
-        } else {
-          // 로그인이 성공했으면 회원 정보를
-          // 각 클라이언트의 전용 보관소인 session에 저장한다.
-          session.setAttribute("loginUser", user);
-          out.printf("<p>%s 님 반갑습니다.</p>\n", user.getNickname());
-        }
-      }
+      session.setAttribute("loginUser", user);
+      out.printf("<p>%s 님 반갑습니다.</p>\n", user.getNickname());
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
