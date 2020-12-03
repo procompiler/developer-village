@@ -9,11 +9,13 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.devil.dao.ArticleDao;
 import com.devil.dao.BadgeDao;
 import com.devil.dao.CommentDao;
+import com.devil.dao.ReportDao;
 import com.devil.dao.TagDao;
 import com.devil.dao.UserDao;
 import com.devil.dao.mariadb.ArticleDaoImpl;
 import com.devil.dao.mariadb.BadgeDaoImpl;
 import com.devil.dao.mariadb.CommentDaoImpl;
+import com.devil.dao.mariadb.ReportDaoImpl;
 import com.devil.dao.mariadb.TagDaoImpl;
 import com.devil.dao.mariadb.UserDaoImpl;
 import com.devil.service.ArticleService;
@@ -22,8 +24,10 @@ import com.devil.service.CommentService;
 import com.devil.service.DefaultArticleService;
 import com.devil.service.DefaultBadgeService;
 import com.devil.service.DefaultCommentService;
+import com.devil.service.DefaultReportService;
 import com.devil.service.DefaultTagService;
 import com.devil.service.DefaultUserService;
+import com.devil.service.ReportService;
 import com.devil.service.TagService;
 import com.devil.service.UserService;
 import com.devil.util.SqlSessionFactoryProxy;
@@ -46,12 +50,15 @@ public class DataHandlerListener implements ServletContextListener {
       TagDao tagDao = new TagDaoImpl(sqlSessionFactory);
       BadgeDao badgeDao = new BadgeDaoImpl(sqlSessionFactory);
       CommentDao commentDao = new CommentDaoImpl(sqlSessionFactory);
+      ReportDao reportDao = new ReportDaoImpl(sqlSessionFactory);
+
       // Service 구현체 생성
       ArticleService articleService = new DefaultArticleService(articleDao, sqlSessionFactory);
       UserService userService = new DefaultUserService(userDao);
       TagService tagService = new DefaultTagService(tagDao);
       BadgeService badgeService = new DefaultBadgeService(badgeDao);
       CommentService commentService = new DefaultCommentService(commentDao);
+      ReportService reportService = new DefaultReportService(reportDao);
 
       // 다른 객체가 사용할 수 있도록 context 맵 보관소에 저장해둔다.
       ServletContext ctx = sce.getServletContext();
@@ -61,6 +68,7 @@ public class DataHandlerListener implements ServletContextListener {
       ctx.setAttribute("tagService", tagService);
       ctx.setAttribute("badgeService", badgeService);
       ctx.setAttribute("commentService", commentService);
+      ctx.setAttribute("reportService", reportService);
 
     } catch (Exception e) {
       System.out.println("Mybatis 및 DAO, 서비스 객체 준비 중 오류 발생!");

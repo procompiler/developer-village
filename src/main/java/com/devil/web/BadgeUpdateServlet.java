@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,8 +39,8 @@ public class BadgeUpdateServlet extends HttpServlet {
       out.println("<h1>게시물 변경</h1>");
 
       Badge Badge = new Badge();
-      Badge.setNo(Integer.parseInt(request.getParameter("no")));
-      Badge.setTitle(request.getParameter("title"));
+      Badge.setName(Integer.parseInt(request.getParameter("no")));
+      Badge.setPhoto(request.getParameter("title"));
       Badge.setContent(request.getParameter("content"));
       int count = BadgeService.update(Badge);
 

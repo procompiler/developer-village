@@ -21,10 +21,9 @@ import com.devil.service.UserService;
 public class AuthFilter implements Filter {
 
   @Override
-  public void doFilter(
-      ServletRequest request,
-      ServletResponse response,
-      FilterChain chain) throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
+
     HttpServletRequest httpRequest = (HttpServletRequest) request;
     HttpServletResponse httpResponse = (HttpServletResponse) response;
     HttpSession session = ((HttpServletRequest)request).getSession();
@@ -50,8 +49,7 @@ public class AuthFilter implements Filter {
     } else {
       ServletContext servletContext = request.getServletContext();
       String contextRootPath = servletContext.getContextPath();
-      httpResponse.sendRedirect(contextRootPath + "/auth/login.html");
-      System.out.println("로그인이 필요합니다.");
+      httpResponse.sendRedirect(contextRootPath + "/auth/login");
     }
   }
 
