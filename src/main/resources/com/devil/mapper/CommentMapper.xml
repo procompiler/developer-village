@@ -27,7 +27,7 @@
 -->
   <insert id="insert" parameterType="comment">
     insert into comment(cno, arno, content, uno) 
-    <if test="content != null">
+    <if test="content != ''">
       values(#{no}, #{articleNo}, #{content}, #{writer.no})
     </if>
   </insert>
@@ -36,7 +36,7 @@
     update comment
     
     <set>
-      <if test="content != null">
+      <if test="content != ''">
       content = #{content},
       </if>
       udt = now()

@@ -28,10 +28,6 @@ public class CommentAddServlet extends HttpServlet {
 
     try {
 
-    if(comment.getContent() == null) {
-      throw new Exception("댓글이 작성되지 않았습니다.");
-    }
-
       User user = (User) request.getSession().getAttribute("loginUser");
       comment.setWriter(user);
       commentService.add(comment);
