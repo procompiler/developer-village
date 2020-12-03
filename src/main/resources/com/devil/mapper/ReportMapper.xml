@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReportDao">
+	<resultMap type="report" id="ReportMap">
+		<id column="rpno" property="no" />
+		<result column="rptno" property="reportTypeNo" />
+		<result column="cdt" property="createdDate"/>
+		<result column="status" property="status" />
+		<result column="pdt" property="processDate" />
+		
+		<association property="uno" javaType="user">
+      <id column="uno_uno"          property="no"/>
+      <result column="uno_nick"    property="nickname"/>
+    </association>
+    
+	</resultMap>
+
+	<insert id="insert" parameterType="report">
+		insert into report(rpno, rptno, uno, cdt)
+		values(#{no}, #{name}, #{uno.uno}, #{createdDate})
+	</insert>
+
+<!-- 
+	<select id="findAll" resultMap="TagMap" parameterType="string">
+		<include refid="sql1" />
+		<if test="keyword != null">
+			where
+			name like concat('%', #{keyword}, '%')
+		</if>
+		order by tno desc;
+	</select>
+
+
+	<update id="update" parameterType="tag">
+		update tag
+		<set>
+			<if test="name != null">name = #{name},</if>
+			<if test="photo != null">photo = #{photo},</if>
+			<if test="tagColor != null">tag_color = #{tagColor},</if>
+			<if test="fontColor != null">font_color = #{fontColor},</if>
+		</set>
+		where tno=#{no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from tag
+		where tno=#{no}
+	</delete>
+ -->
+</mapper>
