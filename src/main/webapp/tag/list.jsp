@@ -32,9 +32,6 @@
 			<%
 			  List<Tag> list = (List<Tag>) request.getAttribute("list");
 			  List<Tag> userTagNoList = (List<Tag>) request.getAttribute("userTagNoList");
-			for (Tag tag : list) {
-			  
-			}
  			for (Tag tag : list) {
 			  boolean followed = userTagNoList.contains(tag.getNo());
 			%>

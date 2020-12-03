@@ -262,7 +262,7 @@ a:visited {
 
 .btn-hollow:hover {
   background-color: #F56C6E;
-  border: 0px;
+  border: 1px solid #F56C6E;
 }
 
 .btn-danger {
