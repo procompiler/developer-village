@@ -7,7 +7,7 @@ public class Badge {
   private String name;
   private String photo;
   private List<Tag> tagNo;
-  private int state;
+  private int state; // 활성상태 0 안보임 1 보임
   private String content;
 
 

@@ -1,0 +1,154 @@
+  @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+  body {
+    background-color: #37393E;
+    color: white;
+    line-height: 2em;
+  }
+
+  header {
+    background-color: #2E3034;
+    color: #6C5DDF;
+    text-align: center;
+    box-shadow: 5px 5px 7px 3px #212327;
+    float: right;
+    left: 220px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100em; /* 1280 */
+    padding: 2.5em; /* 40 */
+  }
+
+  #content {
+    margin: 100px auto 20px 240px;
+    padding: 30px;
+  }
+
+
+  nav {
+    height: 100%;
+    width: 220px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    background-color: #212327;
+    overflow-x: hidden;
+    margin: 0px 10px 0px 0px;
+    line-height: 3em;
+    font-size: 1.2em;
+    text-align: left;
+    font-weight: bold;
+    float: left;
+  }
+
+  #search {
+    border-radius: 10px;
+    border: 0px;
+    padding: 10px;
+    color: white;
+    background-color: #212325;
+    background-image: url("search.png");
+    background-size: 30px;
+    background-position: 5px 4px;
+    background-repeat: no-repeat;
+    outline: none;
+    font-size: 12px;
+    float: left;
+    margin-left: 35px;
+    width: 300px;
+  }
+
+  input::placeholder {
+    padding-left: 5px;
+    color: #dbdbdb;
+  }
+
+  nav ul hr {
+    border: 1px solid #3b3b3b;
+  }
+
+  nav ul {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: #6C5DDF;
+  }
+
+  footer {
+    clear: both;
+    padding: 20px;
+    margin-left: 250px;
+  }
+
+  footer hr {
+    border: 1px solid #535353;
+  }
+
+  footer img {
+    width: 43px;
+  }
+
+  li img {
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  img {
+    width: 77px;
+  }
+
+  i {
+    padding-right: 10px;
+  }
+
+  .buttons li {
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  #sitename {
+    padding-bottom: 50px;
+    /*sitename div태그를 적용하기 위해 필요한 블록*/
+  }
+
+  .s-font {
+    font-family: 'Aldrich';
+    line-height: 40px;
+    font-weight: normal;
+    font-size: 24px;
+  }
+
+  #pro-logo {
+    border-radius: 7px;
+    -moz-border-radius: 70px;
+    -khtml-border-radius: 70px;
+    -webkit-border-radius: 70px;
+  }
+
+  #head-button {
+    font-weight: bolder;
+    font-size: 16px;
+    border: 0px;
+    float: right;
+    color: white;
+    width: 100px;
+    height: 33px;
+    background-color: #6C5DDF;
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px 3px #212327;
+    margin-right: 20px;
+  }

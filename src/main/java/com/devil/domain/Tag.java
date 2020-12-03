@@ -6,8 +6,8 @@ public class Tag {
   private String photo;
   private String tagColor;
   private String fontColor;
-  private int state;
-  
+  private int state; // 활성상태 0 안보임 1 보임
+
   public int getNo() {
     return no;
   }
