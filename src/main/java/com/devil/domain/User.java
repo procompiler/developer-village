@@ -22,7 +22,7 @@ public class User {
   private int auth;
   private int noti;
   private String bio;
-  private int state;
+  private int state; // 활성상태 0 안보임 1 보임
   private List<Tag> tags;
   private List<User> users;
 
@@ -100,7 +100,7 @@ public class User {
   public String getTech() {
     return tech;
   }
-  
+
   public User setTech(String tech) {
     this.tech = tech;
     return this;
@@ -169,7 +169,7 @@ public class User {
     this.state = state;
     return this;
   }
-  
+
   public List<Tag> getTags() {
     return tags;
   }

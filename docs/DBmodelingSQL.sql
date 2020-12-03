@@ -64,6 +64,9 @@ DROP TABLE IF EXISTS `block` RESTRICT;
 -- 지역_시군구
 DROP TABLE IF EXISTS `relo` RESTRICT;
 
+-- 유저신고
+DROP TABLE IF EXISTS `repo_user` RESTRICT;
+
 -- 유저
 CREATE TABLE `user` (
   `uno`      INTEGER      NOT NULL COMMENT '사용자번호', -- 사용자번호
@@ -147,10 +150,11 @@ CREATE TABLE `comment` (
   `cdt`      DATETIME   NOT NULL DEFAULT now() COMMENT '등록일자', -- 등록일자
   `ord`      INTEGER    NULL     COMMENT '댓글순서', -- 댓글순서
   `step`     INTEGER    NULL     COMMENT '댓글단계', -- 댓글단계
-  `udt`      DATETIME   NULL     COMMENT '수정일자', -- 수정일자
+  `222`      DATETIME   NULL     COMMENT '수정일자', -- 수정일자
   `state`    INTEGER    NOT NULL DEFAULT 1 COMMENT '활성상태', -- 활성상태
   `ddt`      DATETIME   NULL     COMMENT '삭제일자', -- 삭제일자
-  `selected` INTEGER    NOT NULL DEFAULT 0 COMMENT '대표답변여부' -- 대표답변여부
+  `selected` INTEGER    NOT NULL DEFAULT 0 COMMENT '대표답변여부', -- 대표답변여부
+  `momno`    INTEGER    NULL     COMMENT '상위댓글번호' -- 상위댓글번호
 )
 COMMENT '댓글';
 
@@ -359,7 +363,7 @@ CREATE TABLE `noti` (
   `uno`     INTEGER      NOT NULL COMMENT '사용자번호', -- 사용자번호
   `cdt`     DATETIME     NOT NULL DEFAULT now() COMMENT '알람생성일', -- 알람생성일
   `content` MEDIUMTEXT   NULL     COMMENT '알람내용', -- 알람내용
-  `type`    VARCHAR(50)  NOT NULL COMMENT '알람타입', -- 알람타입
+  `type`    INTEGER      NOT NULL DEFAULT 1 COMMENT '알람타입', -- 알람타입
   `url`     VARCHAR(255) NULL     COMMENT ' URL' --  URL
 )
 COMMENT '알람';
@@ -516,6 +520,20 @@ CREATE UNIQUE INDEX `UIX_relo`
   ON `relo` ( -- 지역_시군구
     `name` ASC -- 시군구이름
   );
+
+-- 유저신고
+CREATE TABLE `repo_user` (
+  `rpno` INTEGER NOT NULL COMMENT '신고번호', -- 신고번호
+  `uno`  INTEGER NOT NULL COMMENT '사용자번호' -- 사용자번호
+)
+COMMENT '유저신고';
+
+-- 유저신고
+ALTER TABLE `repo_user`
+  ADD CONSTRAINT `PK_repo_user` -- 유저신고 기본키
+    PRIMARY KEY (
+      `rpno` -- 신고번호
+    );
 
 -- 게시글
 ALTER TABLE `article`
@@ -795,4 +813,24 @@ ALTER TABLE `relo`
     )
     REFERENCES `region` ( -- 지역
       `rgno` -- 지역번호
+    );
+
+-- 유저신고
+ALTER TABLE `repo_user`
+  ADD CONSTRAINT `FK_report_TO_repo_user` -- 신고 -> 유저신고
+    FOREIGN KEY (
+      `rpno` -- 신고번호
+    )
+    REFERENCES `report` ( -- 신고
+      `rpno` -- 신고번호
+    );
+
+-- 유저신고
+ALTER TABLE `repo_user`
+  ADD CONSTRAINT `FK_user_TO_repo_user` -- 유저 -> 유저신고
+    FOREIGN KEY (
+      `uno` -- 사용자번호
+    )
+    REFERENCES `user` ( -- 유저
+      `uno` -- 사용자번호
     );

@@ -7,9 +7,33 @@ public class Report {
   private int reportTypeNo;
   private User reporter;
   private Date CreatedDate;
-  private int status;
+  private int status; // 처리상태 1 차단전 2차단전 3 차단해제
   private Date processDate;
+  private Article reportedArticle;
+  private Comment reportedComment;
+  private User reportedUser;
 
+  public Article getReportedArticle() {
+    return reportedArticle;
+  }
+  public Report setReportedArticle(Article reportedArticle) {
+    this.reportedArticle = reportedArticle;
+    return this;
+  }
+  public Comment getReportedComment() {
+    return reportedComment;
+  }
+  public Report setReportedComment(Comment reportedComment) {
+    this.reportedComment = reportedComment;
+    return this;
+  }
+  public User getReportedUser() {
+    return reportedUser;
+  }
+  public Report setReportedUser(User reportedUser) {
+    this.reportedUser = reportedUser;
+    return this;
+  }
   public int getNo() {
     return no;
   }
