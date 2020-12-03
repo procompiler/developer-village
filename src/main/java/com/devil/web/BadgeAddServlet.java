@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -57,7 +56,7 @@ public class BadgeAddServlet extends HttpServlet {
     .toFiles(new Rename() {
       @Override
       public String apply(String name, ThumbnailParameter param) {
-        return name + "_20x20";
+        return name + "-20x20";
       }
     });
 
