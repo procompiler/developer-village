@@ -39,7 +39,7 @@
 				<td><%=badge.getNo()%></td>
 				<td id="name"><a href='detail?no=<%=badge.getNo()%>'
 					style='color: black;'><%=badge.getName()%></a></td>
-				<td><img style="width: 80px;" src="../upload/badge/<%=badge.getPhoto()%>_20x20.jpg"</td>
+				<td><img style="width: 80px;" src="../upload/badge/<%=badge.getPhoto()%>_20x20.jpg"></td>
 				<td><%=badge.getContent()%></td>
 			<tr>
 				<%
