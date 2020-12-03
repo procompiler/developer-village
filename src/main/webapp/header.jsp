@@ -43,4 +43,4 @@
 	</div>
 </header>
 
-</html>
+<div class='content'>

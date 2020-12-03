@@ -14,7 +14,6 @@
   crossorigin="anonymous" />
 </head>
 <jsp:include page="/header.jsp"></jsp:include>
-<div class="content">
 	<h1>뱃지 목록</h1>
 	<a href='form.html'>뱃지 추가</a><br>
 
@@ -54,6 +53,5 @@
 		<button>검색</button>
 	</form>
 	</p>
-</div>
 </body>
 </html>
