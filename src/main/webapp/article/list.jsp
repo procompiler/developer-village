@@ -18,7 +18,6 @@
 <body>
 	<jsp:include page="/header.jsp"></jsp:include>
 	
-	<div class='content'>
 		<h1>게시물 목록</h1>
 		<button type='button' onclick="location.href='form'">글쓰기</button>
 		<%
@@ -84,7 +83,6 @@
 			<button>검색</button>
 		</form>
 		</p>
-	</div>
 	<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

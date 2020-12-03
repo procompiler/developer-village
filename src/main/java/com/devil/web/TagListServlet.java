@@ -1,6 +1,7 @@
 package com.devil.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -19,16 +20,20 @@ public class TagListServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     ServletContext ctx = request.getServletContext();
     TagService tagService = (TagService) ctx.getAttribute("tagService");
 
+    response.setContentType("text/html;charset=UTF-8");
     User loginUser = (User) request.getSession().getAttribute("loginUser");
-
+    List<Integer> userTagNoList = new ArrayList<>();
+    for (Tag tag : loginUser.getTags()) {
+      userTagNoList.add(tag.getNo());
+    }
 
     try {
       List<Tag> list = tagService.list(null);
       request.setAttribute("list", list);
+      request.setAttribute("userTagNoList", userTagNoList);
       request.getRequestDispatcher("/tag/list.jsp").include(request, response);
 
     } catch (Exception e) {
