@@ -32,13 +32,24 @@ INSERT INTO category (cano,name) VALUES (3, '채용공고');
 INSERT INTO category (cano,name) VALUES (4, '스터디');
 
 
+
+
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (1, 1, 1,null,'자바너무재밌다 짱짱짱 즐거운인생','자바를 배우면 우리 인생이 즐겁고 편안해집니다 자바를 믿으세요.');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (2, 3, 2,null,'하연님수고많으세요','짱짱멋있어요');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (3, 2, 2,null,'이거 왜안되나요. ','사진 첨부합니다.');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (4, 4, 1,null,'무접점 키보드 추천 부탁드립니다.','추천좀요');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (4, 4, 1,null,'오늘 저녁 메뉴 고민중인데, 같이 골라주세요!','뜨끈하고 맛있는걸로 먹고싶네요!!');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (5, 6, 4,134,'자바스크립트 불도저하실분','010-1111-2222 연락주세요');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (6, 3, 2,null,'게시글을 더 추가해볼까아아아','우짜지');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (7, 5, 2,null,'부모님 효도선물로 제격! 발마사지기계','광고');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (8, 4, 1,null,'메리크리스마스~','다들 크리스마스때 뭐 하시나요? 저는 자바 공부나 하려구요..');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (9, 2, 2,null,'프로젝트 재밌다.','진짜 재밌다 하하하하하하');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (10, 4, 2,null,'탕수육 부먹인가요 찍먹인가요?','저는 그냥 다먹어요하하하하');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (11, 6, 3,null,'맥북 살까요 말까요','컴퓨터 바꿔야 하는데 고민되네요');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (12, 7, 4,null,'국비지원 교육 하려고 하는데...','자바랑 인공지능 중에서 고민되네요');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (13, 8, 1,null,'프로젝트 힘들다 하하.','힘들지만 재밌다 하하하하하하');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (14, 4, 2,null,'오예오예~','진짜 재밌다 하하하하하하');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (14, 1, 2,null,'메롱메롱~','진짜 재밌다 하하하하하하');
+
 
 
 
@@ -77,6 +88,8 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css.pn
 
 
 
+
+
 INSERT INTO badge (bno,name,photo,tno) VALUES (1, '환영뱃지', 'welcome.jpg','');
 INSERT INTO badge (bno,name,photo,tno) VALUES (2, '자바뱃지', 'java.jpg','1');
 INSERT INTO badge (bno,name,photo,tno) VALUES (3, '씨뱃지', 'c.jpg','6');
@@ -94,6 +107,7 @@ INSERT INTO repo_type (rptno, name) VALUES (4,'도배');
 INSERT INTO repo_type (rptno, name) VALUES (5,'권리침해');
 INSERT INTO repo_type (rptno, name) VALUES (6,'폭력적 또는 혐오성');
 INSERT INTO repo_type (rptno, name) VALUES (7,'기타');
+
 
 
 
@@ -117,16 +131,22 @@ INSERT INTO usr_tag (uno,tno,cdt) VALUES (4,4,'2020-08-08');
 INSERT INTO usr_tag (uno,tno,cdt) VALUES (5,1,'2020-09-09');
 
 
+
 INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (1, 4, '1','1','2020-11-26');
 INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (2, 5, '2','2','2020-11-27');
 INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (3, 6, '3','2','2020-11-28');
 INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (4, 2, '5','3','2020-11-29');
 
 
+
+
 INSERT INTO bdg_eva (beno,bename) VALUES (1, '가입일');
 INSERT INTO bdg_eva (beno,bename) VALUES (2, '방문횟수');
 INSERT INTO bdg_eva (beno,bename) VALUES (3, '댓글수');
 INSERT INTO bdg_eva (beno,bename) VALUES (4, '게시글수');
+
+
+
 
 INSERT INTO arc_tag (arno,tno) VALUES (1, 6);
 INSERT INTO arc_tag (arno,tno) VALUES (1, 1);
@@ -139,9 +159,12 @@ INSERT INTO arc_tag (arno,tno) VALUES (4, 5);
 INSERT INTO arc_tag (arno,tno) VALUES (5, 6);
 
 
+
+
 INSERT INTO arc_pht (pno,arno,adr) VALUES (1, 3, 'aaa.gif');
 INSERT INTO arc_pht (pno,arno,adr) VALUES (2, 3, 'bbb.gif');
 INSERT INTO arc_pht (pno,arno,adr) VALUES (3, 1, 'okok.gif');
+
 
 
 
@@ -163,6 +186,8 @@ INSERT INTO noti (nno,uno,content,type,url) VALUES (6, 3,'새 뱃지를 받으�
 INSERT INTO noti (nno,uno,content,type,url) VALUES (7, 4,'새 뱃지를 받으셨습니다!','4','null');
 INSERT INTO noti (nno,uno,content,type,url) VALUES (8, 5,'민섭짱짱님이 팔로우했습니다.','3','null');
 INSERT INTO noti (nno,uno,content,type,url) VALUES (9, 5,'깃허브망령님이 팔로우했습니다.','3','null');
+
+
 
 
 INSERT INTO region(rgno, name) VALUES(10001,'서울'); 
@@ -422,13 +447,15 @@ INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (3, '2','3','null','nu
 
 
 
-INSERT INTO repo_comt (rpno, cno) VALUES (3,5);
-
-
-
 
 INSERT INTO repo_arc (rpno, arno) VALUES (1,7);
 INSERT INTO repo_arc (rpno, arno) VALUES (2,7);
+
+INSERT INTO repo_comt (rpno, cno) VALUES (3,5);
+INSERT INTO repo_comt (rpno, cno) VALUES (4,3);
+
+INSERT INTO repo_user (rpno, arno) VALUES (5,3);
+INSERT INTO repo_user (rpno, arno) VALUES (6,10);
 
 
 

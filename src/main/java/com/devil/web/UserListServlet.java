@@ -1,6 +1,7 @@
 package com.devil.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,17 @@ public class UserListServlet extends HttpServlet {
     User loginUser = (User) request.getSession().getAttribute("loginUser");
 
     response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
 
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    out.println("<head><title>유저 목록</title></head>");
+    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
+    out.println("<body>");
     try {
+
+      out.println("<h1><a href='list' style='text-decoration:none;'>유저 목록</a></h1>");
+      out.println("<a href='form.html' style='color:green;'>회원 가입</a><br>");
 
       List<User> list = null;
       String keyword = request.getParameter("keyword");

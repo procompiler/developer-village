@@ -27,24 +27,24 @@
 
 	<p>
 	<form action='list' method='get'>
-		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'	value='%s'>
-		 keyword != null ? keyword : "" out.println("
+		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'
+			value='%s'> keyword != null ? keyword : "" out.println("
 		<button>유저 검색</button>
 	</form>
 	</p>
-	
-	<table border='1'>
-      <tr>
-          <th>번호</th>
-          <th>이메일</th>
-          <th>닉네임</th>
-          <th>이름</th>
-          <th>가입일</th>
-          <th>상태</th>
-          <th>로그인타입</th>
-          <th>차단상태</th>
-          <th></th>
-          </tr>
 
+	<table border='1'>
+		<tr>
+			<th>번호</th>
+			<th>이메일</th>
+			<th>닉네임</th>
+			<th>이름</th>
+			<th>가입일</th>
+			<th>상태</th>
+			<th>로그인타입</th>
+			<th>차단상태</th>
+			<th></th>
+		</tr>
+		
 </body>
 </html>
