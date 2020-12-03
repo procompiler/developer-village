@@ -77,19 +77,16 @@
   
  
  
-  <!-- 
-  
-  
    <update id="update" parameterType="badge">
-    update article
+    update badge
     <set>
-      <if test="title != null">title = #{title},</if>
+      <if test="name != null">name = #{name},</if>
       <if test="content != null">content = #{content},</if>
-      
+      <if test="photo != null">photo = #{photo}</if>
     </set>
-    where no = #{no}
+    where bno = #{no}
   </update>
- -->
+
      <update id="inactive" parameterType="int">
     update badge set
       state = 0

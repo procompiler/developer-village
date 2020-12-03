@@ -9,5 +9,6 @@ public interface BadgeService {
   Badge get(int no) throws Exception;
   int update(Badge badge) throws Exception;
   int delete(int no) throws Exception;
-  
+  // List<Badge> list(Map<String,Object> keywords) throws Exception;
+  //List<Badge> list() throws Exception;
 }

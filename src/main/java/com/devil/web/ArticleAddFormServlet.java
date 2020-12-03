@@ -2,7 +2,6 @@ package com.devil.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -56,7 +55,7 @@ public class ArticleAddFormServlet extends HttpServlet {
       out.println("<option value='3'>채용공고</option>");
       out.println("<option value='4'>스터디</option>");
       out.println("</select><br>");
-      
+
       out.println("<button>생성</button>");
       out.println("</form>");
 
