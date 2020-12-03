@@ -18,7 +18,7 @@ public class AutoLoginListener implements ServletRequestListener {
       if (session.getAttribute("loginUser") == null) {
         UserService userService =
             (UserService) session.getServletContext().getAttribute("userService");
-        User user = userService.get("abcd@test.com", "1111");
+        User user = userService.get("abcd@gmail.com", "1111");
         session.setAttribute("loginUser", user);
       }
     } catch (Exception e) {
