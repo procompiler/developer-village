@@ -39,7 +39,7 @@ public class BadgeUpdateServlet extends HttpServlet {
       out.println("<h1>게시물 변경</h1>");
 
       Badge Badge = new Badge();
-      Badge.setName(Integer.parseInt(request.getParameter("no")));
+      Badge.setName(request.getParameter("no"));
       Badge.setPhoto(request.getParameter("title"));
       Badge.setContent(request.getParameter("content"));
       int count = BadgeService.update(Badge);
@@ -52,7 +52,7 @@ public class BadgeUpdateServlet extends HttpServlet {
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
     out.println("</body>");

@@ -1,10 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,81 +18,24 @@ public class UserDetailServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    // Servlet container에 들어 있는 UserService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
 
-    // 웹주소에 동봉된 데이터(Query String: qs)를 읽는다.
-    // 클라이언트가 URL에 데이터를 포함해서 보낸다.
-    // 숫자 데이터가 넘어오기 때문에 깨질 염려가 없다.
-    int no = Integer.parseInt(request.getParameter("no"));
-
     response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head><title>회원 조회</title>");
-    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
-    out.println("<body>");
 
     try {
-      out.println("<h1>[회원 상세조회]</h1>");
-
+      int no = Integer.parseInt(request.getParameter("no"));
       User user = userService.get(no);
 
-      if (user == null) {
-        out.println("해당 번호의 회원이 없습니다.");
-        return;
-      }
+      request.setAttribute("user", user);
+      request.getRequestDispatcher("/user/detail.jsp").include(request, response);
 
-      out.println("<form action='updatePhoto' method='post' enctype='multipart/form-data'>");
-      out.printf("<input type='hidden' name='no' value='%d'><br>\n", user.getNo());
-      out.printf("<a href='../upload/user/%s'>\n<img src='../upload/user/%1$s_160x160.jpg' alt='[%1$s]'></a><br>\n", user.getPhoto());
-      out.println("<input type='file' name='photo'><br>");
-      out.println("<button>변경</button>");
-      out.println("</form>");
-      out.println("<br>");
-
-      out.println("<form action='update' method='post'>");
-      out.printf("<input type='hidden' name='no' value='%d'><br>\n", user.getNo());
-      out.printf("<p>닉네임: <input type='text' name='nickname' value='%s'></p>\n", user.getNickname());
-      out.printf("<p>이메일: %s</p>\n", user.getEmail());
-      out.printf("<p>이름: %s</p>\n", user.getName());
-
-      DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-      out.printf("<p>가입일: %s</p>\n", format.format(user.getCreatedDate()));
-
-      int loginType = Integer.parseInt(user.getLoginType());
-      if(loginType == 1) {
-        out.println("<p>로그인 유형: 기본 가입회원</p>");
-      } else if (loginType == 2) {
-        out.println("<p>로그인 유형: 구글 가입회원</p>");
-      } else if (loginType == 3) {
-        out.println("<p>로그인 유형: 깃허브 가입회원</p>");
-      }
-
-      out.printf("<p>소개: <input type='text' name='bio' value='%s'></p>\n", user.getBio());
-      out.printf("<p>기술: <input type='text' name='tech' value='%s'></p>\n", user.getTech());
-      out.printf("<p>개인 홈페이지: <input type='text' name='homepage' value='%s'></p>\n", user.getHomepageURL());
-      out.printf("<p>깃허브: <input type='text' name='githubURL' value='%s'></p>\n", user.getGithubURL());
-      out.printf("<p>인스타그램: <input type='text' name='instarURL' value='%s'></p>\n", user.getInstarURL());
-      out.printf("<p>트위터: <input type='text' name='twitterURL' value='%s'></p>\n", user.getTwitterURL());
-
-      out.printf("<p style='color:red'>%s</p>", user.getState() == 1 ? "" : "탈퇴한 회원");
-      out.println("<button>정보 수정</button>");
-      out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">회원 탈퇴</button>\n", user.getNo());
-
-      out.println("<a href='list' style='color:blue;'>회원 목록으로</a>");
-      out.println("</form>\n");
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
 
-    out.println("</body>");
-    out.println("</html>");
   }
 }
 

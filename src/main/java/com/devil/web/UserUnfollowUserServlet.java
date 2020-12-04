@@ -26,7 +26,7 @@ public class UserUnfollowUserServlet extends HttpServlet {
     UserService userService =
         (UserService) ctx.getAttribute("userService");
 
-    
+
     User loginUser = (User) request.getSession().getAttribute("loginUser");
     Map<String, Object> map = new HashMap<>();
     map.put("loginUserNo", loginUser.getNo());
@@ -35,13 +35,13 @@ public class UserUnfollowUserServlet extends HttpServlet {
     try {
       if (userService.unfollow(map) == 0) {
         throw new Exception("팔로우하지 않은 유저입니다.");
-      } 
+      }
       loginUser.setUsers(userService.get(loginUser.getNo()).getUsers());
       response.sendRedirect("../user/list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }
