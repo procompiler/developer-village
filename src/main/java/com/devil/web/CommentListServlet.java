@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Article;
 import com.devil.domain.Comment;
 import com.devil.service.ArticleService;
+import com.devil.service.CommentService;
 
 @WebServlet("/comment/list")
 public class CommentListServlet extends HttpServlet {
@@ -22,6 +23,7 @@ public class CommentListServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
+    CommentService commentService = (CommentService) ctx.getAttribute("commentService");
 
     int no = Integer.parseInt(request.getParameter("no"));
 
@@ -32,8 +34,17 @@ public class CommentListServlet extends HttpServlet {
       Article article = articleService.get(no);
       request.setAttribute("article", article);
 
-      List<Comment> comments = article.getComments();
+      List<Comment> comments = commentService.getByArticleNo(no);
+      //List<Comment> comments = article.getComments();
       request.setAttribute("comments", comments);
+
+      for (Comment comment : comments) {
+        System.out.println("-------");
+        System.out.println("댓글 번호 :" + comment.getNo());
+        System.out.println("댓글 내용 :" + comment.getContent());
+        System.out.println("댓글 Step :" + comment.getStep());
+        System.out.println("댓글 State :" + comment.getState());
+      }
 
       // UI 출력을 JSP에게 맡긴다.
       request.getRequestDispatcher("/comment/list.jsp").include(request, response);

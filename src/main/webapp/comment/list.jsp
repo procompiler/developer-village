@@ -21,12 +21,15 @@
 <%List<Comment> comments = (List<Comment>) request.getAttribute("comments");%>
 <%if (comments != null) {
   for (Comment comment : comments) {
-    if (comment.getStep() == 0) {%>
+    if (comment.getStep() != 0) {
+      continue;
+    } else if (comment.getStep() == 0) {%>
 
 <form action='../comment/update?no=<%=comment.getNo()%>&articleNo=<%=comment.getArticleNo()%>' method='post'>
 	<input type='hidden' name='momno' value='<%=comment.getMotherNo()%>'>
 	<input type='hidden' name='cno' value='<%=comment.getNo()%>'>
 	<input type='hidden' name='arno' value='<%=article.getNo()%>'>
+	<input type='hidden' name='step' value='<%=comment.getStep()%>'>
 	<p>엄마</p>
 	<img src='../upload/user/<%=comment.getWriter().getPhoto()%>.jpg_40x40.jpg' alt='[<%=comment.getWriter().getPhoto()%>].jpg]'>
 	<a href='../user/detail?no=<%=comment.getWriter().getNo()%>'><%=comment.getWriter().getNickname()%></a>
@@ -34,11 +37,11 @@
 	<%=formatter.format(comment.getCreatedDate())%>
 	<button>수정</button>
 	<button type='button' class='btn-danger' onclick="location.href='../comment/delete?no=<%=comment.getNo()%>&articleNo=<%=article.getNo()%>'">삭제</button>
-	<%=comment.getState() == 1 ? "" : "삭제된 댓글"%>
+	<%=comment.getState() == 1 ? "정상 댓글" : "삭제된 댓글"%>
 </form>
 	
     <%}%>
-
+    
 <%for (Comment childComment : comments) {
   if (childComment.getStep() == 1 && childComment.getMotherNo() == comment.getNo()) {%>
 		<form action='../comment/update?no=<%=childComment.getNo()%>&articleNo=<%=article.getNo()%>' method='post'>
@@ -53,27 +56,28 @@
 			<button>수정</button>
 			
 			<button type='button' class='btn-danger' onclick="location.href='../comment/delete?no=<%=comment.getNo()%>&articleNo=<%=article.getNo()%>'">삭제</button>
-			<%=comment.getState() == 1 ? "" : "삭제된 댓글"%>
+			<%=comment.getState() == 1 ? "정상 댓글" : "삭제된 댓글"%>
     </form> 
   <%}%>
 <%}%>
 
+
 <form action='../comment/add' method='post'>
-<input type='hidden' name="momno" value='<%=comment.getNo()%>'><br>
-<input type='hidden' name="arno" value='<%=article.getNo()%>'><br>
-<input type='hidden' name="step" value='1'><br>
-<input type='text' name='content'><br>
-<button>대댓글</button>
+	<input type='hidden' name="momno" value='<%=comment.getNo()%>'><br>
+	<input type='hidden' name="arno" value='<%=article.getNo()%>'><br>
+	<input type='hidden' name="step" value='1'><br>
+	<input type='text' name='content'><br>
+	<button>대댓글</button>
 </form>
 
 <hr color='gray'>
 <%}%>
 <form method='post' action='../comment/add'>
-<input type='hidden' name="momno" value='0'><br>
-<input type='hidden' name="arno" value='<%=article.getNo()%>'><br>
-<input type='hidden' name="step" value='0'><br>
-<input type='text' name='content'><br>
-<button>댓글쓰기</button>
+	<input type='hidden' name="momno" value='0'><br>
+	<input type='hidden' name="arno" value='<%=article.getNo()%>'><br>
+	<input type='hidden' name="step" value='0'><br>
+	<input type='text' name='content'><br>
+	<button>댓글쓰기</button>
 </form>
 <%}%>
 </body>

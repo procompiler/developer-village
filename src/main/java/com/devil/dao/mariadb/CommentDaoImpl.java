@@ -41,24 +41,24 @@ public class CommentDaoImpl implements CommentDao {
     }
   }
 
-  @Override
-  public Comment findByNo(int no) throws Exception {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectOne("CommentDao.findByNo", no);
-    }
-  }
-
-  @Override
-  public int updateViewCount(int no) throws Exception {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.update("CommentDao.updateViewCount", no);
-    }
-  }
+//  @Override
+//  public Comment findByNo(int no) throws Exception {
+//    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+//      return sqlSession.selectOne("CommentDao.findByNo", no);
+//    }
+//  }
 
   @Override
   public int inactive(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("CommentDao.inactive", no);
+    }
+  }
+
+  @Override
+  public List<Comment> findByArticleNo(int articleNo) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("CommentDao.findByArticleNo", articleNo);
     }
   }
 

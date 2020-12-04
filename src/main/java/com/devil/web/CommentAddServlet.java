@@ -32,7 +32,6 @@ public class CommentAddServlet extends HttpServlet {
       User user = (User) request.getSession().getAttribute("loginUser");
       comment.setWriter(user);
       commentService.add(comment);
-
       response.sendRedirect("../article/detail?no="+ comment.getArticleNo());
 
     } catch (Exception e) {
