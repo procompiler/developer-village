@@ -118,7 +118,7 @@
   
   <select id="findByNo" resultMap="UserMap" parameterType="int">
     <include refid="sql2"/>
-    where u.uno=#{no} and t.state=1
+    where u.uno=#{no}
   </select>
   
   <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
