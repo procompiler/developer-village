@@ -21,43 +21,6 @@
     List<Badge> list = (List<Badge>) request.getAttribute("list");
   %>
 
-<<<<<<< HEAD
-	<table border='1'>
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>뱃지이름</th>
-				<th>뱃지사진</th>
-				<th>뱃지내용</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			  for (Badge badge : list) {
-			%>
-			<tr>
-				<td><%=badge.getNo()%></td>
-				<td id="name"><a href='detail?no=<%=badge.getNo()%>'
-					style='color: black;'><%=badge.getName()%></a></td>
-				<td><img style="width: 80px;" src="../upload/badge/<%=badge.getPhoto()%>_20x20.jpg"></td>
-				<td><%=badge.getContent()%></td>
-			<tr>
-				<%
-				  }
-				%>
-			
-		</tbody>
-	</table>
-	<p>
-	 <%
-    String keyword = request.getParameter("keyword");
-  %>
-	<form action='list' method='get'>
-		검색어: <input type='text' name='keyword' value='<%=keyword != null ? keyword : ""%>'>
-		<button>검색</button>
-	</form>
-	</p>
-=======
   <table border='1'>
     <thead>
       <tr>
@@ -91,6 +54,5 @@
   </form>
   </p>
     <jsp:include page="/footer.jsp"></jsp:include>
->>>>>>> 667c9a389a29559a3caa40419f6483b1d2fc8d5c
 </body>
 </html>
