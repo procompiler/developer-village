@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: 버그:bug:를 잡기 위한 리포트 템플릿!
+about: 버그를 잡기 위한 리포트 템플릿!
 title: ''
 labels: bug
 assignees: ''

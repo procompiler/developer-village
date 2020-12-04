@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: 새 기능:sparkles:을 추가하기 위한 이슈템플릿!
+about: 새 기능을 추가하기 위한 이슈템플릿!
 title: ''
 labels: enhancement
 assignees: ''
