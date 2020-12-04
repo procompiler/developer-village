@@ -24,24 +24,18 @@
 	%>
 	<%
 	  List<User> list = (List<User>) request.getAttribute("list");
+	  List<User> followingUsers = (List<User>) request.getAttribute("followingUsers");
 	%>
 	<%
 	  User loginUser = (User) request.getSession().getAttribute("loginUser");
 	%>
-
-
 
 	<p>
 	<%
 	  String keyword = request.getParameter("keyword");
   %>
 	<form action='list' method='get'>
-<<<<<<< HEAD
-		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'
-			value=''>
-=======
 		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'	value='<%=keyword != null ? keyword : ""%>'>
->>>>>>> e866294ff57934fa06ab6b46370f685b7d95c0a5
 		<button>유저 검색</button>
 	</form>
 	</p>
@@ -63,7 +57,7 @@
 		  List<Integer> userNoList = new ArrayList<>();
 		%>
 		<%
-		  for (User u : loginUser.getUsers()) {
+		  for (User u : followingUsers) {
 		  userNoList.add(u.getNo());
 		}
 		%>

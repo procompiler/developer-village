@@ -35,6 +35,7 @@ public class UserListServlet extends HttpServlet {
         list = userService.list((String) null);
       }
 
+      request.setAttribute("followingUsers", userService.list((User)request.getSession().getAttribute("loginUser")));
       request.setAttribute("list", list);
       request.getRequestDispatcher("/user/list.jsp").include(request, response);
 

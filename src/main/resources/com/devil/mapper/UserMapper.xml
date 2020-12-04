@@ -25,12 +25,6 @@
     <result column="noti"       property="noti"/>
     <result column="bio"       property="bio"/>
     <result column="state"       property="state"/>
-    <collection property="users" ofType="user">
-      <id column="fwing_no" property="no"/>
-      <result column="fwing_nick"    property="nickname"/>
-      <result column="fwing_photo"    property="photo"/>
-    </collection>
-    
   </resultMap>
 
   <insert id="insert" parameterType="user">
@@ -58,34 +52,6 @@
       user u
   </sql>
   
-
-  <sql id='sql2'>
-    select 
-      u.uno, 
-      u.email, 
-      u.nick,
-      u.name,
-      u.hp_url,
-      u.gh_url,
-      u.in_url,
-      u.tw_url,
-      u.bio,
-      u.state,
-      u.pwd, 
-      u.cdt, 
-      u.log_type,
-      u.photo,
-      u.hp_url,
-      u.tech,
-      f.fwing_no,
-      u2.nick,
-      u2.photo
-    from 
-      user u
-      left outer join follow f on u.uno = f.fwer_no
-      left outer join user u2 on f.fwing_no = u2.uno
-  </sql>
-  
   <select id="findAll" resultMap="UserMap" parameterType="string">
     <include refid="sql1"/>
     <if test="keyword != null">
@@ -98,7 +64,7 @@
   </select>
   
   <select id="findByNo" resultMap="UserMap" parameterType="int">
-    <include refid="sql2"/>
+    <include refid="sql1"/>
     where u.uno=#{no}
   </select>
   
@@ -116,7 +82,7 @@
   </select>
   
   <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
-    <include refid="sql2"/>
+    <include refid="sql1"/>
     where
      u.email = #{email}
      and u.pwd = password(#{password})
