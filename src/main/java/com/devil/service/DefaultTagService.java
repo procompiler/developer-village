@@ -1,10 +1,9 @@
 package com.devil.service;
 
 import java.util.List;
-
 import com.devil.dao.TagDao;
 import com.devil.domain.Tag;
-import com.devil.domain.Tag;
+import com.devil.domain.User;
 
 public class DefaultTagService implements TagService {
   TagDao tagDao;
@@ -36,6 +35,11 @@ public class DefaultTagService implements TagService {
   @Override
   public int delete(int no) throws Exception {
     return tagDao.inactive(no);
+  }
+
+  @Override
+  public List<Tag> list(User user) throws Exception {
+    return tagDao.findByFollower(user);
   }
 
 }

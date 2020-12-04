@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.TagDao;
 import com.devil.domain.Tag;
+import com.devil.domain.User;
 
 public class TagDaoImpl implements TagDao {
 
@@ -57,9 +58,9 @@ public class TagDaoImpl implements TagDao {
   }
 
   @Override
-  public List<Tag> findByFollower(int userNo) throws Exception {
+  public List<Tag> findByFollower(User user) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("TagDao.findAll", userNo);
+      return sqlSession.selectList("TagDao.findByFollower", user);
     }
   }
 }
