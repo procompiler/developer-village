@@ -104,4 +104,11 @@ public class UserDaoImpl implements UserDao {
       return sqlSession.insert("UserDao.deleteUser", map);
     }
   }
-}   
+
+  @Override
+  public List<User> findByFollower(User user) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("UserDao.findByFollower", user);
+    }
+  }
+}

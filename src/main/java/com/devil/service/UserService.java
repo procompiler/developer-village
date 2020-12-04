@@ -13,4 +13,5 @@ public interface UserService {
   int delete(int no) throws Exception;
   int follow(Map<String, Object> map) throws Exception;
   int unfollow(Map<String, Object> map) throws Exception;
+  List<User> list(User user) throws Exception;
 }

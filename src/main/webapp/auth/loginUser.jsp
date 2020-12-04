@@ -28,6 +28,9 @@
 	<%
 	  DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 	User user = (User) request.getSession().getAttribute("loginUser");
+	List<Tag> tags = (List<Tag>) request.getAttribute("tags");
+	List<User> users = (List<User>) request.getAttribute("users");
+
 	if (user == null) {
 	%>
 	<p>로그인 하지 않았습니다!</p>
@@ -99,12 +102,11 @@
 
 		<tbody>
 			<%
-	List<Tag> tags = (List<Tag>)request.getAttribute("tags");
-	for (Tag tag : tags) {
-	  if (tag.getState() == 0) {
-	    continue;
-	  }
-	%>
+			  for (Tag tag : tags) {
+			  if (tag.getState() == 0) {
+			    continue;
+			  }
+			%>
 			<tr>
 				<td id="title"><a href='detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
 				<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
@@ -116,13 +118,34 @@
 						언팔로우</button></td>
 			</tr>
 			<%
-	  }
-	%>
+			  }
+			%>
 		</tbody>
 	</table>
 	<h2>팔로우하는 유저</h2>
-
-
+	<table border='1'>
+	 <thead>
+		<tr>
+			<th>닉네임</th>
+			<th></th>
+		</tr>
+   <thead>
+   <tbody>
+		<%
+		  for (User u : users) {
+		%>
+		<tr>
+			<td><a href='detail?no=<%=u.getNo()%>'> <img
+					src='../upload/user/<%=u.getPhoto()%>_40x40.jpg'
+					style='border-radius: 70px' alt='[<%=u.getNickname()%>]'><%=u.getNickname()%></a></td>
+			<td><button type='button' class='btn-hollow'
+					onclick="location.href='../user/unfollowUser?uno=<%=u.getNo()%>'">언팔로우</button></td>
+		</tr>
+		<%
+		  }
+		%>
+		</tbody>
+	</table>
 	<a href='logout'>로그아웃</a>
 	<jsp:include page="/footer.jsp"></jsp:include>
 </body>

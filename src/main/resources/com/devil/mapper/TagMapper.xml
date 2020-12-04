@@ -60,7 +60,7 @@
 			<if test="name != null">name = #{name},</if>
 			<if test="photo != null">photo = #{photo},</if>
 			<if test="tagColor != null">tag_color = #{tagColor},</if>
-			<if test="fontColor != null">font_color = #{fontColor},</if>
+			<if test="fontColor != null">font_color = #{fontColor}</if>
 		</set>
 		where tno=#{no}
 	</update>
