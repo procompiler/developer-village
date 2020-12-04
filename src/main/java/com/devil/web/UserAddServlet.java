@@ -46,7 +46,7 @@ public class UserAddServlet extends HttpServlet {
     //  => 파일을 저장할 때 사용할 파일명을 준비한다.
 
     String filename = UUID.randomUUID().toString();
-    String saveFilePath = ctx.getRealPath("/upload/user" + filename);
+    String saveFilePath = ctx.getRealPath("/upload/user/" + filename);
 
     // 해당 위치에 업로드된 사진 파일을 저장한다.
     photoPart.write(saveFilePath);
