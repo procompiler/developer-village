@@ -56,7 +56,7 @@ public class BadgeAddServlet extends HttpServlet {
     .toFiles(new Rename() {
       @Override
       public String apply(String name, ThumbnailParameter param) {
-        return name + "-20x20";
+        return name + "_20x20";
       }
     });
 

@@ -46,13 +46,15 @@ public class BadgeDetailServlet extends HttpServlet {
         out.println("해당 번호의 뱃지가 없습니다.");
         return;
       }
-
-      out.println("<form action='update' method='post'>");
+      out.println("<form action='updatePhoto' method='post' enctype='multipart/form-data'>");
       out.printf("<input type='text' name='no' value='%d' readonly style='display:hidden;'><br>", badge.getNo());
-      out.printf("<p>이름 : %s</p>", badge.getName());
       out.printf("<a href='../upload/user/%s'>\n<img src='../upload/badge/%1$s' alt='[%1$s]'></a><br>\n", badge.getPhoto());
+      out.println("<input type='file' name='photo'><br>");
+      out.println("<button>이미지 변경</button>");
+      out.println("</form>");
+      out.println("<form action='update' method='post'>");
+      out.printf("<p>이름 : %s</p>", badge.getName());
       out.printf("<textarea name='content'>%s</textarea><br>\n", badge.getContent());
-
       out.println("<button>수정</button>");
       out.printf("<button type='button' class='btn-danger' onclick=\"location.href='delete?no=%d'\">삭제</button>", badge.getNo());
       out.println("</form>");
@@ -62,8 +64,6 @@ public class BadgeDetailServlet extends HttpServlet {
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-
-
     out.println("</body>");
     out.println("</html>");
   }

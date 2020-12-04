@@ -34,7 +34,7 @@ public class TagUpdateServlet extends HttpServlet {
 
       if (count == 0) {
         throw new Exception("해당 번호의 게시글이 없습니다.");
-      } 
+      }
       response.sendRedirect("list");
 
     } catch (Exception e) {
@@ -43,5 +43,4 @@ public class TagUpdateServlet extends HttpServlet {
       return;
     }
   }
-
 }
