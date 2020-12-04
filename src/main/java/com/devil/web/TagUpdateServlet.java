@@ -34,12 +34,12 @@ public class TagUpdateServlet extends HttpServlet {
 
       if (count == 0) {
         throw new Exception("해당 번호의 게시글이 없습니다.");
-      } 
+      }
       response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }

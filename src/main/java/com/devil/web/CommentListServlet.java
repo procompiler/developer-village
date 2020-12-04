@@ -87,10 +87,11 @@ public class CommentListServlet extends HttpServlet {
       out.println("</body>");
 
 
-      */
+       */
 
     } catch (Exception e) {
-      e.printStackTrace();
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }

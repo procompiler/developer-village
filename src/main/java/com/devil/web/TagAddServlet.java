@@ -35,17 +35,17 @@ public class TagAddServlet extends HttpServlet {
     tag.setName(request.getParameter("name"));
     tag.setTagColor(request.getParameter("tagColor").split("#")[1]);
     tag.setFontColor(request.getParameter("fontColor").split("#")[1]);
-    
+
     Part photoPart = request.getPart("photo");
     String filename = UUID.randomUUID().toString();
     String saveFilePath = ctx.getRealPath(
         "/upload/tag/" + filename);
     // 해당 위치에 업로드된 사진 파일을 저장한다.
     photoPart.write(saveFilePath);
-    
+
     // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
     tag.setPhoto(filename);
-    
+
     generatePhotoThumbnail(saveFilePath);
 
     response.setContentType("text/html;charset=UTF-8");
@@ -55,11 +55,11 @@ public class TagAddServlet extends HttpServlet {
       response.sendRedirect("list");
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }
-  
+
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath)//
