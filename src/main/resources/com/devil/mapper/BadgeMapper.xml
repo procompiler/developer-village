@@ -75,8 +75,6 @@
     values(#{no},#{name}, #{photo}, #{content})
   </insert>
   
- 
- 
    <update id="update" parameterType="badge">
     update badge
     <set>
@@ -84,7 +82,7 @@
       <if test="content != null">content = #{content},</if>
       <if test="photo != null">photo = #{photo}</if>
     </set>
-    where bno = #{no}
+    where bno=#{no}
   </update>
 
      <update id="inactive" parameterType="int">
