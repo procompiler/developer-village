@@ -37,7 +37,7 @@ public class UserUnfollowTagServlet extends HttpServlet {
         throw new Exception("팔로우하지 않은 태그입니다.");
       }
       loginUser.setTags(userService.get(loginUser.getNo()).getTags());
-      response.sendRedirect("../tag/list");
+      response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
