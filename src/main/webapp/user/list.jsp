@@ -25,8 +25,9 @@
 	<%
 	  List<User> list = (List<User>) request.getAttribute("list");
 	%>
-  <% User loginUser = (User) request.getSession().getAttribute("loginUser");
- %>
+	<%
+	  User loginUser = (User) request.getSession().getAttribute("loginUser");
+	%>
 
 
 
@@ -35,7 +36,12 @@
 	  String keyword = request.getParameter("keyword");
   %>
 	<form action='list' method='get'>
+<<<<<<< HEAD
+		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'
+			value=''>
+=======
 		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'	value='<%=keyword != null ? keyword : ""%>'>
+>>>>>>> e866294ff57934fa06ab6b46370f685b7d95c0a5
 		<button>유저 검색</button>
 	</form>
 	</p>
@@ -53,30 +59,41 @@
 			<th></th>
 		</tr>
 
-  <% List<Integer> userNoList = new ArrayList<>(); %>
-  <% for (User u : loginUser.getUsers()) {
-    userNoList.add(u.getNo());
-  } %>
+		<%
+		  List<Integer> userNoList = new ArrayList<>();
+		%>
+		<%
+		  for (User u : loginUser.getUsers()) {
+		  userNoList.add(u.getNo());
+		}
+		%>
 
-		<% for (User user : list) { %>
-		<% boolean followed = userNoList.contains(user.getNo());%>
-		<% String loginType = null; %>
-		<%  switch (user.getLoginType()) { 
-          case "1":
-            loginType = "기본";
-            break;
-          case "2":
-            loginType = "구글";
-            break;
-          case "3":
-            loginType = "깃허브";
-            break;
-        }
-      %>
+		<%
+		  for (User user : list) {
+		%>
+		<%
+		  boolean followed = userNoList.contains(user.getNo());
+		%>
+		<%
+		  String loginType = null;
+		%>
+		<%
+		  switch (user.getLoginType()) {
+		  case "1":
+		    loginType = "기본";
+		    break;
+		  case "2":
+		    loginType = "구글";
+		    break;
+		  case "3":
+		    loginType = "깃허브";
+		    break;
+		}
+		%>
 
 		<tr>
 			<td><%=user.getNo()%></td>
-			<td><%=user.getEmail() %></td>
+			<td><%=user.getEmail()%></td>
 			<td><a href='detail?no=<%=user.getNo()%>'> <img
 					src='../upload/user/<%=user.getPhoto()%>_40x40.jpg'
 					style='border-radius: 70px' alt='[<%=user.getPhoto()%>_80x80]'><%=user.getNickname()%></a></td>
@@ -86,12 +103,12 @@
 			<td><%=loginType%></td>
 			<td><%=user.getBlocked() == 1 ? "차단중" : ""%></td>
 			<td><button type='button'
-					<%=followed ? "class='btn-hollow'" : "" %> onclick=\
-					"location.href='../user/<%=followed ? "un" : "" %>followUser?uno=%1$d'\"><%=followed ? "언팔로우" : "팔로우" %></button></td>
+					<%=followed ? "class='btn-hollow'" : ""%>
+					onclick="location.href='../user/<%=followed ? "un" : ""%>followUser?uno=<%=user.getNo()%>'">
+					<%=followed ? "언팔로우" : "팔로우"%>
+			</button></td>
 		</tr>
-		<%
-        }
-      %>
+		<%}%>
 		</table>
 		  <jsp:include page="/footer.jsp"></jsp:include>
 </body>
