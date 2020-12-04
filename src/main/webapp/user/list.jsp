@@ -16,7 +16,7 @@
 	<h1>
 		<a href='list' style='text-decoration: none;'>유저 목록</a>
 	</h1>
-	<a href='add' style='color: green;'>회원 가입</a>
+	<a href='form.html' style='color: green;'>회원 가입</a>
 	<br>
 
 	<%
@@ -32,9 +32,16 @@
 
 
 	<p>
+	<%
+	  String keyword = request.getParameter("keyword");
+  %>
 	<form action='list' method='get'>
+<<<<<<< HEAD
 		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'
 			value=''>
+=======
+		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'	value='<%=keyword != null ? keyword : ""%>'>
+>>>>>>> e866294ff57934fa06ab6b46370f685b7d95c0a5
 		<button>유저 검색</button>
 	</form>
 	</p>
