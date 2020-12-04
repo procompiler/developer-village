@@ -27,13 +27,12 @@ public class UserDetailServlet extends HttpServlet {
       int no = Integer.parseInt(request.getParameter("no"));
       User user = userService.get(no);
 
-      System.out.println(user);
       request.setAttribute("user", user);
       request.getRequestDispatcher("/user/detail.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
 

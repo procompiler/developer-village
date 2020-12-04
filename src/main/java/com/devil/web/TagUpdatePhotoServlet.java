@@ -42,12 +42,12 @@ public class TagUpdatePhotoServlet extends HttpServlet {
         String saveFilePath = ctx.getRealPath("/upload/tag/" + filename);
         photoPart.write(saveFilePath);
         tag.setPhoto(filename);
-        
+
         // 태그 사진의 썸네일 이미지 파일 생성하기
         generatePhotoThumbnail(saveFilePath);
       }
       int count = tagService.update(tag);
-      
+
       if (count == 0) {
         throw new Exception("해당 태그가 없습니다.");
       }
@@ -55,7 +55,7 @@ public class TagUpdatePhotoServlet extends HttpServlet {
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }

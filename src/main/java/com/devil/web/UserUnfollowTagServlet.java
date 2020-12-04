@@ -26,7 +26,7 @@ public class UserUnfollowTagServlet extends HttpServlet {
     UserService userService =
         (UserService) ctx.getAttribute("userService");
 
-    
+
     User loginUser = (User) request.getSession().getAttribute("loginUser");
     Map<String, Object> map = new HashMap<>();
     map.put("loginUserNo", loginUser.getNo());
@@ -35,13 +35,13 @@ public class UserUnfollowTagServlet extends HttpServlet {
     try {
       if (userService.unfollow(map) == 0) {
         throw new Exception("팔로우하지 않은 태그입니다.");
-      } 
+      }
       loginUser.setTags(userService.get(loginUser.getNo()).getTags());
       response.sendRedirect("../tag/list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }

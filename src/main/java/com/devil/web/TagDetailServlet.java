@@ -12,29 +12,30 @@ import com.devil.service.TagService;
 
 @WebServlet("/tag/detail")
 public class TagDetailServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-      // Servlet container에 들어 있는 TagService를 꺼낸다.
-      ServletContext ctx = request.getServletContext();
-      TagService tagService = (TagService) ctx.getAttribute("tagService");
-      response.setContentType("text/html;charset=UTF-8");
 
-      try {
-        int no = Integer.parseInt(request.getParameter("no"));
-        Tag tag = tagService.get(no);
-        request.setAttribute("tag", tag);
-        request.getRequestDispatcher("/tag/detail.jsp").include(request, response);
+    // Servlet container에 들어 있는 TagService를 꺼낸다.
+    ServletContext ctx = request.getServletContext();
+    TagService tagService = (TagService) ctx.getAttribute("tagService");
+    response.setContentType("text/html;charset=UTF-8");
 
-      } catch (Exception e) {
-        request.setAttribute("exception", e);
-        request.getRequestDispatcher("/error").forward(request, response);
-        return;
-      }
+    try {
+      int no = Integer.parseInt(request.getParameter("no"));
+      Tag tag = tagService.get(no);
+      request.setAttribute("tag", tag);
+      request.getRequestDispatcher("/tag/detail.jsp").include(request, response);
+
+    } catch (Exception e) {
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
+      return;
     }
   }
+}
 
 

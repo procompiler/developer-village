@@ -30,7 +30,7 @@ public class ArticleDeleteServlet extends HttpServlet {
       response.sendRedirect("list");
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }
