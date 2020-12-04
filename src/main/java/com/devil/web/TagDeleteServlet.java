@@ -25,12 +25,12 @@ public class TagDeleteServlet extends HttpServlet {
 
       if (tagService.delete(no) == 0) {
         throw new Exception("해당 번호의 태그가 없습니다.");
-      } 
+      }
       response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
   }

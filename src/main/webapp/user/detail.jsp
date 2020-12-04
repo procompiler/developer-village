@@ -36,7 +36,7 @@ if (user == null) {
 <form action='update' method='post'>
 <input type='hidden' name='no' value='<%=user.getNo()%>'><br>
  <p>닉네임: <input type='text' name='nickname' value='<%=user.getNickname()%>'></p>
- <p>이메일: <%=user.getEmail()%></p>\n", user.getEmail());
+ <p>이메일: <%=user.getEmail()%></p>
  <p>이름: <%=user.getName()%></p>
 
 <% DateFormat format = new SimpleDateFormat("yyyy/MM/dd"); %>
