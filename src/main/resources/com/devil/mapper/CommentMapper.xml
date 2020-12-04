@@ -26,9 +26,9 @@
   </resultMap>
 -->
   <insert id="insert" parameterType="comment">
-    insert into comment(cno, arno, content, uno) 
+    insert into comment(cno, arno, content, uno, step, momno) 
     <if test="content != ''">
-      values(#{no}, #{articleNo}, #{content}, #{writer.no})
+      values(#{no}, #{articleNo}, #{content}, #{writer.no}, #{step}, #{motherNo})
     </if>
   </insert>
 

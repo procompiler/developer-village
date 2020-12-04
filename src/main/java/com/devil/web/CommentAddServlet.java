@@ -24,6 +24,8 @@ public class CommentAddServlet extends HttpServlet {
 
     Comment comment = new Comment();
     comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
+    comment.setMotherNo(Integer.parseInt(request.getParameter("momno")));
+    comment.setStep(Integer.parseInt(request.getParameter("step")));
     comment.setContent(request.getParameter("content"));
 
     try {
