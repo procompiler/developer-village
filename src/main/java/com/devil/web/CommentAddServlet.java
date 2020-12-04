@@ -27,7 +27,6 @@ public class CommentAddServlet extends HttpServlet {
     comment.setContent(request.getParameter("content"));
 
     try {
-
       User user = (User) request.getSession().getAttribute("loginUser");
       comment.setWriter(user);
       commentService.add(comment);

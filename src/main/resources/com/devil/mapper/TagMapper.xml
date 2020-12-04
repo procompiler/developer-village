@@ -38,7 +38,20 @@
 		</if>
 		order by tno desc;
 	</select>
-
+	
+	<select id="findByFollower" resultMap="TagMap" parameterType="user">
+    select
+      t.tno,
+      t.name,
+      t.photo,
+      t.tag_color,
+      t.font_color
+    from
+      tag t
+      inner join usr_tag ut on ut.tno = t.tno
+    where #{no} = ut.uno and t.state = 1
+    order by tno desc;
+  </select>
 
 	<update id="update" parameterType="tag">
 		update tag

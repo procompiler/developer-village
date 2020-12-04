@@ -88,41 +88,35 @@
 
 	<h2>팔로우하는 태그</h2>
 	<table border='1'>
-    <thead>
-      <tr>
-        <th>태그이름</th>
-        <th>태그사진</th>
-        <th>미리보기</th>
-        <th></th>
-      </tr>
-    </thead>
+		<thead>
+			<tr>
+				<th>태그이름</th>
+				<th>태그사진</th>
+				<th>미리보기</th>
+				<th></th>
+			</tr>
+		</thead>
 
-    <tbody>
-	<%
-	  List<Integer> userTagNoList = new ArrayList<>();
-	for (Tag tag : user.getTags()) {
-	  userTagNoList.add(tag.getNo());
-	}
-	
-	for (Tag tag : user.getTags()) {
-	  boolean followed = userTagNoList.contains(tag.getNo());
-	%> 
-	<tr>
-		<td id="title"><a href='detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
-		<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
-			alt='<%=tag.getPhoto()%>'></td>
-		<td><span id="color"
-			style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
-		<td><button type='button'
-				<%=followed ? "class='btn-hollow'" : ""%>
-				onclick="location.href='../user/<%=followed ? "un" : ""%>followTag?tno=<%=tag.getNo()%>'">
-				<%=followed ? "언팔로우" : "팔로우"%></button></td>
-	</tr>
-	<%
+		<tbody>
+			<%
+	List<Tag> tags = (List<Tag>)request.getAttribute("tags");
+	for (Tag tag : tags) {
+	%>
+			<tr>
+				<td id="title"><a href='detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
+				<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
+					alt='<%=tag.getPhoto()%>'></td>
+				<td><span id="color"
+					style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
+				<td><button type='button' class='btn-hollow'
+						onclick="location.href='../user/unfollowTag?tno=<%=tag.getNo()%>'">
+						언팔로우</button></td>
+			</tr>
+			<%
 	  }
 	%>
-	   </tbody>
-  </table>
+		</tbody>
+	</table>
 	<h2>팔로우하는 유저</h2>
 
 

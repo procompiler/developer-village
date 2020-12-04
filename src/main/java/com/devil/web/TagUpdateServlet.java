@@ -32,6 +32,8 @@ public class TagUpdateServlet extends HttpServlet {
       tag.setFontColor(request.getParameter("fontColor"));
       int count = tagService.update(tag);
 
+
+
       if (count == 0) {
         throw new Exception("해당 번호의 게시글이 없습니다.");
       }
@@ -43,5 +45,4 @@ public class TagUpdateServlet extends HttpServlet {
       return;
     }
   }
-
 }

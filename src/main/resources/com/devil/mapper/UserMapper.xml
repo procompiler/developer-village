@@ -11,6 +11,7 @@
     <result column="nick"       property="nickname"/>
     <result column="name"       property="name"/>
     <result column="pwd"        property="password"/>
+    
     <result column="cdt"        property="createdDate"/>
     <result column="rnt_vsdt"   property="recentVisitedDate"/>
     <result column="log_type"   property="loginType"/>
@@ -30,6 +31,7 @@
       <result column="tag_name" property="name"/>
       <result column="tag_color"    property="tagColor"/>
       <result column="font_color"    property="fontColor"/>
+      <result column="tag_photo"    property="photo"/>
     </collection>
     <collection property="users" ofType="user">
       <id column="fwing_no" property="no"/>
@@ -62,6 +64,7 @@
       u.log_type,
       ut.tno,
       t.name tag_name,
+      t.photo tag_photo,
       t.tag_color,
       t.font_color
     from 
@@ -94,6 +97,7 @@
       t.tag_color,
       t.font_color,
       t.state,
+      t.photo tag_photo,
       f.fwing_no,
       u2.nick,
       u2.photo
