@@ -63,7 +63,7 @@ public class BadgeUpdatePhotoServlet extends HttpServlet {
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath)//
-      .size(20, 40)//
+      .size(20, 20)//
       .crop(Positions.CENTER)
       .outputFormat("jpg")//
       .toFiles(new Rename() {

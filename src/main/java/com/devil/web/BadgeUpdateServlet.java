@@ -21,10 +21,9 @@ public class BadgeUpdateServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     request.setCharacterEncoding("UTF-8");
 
-    // Servlet container에 들어 있는 BadgeService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
-    BadgeService badgeService = (BadgeService) ctx.getAttribute("badgeService");
-
+    BadgeService badgeService =
+        (BadgeService) ctx.getAttribute("badgeService");
 
     try {
       Badge badge = new Badge();
@@ -32,6 +31,7 @@ public class BadgeUpdateServlet extends HttpServlet {
       badge.setName(request.getParameter("name"));
       badge.setContent(request.getParameter("content"));
       int count = badgeService.update(badge);
+
 
       if (count == 0) {
         throw new Exception("<p>해당 번호의 게시글이 없습니다.</p>");

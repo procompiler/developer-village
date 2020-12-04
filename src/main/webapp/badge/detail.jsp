@@ -30,6 +30,7 @@ if (badge == null) {
 <button>이미지 변경</button>
 </form>
 <form action='update' method='post'>
+<input type='hidden' name='no' value='<%=badge.getNo()%>'>
 <p>이름 : <%=badge.getName()%></p>
 <textarea name='content'><%=badge.getContent()%></textarea><br>
 <button>뱃지 수정</button>
