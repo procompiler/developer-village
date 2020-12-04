@@ -31,7 +31,7 @@ public class TagListServlet extends HttpServlet {
     }
 
     try {
-      List<Tag> list = tagService.list(null);
+      List<Tag> list = tagService.list((String)null);
       request.setAttribute("list", list);
       request.setAttribute("userTagNoList", userTagNoList);
       request.getRequestDispatcher("/tag/list.jsp").include(request, response);

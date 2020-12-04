@@ -11,6 +11,7 @@
     <result column="nick"       property="nickname"/>
     <result column="name"       property="name"/>
     <result column="pwd"        property="password"/>
+    
     <result column="cdt"        property="createdDate"/>
     <result column="rnt_vsdt"   property="recentVisitedDate"/>
     <result column="log_type"   property="loginType"/>
