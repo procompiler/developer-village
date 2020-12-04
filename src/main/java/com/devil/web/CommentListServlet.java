@@ -30,13 +30,13 @@ public class CommentListServlet extends HttpServlet {
 
     try {
       Article article = articleService.get(no);
-      List<Comment> comments = article.getComments();
+      request.setAttribute("article", article);
 
+      List<Comment> comments = article.getComments();
       request.setAttribute("comments", comments);
 
       // UI 출력을 JSP에게 맡긴다.
       request.getRequestDispatcher("/comment/list.jsp").include(request, response);
-
 
       /* jsp 파일로 댓글 목록 출력하도록 수정 완료하면 아래 내용은 지울것임
        * 출력 스트림도 지울것임

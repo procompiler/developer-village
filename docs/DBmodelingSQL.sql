@@ -150,7 +150,7 @@ CREATE TABLE `comment` (
   `cdt`      DATETIME   NOT NULL DEFAULT now() COMMENT '등록일자', -- 등록일자
   `ord`      INTEGER    NULL     COMMENT '댓글순서', -- 댓글순서
   `step`     INTEGER    NULL     COMMENT '댓글단계', -- 댓글단계
-  `222`      DATETIME   NULL     COMMENT '수정일자', -- 수정일자
+  `udt`      DATETIME   NULL     COMMENT '수정일자', -- 수정일자
   `state`    INTEGER    NOT NULL DEFAULT 1 COMMENT '활성상태', -- 활성상태
   `ddt`      DATETIME   NULL     COMMENT '삭제일자', -- 삭제일자
   `selected` INTEGER    NOT NULL DEFAULT 0 COMMENT '대표답변여부', -- 대표답변여부
