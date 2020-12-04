@@ -25,13 +25,13 @@ public class TagListServlet extends HttpServlet {
 
     response.setContentType("text/html;charset=UTF-8");
     User loginUser = (User) request.getSession().getAttribute("loginUser");
-    List<Integer> userTagNoList = new ArrayList<>();
-    for (Tag tag : loginUser.getTags()) {
-      userTagNoList.add(tag.getNo());
-    }
 
     try {
       List<Tag> list = tagService.list((String)null);
+      List<Integer> userTagNoList = new ArrayList<>();
+      for (Tag tag : tagService.list(loginUser)) {
+        userTagNoList.add(tag.getNo());
+      }
       request.setAttribute("list", list);
       request.setAttribute("userTagNoList", userTagNoList);
       request.getRequestDispatcher("/tag/list.jsp").include(request, response);

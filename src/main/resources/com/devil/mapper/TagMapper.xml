@@ -45,11 +45,12 @@
       t.name,
       t.photo,
       t.tag_color,
-      t.font_color
+      t.font_color,
+      t.state
     from
       tag t
       inner join usr_tag ut on ut.tno = t.tno
-    where #{no} = ut.uno and t.state = 1
+    where #{no} = ut.uno
     order by tno desc;
   </select>
 
@@ -59,7 +60,7 @@
 			<if test="name != null">name = #{name},</if>
 			<if test="photo != null">photo = #{photo},</if>
 			<if test="tagColor != null">tag_color = #{tagColor},</if>
-			<if test="fontColor != null">font_color = #{fontColor},</if>
+			<if test="fontColor != null">font_color = #{fontColor}</if>
 		</set>
 		where tno=#{no}
 	</update>

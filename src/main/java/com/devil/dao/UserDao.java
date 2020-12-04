@@ -5,16 +5,17 @@ import java.util.Map;
 import com.devil.domain.User;
 
 public interface UserDao {
-  public int insert(User user) throws Exception;
-  public int delete(int no) throws Exception;
-  public User findByNo(int no) throws Exception;
-  public List<User> findByName(String name) throws Exception;
-  public List<User> findAll(String keyword) throws Exception;
-  public int update(User user) throws Exception;
-  public User findByEmailPassword(String email, String password) throws Exception;
-  public int inactive(int no) throws Exception;
-  public int insertTag(Map<String, Object> map) throws Exception;
-  public int insertUser(Map<String, Object> map) throws Exception;
-  public int deleteTag(Map<String, Object> map) throws Exception;
-  public int deleteUser(Map<String, Object> map) throws Exception;
+  int insert(User user) throws Exception;
+  int delete(int no) throws Exception;
+  User findByNo(int no) throws Exception;
+  List<User> findByName(String name) throws Exception;
+  List<User> findAll(String keyword) throws Exception;
+  int update(User user) throws Exception;
+  User findByEmailPassword(String email, String password) throws Exception;
+  int inactive(int no) throws Exception;
+  int insertTag(Map<String, Object> map) throws Exception;
+  int insertUser(Map<String, Object> map) throws Exception;
+  int deleteTag(Map<String, Object> map) throws Exception;
+  int deleteUser(Map<String, Object> map) throws Exception;
+  List<User> findByFollower(User user) throws Exception;
 }

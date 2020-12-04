@@ -53,7 +53,12 @@ public class DefaultUserService implements UserService {
   public int unfollow(Map<String, Object> map) throws Exception {
     if (map.get("tagNo") != null) {
       return userDao.deleteTag(map);
-    } 
+    }
     return userDao.deleteUser(map);
+  }
+
+  @Override
+  public List<User> list(User user) throws Exception {
+    return userDao.findByFollower(user);
   }
 }

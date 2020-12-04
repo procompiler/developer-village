@@ -11,7 +11,6 @@
     <result column="nick"       property="nickname"/>
     <result column="name"       property="name"/>
     <result column="pwd"        property="password"/>
-    
     <result column="cdt"        property="createdDate"/>
     <result column="rnt_vsdt"   property="recentVisitedDate"/>
     <result column="log_type"   property="loginType"/>
@@ -26,13 +25,6 @@
     <result column="noti"       property="noti"/>
     <result column="bio"       property="bio"/>
     <result column="state"       property="state"/>
-    <collection property="tags" ofType="tag">
-      <id column="tno" property="no"/>
-      <result column="tag_name" property="name"/>
-      <result column="tag_color"    property="tagColor"/>
-      <result column="font_color"    property="fontColor"/>
-      <result column="tag_photo"    property="photo"/>
-    </collection>
     <collection property="users" ofType="user">
       <id column="fwing_no" property="no"/>
       <result column="fwing_nick"    property="nickname"/>
@@ -61,16 +53,9 @@
       u.pwd, 
       u.photo,
       u.cdt,
-      u.log_type,
-      ut.tno,
-      t.name tag_name,
-      t.photo tag_photo,
-      t.tag_color,
-      t.font_color
+      u.log_type
     from 
       user u
-      left outer join usr_tag ut on u.uno=ut.uno
-      left outer join tag t on ut.tno = t.tno
   </sql>
   
 
@@ -92,19 +77,11 @@
       u.photo,
       u.hp_url,
       u.tech,
-      ut.tno,
-      t.name tag_name,
-      t.tag_color,
-      t.font_color,
-      t.state,
-      t.photo tag_photo,
       f.fwing_no,
       u2.nick,
       u2.photo
     from 
       user u
-      left outer join usr_tag ut on u.uno=ut.uno
-      left outer join tag t on ut.tno = t.tno
       left outer join follow f on u.uno = f.fwer_no
       left outer join user u2 on f.fwing_no = u2.uno
   </sql>
@@ -123,6 +100,19 @@
   <select id="findByNo" resultMap="UserMap" parameterType="int">
     <include refid="sql2"/>
     where u.uno=#{no}
+  </select>
+  
+  <select id="findByFollower" resultMap="UserMap" parameterType="user">
+      select 
+        u.uno, 
+        u.nick,
+        u.name, 
+        u.state,
+        u.photo
+      from user u
+      inner join follow f on f.fwing_no = u.uno
+      where f.fwer_no=#{no}
+    order by f.cdt desc
   </select>
   
   <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
