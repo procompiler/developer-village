@@ -37,7 +37,7 @@ public class UserUnfollowUserServlet extends HttpServlet {
         throw new Exception("팔로우하지 않은 유저입니다.");
       }
       loginUser.setUsers(userService.get(loginUser.getNo()).getUsers());
-      response.sendRedirect("../user/list");
+      response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
