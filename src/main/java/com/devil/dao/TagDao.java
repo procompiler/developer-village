@@ -1,7 +1,6 @@
 package com.devil.dao;
 
 import java.util.List;
-
 import com.devil.domain.Tag;
 
 public interface TagDao {
@@ -11,4 +10,5 @@ public interface TagDao {
   int delete(int no) throws Exception;
   Tag findByNo(int no) throws Exception;
   int inactive(int no) throws Exception;
+  List<Tag> findByFollower(int userNo) throws Exception;
 }

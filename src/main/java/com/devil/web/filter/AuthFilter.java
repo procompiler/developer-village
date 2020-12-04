@@ -11,8 +11,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.devil.domain.User;
-import com.devil.service.UserService;
 
 // 필터 역할:
 // - 로그인 하지 않은 경우 커맨드를 실행시키지 않는다.
@@ -36,15 +34,6 @@ public class AuthFilter implements Filter {
         httpRequest.getServletPath().endsWith(".jpeg") ||
         httpRequest.getServletPath().endsWith(".png") ||
         session.getAttribute("loginUser") != null) {
-      UserService userService =
-          (UserService) session.getServletContext().getAttribute("userService");
-      User user;
-      try {
-        user = userService.get("abcd@gmail.com", "1111");
-        session.setAttribute("loginUser", user);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
       chain.doFilter(request, response);
     } else {
       ServletContext servletContext = request.getServletContext();
