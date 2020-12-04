@@ -101,6 +101,9 @@
 			<%
 	List<Tag> tags = (List<Tag>)request.getAttribute("tags");
 	for (Tag tag : tags) {
+	  if (tag.getState() == 0) {
+	    continue;
+	  }
 	%>
 			<tr>
 				<td id="title"><a href='detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
