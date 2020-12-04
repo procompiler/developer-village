@@ -10,6 +10,8 @@
 </head>
 
 <body>
+  <jsp:include page="/header.jsp"></jsp:include>
+
 <h1>[게시물 조회]</h1>
 
 <%
@@ -44,6 +46,7 @@ switch (article.getCategoryNo()) {
 </form>
 <%}%>
 <jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
+  <jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>

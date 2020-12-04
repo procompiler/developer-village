@@ -32,7 +32,7 @@ public class UserListServlet extends HttpServlet {
       if(keyword != null) {
         list = userService.list(keyword);
       } else {
-        list = userService.list(null);
+        list = userService.list((String)null);
       }
 
       request.setAttribute("list", list);

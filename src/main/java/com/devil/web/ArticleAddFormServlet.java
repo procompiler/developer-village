@@ -42,7 +42,7 @@ public class ArticleAddFormServlet extends HttpServlet {
       out.println("태그: <br>");
       out.println("<ul>");
 
-      List<Tag> tags = tagService.list(null);
+      List<Tag> tags = tagService.list((String)null);
       for (Tag t : tags) {
         out.printf("<input type='checkbox' name='tags' value='%d'>%s  <br>\n",
             t.getNo(),
