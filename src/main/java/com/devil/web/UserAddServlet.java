@@ -1,7 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -22,13 +21,6 @@ import net.coobird.thumbnailator.name.Rename;
 @WebServlet("/user/add")
 public class UserAddServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  //
-  //  private String uploadDir;
-  //
-  //  @Override
-  //  public void init() throws ServletException {
-  //    this.uploadDir = this.getServletContext().getRealPath("/upload/user");
-  //  }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,7 +30,6 @@ public class UserAddServlet extends HttpServlet {
     UserService userService = (UserService) ctx.getAttribute("userService");
 
     response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
 
     User user = new User();
     user.setEmail(request.getParameter("email"));
@@ -66,33 +57,19 @@ public class UserAddServlet extends HttpServlet {
     // 회원 사진의 썸네일 생성하기
     generatePhotoThumnail(saveFilePath);
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta http-equiv='Refresh' content='2;url=list'>");
-    out.println("<title>회원가입</title></head>");
-    out.println("<body>");
-
     try {
-      out.println("<h1>[회원가입]</h1>");
 
       userService.add(user);
-
-      out.println("<p>회원가입을 완료했습니다!</p>");
-      out.println("<p>Devil개발자 커뮤니티에 어서오세요!</p>");
+      response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 
   private void generatePhotoThumnail(String saveFilePath) {
     try {
-
       Thumbnails.of(saveFilePath)//
       .size(40, 40)//
       .crop(Positions.CENTER)
