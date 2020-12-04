@@ -41,7 +41,7 @@ String contextPath = request.getServletContext().getContextPath();
 		<button type='button' id="head-button"
 			onclick="location.href='<%=contextPath%>/user/list'">유저목록</button>
 		<button type='button' id="head-button"
-			onclick="location.href='<%=contextPath%>/auth/login.html'">로그인</button>
+			onclick="location.href='<%=contextPath%>/auth/login'">로그인</button>
 		<button type='button' id="head-button"
 			onclick="location.href='<%=contextPath%>/article/form'">글쓰기</button>
 	</div>
