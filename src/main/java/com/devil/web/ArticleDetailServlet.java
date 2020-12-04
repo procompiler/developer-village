@@ -29,8 +29,6 @@ public class ArticleDetailServlet extends HttpServlet {
       request.setAttribute("article", article);
       request.getRequestDispatcher("/article/detail.jsp").include(request, response);
 
-      request.getRequestDispatcher("/comment/list").include(request, response);
-
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error.jsp").forward(request, response);

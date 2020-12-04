@@ -43,5 +43,7 @@ switch (article.getCategoryNo()) {
 <button type='button' class='btn-danger' onclick="location.href='../report/report-article.html'">게시글 신고</a></button>
 </form>
 <%}%>
+<jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
+
 </body>
 </html>
