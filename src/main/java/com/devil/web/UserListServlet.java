@@ -1,9 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -24,21 +21,10 @@ public class UserListServlet extends HttpServlet {
 
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
-    
-    User loginUser = (User) request.getSession().getAttribute("loginUser");
-    
+
+
     response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head><title>유저 목록</title></head>");
-    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='../style.css'></head>");
-    out.println("<body>");
     try {
-
-      out.println("<h1><a href='list' style='text-decoration:none;'>유저 목록</a></h1>");
-      out.println("<a href='form.html' style='color:green;'>회원 가입</a><br>");
 
       List<User> list = null;
       String keyword = request.getParameter("keyword");
@@ -49,81 +35,14 @@ public class UserListServlet extends HttpServlet {
         list = userService.list(null);
       }
 
-      out.println("<p>");
-      out.println("<form action='list' method='get'>");
-      out.printf("<input type='text' placeholder=\"닉네임 또는 이메일 입력..\" name='keyword' value='%s'>\n",
-          keyword != null ? keyword : "");
-      out.println("<button>유저 검색</button>");
-      out.println("</form>");
-      out.println("</p>");
-
-      out.println("<table border='1'>");
-      out.println("<tr>" // table row
-          + "<th>번호</th>" // table header
-          + "<th>이메일</th>"
-          + "<th>닉네임</th>"
-          + "<th>이름</th>"
-          + "<th>가입일</th>"
-          + "<th>상태</th>"
-          + "<th>로그인타입</th>"
-          + "<th>차단상태</th>"
-          + "<th></th>"
-          + "</tr>");
-      List<Integer> userNoList = new ArrayList<>();
-      for (User u : loginUser.getUsers()) {
-        userNoList.add(u.getNo());
-      }
-      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-      for (User user : list) {
-        boolean followed = userNoList.contains(user.getNo());
-        String loginType = null;
-        switch (user.getLoginType()) {
-          case "1":
-            loginType = "기본";
-            break;
-          case "2":
-            loginType = "구글";
-            break;
-          case "3":
-            loginType = "깃허브";
-            break;
-        }
-
-        out.printf("<tr>"
-            + "<td>%d</td>"
-            + "<td>%s</td>"
-            + "<td><a href='detail?no=%d'><img src='../upload/user/%s_40x40.jpg' style='border-radius: 70px' alt='[%s_80x80]'>%s</a></td>"
-            + "<td>%s</td>"
-            + "<td>%s</td>"
-            + "<td style='color:red;'>%s</td>"
-            + "<td>%s</td>"
-            + "<td>%s</td>"
-            + "<td><button type='button' %s onclick=\"location.href='../user/%sfollowUser?uno=%1$d'\">%s</button></td>"
-            + "</tr>\n",
-            user.getNo(),
-            user.getEmail(),
-            user.getNo(),
-            user.getPhoto(),
-            user.getPhoto(),
-            user.getNickname(),
-            user.getName(),
-            formatter.format(user.getCreatedDate()),
-            user.getState() == 1 ? "" : "탈퇴한 회원",
-                loginType,
-            user.getBlocked() == 1 ? "차단중" : "",
-            followed ? "class='btn-hollow'" : "",
-            followed ? "un" : "",
-            followed ? "언팔로우" : "팔로우");
-      }
-      out.println("</table>");
+      request.setAttribute("list", list);
+      request.getRequestDispatcher("/user/list.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
       return;
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 
 }

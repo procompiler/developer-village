@@ -9,13 +9,20 @@ public class Comment {
   private Date createdDate;
   private int ord;
   private int step; // 댓글 단계 0 댓글 1 대댓글
-  //private int parentNo; // 상위 댓글 번호
+  private int motherNo; // 상위 댓글 번호
   private String updatedDate;
   private String deletedDate;
-  private int state;
+  private int state; // 활성상태 0 안보임 1 보임
   private boolean selected; // 대표 답변 여부 0 미해결 1 해결
   private int articleNo;
 
+  public int getMotherNo() {
+    return motherNo;
+  }
+  public Comment setMotherNo(int motherNo) {
+    this.motherNo = motherNo;
+    return this;
+  }
   public int getArticleNo() {
     return articleNo;
   }

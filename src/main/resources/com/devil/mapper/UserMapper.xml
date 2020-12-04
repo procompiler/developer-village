@@ -93,6 +93,7 @@
       t.name tag_name,
       t.tag_color,
       t.font_color,
+      t.state,
       f.fwing_no,
       u2.nick,
       u2.photo
@@ -117,7 +118,7 @@
   
   <select id="findByNo" resultMap="UserMap" parameterType="int">
     <include refid="sql2"/>
-    where u.uno=#{no}
+    where u.uno=#{no} and t.state=1
   </select>
   
   <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">

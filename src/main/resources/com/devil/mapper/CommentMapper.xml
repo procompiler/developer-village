@@ -34,7 +34,6 @@
 
   <update id="update" parameterType="comment">
     update comment
-    
     <set>
       <if test="content != ''">
       content = #{content},

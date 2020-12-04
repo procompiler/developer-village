@@ -17,12 +17,12 @@ public class User {
   private String githubURL;
   private String instarURL;
   private String twitterURL;
-  private int blocked;
+  private int blocked; // 차단 여부 0 정상 1 차단상태
   private String tech;
-  private int auth;
-  private int noti;
+  private int auth; // 관리자 여부 0 관리자 1 일반 회원
+  private int noti; // 알람알림여부 0 Off 1 On
   private String bio;
-  private int state;
+  private int state; // 활성상태 0 안보임 1 보임
   private List<Tag> tags;
   private List<User> users;
 
@@ -100,7 +100,7 @@ public class User {
   public String getTech() {
     return tech;
   }
-  
+
   public User setTech(String tech) {
     this.tech = tech;
     return this;
@@ -169,7 +169,7 @@ public class User {
     this.state = state;
     return this;
   }
-  
+
   public List<Tag> getTags() {
     return tags;
   }
