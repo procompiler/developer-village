@@ -28,10 +28,12 @@
 <form action='../comment/update?no=<%=comment.getNo()%>&articleNo=<%=comment.getArticleNo()%>' method='post'>
 	<input type='hidden' name='momno' value='<%=comment.getMotherNo()%>'>
 	<input type='hidden' name='cno' value='<%=comment.getNo()%>'>
-	<input type='hidden' name='arno' value='<%=article.getNo()%>'>
+	<input type='hidden' name='arno' value='<%=comment.getArticleNo()%>'>
 	<input type='hidden' name='step' value='<%=comment.getStep()%>'>
 	<p>엄마</p>
-	<img src='../upload/user/<%=comment.getWriter().getPhoto()%>.jpg_40x40.jpg' alt='[<%=comment.getWriter().getPhoto()%>].jpg]'>
+	<img src='<%=request.getContextPath()%>/upload/user/<%=comment.getWriter().getPhoto()%>_40x40.jpg'
+	     style='border-radius: 70px' 
+       alt='[<%=comment.getWriter().getPhoto()%>]_40x40]'>
 	<a href='../user/detail?no=<%=comment.getWriter().getNo()%>'><%=comment.getWriter().getNickname()%></a>
 	<textarea name='content' style="height:30px;width:400px;"><%=comment.getContent()%></textarea>
 	<%=formatter.format(comment.getCreatedDate())%>
@@ -47,9 +49,12 @@
 		<form action='../comment/update?no=<%=childComment.getNo()%>&articleNo=<%=article.getNo()%>' method='post'>
 			<input type='hidden' name='momno' value='<%=childComment.getMotherNo()%>'>
 			<input type='hidden' name='cno' value='<%=childComment.getNo()%>'>
-			<input type='hidden' name='arno' value='<%=article.getNo()%>'>
+			<input type='hidden' name='arno' value='<%=comment.getArticleNo()%>'>
 			<p>딸</p>
-			<img src='../upload/user/<%=childComment.getWriter().getPhoto()%>.jpg_40x40.jpg' alt='[<%=childComment.getWriter().getPhoto()%>].jpg]'>
+			
+			<img src='<%=request.getContextPath()%>/upload/user/<%=childComment.getWriter().getPhoto()%>_40x40.jpg'
+			     style='border-radius: 70px' 
+			     alt='[<%=childComment.getWriter().getPhoto()%>].jpg]'>
 			<a href='../user/detail?no=<%=childComment.getWriter().getNo()%>'><%=childComment.getWriter().getNickname()%></a>
 			<textarea name='content' style="height:30px;width:400px;"><%=childComment.getContent()%></textarea>
 			<%=formatter.format(childComment.getCreatedDate())%>
