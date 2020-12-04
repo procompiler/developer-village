@@ -35,7 +35,7 @@ INSERT INTO category (cano,name) VALUES (4, '스터디');
 
 
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (1, 1, 1,null,'자바너무재밌다 짱짱짱 즐거운인생','자바를 배우면 우리 인생이 즐겁고 편안해집니다 자바를 믿으세요.');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (2, 3, 2,null,'하연님수고많으세요','짱짱멋있어요');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (2, 3, 2,null,'하연님수고많으세요','짱짱멋있어요, 사랑해요하연님');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (3, 2, 2,null,'이거 왜안되나요. ','사진 첨부합니다.');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (4, 4, 1,null,'오늘 저녁 메뉴 고민중인데, 같이 골라주세요!','뜨끈하고 맛있는걸로 먹고싶네요!!');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (5, 6, 4,134,'자바스크립트 불도저하실분','010-1111-2222 연락주세요');
