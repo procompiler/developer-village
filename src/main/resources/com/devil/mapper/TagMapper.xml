@@ -39,7 +39,7 @@
 		order by tno desc;
 	</select>
 	
-	<select id="findByFollower" resultMap="TagMap" parameterType="int">
+	<select id="findByFollower" resultMap="TagMap" parameterType="user">
     select
       t.tno,
       t.name,
