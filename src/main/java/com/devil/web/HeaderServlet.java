@@ -23,10 +23,11 @@ public class HeaderServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
 
     User loginUser = (User)request.getSession().getAttribute("loginUser");
+
     try {
       User user = userService.get(loginUser.getNo());
       request.setAttribute("user", user);
-      request.getRequestDispatcher("/user/header.jsp").include(request, response);
+      request.getRequestDispatcher("/header.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

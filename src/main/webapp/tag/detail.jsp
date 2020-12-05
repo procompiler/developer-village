@@ -7,7 +7,7 @@
 <head><title>태그 조회</title>
 <link rel="stylesheet" type="text/css" href='../style.css'></head>
 <body>
-
+  <jsp:include page="/header"></jsp:include>
 <h1>태그 조회</h1>
 
 <%Tag tag = (Tag) request.getAttribute("tag");
@@ -32,5 +32,6 @@ if (tag == null) {
 <p><a href='list' style='color:white;'>태그 목록으로</a></p>
 <button type='button'onclick="location.href='delete?no=<%=tag.getNo()%>'">태그 삭제</button>
 <%}%>
+  <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

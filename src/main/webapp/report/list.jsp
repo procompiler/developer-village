@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-	<jsp:include page="/header.jsp"></jsp:include>
+  <jsp:include page="/header"></jsp:include>
 	<a href='../user/list' style='text-decoration: none;'>전체회원관리</a>
 	<a href='../report/list' style='text-decoration: none;'>신고내역</a>
 	<a href='list' style='text-decoration: none;'>활동정지회원</a>

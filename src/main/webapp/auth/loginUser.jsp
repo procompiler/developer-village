@@ -23,7 +23,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/header.jsp"></jsp:include>
+  <jsp:include page="/header"></jsp:include>
 
 	<%
 	  DateFormat format = new SimpleDateFormat("yyyy/MM/dd");

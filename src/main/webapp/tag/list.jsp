@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href='../style.css'>
 </head>
 <body>
-  <jsp:include page="/header.jsp"></jsp:include>
+  <jsp:include page="/header"></jsp:include>
 	<h1>태그 목록</h1>
 	<button type='button' onclick="location.href='form.html'">태그
 		추가</button>
