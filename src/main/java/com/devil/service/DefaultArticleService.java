@@ -40,6 +40,11 @@ public class DefaultArticleService implements ArticleService {
     return articleDao.findAll(keyword);
   }
   @Override
+  public List<Article> list(int categoryNo) throws Exception {
+    return articleDao.findByCategoryNo(categoryNo);
+  }
+
+  @Override
   public List<Article> list() throws Exception {
     return articleDao.findAll((String)null);
   }

@@ -10,9 +10,7 @@
 </head>
 
 <body>
-  <jsp:include page="/header.jsp"></jsp:include>
-
-<h1>[게시물 조회]</h1>
+  <jsp:include page="/header"></jsp:include>
 
 <%
 Article article = (Article) request.getAttribute("article");
@@ -20,6 +18,16 @@ if (article == null) {
   response.setHeader("Refresh", "2;url=list");%>
   <p>해당 게시글이 없습니다</p>
 <%} else{%>
+
+<%String categoryName = null;
+switch (article.getCategoryNo()) {
+  case 1: categoryName = "커뮤니티"; break;
+  case 2: categoryName = "QnA"; break;
+  case 3: categoryName = "채용공고"; break;
+  default :categoryName = "스터디"; break;
+}%>
+
+<h1><%=categoryName%></h1>
 
 <form action='update' method='post'>
 <input type='hidden' name='no' value='<%=article.getNo()%>'><br>
@@ -29,13 +37,6 @@ if (article == null) {
        style='border-radius: 70px' 
        alt='[<%=article.getWriter().getPhoto()%>]_40x40]'><%=article.getWriter().getNickname()%></p>
 
-<%String categoryName = null;
-switch (article.getCategoryNo()) {
-  case 1: categoryName = "커뮤니티"; break;
-  case 2: categoryName = "QnA"; break;
-  case 3: categoryName = "채용공고"; break;
-  default :categoryName = "스터디"; break;
-}%>
 
 <p>카테고리: <%=categoryName%></p>
 

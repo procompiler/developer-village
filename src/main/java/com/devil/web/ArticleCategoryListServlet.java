@@ -1,6 +1,7 @@
 package com.devil.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletContext;
@@ -12,28 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 
-@WebServlet("/article/list")
-public class ArticleListServlet extends HttpServlet {
+@WebServlet("/article/categoryNo")
+public class ArticleCategoryListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
     ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
 
     response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
 
     try {
+      int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
       List<Article> list = null;
 
-      System.out.println("categoryNo" + 1);
       String keyword = request.getParameter("keyword");
       String keywordTitle = request.getParameter("keywordTitle");
       String keywordWriter = request.getParameter("keywordWriter");
       String keywordTag = request.getParameter("keywordTag");
-      //String keywordCategory = request.getParameter("keywordCategory");
 
       if (keyword != null) {
         list = articleService.list(keyword);
@@ -42,14 +43,12 @@ public class ArticleListServlet extends HttpServlet {
         keywordMap.put("title", keywordTitle);
         keywordMap.put("writer", keywordWriter);
         keywordMap.put("tag", keywordTag);
-        //keywordMap.put("category", keywordCategory);
         list = articleService.list(keywordMap);
       } else {
         list = articleService.list();
       }
-
       request.setAttribute("list", list);
-
+      request.setAttribute("categoryNo", categoryNo);
       request.getRequestDispatcher("/article/list.jsp").include(request, response);
 
     } catch (Exception e) {
@@ -57,6 +56,10 @@ public class ArticleListServlet extends HttpServlet {
       request.getRequestDispatcher("/error.jsp").forward(request, response);
       return;
     }
+    out.println("</body>");
+    out.println("</html>");
   }
+
+
 
 }

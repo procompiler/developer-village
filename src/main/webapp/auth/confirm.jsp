@@ -18,7 +18,7 @@
 <div id="wrap">
  
     <div id="header">
-        <%@ include file="../inc/header.jsp" %>
+  <jsp:include page="/header"></jsp:include>
     </div>
  
     <div id="main-menu">

@@ -66,10 +66,12 @@
       a.arno, 
       a.title,
       a.cdt,  
+      a.cano,  
       a.vw_cnt, 
       a.state,
       u.uno,
       u.nick article_nick,
+      u.photo article_photo,
       at.tno,
       t.name tag_name,
       t.tag_color,
@@ -133,6 +135,23 @@
       article a
       inner join user u on a.writer=u.uno
      where a.arno=#{no}  
+    </select>
+    
+    <select id="findByCategoryNo" resultMap="ArticleMap" parameterType="int">
+    select 
+      a.arno, 
+      a.title,
+      a.content,
+      a.cdt,  
+      a.cano,
+      a.state,
+      u.nick article_nick,
+      u.photo article_photo,
+      a.vw_cnt
+    from 
+      article a
+      inner join user u on a.writer=u.uno
+     where a.cano=#{categoryNo}  
     </select>
     
     <update id="updateViewCount" parameterType="int">

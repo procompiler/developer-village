@@ -6,7 +6,7 @@ import java.util.List;
 public class Article {
   private int no;
   private User writer;
-  private int categoryNo;
+  private int categoryNo; // 1 커뮤니티 2 QnA 3 채용공고 4 스터디
   private String title;
   private String content;
   private Date createdDate;
@@ -18,8 +18,6 @@ public class Article {
   private Date endDate;
   private List<Comment> comments;
   private List<Tag> tags;
-
-
 
   public int getStudyStatus() {
     return studyStatus;
@@ -73,9 +71,8 @@ public class Article {
   public int getCategoryNo() {
     return categoryNo;
   }
-  public Article setCategoryNo(int categoryNo) {
+  public void setCategoryNo(int categoryNo) {
     this.categoryNo = categoryNo;
-    return this;
   }
   public Date getEndDate() {
     return endDate;
@@ -105,7 +102,6 @@ public class Article {
     this.createdDate = createdDate;
     return this;
   }
-
   public int getViewCount() {
     return viewCount;
   }
@@ -121,6 +117,5 @@ public class Article {
     return this;
   }
 }
-
 
 
