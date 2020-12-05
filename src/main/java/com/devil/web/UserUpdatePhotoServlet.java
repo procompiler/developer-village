@@ -96,7 +96,7 @@ public class UserUpdatePhotoServlet extends HttpServlet {
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
+          return name + "_60x60";
         }
       });
 

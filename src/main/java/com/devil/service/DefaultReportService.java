@@ -3,17 +3,32 @@ package com.devil.service;
 import java.util.List;
 import com.devil.dao.ReportDao;
 import com.devil.domain.Report;
+import com.devil.util.SqlSessionFactoryProxy;
 
 public class DefaultReportService implements ReportService {
   ReportDao reportDao;
+  SqlSessionFactoryProxy factoryProxy;
 
-  public DefaultReportService(ReportDao reportDao) {
+
+  public DefaultReportService(ReportDao reportDao, SqlSessionFactoryProxy factoryProxy) {
     this.reportDao = reportDao;
+    this.factoryProxy = factoryProxy;
   }
 
   @Override
   public int report(Report report) throws Exception {
-    return reportDao.insert(report);
+    try {
+      factoryProxy.startTransaction();
+      reportDao.insert(report);
+      reportDao.insertReportedUser(report);
+      factoryProxy.commit();
+      return 1;
+    } catch (Exception e) {
+      factoryProxy.rollback();
+      throw e;
+    } finally {
+      factoryProxy.endTransaction();
+    }
   }
 
   @Override
@@ -24,11 +39,6 @@ public class DefaultReportService implements ReportService {
   @Override
   public Report get(int no) throws Exception {
     return null;
-  }
-
-  @Override
-  public int update(Report report) throws Exception {
-    return 0;
   }
 
   @Override
