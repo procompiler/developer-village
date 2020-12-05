@@ -42,4 +42,10 @@ public class ReportDaoImpl implements ReportDao {
     }
   }
 
+  @Override
+  public int admitblock(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.update("ReportDao.admitblock", no);
+    }
+  }
 }

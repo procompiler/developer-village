@@ -18,7 +18,7 @@ public class DefaultReportService implements ReportService {
 
   @Override
   public List<Report> list(String keyword) throws Exception {
-    return null;
+    return reportDao.findAll(keyword);
   }
 
   @Override
@@ -31,5 +31,8 @@ public class DefaultReportService implements ReportService {
     return 0;
   }
 
-
+  @Override
+  public int admit(int no) throws Exception {
+    return reportDao.admitblock(no);
+  }
 }

@@ -7,7 +7,7 @@ public class Report {
   private int reportTypeNo;
   private User reporter;
   private Date CreatedDate;
-  private int status; // 처리상태 1 차단전 2차단전 3 차단해제
+  private int status; // 처리상태 1 차단전 2차단중 3 차단해제
   private Date processDate;
   private Article reportedArticle;
   private Comment reportedComment;
@@ -76,4 +76,5 @@ public class Report {
     this.processDate = processDate;
     return this;
   }
+
 }
