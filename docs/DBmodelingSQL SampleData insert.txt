@@ -59,6 +59,10 @@ INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (5,4, 2,'저�
 INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (6,6, 6,'오호라오호라오호라오호라',1,'2020-11-20',1);
 INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (7,1, 3,'대댓글테스트입니다.',2,'2020-11-20',0);
 INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (8,4, 2,'야호야호야',1,'2020-11-21',0);
+INSERT INTO comment (cno,arno,uno,content,ord,udt,selected,step) VALUES (9,4, 2,'감자튀김 좋아',1,'2020-12-1',0,1);
+INSERT INTO comment (cno,arno,uno,content,ord,udt,selected,step) VALUES (10,4, 2,'햄버거도 좋아',1,'2020-12-2',0,1);
+INSERT INTO comment (cno,arno,uno,content,ord,udt,selected,step) VALUES (11,4, 2,'스파게티 좋아',1,'2020-12-3',0,1);
+
 
 
 
