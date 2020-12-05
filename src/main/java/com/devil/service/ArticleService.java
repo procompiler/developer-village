@@ -11,5 +11,6 @@ public interface ArticleService {
   int update(Article article) throws Exception;
   int delete(int no) throws Exception;
   List<Article> list () throws Exception;
-  List<Article> list(Map<String, Object> keywords);
+  List<Article> list(Map<String, Object> keywords) throws Exception;
+  List<Article> list(int categoryNo) throws Exception;
 }

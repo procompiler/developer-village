@@ -8,4 +8,5 @@ public interface ReportDao {
   public int update(Report report) throws Exception;
   public List<Report> findAll(String keyword) throws Exception;
   public int delete(int no) throws Exception;
+  public int admitblock(int no) throws Exception;
 }

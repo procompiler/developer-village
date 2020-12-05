@@ -8,15 +8,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>유저 목록</title>
+<title>회원관리</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
 	<jsp:include page="/header.jsp"></jsp:include>
+	<a href='list' style='text-decoration: none; color=white' >전체회원관리</a>
+	<a href='../report/list' style='text-decoration: none; color=white' >신고내역</a>
+	<a href='list' style='text-decoration: none; color=white' >활동정지회원</a>
 	<h1>
-		<a href='list' style='text-decoration: none;'>유저 목록</a>
+		<a href='list' style='text-decoration: none;'>전체회원관리</a>
 	</h1>
-	<a href='form.html' style='color: green;'>회원 가입</a>
 	<br>
 
 	<%

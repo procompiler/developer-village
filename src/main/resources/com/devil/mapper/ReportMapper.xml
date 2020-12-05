@@ -11,29 +11,72 @@
 		<result column="status" property="status" />
 		<result column="pdt" property="processDate" />
 		
-		<association property="uno" javaType="user">
+		<association property="reporter" javaType="user">
       <id column="uno"          property="no"/>
-      <result column="uno_nick"    property="nickname"/>
+      <result column="reporter_nick"    property="nickname"/>
+      <result column="reporter_email"    property="email"/>
     </association>
     
+    <association property="reportedArticle" javaType="article">
+      <id column="arno"          property="no"/>
+      <result column="article_title"    property="title"/>
+      <result column="article_content"    property="content"/>
+    </association>
+    
+    <association property="reportedComment" javaType="comment">
+      <id column="cno"          property="no"/>
+      <result column="comment_content"    property="content"/>
+    </association>
+    
+    <association property="reportedUser" javaType="user">
+      <id column="uno"          property="no"/>
+      <result column="reported_nick"    property="nickname"/>
+      <result column="reported_email"    property="email"/>
+    </association>
 	</resultMap>
+
+  <sql id="sql1">
+   select
+     r.rpno,
+     r.rptno,
+     r.uno,
+     r.cdt,
+     r.status,
+     r.pdt,
+     u.uno,
+     u.nick reporter_nick,
+     u.email reporter_email,
+     ra.arno reported_article,
+     rc.cno reported_comment,
+     ru.uno reported_user
+   from
+     report r
+     inner join user u on r.uno=u.uno
+     left outer join repo_arc ra on r.rpno=ra.rpno
+     left outer join repo_comt rc on r.rpno=rc.rpno
+     left outer join repo_user ru on r.rpno=ru.rpno
+  </sql>
 
 	<insert id="insert" parameterType="report">
 		insert into report(rpno, rptno, uno, cdt)
 		values(#{no}, #{reportTypeNo}, #{reporter.no}, now())
 	</insert>
 
-<!-- 
-	<select id="findAll" resultMap="TagMap" parameterType="string">
+	<select id="findAll" resultMap="ReportMap" parameterType="string">
 		<include refid="sql1" />
 		<if test="keyword != null">
-			where
-			name like concat('%', #{keyword}, '%')
+		where
+			r.rptno like concat('%', #{keyword}, '%')
 		</if>
-		order by tno desc;
+		order by r.rpno desc
 	</select>
 
-
+    <update id="admitblock" parameterType="int">
+    update report set
+      status = 2
+    where rpno=#{no}
+  </update>
+<!-- 
 	<update id="update" parameterType="tag">
 		update tag
 		<set>

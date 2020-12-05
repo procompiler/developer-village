@@ -37,6 +37,13 @@ public class ArticleDaoImpl implements ArticleDao {
   }
 
   @Override
+  public List<Article> findByCategoryNo(int categoryNo) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findByCategoryNo", categoryNo);
+    }
+  }
+
+  @Override
   public List<Article> findAll(String keyword) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("ArticleDao.findAll", keyword);

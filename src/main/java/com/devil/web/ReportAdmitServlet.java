@@ -7,12 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.domain.Report;
-import com.devil.domain.User;
 import com.devil.service.ReportService;
 
-@WebServlet("/report/reportArticle")
-public class ReportArticleServlet extends HttpServlet {
+@WebServlet("/report/admitreport")
+public class ReportAdmitServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -23,17 +21,13 @@ public class ReportArticleServlet extends HttpServlet {
     ReportService reportService =
         (ReportService) ctx.getAttribute("reportService");
 
-    response.setContentType("text/html;charset=UTF-8");
-
     try {
+      int no = Integer.parseInt(request.getParameter("no"));
+      if (reportService.admit(no) == 0) {
+        throw new Exception("<p>해당 번호의 신고내역은 없습니다.</p>");
+      }
 
-      Report report = new Report();
-      report.setReportTypeNo(Integer.parseInt(request.getParameter("reason")));
-
-      User loginUser = (User) request.getSession().getAttribute("loginUser");
-      report.setReporter(loginUser);
-      reportService.report(report);
-      response.sendRedirect("../article/list");
+      response.sendRedirect("../report/list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

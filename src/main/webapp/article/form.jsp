@@ -1,4 +1,3 @@
-
 <%@page import="com.devil.domain.Tag"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,7 +12,9 @@
 
 <body>
   <jsp:include page="/header.jsp"></jsp:include>
+  
 <h1>게시글 작성</h1>
+
 <form action='add' method='post'>
 글 제목: <input type='text' name='title'>
 카테고리: 
@@ -40,7 +41,6 @@ for (Tag t : tags) {%>
 <button type='button' class='btn-danger' onclick="location.href='list'">취소</button>
 
 </form>
-
   <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>
