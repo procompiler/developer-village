@@ -1,7 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,39 +24,14 @@ public class ArticleAddFormServlet extends HttpServlet {
         (TagService) ctx.getAttribute("tagService");
 
     response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<title>게시글생성</title></head>");
-    out.println("<body>");
 
     try {
-      out.println("<h1>게시글 생성</h1>");
-
-      out.println("<form action='add' method='post'>");
-      out.println("게시글명: <input type='text' name='title'><br>");
-      out.println("내용: <textarea name='content' rows='10' cols='60'></textarea><br>");
-      out.println("태그: <br>");
-      out.println("<ul>");
 
       List<Tag> tags = tagService.list((String)null);
-      for (Tag t : tags) {
-        out.printf("<input type='checkbox' name='tags' value='%d'>%s  <br>\n",
-            t.getNo(),
-            t.getName());
-      }
+      request.setAttribute("tags", tags);
 
-      out.println("<select name='categoryNo'>");
-      out.println("<option value='1'>커뮤니티</option>");
-      out.println("<option value='2'>QnA</option>");
-      out.println("<option value='3'>채용공고</option>");
-      out.println("<option value='4'>스터디</option>");
-      out.println("</select><br>");
-
-      out.println("<button>생성</button>");
-      out.println("</form>");
+      request.getRequestDispatcher("/article/form.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
@@ -65,7 +39,5 @@ public class ArticleAddFormServlet extends HttpServlet {
       return;
     }
 
-    out.println("</body>");
-    out.println("</html>");
   }
 }

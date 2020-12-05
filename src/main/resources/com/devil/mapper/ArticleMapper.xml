@@ -21,6 +21,7 @@
     <association property="writer" javaType="user">
       <id column="uno"          property="no"/>
       <result column="article_nick"     property="nickname"/>
+      <result column="article_photo"     property="photo"/>
     </association>
     
     <collection property="tags" ofType="tag">
@@ -126,19 +127,11 @@
       a.cano,
       a.state,
       u.nick article_nick,
-      a.vw_cnt, 
-      c.cno,
-      c.cdt comment_cdt,
-      c.content comment_content,
-      c.uno,
-      c.state comment_state,
-      u2.nick comment_nick,
-      u2.photo comment_photo
+      u.photo article_photo,
+      a.vw_cnt
     from 
       article a
-      inner join user u on a.writer=u.uno   
-      left outer join comment c on a.arno=c.arno
-      left outer join user u2 on c.uno = u2.uno
+      inner join user u on a.writer=u.uno
      where a.arno=#{no}  
     </select>
     
