@@ -58,7 +58,6 @@ public class UserAddServlet extends HttpServlet {
     generatePhotoThumnail(saveFilePath);
 
     try {
-
       userService.add(user);
       response.sendRedirect("list");
 
