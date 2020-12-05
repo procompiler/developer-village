@@ -24,13 +24,14 @@ public class CommentAddServlet extends HttpServlet {
 
     Comment comment = new Comment();
     comment.setArticleNo(Integer.parseInt(request.getParameter("arno")));
+    comment.setMotherNo(Integer.parseInt(request.getParameter("momno")));
+    comment.setStep(Integer.parseInt(request.getParameter("step")));
     comment.setContent(request.getParameter("content"));
 
     try {
       User user = (User) request.getSession().getAttribute("loginUser");
       comment.setWriter(user);
       commentService.add(comment);
-
       response.sendRedirect("../article/detail?no="+ comment.getArticleNo());
 
     } catch (Exception e) {

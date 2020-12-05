@@ -6,7 +6,8 @@ import com.devil.domain.Comment;
 public interface CommentService {
   int add(Comment comment) throws Exception;
   List<Comment> list (String keyword) throws Exception;
-  Comment get(int no) throws Exception;
+  //Comment get(int no) throws Exception;
   int update(Comment comment) throws Exception;
   int delete(int no) throws Exception;
+  List<Comment> getByArticleNo (int articleNo) throws Exception;
 }

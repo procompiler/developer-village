@@ -22,13 +22,15 @@ public class DefaultCommentService implements CommentService {
   }
 
   @Override
-  public Comment get(int no) throws Exception {
-    Comment comment = commentDao.findByNo(no);
-    if (comment != null) {
-      commentDao.updateViewCount(no);
-    }
-    return comment;
+  public List<Comment> getByArticleNo(int articleNo) throws Exception {
+    return commentDao.findByArticleNo(articleNo);
   }
+
+//  @Override
+//  public Comment get(int no) throws Exception {
+//    Comment comment = commentDao.findByNo(no);
+//    return comment;
+//  }
 
   @Override
   public int update(Comment comment) throws Exception {

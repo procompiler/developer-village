@@ -154,7 +154,7 @@ CREATE TABLE `comment` (
   `state`    INTEGER    NOT NULL DEFAULT 1 COMMENT '활성상태', -- 활성상태
   `ddt`      DATETIME   NULL     COMMENT '삭제일자', -- 삭제일자
   `selected` INTEGER    NOT NULL DEFAULT 0 COMMENT '대표답변여부', -- 대표답변여부
-  `momno`    INTEGER    NULL     COMMENT '상위댓글번호' -- 상위댓글번호
+  `momno`    INTEGER    NOT NULL DEFAULT 0 COMMENT '상위댓글번호' -- 상위댓글번호
 )
 COMMENT '댓글';
 

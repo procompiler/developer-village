@@ -19,7 +19,7 @@
 	<jsp:include page="/header.jsp"></jsp:include>
 
 	<h1>게시물 목록</h1>
-	<button type='button' onclick="location.href='form'">글쓰기</button>
+	<button type='button' onclick="location.href='add'">글쓰기</button>
 	<%
 	  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	%>

@@ -11,9 +11,11 @@
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
   crossorigin="anonymous" />
+    <meta http-equiv='Refresh' content='1;url=loginUser'>
+  
 </head>
 <body>
-<% User loginUser = (User) session.getAttribute("loginUser");
+<% User loginUser = (User) request.getAttribute("loginUser");
  %>
  <% if (loginUser == null) {
  %>

@@ -10,6 +10,8 @@
 </head>
 
 <body>
+  <jsp:include page="/header.jsp"></jsp:include>
+
 <h1>[게시물 조회]</h1>
 
 <%
@@ -22,7 +24,10 @@ if (article == null) {
 <form action='update' method='post'>
 <input type='hidden' name='no' value='<%=article.getNo()%>'><br>
 <input type='text' name='title' value='<%=article.getTitle()%>'><br>
-<p>작성자: <%=article.getWriter().getNickname()%></p>
+
+<p>작성자: <img src='<%=request.getContextPath()%>/upload/user/<%=article.getWriter().getPhoto()%>_40x40.jpg'
+       style='border-radius: 70px' 
+       alt='[<%=article.getWriter().getPhoto()%>]_40x40]'><%=article.getWriter().getNickname()%></p>
 
 <%String categoryName = null;
 switch (article.getCategoryNo()) {
@@ -40,10 +45,11 @@ switch (article.getCategoryNo()) {
 <textarea name='content'><%=article.getContent()%></textarea><br>
 <button>수정</button>
 <button type='button' class='btn-danger' onclick="location.href='delete?no=<%=article.getNo()%>'">삭제</button>
-<button type='button' class='btn-danger' onclick="location.href='../report/report-article.html'">게시글 신고</a></button>
+<button type='button' class='btn-danger' onclick="location.href='../report/report-article.html'">게시글 신고</button>
 </form>
 <%}%>
 <jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
+  <jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -5,30 +5,31 @@
 
 
 <mapper namespace="CommentDao">
-<!--
   <resultMap type="comment"   id="CommentMap">
     <id column="cno"          property="no"/>
+    <result column="arno"     property="articleNo"/>
     <result column="content"  property="content"/>
     <result column="cdt"      property="createdDate"/>
-    <result column="step"     property="step"/>
-    <result column="ord"     property="ord"/>
+    <result column="ord"      property="ord"/>
     <result column="udt"      property="updatedDate"/>
-    <result column="ddt"   property="deletedDate"/>
-    <result column="status"   property="status"/>
+    <result column="state"    property="state"/>
+    <result column="step"     property="step"/>
+    <result column="ddt"      property="deletedDate"/>
     <result column="selected" property="selected"/>
+    <result column="momno"    property="motherNo"/>
     
     <association property="writer" javaType="user">
-      <id column="uno"                   property="no"/>
+      <id column="uno"           property="no"/>
       <result column="nick"      property="nickname"/>
       <result column="photo"     property="photo"/>
     </association>
     
   </resultMap>
--->
+  
   <insert id="insert" parameterType="comment">
-    insert into comment(cno, arno, content, uno) 
+    insert into comment(cno, arno, content, uno, step, momno) 
     <if test="content != ''">
-      values(#{no}, #{articleNo}, #{content}, #{writer.no})
+      values(#{no}, #{articleNo}, #{content}, #{writer.no}, #{step}, #{motherNo})
     </if>
   </insert>
 
@@ -50,20 +51,38 @@
       ddt=now()
     where cno=#{no}
   </update>
+  
+  <select id="findByArticleNo" resultMap="CommentMap" parameterType="int">
+    select
+      c.cno,
+      c.arno,
+      c.uno,
+      c.content,
+      c.cdt,
+      c.ord,
+      c.step,
+      c.udt,
+      c.state,
+      c.selected,
+      c.ddt,
+      c.momno,
+      u.name,
+      u.nick,
+      u.photo
+    from
+      comment c
+      inner join article a on a.arno=c.arno
+      left join user u on c.uno=u.uno
+    where a.arno=#{articleNo}
+  </select>
+  
+  
 <!--
 
   <select id="findAll" resultMap="CommentMap"	parameterType="string">
   </select>
  
 
-  <select id="findByNo" resultMap="CommentMap" parameterType="int">
-  </select>
-
-  <update id="updateViewCount" parameterType="int">
-  </update>
-
-  <delete id="delete" parameterType="int">
-  </delete>
 
   -->
   
