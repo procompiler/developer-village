@@ -22,6 +22,13 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
+  public int insertReportedUser(Report report) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("ReportDao.insertReportedUser", report);
+    }
+  }
+
+  @Override
   public int delete(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("ReportDao.delete", no);
@@ -32,13 +39,6 @@ public class ReportDaoImpl implements ReportDao {
   public List<Report> findAll(String keyword) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("ReportDao.findAll", keyword);
-    }
-  }
-
-  @Override
-  public int update(Report report) throws Exception {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.update("ReportDao.update", report);
     }
   }
 

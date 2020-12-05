@@ -62,6 +62,21 @@
 		values(#{no}, #{reportTypeNo}, #{reporter.no}, now())
 	</insert>
 
+  <insert id="insertReportedUser" parameterType="user">
+    insert into repo_user(rpno, uno)
+    values(#{no}, #{reportedUser.no})
+  </insert>
+
+  <insert id="insertReportedComment" parameterType="report">
+    insert into repo_comt(rpno, cno)
+    values(#{no}, #{reportedComment.no})
+  </insert>
+
+  <insert id="insertReportedArticle" parameterType="report">
+    insert into repo_arc(rpno, arno)
+    values(#{no}, #{reportedArticle.no})
+  </insert>
+
 	<select id="findAll" resultMap="ReportMap" parameterType="string">
 		<include refid="sql1" />
 		<if test="keyword != null">

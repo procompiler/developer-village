@@ -58,7 +58,7 @@ public class DataHandlerListener implements ServletContextListener {
       TagService tagService = new DefaultTagService(tagDao);
       BadgeService badgeService = new DefaultBadgeService(badgeDao);
       CommentService commentService = new DefaultCommentService(commentDao);
-      ReportService reportService = new DefaultReportService(reportDao);
+      ReportService reportService = new DefaultReportService(reportDao, sqlSessionFactory);
 
       // 다른 객체가 사용할 수 있도록 context 맵 보관소에 저장해둔다.
       ServletContext ctx = sce.getServletContext();

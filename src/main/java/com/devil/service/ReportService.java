@@ -7,6 +7,5 @@ public interface ReportService {
   int report(Report report) throws Exception;
   List<Report> list (String keyword) throws Exception;
   Report get(int no) throws Exception;
-  int update(Report report) throws Exception;
   int admit(int no) throws Exception;
 }
