@@ -88,7 +88,6 @@
 		%>
 	</div>
 
-
 	<h2>팔로우하는 태그</h2>
 	<table border='1'>
 		<thead>

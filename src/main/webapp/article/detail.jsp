@@ -24,7 +24,10 @@ if (article == null) {
 <form action='update' method='post'>
 <input type='hidden' name='no' value='<%=article.getNo()%>'><br>
 <input type='text' name='title' value='<%=article.getTitle()%>'><br>
-<p>작성자: <%=article.getWriter().getNickname()%></p>
+
+<p>작성자: <img src='<%=request.getContextPath()%>/upload/user/<%=article.getWriter().getPhoto()%>_40x40.jpg'
+       style='border-radius: 70px' 
+       alt='[<%=article.getWriter().getPhoto()%>]_40x40]'><%=article.getWriter().getNickname()%></p>
 
 <%String categoryName = null;
 switch (article.getCategoryNo()) {

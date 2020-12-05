@@ -25,7 +25,6 @@ public class UserListServlet extends HttpServlet {
 
     response.setContentType("text/html;charset=UTF-8");
     try {
-
       List<User> list = null;
       String keyword = request.getParameter("keyword");
 
@@ -34,7 +33,7 @@ public class UserListServlet extends HttpServlet {
       } else {
         list = userService.list((String) null);
       }
-
+      request.setAttribute("followingUsers", userService.list((User)request.getSession().getAttribute("loginUser")));
       request.setAttribute("list", list);
       request.getRequestDispatcher("/user/list.jsp").include(request, response);
 

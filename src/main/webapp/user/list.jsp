@@ -26,12 +26,11 @@
 	%>
 	<%
 	  List<User> list = (List<User>) request.getAttribute("list");
+	  List<User> followingUsers = (List<User>) request.getAttribute("followingUsers");
 	%>
 	<%
 	  User loginUser = (User) request.getSession().getAttribute("loginUser");
 	%>
-
-
 
 	<p>
 	<%
@@ -60,7 +59,7 @@
 		  List<Integer> userNoList = new ArrayList<>();
 		%>
 		<%
-		  for (User u : loginUser.getUsers()) {
+		  for (User u : followingUsers) {
 		  userNoList.add(u.getNo());
 		}
 		%>
