@@ -38,7 +38,7 @@ INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (1, 1, 1,nul
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (2, 3, 2,null,'하연님수고많으세요','짱짱멋있어요, 사랑해요하연님');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (3, 2, 2,null,'이거 왜안되나요. ','사진 첨부합니다.');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (4, 4, 1,null,'오늘 저녁 메뉴 고민중인데, 같이 골라주세요!','뜨끈하고 맛있는걸로 먹고싶네요!!');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (5, 6, 4,134,'자바스크립트 불도저하실분','010-1111-2222 연락주세요');
+INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (5, 6, 4,null,'자바스크립트 불도저하실분','010-1111-2222 연락주세요');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (6, 3, 2,null,'게시글을 더 추가해볼까아아아','우짜지');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (7, 5, 2,null,'부모님 효도선물로 제격! 발마사지기계','광고');
 INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (8, 1, 2,null,'메롱메롱~','진짜 재밌다 하하하하하하');
@@ -87,7 +87,7 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css.pn
 
 
 
-INSERT INTO badge (bno,name,photo,tno) VALUES (1, '환영뱃지', 'welcome.jpg','');
+INSERT INTO badge (bno,name,photo,tno) VALUES (1, '환영뱃지', 'welcome.jpg',null);
 INSERT INTO badge (bno,name,photo,tno) VALUES (2, '자바뱃지', 'java.jpg','1');
 INSERT INTO badge (bno,name,photo,tno) VALUES (3, '씨뱃지', 'c.jpg','6');
 INSERT INTO badge (bno,name,photo,tno) VALUES (4, '코틀린뱃지', 'kotlin.gif','11');
