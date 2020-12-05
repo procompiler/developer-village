@@ -7,13 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>게시글생성</title>
+<title>게시글작성</title>
 <link rel="stylesheet" type="text/css" href='../style.css'>
 </head>
 
 <body>
   <jsp:include page="/header.jsp"></jsp:include>
-<h1>게시글 생성</h1>
+<h1>게시글 작성</h1>
 <form action='add' method='post'>
 글 제목: <input type='text' name='title'>
 카테고리: 
