@@ -5,167 +5,135 @@
 
 <mapper namespace="UserDao">
 
-  <resultMap type="user" id="UserMap">
-    <id column="uno"            property="no"/>
-    <result column="email"      property="email"/>
-    <result column="nick"       property="nickname"/>
-    <result column="name"       property="name"/>
-    <result column="pwd"        property="password"/>
-    <result column="cdt"        property="createdDate"/>
-    <result column="rnt_vsdt"   property="recentVisitedDate"/>
-    <result column="log_type"   property="loginType"/>
-    <result column="photo"      property="photo"/>
-    <result column="hp_url"     property="homepageURL"/>
-    <result column="gh_url"     property="githubURL"/>
-    <result column="in_url"     property="instarURL"/>
-    <result column="tw_url"     property="twitterURL"/>
-    <result column="blocked"    property="blocked"/>
-    <result column="tech"       property="tech"/>
-    <result column="auth"       property="auth"/>
-    <result column="noti"       property="noti"/>
-    <result column="bio"       property="bio"/>
-    <result column="state"       property="state"/>
-    <collection property="users" ofType="user">
-      <id column="fwing_no" property="no"/>
-      <result column="fwing_nick"    property="nickname"/>
-      <result column="fwing_photo"    property="photo"/>
-    </collection>
-    
-  </resultMap>
+	<resultMap type="user" id="UserMap">
+		<id column="uno" property="no" />
+		<result column="email" property="email" />
+		<result column="nick" property="nickname" />
+		<result column="name" property="name" />
+		<result column="pwd" property="password" />
+		<result column="cdt" property="createdDate" />
+		<result column="rnt_vsdt" property="recentVisitedDate" />
+		<result column="log_type" property="loginType" />
+		<result column="photo" property="photo" />
+		<result column="hp_url" property="homepageURL" />
+		<result column="gh_url" property="githubURL" />
+		<result column="in_url" property="instarURL" />
+		<result column="tw_url" property="twitterURL" />
+		<result column="blocked" property="blocked" />
+		<result column="tech" property="tech" />
+		<result column="auth" property="auth" />
+		<result column="noti" property="noti" />
+		<result column="bio" property="bio" />
+		<result column="state" property="state" />
+	</resultMap>
 
-  <insert id="insert" parameterType="user">
-    insert into user(email,nick,name,pwd,log_type, photo) 
-    values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
-  </insert>
-  
-    <sql id="sql1">
-    select 
-      u.uno, 
-      u.email, 
-      u.nick,
-      u.name, 
-      u.hp_url,
-      u.gh_url,
-      u.in_url,
-      u.tw_url,
-      u.bio,
-      u.state,
-      u.pwd, 
-      u.photo,
-      u.cdt,
-      u.log_type
-    from 
-      user u
-  </sql>
-  
+	<insert id="insert" parameterType="user">
+		insert into user(email,nick,name,pwd,log_type, photo)
+		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
+	</insert>
 
-  <sql id='sql2'>
-    select 
-      u.uno, 
-      u.email, 
-      u.nick,
-      u.name,
-      u.hp_url,
-      u.gh_url,
-      u.in_url,
-      u.tw_url,
-      u.bio,
-      u.state,
-      u.pwd, 
-      u.cdt, 
-      u.log_type,
-      u.photo,
-      u.hp_url,
-      u.tech,
-      f.fwing_no,
-      u2.nick,
-      u2.photo
-    from 
-      user u
-      left outer join follow f on u.uno = f.fwer_no
-      left outer join user u2 on f.fwing_no = u2.uno
-  </sql>
-  
-  <select id="findAll" resultMap="UserMap" parameterType="string">
-    <include refid="sql1"/>
-    <if test="keyword != null">
-    <bind name="pattern" value="'%' + _parameter + '%'" />
-    where
-      email like concat('%', #{keyword}, '%')
-      or nick like concat('%', #{keyword}, '%')
-    </if>
-    order by uno desc
-  </select>
-  
-  <select id="findByNo" resultMap="UserMap" parameterType="int">
-    <include refid="sql2"/>
-    where u.uno=#{no}
-  </select>
-  
-  <select id="findByFollower" resultMap="UserMap" parameterType="user">
-      select 
-        u.uno, 
-        u.nick,
-        u.name, 
-        u.state,
-        u.photo
-      from user u
-      inner join follow f on f.fwing_no = u.uno
-      where f.fwer_no=#{no}
-    order by f.cdt desc
-  </select>
-  
-  <select id="findByEmailPassword" parameterType="map" resultMap="UserMap">
-    <include refid="sql2"/>
-    where
-     u.email = #{email}
-     and u.pwd = password(#{password})
-  </select>
-  
-  <update id="update" parameterType="user">
-    update user
-    <set>
-      <if test="nickname != null">nick = #{nickname},</if>
-      <if test="password != null">pwd = password(#{password}),</if>
-      <if test="homepageURL != null">hp_url = #{homepageURL},</if>
-      <if test="githubURL != null">gh_url = #{githubURL},</if>
-      <if test="instarURL != null">in_url = #{instarURL},</if>
-      <if test="twitterURL != null">tw_url = #{twitterURL},</if>
-      <if test="tech != null">tech = #{tech},</if>
-      <if test="bio != null">bio = #{bio},</if>
-      <if test="photo != null">photo = #{photo}</if>
-    </set>
-    where uno = #{no}
-  </update>
-  
-  <insert id="insertTag" parameterType="map">
-    insert into usr_tag(uno, tno)
-    values (#{loginUserNo}, #{tagNo});
-  </insert>
-  
-  <insert id="insertUser" parameterType="map">
-    insert into follow(fwer_no, fwing_no)
-    values (#{loginUserNo}, #{userNo});
-  </insert>
-  
-  <delete id="deleteTag" parameterType="map">
-    delete from usr_tag
-    where uno=#{loginUserNo} and tno=#{tagNo}
-  </delete>
-  
-  <delete id="deleteUser" parameterType="map">
-    delete from follow
-    where fwer_no=#{loginUserNo} and fwing_no=#{userNo}
-  </delete>
-  
-  <delete id="delete" parameterType="int">
-    delete from user
-    where uno=#{no}
-  </delete>
-  
-    <update id="inactive" parameterType="int">
-    update user set
-      state = 0
-    where uno=#{no}
-  </update>
+	<sql id="sql1">
+		select
+		u.uno,
+		u.email,
+		u.nick,
+		u.name,
+		u.hp_url,
+		u.gh_url,
+		u.in_url,
+		u.tw_url,
+		u.bio,
+		u.state,
+		u.pwd,
+		u.photo,
+		u.cdt,
+		u.log_type
+		from
+		user u
+	</sql>
+
+	<select id="findAll" resultMap="UserMap" parameterType="string">
+		<include refid="sql1" />
+		<if test="keyword != null">
+			<bind name="pattern" value="'%' + _parameter + '%'" />
+			where
+			email like concat('%', #{keyword}, '%')
+			or nick like concat('%', #{keyword}, '%')
+		</if>
+		order by uno desc
+	</select>
+
+	<select id="findByNo" resultMap="UserMap" parameterType="int">
+		<include refid="sql1" />
+		where u.uno=#{no}
+	</select>
+
+	<select id="findByFollower" resultMap="UserMap"
+		parameterType="user">
+		select
+		u.uno,
+		u.nick,
+		u.name,
+		u.state,
+		u.photo
+		from user u
+		inner join follow f on f.fwing_no = u.uno
+		where f.fwer_no=#{no}
+		order by f.cdt desc
+	</select>
+
+	<select id="findByEmailPassword" parameterType="map"
+		resultMap="UserMap">
+		<include refid="sql1" />
+		where
+		u.email = #{email}
+		and u.pwd = password(#{password})
+	</select>
+
+	<update id="update" parameterType="user">
+		update user
+		<set>
+			<if test="nickname != null">nick = #{nickname},</if>
+			<if test="password != null">pwd = password(#{password}),</if>
+			<if test="homepageURL != null">hp_url = #{homepageURL},</if>
+			<if test="githubURL != null">gh_url = #{githubURL},</if>
+			<if test="instarURL != null">in_url = #{instarURL},</if>
+			<if test="twitterURL != null">tw_url = #{twitterURL},</if>
+			<if test="tech != null">tech = #{tech},</if>
+			<if test="bio != null">bio = #{bio},</if>
+			<if test="photo != null">photo = #{photo}</if>
+		</set>
+		where uno = #{no}
+	</update>
+
+	<insert id="insertTag" parameterType="map">
+		insert into usr_tag(uno, tno)
+		values (#{loginUserNo}, #{tagNo});
+	</insert>
+
+	<insert id="insertUser" parameterType="map">
+		insert into follow(fwer_no, fwing_no)
+		values (#{loginUserNo}, #{userNo});
+	</insert>
+
+	<delete id="deleteTag" parameterType="map">
+		delete from usr_tag
+		where uno=#{loginUserNo} and tno=#{tagNo}
+	</delete>
+
+	<delete id="deleteUser" parameterType="map">
+		delete from follow
+		where fwer_no=#{loginUserNo} and fwing_no=#{userNo}
+	</delete>
+
+	<delete id="delete" parameterType="int">
+		delete from user
+		where uno=#{no}
+	</delete>
+
+	<update id="inactive" parameterType="int">
+		update user set
+		state = 0
+		where uno=#{no}
+	</update>
 </mapper>

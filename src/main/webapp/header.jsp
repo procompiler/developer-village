@@ -1,18 +1,18 @@
+<%@page import="com.devil.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
 String contextPath = request.getServletContext().getContextPath();
-%>
+User loginUser = (User) request.getSession().getAttribute("loginUser");
 
+%>
 <nav>
 	<ul>
 		<li><a href='<%=contextPath%>'><img id="logo-nav" src="../upload/devil.png" /></a></li>
 		<div id="sitename">
-		  <a href="../index.html">
 			<li><span class="main-font-color">D</span>eveloper</li>
 			<li><span class="main-font-color">V</span>illage</li>
-			</a>
 		</div>
 		<div class="buttons">
 			<li><i class="fas fa-user-friends"></i><a href='<%=contextPath%>/article/list?categoryNo=1'>커뮤니티</a></li>
@@ -41,13 +41,16 @@ String contextPath = request.getServletContext().getContextPath();
 		</form>
 	</div>
 	<div>
+			<button type='button' id="head-button"
+      onclick="location.href='<%=contextPath%>/user/form.html'">회원가입</button>
 		<button type='button' id="head-button"
-			onclick="location.href='<%=contextPath%>/user/list'">유저목록</button>
+			onclick="location.href='<%=contextPath%>/user/list'">회원관리</button>
 		<button type='button' id="head-button"
 			onclick="location.href='<%=contextPath%>/auth/login'">로그인</button>
 		<button type='button' id="head-button"
 			onclick="location.href='<%=contextPath%>/article/form'">글쓰기</button>
 	</div>
 </header>
+
 
 <div class='content'>
