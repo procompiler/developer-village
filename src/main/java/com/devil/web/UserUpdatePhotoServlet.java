@@ -90,6 +90,17 @@ public class UserUpdatePhotoServlet extends HttpServlet {
       });
 
       Thumbnails.of(saveFilePath)//
+      .size(60, 60)//
+      .crop(Positions.CENTER)
+      .outputFormat("jpg")//
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_40x40";
+        }
+      });
+
+      Thumbnails.of(saveFilePath)//
       .size(80, 80)//
       .outputFormat("jpg") //
       .toFiles(new Rename() {
