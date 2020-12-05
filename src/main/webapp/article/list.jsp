@@ -15,17 +15,23 @@
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 </head>
+
 <body>
 	<jsp:include page="/header.jsp"></jsp:include>
+	<%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
+	<%List<Article> list = (List<Article>) request.getAttribute("list");%>
+  <%int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));%>
 
-	<h1>게시물 목록</h1>
-	<button type='button' onclick="location.href='add'">글쓰기</button>
-	<%
-	  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	%>
-	<%
-	  List<Article> list = (List<Article>) request.getAttribute("list");
-	%>
+<%String categoryName = null;%>
+<%switch (categoryNo) {
+  case 1: categoryName = "커뮤니티"; break;
+  case 2: categoryName = "QnA"; break;
+  case 3: categoryName = "채용공고"; break;
+  default :categoryName = "스터디"; break;
+}%>
+         
+	<h1><%=categoryName%></h1>
+	<button type='button' onclick="location.href='form'">글쓰기</button>
 
 	<table border='1'>
 		<thead>
@@ -39,9 +45,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
-			  for (Article article : list) {
-			%>
+			<%for (Article article : list) {%>
+			<%if(article.getCategoryNo() == categoryNo) {%>
+
 			<tr>
 				<td><%=article.getNo()%></td>
 				<td id='title'>
@@ -55,16 +61,15 @@
 						<%
 						  }
 						%>
-					</ul> <a href='detail?no=<%=article.getNo()%>'><%=article.getTitle()%></a>
+					</ul><a href='detail?no=<%=article.getNo()%>'><%=article.getTitle()%></a>
 				</td>
 				<td><%=article.getWriter().getNickname()%></td>
 				<td><%=formatter.format(article.getCreatedDate())%></td>
 				<td><%=article.getViewCount()%></td>
 				<td><%=article.getState() == 1 ? "" : "삭제된 게시글"%></td>
 			</tr>
-			<%
-			  }
-			%>
+			<%}%>
+			<%}%>
 		</tbody>
 	</table>
 	<p>
@@ -82,7 +87,7 @@
 	<h2>상세 검색</h2>
 	<p>
 		<%
-		  String keywordTitle = request.getParameter("keywordTitle");
+		String keywordTitle = request.getParameter("keywordTitle");
 		String keywordWriter = request.getParameter("keywordWriter");
 		String keywordTag = request.getParameter("keywordTag");
 		%>
