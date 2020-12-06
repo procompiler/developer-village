@@ -46,7 +46,7 @@ switch (article.getCategoryNo()) {
 <textarea name='content'><%=article.getContent()%></textarea><br>
 <button>수정</button>
 <button type='button' class='btn-danger' onclick="location.href='delete?no=<%=article.getNo()%>'">삭제</button>
-<button type='button' class='btn-danger' onclick="location.href='../report/report-article.html'">게시글 신고</button>
+<button type='button' class='btn-danger' onclick="location.href='../report/reportArticle?no=<%=article.getNo()%>'">게시글 신고</button>
 </form>
 <%}%>
 <jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>

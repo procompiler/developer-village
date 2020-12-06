@@ -27,6 +27,7 @@ public class ArticleDetailServlet extends HttpServlet {
       int no = Integer.parseInt(request.getParameter("no"));
       Article article = articleService.get(no);
       request.setAttribute("article", article);
+
       request.getRequestDispatcher("/article/detail.jsp").include(request, response);
 
     } catch (Exception e) {

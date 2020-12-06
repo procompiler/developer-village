@@ -22,9 +22,9 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public int insertReportedUser(Report report) throws Exception {
+  public int insertReportedArticle(Report reportedArticle) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.insert("ReportDao.insertReportedUser", report);
+      return sqlSession.insert("ReportDao.insertReportedArticle", reportedArticle);
     }
   }
 
