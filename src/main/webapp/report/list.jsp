@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-  <jsp:include page="/header"></jsp:include>
+  <jsp:include page="../header"></jsp:include>
 	<a href='../user/list' style='text-decoration: none;'>전체회원관리</a>
 	<a href='../report/list' style='text-decoration: none;'>신고내역</a>
 	<a href='list' style='text-decoration: none;'>활동정지회원</a>
@@ -66,10 +66,10 @@
 		
 		<tr>
 			<td><input type='hidden' name='no' value='<%=report.getNo()%>'><br></td>
-			<td><%=report.getReporter().getNickname()%>  [<%=report.getReporter().getEmail()%>]</td>
-			<td><%=report.getReportedUser().getNickname()%>[<%=report.getReportedUser().getEmail()%>]</td>
-			<td><a href='../article/detail?no=7' style='text-decoration: none;'>신고글 링크</a></td>
-			<td><%=reportType%></td>
+			 <td><%=report.getReporter().getNickname()%>  [<%=report.getReporter().getEmail()%>]</td>
+			<td><%=report.getReportedArticle().getWriter()%></td>
+			<%--<td><a href='../article/detail?no=<%=report.getReportedArticle().getNo() %>' style='text-decoration: none;'>신고글 링크</a></td>
+		 --%>	<td><%=reportType%></td>
 
 			<td>
 				<button type='button' onclick="location.href='block-admit.html'">

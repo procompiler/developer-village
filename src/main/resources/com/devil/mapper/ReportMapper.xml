@@ -21,6 +21,7 @@
       <id column="arno"          property="no"/>
       <result column="article_title"    property="title"/>
       <result column="article_content"    property="content"/>
+      <result column="article_writer"    property="writer"/>
     </association>
     
     <association property="reportedComment" javaType="comment">
