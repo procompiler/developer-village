@@ -12,43 +12,7 @@
 
 <body>
  <jsp:include page="/header"></jsp:include>
-  <article>
-    <h1>자바를 자바자바</h1>
-    <p class="date">2020-10-20</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-      ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-      sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
-      consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
-      adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
-      elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
-      ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-      sit amet, consectetur adipiscing elit</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-      ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-      sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
-      consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
-      adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
-      elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
-      ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum
-      sit amet, consectetur adipiscing elit</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-      ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor
-      sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet,
-      consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur
-      adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing
-      elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem
-      ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum
-      sit amet, consectetur adipiscing elit</p>
-  </article>
-  <div id="comment" class="content">
-    <ul>
-      <li>댓글댓글댓글댓글</li>
-      <li>댓글댓글댓글댓글</li>
-      <li>댓글댓글댓글댓글</li>
-      <li>댓글댓글댓글댓글</li>
-    </ul>
-  </div>
-  <jsp:include page="/footer.jsp"></jsp:include>
+ <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 
 </html>
