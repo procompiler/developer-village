@@ -26,6 +26,8 @@ dependencies {
     // Apache의 파일업로드 처리 라이브러리
     implementation 'commons-fileupload:commons-fileupload:1.4'
     
+    // jstl 라이브러리
+    implementation 'jstl:jstl:1.2'
     // Servlet-API
     // => 컴파일 할 때만 사용한다.
     // => 배치할 때는 포함하지 않는다.
