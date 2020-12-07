@@ -4,20 +4,21 @@
 <%@page import="com.devil.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>유저 목록</title>
+<title>회원관리</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
 	  <jsp:include page="/header.jsp"></jsp:include>
-	<a href='../user/list' style='text-decoration: none;'>전체회원관리</a>
+	<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='list' style='text-decoration: none;'>활동정지회원</a>
 	<h1>
-		<a href='list' style='text-decoration: none;'>유저 목록</a>
+		<a href='list' style='text-decoration: none;'>전체 회원관리</a>
 	</h1>
 	<br>
 
@@ -96,7 +97,19 @@
 			<td><%=user.getName()%></td>
 			<td><%=formatter.format(user.getCreatedDate())%></td>
 			<td style='color: red;'><%=user.getState() == 1 ? "" : "탈퇴한 회원"%></td>
-			<td><%=loginType%></td>
+			<td>
+			<c:choose>
+            <c:when test="${t.status == 1}">
+              기본
+            </c:when>
+            <c:when test="${t.status == 2}">
+              구글
+            </c:when>
+            <c:otherwise>
+              깃허브
+            </c:otherwise>
+          </c:choose>
+			</td>
 			<td><%=user.getBlocked() == 1 ? "차단중" : ""%></td>
 			<td><button type='button'
 					<%=followed ? "class='btn-hollow'" : ""%>
