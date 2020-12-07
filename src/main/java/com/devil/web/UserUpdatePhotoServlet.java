@@ -30,9 +30,16 @@ public class UserUpdatePhotoServlet extends HttpServlet {
     ServletContext ctx = request.getServletContext();
     UserService userService =
         (UserService) ctx.getAttribute("userService");
+    User loginUser = (User) request.getSession().getAttribute("loginUser");
+    User user = null;
 
-    User user = new User();
-    user.setNo(Integer.parseInt(request.getParameter("no")));
+    int userNo = Integer.parseInt(request.getParameter("no"));
+    if (userNo == loginUser.getNo()) {
+      user = loginUser;
+    } else {
+      user = new User();
+      user.setNo(Integer.parseInt(request.getParameter("no")));
+    }
 
     // 회원 사진 파일 저장
     Part photoPart = request.getPart("photo");

@@ -14,4 +14,5 @@ public interface UserService {
   int follow(Map<String, Object> map) throws Exception;
   int unfollow(Map<String, Object> map) throws Exception;
   List<User> list(User user) throws Exception;
+  int bookmark(Map<String, Object> map) throws Exception;
 }

@@ -116,6 +116,17 @@
 		values (#{loginUserNo}, #{userNo});
 	</insert>
 	
+   <insert id="insertArticle" parameterType="map">
+    insert into usr_bmk_arc(uno, arno)
+    values (#{loginUserNo}, #{articleNo});
+  </insert>
+  
+  <delete id="deleteArticle" parameterType="map">
+    delete from usr_bmk_arc
+    (uno, arno)
+    values (#{loginUserNo}, #{articleNo});
+  </delete>
+
 	<update id="insertBlocked" parameterType="block">
     update user set
     blocked = 1

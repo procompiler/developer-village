@@ -14,12 +14,12 @@ public class AutoLoginListener implements ServletRequestListener {
   public void requestInitialized(ServletRequestEvent sre) {
     try {
       HttpSession session = ((HttpServletRequest)sre.getServletRequest()).getSession();
-
       if (session.getAttribute("loginUser") == null) {
         UserService userService =
             (UserService) session.getServletContext().getAttribute("userService");
         User user = userService.get("abcd@gmail.com", "1111");
         session.setAttribute("loginUser", user);
+        System.out.println(user);
       }
     } catch (Exception e) {
       e.printStackTrace();

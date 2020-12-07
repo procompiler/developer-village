@@ -8,8 +8,6 @@
 	pageEncoding="UTF-8"%>
 	<%DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 	User user = (User) request.getSession().getAttribute("loginUser");
-	List<Tag> tags = (List<Tag>) request.getAttribute("tags");
-	List<User> users = (List<User>) request.getAttribute("users");
 
 	if (user == null) {
 	%>

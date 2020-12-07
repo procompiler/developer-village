@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
 	<a href='../user/list' style='text-decoration: none;'>전체회원관리</a>
 	<a href='../report/list' style='text-decoration: none;'>신고내역</a>
 	<a href='list' style='text-decoration: none;'>활동정지회원</a>
@@ -31,59 +31,66 @@
 	<table border='1'>
 		<tr>
 			<th>신고자</th>
-			<th>피신고자</th> 
+			<th>피신고자</th>
 			<th>신고링크</th>
 			<th>신고사유</th>
 			<th>신고승인</th>
-		  <th></th>
+			<th></th>
 		</tr>
 
 		<%
 		  for (Report report : list) {
 		%>
-		 <%
+		<%
 		  boolean blockAdmit = false;
-		%> 
+		%>
 		<%
 		  String reportType = null;
-    %>
-    <%
-      switch (report.getReportTypeNo()) {
-      case 1:
-        reportType = "욕설"; break;
-      case 2:
-        reportType = "권리침해"; break;
-      case 3:
-        reportType = "폭력적 또는 혐오성 게시글"; break;
-      case 4:
-        reportType = "불법광고"; break;
-      case 5:
-        reportType = "음란성"; break;
-      case 6:
-        reportType = "도배"; break;
-    }
-    %>
-		
-		<tr>
-			<td><%=report.getReporter().getNickname()%>  [<%=report.getReporter().getEmail()%>]</td>
-			<td><%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]</td>
-			<td><a href='../article/detail?no=<%=report.getReportedArticle().getNo() %>' style='text-decoration: none;'>신고 링크</a></td>
-		 	<td><%=reportType%></td>
+		%>
+		<%
+		  switch (report.getReportTypeNo()) {
+		  case 1:
+		    reportType = "욕설";
+		    break;
+		  case 2:
+		    reportType = "권리침해";
+		    break;
+		  case 3:
+		    reportType = "폭력적 또는 혐오성 게시글";
+		    break;
+		  case 4:
+		    reportType = "불법광고";
+		    break;
+		  case 5:
+		    reportType = "음란성";
+		    break;
+		  case 6:
+		    reportType = "도배";
+		    break;
+		}
+		%>
 
-     <form action="../block/block-permission" method="get">
+		<tr>
+			<td><%=report.getReporter().getNickname()%> [<%=report.getReporter().getEmail()%>]</td>
+			<td><%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]</td>
+			<td><a
+				href='../article/detail?no=<%=report.getReportedArticle().getNo()%>'
+				style='text-decoration: none;'>신고 링크</a></td>
+			<td><%=reportType%></td>
+
 			<td>
-				<button>
-				신고승인
-				</button>
+				<form action="../block/form" method="get">
+					<input type='hidden' name='reportNo' value='<%=report.getNo()%>'><br>
+					<input type='hidden' name='reportedUser'
+						value='<%=report.getReportedArticle().getWriter().getNo()%>'>
+					<button>신고승인</button>
+				</form>
 			</td>
-			<td><input type='hidden' name='reportNo' value='<%=report.getNo()%>'><br></td>
-			<td><input type='hidden' name='reportedUser' value='<%=report.getReportedArticle().getWriter().getNo()%>'><br></td>
-		 </form>
-		  
+
 		</tr>
 		<%
 		  }
-		%> 
+		%>
 	</table>
 	<jsp:include page="/footer.jsp"></jsp:include>
 </body>

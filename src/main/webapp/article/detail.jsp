@@ -34,7 +34,7 @@
 		<input type='hidden' name='no' value='${article.no}'><br>
 		<input style="font-size: 20x;" type='text'
 			name='title' value='${article.title}' size='50'><br>
-
+			
 		<p>
 			작성자: <img src='/upload/user/${article.writer.photo}_40x40.jpg'
 				style='border-radius: 70px' alt='[${article.writer.photo}]_40x40]'>${article.writer.nickname}</p>

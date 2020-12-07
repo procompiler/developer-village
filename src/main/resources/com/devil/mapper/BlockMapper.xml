@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BlockDao">
+<!--
 	<resultMap type="block" id="BlockMap">
 		<id column="blno" property="no" />
 		<result column="cdt" property="permittedDate" />
@@ -16,10 +17,10 @@
     <result column="blocked" property="blocked"/>
 </association>
 	</resultMap>
-
+  -->
 	<insert id="insert" parameterType="block">
-		insert into block(cdt, dates, bl_rsn)
-		values(now(), #{blockedDates}, #{blockedReason})
+		insert into block(uno, cdt, dates, bl_rsn)
+		values(#{reportedUser.no}, now(), #{blockedDates}, #{blockedReason})
 	</insert>
 	
 <!-- 
