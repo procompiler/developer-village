@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href='../style.css'>
 </head>
 <body>
-  <jsp:include page="/header"></jsp:include>
+    <jsp:include page="/header.jsp"></jsp:include>
 
 	<h1>유저 차단하기</h1>
 	<form action="block-permission" method="post">

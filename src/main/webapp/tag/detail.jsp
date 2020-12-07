@@ -7,7 +7,7 @@
 <head><title>태그 조회</title>
 <link rel="stylesheet" type="text/css" href='../style.css'></head>
 <body>
-  <jsp:include page="/header"></jsp:include>
+    <jsp:include page="/header.jsp"></jsp:include>
 <h1>태그 조회</h1>
 
 <%Tag tag = (Tag) request.getAttribute("tag");

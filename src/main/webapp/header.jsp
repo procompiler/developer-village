@@ -8,12 +8,12 @@ User user = (User) session.getAttribute("loginUser");
 %>
 <nav>
   <ul>
-    <li><a href='<%=contextPath%>'><img id="logo-nav" src="../upload/devil.png" /></a></li>
+    <li><a href='<%=contextPath%>'><img id="logo-nav" src="<%=contextPath%>/upload/devil.png" /></a></li>
     <div id="sitename">
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
     </div>
-    <a href="<%=contextPath%>/auth/loginUser">
+    <a href="<%=contextPath%>/mypage/taglist">
      <div class="user-card">
       <div class="user-photo">
         <img src="<%=contextPath%>/upload/user/<%=user.getPhoto()%>_60x60.jpg"/>

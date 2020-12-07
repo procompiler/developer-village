@@ -13,7 +13,7 @@
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
   crossorigin="anonymous" />
 </head>
-  <jsp:include page="/header"></jsp:include>
+  <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
   <a href='form.html'>뱃지 추가</a><br>
 
