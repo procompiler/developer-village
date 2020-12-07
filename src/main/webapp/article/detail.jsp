@@ -52,7 +52,7 @@ switch (article.getCategoryNo()) {
 <%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
 <p>등록일: <%=formatter.format(article.getCreatedDate())%></p>
 <p>조회수: <%=article.getViewCount()%></p>
-      </button>
+
 <textarea name='content'><%=article.getContent()%></textarea><br>
 <button>수정</button>
 <button type='button' class='btn-danger' onclick="location.href='delete?no=<%=article.getNo()%>'">삭제</button>
@@ -60,7 +60,7 @@ switch (article.getCategoryNo()) {
 </form>
 <%}%>
 <jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
-  <jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>
