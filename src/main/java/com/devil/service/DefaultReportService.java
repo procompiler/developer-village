@@ -20,7 +20,7 @@ public class DefaultReportService implements ReportService {
     try {
       factoryProxy.startTransaction();
       reportDao.insert(report);
-      reportDao.insertReportedUser(report);
+      reportDao.insertReportedArticle(report);
       factoryProxy.commit();
       return 1;
     } catch (Exception e) {

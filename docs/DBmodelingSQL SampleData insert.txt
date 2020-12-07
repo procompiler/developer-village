@@ -34,34 +34,70 @@ INSERT INTO category (cano,name) VALUES (4, '스터디');
 
 
 
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (1, 1, 1,null,'자바너무재밌다 짱짱짱 즐거운인생','자바를 배우면 우리 인생이 즐겁고 편안해집니다 자바를 믿으세요.');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (2, 3, 2,null,'하연님수고많으세요','짱짱멋있어요, 사랑해요하연님');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (3, 2, 2,null,'이거 왜안되나요. ','사진 첨부합니다.');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (4, 4, 1,null,'오늘 저녁 메뉴 고민중인데, 같이 골라주세요!','뜨끈하고 맛있는걸로 먹고싶네요!!');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (5, 6, 4,null,'자바스크립트 불도저하실분','010-1111-2222 연락주세요');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (6, 3, 2,null,'게시글을 더 추가해볼까아아아','우짜지');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (7, 5, 2,null,'부모님 효도선물로 제격! 발마사지기계','광고');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (8, 1, 2,null,'메롱메롱~','진짜 재밌다 하하하하하하');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (9, 2, 2,null,'프로젝트 재밌다.','진짜 재밌다 하하하하하하');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (10, 4, 2,null,'탕수육 부먹인가요 찍먹인가요?','저는 그냥 다먹어요하하하하');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (11, 7, 4,null,'국비지원 교육 하려고 하는데...','자바랑 인공지능 중에서 고민되네요');
-INSERT INTO article (arno,writer,cano,st_relo,title,content) VALUES (12, 4, 2,null,'오예오예~','진짜 재밌다 하하하하하하');
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (1, 1, 1,'자바너무재밌다 짱짱짱 즐거운인생','자바를 배우면 우리 인생이 즐겁고 편안해집니다 자바를 믿으세요.','2020-11-20',55);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (2, 3, 1,'프로컴파일러 진짜 짱짱','사랑해요 여러분','2020-11-20',12);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (3, 13, 3,'웹사이트 프론트엔드 개발자 구인','웹사이트 프론트엔드 개발자 구인','2020-11-20',20);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (4, 4, 1,'오늘 저녁 메뉴 고민중인데, 같이 골라주세요!','뜨끈하고 맛있는걸로 먹고싶네요!!','2020-11-22',22);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (5, 25, 4,'자바의 정석 같이 보실분','혼자 보려니까 힘드네요, 같이 보실 분 찾습니다.','2020-11-23',10);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (6, 6, 1,'JAVA Spring 개발자인데..','다른 언어 어떤거 공부하면 좋을까요?','2020-11-24',22);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (7, 7, 2,'Null poing Exception이 떴습니다.','진짜 짜증나고 null null하네요,','2020-11-25',40);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (8, 8, 2,'오버라이딩이랑 오버로딩 차이가 뭔가요?','ㅠㅠㅠ갑자기 엄청 헷갈리네요.','2020-11-25',20);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (9, 9, 2,'이거 왜안되나요.','사진 첨부합니다. 아시는 분 답변 부탁드려요ㅠ','2020-11-25',44);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (10, 10, 2,'탕수육 부먹인가요 찍먹인가요?','저는 그냥 다먹어요하하하하','2020-11-26',19);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (11, 11, 2,'국비지원 교육 하려고 하는데...','자바랑 인공지능 중에서 고민되네요','2020-11-26',5);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (12, 12, 3,'인공지능 관련 S/W 개발자 신입/경력 모집','인공지능 관련 S/W 개발자 신입/경력 모집','2020-11-26',11);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (13, 2, 1,'이거 왜안되나요. ','사진 첨부합니다.','2020-11-20',2);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (14, 14, 3,'웹(JAVA/SPRING) 개발자 인원 모집','웹(JAVA/SPRING) 개발자 인원 모집','2020-11-27',7);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (15, 15, 3,'C++ 개발자 채용(Anti-Malware engine)','C++ 개발자 채용(Anti-Malware engine)','2020-11-28',20);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (16, 16, 3,'JAVA/HTML/CSS 능숙하신 개발자 모집','JAVA/HTML/CSS 능숙하신 개발자 모집','2020-11-29',18);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (17, 17, 4,'자바스크립트 불도저하실분','010-1111-2222 연락주세요','2020-11-29',33);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (18, 18, 4,'강남역, 평일 저녁 자바 스터디 구해요','어느정도 기본은 되신 분이면 좋겠습니다.','2020-11-29',40);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (19, 19, 4,'알고리즘 스터디 같이해요','스터디 같이해요','2020-11-30',34);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (20, 20, 4,'서울 주말 모각코 모집','스터디 같이해요','2020-11-30',56);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (21, 21, 4,'부산 파이썬 스터디 충원','스터디 같이해요','2020-12-01',36);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (22, 22, 1,'프로젝트 진행중인데 힘드네요.','진짜 힘드네요 하하하','2020-12-04',25);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (23, 23, 2,'sql문 오류좀 봐주세요.','하나도 모르겠네요.','2020-12-05',76);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (24, 24, 3,'신입 JAVA 개발자 및 경렬직 웹 기획자 채용','신입 JAVA 개발자 및 경렬직 웹 기획자 채용','2020-12-06',2);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (25, 5, 1,'얼죽아 오늘부로 탈퇴합니다.','날씨 진짜 춥네요.','2020-12-06',3);
 
 
 
 
-
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (1,3, 3,'널...null..',1,'2020-05-08',0);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (2,1, 1,'그쵸 재밌는인생',1,'2020-11-20',0);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (3,1, 4,'나도즐거워',2,'2020-11-20',0);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (4,5, 2,'연락드렸습니다.',1,'2020-11-20',1);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (5,4, 2,'저는 양식 추천합니다.',1,'2020-11-20',1);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (6,6, 6,'오호라오호라오호라오호라',1,'2020-11-20',1);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (7,1, 3,'대댓글테스트입니다.',2,'2020-11-20',0);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected) VALUES (8,4, 2,'야호야호야',1,'2020-11-21',0);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected,step,momno) VALUES (9,4, 4,'감자튀김 좋아',1,'2020-12-1',0,1,5);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected,step,momno) VALUES (10,4, 4,'햄버거도 좋아',1,'2020-12-2',0,1,5);
-INSERT INTO comment (cno,arno,uno,content,ord,udt,selected,step,momno) VALUES (11,4, 4,'스파게티 좋아',1,'2020-12-3',0,1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (1, 1, 10,'자바 짱짱... 헐... 널...null..','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (2, 1, 9,'그쵸 재밌는인생, 자바가 완성해 줍니다.','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (3, 1, 8,'저도 즐거워요 엄씨에스~ 즐거워','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (4, 2, 2,'진짜 너무 좋습니다. 여러분.','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (5, 2, 3,'프로컴파일러 진짜 짱짱','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (6, 2, 4,'민섭님 좋아요','2020-11-21',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (7, 2, 4,'하연님 좋아요','2020-11-21',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (8, 2, 4,'종엽님 좋아요','2020-11-22',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (9, 2, 4,'지연님 좋아요','2020-11-22',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (10, 2, 4,'진영님 좋아요','2020-11-22',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (11, 4, 10,'저는 양식 추천합니다.','2020-11-22');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (12, 4, 5,'샤브샤브 어떠세요!!','2020-11-22');
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (13, 5, 1,'저는 양식 추천합니다.','2020-11-22',1,22);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (14, 4, 4,'햄버거도 좋아요','2020-11-23',1,11);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (15, 4, 4,'감자튀김 좋아요','2020-11-23',1,11);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (16, 4, 4,'샤브샤브 갑자기 땡기네요.','2020-11-23',1,12);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (19, 6, 20,'파이썬 해보시는거 어떠세요.','2020-11-25');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (20, 8, 8,'오버로딩은 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법이고, 오버로딩 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법입니다.',2,'2020-11-25');
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (21, 8, 2,'감사합니다ㅠㅠ','2020-11-26',1,20);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (21, 10, 4,'탕수육 is 뭔들..','2020-11-26');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (22, 10, 7,'저는 찍먹이요!','2020-11-26');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 10, 2,'찍먹파랑 부먹파랑 싸움나요...','2020-11-27');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 13, 2,'맵퍼 확인해보세요.','2020-11-28');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 13, 2,'오타난거같은데...','2020-11-28');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 11, 1,'비전공자이시면 자바 추천이요.','2020-11-26');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (24, 11, 8,'저도 비전공인데, 자바로 시작했어요.','2020-11-27');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (25, 17, 20,'문자 드렸어요.','2020-11-28');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (18, 18, 4,'몇시에 진행하나요?','2020-11-30');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (26, 22, 1,'저도요.','2020-12-04');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (28, 22, 2,'저도요.','2020-11-05');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (29, 22, 3,'저도요.','2020-11-05');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (30, 22, 4,'저도요.','2020-11-06');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (31, 25, 4,'오늘 진짜 추움.....ㅠ','2020-12-06');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (32, 25, 5,'맞아요 진짜 추워요ㅠㅠ','2020-12-06');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (33, 11, 10,'인공지능은 수학 지식이 있어야 해요, 사람마다 달라서 그냥 추천해드리기 애매하네요.','2020-12-06');
 
 
 
@@ -86,6 +122,11 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'doc
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript.png','6D9AF1','37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux.png','5EA4AE','37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css.png','F56C6E','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (21, 'spring', 'spring.png','5EA4AE','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html.png','E8EBA7','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r.png','6D9AF1','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs.png','6D9AF1','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle.png','F56C6E','37393E');
 
 
 
@@ -149,15 +190,42 @@ INSERT INTO bdg_eva (beno,bename) VALUES (4, '게시글수');
 
 
 
-INSERT INTO arc_tag (arno,tno) VALUES (1, 6);
 INSERT INTO arc_tag (arno,tno) VALUES (1, 1);
-INSERT INTO arc_tag (arno,tno) VALUES (2, 7);
-INSERT INTO arc_tag (arno,tno) VALUES (3, 2);
-INSERT INTO arc_tag (arno,tno) VALUES (3, 3);
-INSERT INTO arc_tag (arno,tno) VALUES (4, 6);
-INSERT INTO arc_tag (arno,tno) VALUES (4, 4);
-INSERT INTO arc_tag (arno,tno) VALUES (4, 5);
-INSERT INTO arc_tag (arno,tno) VALUES (5, 6);
+INSERT INTO arc_tag (arno,tno) VALUES (1, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (2, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (2, 20);
+INSERT INTO arc_tag (arno,tno) VALUES (2, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (4, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (5, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (6, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (6, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (6, 26);
+INSERT INTO arc_tag (arno,tno) VALUES (7, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (8, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (9, 20);
+INSERT INTO arc_tag (arno,tno) VALUES (9, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (10, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (11, 14);
+INSERT INTO arc_tag (arno,tno) VALUES (11, 15);
+INSERT INTO arc_tag (arno,tno) VALUES (13, 10);
+INSERT INTO arc_tag (arno,tno) VALUES (13, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (17, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (18, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (18, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 2);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 15);
+INSERT INTO arc_tag (arno,tno) VALUES (20, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (21, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 20);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (23, 10);
+INSERT INTO arc_tag (arno,tno) VALUES (23, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (25, 12);
 
 
 
