@@ -38,11 +38,7 @@ public class DefaultReportService implements ReportService {
 
   @Override
   public Report get(int no) throws Exception {
-    return null;
-  }
-
-  @Override
-  public int admit(int no) throws Exception {
-    return reportDao.admitblock(no);
+    Report report = reportDao.findByNo(no);
+    return report;
   }
 }

@@ -21,8 +21,13 @@
       <id column="arno"          property="no"/>
       <result column="article_title"    property="title"/>
       <result column="article_content"    property="content"/>
-      <result column="article_writer"    property="writer"/>
-    </association>
+      
+      <association property="writer" javaType="user">
+       <id column="uno"          property="no"/>
+       <result column="article_writer"    property="nickname"/>
+       <result column="article_email"    property="email"/> 
+      </association>
+   </association>
     
     <association property="reportedComment" javaType="comment">
       <id column="cno"          property="no"/>
@@ -47,15 +52,21 @@
      u.uno,
      u.nick reporter_nick,
      u.email reporter_email,
-     ra.arno reported_article,
-     rc.cno reported_comment,
-     ru.uno reported_user
+     ra.arno,
+     rc.cno,
+     ru.uno,
+     a.arno,
+     u2.uno,
+     u2.nick article_writer,
+     u2.email article_email
    from
      report r
      inner join user u on r.uno=u.uno
      left outer join repo_arc ra on r.rpno=ra.rpno
      left outer join repo_comt rc on r.rpno=rc.rpno
      left outer join repo_user ru on r.rpno=ru.rpno
+     left outer join article a on ra.arno=a.arno
+     left outer join user u2 on a.writer=u2.uno
   </sql>
 
 	<insert id="insert" parameterType="report"
@@ -88,26 +99,29 @@
 		order by r.rpno desc
 	</select>
 
-    <update id="admitblock" parameterType="int">
-    update report set
-      status = 2
-    where rpno=#{no}
-  </update>
-<!-- 
-	<update id="update" parameterType="tag">
-		update tag
-		<set>
-			<if test="name != null">name = #{name},</if>
-			<if test="photo != null">photo = #{photo},</if>
-			<if test="tagColor != null">tag_color = #{tagColor},</if>
-			<if test="fontColor != null">font_color = #{fontColor},</if>
-		</set>
-		where tno=#{no}
-	</update>
+    <select id="findByNo" resultMap="ReportMap" parameterType="int">
+   select
+     r.rpno,
+     r.rptno,
+     r.uno,
+     r.cdt,
+     r.status,
+     r.pdt,
+     u.uno,
+     u.nick reporter_nick,
+     u.email reporter_email,
+     ra.arno,
+     a.arno,
+     u2.uno,
+     u2.nick article_writer,
+     u2.email article_email
+   from
+     report r
+     inner join user u on r.uno=u.uno
+     left outer join repo_arc ra on r.rpno=ra.rpno
+     left outer join article a on ra.arno=a.arno
+     left outer join user u2 on a.writer=u2.uno
+    where r.rpno=#{no}  
+    </select>
 
-	<delete id="delete" parameterType="int">
-		delete from tag
-		where tno=#{no}
-	</delete>
- -->
 </mapper>

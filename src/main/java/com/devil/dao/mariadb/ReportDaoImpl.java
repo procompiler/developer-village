@@ -43,9 +43,9 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public int admitblock(int no) throws Exception {
+  public Report findByNo(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.update("ReportDao.admitblock", no);
+      return sqlSession.selectOne("ReportDao.findByNo", no);
     }
   }
 }

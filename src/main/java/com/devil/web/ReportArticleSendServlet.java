@@ -42,7 +42,7 @@ public class ReportArticleSendServlet extends HttpServlet {
 
     try {
       reportService.report(report);
-      response.sendRedirect(request.getHeader("Referer"));
+      response.sendRedirect("../article/detail?no=" + reportedArticle.getNo());
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

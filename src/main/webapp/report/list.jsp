@@ -30,12 +30,12 @@
 
 	<table border='1'>
 		<tr>
-		  <th></th>
 			<th>신고자</th>
 			<th>피신고자</th> 
-			<th>신고글/댓글링크</th>
+			<th>신고링크</th>
 			<th>신고사유</th>
 			<th>신고승인</th>
+		  <th></th>
 		</tr>
 
 		<%
@@ -65,17 +65,20 @@
     %>
 		
 		<tr>
-			<td><input type='hidden' name='no' value='<%=report.getNo()%>'><br></td>
-			 <td><%=report.getReporter().getNickname()%>  [<%=report.getReporter().getEmail()%>]</td>
-			<td><%=report.getReportedArticle().getWriter()%></td>
-			<%--<td><a href='../article/detail?no=<%=report.getReportedArticle().getNo() %>' style='text-decoration: none;'>신고글 링크</a></td>
-		 --%>	<td><%=reportType%></td>
+			<td><%=report.getReporter().getNickname()%>  [<%=report.getReporter().getEmail()%>]</td>
+			<td><%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]</td>
+			<td><a href='../article/detail?no=<%=report.getReportedArticle().getNo() %>' style='text-decoration: none;'>신고 링크</a></td>
+		 	<td><%=reportType%></td>
 
+     <form action="../block/block-permission" method="get">
 			<td>
-				<button type='button' onclick="location.href='block-admit.html'">
+				<button>
 				신고승인
 				</button>
 			</td>
+			<td><input type='hidden' name='reportNo' value='<%=report.getNo()%>'><br></td>
+		 </form>
+		  
 		</tr>
 		<%
 		  }
