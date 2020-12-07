@@ -3,6 +3,7 @@ package com.devil.dao;
 import java.util.List;
 import java.util.Map;
 import com.devil.domain.Article;
+import com.devil.domain.User;
 
 public interface ArticleDao {
   int insert(Article article) throws Exception;
@@ -15,4 +16,5 @@ public interface ArticleDao {
   List<Article> findByCategoryNo(int categoryNo);
   int inactive(int no) throws Exception;
   List<Article> findAll(String keyword) throws Exception;
+  List<Article> findByBookmarker(User loginUser) throws Exception;
 }

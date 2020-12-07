@@ -18,10 +18,10 @@ public class MyBookmarkListServlet extends HttpServlet {
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
-    ArticleService articleService = (ArticleService)request.getServletContext().getAttribute("userService");
+    ArticleService articleService = (ArticleService)request.getServletContext().getAttribute("articleService");
     try {
       request.setAttribute("bookmarkList", articleService.list((User)request.getSession().getAttribute("loginUser")));
-      request.getRequestDispatcher("/mypage/taglist.jsp").include(request, response);
+      request.getRequestDispatcher("/mypage/bookmarklist.jsp").include(request, response);
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error.jsp").forward(request, response);

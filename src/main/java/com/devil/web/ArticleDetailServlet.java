@@ -26,7 +26,12 @@ public class ArticleDetailServlet extends HttpServlet {
     try {
       int no = Integer.parseInt(request.getParameter("no"));
       Article article = articleService.get(no);
+      if (article == null) {
+        throw new Exception("해당 게시글이 없습니다.");
+      }
       request.setAttribute("article", article);
+
+      request.setAttribute("tags", article.getTags());
 
       request.getRequestDispatcher("/article/detail.jsp").include(request, response);
 

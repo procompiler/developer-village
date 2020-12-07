@@ -1,9 +1,9 @@
-<%@page import="com.devil.domain.Tag"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.devil.domain.Article"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,20 +17,27 @@
 </head>
 
 <body>
-  <jsp:include page="../header.jsp"></jsp:include>
-	<%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
-	<%List<Article> list = (List<Article>) request.getAttribute("list");%>
-  <%int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));%>
+	<jsp:include page="/header.jsp"></jsp:include>
 
-<%String categoryName = null;%>
-<%switch (categoryNo) {
-  case 1: categoryName = "커뮤니티"; break;
-  case 2: categoryName = "QnA"; break;
-  case 3: categoryName = "채용공고"; break;
-  default :categoryName = "스터디"; break;
-}%>
-         
-	<h1><%=categoryName%></h1>
+	<h1>
+		<c:choose>
+			<c:when test="${article.categoryNo == 1}">
+				<p>커뮤니티</p>
+			</c:when>
+			<c:when test="${param.categoryNo == 2}">
+				<p>QnA</p>
+			</c:when>
+			<c:when test="${param.categoryNo == 3}">
+				<p>채용공고</p>
+			</c:when>
+			<c:when test="${param.categoryNo == 4}">
+				<p>스터디</p>
+			</c:when>
+			<c:otherwise>
+				<p>전체 게시글</p>
+			</c:otherwise>
+		</c:choose>
+	</h1>
 	<button type='button' onclick="location.href='form'">글쓰기</button>
 
 	<table border='1'>
@@ -45,52 +52,47 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%for (Article article : list) {%>
-			<%if(article.getCategoryNo() == categoryNo) {%>
-
-			<tr>
-				<td><%=article.getNo()%></td>
-				<td id='title'>
-					<ul id='tags'>
-						<%
-						  List<Tag> tags = article.getTags();
-						for (Tag tag : tags) {
-						%>
-						<li id='color'
-							style="background-color: #<%=tag.getTagColor()%>; color: #<%=tag.getFontColor()%>;"><%=tag.getName()%></li>
-						<%
-						  }
-						%>
-					</ul><a href='detail?no=<%=article.getNo()%>'><%=article.getTitle()%></a>
-				</td>
-				<td><%=article.getWriter().getNickname()%></td>
-				<td><%=formatter.format(article.getCreatedDate())%></td>
-				<td><%=article.getViewCount()%></td>
-				<td><%=article.getState() == 1 ? "" : "삭제된 게시글"%></td>
-			</tr>
-			<%}%>
-			<%}%>
+			<c:forEach items="${articles}" var="article">
+				<c:if test="${article.categoryNo == param.categoryNo}">
+					<tr>
+						<td>${article.no}</td>
+						<td id='title'>
+							<ul id='tags'>
+								<c:forEach items="${article.tags}" var="tag">
+									<c:set var="tagColor" value="#{ tag.color }" />
+									<c:set var="tagFontColor" value="#{ tag.fontColor }" />
+									<li id='color'
+										style="background-color: tagColor; color: tagFontColor;">${tag.name}</li>
+								</c:forEach>
+							</ul> <a href='detail?no=${article.no}'>${article.title}</a>
+							[${fn:length(article.comments)}]
+						</td>
+						<td>${article.writer.nickname}</td>
+						<td><fmt:formatDate value="${article.createdDate}"
+								pattern="yyyy.MM.dd" /></td>
+						<td>${article.viewCount}</td>
+						<td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
+					</tr>
+				</c:if>
+			</c:forEach>
 		</tbody>
 	</table>
 	<p>
-		<%
-		  String keyword = request.getParameter("keyword");
-		%>
-	<form action='list' method='get'>
-		검색어: <input type='text' name='keyword'
-			value='<%=keyword != null ? keyword : ""%>'>
+	<form action='list?' method='get'>
+		검색어: <input type='text' name='keyword' value=''>
 		<button>검색</button>
 	</form>
 	</p>
 	<hr>
 	<h2>상세 검색</h2>
-	<p>
+	
 		<%
-		String keywordTitle = request.getParameter("keywordTitle");
+		  String keywordTitle = request.getParameter("keywordTitle");
 		String keywordWriter = request.getParameter("keywordWriter");
 		String keywordTag = request.getParameter("keywordTag");
 		%>
 	
+	<p>
 	<form action='list' method='get'>
 		제목: <input type='text' name='keywordTitle'
 			value='<%=keywordTitle != null ? keywordTitle : ""%>'><br>
