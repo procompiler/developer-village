@@ -23,8 +23,9 @@ public class User {
   private int noti; // 알람알림여부 0 Off 1 On
   private String bio;
   private int state; // 활성상태 0 안보임 1 보임
-  private List<Tag> tags;
-  private List<User> users;
+  private List<Integer> tagNos;
+  private List<Integer> userNos;
+  private List<Integer> articleNos;
 
   public int getNo() {
     return no;
@@ -169,17 +170,24 @@ public class User {
     this.state = state;
     return this;
   }
+  public List<Integer> getTagNos() {
+    return tagNos;
+  }
+  public void setTagNos(List<Integer> tagNos) {
+    this.tagNos = tagNos;
+  }
+  public List<Integer> getUserNos() {
+    return userNos;
+  }
+  public void setUserNos(List<Integer> userNos) {
+    this.userNos = userNos;
+  }
+  public List<Integer> getArticleNos() {
+    return articleNos;
+  }
+  public void setArticleNos(List<Integer> articleNos) {
+    this.articleNos = articleNos;
+  }
 
-  public List<Tag> getTags() {
-    return tags;
-  }
-  public void setTags(List<Tag> tags) {
-    this.tags = tags;
-  }
-  public List<User> getUsers() {
-    return users;
-  }
-  public void setUsers(List<User> users) {
-    this.users = users;
-  }
+
 }

@@ -25,6 +25,19 @@
 		<result column="noti" property="noti" />
 		<result column="bio" property="bio" />
 		<result column="state" property="state" />
+		
+		<collection property="tagNos" ofType="int">
+      <id column="tno"/>
+    </collection>
+    
+    <collection property="articleNos" ofType="int">
+      <id column="arno"/>
+    </collection>
+    
+    <collection property="userNos" ofType="int">
+      <id column="fwing_no"/>
+    </collection>
+    
 	</resultMap>
 
 	<insert id="insert" parameterType="user">
@@ -84,7 +97,29 @@
 
 	<select id="findByEmailPassword" parameterType="map"
 		resultMap="UserMap">
-		<include refid="sql1" />
+		select
+	    u.uno,
+	    u.email,
+	    u.nick,
+	    u.name,
+	    u.hp_url,
+	    u.gh_url,
+	    u.in_url,
+	    u.tw_url,
+	    u.bio,
+	    u.state,
+	    u.pwd,
+	    u.photo,
+	    u.cdt,
+	    u.log_type,
+	    ut.tno,
+	    ua.arno,
+	    f.fwing_no
+    from
+	    user u
+	    left outer join usr_tag ut on u.uno = ut.uno
+	    left outer join usr_bmk_arc ua on u.uno = ua.uno
+	    left outer join follow f on f.fwer_no = u.uno
 		where
 		u.email = #{email}
 		and u.pwd = password(#{password})

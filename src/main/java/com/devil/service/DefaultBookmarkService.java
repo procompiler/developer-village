@@ -23,6 +23,6 @@ public class DefaultBookmarkService implements BookmarkService {
 
   @Override
   public int delete(Bookmark bookmark) throws Exception {
-    return bookmarkDao.insert(bookmark);
+    return bookmarkDao.delete(bookmark);
   }
 }

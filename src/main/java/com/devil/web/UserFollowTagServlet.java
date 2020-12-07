@@ -36,7 +36,6 @@ public class UserFollowTagServlet extends HttpServlet {
       if (userService.follow(map) == 0) {
         throw new Exception("이미 팔로우하고 있는 태그입니다.");
       }
-      loginUser.setTags(userService.get(loginUser.getNo()).getTags());
       response.sendRedirect("../tag/list");
 
     } catch (Exception e) {
