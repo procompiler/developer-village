@@ -65,6 +65,7 @@
     select 
       a.arno, 
       a.title,
+      a.content,
       a.cdt,  
       a.cano,  
       a.vw_cnt, 
