@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
         return;
       } else {
         session.setAttribute("loginUser", user);
-        response.sendRedirect("../index.html");
+        response.sendRedirect("../index.jsp");
         return;
       }
 

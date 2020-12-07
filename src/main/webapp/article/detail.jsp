@@ -1,5 +1,7 @@
 <%@page import="com.devil.domain.Article"%>
+<%@page import="com.devil.domain.Tag"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -40,9 +42,17 @@ switch (article.getCategoryNo()) {
 
 <p>카테고리: <%=categoryName%></p>
 
+<ul id='tags'>
+<%List<Tag> tags = article.getTags();%>
+<%for (Tag tag : tags) {%>
+<li id='color' style="background-color: #<%=tag.getTagColor()%>; color: #<%=tag.getFontColor()%>;"><%=tag.getName()%></li>
+<%}%>
+</ul>
+
 <%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
 <p>등록일: <%=formatter.format(article.getCreatedDate())%></p>
 <p>조회수: <%=article.getViewCount()%></p>
+
 <textarea name='content'><%=article.getContent()%></textarea><br>
 <button>수정</button>
 <button type='button' class='btn-danger' onclick="location.href='delete?no=<%=article.getNo()%>'">삭제</button>
@@ -50,7 +60,7 @@ switch (article.getCategoryNo()) {
 </form>
 <%}%>
 <jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
-  <jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>

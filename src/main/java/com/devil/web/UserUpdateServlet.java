@@ -22,8 +22,16 @@ public class UserUpdateServlet extends HttpServlet {
     // Servlet container에 들어 있는 UserService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
     UserService userService = (UserService) ctx.getAttribute("userService");
+    User loginUser = (User) request.getSession().getAttribute("loginUser");
+    User user = null;
 
-    User user = new User();
+    int userNo = Integer.parseInt(request.getParameter("no"));
+    if (userNo == loginUser.getNo()) {
+      user = loginUser;
+    } else {
+      user = new User();
+    }
+
     user.setNo(Integer.parseInt(request.getParameter("no")));
     user.setNickname(request.getParameter("nickname"));
     user.setPassword(request.getParameter("password"));

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <jsp:include page="../header"></jsp:include>
+  <jsp:include page="../header.jsp"></jsp:include>
 	<%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
 	<%List<Article> list = (List<Article>) request.getAttribute("list");%>
   <%int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));%>
@@ -76,7 +76,6 @@
 		<%
 		  String keyword = request.getParameter("keyword");
 		%>
-	
 	<form action='list' method='get'>
 		검색어: <input type='text' name='keyword'
 			value='<%=keyword != null ? keyword : ""%>'>

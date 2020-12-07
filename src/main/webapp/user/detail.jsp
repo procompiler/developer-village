@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href='../style.css'>
 </head>
 <body>
-  <jsp:include page="/header"></jsp:include>
+  <jsp:include page="/header.jsp"></jsp:include>
 	<h1>[회원 상세조회]</h1>
 
 	<%

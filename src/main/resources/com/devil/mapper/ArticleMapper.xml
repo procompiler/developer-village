@@ -65,6 +65,7 @@
     select 
       a.arno, 
       a.title,
+      a.content,
       a.cdt,  
       a.cano,  
       a.vw_cnt, 
@@ -121,20 +122,8 @@
   </update>
     
     <select id="findByNo" resultMap="ArticleMap" parameterType="int">
-    select 
-      a.arno, 
-      a.title,
-      a.content,
-      a.cdt,  
-      a.cano,
-      a.state,
-      u.nick article_nick,
-      u.photo article_photo,
-      a.vw_cnt
-    from 
-      article a
-      inner join user u on a.writer=u.uno
-     where a.arno=#{no}  
+      <include refid="sql1"/>
+      where a.arno=#{no}  
     </select>
     
     <select id="findByCategoryNo" resultMap="ArticleMap" parameterType="int">

@@ -68,5 +68,4 @@ public class DefaultArticleService implements ArticleService {
     return articleDao.inactive(no);
   }
 
-
 }
