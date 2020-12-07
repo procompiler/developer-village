@@ -4,7 +4,7 @@
 
 <%
 String contextPath = request.getServletContext().getContextPath();
-User user = (User) request.getAttribute("user");
+User user = (User) session.getAttribute("loginUser");
 %>
 <nav>
   <ul>
