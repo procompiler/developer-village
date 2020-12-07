@@ -61,4 +61,9 @@ public class DefaultUserService implements UserService {
   public List<User> list(User user) throws Exception {
     return userDao.findByFollower(user);
   }
+
+  @Override
+  public int bookmark(Map<String, Object> map) throws Exception {
+    return userDao.insertArticle(map);
+  }
 }

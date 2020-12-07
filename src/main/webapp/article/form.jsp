@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <jsp:include page="/header"></jsp:include>
+  <jsp:include page="/header.jsp"></jsp:include>
   
 <h1>게시글 작성</h1>
 

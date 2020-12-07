@@ -12,16 +12,15 @@
 </head>
 
 <body>
-  <jsp:include page="/header"></jsp:include>
+<jsp:include page="/header.jsp"></jsp:include>
 
 <%
 Article article = (Article) request.getAttribute("article");
 if (article == null) {
   response.setHeader("Refresh", "2;url=list");%>
   <p>해당 게시글이 없습니다</p>
-<%} else{%>
-
-<%String categoryName = null;
+<%} else {
+String categoryName = null;
 switch (article.getCategoryNo()) {
   case 1: categoryName = "커뮤니티"; break;
   case 2: categoryName = "QnA"; break;
@@ -58,6 +57,8 @@ switch (article.getCategoryNo()) {
 <button type='button' class='btn-danger' onclick="location.href='delete?no=<%=article.getNo()%>'">삭제</button>
 <button type='button' class='btn-danger' onclick="location.href='../report/reportArticle?no=<%=article.getNo()%>'">게시글 신고</button>
 </form>
+<a href='/article/bookmark?articleNo=<%=article.getNo()%>'><i class="fas fa-bookmark"></i></a>
+
 <%}%>
 <jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
 <jsp:include page="/footer.jsp"></jsp:include>

@@ -111,4 +111,11 @@ public class UserDaoImpl implements UserDao {
       return sqlSession.selectList("UserDao.findByFollower", user);
     }
   }
+
+  @Override
+  public int insertArticle(Map<String, Object> map) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.insertArticle", map);
+    }
+  }
 }

@@ -18,4 +18,5 @@ public interface UserDao {
   int deleteTag(Map<String, Object> map) throws Exception;
   int deleteUser(Map<String, Object> map) throws Exception;
   List<User> findByFollower(User user) throws Exception;
+  int insertArticle(Map<String, Object> map) throws Exception;
 }

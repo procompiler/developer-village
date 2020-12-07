@@ -30,9 +30,9 @@ public class UserUpdateServlet extends HttpServlet {
       user = loginUser;
     } else {
       user = new User();
+      user.setNo(Integer.parseInt(request.getParameter("no")));
     }
 
-    user.setNo(Integer.parseInt(request.getParameter("no")));
     user.setNickname(request.getParameter("nickname"));
     user.setPassword(request.getParameter("password"));
     user.setHomepageURL(request.getParameter("homepage"));
