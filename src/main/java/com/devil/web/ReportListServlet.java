@@ -26,10 +26,10 @@ public class ReportListServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     try {
 
-      List<Report> list = null;
-      list = reportService.list(null);
+      List<Report> reportList = null;
+      reportList = reportService.list(null);
 
-      request.setAttribute("list", list);
+      request.setAttribute("reportList", reportList);
       request.getRequestDispatcher("/report/list.jsp").include(request, response);
 
     } catch (Exception e) {

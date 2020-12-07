@@ -2,6 +2,7 @@ package com.devil.dao;
 
 import java.util.List;
 import java.util.Map;
+import com.devil.domain.Block;
 import com.devil.domain.User;
 
 public interface UserDao {
@@ -18,4 +19,5 @@ public interface UserDao {
   int deleteTag(Map<String, Object> map) throws Exception;
   int deleteUser(Map<String, Object> map) throws Exception;
   List<User> findByFollower(User user) throws Exception;
+  int insertBlocked(Block block) throws Exception;
 }

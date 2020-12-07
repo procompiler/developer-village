@@ -34,11 +34,6 @@
       <result column="comment_content"    property="content"/>
     </association>
     
-    <association property="reportedUser" javaType="user">
-      <id column="uno"          property="no"/>
-      <result column="reported_nick"    property="nickname"/>
-      <result column="reported_email"    property="email"/>
-    </association>
 	</resultMap>
 
   <sql id="sql1">
@@ -54,7 +49,6 @@
      u.email reporter_email,
      ra.arno,
      rc.cno,
-     ru.uno,
      a.arno,
      u2.uno,
      u2.nick article_writer,
@@ -64,7 +58,6 @@
      inner join user u on r.uno=u.uno
      left outer join repo_arc ra on r.rpno=ra.rpno
      left outer join repo_comt rc on r.rpno=rc.rpno
-     left outer join repo_user ru on r.rpno=ru.rpno
      left outer join article a on ra.arno=a.arno
      left outer join user u2 on a.writer=u2.uno
   </sql>
@@ -74,11 +67,6 @@
 		insert into report(rpno, rptno, uno, cdt)
 		values(#{no}, #{reportTypeNo}, #{reporter.no}, now())
 	</insert>
-
-  <insert id="insertReportedUser" parameterType="report">
-    insert into repo_user(rpno, uno)
-    values(#{no}, #{reportedUser.no})
-  </insert>
 
   <insert id="insertReportedComment" parameterType="report">
     insert into repo_comt(rpno, cno)

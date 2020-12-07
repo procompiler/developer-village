@@ -25,7 +25,7 @@
 	  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	%>
 	<%
-	  List<Report> list = (List<Report>) request.getAttribute("list");
+	  List<Report> list = (List<Report>) request.getAttribute("reportList");
 	%>
 
 	<table border='1'>
@@ -77,6 +77,7 @@
 				</button>
 			</td>
 			<td><input type='hidden' name='reportNo' value='<%=report.getNo()%>'><br></td>
+			<td><input type='hidden' name='reportedUser' value='<%=report.getReportedArticle().getWriter().getNo()%>'><br></td>
 		 </form>
 		  
 		</tr>
