@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BlockDao">
+<!--
+	<resultMap type="block" id="BlockMap">
+		<id column="blno" property="no" />
+		<result column="cdt" property="permittedDate" />
+		<result column="dates" property="blockedDates"/>
+		<result column="bl_rsn" property="blockedReason" />
+		<result column="unbl_rsn" property="unBlockedReason" />
+
+<association property="reportedUser" javaType="user">
+    <id column="uno" property="no"/>
+    <result column="blocked" property="blocked"/>
+</association>
+	</resultMap>
+  -->
+	<insert id="insert" parameterType="block">
+		insert into block(cdt, dates, bl_rsn)
+		values(now(), #{blockedDates}, #{blockedReason})
+	</insert>
+	
+<!-- 
+	<select id="findAll" resultMap="ReportMap" parameterType="string">
+		<include refid="sql1" />
+		<if test="keyword != null">
+		where
+			r.rptno like concat('%', #{keyword}, '%')
+		</if>
+		order by r.rpno desc
+	</select>
+
+    <select id="findByNo" resultMap="ReportMap" parameterType="int">
+   select
+     r.rpno,
+     r.rptno,
+     r.uno,
+     r.cdt,
+     r.status,
+     r.pdt,
+     u.uno,
+     u.nick reporter_nick,
+     u.email reporter_email,
+     ra.arno,
+     a.arno,
+     u2.uno,
+     u2.nick article_writer,
+     u2.email article_email
+   from
+     report r
+     inner join user u on r.uno=u.uno
+     left outer join repo_arc ra on r.rpno=ra.rpno
+     left outer join article a on ra.arno=a.arno
+     left outer join user u2 on a.writer=u2.uno
+    where r.rpno=#{no}  
+    </select>
+ -->
+</mapper>

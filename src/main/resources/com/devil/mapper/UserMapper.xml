@@ -127,6 +127,12 @@
     values (#{loginUserNo}, #{articleNo});
   </delete>
 
+	<update id="insertBlocked" parameterType="block">
+    update user set
+    blocked = 1
+    where uno=#{reportedUser.no}
+  </update>
+
 	<delete id="deleteTag" parameterType="map">
 		delete from usr_tag
 		where uno=#{loginUserNo} and tno=#{tagNo}

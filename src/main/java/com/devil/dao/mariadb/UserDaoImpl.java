@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.UserDao;
+import com.devil.domain.Block;
 import com.devil.domain.User;
 
 public class UserDaoImpl implements UserDao {
@@ -88,6 +89,13 @@ public class UserDaoImpl implements UserDao {
   public int insertUser(Map<String, Object> map) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.insert("UserDao.insertUser", map);
+    }
+  }
+
+  @Override
+  public int insertBlocked(Block block) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("UserDao.insertBlocked", block);
     }
   }
 

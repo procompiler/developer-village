@@ -33,6 +33,7 @@
     <mapper resource="com/devil/mapper/BadgeMapper.xml"/>
     <mapper resource="com/devil/mapper/CommentMapper.xml"/>
     <mapper resource="com/devil/mapper/ReportMapper.xml"/>
+    <mapper resource="com/devil/mapper/BlockMapper.xml"/>
   </mappers>
 
 </configuration>
