@@ -76,7 +76,6 @@
 		<%
 		  String keyword = request.getParameter("keyword");
 		%>
-	
 	<form action='list' method='get'>
 		검색어: <input type='text' name='keyword'
 			value='<%=keyword != null ? keyword : ""%>'>

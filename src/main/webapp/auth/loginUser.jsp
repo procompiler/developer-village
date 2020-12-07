@@ -25,8 +25,7 @@
 <body>
   <jsp:include page="/header"></jsp:include>
 
-	<%
-	  DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+	<%DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 	User user = (User) request.getSession().getAttribute("loginUser");
 	List<Tag> tags = (List<Tag>) request.getAttribute("tags");
 	List<User> users = (List<User>) request.getAttribute("users");
@@ -61,11 +60,11 @@
 	<p>
 		기술 목록:
 		<%=user.getTech()%></p>
-	<img src='../upload/<%=user.getPhoto()%>.jpg'
-		alt='[<%=user.getPhoto()%>.jpg]' height='100px'>
+	<img src='../upload/<%=user.getPhoto()%>_160x160.jpg'
+		alt='[<%=user.getPhoto()%>.jpg]'>
 	<div id="urls">
 		<%
-		  if (user.getHomepageURL() != null) {
+		if (user.getHomepageURL() != null) {
 		%>
 		<a href="<%=user.getHomepageURL()%>"><i class="fas fa-home"></i></a>
 		<%
@@ -77,12 +76,12 @@
 		  }
 		if (user.getInstarURL() != null) {
 		%>
-		<a href="<%=user.getInstarURL()%>"><i class="fab fa-instagram"></i></i></a>
+		<a href="<%=user.getInstarURL()%>"><i class="fab fa-instagram"></i></a>
 		<%
 		  }
 		if (user.getTwitterURL() != null) {
 		%>
-		<a href="<%=user.getTwitterURL()%>"><i class="fab fa-twitter"></i></i></a>
+		<a href="<%=user.getTwitterURL()%>"><i class="fab fa-twitter"></i></a>
 		<%
 		  }
 		%>

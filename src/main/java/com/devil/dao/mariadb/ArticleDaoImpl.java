@@ -83,4 +83,5 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.delete("ArticleDao.inactive", no);
     }
   }
+
 }
