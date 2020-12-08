@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +16,10 @@
 </head>
   <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
-  <a href='form.html'>뱃지 추가</a><br>
+  <button type='button'
+      onclick="location.href='${pageContext.request.contextPath}/badge/form.html'">뱃지추가</button>
 
-  <%
-    List<Badge> list = (List<Badge>) request.getAttribute("list");
-  %>
+  
 
   <table border='1'>
     <thead>
@@ -31,19 +31,15 @@
       </tr>
     </thead>
     <tbody>
-      <%
-        for (Badge badge : list) {
-      %>
+    <c:forEach items="${list}" var="badge">
       <tr>
-        <td><%=badge.getNo()%></td>
-        <td id="name"><a href='detail?no=<%=badge.getNo()%>'
-          style='color: black;'><%=badge.getName()%></a></td>
-        <td><img style="width: 80px;" src="../upload/badge/<%=badge.getPhoto()%>_20x20.jpg"></td>
-        <td><%=badge.getContent()%></td>
+        <td>${badge.no}</td>
+        <td id="name"><a href='detail?no=${badge.no}'
+          style='color: black;'>${badge.name}</a></td>
+        <td><img style="width: 80px;" src="../upload/badge/${badge.photo}_20x20.jpg"></td>
+        <td>${badge.content}</td>
       <tr>
-        <%
-          }
-        %>
+  </c:forEach>
       
     </tbody>
   </table>
@@ -52,7 +48,6 @@
     검색어: <input type='text' name='keyword' value=''>
     <button>검색</button>
   </form>
-  </p>
     <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>
