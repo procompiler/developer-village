@@ -84,6 +84,13 @@
       left outer join tag t on at.tno = t.tno
   </sql>
   
+  <select id="findByBookmarker" resultMap="ArticleMap" parameterType="user">
+    <include refid="sql1"/>
+    left outer join usr_bmk_arc ua on a.arno=ua.arno
+    where ua.uno=#{no} 
+    order by ua.cdt desc
+  </select>
+  
   <select id="findAll" resultMap="ArticleMap" parameterType="string">
   	<include refid="sql1"/>
   	<if test="keyword != null">

@@ -1,67 +1,77 @@
-<%@page import="com.devil.domain.Article"%>
-<%@page import="com.devil.domain.Tag"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@page import="com.devil.domain.User"%>
+	<%@page import="com.devil.domain.Article"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<head><title>게시글 조회</title>
+<head>
+<title>게시글 조회</title>
 <link rel="stylesheet" type="text/css" href='../style.css'>
 </head>
 
 <body>
-<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<h1>
+		<c:choose>
+			<c:when test="${article.categoryNo == 1}">
+				<p>커뮤니티</p>
+			</c:when>
+			<c:when test="${article.categoryNo == 2}">
+				<p>QnA</p>
+			</c:when>
+			<c:when test="${article.categoryNo == 3}">
+				<p>채용공고</p>
+			</c:when>
+			<c:otherwise>
+				<p>스터디</p>
+			</c:otherwise>
+		</c:choose>
+	</h1>
 
-<%
-Article article = (Article) request.getAttribute("article");
-if (article == null) {
-  response.setHeader("Refresh", "2;url=list");%>
-  <p>해당 게시글이 없습니다</p>
-<%} else {
-String categoryName = null;
-switch (article.getCategoryNo()) {
-  case 1: categoryName = "커뮤니티"; break;
-  case 2: categoryName = "QnA"; break;
-  case 3: categoryName = "채용공고"; break;
-  default :categoryName = "스터디"; break;
-}%>
+	<form action='update' method='post'>
+		<input type='hidden' name='no' value='${article.no}'><br>
+		<input style="font-size: 20x;" type='text'
+			name='title' value='${article.title}' size='50'><br>
+			
+		<p>
+			작성자: <img src='/upload/user/${article.writer.photo}_40x40.jpg'
+				style='border-radius: 70px' alt='[${article.writer.photo}]_40x40]'>${article.writer.nickname}</p>
 
-<h1><%=categoryName%></h1>
+		<ul id='tags'>
+			<c:forEach items="${tags}" var="tag">
+				<li id='color' style="background-color: blue; color: white;">${tag.name}</li>
+			</c:forEach>
+		</ul>
 
-<form action='update' method='post'>
-<input type='hidden' name='no' value='<%=article.getNo()%>'><br>
-<input type='text' name='title' value='<%=article.getTitle()%>'><br>
+		<p>
+			등록일:
+			<fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd" />
+		</p>
+		<p>조회수: ${article.viewCount}</p>
 
-<p>작성자: <img src='<%=request.getContextPath()%>/upload/user/<%=article.getWriter().getPhoto()%>_40x40.jpg'
-       style='border-radius: 70px' 
-       alt='[<%=article.getWriter().getPhoto()%>]_40x40]'><%=article.getWriter().getNickname()%></p>
-
-
-<p>카테고리: <%=categoryName%></p>
-
-<ul id='tags'>
-<%List<Tag> tags = article.getTags();%>
-<%for (Tag tag : tags) {%>
-<li id='color' style="background-color: #<%=tag.getTagColor()%>; color: #<%=tag.getFontColor()%>;"><%=tag.getName()%></li>
-<%}%>
-</ul>
-
-<%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
-<p>등록일: <%=formatter.format(article.getCreatedDate())%></p>
-<p>조회수: <%=article.getViewCount()%></p>
-
-<textarea name='content'><%=article.getContent()%></textarea><br>
-<button>수정</button>
-<button type='button' class='btn-danger' onclick="location.href='delete?no=<%=article.getNo()%>'">삭제</button>
-<button type='button' class='btn-danger' onclick="location.href='../report/reportArticle?no=<%=article.getNo()%>'">게시글 신고</button>
-</form>
-<a href='/article/bookmark?articleNo=<%=article.getNo()%>'><i class="fas fa-bookmark"></i></a>
-
-<%}%>
-<jsp:include page="/comment/list?no=<%=article.getNo()%>"></jsp:include>
-<jsp:include page="/footer.jsp"></jsp:include>
+		<textarea name='content'>${article.content}</textarea>
+		<br>
+		<button>수정</button>
+		<button type='button' class='btn-danger'
+			onclick="location.href='delete?no=${article.no}'">삭제</button>
+		<button type='button' class='btn-danger'
+			onclick="location.href='../report/reportArticle?no=${article.no}'">게시글
+			신고</button>
+			 <%
+	  User loginUser = (User) request.getSession().getAttribute("loginUser");
+	  Article article = (Article) request.getAttribute("article");
+    boolean bookmarked = loginUser.getArticleNos().contains(article.getNo());
+  %>
+	   <button type='button'
+            <%=bookmarked ? "class='btn-hollow'" : ""%>
+            onclick="location.href='../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}'">
+            <%=bookmarked ? "북마크취소" : "북마크"%></button>
+	</form>
+	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
+	<jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>

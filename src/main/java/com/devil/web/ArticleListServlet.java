@@ -26,9 +26,8 @@ public class ArticleListServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
 
     try {
-      List<Article> list = null;
+      List<Article> articles = null;
 
-      System.out.println("categoryNo" + 1);
       String keyword = request.getParameter("keyword");
       String keywordTitle = request.getParameter("keywordTitle");
       String keywordWriter = request.getParameter("keywordWriter");
@@ -36,19 +35,19 @@ public class ArticleListServlet extends HttpServlet {
       //String keywordCategory = request.getParameter("keywordCategory");
 
       if (keyword != null) {
-        list = articleService.list(keyword);
+        articles = articleService.list(keyword);
       } else if (keywordTitle != null) {
         HashMap<String, Object> keywordMap = new HashMap<>();
         keywordMap.put("title", keywordTitle);
         keywordMap.put("writer", keywordWriter);
         keywordMap.put("tag", keywordTag);
         //keywordMap.put("category", keywordCategory);
-        list = articleService.list(keywordMap);
+        articles = articleService.list(keywordMap);
       } else {
-        list = articleService.list();
+        articles = articleService.list();
       }
 
-      request.setAttribute("list", list);
+      request.setAttribute("articles", articles);
 
       request.getRequestDispatcher("/article/list.jsp").include(request, response);
 

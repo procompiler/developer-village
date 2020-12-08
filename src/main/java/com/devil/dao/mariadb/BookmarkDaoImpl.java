@@ -17,21 +17,21 @@ public class BookmarkDaoImpl implements BookmarkDao {
   @Override
   public int insert(Bookmark bookmark) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.insert("ArticleDao.insert", bookmark);
+      return sqlSession.insert("BookmarkDao.insert", bookmark);
     }
   }
 
   @Override
   public int delete(Bookmark bookmark) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.delete("ArticleDao.delete", bookmark);
+      return sqlSession.delete("BookmarkDao.delete", bookmark);
     }
   }
 
   @Override
   public Bookmark findByUserArticle(Map<String, Object> map) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectOne("ArticleDao.findByUserArticle", map);
+      return sqlSession.selectOne("BookmarkDao.findByUserArticle", map);
     }
   }
 }

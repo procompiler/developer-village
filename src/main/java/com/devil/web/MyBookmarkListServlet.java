@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.User;
-import com.devil.service.TagService;
+import com.devil.service.ArticleService;
 
-@WebServlet("/mypage/taglist")
-public class MyTagListServlet extends HttpServlet {
+@WebServlet("/mypage/bookmarklist")
+public class MyBookmarkListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -18,10 +18,10 @@ public class MyTagListServlet extends HttpServlet {
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
-    TagService tagService = (TagService)request.getServletContext().getAttribute("tagService");
+    ArticleService articleService = (ArticleService)request.getServletContext().getAttribute("articleService");
     try {
-      request.setAttribute("tags", tagService.list((User)request.getSession().getAttribute("loginUser")));
-      request.getRequestDispatcher("/mypage/taglist.jsp").include(request, response);
+      request.setAttribute("bookmarkList", articleService.list((User)request.getSession().getAttribute("loginUser")));
+      request.getRequestDispatcher("/mypage/bookmarklist.jsp").include(request, response);
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error.jsp").forward(request, response);

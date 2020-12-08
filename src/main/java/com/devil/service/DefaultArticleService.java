@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
+import com.devil.domain.User;
 import com.devil.util.SqlSessionFactoryProxy;
 
 public class DefaultArticleService implements ArticleService {
@@ -66,6 +67,11 @@ public class DefaultArticleService implements ArticleService {
   @Override
   public int delete(int no) throws Exception {
     return articleDao.inactive(no);
+  }
+
+  @Override
+  public List<Article> list(User loginUser) throws Exception {
+    return articleDao.findByBookmarker(loginUser);
   }
 
 }

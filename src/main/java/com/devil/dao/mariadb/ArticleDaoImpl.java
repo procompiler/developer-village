@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
+import com.devil.domain.User;
 
 public class ArticleDaoImpl implements ArticleDao {
 
@@ -84,4 +85,10 @@ public class ArticleDaoImpl implements ArticleDao {
     }
   }
 
+  @Override
+  public List<Article> findByBookmarker(User loginUser) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findByBookmarker", loginUser);
+    }
+  }
 }

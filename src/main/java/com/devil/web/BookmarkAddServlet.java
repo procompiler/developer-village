@@ -1,21 +1,18 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.devil.domain.Bookmark;
 import com.devil.domain.User;
-import com.devil.service.UserService;
+import com.devil.service.BookmarkService;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/user/unfollowTag")
-public class UserUnfollowTagServlet extends HttpServlet {
+@WebServlet("/bookmark/add")
+public class BookmarkAddServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -23,19 +20,17 @@ public class UserUnfollowTagServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    UserService userService =
-        (UserService) ctx.getAttribute("userService");
-
-
-    User loginUser = (User) request.getSession().getAttribute("loginUser");
-    Map<String, Object> map = new HashMap<>();
-    map.put("loginUserNo", loginUser.getNo());
-    map.put("tagNo", Integer.parseInt(request.getParameter("tno")));
+    BookmarkService bookmarkService = (BookmarkService)ctx.getAttribute("bookmarkService");
+    Bookmark bookmark = new Bookmark();
+    bookmark.setArticleNo(Integer.parseInt(request.getParameter("articleNo")));
+    User loginUser = (User)request.getSession().getAttribute("loginUser");
+    bookmark.setUserNo(loginUser.getNo());
 
     try {
-      if (userService.unfollow(map) == 0) {
-        throw new Exception("팔로우하지 않은 태그입니다.");
+      if (bookmarkService.add(bookmark) == 0) {
+        throw new Exception("이미 북마크하고 있는 게시글입니다.");
       }
+      loginUser.getArticleNos().add(bookmark.getArticleNo());
       response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {

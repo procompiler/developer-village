@@ -3,6 +3,7 @@ package com.devil.service;
 import java.util.List;
 import java.util.Map;
 import com.devil.domain.Article;
+import com.devil.domain.User;
 
 public interface ArticleService {
   int add(Article article) throws Exception;
@@ -13,4 +14,5 @@ public interface ArticleService {
   List<Article> list () throws Exception;
   List<Article> list(Map<String, Object> keywords) throws Exception;
   List<Article> list(int categoryNo) throws Exception;
+  List<Article> list(User loginUser) throws Exception;
 }
