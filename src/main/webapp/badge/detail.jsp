@@ -35,8 +35,8 @@ if (badge == null) {
 <textarea name='content'><%=badge.getContent()%></textarea><br>
 <button>뱃지 수정</button>
 </form>
-<p><a href='list' style='color:white;'>뱃지 목록으로</a></p>
-<button type='button'onclick="location.href='delete?no=<%=badge.getNo()%>'">뱃지 삭제</button>
+<p><a class='btn' href='list'>뱃지 목록으로</a></p>
+<a class='btn' href='delete?no=<%=badge.getNo()%>'>뱃지 삭제</a>
 <%}%>
 </body>
 </html>

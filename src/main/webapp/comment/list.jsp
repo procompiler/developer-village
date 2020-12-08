@@ -36,8 +36,7 @@
 					<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
 					<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
 					<button>수정</button>
-					<button type='button' class='btn-danger'
-						onclick="location.href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'">삭제</button>
+					<a class='btn btn-hollow' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
 					${comment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 				</form>
 
@@ -59,8 +58,7 @@
 							<textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea>
 							<fmt:formatDate value="${childComment.createdDate}" pattern="yyyy.MM.dd" />
 							<button>수정</button>
-							<button type='button' class='btn-danger'
-								onclick="location.href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'">삭제</button>
+							<a class='btn btn-hollow' href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'>삭제</a>
 							${childComment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 						</form>
 					</c:if>

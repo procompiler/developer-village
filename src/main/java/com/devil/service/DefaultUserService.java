@@ -1,7 +1,6 @@
 package com.devil.service;
 
 import java.util.List;
-import java.util.Map;
 import com.devil.dao.UserDao;
 import com.devil.domain.User;
 
@@ -42,28 +41,7 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public int follow(Map<String, Object> map) throws Exception {
-    if (map.get("tagNo") != null) {
-      return userDao.insertTag(map);
-    }
-    return userDao.insertUser(map);
-  }
-
-  @Override
-  public int unfollow(Map<String, Object> map) throws Exception {
-    if (map.get("tagNo") != null) {
-      return userDao.deleteTag(map);
-    }
-    return userDao.deleteUser(map);
-  }
-
-  @Override
   public List<User> list(User user) throws Exception {
     return userDao.findByFollower(user);
-  }
-
-  @Override
-  public int bookmark(Map<String, Object> map) throws Exception {
-    return userDao.insertArticle(map);
   }
 }

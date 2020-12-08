@@ -50,14 +50,10 @@ User user = (User) session.getAttribute("loginUser");
     </form>
   </div>
   <div>
-      <button type='button'
-      onclick="location.href='<%=contextPath%>/user/form.html'">회원가입</button>
-    <button type='button'
-      onclick="location.href='<%=contextPath%>/user/list'">회원관리</button>
-    <button type='button'
-      onclick="location.href='<%=contextPath%>/auth/login'">로그인</button>
-    <button type='button'
-      onclick="location.href='<%=contextPath%>/article/form'">글쓰기</button>
+    <a class="btn" href="<%=contextPath%>/user/form.html">회원가입</a>
+    <a class="btn" href="<%=contextPath%>/user/list">회원관리</a>
+    <a class="btn" href="<%=contextPath%>/auth/login">로그인</a>
+    <a class="btn" href="<%=contextPath%>/article/form">글쓰기</a>
   </div>
 </header>
 

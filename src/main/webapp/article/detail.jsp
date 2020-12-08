@@ -59,23 +59,17 @@
 		<textarea name='content'>${article.content}</textarea>
 		<br>
 		<button>수정</button>
-		<button type='button' class='btn-danger'
-			onclick="location.href='delete?no=${article.no}'">삭제</button>
-		<button type='button' class='btn-danger'
-			onclick="location.href='../report/reportArticle?no=${article.no}'">게시글
-			신고</button>
+	</form>
+		<a class='btn btn-hollow' href='delete?no=${article.no}'>삭제</a>
+		<a class='btn btn-hollow' href='../report/reportArticle?no=${article.no}'>신고</a>
 			
  <%
 	  boolean bookmarked = (Boolean)request.getAttribute("bookmarked");
   %>
-	   <button type='button'
-            <%=bookmarked ? "class='btn-hollow'" : ""%>
-            onclick="location.href='../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}'">
-            <%=bookmarked ? "북마크취소" : "북마크"%></button>
+	   <a class="btn <%=bookmarked ? "btn-hollow" : ""%>"
+        href="../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}">
+        <%=bookmarked ? "북마크취소" : "북마크"%></a>
             
-            
-            
-	</form>
 	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
 	<jsp:include page="/footer.jsp"></jsp:include>
 

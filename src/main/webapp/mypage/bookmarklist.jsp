@@ -43,8 +43,7 @@
 		%>
 		<tr>
 			<td><a href='../article/detail?no=<%=a.getNo()%>'><%=a.getTitle()%></a></td>
-			<td><button type='button' class='btn-hollow'
-					onclick="location.href='../bookmark/delete?articleNo=<%=a.getNo()%>'">북마크취소</button></td>
+			<td><a class='btn btn-hollow' href='../bookmark/delete?articleNo=<%=a.getNo()%>'>북마크취소</a></td>
 		</tr>
 		<%
 		  }
