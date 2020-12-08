@@ -34,7 +34,7 @@ public class FollowAddUserServlet extends HttpServlet {
       if (followService.addUser(follow) == 0) {
         throw new Exception("이미 팔로우하고 있는 유저입니다.");
       }
-      response.sendRedirect("../user/list");
+      response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
