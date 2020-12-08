@@ -25,7 +25,7 @@
 		<result column="noti" property="noti" />
 		<result column="bio" property="bio" />
 		<result column="state" property="state" />
-		
+		<!-- 
 		<collection property="tagNos" ofType="int">
       <id column="tno"/>
     </collection>
@@ -37,7 +37,7 @@
     <collection property="userNos" ofType="int">
       <id column="fwing_no"/>
     </collection>
-    
+     -->
 	</resultMap>
 
 	<insert id="insert" parameterType="user">
@@ -94,7 +94,7 @@
 		where f.fwer_no=#{no}
 		order by f.cdt desc
 	</select>
-
+	
 	<select id="findByEmailPassword" parameterType="map"
 		resultMap="UserMap">
 		select
@@ -111,15 +111,14 @@
 	    u.pwd,
 	    u.photo,
 	    u.cdt,
-	    u.log_type,
-	    ut.tno,
-	    ua.arno,
-	    f.fwing_no
+	    u.log_type
     from
 	    user u
+	    <!-- 
 	    left outer join usr_tag ut on u.uno = ut.uno
 	    left outer join usr_bmk_arc ua on u.uno = ua.uno
 	    left outer join follow f on f.fwer_no = u.uno
+	     -->
 		where
 		u.email = #{email}
 		and u.pwd = password(#{password})
