@@ -101,7 +101,7 @@
 			<td style='color: red;'><%=user.getBlocked() == 1 ? "차단중" : "" %></td>
 			<td><button type='button'
 					<%=followed ? "class='btn-hollow'" : ""%>
-					onclick="location.href='../user/<%=followed ? "un" : ""%>followUser?uno=<%=user.getNo()%>'">
+					onclick="location.href='../follow/user/<%=followed ? "delete" : "add"%>?uno=<%=user.getNo()%>'">
 					<%=followed ? "언팔로우" : "팔로우"%>
 			</button></td>
 		</tr>

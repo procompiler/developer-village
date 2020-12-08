@@ -48,7 +48,7 @@
 				<td><%=tag.getState() == 1 ? "" : "삭제됨"%></td>
 				<td><button type='button'
 						<%=followed ? "class='btn-hollow'" : ""%>
-						onclick="location.href='../user/<%=followed ? "un" : ""%>followTag?tno=<%=tag.getNo()%>'">
+						onclick="location.href='../follow/tag/<%=followed ? "delete" : "add"%>?tno=<%=tag.getNo()%>'">
 						<%=followed ? "언팔로우" : "팔로우"%></button></td>
 			</tr>
 			<%
