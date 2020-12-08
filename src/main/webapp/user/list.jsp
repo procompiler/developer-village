@@ -53,7 +53,6 @@
 			<th>상태</th>
 			<th>로그인타입</th>
 			<th>차단상태</th>
-			<th></th>
 		</tr>
 
 		<%
@@ -99,11 +98,6 @@
 			<td style='color: red;'><%=user.getState() == 1 ? "" : "탈퇴한 회원"%></td>
 			<td><%=loginType%></td>
 			<td style='color: red;'><%=user.getBlocked() == 1 ? "차단중" : "" %></td>
-			<td><button type='button'
-					<%=followed ? "class='btn-hollow'" : ""%>
-					onclick="location.href='../user/<%=followed ? "un" : ""%>followUser?uno=<%=user.getNo()%>'">
-					<%=followed ? "언팔로우" : "팔로우"%>
-			</button></td>
 		</tr>
 		<%}%>
 		</table>

@@ -54,7 +54,7 @@
 				<td><span id="color"
 					style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
 				<td><button type='button' class='btn-hollow'
-						onclick="location.href='../user/unfollowTag?tno=<%=tag.getNo()%>'">
+						onclick="location.href='../follow/tag/delete?tno=<%=tag.getNo()%>'">
 						언팔로우</button></td>
 			</tr>
 			<%

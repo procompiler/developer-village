@@ -10,20 +10,23 @@ public class Follow {
   public int getUserNo() {
     return userNo;
   }
-  public void setUserNo(int userNo) {
+  public Follow setUserNo(int userNo) {
     this.userNo = userNo;
+    return this;
   }
   public Date getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(Date createdDate) {
+  public Follow setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+    return this;
   }
   public int getFolloweeNo() {
     return followeeNo;
   }
-  public void setFolloweeNo(int followeeNo) {
+  public Follow setFolloweeNo(int followeeNo) {
     this.followeeNo = followeeNo;
+    return this;
   }
 
 }
