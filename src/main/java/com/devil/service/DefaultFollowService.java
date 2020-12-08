@@ -12,17 +12,33 @@ public class DefaultFollowService implements FollowService {
   }
 
   @Override
-  public int add(Follow follow) throws Exception {
-    return followDao.insert(follow);
+  public int addTag(Follow follow) throws Exception {
+    return followDao.insertTag(follow);
   }
 
   @Override
-  public Follow get(Map<String, Object> map) throws Exception {
-    return followDao.findByUserFollowee(map);
+  public int deleteTag(Follow follow) throws Exception {
+    return followDao.deleteTag(follow);
   }
 
   @Override
-  public int delete(Follow follow) throws Exception {
-    return followDao.delete(follow);
+  public Follow getTag(Map<String, Object> map) throws Exception {
+    return followDao.findByUserTag(map);
   }
+
+  @Override
+  public int addUser(Follow follow) throws Exception {
+    return followDao.insertUser(follow);
+  }
+
+  @Override
+  public int deleteUser(Follow follow) throws Exception {
+    return followDao.deleteUser(follow);
+  }
+
+  @Override
+  public Follow getUser(Map<String, Object> map) throws Exception {
+    return followDao.findByUserUser(map);
+  }
+
 }

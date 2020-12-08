@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Follow {
   int userNo;
-  int followNo;
+  int followeeNo;
   Date createdDate;
 
   public int getUserNo() {
@@ -13,16 +13,17 @@ public class Follow {
   public void setUserNo(int userNo) {
     this.userNo = userNo;
   }
-  public int getFollowNo() {
-    return followNo;
-  }
-  public void setFollowNo(int followNo) {
-    this.followNo = followNo;
-  }
   public Date getCreatedDate() {
     return createdDate;
   }
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
   }
+  public int getFolloweeNo() {
+    return followeeNo;
+  }
+  public void setFolloweeNo(int followeeNo) {
+    this.followeeNo = followeeNo;
+  }
+
 }

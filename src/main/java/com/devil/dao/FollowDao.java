@@ -4,7 +4,10 @@ import java.util.Map;
 import com.devil.domain.Follow;
 
 public interface FollowDao {
-  int insert(Follow follow) throws Exception;
-  int delete(Follow follow) throws Exception;
-  Follow findByUserFollow(Map<String, Object> map) throws Exception;
+  int insertTag(Follow follow) throws Exception;
+  int deleteTag(Follow follow) throws Exception;
+  int insertUser(Follow follow) throws Exception;
+  int deleteUser(Follow follow) throws Exception;
+  Follow findByUserTag(Map<String, Object> map) throws Exception;
+  Follow findByUserUser(Map<String, Object> map) throws Exception;
 }
