@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,10 @@
   <button type='button'
       onclick="location.href='${pageContext.request.contextPath}/badge/form.html'">뱃지추가</button>
 
+  <c:if test="${param.keyword != null}">
+  '${param.keyword}'로 검색한 결과입니다.
+  </c:if>
+
   <table border='1'>
     <thead>
       <tr>
@@ -27,23 +32,24 @@
       </tr>
     </thead>
     <tbody>
-    <c:forEach items="${list}" var="badge">
-      <tr>
-        <td>${badge.no}</td>
-        <td id="name"><a href='detail?no=${badge.no}'
-          style='color: black;'>${badge.name}</a></td>
-        <td><img style="width: 40px;" src="../upload/badge/${badge.photo}_160x160.png"></td>
-        <td>${badge.content}</td>
-      <tr>
-  </c:forEach>
-      
+	    <c:forEach items="${list}" var="badge">
+	      <tr>
+	        <td>${badge.no}</td>
+	        <td id="name"><a href='detail?no=${badge.no}'>${badge.name}</a></td>
+	        <td><img style="width: 40px;" src="../upload/badge/${badge.photo}_160x160.png"></td>
+	        <td>${badge.content}</td>
+	      <tr>
+	    </c:forEach>
     </tbody>
   </table>
+  
   <p>
-  <form action='list' method='get'>
+  <form action='list?' method='get'>
     검색어: <input type='text' name='keyword' value=''>
     <button>검색</button>
   </form>
+  </p>
+  
     <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

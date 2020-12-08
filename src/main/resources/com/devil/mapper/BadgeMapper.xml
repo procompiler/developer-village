@@ -5,94 +5,75 @@
 
 <mapper namespace="BadgeDao">
 
-    <!--result db의 컬럼이나 별친된 컬럼라벨 
-       property 결과칼럼에 매핑하기위한 필드나 프로퍼
-     -->
-<!--    db컬럼                      필드파라미터    -->
-  <resultMap type="badge"       id="BadgeMap">
-    <id column="bno"            property="no"/>
-    <result column="name"       property="name"/>
-    <result column="photo"      property="photo"/>
-    <result column="content"    property="content"/>
-    <result column="state"      property="state"/>    
-   
-    <association property="tagNo" javaType="tag">
-      <id column="tno"          property="tagNo"/>
-        <result column="tag_name" property="name"/>
-      <result column="tag_color"    property="tagColor"/>
-      <result column="font_color"    property="fontColor"/>
-    </association>
-   
-  </resultMap>
-  
-    <!-- 
-    select 
-      b.bno, 
-      b.name,
-      b.photo,  
-      b.tno, 
-      b.content,
-      t.tno
-    from 
-      badge a
-      inner join tag t on b.tno=t.tno
-     -->
-    <select id="findByNo" resultMap="BadgeMap" parameterType="int">
-    select 
-      b.bno,
-      b.name, 
-      b.photo,
-      b.content
-    from 
-      badge b
-      inner join tag t on t.tno= b.bno 
-     where b.bno=#{no}  
-    </select>
+	<resultMap type="badge"     id="BadgeMap">
+		<id column="bno"          property="no" />
+		<result column="name"     property="name" />
+		<result column="photo"    property="photo" />
+		<result column="content"  property="content" />
+		<result column="state"    property="state" />
 
-  <select id="findAll" resultMap="BadgeMap" parameterType="string">
-  	<!-- <include refid="sql1"/> -->
-    select
-      b.bno,
-      b.name, 
-      b.photo,
-      b.content
-      
-    from badge b
-    inner join tag t on t.tno= b.bno
-   
-  	<!-- 
-  	<if test="keyword != null">
-  	where
-  		b.name like concat('%', #{keyword}, '%')
-  		or t.name like concat('%', #{keyword}, '%')
-  	</if>
-  	order by a.bno desc
-  	 -->
-  </select>
-  
-  <insert id="insert" parameterType="badge">
-    insert into badge(bno,name,photo,content) 
-    values(#{no},#{name}, #{photo}, #{content})
-  </insert>
-  
-   <update id="update" parameterType="badge">
-    update badge
-    <set>
-      <if test="name != null">name = #{name},</if>
-      <if test="content != null">content = #{content},</if>
-      <if test="photo != null">photo = #{photo}</if>
-    </set>
-    where bno=#{no}
-  </update>
+		<association property="tagNo"  javaType="tag">
+			<id column="tno"             property="tagNo" />
+			<result column="tag_name"    property="name" />
+			<result column="tag_color"   property="tagColor" />
+			<result column="font_color"  property="fontColor" />
+		</association>
 
-     <update id="inactive" parameterType="int">
-    update badge set
-      state = 0
-    where bno=#{no}
-    </update>
-    
-	  <delete id="delete" parameterType="int">
-	    delete from badge
-	    where bno=#{no}
-	  </delete>
+	</resultMap>
+
+	<sql id="sql1">
+		select
+			b.bno badge_no,
+			b.name badge_name,
+			b.photo badge_photo,
+			b.content badge_content,
+			t.tno tag_no,
+			t.name tag_name,
+			t.tag_color tag_color,
+			t.font_color tag_font_color
+		from
+			badge b
+			inner join tag t on t.tno= b.bno
+	</sql>
+	
+	<select id="findByNo" resultMap="BadgeMap" parameterType="int">
+	 <include refid="sql1"/>
+		where b.bno=#{no}
+	</select>
+
+	<select id="findAll" resultMap="BadgeMap" parameterType="string">
+	  <include refid="sql1"/>
+		<if test="keyword != null">
+			where
+			b.name like concat('%', #{keyword}, '%')
+			or b.content like concat('%', #{keyword}, '%')
+		</if>
+		order by b.bno desc
+	</select>
+
+	<insert id="insert" parameterType="badge">
+		insert into badge(bno,name,photo,content)
+		values(#{no},#{name}, #{photo}, #{content})
+	</insert>
+
+	<update id="update" parameterType="badge">
+		update badge
+		<set>
+			<if test="name != null">name = #{name},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="photo != null">photo = #{photo}</if>
+		</set>
+		where bno=#{no}
+	</update>
+
+	<update id="inactive" parameterType="int">
+		update badge set
+		  state = 0
+		where bno=#{no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from badge
+		where bno=#{no}
+	</delete>
 </mapper>
