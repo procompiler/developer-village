@@ -98,17 +98,17 @@
 			<td><%=formatter.format(user.getCreatedDate())%></td>
 			<td style='color: red;'><%=user.getState() == 1 ? "" : "탈퇴한 회원"%></td>
 			<td>
-			<c:choose>
-            <c:when test="${t.status == 1}">
-              기본
-            </c:when>
-            <c:when test="${t.status == 2}">
-              구글
-            </c:when>
-            <c:otherwise>
-              깃허브
-            </c:otherwise>
-          </c:choose>
+ <c:choose>
+      <c:when test="${user.loginType == 1}">
+        <p>기본 가입회원</p>
+      </c:when>
+      <c:when test="${user.loginType == 2}">
+        <p>구글 가입회원</p>
+      </c:when>
+      <c:otherwise>
+        <p>깃허브 가입회원</p>
+      </c:otherwise>
+    </c:choose>
 			</td>
 			<td><%=user.getBlocked() == 1 ? "차단중" : ""%></td>
 			<td><button type='button'
