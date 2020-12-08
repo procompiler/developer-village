@@ -127,18 +127,37 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html.
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r.png','6D9AF1','37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs.png','6D9AF1','37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle.png','F56C6E','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio.png','F56C6E','37393E');
 
 
 
 
 
-INSERT INTO badge (bno,name,photo,tno) VALUES (1, '환영뱃지', 'welcome.jpg',null);
-INSERT INTO badge (bno,name,photo,tno) VALUES (2, '자바뱃지', 'java.jpg','1');
-INSERT INTO badge (bno,name,photo,tno) VALUES (3, '씨뱃지', 'c.jpg','6');
-INSERT INTO badge (bno,name,photo,tno) VALUES (4, '코틀린뱃지', 'kotlin.gif','11');
-INSERT INTO badge (bno,name,photo,tno) VALUES (5, '루비뱃지', 'ruby.jpg','3');
-INSERT INTO badge (bno,name,photo,tno) VALUES (6, '고뱃지', 'go.jpg','4');
-INSERT INTO badge (bno,name,photo,tno,content) VALUES (7, '파이썬뱃지', 'python.jpg','20','파이썬고수에게수여');
+INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome.jpg',null);
+INSERT INTO badge (bno,name,photo,tno) VALUES (1, 'JAVA', 'java.png',1);
+INSERT INTO badge (bno,name,photo,tno) VALUES (2, 'Phython', 'python.png',2);
+INSERT INTO badge (bno,name,photo,tno) VALUES (3, 'Ruby', 'ruby.png',3);
+INSERT INTO badge (bno,name,photo,tno) VALUES (4, 'Go', 'go.png',4);
+INSERT INTO badge (bno,name,photo,tno) VALUES (5, 'JavaScript', 'js.png',5);
+INSERT INTO badge (bno,name,photo,tno) VALUES (6, 'C', 'c.png',6);
+INSERT INTO badge (bno,name,photo,tno) VALUES (7, 'C++', 'cpp.png',7);
+INSERT INTO badge (bno,name,photo,tno) VALUES (8, 'Android', 'android.png',8);
+INSERT INTO badge (bno,name,photo,tno) VALUES (9, 'Swift', 'swift.png',9);
+INSERT INTO badge (bno,name,photo,tno) VALUES (10, 'MySql', 'mysql.png',10);
+INSERT INTO badge (bno,name,photo,tno) VALUES (11, 'PHP', 'php.png',11);
+INSERT INTO badge (bno,name,photo,tno) VALUES (12, 'DailyLife', 'dailylife.png',12);
+INSERT INTO badge (bno,name,photo,tno) VALUES (13, 'Study', 'study.png',12);
+INSERT INTO badge (bno,name,photo,tno) VALUES (16, 'React', 'react.png',16);
+INSERT INTO badge (bno,name,photo,tno) VALUES (17, 'Docker', 'docker.png',17);
+INSERT INTO badge (bno,name,photo,tno) VALUES (18, 'TypeScript', 'typescript.png',18);
+INSERT INTO badge (bno,name,photo,tno) VALUES (19, 'Linux', 'linux.png',19);
+INSERT INTO badge (bno,name,photo,tno) VALUES (20, 'CSS', 'css.png',20);
+INSERT INTO badge (bno,name,photo,tno) VALUES (21, 'Spring', 'spring.png',21);
+INSERT INTO badge (bno,name,photo,tno) VALUES (22, 'HTML', 'html.png',22);
+INSERT INTO badge (bno,name,photo,tno) VALUES (23, 'R', 'r.png',23);
+INSERT INTO badge (bno,name,photo,tno) VALUES (24, 'Node.js', 'nodejs.png',24);
+INSERT INTO badge (bno,name,photo,tno) VALUES (25, 'Oracle', 'oracle.png',25);
+INSERT INTO badge (bno,name,photo,tno) VALUES (26, 'Visual Studio', 'visual-studio.png',26);
 
 
 

@@ -1,5 +1,3 @@
-<%@page import="com.devil.domain.Badge"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -19,8 +17,6 @@
   <button type='button'
       onclick="location.href='${pageContext.request.contextPath}/badge/form.html'">뱃지추가</button>
 
-  
-
   <table border='1'>
     <thead>
       <tr>
@@ -36,7 +32,7 @@
         <td>${badge.no}</td>
         <td id="name"><a href='detail?no=${badge.no}'
           style='color: black;'>${badge.name}</a></td>
-        <td><img style="width: 80px;" src="../upload/badge/${badge.photo}_20x20.jpg"></td>
+        <td><img style="width: 40px;" src="../upload/badge/${badge.photo}_160x160.png"></td>
         <td>${badge.content}</td>
       <tr>
   </c:forEach>

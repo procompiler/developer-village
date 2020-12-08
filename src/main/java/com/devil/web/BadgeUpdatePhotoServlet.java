@@ -65,17 +65,17 @@ public class BadgeUpdatePhotoServlet extends HttpServlet {
       Thumbnails.of(saveFilePath)//
       .size(20, 20)//
       .crop(Positions.CENTER)
-      .outputFormat("jpg")//
+      .outputFormat("png")//
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
-          return name + "_20x20";
+          return name + "_40x40";
         }
       });
 
       Thumbnails.of(saveFilePath)//
       .size(80, 80)//
-      .outputFormat("jpg") //
+      .outputFormat("png") //
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
@@ -85,7 +85,7 @@ public class BadgeUpdatePhotoServlet extends HttpServlet {
 
       Thumbnails.of(saveFilePath)
       .size(160, 160)
-      .outputFormat("jpg")
+      .outputFormat("png")
       .crop(Positions.CENTER)
       .toFiles(new Rename() {
         @Override
