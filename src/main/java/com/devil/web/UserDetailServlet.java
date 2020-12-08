@@ -27,6 +27,10 @@ public class UserDetailServlet extends HttpServlet {
       int no = Integer.parseInt(request.getParameter("no"));
       User user = userService.get(no);
 
+      if(user == null) {
+        throw new Exception("해당 번호의 유저가 없습니다!");
+      }
+
       request.setAttribute("user", user);
       request.getRequestDispatcher("/user/detail.jsp").include(request, response);
 
