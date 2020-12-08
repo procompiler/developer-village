@@ -12,8 +12,8 @@ import com.devil.domain.User;
 import com.devil.service.TagService;
 import com.devil.service.UserService;
 
-@WebServlet("/auth/loginUser")
-public class FollowingUserListServlet extends HttpServlet {
+@WebServlet("/mypage")
+public class FollowTagListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override

@@ -30,7 +30,6 @@ public class BookmarkAddServlet extends HttpServlet {
       if (bookmarkService.add(bookmark) == 0) {
         throw new Exception("이미 북마크하고 있는 게시글입니다.");
       }
-      loginUser.getArticleNos().add(bookmark.getArticleNo());
       response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {
