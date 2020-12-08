@@ -56,6 +56,7 @@
 		u.in_url,
 		u.tw_url,
 		u.bio,
+		u.blocked,
 		u.state,
 		u.pwd,
 		u.photo,
@@ -88,7 +89,8 @@
 		u.nick,
 		u.name,
 		u.state,
-		u.photo
+		u.photo,
+		u.blocked
 		from user u
 		inner join follow f on f.fwing_no = u.uno
 		where f.fwer_no=#{no}

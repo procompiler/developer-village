@@ -30,8 +30,8 @@
 <form action='update' method='post'>
 <input type='hidden' name='no' value='${user.no}'><br>
  <p>닉네임: <input type='text' name='nickname' value='${user.nickname}'></p>
- <p>이메일: ${user.email}'</p>
- <p>이름: ${user.name}'</p>
+ <p>이메일: ${user.email}</p>
+ <p>이름: ${user.name}</p>
 
 <p>가입일: 
     <fmt:formatDate value="${user.createdDate}" pattern="yyyy.MM.dd" /></p>
@@ -43,9 +43,9 @@
       <c:when test="${user.loginType == 2}">
         <p>구글 가입회원</p>
       </c:when>
-      <c:otherwise>
+      <c:when test="${user.loginType == 3}">
         <p>깃허브 가입회원</p>
-      </c:otherwise>
+      </c:when>
     </c:choose>
  
 <p>소개: <input type='text' name='bio' value='${user.bio}'></p>

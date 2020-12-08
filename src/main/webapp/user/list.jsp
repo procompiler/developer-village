@@ -97,20 +97,8 @@
 			<td><%=user.getName()%></td>
 			<td><%=formatter.format(user.getCreatedDate())%></td>
 			<td style='color: red;'><%=user.getState() == 1 ? "" : "탈퇴한 회원"%></td>
-			<td>
- <c:choose>
-      <c:when test="${user.loginType == 1}">
-        <p>기본 가입회원</p>
-      </c:when>
-      <c:when test="${user.loginType == 2}">
-        <p>구글 가입회원</p>
-      </c:when>
-      <c:otherwise>
-        <p>깃허브 가입회원</p>
-      </c:otherwise>
-    </c:choose>
-			</td>
-			<td><%=user.getBlocked() == 1 ? "차단중" : ""%></td>
+			<td><%=loginType%></td>
+			<td style='color: red;'><%=user.getBlocked() == 1 ? "차단중" : "" %></td>
 			<td><button type='button'
 					<%=followed ? "class='btn-hollow'" : ""%>
 					onclick="location.href='../user/<%=followed ? "un" : ""%>followUser?uno=<%=user.getNo()%>'">
