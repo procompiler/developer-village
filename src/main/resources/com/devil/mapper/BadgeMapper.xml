@@ -23,14 +23,10 @@
 
 	<sql id="sql1">
 		select
-			b.bno badge_no,
-			b.name badge_name,
-			b.photo badge_photo,
-			b.content badge_content,
-			t.tno tag_no,
-			t.name tag_name,
-			t.tag_color tag_color,
-			t.font_color tag_font_color
+			b.bno,
+			b.name,
+			b.photo,
+			b.content
 		from
 			badge b
 			inner join tag t on t.tno= b.bno
@@ -45,8 +41,8 @@
 	  <include refid="sql1"/>
 		<if test="keyword != null">
 			where
-			b.name like concat('%', #{keyword}, '%')
-			or b.content like concat('%', #{keyword}, '%')
+			  b.name like concat('%', #{keyword}, '%')
+			  or b.content like concat('%', #{keyword}, '%')
 		</if>
 		order by b.bno desc
 	</select>
