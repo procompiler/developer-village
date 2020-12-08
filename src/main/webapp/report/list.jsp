@@ -4,6 +4,8 @@
 <%@page import="com.devil.domain.Report"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +37,6 @@
 			<th>신고링크</th>
 			<th>신고사유</th>
 			<th>신고승인</th>
-			<th></th>
 		</tr>
 
 		<%
