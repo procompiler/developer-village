@@ -41,8 +41,8 @@
 			name='title' value='${article.title}' size='50'><br>
 			
 		<p>
-			작성자: <img src='/upload/user/${article.writer.photo}_40x40.jpg'
-				style='border-radius: 70px' alt='[${article.writer.photo}]_40x40]'>${article.writer.nickname}</p>
+			작성자: <img src='../upload/user/${article.writer.photo}_40x40.jpg'
+				style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'>${article.writer.nickname}</p>
 
 		<ul id='tags'>
 			<c:forEach items="${tags}" var="tag">
@@ -64,7 +64,7 @@
 		<button type='button' class='btn-danger'
 			onclick="location.href='../report/reportArticle?no=${article.no}'">게시글
 			신고</button>
-			 <%
+<%-- 			 <%
 	  User loginUser = (User) request.getSession().getAttribute("loginUser");
 	  Article article = (Article) request.getAttribute("article");
     boolean bookmarked = loginUser.getArticleNos().contains(article.getNo());
@@ -72,7 +72,7 @@
 	   <button type='button'
             <%=bookmarked ? "class='btn-hollow'" : ""%>
             onclick="location.href='../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}'">
-            <%=bookmarked ? "북마크취소" : "북마크"%></button>
+            <%=bookmarked ? "북마크취소" : "북마크"%></button> --%>
 	</form>
 	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
 	<jsp:include page="/footer.jsp"></jsp:include>
