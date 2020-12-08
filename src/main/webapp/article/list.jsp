@@ -77,10 +77,8 @@
             <td id='title'>
               <ul id='tags'>
                 <c:forEach items="${article.tags}" var="tag">
-                  <c:set var="tagColor" value="#{ tag.color }" />
-                  <c:set var="tagFontColor" value="#{ tag.fontColor }" />
                   <li id='color'
-                    style="background-color: tagColor; color: tagFontColor;">${tag.name}</li>
+                    style="background-color: #${tag.tagColor}; color: #${tag.fontColor};">${tag.name}</li>
                 </c:forEach>
               </ul> <a href='detail?no=${article.no}'>${article.title}</a>
             </td>
@@ -95,28 +93,23 @@
 		</tbody>
 	</table>
 	<p>
-	<form action='list?' method='get'>
-		검색어: <input type='text' name='keyword' value=''>
+	<form action='${contextPath}?' method='get'>
+	   <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+		제목으로 검색  :  <input type='text' name='keyword' value=''>
 		<button>검색</button>
 	</form>
 	</p>
 	<hr>
-	<h2>상세 검색</h2>
-	
-		<%
-		  String keywordTitle = request.getParameter("keywordTitle");
-		String keywordWriter = request.getParameter("keywordWriter");
-		String keywordTag = request.getParameter("keywordTag");
-		%>
+	<h2>게시판 통합 상세 검색</h2>
 	
 	<p>
 	<form action='list' method='get'>
 		제목: <input type='text' name='keywordTitle'
-			value='<%=keywordTitle != null ? keywordTitle : ""%>'><br>
+			value='${keywordTitle != null ? keywordTitle : ""}'><br>
 		작성자: <input type='text' name='keywordWriter'
-			value='<%=keywordWriter != null ? keywordWriter : ""%>'><br>
+			value='${keywordWriter != null ? keywordWriter : ""}'><br>
 		태그: <input type='text' name='keywordTag'
-			value='<%=keywordTag != null ? keywordTag : ""%>'><br>
+			value='${keywordTag != null ? keywordTag : ""}'><br>
 		<button>검색</button>
 	</form>
 	</p>
