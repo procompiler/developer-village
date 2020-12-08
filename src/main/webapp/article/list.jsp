@@ -39,7 +39,11 @@
 		</c:choose>
 	</h1>
 	<button type='button' onclick="location.href='form'">글쓰기</button>
-
+  
+  <c:if test="${param.keyword != null}">
+  '${param.keyword}'로 검색한 결과입니다.
+  </c:if>
+  
 	<table border='1'>
 		<thead>
 			<tr>
