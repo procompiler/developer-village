@@ -70,8 +70,13 @@ public class DefaultArticleService implements ArticleService {
   }
 
   @Override
-  public List<Article> list(User loginUser) throws Exception {
-    return articleDao.findByBookmarker(loginUser);
+  public List<Article> bookmarkList(User user) throws Exception {
+    return articleDao.findByBookmarker(user);
+  }
+
+  @Override
+  public List<Article> list(User user) throws Exception {
+    return articleDao.findByWriter(user);
   }
 
 }

@@ -91,4 +91,11 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.selectList("ArticleDao.findByBookmarker", loginUser);
     }
   }
+
+  @Override
+  public List<Article> findByWriter(User user) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findByWriter", user);
+    }
+  }
 }

@@ -18,26 +18,24 @@
 	%>
 	<h1>로그인 사용자 정보</h1>
 	<p>
-		번호<%=user.getNo()%></p>
-	<p>
-		이메일:
+		이메일
 		<%=user.getEmail()%></p>
 	<p>
-		닉네임:
+		닉네임
 		<%=user.getNickname()%></p>
 	<p>
-		이름:
+		이름
 		<%=user.getName()%></p>
 	<p>
-		가입일:
+		가입일
 		<%=format.format(user.getCreatedDate())%></p>
 	<p>
-		로그인 유형:
+		로그인 유형
 		<%=user.getLoginType().equals("1") ? "기본" : user.getLoginType().equals('2') ? "구글" : "깃허브"%>
 		가입회원
 	</p>
 	<p>
-		기술 목록:
+		기술 목록
 		<%=user.getTech()%></p>
 	<img src='../upload/<%=user.getPhoto()%>_160x160.jpg'
 		alt='[<%=user.getPhoto()%>.jpg]'>
@@ -65,5 +63,9 @@
 		  }
 		%>
 	</div>
+		<a class="btn btn-black" href="articlelist">작성게시글</a>
+		<a class="btn btn-black" href="taglist">팔로잉 태그</a>
+		<a class="btn btn-black" href="userlist">팔로잉 유저</a>
+		<a class="btn btn-black" href="bookmarklist">북마크</a>
 </body>
 </html>

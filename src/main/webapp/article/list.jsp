@@ -99,7 +99,7 @@
 	<p>
 	<form action='${contextPath}?' method='get'>
 	   <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
-		제목으로 검색  :  <input type='text' name='keyword' value=''>
+		제목으로 검색  :  <input type=A'text' name='keyword' value=''>
 		<button>검색</button>
 	</form>
 	</p>

@@ -276,8 +276,6 @@ a:visited {
   color: #6C5DDF;
 }
 
-
-
 button.btn-hollow, a.btn-hollow {
   border: 1px solid #DBDBDB;
   background-color: transparent;
@@ -288,6 +286,17 @@ button.btn-hollow:hover, a.btn-hollow:hover {
   background-color: #F56C6E;
   border: 1px solid #F56C6E;
 }
+
+
+button.btn-black, a.btn-black {
+  background-color: #2E3034;
+}
+
+
+button.btn-black:hover, a.btn-black:hover {
+  background-color: #212327;
+}
+
 
 button.btn-danger, a.btn-danger {
   background-color: #F56C6E;

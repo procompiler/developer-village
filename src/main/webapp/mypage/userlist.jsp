@@ -44,8 +44,6 @@
 			<td><a href='../user/detail?no=<%=u.getNo()%>'> <img
 					src='../upload/user/<%=u.getPhoto()%>_40x40.jpg'
 					style='border-radius: 70px' alt='[<%=u.getNickname()%>]'><%=u.getNickname()%></a></td>
-			<td><button type='button' class='btn-hollow'
-					onclick="location.href='../follow/user/delete?uno=<%=u.getNo()%>'">언팔로우</button></td>
 		  <td><a class='btn btn-hollow' href='../follow/user/delete?uno=<%=u.getNo()%>'>언팔로우</a></td>
 		</tr>
 		<%
