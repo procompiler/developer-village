@@ -21,7 +21,7 @@
 
 	<h1>
 		<c:choose>
-			<c:when test="${article.categoryNo == 1}">
+			<c:when test="${param.categoryNo == 1}">
 				<p>커뮤니티</p>
 			</c:when>
 			<c:when test="${param.categoryNo == 2}">
@@ -53,19 +53,16 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${articles}" var="article">
-				<c:if test="${article.categoryNo == param.categoryNo}">
+				<c:if test="${param.categoryNo != 0 && article.categoryNo == param.categoryNo}">
 					<tr>
 						<td>${article.no}</td>
 						<td id='title'>
 							<ul id='tags'>
 								<c:forEach items="${article.tags}" var="tag">
-									<c:set var="tagColor" value="#{ tag.color }" />
-									<c:set var="tagFontColor" value="#{ tag.fontColor }" />
 									<li id='color'
-										style="background-color: tagColor; color: tagFontColor;">${tag.name}</li>
+										style="background-color: #${tag.tagColor}; color: #${tag.fontColor};">${tag.name}</li>
 								</c:forEach>
 							</ul> <a href='detail?no=${article.no}'>${article.title}</a>
-							[${fn:length(article.comments)}]
 						</td>
 						<td>${article.writer.nickname}</td>
 						<td><fmt:formatDate value="${article.createdDate}"
@@ -73,6 +70,26 @@
 						<td>${article.viewCount}</td>
 						<td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
 					</tr>
+				</c:if>
+				<c:if test="${param.categoryNo == null}">
+				  <tr>
+            <td>${article.no}</td>
+            <td id='title'>
+              <ul id='tags'>
+                <c:forEach items="${article.tags}" var="tag">
+                  <c:set var="tagColor" value="#{ tag.color }" />
+                  <c:set var="tagFontColor" value="#{ tag.fontColor }" />
+                  <li id='color'
+                    style="background-color: tagColor; color: tagFontColor;">${tag.name}</li>
+                </c:forEach>
+              </ul> <a href='detail?no=${article.no}'>${article.title}</a>
+            </td>
+            <td>${article.writer.nickname}</td>
+            <td><fmt:formatDate value="${article.createdDate}"
+                pattern="yyyy.MM.dd" /></td>
+            <td>${article.viewCount}</td>
+            <td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
+          </tr>
 				</c:if>
 			</c:forEach>
 		</tbody>

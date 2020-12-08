@@ -10,6 +10,10 @@
 <head>
 <title>게시글 조회</title>
 <link rel="stylesheet" type="text/css" href='../style.css'>
+<link rel="stylesheet"
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous" />
 </head>
 
 <body>
@@ -42,7 +46,7 @@
 
 		<ul id='tags'>
 			<c:forEach items="${tags}" var="tag">
-				<li id='color' style="background-color: blue; color: white;">${tag.name}</li>
+				<li id='color' style="background-color: #${tag.tagColor}; color: #${tag.fontColor};">${tag.name}</li>
 			</c:forEach>
 		</ul>
 
