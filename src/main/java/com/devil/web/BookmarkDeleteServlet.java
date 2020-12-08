@@ -30,7 +30,6 @@ public class BookmarkDeleteServlet extends HttpServlet {
       if (bookmarkService.delete(bookmark) == 0) {
         throw new Exception("북마크되어있지 않은 게시글입니다.");
       }
-      loginUser.getArticleNos().remove((Integer)bookmark.getArticleNo());
       response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {

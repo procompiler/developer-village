@@ -65,12 +65,8 @@
 			onclick="location.href='../report/reportArticle?no=${article.no}'">게시글
 			신고</button>
 			
-			
-<%-- 			
  <%
-	  User loginUser = (User) request.getSession().getAttribute("loginUser");
-	  Article article = (Article) request.getAttribute("article");
-    boolean bookmarked = loginUser.getArticleNos().contains(article.getNo());
+	  boolean bookmarked = (Boolean)request.getAttribute("bookmarked");
   %>
 	   <button type='button'
             <%=bookmarked ? "class='btn-hollow'" : ""%>
@@ -78,7 +74,6 @@
             <%=bookmarked ? "북마크취소" : "북마크"%></button>
             
             
-             --%>
             
 	</form>
 	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
