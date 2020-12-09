@@ -258,13 +258,13 @@ th, td {
 }
 
 .btn-outline-primary {
-	border-color: #6C5DDF;
+  border-color: #6C5DDF;
 }
 
 .btn-outline-primary:hover {
-	border-color: #6C5DDF;
-	background-color: #6C5DDF;
-	color: white;
+  border-color: #6C5DDF;
+  background-color: #6C5DDF;
+  color: white;
 }
 
 .btn-danger {
