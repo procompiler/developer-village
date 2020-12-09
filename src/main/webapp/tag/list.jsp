@@ -8,6 +8,7 @@
 <html>
 <head>
 <title>태그목록</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../style.css'>
 <link rel="stylesheet"
 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -58,5 +59,6 @@
 		</tbody>
 	</table>
 	<jsp:include page="/footer.jsp"></jsp:include>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
