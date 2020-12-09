@@ -3,6 +3,7 @@ package com.devil.service;
 import java.util.List;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
+import com.devil.domain.User;
 
 public class DefaultBadgeService implements BadgeService {
   BadgeDao badgeDao;
@@ -16,10 +17,12 @@ public class DefaultBadgeService implements BadgeService {
     return badgeDao.insert(badge);
   }
 
+  /*
   @Override
   public List<Badge> list(String keyword) throws Exception {
     return badgeDao.findAll(keyword);
   }
+   */
 
   @Override
   public Badge get(int no) throws Exception {
@@ -35,5 +38,10 @@ public class DefaultBadgeService implements BadgeService {
   @Override
   public int delete(int no) throws Exception {
     return badgeDao.inactive(no);
+  }
+
+  @Override
+  public List<Badge> list(User user) throws Exception {
+    return badgeDao.findByCollector(user);
   }
 }

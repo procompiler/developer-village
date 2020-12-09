@@ -42,5 +42,6 @@
 <a class="btn btn-outline-primary" href="userlist">팔로잉 유저</a>
 <a class="btn btn-outline-primary" href="followerlist">팔로워</a>
 <a class="btn btn-outline-primary" href="bookmarklist">북마크</a>
+<a class="btn btn-outline-primary" href="badgelist">뱃지</a>
 </body>
 </html>

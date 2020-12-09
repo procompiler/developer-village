@@ -11,14 +11,16 @@
 		<result column="photo"    property="photo" />
 		<result column="content"  property="content" />
 		<result column="state"    property="state" />
-
+		<result column="tno"    property="tagNo"/>
+		<result column="adt"    property="collectDate"/>
+    <!-- 
 		<association property="tagNo"  javaType="tag">
 			<id column="tno"             property="tagNo" />
 			<result column="tag_name"    property="name" />
 			<result column="tag_color"   property="tagColor" />
 			<result column="font_color"  property="fontColor" />
 		</association>
-
+  -->
 	</resultMap>
 
 	<sql id="sql1">
@@ -37,15 +39,30 @@
 		where b.bno=#{no}
 	</select>
 
-	<select id="findAll" resultMap="BadgeMap" parameterType="string">
-	  <include refid="sql1"/>
-		<if test="keyword != null">
+	<select id="findByCollector" resultMap="BadgeMap" parameterType="user">
+	  select
+      b.bno,
+      b.name,
+      b.photo,
+      b.content,
+      ub.adt
+    from
+      badge b
+      inner join usr_bdg ub on b.bno = ub.bno
 			where
-			  b.name like concat('%', #{keyword}, '%')
-			  or b.content like concat('%', #{keyword}, '%')
-		</if>
-		order by b.bno desc
+			 ub.uno= #{no}
+		order by ub.adt desc
 	</select>
+	
+	<select id="findAll" resultMap="BadgeMap" parameterType="string">
+    <include refid="sql1"/>
+    <if test="keyword != null">
+      where
+        b.name like concat('%', #{keyword}, '%')
+        or b.content like concat('%', #{keyword}, '%')
+    </if>
+    order by b.bno desc
+  </select>
 
 	<insert id="insert" parameterType="badge">
 		insert into badge(bno,name,photo,content)
