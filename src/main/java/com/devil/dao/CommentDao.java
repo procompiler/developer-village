@@ -2,6 +2,7 @@ package com.devil.dao;
 
 import java.util.List;
 import com.devil.domain.Comment;
+import com.devil.domain.User;
 
 public interface CommentDao {
   public int insert(Comment comment) throws Exception;
@@ -11,4 +12,5 @@ public interface CommentDao {
   //public Comment findByNo(int no) throws Exception;
   public List<Comment> findByArticleNo(int articleNo) throws Exception;
   public int inactive(int no) throws Exception;
+  public List<Comment> findByWriter(User user) throws Exception;
 }

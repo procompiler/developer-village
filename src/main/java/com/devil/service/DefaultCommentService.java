@@ -3,6 +3,7 @@ package com.devil.service;
 import java.util.List;
 import com.devil.dao.CommentDao;
 import com.devil.domain.Comment;
+import com.devil.domain.User;
 
 public class DefaultCommentService implements CommentService {
   CommentDao commentDao;
@@ -26,11 +27,11 @@ public class DefaultCommentService implements CommentService {
     return commentDao.findByArticleNo(articleNo);
   }
 
-//  @Override
-//  public Comment get(int no) throws Exception {
-//    Comment comment = commentDao.findByNo(no);
-//    return comment;
-//  }
+  //  @Override
+  //  public Comment get(int no) throws Exception {
+  //    Comment comment = commentDao.findByNo(no);
+  //    return comment;
+  //  }
 
   @Override
   public int update(Comment comment) throws Exception {
@@ -40,5 +41,10 @@ public class DefaultCommentService implements CommentService {
   @Override
   public int delete(int no) throws Exception {
     return commentDao.inactive(no);
+  }
+
+  @Override
+  public List<Comment> listByWriter(User user) throws Exception {
+    return commentDao.findByWriter(user);
   }
 }
