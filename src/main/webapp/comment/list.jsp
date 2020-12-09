@@ -86,5 +86,6 @@
 			type='text' name='content'><br>
 		<button>댓글쓰기</button>
 	</form>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
