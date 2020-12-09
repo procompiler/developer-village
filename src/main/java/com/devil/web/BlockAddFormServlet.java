@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.domain.User;
 import com.devil.service.ReportService;
 import com.devil.service.UserService;
 
@@ -28,9 +27,19 @@ public class BlockAddFormServlet extends HttpServlet {
       int no = Integer.parseInt(request.getParameter("reportNo"));
       request.setAttribute("report", reportService.get(no));
 
-      User reportedUser = userService.get(
-          Integer.parseInt(request.getParameter("reportedUser")));
-      request.setAttribute("reportedUser", reportedUser);
+      // 현재 여기서 넘어가는 reportedUser가 시간이널널임 여길 고쳐야함
+      //      User reportedUser = userService.get(
+      //          Integer.parseInt(request.getParameter("reportedUser")));
+
+      //Report report = reportService.get(no);
+      //System.out.println(report.getReportedArticle().getWriter().getNickname());
+
+      //      Report report = reportService.get(
+      //          Integer.parseInt(request.getParameter("reportedUser")));
+      //      User reportedUser = report.getReportedUser();
+
+      //      System.out.println(report.getNo());
+      //      request.setAttribute("reportedUser", reportedUser);
 
       request.getRequestDispatcher("/block/form.jsp").include(request, response);
 

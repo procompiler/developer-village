@@ -29,14 +29,16 @@ public class BlockDaoImpl implements BlockDao {
 
   @Override
   public List<Block> findAll(String keyword) throws Exception {
-    // TODO Auto-generated method stub
-    return null;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("BlockDao.findAll", keyword);
+    }
   }
 
   @Override
   public Block findByNo(int no) throws Exception {
-    // TODO Auto-generated method stub
-    return null;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("BlockDao.findByNo", no);
+    }
   }
 
 }

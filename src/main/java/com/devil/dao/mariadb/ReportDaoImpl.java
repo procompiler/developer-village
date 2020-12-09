@@ -4,6 +4,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.ReportDao;
+import com.devil.domain.Block;
 import com.devil.domain.Report;
 
 public class ReportDaoImpl implements ReportDao {
@@ -29,6 +30,13 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
+  public int insertStatus(Block block) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.update("ReportDao.insertStatus", block);
+    }
+  }
+
+  @Override
   public int delete(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("ReportDao.delete", no);
@@ -48,4 +56,6 @@ public class ReportDaoImpl implements ReportDao {
       return sqlSession.selectOne("ReportDao.findByNo", no);
     }
   }
+
+
 }
