@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
+
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>

@@ -10,6 +10,8 @@
 <html>
 <head>
 <title>마이페이지</title>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../style.css'>
 <link rel="stylesheet"
 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -51,7 +53,7 @@
           <td><fmt:formatDate value="${a.createdDate}"
               pattern="yyyy.MM.dd" /></td>
           <td>${a.viewCount}</td>
-          <td><a class='btn btn-hollow'
+          <td><a class='btn btn-outline-danger'
             href='../article/delete?articleNo=${a.no}'>삭제</a></td>
         </tr>
       </c:forEach>
