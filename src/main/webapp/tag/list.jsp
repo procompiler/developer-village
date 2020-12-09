@@ -9,12 +9,14 @@
 <head>
 <title>태그목록</title>
 <link rel="stylesheet" type="text/css" href='../style.css'>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
 	<h1>태그 목록</h1>
 	<button type='button' onclick="location.href='form.html'">태그
 		추가</button>
@@ -34,8 +36,8 @@
 		<tbody>
 			<%
 			  List<Tag> list = (List<Tag>) request.getAttribute("list");
-			  List<Tag> userTagNoList = (List<Tag>) request.getAttribute("userTagNoList");
- 			for (Tag tag : list) {
+			List<Tag> userTagNoList = (List<Tag>) request.getAttribute("userTagNoList");
+			for (Tag tag : list) {
 			  boolean followed = userTagNoList.contains(tag.getNo());
 			%>
 			<tr>
@@ -46,10 +48,9 @@
 				<td><span id="color"
 					style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
 				<td><%=tag.getState() == 1 ? "" : "삭제됨"%></td>
-				<td><button type='button'
-						<%=followed ? "class='btn-hollow'" : ""%>
-						onclick="location.href='../user/<%=followed ? "un" : ""%>followTag?tno=<%=tag.getNo()%>'">
-						<%=followed ? "언팔로우" : "팔로우"%></button></td>
+				<td><a class="btn <%=followed ? " btn-hollow" : ""%>"
+					href="../follow/tag/<%=followed ? "delete" : "add"%>?tno=<%=tag.getNo()%>">
+						<%=followed ? "언팔로우" : "팔로우"%></a></td>
 			</tr>
 			<%
 			  }

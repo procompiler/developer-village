@@ -28,6 +28,27 @@ header {
   padding: 10px;
 }
 
+a.btn {
+	display: inline-block;
+  padding: 0px 15px;
+  font-weight: bold;
+  color: white;
+  background-color: #6C5DDF;
+  border-radius: 10px;
+  margin: 10px 10px 10px 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+a.btn:hover {
+	text-decoration: none;
+  box-shadow: none;
+  background-color: #5D4ECB;
+}
+
+a.btn:visited {
+	color: white;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -236,7 +257,6 @@ button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-
 button:hover {
   box-shadow: none;
   background-color: #5D4ECB;
@@ -249,7 +269,6 @@ a:link {
 
 a:hover {
   text-decoration: underline;
-  color: #6C5DDF;
 }
 
 a:visited {
@@ -257,17 +276,29 @@ a:visited {
   color: #6C5DDF;
 }
 
-.btn-hollow {
+button.btn-hollow, a.btn-hollow {
   border: 1px solid #DBDBDB;
   background-color: transparent;
 }
 
-.btn-hollow:hover {
+
+button.btn-hollow:hover, a.btn-hollow:hover {
   background-color: #F56C6E;
   border: 1px solid #F56C6E;
 }
 
-.btn-danger {
+
+button.btn-black, a.btn-black {
+  background-color: #2E3034;
+}
+
+
+button.btn-black:hover, a.btn-black:hover {
+  background-color: #212327;
+}
+
+
+button.btn-danger, a.btn-danger {
   background-color: #F56C6E;
   color: #37393E;
 }

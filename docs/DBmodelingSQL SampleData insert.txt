@@ -1,7 +1,7 @@
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'aaa.gif', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'bbb.jpg', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'ccc.png', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'ddd.gif', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 1, 'java,phython',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4.jpg', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 0, 'java,phython',0,0);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'eee.png', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'fff.png', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',1,0);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'ggg.jpg', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0);
@@ -80,7 +80,7 @@ INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (14, 4, 4,'햄�
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (15, 4, 4,'감자튀김 좋아요','2020-11-23',1,11);
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (16, 4, 4,'샤브샤브 갑자기 땡기네요.','2020-11-23',1,12);
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (19, 6, 20,'파이썬 해보시는거 어떠세요.','2020-11-25');
-INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (20, 8, 8,'오버로딩은 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법이고, 오버로딩 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법입니다.',2,'2020-11-25');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (20, 8, 8,'오버로딩은 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법이고, 오버로딩 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법입니다.','2020-11-25');
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (21, 8, 2,'감사합니다ㅠㅠ','2020-11-26',1,20);
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (21, 10, 4,'탕수육 is 뭔들..','2020-11-26');
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (22, 10, 7,'저는 찍먹이요!','2020-11-26');
@@ -127,18 +127,37 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html.
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r.png','6D9AF1','37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs.png','6D9AF1','37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle.png','F56C6E','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio.png','F56C6E','37393E');
 
 
 
 
 
-INSERT INTO badge (bno,name,photo,tno) VALUES (1, '환영뱃지', 'welcome.jpg',null);
-INSERT INTO badge (bno,name,photo,tno) VALUES (2, '자바뱃지', 'java.jpg','1');
-INSERT INTO badge (bno,name,photo,tno) VALUES (3, '씨뱃지', 'c.jpg','6');
-INSERT INTO badge (bno,name,photo,tno) VALUES (4, '코틀린뱃지', 'kotlin.gif','11');
-INSERT INTO badge (bno,name,photo,tno) VALUES (5, '루비뱃지', 'ruby.jpg','3');
-INSERT INTO badge (bno,name,photo,tno) VALUES (6, '고뱃지', 'go.jpg','4');
-INSERT INTO badge (bno,name,photo,tno,content) VALUES (7, '파이썬뱃지', 'python.jpg','20','파이썬고수에게수여');
+INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome.jpg',null);
+INSERT INTO badge (bno,name,photo,tno) VALUES (1, 'JAVA', 'java.png',1);
+INSERT INTO badge (bno,name,photo,tno) VALUES (2, 'Phython', 'python.png',2);
+INSERT INTO badge (bno,name,photo,tno) VALUES (3, 'Ruby', 'ruby.png',3);
+INSERT INTO badge (bno,name,photo,tno) VALUES (4, 'Go', 'go.png',4);
+INSERT INTO badge (bno,name,photo,tno) VALUES (5, 'JavaScript', 'js.png',5);
+INSERT INTO badge (bno,name,photo,tno) VALUES (6, 'C', 'c.png',6);
+INSERT INTO badge (bno,name,photo,tno) VALUES (7, 'C++', 'cpp.png',7);
+INSERT INTO badge (bno,name,photo,tno) VALUES (8, 'Android', 'android.png',8);
+INSERT INTO badge (bno,name,photo,tno) VALUES (9, 'Swift', 'swift.png',9);
+INSERT INTO badge (bno,name,photo,tno) VALUES (10, 'MySql', 'mysql.png',10);
+INSERT INTO badge (bno,name,photo,tno) VALUES (11, 'PHP', 'php.png',11);
+INSERT INTO badge (bno,name,photo,tno) VALUES (12, 'DailyLife', 'dailylife.png',12);
+INSERT INTO badge (bno,name,photo,tno) VALUES (13, 'Study', 'study.png',12);
+INSERT INTO badge (bno,name,photo,tno) VALUES (16, 'React', 'react.png',16);
+INSERT INTO badge (bno,name,photo,tno) VALUES (17, 'Docker', 'docker.png',17);
+INSERT INTO badge (bno,name,photo,tno) VALUES (18, 'TypeScript', 'typescript.png',18);
+INSERT INTO badge (bno,name,photo,tno) VALUES (19, 'Linux', 'linux.png',19);
+INSERT INTO badge (bno,name,photo,tno) VALUES (20, 'CSS', 'css.png',20);
+INSERT INTO badge (bno,name,photo,tno) VALUES (21, 'Spring', 'spring.png',21);
+INSERT INTO badge (bno,name,photo,tno) VALUES (22, 'HTML', 'html.png',22);
+INSERT INTO badge (bno,name,photo,tno) VALUES (23, 'R', 'r.png',23);
+INSERT INTO badge (bno,name,photo,tno) VALUES (24, 'Node.js', 'nodejs.png',24);
+INSERT INTO badge (bno,name,photo,tno) VALUES (25, 'Oracle', 'oracle.png',25);
+INSERT INTO badge (bno,name,photo,tno) VALUES (26, 'Visual Studio', 'visual-studio.png',26);
 
 
 

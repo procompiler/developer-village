@@ -3,7 +3,11 @@
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,77 +17,72 @@
 </head>
 
 <body>
-<hr size='3'>
-<h2>Comments</h2>
+	<hr size='3'>
+	<h2>Comments</h2>
 
-<%SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");%>
-<%Article article = (Article) request.getAttribute("article");%>
-<%List<Comment> comments = (List<Comment>) request.getAttribute("comments");%>
-<%if (comments != null) {
-  for (Comment comment : comments) {
-    if (comment.getStep() != 0) {
-      continue;
-    } else if (comment.getStep() == 0) {%>
+	<c:forEach items="${comments}" var="comment">
+		<c:if test="${fn:length(comments) != 0}">
+			<c:if test="${comment.step == 0 && comment.motherNo == 0}">
+				<form
+					action='../comment/update?no=${comment.no}&articleNo=${comment.articleNo}'
+					method='post'>
+					<input type='hidden' name='momno' value='${comment.motherNo}'>
+					<input type='hidden' name='cno' value='${comment.no}'> 
+					<input type='hidden' name='arno' value='${comment.articleNo}'> 
+					<input type='hidden' name='step' value='${comment.step}'> 
+					<img src='../upload/user/${comment.writer.photo}_40x40.jpg'
+						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'>
+					<a href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
+					<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
+					<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
+					<button>수정</button>
+					<a class='btn btn-hollow' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
+					${comment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
+				</form>
 
-<form action='../comment/update?no=<%=comment.getNo()%>&articleNo=<%=comment.getArticleNo()%>' method='post'>
-	<input type='hidden' name='momno' value='<%=comment.getMotherNo()%>'>
-	<input type='hidden' name='cno' value='<%=comment.getNo()%>'>
-	<input type='hidden' name='arno' value='<%=comment.getArticleNo()%>'>
-	<input type='hidden' name='step' value='<%=comment.getStep()%>'>
-	<p>엄마</p>
-	<img src='<%=request.getContextPath()%>/upload/user/<%=comment.getWriter().getPhoto()%>_40x40.jpg'
-	     style='border-radius: 70px' 
-       alt='[<%=comment.getWriter().getPhoto()%>]_40x40]'>
-	<a href='../user/detail?no=<%=comment.getWriter().getNo()%>'><%=comment.getWriter().getNickname()%></a>
-	<textarea name='content' style="height:30px;width:400px;"><%=comment.getContent()%></textarea>
-	<%=formatter.format(comment.getCreatedDate())%>
-	<button>수정</button>
-	<button type='button' class='btn-danger' onclick="location.href='../comment/delete?no=<%=comment.getNo()%>&articleNo=<%=article.getNo()%>'">삭제</button>
-	<%=comment.getState() == 1 ? "정상 댓글" : "삭제된 댓글"%>
-</form>
-	
-    <%}%>
-    
-<%for (Comment childComment : comments) {
-  if (childComment.getStep() == 1 && childComment.getMotherNo() == comment.getNo()) {%>
-		<form action='../comment/update?no=<%=childComment.getNo()%>&articleNo=<%=article.getNo()%>' method='post'>
-			<input type='hidden' name='momno' value='<%=childComment.getMotherNo()%>'>
-			<input type='hidden' name='cno' value='<%=childComment.getNo()%>'>
-			<input type='hidden' name='arno' value='<%=comment.getArticleNo()%>'>
-			<p>딸</p>
-			
-			<img src='<%=request.getContextPath()%>/upload/user/<%=childComment.getWriter().getPhoto()%>_40x40.jpg'
-			     style='border-radius: 70px' 
-			     alt='[<%=childComment.getWriter().getPhoto()%>].jpg]'>
-			<a href='../user/detail?no=<%=childComment.getWriter().getNo()%>'><%=childComment.getWriter().getNickname()%></a>
-			<textarea name='content' style="height:30px;width:400px;"><%=childComment.getContent()%></textarea>
-			<%=formatter.format(childComment.getCreatedDate())%>
-			<button>수정</button>
-			
-			<button type='button' class='btn-danger' onclick="location.href='../comment/delete?no=<%=comment.getNo()%>&articleNo=<%=article.getNo()%>'">삭제</button>
-			<%=comment.getState() == 1 ? "정상 댓글" : "삭제된 댓글"%>
-    </form> 
-  <%}%>
-<%}%>
+				<c:forEach items="${comments}" var="childComment">
+					<c:if
+						test="${childComment.step == 1 && childComment.motherNo != 0 && childComment.motherNo == comment.no}">
+						<form
+							action='../comment/update?no=${childComment.no}&articleNo=${childComment.articleNo}'
+							method='post'>
+							<input type='hidden' name='momno' value='${childComment.motherNo}'> 
+							<input type='hidden' name='cno' value='${childComment.no}'> 
+							<input type='hidden' name='arno' value='${childComment.articleNo}'>
+							<input type='hidden' name='step' value='${childComment.step}'>
+							<span>┗━━</span> 
+							<img src='../upload/user/${childComment.writer.photo}_40x40.jpg'
+								   style='border-radius: 70px'
+								   alt='[${childComment.writer.photo}_40x40]'>
+							<a href='../user/detail?no=${childComment.writer.no}'>${childComment.writer.nickname}</a>
+							<textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea>
+							<fmt:formatDate value="${childComment.createdDate}" pattern="yyyy.MM.dd" />
+							<button>수정</button>
+							<a class='btn btn-hollow' href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'>삭제</a>
+							${childComment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
+						</form>
+					</c:if>
+				</c:forEach>
+				
+				<form action='../comment/add' method='post'>
+					<input type='hidden' name="momno" value='${comment.no}'><br>
+					<input type='hidden' name="arno" value='${article.no}'><br>
+					<input type='hidden' name="step" value='1'><br> <input
+						type='text' name='content'><br>
+					<button>대댓글</button>
+				</form>
+				<hr color='gray'>
 
+			</c:if>
+		</c:if>
+	</c:forEach>
 
-<form action='../comment/add' method='post'>
-	<input type='hidden' name="momno" value='<%=comment.getNo()%>'><br>
-	<input type='hidden' name="arno" value='<%=article.getNo()%>'><br>
-	<input type='hidden' name="step" value='1'><br>
-	<input type='text' name='content'><br>
-	<button>대댓글</button>
-</form>
-
-<hr color='gray'>
-<%}%>
-<form method='post' action='../comment/add'>
-	<input type='hidden' name="momno" value='0'><br>
-	<input type='hidden' name="arno" value='<%=article.getNo()%>'><br>
-	<input type='hidden' name="step" value='0'><br>
-	<input type='text' name='content'><br>
-	<button>댓글쓰기</button>
-</form>
-<%}%>
+	<form method='post' action='../comment/add'>
+		<input type='hidden' name="momno" value='0'><br> <input
+			type='hidden' name="arno" value='${article.no }'><br> <input
+			type='hidden' name="step" value='0'><br> <input
+			type='text' name='content'><br>
+		<button>댓글쓰기</button>
+	</form>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.devil.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,15 +33,12 @@ public class BadgeAddServlet extends HttpServlet {
     ServletContext ctx = request.getServletContext();
     BadgeService badgeService = (BadgeService) ctx.getAttribute("badgeService");
 
-    request.setCharacterEncoding("UTF-8");
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
 
     Badge badge = new Badge();
     badge.setName(request.getParameter("name"));
     badge.setContent(request.getParameter("content"));
-
     Part photoPart = request.getPart("photo");
+
     String filename = "";
     if (photoPart.getSize() > 0) {
       // 파일을 선택해서 업로드 했다면,
@@ -52,11 +48,11 @@ public class BadgeAddServlet extends HttpServlet {
 
     Thumbnails.of(this.uploadDir + "/" + filename)//
     .size(20, 20)//
-    .outputFormat("jpg")//
+    .outputFormat("png")//
     .toFiles(new Rename() {
       @Override
       public String apply(String name, ThumbnailParameter param) {
-        return name + "_20x20";
+        return name + "_160x160";
       }
     });
 
@@ -70,29 +66,19 @@ public class BadgeAddServlet extends HttpServlet {
     //    photoPart.write(saveFilePath);
     //    // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
     badge.setPhoto(filename);
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
     // 웹브라우저 제목에 출력될 내용
-    out.println("<head>");
-    out.println("<meta http-equiv='Refresh' content='2;url=list'>");
-    out.println("<title>뱃지 등록</title></head>");
-    out.println("<body>");
 
     try {
-      out.println("<h1>[뱃지 등록]</h1>");
-
       request.setCharacterEncoding("UTF-8");
       badge.setName(request.getParameter("name"));
       badge.setContent(request.getParameter("content"));
       badgeService.add(badge);
-      out.println("뱃지를 등록했습니다.");
+
+      response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }

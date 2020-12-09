@@ -16,7 +16,6 @@
     <result column="state"     property="state"/>
     <result column="st_status"  property="studyStatus"/>
     <result column="rc_edt"     property="endDate"/>
-    
 
     <association property="writer" javaType="user">
       <id column="uno"          property="no"/>
@@ -36,7 +35,6 @@
       <result column="comment_content" property="content"/>
       <result column="comment_cdt" property="createdDate"/>
       <result column="comment_state" property="state"/>
-    
       
       <association property="writer" javaType="user">
 	      <id column="uno"                   property="no"/>
@@ -89,6 +87,11 @@
     left outer join usr_bmk_arc ua on a.arno=ua.arno
     where ua.uno=#{no} 
     order by ua.cdt desc
+  </select>
+  
+  <select id="findByWriter" resultMap="ArticleMap" parameterType="user">
+    <include refid="sql1"/>
+    where a.writer=#{no}
   </select>
   
   <select id="findAll" resultMap="ArticleMap" parameterType="string">

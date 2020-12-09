@@ -48,14 +48,12 @@
 			  }
 			%>
 			<tr>
-				<td id="title"><a href='detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
+				<td id="title"><a href='../tag/detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
 				<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
 					alt='<%=tag.getPhoto()%>'></td>
 				<td><span id="color"
 					style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
-				<td><button type='button' class='btn-hollow'
-						onclick="location.href='../user/unfollowTag?tno=<%=tag.getNo()%>'">
-						언팔로우</button></td>
+				<td><a class='btn btn-hollow' href='../follow/tag/delete?tno=<%=tag.getNo()%>'>언팔로우</a></td>
 			</tr>
 			<%
 			  }

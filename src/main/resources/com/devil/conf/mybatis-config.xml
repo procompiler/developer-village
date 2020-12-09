@@ -35,6 +35,7 @@
     <mapper resource="com/devil/mapper/ReportMapper.xml"/>
     <mapper resource="com/devil/mapper/BlockMapper.xml"/>
     <mapper resource="com/devil/mapper/BookmarkMapper.xml"/>
+    <mapper resource="com/devil/mapper/FollowMapper.xml"/>
   </mappers>
 
 </configuration>

@@ -23,4 +23,12 @@
 		where uno=#{userNo} and arno=#{articleNo}
 	</delete>
 
+  <select id="findByUserArticle" resultMap="BookmarkMap" parameterType="map">
+    select
+      uno,
+      arno, 
+      cdt
+    from usr_bmk_arc
+    where uno=#{userNo} and arno=#{articleNo}
+  </select>
 </mapper>

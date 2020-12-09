@@ -203,3 +203,9 @@ gradle-app.setting
 
 # JDBC
 jdbc.properties
+
+*.exe
+node_modules/
+temp/
+Debug/
+Release/

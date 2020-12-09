@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>차단하기</title>
-<link rel="stylesheet" type="text/css" href='../style.css'>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href='../style.css'> 
 </head>
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
@@ -29,5 +31,6 @@
 		<button>차단하기</button>
 	</form>
 	 <jsp:include page="/footer.jsp"></jsp:include>
+	 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

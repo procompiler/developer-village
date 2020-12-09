@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>신고하기</title>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../style.css'>
 <link rel="stylesheet"
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -34,5 +36,6 @@
 </select><br>
 <button>신고하기</button>
 </form>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
