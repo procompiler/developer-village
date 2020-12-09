@@ -1,11 +1,7 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.devil.domain.Tag"%>
-<%@page import="java.util.List"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="com.devil.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +21,6 @@
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
     <jsp:include page="/mypage/info"></jsp:include>
-  <%
-	List<User> users = (List<User>) request.getAttribute("users");
-  %>
 	<h2>팔로우하는 유저</h2>
 	<table border='1'>
 	 <thead>
@@ -37,18 +30,14 @@
 		</tr>
    <thead>
    <tbody>
-		<%
-		  for (User u : users) {
-		%>
+   <c:forEach items="${users}" var="u">
 		<tr>
-			<td><a href='../user/detail?no=<%=u.getNo()%>'> <img
-					src='../upload/user/<%=u.getPhoto()%>_40x40.jpg'
-					style='border-radius: 70px' alt='[<%=u.getNickname()%>]'><%=u.getNickname()%></a></td>
-		  <td><a class='btn btn-hollow' href='../follow/user/delete?uno=<%=u.getNo()%>'>언팔로우</a></td>
+			<td><a href='../user/detail?no=${u.no}'> <img
+					src='../upload/user/${u.photo}_40x40.jpg'
+					style='border-radius: 70px' alt='[${u.nickname}]'>${u.nickname}</a></td>
+		  <td><a class='btn btn-outline-danger' href='../follow/user/delete?uno=${u.no}'>언팔로우</a></td>
 		</tr>
-		<%
-		  }
-		%>
+		</c:forEach>
 		</tbody>
 	</table>
 	<jsp:include page="/footer.jsp"></jsp:include>

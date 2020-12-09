@@ -56,6 +56,10 @@ header button {
   margin: 5px;
 }
 
+header a.btn {
+	float: right;
+}
+
 nav {
   height: 100%;
   width: 220px;
@@ -73,6 +77,10 @@ nav {
   float: left;
 }
 
+nav i {
+	margin-right: 10px;
+}
+
 input::placeholder {
   padding-left: 5px;
   color: #dbdbdb;
@@ -88,7 +96,6 @@ nav ul {
 }
 
 nav a {
-  color: white;
   text-decoration: none;
 }
 
@@ -114,6 +121,11 @@ nav #sitename {
   font-size: 24px;
 }
 
+nav #logo-nav {
+  text-align: center;
+  padding-top: 30px;
+  width: 77px;
+}
 
 
 /* 하단바 */
@@ -131,11 +143,6 @@ footer img {
   width: 43px;
 }
 
-nav #logo-nav {
-  text-align: center;
-  padding-top: 30px;
-  width: 77px;
-}
 
 footer #pro-logo {
   border-radius: 7px;
@@ -288,7 +295,6 @@ th, td {
   background-color: #F56C6E;
   color: white;
 }
-
 /* 링크 */
 
 a:link {
@@ -302,4 +308,9 @@ a:hover {
 
 a:visited {
   color: #5D4ECB;
+}
+
+#urls {
+  padding: 5px;
+  font-size: 2em;
 }

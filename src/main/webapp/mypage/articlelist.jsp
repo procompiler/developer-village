@@ -15,19 +15,6 @@
 <html>
 <head>
 <title>마이페이지</title>
-<link rel="stylesheet" type="text/css" href='../style.css'>
-<link rel="stylesheet"
-	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-	crossorigin="anonymous" />
-<style>
-#urls {
-	padding: 5px;
-	font-size: 2em;
-}
-</style>
-</head>
-<body>
 	<jsp:include page="/header.jsp"></jsp:include>
 	<jsp:include page="/mypage/info"></jsp:include>
 	<h2>작성글</h2>
@@ -56,7 +43,7 @@
 					<td><fmt:formatDate value="${a.createdDate}"
 							pattern="yyyy.MM.dd" /></td>
 					<td>${a.viewCount}</td>
-					<td><a class='btn btn-hollow'
+					<td><a class='btn btn-outline-danger'
 						href='../article/delete?articleNo=${a.no}'>삭제</a></td>
 				</tr>
 			</c:forEach>
