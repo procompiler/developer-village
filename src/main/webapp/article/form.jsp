@@ -9,6 +9,9 @@
 <head>
 <title>게시글작성</title>
 <link rel="stylesheet" type="text/css" href='../style.css'>
+
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>

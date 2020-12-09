@@ -14,6 +14,8 @@
 <head>
 <title>댓글 조회</title>
 <link rel="stylesheet" type="text/css" href='../style.css'>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
