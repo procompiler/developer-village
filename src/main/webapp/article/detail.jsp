@@ -17,9 +17,13 @@
 <link rel="stylesheet"
 	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../style.css'>
+
+
 </head>
 
 <body>
+
+<div class="container">
 	<jsp:include page="/header.jsp"></jsp:include>
 	<h1>
 		<c:choose>
@@ -49,7 +53,7 @@
 
 		<ul id='tags'>
 			<c:forEach items="${tags}" var="tag">
-				<li id='color' style="background-color: #${tag.tagColor">${tag.name}</li>
+				<li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
 			</c:forEach>
 		</ul>
 
@@ -61,21 +65,23 @@
 
 		<textarea name='content'>${article.content}</textarea>
 		<br>
-		<button>수정</button>
+		<button class="btn btn-primary">수정</button>
 	</form>
-	<a class='btn btn-hollow' href='delete?no=${article.no}'>삭제</a>
-	<a class='btn btn-hollow'
+	<a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
+	<a class="btn btn-danger"
 		href='../report/reportArticle?no=${article.no}'>신고</a>
 
 	<%
 	  boolean bookmarked = (Boolean) request.getAttribute("bookmarked");
 	%>
-	<a class="btn <%=bookmarked ? "btn-hollow" : ""%>"
+	<a class="btn <%=bookmarked ? "btn-outline-primary" : ""%>"
 		href="../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}">
 		<%=bookmarked ? "북마크취소" : "북마크"%></a>
 
 	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
 	<jsp:include page="/footer.jsp"></jsp:include>
+	
+</div>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -37,8 +37,8 @@
 					<a href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
 					<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
 					<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
-					<button>수정</button>
-					<a class='btn btn-hollow' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
+					<button class="btn btn-primary">수정</button>
+					<a class='btn btn-danger' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
 					${comment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 				</form>
 
@@ -59,8 +59,8 @@
 							<a href='../user/detail?no=${childComment.writer.no}'>${childComment.writer.nickname}</a>
 							<textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea>
 							<fmt:formatDate value="${childComment.createdDate}" pattern="yyyy.MM.dd" />
-							<button>수정</button>
-							<a class='btn btn-hollow' href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'>삭제</a>
+							<button class="btn btn-primary">수정</button>
+							<a class='btn btn-danger' href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'>삭제</a>
 							${childComment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 						</form>
 					</c:if>
@@ -71,7 +71,7 @@
 					<input type='hidden' name="arno" value='${article.no}'><br>
 					<input type='hidden' name="step" value='1'><br> <input
 						type='text' name='content'><br>
-					<button>대댓글</button>
+					<button class='btn btn-primary'>대댓글</button>
 				</form>
 				<hr color='gray'>
 
@@ -84,7 +84,7 @@
 			type='hidden' name="arno" value='${article.no }'><br> <input
 			type='hidden' name="step" value='0'><br> <input
 			type='text' name='content'><br>
-		<button>댓글쓰기</button>
+		<button class='btn btn-primary'>댓글쓰기</button>
 	</form>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -41,7 +41,7 @@
 			</c:otherwise>
 		</c:choose>
 	</h1>
-	<button type='button' onclick="location.href='form'">글쓰기</button>
+	<button type='button' class="btn btn-primary" onclick="location.href='form'">글쓰기</button>
   
   <c:if test="${param.keyword != null}">
   '${param.keyword}'로 검색한 결과입니다.
@@ -103,7 +103,7 @@
 	<form action='${contextPath}?' method='get'>
 	   <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
 		제목으로 검색  :  <input type=A'text' name='keyword' value=''>
-		<button>검색</button>
+		<button class="btn btn-primary">검색</button>
 	</form>
 	</p>
 	<hr>
@@ -117,7 +117,7 @@
 			value='${keywordWriter != null ? keywordWriter : ""}'><br>
 		태그: <input type='text' name='keywordTag'
 			value='${keywordTag != null ? keywordTag : ""}'><br>
-		<button>검색</button>
+		<button class="btn btn-primary">검색</button>
 	</form>
 	</p>
 	<jsp:include page="/footer.jsp"></jsp:include>
