@@ -36,9 +36,11 @@
 		</c:when>
 	</c:choose>
 </div>
-<a class="btn" href="articlelist">작성게시글</a>
-<a class="btn" href="taglist">팔로잉 태그</a>
-<a class="btn" href="userlist">팔로잉 유저</a>
-<a class="btn" href="bookmarklist">북마크</a>
+<a class="btn btn-outline-primary" href="articlelist">작성게시글</a>
+<a class="btn btn-outline-primary" href="commentlist">작성댓글</a>
+<a class="btn btn-outline-primary" href="taglist">팔로잉 태그</a>
+<a class="btn btn-outline-primary" href="userlist">팔로잉 유저</a>
+<a class="btn btn-outline-primary" href="followerlist">팔로워</a>
+<a class="btn btn-outline-primary" href="bookmarklist">북마크</a>
 </body>
 </html>

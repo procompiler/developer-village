@@ -91,4 +91,11 @@ public class UserDaoImpl implements UserDao {
     }
   }
 
+  @Override
+  public List<User> findFollower(User user) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("UserDao.findFollower", user);
+    }
+  }
+
 }
