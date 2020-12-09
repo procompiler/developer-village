@@ -14,6 +14,9 @@
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
   crossorigin="anonymous" />
+  
+  <link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -72,6 +75,6 @@
             
 	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
 	<jsp:include page="/footer.jsp"></jsp:include>
-
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
