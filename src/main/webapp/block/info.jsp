@@ -32,12 +32,12 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
   <p>차단 사유 : </p>
   <p>block.getBlockedReason()</p>
 
-  <p>차단 기한 : </p>
-  <p>
    <%
    blockTermination.setTime(block.getPermittedDate());
    blockTermination.add(Calendar.DATE, block.getBlockedDates());
    %>
+  <p>차단 기한 : </p>
+  <p><%=formatter.format(blockTermination.getTime())%>
   </p>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -58,11 +58,12 @@
 
     <select id="findByNo" resultMap="BlockMap" parameterType="int">
      <include refid="sql1"/>
-      where b.blno=#{no}  
+      where b.blno=#{no} 
     </select>
     
     <select id="findByUser" resultMap="BlockMap" parameterType="user">
      <include refid="sql1"/>
-      where u.uno=#{reportedUser.no}  
+      where u.uno=#{no} 
+      
     </select>
 </mapper>

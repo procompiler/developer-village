@@ -24,7 +24,7 @@ public class BlockInfoServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     try {
       User loginUser = (User) request.getAttribute("loginUser");
-      request.setAttribute("blockedUser", blockService.get(loginUser));
+      request.setAttribute("blockedUser", blockService.get(loginUser.getNo()));
 
       request.getRequestDispatcher("/block/info.jsp").include(request, response);
 

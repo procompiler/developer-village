@@ -31,10 +31,10 @@ public class BlockFilter implements Filter {
 
       BlockService blockService =
           (BlockService) request.getServletContext().getAttribute("blockService");
-      User loginUser = (User) httpRequest.getAttribute("loginUser");
+      User loginUser = (User) httpRequest.getSession().getAttribute("loginUser");
       System.out.println(loginUser.getNickname());
 
-      Block block = blockService.get(loginUser);
+      Block block = blockService.get(blockNo, loginUser.getNo());
       System.out.println(block);
 
       // select
