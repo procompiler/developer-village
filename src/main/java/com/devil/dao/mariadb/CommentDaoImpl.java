@@ -42,12 +42,12 @@ public class CommentDaoImpl implements CommentDao {
     }
   }
 
-  //  @Override
-  //  public Comment findByNo(int no) throws Exception {
-  //    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-  //      return sqlSession.selectOne("CommentDao.findByNo", no);
-  //    }
-  //  }
+    @Override
+    public Comment findByNo(int no) throws Exception {
+      try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+        return sqlSession.selectOne("CommentDao.findByNo", no);
+      }
+    }
 
   @Override
   public int inactive(int no) throws Exception {
