@@ -27,11 +27,11 @@ public class DefaultCommentService implements CommentService {
     return commentDao.findByArticleNo(articleNo);
   }
 
-  //  @Override
-  //  public Comment get(int no) throws Exception {
-  //    Comment comment = commentDao.findByNo(no);
-  //    return comment;
-  //  }
+  @Override
+  public Comment get(int no) throws Exception {
+    Comment comment = commentDao.findByNo(no);
+    return comment;
+  }
 
   @Override
   public int update(Comment comment) throws Exception {
