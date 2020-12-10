@@ -1,7 +1,3 @@
-<%@page import="com.devil.domain.Article"%>
-<%@page import="com.devil.domain.Comment"%>
-<%@page import="java.util.List"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
