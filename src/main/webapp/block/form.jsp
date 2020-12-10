@@ -26,7 +26,7 @@
 		</select><br> 차단사유 :
 		<textarea name="block-reason" cols="60" rows="10"></textarea>
 		<br>
-		<input type='hidden' name='reportNo' value='<%=report.getNo()%>'></td>
+		<input type='hidden' name='reportNo' value='<%=report.getNo()%>'>
 		<%=report.getReportedArticle().getWriter().getNickname()%>님을
 		<button>차단하기</button>
 	</form>

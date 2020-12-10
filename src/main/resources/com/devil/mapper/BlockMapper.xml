@@ -57,18 +57,12 @@
 	</select>
 
     <select id="findByNo" resultMap="BlockMap" parameterType="int">
-   select
-     b.blno,
-     b.cdt,
-     b.dates,
-     b.bl_rsn,
-     b.unbl_rsn,
-     u.uno,
-     u.nick,
-     u.email
-   from
-     block b
-     inner join user u on b.uno=u.uno
-    where b.blno=#{no}  
+     <include refid="sql1"/>
+      where b.blno=#{no}  
+    </select>
+    
+    <select id="findByUser" resultMap="BlockMap" parameterType="user">
+     <include refid="sql1"/>
+      where u.uno=#{reportedUser.no}  
     </select>
 </mapper>

@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.BlockDao;
 import com.devil.domain.Block;
+import com.devil.domain.User;
 
 public class BlockDaoImpl implements BlockDao {
 
@@ -35,9 +36,9 @@ public class BlockDaoImpl implements BlockDao {
   }
 
   @Override
-  public Block findByNo(int no) throws Exception {
+  public Block findByUser(User user) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectOne("BlockDao.findByNo", no);
+      return sqlSession.selectOne("BlockDao.findByUser", user);
     }
   }
 

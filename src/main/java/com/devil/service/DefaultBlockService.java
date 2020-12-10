@@ -5,6 +5,7 @@ import com.devil.dao.BlockDao;
 import com.devil.dao.ReportDao;
 import com.devil.dao.UserDao;
 import com.devil.domain.Block;
+import com.devil.domain.User;
 import com.devil.util.SqlSessionFactoryProxy;
 
 public class DefaultBlockService implements BlockService {
@@ -43,8 +44,8 @@ public class DefaultBlockService implements BlockService {
   }
 
   @Override
-  public Block get(int no) throws Exception {
-    return null;
+  public Block get(User user) throws Exception {
+    return blockDao.findByUser(user);
   }
 
   @Override

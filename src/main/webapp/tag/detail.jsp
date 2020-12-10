@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head><title>태그 조회</title>
-<link rel="stylesheet" type="text/css" href='../style.css'></head>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"></head>
+<link rel="stylesheet" type="text/css" href='../style.css'>
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
 <h1>태그 조회</h1>
@@ -33,5 +34,6 @@ if (tag == null) {
 <button type='button'onclick="location.href='delete?no=<%=tag.getNo()%>'">태그 삭제</button>
 <%}%>
   <jsp:include page="/footer.jsp"></jsp:include>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

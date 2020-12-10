@@ -58,4 +58,4 @@ User user = (User) session.getAttribute("loginUser");
 </header>
 
 
-<div class='content'>
+<div class='container'>

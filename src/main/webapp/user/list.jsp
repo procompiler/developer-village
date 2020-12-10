@@ -12,6 +12,7 @@
 <title>회원관리</title>
 <link rel="stylesheet"
   href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
