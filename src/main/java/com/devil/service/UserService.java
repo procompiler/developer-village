@@ -11,4 +11,5 @@ public interface UserService {
   int update(User user) throws Exception;
   int delete(int no) throws Exception;
   List<User> list(User user) throws Exception;
+  List<User> listFollower(User user) throws Exception;
 }

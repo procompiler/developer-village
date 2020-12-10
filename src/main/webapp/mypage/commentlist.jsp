@@ -17,34 +17,27 @@
 <title>마이페이지</title>
 	<jsp:include page="/header.jsp"></jsp:include>
 	<jsp:include page="/mypage/info"></jsp:include>
-	<h2>작성글</h2>
+	<h2>작성댓글</h2>
 	<table border='1'>
 		<thead>
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
+				<th>게시글제목</th>
+				<th>댓글내용</th>
 				<th>등록일</th>
-				<th>조회수</th>
 				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${articleList}" var="a">
+			<c:forEach items="${commentList}" var="c">
 				<tr>
-					<td>${a.no}</td>
-					<td id='title'>
-						<ul id='tags'>
-							<c:forEach items="${a.tags}" var="tag">
-								<li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
-							</c:forEach>
-						</ul> 
-						<a href='detail?no=${a.no}'>${a.title}</a>
+					<td>${c.articleTitle}</td>
+					<td id='content'>
+						<a href='detail?no=${c.articleNo}'>${c.content}</a>
 					</td>
-					<td><fmt:formatDate value="${a.createdDate}"
+					<td><fmt:formatDate value="${c.createdDate}"
 							pattern="yyyy.MM.dd" /></td>
-					<td>${a.viewCount}</td>
 					<td><a class='btn btn-outline-danger'
-						href='../article/delete?articleNo=${a.no}'>삭제</a></td>
+						href='../comment/delete?commentNo=${c.no}'>삭제</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

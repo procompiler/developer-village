@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
+import com.devil.domain.User;
 
 public class BadgeDaoImpl implements BadgeDao {
 
@@ -53,6 +54,13 @@ public class BadgeDaoImpl implements BadgeDao {
   public int inactive(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("BadgeDao.inactive", no);
+    }
+  }
+
+  @Override
+  public List<Badge> findByCollector(User user) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("BadgeDao.findByCollector", user);
     }
   }
 }

@@ -8,6 +8,7 @@
   <resultMap type="comment"   id="CommentMap">
     <id column="cno"          property="no"/>
     <result column="arno"     property="articleNo"/>
+    <result column="title"    property="articleTitle"/>
     <result column="content"  property="content"/>
     <result column="cdt"      property="createdDate"/>
     <result column="ord"      property="ord"/>
@@ -25,6 +26,30 @@
     </association>
     
   </resultMap>
+  
+  <sql id="sql1">
+      select
+      c.cno,
+      c.arno,
+      c.uno,
+      c.content,
+      c.cdt,
+      c.ord,
+      c.step,
+      c.udt,
+      c.state,
+      c.selected,
+      c.ddt,
+      c.momno,
+      u.name,
+      u.nick,
+      u.photo,
+      a.title
+    from
+      comment c
+      inner join article a on a.arno=c.arno
+      left join user u on c.uno=u.uno
+  </sql>
   
   <insert id="insert" parameterType="comment">
     insert into comment(cno, arno, content, uno, step, momno) 
@@ -53,37 +78,18 @@
   </update>
   
   <select id="findByArticleNo" resultMap="CommentMap" parameterType="int">
-    select
-      c.cno,
-      c.arno,
-      c.uno,
-      c.content,
-      c.cdt,
-      c.ord,
-      c.step,
-      c.udt,
-      c.state,
-      c.selected,
-      c.ddt,
-      c.momno,
-      u.name,
-      u.nick,
-      u.photo
-    from
-      comment c
-      inner join article a on a.arno=c.arno
-      left join user u on c.uno=u.uno
+    <include refid="sql1"/>
     where a.arno=#{articleNo}
   </select>
   
+  <select id="findByWriter" resultMap="CommentMap" parameterType="user">
+    <include refid="sql1"/>
+    where c.uno=#{no}
+  </select>
   
 <!--
-
   <select id="findAll" resultMap="CommentMap"	parameterType="string">
   </select>
- 
-
-
   -->
   
 </mapper>

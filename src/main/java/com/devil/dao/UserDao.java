@@ -15,4 +15,5 @@ public interface UserDao {
   int inactive(int no) throws Exception;
   List<User> findByFollower(User user) throws Exception;
   int insertBlocked(Block block) throws Exception;
+  List<User> findFollower(User user) throws Exception;
 }

@@ -21,7 +21,7 @@
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
     <jsp:include page="/mypage/info"></jsp:include>
-	<h2>팔로우하는 유저</h2>
+	<h2>팔로워</h2>
 	<table border='1'>
 	 <thead>
 		<tr>
@@ -30,7 +30,7 @@
 		</tr>
    <thead>
    <tbody>
-   <c:forEach items="${users}" var="u">
+   <c:forEach items="${followerList}" var="u">
 		<tr>
 			<td><a href='../user/detail?no=${u.no}'> <img
 					src='../upload/user/${u.photo}_40x40.jpg'

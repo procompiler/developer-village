@@ -44,4 +44,9 @@ public class DefaultUserService implements UserService {
   public List<User> list(User user) throws Exception {
     return userDao.findByFollower(user);
   }
+
+  @Override
+  public List<User> listFollower(User user) throws Exception {
+    return userDao.findFollower(user);
+  }
 }
