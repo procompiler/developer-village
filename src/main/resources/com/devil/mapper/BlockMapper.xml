@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BlockDao">
-<!--
 	<resultMap type="block" id="BlockMap">
 		<id column="blno" property="no" />
 		<result column="cdt" property="permittedDate" />
@@ -14,48 +13,56 @@
 
 <association property="reportedUser" javaType="user">
     <id column="uno" property="no"/>
-    <result column="blocked" property="blocked"/>
+    <result column="blocked_nick" property="nickname"/>
+    <result column="blocked_email" property="email"/>
 </association>
 	</resultMap>
-  -->
+	
+	<sql id="sql1">
+	   select
+     b.blno,
+     b.cdt,
+     b.dates,
+     b.bl_rsn,
+     b.unbl_rsn,
+     u.uno,
+     u.nick blocked_nick,
+     u.email blocked_email
+   from
+     block b
+     inner join user u on b.uno=u.uno
+	</sql>
+	
 	<insert id="insert" parameterType="block">
 		insert into block(uno, cdt, dates, bl_rsn)
-		values(#{reportedUser.no}, now(), #{blockedDates}, #{blockedReason})
+		values(
+			(select
+			  ar.writer
+			from 
+			  report rp 
+			  inner join repo_arc rpa on rp.rpno = rpa.rpno
+			  inner join article ar on rpa.arno = ar.arno
+			where
+			  rp.rpno=#{report.no})
+		,	now(), #{blockedDates}, #{blockedReason})
 	</insert>
 	
-<!-- 
-	<select id="findAll" resultMap="ReportMap" parameterType="string">
+	<select id="findAll" resultMap="BlockMap" parameterType="string">
 		<include refid="sql1" />
 		<if test="keyword != null">
 		where
-			r.rptno like concat('%', #{keyword}, '%')
+			u.nick like concat('%', #{keyword}, '%')
 		</if>
-		order by r.rpno desc
+		order by b.blno desc
 	</select>
 
-    <select id="findByNo" resultMap="ReportMap" parameterType="int">
-   select
-     r.rpno,
-     r.rptno,
-     r.uno,
-     r.cdt,
-     r.status,
-     r.pdt,
-     u.uno,
-     u.nick reporter_nick,
-     u.email reporter_email,
-     ra.arno,
-     a.arno,
-     u2.uno,
-     u2.nick article_writer,
-     u2.email article_email
-   from
-     report r
-     inner join user u on r.uno=u.uno
-     left outer join repo_arc ra on r.rpno=ra.rpno
-     left outer join article a on ra.arno=a.arno
-     left outer join user u2 on a.writer=u2.uno
-    where r.rpno=#{no}  
+    <select id="findByNo" resultMap="BlockMap" parameterType="int">
+     <include refid="sql1"/>
+      where b.blno=#{no}  
     </select>
- -->
+    
+    <select id="findByUser" resultMap="BlockMap" parameterType="user">
+     <include refid="sql1"/>
+      where u.uno=#{reportedUser.no}  
+    </select>
 </mapper>

@@ -11,21 +11,20 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
 	<jsp:include page="/header.jsp"></jsp:include>
 	<a href='../user/list' style='text-decoration: none;'>전체회원관리</a>
 	<a href='../report/list' style='text-decoration: none;'>신고내역</a>
-	<a href='list' style='text-decoration: none;'>활동정지회원</a>
+	<a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
 	<h1>
 		<a href='list' style='text-decoration: none;'>신고내역</a>
 	</h1>
 	<br>
 
-	<%
-	  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	%>
 	<%
 	  List<Report> list = (List<Report>) request.getAttribute("reportList");
 	%>
@@ -80,10 +79,9 @@
 			<td><%=reportType%></td>
 
 			<td>
+<%=report.getReportedArticle().getWriter().getNickname()%>
 				<form action="../block/form" method="get">
-					<input type='hidden' name='reportNo' value='<%=report.getNo()%>'><br>
-					<input type='hidden' name='reportedUser'
-						value='<%=report.getReportedArticle().getWriter().getNo()%>'>
+					<input type='hidden' name='reportNo' value='<%=report.getNo()%>'>
 					<button>신고승인</button>
 				</form>
 			</td>
@@ -94,5 +92,7 @@
 		%>
 	</table>
 	<jsp:include page="/footer.jsp"></jsp:include>
+	  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	
 </body>
 </html>

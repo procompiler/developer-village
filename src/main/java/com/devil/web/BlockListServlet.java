@@ -1,16 +1,18 @@
 package com.devil.web;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.service.ReportService;
+import com.devil.domain.Block;
+import com.devil.service.BlockService;
 
-@WebServlet("/block/form")
-public class BlockAddFormServlet extends HttpServlet {
+@WebServlet("/block/list")
+public class BlockListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -18,14 +20,16 @@ public class BlockAddFormServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    ReportService reportService = (ReportService) ctx.getAttribute("reportService");
+    BlockService blockService = (BlockService) ctx.getAttribute("blockService");
+
     response.setContentType("text/html;charset=UTF-8");
-
     try {
-      int no = Integer.parseInt(request.getParameter("reportNo"));
-      request.setAttribute("report", reportService.get(no));
 
-      request.getRequestDispatcher("/block/form.jsp").include(request, response);
+      List<Block> blockList = null;
+      blockList = blockService.list(null);
+
+      request.setAttribute("blockList", blockList);
+      request.getRequestDispatcher("/block/blockList.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
@@ -33,4 +37,5 @@ public class BlockAddFormServlet extends HttpServlet {
       return;
     }
   }
+
 }

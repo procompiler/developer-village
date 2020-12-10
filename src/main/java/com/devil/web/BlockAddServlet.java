@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Block;
-import com.devil.domain.User;
+import com.devil.domain.Report;
 import com.devil.service.BlockService;
-import com.devil.service.UserService;
+import com.devil.service.ReportService;
 
 @WebServlet("/block/add")
 public class BlockAddServlet extends HttpServlet {
@@ -20,18 +20,15 @@ public class BlockAddServlet extends HttpServlet {
       throws ServletException, IOException {
     ServletContext ctx = request.getServletContext();
     BlockService blockService = (BlockService) ctx.getAttribute("blockService");
-    UserService userService = (UserService) ctx.getAttribute("userService");
-
+    ReportService reportService = (ReportService) ctx.getAttribute("reportService");
     try {
       Block block = new Block();
       block.setBlockedDates(Integer.parseInt(request.getParameter("blockingDate")));
       block.setBlockedReason(request.getParameter("block-reason"));
 
-      User reportedUser = userService.get(
-          Integer.parseInt(request.getParameter("reportedUser")));
-      block.setReportedUser(reportedUser);
-
       // report status set하기
+      Report report = reportService.get(Integer.parseInt(request.getParameter("reportNo")));
+      block.setReport(report);
 
       blockService.block(block);
       response.sendRedirect("../report/list");

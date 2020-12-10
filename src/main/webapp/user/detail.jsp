@@ -11,6 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 조회</title>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../style.css'>
 </head>
 <body>
@@ -86,5 +88,6 @@
 		<a href='list' style='color: blue;'>회원 목록으로</a>
 	</form>
 	<jsp:include page="/footer.jsp"></jsp:include>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
