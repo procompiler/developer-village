@@ -79,4 +79,8 @@ public class DefaultArticleService implements ArticleService {
     return articleDao.findByWriter(user);
   }
 
+  @Override
+  public List<Article> listByTagNo(int tagNo) throws Exception {
+    return articleDao.findByTagNo(tagNo);
+  }
 }

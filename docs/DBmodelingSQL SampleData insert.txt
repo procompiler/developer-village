@@ -548,11 +548,11 @@ INSERT INTO repo_user (rpno, arno) VALUES (6,10);
 
 
 
-INSERT INTO bdg_stan (bsno,bno,bsname,count) VALUES (1,1,1, '0');
-INSERT INTO bdg_stan (bsno,bno,bsname,count) VALUES (2,2,2, '10');
-INSERT INTO bdg_stan (bsno,bno,bsname,count) VALUES (3,3,3, '20');
-INSERT INTO bdg_stan (bsno,bno,bsname,count) VALUES (4,4,4, '50');
-INSERT INTO bdg_stan (bsno,bno,bsname,count) VALUES (5,5,4, '100');
-INSERT INTO bdg_stan (bsno,bno,bsname,count) VALUES (6,6,3, '500');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (1,1,1, '0');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (2,2,2, '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (3,3,3, '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (4,4,4, '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (5,5,4, '100');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (6,6,3, '500');
 
 

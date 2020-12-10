@@ -98,4 +98,11 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.selectList("ArticleDao.findByWriter", user);
     }
   }
+
+  @Override
+  public List<Article> findByTagNo(int tagNo) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findByTagNo", tagNo);
+    }
+  }
 }

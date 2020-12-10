@@ -18,4 +18,5 @@ public interface ArticleDao {
   List<Article> findAll(String keyword) throws Exception;
   List<Article> findByBookmarker(User user) throws Exception;
   List<Article> findByWriter(User user);
+  List<Article> findByTagNo(int tagNo) throws Exception;
 }
