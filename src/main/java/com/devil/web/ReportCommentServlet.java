@@ -7,25 +7,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.devil.service.ReportService;
+import com.devil.domain.Comment;
+import com.devil.service.CommentService;
 
-@WebServlet("/block/form")
-public class BlockAddFormServlet extends HttpServlet {
+@WebServlet("/report/reportComment")
+public class ReportCommentServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     ServletContext ctx = request.getServletContext();
-    ReportService reportService = (ReportService) ctx.getAttribute("reportService");
+    CommentService commentService = (CommentService) ctx.getAttribute("commentService");
+
     response.setContentType("text/html;charset=UTF-8");
 
     try {
-      int no = Integer.parseInt(request.getParameter("reportNo"));
-      request.setAttribute("report", reportService.get(no));
+      int no = Integer.parseInt(request.getParameter("no"));
+      Comment reportedComment = commentService.get(no);
+      request.setAttribute("reportedComment", reportedComment);
 
-      request.getRequestDispatcher("/block/form.jsp").include(request, response);
+      request.getRequestDispatcher("/report/report-comment.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

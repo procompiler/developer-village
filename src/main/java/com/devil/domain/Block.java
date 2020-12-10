@@ -9,6 +9,7 @@ public class Block {
   private int blockedDates;
   private String blockedReason;
   private String unBlockedReason;
+  private Report report;
 
   public int getNo() {
     return no;
@@ -50,6 +51,13 @@ public class Block {
   }
   public Block setUnBlockedReason(String unBlockedReason) {
     this.unBlockedReason = unBlockedReason;
+    return this;
+  }
+  public Report getReport() {
+    return report;
+  }
+  public Block setReport(Report report) {
+    this.report = report;
     return this;
   }
 }

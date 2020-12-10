@@ -8,4 +8,5 @@ public interface BlockDao {
   int update(Block block) throws Exception;
   List<Block> findAll(String keyword) throws Exception;
   Block findByNo(int no) throws Exception;
+  Block findByUserNo(int no) throws Exception;
 }

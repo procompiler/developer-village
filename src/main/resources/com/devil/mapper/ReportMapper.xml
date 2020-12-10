@@ -32,6 +32,7 @@
     <association property="reportedComment" javaType="comment">
       <id column="cno"          property="no"/>
       <result column="comment_content"    property="content"/>
+       <result column="comment_article"    property="articleNo"/>
     </association>
     
 	</resultMap>
@@ -78,6 +79,13 @@
     values(#{no}, #{reportedArticle.no})
   </insert>
 
+    
+  <update id="insertStatus" parameterType="block">
+    update report set
+      status = 2
+    where rpno=#{report.no}
+  </update>
+  
 	<select id="findAll" resultMap="ReportMap" parameterType="string">
 		<include refid="sql1" />
 		<if test="keyword != null">

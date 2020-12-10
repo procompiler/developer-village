@@ -28,7 +28,7 @@
   </resultMap>
   
   <sql id="sql1">
-      select
+    select
       c.cno,
       c.arno,
       c.uno,
@@ -76,6 +76,18 @@
       ddt=now()
     where cno=#{no}
   </update>
+  
+  <select id="findByNo" resultMap="CommentMap" parameterType="int">
+    select
+      c.cno,
+      c.arno,
+      c.uno,
+      c.content,
+      c.cdt
+    from 
+      comment c
+    where c.cno=#{no}
+  </select>
   
   <select id="findByArticleNo" resultMap="CommentMap" parameterType="int">
     <include refid="sql1"/>
