@@ -52,7 +52,7 @@
 							<input type='hidden' name='cno' value='${childComment.no}'> 
 							<input type='hidden' name='arno' value='${childComment.articleNo}'>
 							<input type='hidden' name='step' value='${childComment.step}'>
-							<span>┗━━</span> 
+							<span>&nbsp;&nbsp;┗━Re&nbsp;&nbsp;</span> 
 							<img src='../upload/user/${childComment.writer.photo}_40x40.jpg'
 								   style='border-radius: 70px'
 								   alt='[${childComment.writer.photo}_40x40]'>

@@ -40,38 +40,32 @@
 			</c:otherwise>
 		</c:choose>
 	</h1>
-<div>
-	<input type='hidden' name='no' value='${article.no}'>
-	<br>
 
-	<ul id='tags'>
-		<c:forEach items="${tags}" var="tag">
-			<li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
-		</c:forEach>
-	</ul>
+	<form action='update' method='post'>
+		<input type='hidden' name='no' value='${article.no}'><br>
 
-	<div style="width: 60rem; background-color: #37393E;">
-		<div class="card-body">
-			<h2 class="card-title">${article.title}</h2>
-			<h6 class="card-subtitle mb-2 text-muted">
-				<fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd" />
-			</h6>
-			<br>
-			<p class="card-text">
-				<img src='../upload/user/${article.writer.photo}_40x40.jpg'
-					style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>${article.writer.nickname}</p>
-			<p class="card-text text-end">조회수: ${article.viewCount}</p>
-			<hr>
-			<p class="card-text">
-				<br><br>
-				<pre>${article.content}</pre>
-				<br><br>
-			</p>
-		</div>
-	</div>
-</div>
-<br>
-	<button class="btn btn-primary">수정</button>
+		<ul id='tags'>
+			<c:forEach items="${tags}" var="tag">
+				<li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
+			</c:forEach>
+		</ul>
+
+
+		<input type='text' name='title'
+			value='${article.title}' size='50'><br>
+
+		<p>
+		<img src='../upload/user/${article.writer.photo}_40x40.jpg'
+				style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'>${article.writer.nickname}</p>
+
+			<fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd" />
+		
+		<p>조회수: ${article.viewCount}</p>
+
+		<textarea name='content' cols='50px'>${article.content}</textarea>
+		<br>
+		<button class="btn btn-primary">수정</button>
+	</form>
 	<a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
 	<a class="btn btn-danger"
 		href='../report/reportArticle?no=${article.no}'>신고</a>
@@ -82,7 +76,6 @@
 	<a class="btn <%=bookmarked ? "btn-outline-primary" : ""%>"
 		href="../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}">
 		<%=bookmarked ? "북마크취소" : "북마크"%></a>
-<br>
 
 	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
 	<jsp:include page="/footer.jsp"></jsp:include>
