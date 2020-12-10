@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.devil.dao.CommentDao;
 import com.devil.domain.Comment;
+import com.devil.domain.User;
 
 public class CommentDaoImpl implements CommentDao {
   SqlSessionFactory sqlSessionFactory;
@@ -41,12 +42,12 @@ public class CommentDaoImpl implements CommentDao {
     }
   }
 
-//  @Override
-//  public Comment findByNo(int no) throws Exception {
-//    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-//      return sqlSession.selectOne("CommentDao.findByNo", no);
-//    }
-//  }
+  //  @Override
+  //  public Comment findByNo(int no) throws Exception {
+  //    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+  //      return sqlSession.selectOne("CommentDao.findByNo", no);
+  //    }
+  //  }
 
   @Override
   public int inactive(int no) throws Exception {
@@ -59,6 +60,13 @@ public class CommentDaoImpl implements CommentDao {
   public List<Comment> findByArticleNo(int articleNo) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("CommentDao.findByArticleNo", articleNo);
+    }
+  }
+
+  @Override
+  public List<Comment> findByWriter(User user) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("CommentDao.findByWriter", user);
     }
   }
 

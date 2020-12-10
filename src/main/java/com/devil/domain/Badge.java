@@ -1,14 +1,15 @@
 package com.devil.domain;
 
-import java.util.List;
+import java.util.Date;
 
 public class Badge {
   private int no;
   private String name;
   private String photo;
-  private List<Tag> tagNo;
+  private int tagNo;
   private int state; // 활성상태 0 안보임 1 보임
   private String content;
+  private Date collectDate;
 
 
   public int getState() {
@@ -47,11 +48,11 @@ public class Badge {
     return this;
   }
 
-  public List<Tag> getTagNo() {
+  public int getTagNo() {
     return tagNo;
   }
 
-  public Badge setTagNo(List<Tag> tagNo) {
+  public Badge setTagNo(int tagNo) {
     this.tagNo = tagNo;
     return this;
   }
@@ -63,6 +64,14 @@ public class Badge {
   public Badge setContent(String content) {
     this.content = content;
     return this;
+  }
+
+  public Date getCollectDate() {
+    return collectDate;
+  }
+
+  public void setCollectDate(Date collectDate) {
+    this.collectDate = collectDate;
   }
 
 }

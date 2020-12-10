@@ -47,7 +47,17 @@ public class BadgeAddServlet extends HttpServlet {
     }
 
     Thumbnails.of(this.uploadDir + "/" + filename)//
-    .size(20, 20)//
+    .size(60, 60)//
+    .outputFormat("png")//
+    .toFiles(new Rename() {
+      @Override
+      public String apply(String name, ThumbnailParameter param) {
+        return name + "_60x60";
+      }
+    });
+
+    Thumbnails.of(this.uploadDir + "/" + filename)//
+    .size(160, 160)//
     .outputFormat("png")//
     .toFiles(new Rename() {
       @Override

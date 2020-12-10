@@ -1,11 +1,9 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.devil.domain.Tag"%>
-<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="com.devil.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +21,9 @@
 </style>
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/mypage/info"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/mypage/info"></jsp:include>
 
-  <%
-	List<Tag> tags = (List<Tag>) request.getAttribute("tags");
-  %>
 	<h2>팔로우하는 태그</h2>
 	<table border='1'>
 		<thead>
@@ -41,23 +36,19 @@
 		</thead>
 
 		<tbody>
-			<%
-			  for (Tag tag : tags) {
-			  if (tag.getState() == 0) {
-			    continue;
-			  }
-			%>
+				<c:forEach items="${tags}" var="t">
 			<tr>
-				<td id="title"><a href='../tag/detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
-				<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
-					alt='<%=tag.getPhoto()%>'></td>
-				<td><span id="color"
-					style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
-				<td><a class='btn btn-hollow' href='../follow/tag/delete?tno=<%=tag.getNo()%>'>언팔로우</a></td>
+					<c:if test="${t.state == 0}">
+        <<continue>> 
+					</c:if>
+					<td id="title"><a href='../tag/detail?no=${t.no}'>${t.name}</a></td>
+					<td><img src='../upload/tag/${t.photo}%>_80x80.png'
+						alt='${t.photo}'></td>
+					<td><span id="color" style="background-color: #${t.tagColor};">${t.name}</span></td>
+					<td><a class='btn btn-outline-danger'
+						href='../follow/tag/delete?tno=${t.no}'>언팔로우</a></td>
 			</tr>
-			<%
-			  }
-			%>
+			</c:forEach>
 		</tbody>
 	</table>
 	<jsp:include page="/footer.jsp"></jsp:include>

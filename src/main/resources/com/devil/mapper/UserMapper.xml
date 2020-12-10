@@ -52,6 +52,18 @@
 		from
 		user u
 	</sql>
+	
+	<sql id="sql2">
+	   select
+    u.uno,
+    u.nick,
+    u.name,
+    u.state,
+    u.photo,
+    u.blocked
+    from user u
+	</sql>
+
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">
 		<include refid="sql1" />
@@ -71,18 +83,19 @@
 
 	<select id="findByFollower" resultMap="UserMap"
 		parameterType="user">
-		select
-		u.uno,
-		u.nick,
-		u.name,
-		u.state,
-		u.photo,
-		u.blocked
-		from user u
-		inner join follow f on f.fwing_no = u.uno
+    <include refid="sql2" />
+    inner join follow f on f.fwing_no = u.uno
 		where f.fwer_no=#{no}
 		order by f.cdt desc
 	</select>
+	
+	 <select id="findFollower" resultMap="UserMap"
+    parameterType="user">
+    <include refid="sql2" />
+    inner join follow f on f.fwer_no = u.uno
+    where f.fwing_no=#{no}
+    order by f.cdt desc
+  </select>
 	
 	<select id="findByEmailPassword" parameterType="map"
 		resultMap="UserMap">

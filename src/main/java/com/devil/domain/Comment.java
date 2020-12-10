@@ -15,6 +15,9 @@ public class Comment {
   private int state; // 활성상태 0 안보임 1 보임
   private boolean selected; // 대표 답변 여부 0 미해결 1 해결
   private int articleNo;
+  private String articleTitle;
+
+
 
   public int getMotherNo() {
     return motherNo;
@@ -102,6 +105,11 @@ public class Comment {
     this.step = step;
     return this;
   }
-
+  public String getArticleTitle() {
+    return articleTitle;
+  }
+  public void setArticleTitle(String articleTitle) {
+    this.articleTitle = articleTitle;
+  }
 
 }

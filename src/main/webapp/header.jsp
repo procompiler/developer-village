@@ -6,6 +6,14 @@
 String contextPath = request.getServletContext().getContextPath();
 User user = (User) session.getAttribute("loginUser");
 %>
+
+<link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css"/>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href='../style.css'>
+
+</head>
+<body>
 <nav>
   <ul>
     <li><a href='<%=contextPath%>'><img id="logo-nav" src="<%=contextPath%>/upload/devil.png" /></a></li>
