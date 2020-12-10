@@ -11,7 +11,6 @@ public class Badge {
   private String content;
   private Date collectDate;
 
-
   public int getState() {
     return state;
   }

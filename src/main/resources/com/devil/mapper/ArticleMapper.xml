@@ -45,6 +45,7 @@
     
   </resultMap>
   
+  
   <insert id="insert" parameterType="article" 
   useGeneratedKeys="true" keyColumn="arno" keyProperty="no">
     insert into article(title,writer,rc_edt,content,cano) 
@@ -153,6 +154,14 @@
      where a.cano=#{categoryNo}  
     </select>
     
+  
+  <select id="findByTagNo" resultMap="ArticleMap"
+    parameterType="int">
+    <include refid="sql1"/>
+    where at.tno=#{no}
+    order by at.cdt desc
+  </select>
+  
     <update id="updateViewCount" parameterType="int">
       update article set 
         vw_cnt = vw_cnt+1
