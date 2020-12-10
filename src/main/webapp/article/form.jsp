@@ -13,26 +13,17 @@
 	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../style.css'>
 
-  <style>
-    .container {
-      margin: 20px 0px 0px 105px;
-      width: 1000px;
-    }
-  </style>
-
 </head>
 
 <body>
 
 	<jsp:include page="/header.jsp"></jsp:include>
 
-<div class="container">
 	<h1>게시글 작성</h1>
 	<br>
 	<form action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example"
-			name='categoryNo'>
-			<option selected>카테고리 선택</option>
+			name='categoryNo' required>
 			<option value='1'>커뮤니티</option>
 			<option value='2'>QnA</option>
 			<option value='3'>채용공고</option>
@@ -70,7 +61,6 @@
 
 	</form>
 	
-</div>
 	<jsp:include page="/footer.jsp"></jsp:include>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
