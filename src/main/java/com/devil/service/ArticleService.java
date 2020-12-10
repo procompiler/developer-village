@@ -16,4 +16,5 @@ public interface ArticleService {
   List<Article> list(int categoryNo) throws Exception;
   List<Article> list(User user) throws Exception;
   List<Article> bookmarkList(User user) throws Exception;
+  List<Article> listByTagNo(int tagNo) throws Exception;
 }
