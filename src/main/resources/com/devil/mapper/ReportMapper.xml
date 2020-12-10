@@ -32,6 +32,7 @@
     <association property="reportedComment" javaType="comment">
       <id column="cno"          property="no"/>
       <result column="comment_content"    property="content"/>
+       <result column="comment_article"    property="articleNo"/>
     </association>
     
 	</resultMap>

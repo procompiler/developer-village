@@ -79,13 +79,27 @@
 			<td><%=reportType%></td>
 
 			<td>
-<%=report.getReportedArticle().getWriter().getNickname()%>
 				<form action="../block/form" method="get">
 					<input type='hidden' name='reportNo' value='<%=report.getNo()%>'>
-					<button>신고승인</button>
+					
+				<%
+      switch (report.getStatus()) {
+      case 1:%>
+      <button>신고승인</button> 
+        <%
+        break;
+      case 2: %>
+         차단중 
+       <%
+        break;
+      case 3: %>
+         차단해제 
+        <%
+        break;
+    }
+    %>
 				</form>
 			</td>
-
 		</tr>
 		<%
 		  }

@@ -30,7 +30,7 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	<h3>현재 차단중입니다.</h3>
 
   <p>차단 사유 : </p>
-  <p>block.getBlockedReason()</p>
+  <p><%=block.getBlockedReason()%></p>
 
    <%
    blockTermination.setTime(block.getPermittedDate());

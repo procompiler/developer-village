@@ -34,12 +34,12 @@ public class BlockFilter implements Filter {
       User loginUser = (User) httpRequest.getSession().getAttribute("loginUser");
       System.out.println(loginUser.getNickname());
 
-      Block block = blockService.get(blockNo, loginUser.getNo());
+      Block block = blockService.get(loginUser.getNo());
       System.out.println(block);
 
       // select
       if (block != null) {
-        httpResponse.sendRedirect("/block/info");
+        httpResponse.sendRedirect("../block/info");
         return;
       }
 

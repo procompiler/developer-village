@@ -41,4 +41,10 @@ public class BlockDaoImpl implements BlockDao {
     }
   }
 
+  @Override
+  public Block findByUserNo(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("BlockDao.findByUserNo", no);
+    }
+  }
 }

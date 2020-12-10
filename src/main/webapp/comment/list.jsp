@@ -35,6 +35,9 @@
 					<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
 					<button class="btn btn-primary">수정</button>
 					<a class='btn btn-danger' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
+					<a class="btn btn-danger"
+                  href='../report/reportComment?no=${comment.no}'>신고</a>
+					
 					${comment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 				</form>
 
@@ -57,6 +60,9 @@
 							<fmt:formatDate value="${childComment.createdDate}" pattern="yyyy.MM.dd" />
 							<button class="btn btn-primary">수정</button>
 							<a class='btn btn-danger' href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'>삭제</a>
+          <a class="btn btn-danger"
+                  href='../report/reportComment?no=${childComment.no}'>신고</a>
+							
 							${childComment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 						</form>
 					</c:if>
