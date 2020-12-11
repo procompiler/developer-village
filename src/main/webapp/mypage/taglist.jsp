@@ -8,16 +8,19 @@
 <html>
 <head>
 <title>마이페이지</title>
-<link rel="stylesheet" type="text/css" href='../style.css'>
-<link rel="stylesheet"
-	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-	crossorigin="anonymous" />
 <style>
-#urls {
-	padding: 5px;
-	font-size: 2em;
+
+div.card {
+  background-color: #2E3034;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
 }
+
+.tag-color {
+  height:25px;
+  border-radius: 6px 6px 0px 0px;
+}
+
 </style>
 </head>
 <body>
@@ -25,32 +28,21 @@
 	<jsp:include page="/mypage/info"></jsp:include>
 
 	<h2>팔로우하는 태그</h2>
-	<table border='1'>
-		<thead>
-			<tr>
-				<th>태그이름</th>
-				<th>태그사진</th>
-				<th>미리보기</th>
-				<th></th>
-			</tr>
-		</thead>
-
-		<tbody>
-				<c:forEach items="${tags}" var="t">
-			<tr>
-					<c:if test="${t.state == 0}">
-        <<continue>> 
-					</c:if>
-					<td id="title"><a href='../tag/detail?no=${t.no}'>${t.name}</a></td>
-					<td><img src='../upload/tag/${t.photo}%>_80x80.png'
-						alt='${t.photo}'></td>
-					<td><span id="color" style="background-color: #${t.tagColor};">${t.name}</span></td>
-					<td><a class='btn btn-outline-danger'
-						href='../follow/tag/delete?tno=${t.no}'>언팔로우</a></td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+		<c:forEach items="${tags}" var="t">
+		<div class="col">
+			<div class="card" style="width: 15rem;">
+			<div class="tag-color" style="background-color: #${t.tagColor};"></div>
+				<div class="card-body">
+					<h5 class="card-title"><a href='../tag/detail?no=${t.no}'>#${t.name}</a></h5>
+			  <img style="float: right;"src='../upload/tag/${t.photo}_80x80.png'alt='${t.photo}'>
+					<p>0개</p>
+					<a href="../follow/tag/delete?tno=${t.no}" class="btn btn-outline-danger">언팔로우</a>
+				</div>
+			</div>
+			</div>
+		</c:forEach>
+		</div>
 	<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

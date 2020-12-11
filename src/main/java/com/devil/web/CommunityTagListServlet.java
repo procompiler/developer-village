@@ -13,8 +13,8 @@ import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.TagService;
 
-@WebServlet("/article/community")
-public class ArticleCommunityServlet extends HttpServlet {
+@WebServlet("/community/taglist")
+public class CommunityTagListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -34,7 +34,7 @@ public class ArticleCommunityServlet extends HttpServlet {
       }
       request.setAttribute("list", list);
       request.setAttribute("userTagNoList", userTagNoList);
-      request.getRequestDispatcher("/community.jsp").include(request, response);
+      request.getRequestDispatcher("/community/taglist.jsp").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

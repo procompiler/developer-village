@@ -72,7 +72,7 @@
       u.uno,
       u.nick article_nick,
       u.photo article_photo,
-      at.tno,
+      t.tno,
       t.name tag_name,
       t.tag_color,
       t.font_color
@@ -80,7 +80,8 @@
       article a
       inner join user u on a.writer=u.uno
       left outer join arc_tag at on a.arno=at.arno
-      left outer join tag t on at.tno = t.tno
+      left outer join arc_tag at2 on a.arno=at2.arno
+      left outer join tag t on at2.tno = t.tno
   </sql>
   
   <select id="findByBookmarker" resultMap="ArticleMap" parameterType="user">
@@ -121,7 +122,6 @@
     order by a.arno desc
   </select>
   
-  
    <update id="update" parameterType="article">
     update article
     <set>
@@ -158,8 +158,8 @@
   <select id="findByTagNo" resultMap="ArticleMap"
     parameterType="int">
     <include refid="sql1"/>
-    where at.tno=#{no}
-    order by at.cdt desc
+    where at.tno=#{no} and a.state=1
+    order by a.cdt desc
   </select>
   
     <update id="updateViewCount" parameterType="int">

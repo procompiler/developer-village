@@ -32,7 +32,7 @@ User user = (User) session.getAttribute("loginUser");
     </div>
     </a>
     <div class="buttons">
-      <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/article/list?categoryNo=1'>커뮤니티</a></li>
+      <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/community/taglist'>커뮤니티</a></li>
       <li><i class="fas fa-question fa-fw"></i><a href='<%=contextPath%>/article/list?categoryNo=2'>질문</a></li>
       <li><i class="far fa-building fa-fw"></i><a href='<%=contextPath%>/article/list?categoryNo=3'>채용공고</a></li>
       <li><i class="fas fa-pencil-alt fa-fw"></i><a href='<%=contextPath%>/article/list?categoryNo=4'>스터디</a></li>
