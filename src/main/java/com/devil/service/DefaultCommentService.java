@@ -1,10 +1,12 @@
 package com.devil.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import com.devil.dao.CommentDao;
 import com.devil.domain.Comment;
 import com.devil.domain.User;
 
+@Service
 public class DefaultCommentService implements CommentService {
   CommentDao commentDao;
 

@@ -9,23 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 
-@WebServlet("/article/list")
-public class ArticleListServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
-
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-
-    ServletContext ctx = request.getServletContext();
-    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
+@Controller
+public class ArticleListController {
+  ArticleService articleService;
+public ArticleListController(ArticleService articleService) {
+  this.articleService = articleService;
+}
+  
+  @RequestMapping("/article/list")
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     response.setContentType("text/html;charset=UTF-8");
 
-    try {
       List<Article> articles = null;
 
       String keyword = request.getParameter("keyword");
@@ -49,13 +49,7 @@ public class ArticleListServlet extends HttpServlet {
 
       request.setAttribute("articles", articles);
 
-      request.getRequestDispatcher("/article/list.jsp").include(request, response);
-
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
+      return "/article/list.jsp";
     }
   }
 
-}

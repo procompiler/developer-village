@@ -3,9 +3,11 @@ package com.devil.dao.mariadb;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.FollowDao;
 import com.devil.domain.Follow;
 
+@Repository
 public class FollowDaoImpl implements FollowDao {
   SqlSessionFactory sqlSessionFactory;
 

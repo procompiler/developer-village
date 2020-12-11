@@ -1,12 +1,14 @@
 package com.devil.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import com.devil.dao.BlockDao;
 import com.devil.dao.ReportDao;
 import com.devil.dao.UserDao;
 import com.devil.domain.Block;
 import com.devil.util.SqlSessionFactoryProxy;
 
+@Service
 public class DefaultBlockService implements BlockService {
   BlockDao blockDao;
   UserDao userDao;

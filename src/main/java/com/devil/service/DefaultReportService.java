@@ -1,10 +1,12 @@
 package com.devil.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import com.devil.dao.ReportDao;
 import com.devil.domain.Report;
 import com.devil.util.SqlSessionFactoryProxy;
 
+@Service
 public class DefaultReportService implements ReportService {
   ReportDao reportDao;
   SqlSessionFactoryProxy factoryProxy;

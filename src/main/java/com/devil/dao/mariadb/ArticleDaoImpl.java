@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
 import com.devil.domain.User;
 
+@Repository
 public class ArticleDaoImpl implements ArticleDao {
 
   SqlSessionFactory sqlSessionFactory;

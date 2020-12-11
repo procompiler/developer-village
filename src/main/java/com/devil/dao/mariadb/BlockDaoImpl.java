@@ -3,9 +3,11 @@ package com.devil.dao.mariadb;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.BlockDao;
 import com.devil.domain.Block;
 
+@Repository
 public class BlockDaoImpl implements BlockDao {
 
   SqlSessionFactory sqlSessionFactory;

@@ -1,15 +1,11 @@
 package com.devil.web;
 
-import java.io.IOException;
 import java.util.UUID;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Tag;
 import com.devil.service.TagService;
 import net.coobird.thumbnailator.ThumbnailParameter;
@@ -17,21 +13,18 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/tag/updatePhoto")
-public class TagUpdatePhotoServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
 
-  @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+@Controller
+public class TagUpdatePhotoController {
+  TagService tagService;
+  
+public TagUpdatePhotoController(TagService tagService) {
+  this.tagService = tagService;
+}  
 
-    ServletContext ctx = request.getServletContext();
-    TagService tagService =
-        (TagService) ctx.getAttribute("tagService");
+  @RequestMapping("/tag/updatePhoto")
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-
-    try {
       Tag tag = new Tag();
       tag.setNo(Integer.parseInt(request.getParameter("no")));
 
@@ -39,7 +32,7 @@ public class TagUpdatePhotoServlet extends HttpServlet {
       Part photoPart = request.getPart("photo");
       if (photoPart.getSize() > 0) {
         String filename = UUID.randomUUID().toString();
-        String saveFilePath = ctx.getRealPath("/upload/tag/" + filename);
+        String saveFilePath = request.getServletContext().getRealPath("/upload/tag/" + filename);
         photoPart.write(saveFilePath);
         tag.setPhoto(filename);
 
@@ -51,13 +44,7 @@ public class TagUpdatePhotoServlet extends HttpServlet {
       if (count == 0) {
         throw new Exception("해당 태그가 없습니다.");
       }
-      response.sendRedirect("list");
-
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
-    }
+      return "redirect:list";
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {

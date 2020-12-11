@@ -1,9 +1,11 @@
 package com.devil.service;
 
 import java.util.Map;
+import org.springframework.stereotype.Service;
 import com.devil.dao.FollowDao;
 import com.devil.domain.Follow;
 
+@Service
 public class DefaultFollowService implements FollowService {
   FollowDao followDao;
 

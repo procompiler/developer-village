@@ -1,32 +1,30 @@
 package com.devil.web;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.TagService;
 
-@WebServlet("/tag/list")
-public class TagListController extends HttpServlet {
-  private static final long serialVersionUID = 1L;
-
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    ServletContext ctx = request.getServletContext();
-    TagService tagService = (TagService) ctx.getAttribute("tagService");
+@Controller
+public class TagListController {
+  TagService tagService;
+  
+  
+  public TagListController(TagService tagService) {
+    this.tagService = tagService;
+  }
+  
+  @RequestMapping("/tag/list")
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     response.setContentType("text/html;charset=UTF-8");
     User loginUser = (User) request.getSession().getAttribute("loginUser");
 
-    try {
       List<Tag> list = tagService.list((String)null);
       List<Integer> userTagNoList = new ArrayList<>();
       for (Tag tag : tagService.list(loginUser)) {
@@ -34,13 +32,6 @@ public class TagListController extends HttpServlet {
       }
       request.setAttribute("list", list);
       request.setAttribute("userTagNoList", userTagNoList);
-      request.getRequestDispatcher("/tag/list.jsp").include(request, response);
-
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
+      return "/tag/list.jsp";
     }
   }
-
-}

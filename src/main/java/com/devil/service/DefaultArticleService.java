@@ -2,11 +2,13 @@ package com.devil.service;
 
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Service;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
 import com.devil.domain.User;
 import com.devil.util.SqlSessionFactoryProxy;
 
+@Service
 public class DefaultArticleService implements ArticleService {
   ArticleDao articleDao;
   SqlSessionFactoryProxy factoryProxy;

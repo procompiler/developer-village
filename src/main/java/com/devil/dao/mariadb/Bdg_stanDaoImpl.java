@@ -3,9 +3,11 @@ package com.devil.dao.mariadb;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.Bdg_stanDao;
 import com.devil.domain.Bdg_stan;
 
+//@Repository
 public class Bdg_stanDaoImpl implements Bdg_stanDao {
 
   SqlSessionFactory sqlSessionFactory;

@@ -3,9 +3,11 @@ package com.devil.dao.mariadb;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.BookmarkDao;
 import com.devil.domain.Bookmark;
 
+@Repository
 public class BookmarkDaoImpl implements BookmarkDao {
 
   SqlSessionFactory sqlSessionFactory;

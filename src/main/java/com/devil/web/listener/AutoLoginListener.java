@@ -12,17 +12,11 @@ import com.devil.service.UserService;
 public class AutoLoginListener implements ServletRequestListener {
   @Override
   public void requestInitialized(ServletRequestEvent sre) {
-    try {
       HttpSession session = ((HttpServletRequest)sre.getServletRequest()).getSession();
       if (session.getAttribute("loginUser") == null) {
-        UserService userService =
-            (UserService) session.getServletContext().getAttribute("userService");
-        User user = userService.get("abcd@gmail.com", "1111");
+        User user = new User().setNo(1).setName("배두나").setNickname("시간이nullnull").setEmail("abcd@gmail.com");
         session.setAttribute("loginUser", user);
         System.out.println(user);
       }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 }

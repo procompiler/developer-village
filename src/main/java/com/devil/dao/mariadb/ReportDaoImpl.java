@@ -3,10 +3,12 @@ package com.devil.dao.mariadb;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.ReportDao;
 import com.devil.domain.Block;
 import com.devil.domain.Report;
 
+@Repository
 public class ReportDaoImpl implements ReportDao {
 
   SqlSessionFactory sqlSessionFactory;

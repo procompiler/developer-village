@@ -1,6 +1,7 @@
 package com.devil.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 import com.devil.domain.User;

@@ -3,6 +3,7 @@ package com.devil.dao.mariadb;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 import com.devil.domain.User;

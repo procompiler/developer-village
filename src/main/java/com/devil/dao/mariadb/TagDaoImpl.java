@@ -3,10 +3,12 @@ package com.devil.dao.mariadb;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 import com.devil.dao.TagDao;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
 
+@Repository
 public class TagDaoImpl implements TagDao {
 
   SqlSessionFactory sqlSessionFactory;
