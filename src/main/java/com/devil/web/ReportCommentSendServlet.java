@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.devil.domain.Article;
+import com.devil.domain.Comment;
 import com.devil.domain.Report;
 import com.devil.domain.User;
 import com.devil.service.ReportService;
 
-@WebServlet("/report/reportArticle-send")
-public class ReportArticleSendServlet extends HttpServlet {
+@WebServlet("/report/reportComment-send")
+public class ReportCommentSendServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -27,22 +27,22 @@ public class ReportArticleSendServlet extends HttpServlet {
         (ReportService) ctx.getAttribute("reportService");
 
 
-    Article reportedArticle = new Article();
-    reportedArticle.setNo(Integer.parseInt(request.getParameter("articleNo")));
+    Comment reportedComment = new Comment();
+    reportedComment.setNo(Integer.parseInt(request.getParameter("commentNo")));
+    reportedComment.setArticleNo(Integer.parseInt(request.getParameter("commentArticleNo")));
 
     User reporter = (User) session.getAttribute("loginUser");
 
-
     Report report = new Report();
-    report.setReportedArticle(reportedArticle);
+    report.setReportedComment(reportedComment);
     report.setReporter(reporter);
     report.setReportTypeNo(Integer.parseInt(request.getParameter("reason")));
 
     response.setContentType("text/html;charset=UTF-8");
 
     try {
-      reportService.reportArticle(report);
-      response.sendRedirect("../article/detail?no=" + reportedArticle.getNo());
+      reportService.reportComment(report);
+      response.sendRedirect("../article/detail?no=" + reportedComment.getArticleNo());
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

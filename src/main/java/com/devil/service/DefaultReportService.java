@@ -16,11 +16,27 @@ public class DefaultReportService implements ReportService {
   }
 
   @Override
-  public int report(Report report) throws Exception {
+  public int reportArticle(Report report) throws Exception {
     try {
       factoryProxy.startTransaction();
       reportDao.insert(report);
       reportDao.insertReportedArticle(report);
+      factoryProxy.commit();
+      return 1;
+    } catch (Exception e) {
+      factoryProxy.rollback();
+      throw e;
+    } finally {
+      factoryProxy.endTransaction();
+    }
+  }
+
+  @Override
+  public int reportComment(Report report) throws Exception {
+    try {
+      factoryProxy.startTransaction();
+      reportDao.insert(report);
+      reportDao.insertReportedComment(report);
       factoryProxy.commit();
       return 1;
     } catch (Exception e) {

@@ -72,7 +72,14 @@
 
 		<tr>
 			<td><%=report.getReporter().getNickname()%> [<%=report.getReporter().getEmail()%>]</td>
-			<td><%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]</td>
+			<td><%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]
+			<%
+			if(report.getReportedArticle() == null) {%>
+			<%=report.getReportedComment().getWriter().getNickname()%> [<%=report.getReportedComment().getWriter().getEmail()%>]
+			<% }	%>
+			
+			</td>
+			
 			<td><a
 				href='../article/detail?no=<%=report.getReportedArticle().getNo()%>'
 				style='text-decoration: none;'>신고 링크</a></td>

@@ -54,6 +54,7 @@
      u2.uno,
      u2.nick article_writer,
      u2.email article_email
+     u3.nick 
    from
      report r
      inner join user u on r.uno=u.uno
@@ -61,6 +62,8 @@
      left outer join repo_comt rc on r.rpno=rc.rpno
      left outer join article a on ra.arno=a.arno
      left outer join user u2 on a.writer=u2.uno
+     left outer join comment c on c.cno=rc.cno
+     left outer join user u3 on c.writer=u3.uno
   </sql>
 
 	<insert id="insert" parameterType="report"

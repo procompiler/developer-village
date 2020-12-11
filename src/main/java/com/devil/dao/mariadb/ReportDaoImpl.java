@@ -30,6 +30,13 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
+  public int insertReportedComment(Report reportedComment) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("ReportDao.insertReportedComment", reportedComment);
+    }
+  }
+
+  @Override
   public int insertStatus(Block block) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.update("ReportDao.insertStatus", block);
