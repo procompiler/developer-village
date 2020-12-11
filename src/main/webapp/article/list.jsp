@@ -16,7 +16,7 @@
 	
 	<link rel="stylesheet"
   href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href='../style.css'>
+<link rel="stylesheet" type="text/css" href='../../style.css'>
 </head>
 
 <body>
