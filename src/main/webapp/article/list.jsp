@@ -69,7 +69,8 @@
 									<li id='color'
 										style="background-color: #${tag.tagColor}; color: #${tag.fontColor};">${tag.name}</li>
 								</c:forEach>
-							</ul> <a href='detail?no=${article.no}'>${article.title}</a>
+							</ul>
+							<a href='detail?no=${article.no}'>${article.title}</a>
 						</td>
 						<td>${article.writer.nickname}</td>
 						<td><fmt:formatDate value="${article.createdDate}"
@@ -102,7 +103,7 @@
 	<p>
 	<form action='${contextPath}?' method='get'>
 	   <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
-		제목으로 검색  :  <input type=A'text' name='keyword' value=''>
+		게시판 내 검색  :  <input type='text' name='keyword' value=''>
 		<button class="btn btn-primary">검색</button>
 	</form>
 	</p>

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@
 
 <link rel="stylesheet"
   href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href='../style.css'>
+<link rel="stylesheet" type="text/css" href='../../style.css'>
 
 </head>    
 
