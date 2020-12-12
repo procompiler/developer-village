@@ -9,15 +9,13 @@
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
   crossorigin="anonymous" />
-
 <link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../../style.css'>
 
 </head>    
 
 <body>
-
   <jsp:include page="/header.jsp"></jsp:include>
 
   <h1>
@@ -36,6 +34,7 @@
       </c:otherwise>
     </c:choose>
   </h1>
+  
 <div>
   <input type='hidden' name='no' value='${article.no}'>
   <br>
@@ -67,20 +66,23 @@
   </div>
 </div>
 <br>
-  <button class="btn btn-primary">수정</button>
+  <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
   <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
   <a class="btn btn-danger"
     href='../report/reportArticle?no=${article.no}'>신고</a>
 
+<%-- 
   <%
     boolean bookmarked = (Boolean) request.getAttribute("bookmarked");
   %>
   <a class="btn <%=bookmarked ? "btn-outline-primary" : ""%>"
     href="../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}">
     <%=bookmarked ? "북마크취소" : "북마크"%></a>
-<br>
+    
+ --%>
+ <br>
 
-  <jsp:include page="/comment/list?no=${article.no}"></jsp:include>
+  <jsp:include page="/app/comment/list?no=${article.no}"></jsp:include>
   <jsp:include page="/footer.jsp"></jsp:include>
 
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

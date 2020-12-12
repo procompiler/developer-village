@@ -15,7 +15,7 @@
 	crossorigin="anonymous" />
 	
 	<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../../style.css'>
 </head>
 
@@ -103,20 +103,21 @@
 	<p>
 	<form action='${contextPath}?' method='get'>
 	   <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
-		게시판 내 검색  :  <input type='text' name='keyword' value=''>
+		<input type='text' class="col-sm-3" name='keyword' value='' placeholder="게시판 내 검색">
 		<button class="btn btn-primary">검색</button>
 	</form>
 	</p>
 	<hr>
+
 	<h2>게시판 통합 상세 검색</h2>
-	
+		
 	<p>
 	<form action='list' method='get'>
-		제목: <input type='text' name='keywordTitle'
+    제목: <input type='text' class="col-sm-3" name='keywordTitle'
 			value='${keywordTitle != null ? keywordTitle : ""}'><br>
-		작성자: <input type='text' name='keywordWriter'
+		작성자: <input type='text' class="col-sm-3" name='keywordWriter'
 			value='${keywordWriter != null ? keywordWriter : ""}'><br>
-		태그: <input type='text' name='keywordTag'
+		태그: <input type='text' class="col-sm-3" name='keywordTag'
 			value='${keywordTag != null ? keywordTag : ""}'><br>
 		<button class="btn btn-primary">검색</button>
 	</form>

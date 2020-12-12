@@ -63,6 +63,7 @@ public class DefaultArticleService implements ArticleService {
 
   @Override
   public int update(Article article) throws Exception {
+    //articleDao.insertTags(article);
     return articleDao.update(article);
   }
 

@@ -7,7 +7,12 @@
 <title>게시글작성</title>
 
 <link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous" />
+
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../../style.css'>
 </head>
 
@@ -19,8 +24,8 @@
 	<br>
 	<form action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example"
-			name='categoryNo' required>
-			<option value='1'>커뮤니티</option>
+			name='categoryNo'>
+<!-- 			<option value='1'>커뮤니티</option> -->
 			<option value='2'>QnA</option>
 			<option value='3'>채용공고</option>
 			<option value='4'>스터디</option>
@@ -40,11 +45,10 @@
 		</div>
 
 		<p>
-			태그: <br>
-
+			태그<br>
 			<c:forEach items="${tags}" var="tag">
 					<input class="form-check-input" type="checkbox" value="${tag.no}"
-						id="flexCheckDefault" name="tags"> <label
+						id="flexCheckDefault" name="tagNo"> <label
 						class="form-check-label" for="flexCheckDefault">
 						${tag.name}</label>
 				<c:if test="${tag.no % 9== 0 }"><br></c:if>

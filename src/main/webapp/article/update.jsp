@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>게시글 조회</title>
+<title>게시글 수정</title>
 <link rel="stylesheet"
 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 
 <link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../../style.css'>
 
 </head>
@@ -39,43 +39,34 @@
 		</c:choose>
 	</h1>
 
-	<form action='update' method='post'>
+	<form action='<c:url value='/app/article/update'/>' method='post'>
 		<input type='hidden' name='no' value='${article.no}'><br>
 
-		<ul id='tags'>
-			<c:forEach items="${tags}" var="tag">
-				<li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
-			</c:forEach>
-		</ul>
+		<input type='text' class="form-control" name='title' value='${article.title}'><br>
 
-
-		<input type='text' name='title'
-			value='${article.title}' size='50'><br>
-
-		<p>
-		<img src='../upload/user/${article.writer.photo}_40x40.jpg'
-				style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'>${article.writer.nickname}</p>
-
-			<fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd" />
-		
-		<p>조회수: ${article.viewCount}</p>
-
-		<textarea name='content' cols='50px'>${article.content}</textarea>
-		<br>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        ></label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" name='content'>${article.content}</textarea>
+    </div>
+    
+    <p>
+      태그<br>
+      <c:forEach items="${tags}" var="tag">
+        <input class="form-check-input" type='checkbox' name='tagNo' value='${tag.no}'
+          <c:forEach items="${article.tags}" var="articleTag">
+          <c:if test="${articleTag.no == tag.no}">
+            checked
+          </c:if>
+          </c:forEach>
+        >${tag.name}
+      <c:if test="${tag.no % 9== 0 }"><br></c:if>
+    </c:forEach>
+  </p>
+  
 		<button class="btn btn-primary">수정</button>
 	</form>
-	<a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
-	<a class="btn btn-danger"
-		href='../report/reportArticle?no=${article.no}'>신고</a>
 
-	<%
-	  boolean bookmarked = (Boolean) request.getAttribute("bookmarked");
-	%>
-	<a class="btn <%=bookmarked ? "btn-outline-primary" : ""%>"
-		href="../bookmark/<%=bookmarked ? "delete" : "add"%>?articleNo=${article.no}">
-		<%=bookmarked ? "북마크취소" : "북마크"%></a>
-
-	<jsp:include page="/comment/list?no=${article.no}"></jsp:include>
 	<jsp:include page="/footer.jsp"></jsp:include>
 
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
