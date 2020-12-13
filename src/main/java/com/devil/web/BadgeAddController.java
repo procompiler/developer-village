@@ -15,9 +15,9 @@ import com.devil.service.BadgeService;
 import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.name.Rename;
-@MultipartConfig(maxFileSize = 1024 * 1024 *10)
-@WebServlet("/badge/add")
-public class BadgeAddServlet extends HttpServlet {
+
+@Controller
+public class BadgeAddController extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private String uploadDir;
 

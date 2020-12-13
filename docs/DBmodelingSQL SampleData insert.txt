@@ -102,32 +102,32 @@ INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (33, 11, 10,'인공지능�
 
 
 
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java.png','E8EBA7','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (2, 'python', 'python.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (3, 'ruby', 'ruby.png','F56C6E','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (4, 'go', 'go.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js.png','E8EBA7','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (7, 'C++', 'cpp.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (8, 'android', 'android.png','5EA4AE','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (9, 'swift', 'swift.png','E8EBA7','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (10, 'mysql', 'mysql.png','F56C6E','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (11, 'php', 'php.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (12, '일상', 'dailylife.jpg','6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (13, '스터디', 'study.jpg','6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (14, '비전공', 'nonmj.jpg','6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (15, '취업', 'chwi.jpg','6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (16, 'react', 'react.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux.png','5EA4AE','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css.png','F56C6E','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (21, 'spring', 'spring.png','5EA4AE','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html.png','E8EBA7','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs.png','6D9AF1','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle.png','F56C6E','37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio.png','F56C6E','37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java.png','#E8EBA7','##37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (2, 'python', 'python.png','#6D9AF1','##37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (3, 'ruby', 'ruby.png','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (4, 'go', 'go.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js.png','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (7, 'C++', 'cpp.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (8, 'android', 'android.png','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (9, 'swift', 'swift.png','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (10, 'mysql', 'mysql.png','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (11, 'php', 'php.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (12, '일상', 'dailylife.jpg','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (13, '스터디', 'study.jpg','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (14, '비전공', 'nonmj.jpg','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (15, '취업', 'chwi.jpg','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (16, 'react', 'react.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux.png','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css.png','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (21, 'spring', 'spring.png','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html.png','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs.png','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle.png','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio.png','#F56C6E','#37393E');
 
 
 

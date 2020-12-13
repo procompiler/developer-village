@@ -8,6 +8,7 @@ import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 import com.devil.domain.User;
 
+@Repository
 public class BadgeDaoImpl implements BadgeDao {
 
   SqlSessionFactory sqlSessionFactory;

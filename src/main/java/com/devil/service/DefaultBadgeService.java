@@ -6,6 +6,7 @@ import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 import com.devil.domain.User;
 
+@Service
 public class DefaultBadgeService implements BadgeService {
   BadgeDao badgeDao;
 
@@ -18,13 +19,12 @@ public class DefaultBadgeService implements BadgeService {
     return badgeDao.insert(badge);
   }
 
-  /*
+  
   @Override
   public List<Badge> list(String keyword) throws Exception {
     return badgeDao.findAll(keyword);
   }
-   */
-
+   
   @Override
   public Badge get(int no) throws Exception {
     Badge badge = badgeDao.findByNo(no);

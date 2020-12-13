@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 import com.devil.domain.User;
-
+/*
 @Repository
 public class Usr_bdgDaoImpl implements BadgeDao {
 
@@ -66,3 +66,4 @@ public class Usr_bdgDaoImpl implements BadgeDao {
     }
   }
 }
+ */

@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Tag;
 import com.devil.service.TagService;
 import net.coobird.thumbnailator.ThumbnailParameter;
@@ -17,12 +16,11 @@ import net.coobird.thumbnailator.name.Rename;
 @Controller
 public class TagUpdatePhotoController {
   TagService tagService;
-  
+
 public TagUpdatePhotoController(TagService tagService) {
   this.tagService = tagService;
-}  
+}
 
-  @RequestMapping("/tag/updatePhoto")
   public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
       Tag tag = new Tag();
