@@ -11,11 +11,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 조회</title>
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href='../style.css'>
-</head>
-<body>
 	<jsp:include page="/header.jsp"></jsp:include>
 	<h1>[회원 상세조회]</h1>
 
@@ -73,10 +68,10 @@
 			트위터: <input type='text' name='twitterURL' value='${user.twitterURL}'>
 		</p>
 		<% boolean followed = (Boolean) request.getAttribute("followed"); %>
-		<button type='button' <%=followed ? "class='btn-hollow'" : ""%>
-			onclick="location.href='../follow/user/<%=followed ? "delete" : "add"%>?uno=${user.no}'">
+		<a class="btn <%=followed ? "btn-outline-danger" : "btn-primary"%>" 
+			href='../follow/user/<%=followed ? "delete" : "add"%>?followeeNo=${user.no}'>
 			<%=followed ? "언팔로우" : "팔로우"%>
-		</button>
+		</a>
 		<c:if test="${user.state == 1}">
       탈퇴한 회원
       </c:if>
@@ -88,6 +83,3 @@
 		<a href='list' style='color: blue;'>회원 목록으로</a>
 	</form>
 	<jsp:include page="/footer.jsp"></jsp:include>
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

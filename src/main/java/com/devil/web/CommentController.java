@@ -56,6 +56,14 @@ public class CommentController {
     return mv;
   }
 
+  @RequestMapping("/writtenList")
+  public ModelAndView list(HttpSession session) throws Exception {
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("comments", commentService.listByWriter((User)session.getAttribute("loginUser")));
+    mv.setViewName("/comment/writtenList.jsp");
+    return mv;
+  }
+
   @RequestMapping("/update")
   public String update(Comment comment) throws Exception {
     if (commentService.update(comment) == 0) {
@@ -82,7 +90,7 @@ public class CommentController {
     // WebDataBinder에 프로퍼티 에디터 등록하기
     binder.registerCustomEditor(java.util.Date.class, // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
         propEditor // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-    );
+        );
   }
 
   class DatePropertyEditor extends PropertyEditorSupport {

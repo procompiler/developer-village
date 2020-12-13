@@ -11,7 +11,7 @@
 <head>
 <title>마이페이지</title>
     <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/mypage/info"></jsp:include>
+    <jsp:include page="/mypage/info.jsp"></jsp:include>
 	<h2>북마크리스트</h2>
   <table border='1'>
     <thead>
