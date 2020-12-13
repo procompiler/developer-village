@@ -9,15 +9,6 @@
 <html>
 <head>
 <title>태그목록</title>
-
-<link rel="stylesheet"
-	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-	crossorigin="anonymous" />
-
-<link rel="stylesheet"
-	href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href='../../style.css'>
 <jsp:include page="/header.jsp"></jsp:include>
 
 <h1>태그 목록</h1>
@@ -61,8 +52,8 @@
 			<td><span id="color"
 				style="background-color:<%=tag.getTagColor()%>; color:<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
 			<td><%=tag.getState() == 1 ? "" : "삭제됨"%></td>
-			<td><a class="btn <%=followed ? " btn-hollow" : ""%>"
-				href="../follow/tag/<%=followed ? "delete" : "add"%>?tno=<%=tag.getNo()%>">
+			<td><a class="btn <%=followed ? " btn-outline-danger" : "btn-primary"%>"
+				href="../follow/tag/<%=followed ? "delete" : "add"%>?followeeNo=<%=tag.getNo()%>">
 					<%=followed ? "언팔로우" : "팔로우"%></a></td>
 		</tr>
 		<%
@@ -71,6 +62,3 @@
 	</tbody>
 </table>
 <jsp:include page="/footer.jsp"></jsp:include>
-<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
