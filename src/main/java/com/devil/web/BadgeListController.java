@@ -1,11 +1,15 @@
 package com.devil.web;
 
 import java.util.List;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.devil.domain.Badge;
 import com.devil.service.BadgeService;
@@ -29,4 +33,11 @@ public class BadgeListController  {
       return "/badge/list.jsp";
     
   }
+
+  @RequestMapping("/badge/form")
+  public String execute2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    return "/badge/form.jsp";
+  }
+	
+	
 }
