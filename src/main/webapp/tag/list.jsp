@@ -47,8 +47,8 @@
 		<tr>
 			<td><%=tag.getNo()%></td>
 			<td id="title"><a href='detail?no=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
-			<td><img src='../../upload/tag/<%=tag.getPhoto()%>_80x80.png'
-				alt='<%=tag.getPhoto()%>'></td>
+			<td><img src='../../upload/tag/<%=tag.getPhoto()%>_80x80.png' style='border-radius: 40px'
+				alt='[태그 이미지]'></td>
 			<td><span id="color"
 				style="background-color:<%=tag.getTagColor()%>; color:<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
 			<td><%=tag.getState() == 1 ? "" : "삭제됨"%></td>

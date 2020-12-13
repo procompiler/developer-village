@@ -26,7 +26,7 @@ INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,t
 
 
 
-INSERT INTO category (cano,name) VALUES (1, '커뮤니티');
+INSERT INTO category (cano,name) VALUES (1, '자유게시판');
 INSERT INTO category (cano,name) VALUES (2, 'QnA');
 INSERT INTO category (cano,name) VALUES (3, '채용공고');
 INSERT INTO category (cano,name) VALUES (4, '스터디');
