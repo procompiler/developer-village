@@ -1,28 +1,28 @@
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'aaa.gif', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'bbb.jpg', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'ccc.png', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'user1.jpg', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'user2.jpg', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'user3.jpg', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4.jpg', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 0, 'java,phython',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'eee.png', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'fff.png', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',1,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'ggg.jpg', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (8, 'asdf@naver.com', '아브라카다브라', '김태희', password(1111), 1, 'hhh.jpg', 'https://bbb.com/', '', 0, 'ruby',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (9, 'qwer@naver.com', '코딩대장', '최희진', password(1111), 2, 'iii.jpg', '', '', 0, 'go,java',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (10, 'zxcv@gmail.com', '저놈자바라', '공효진', password(1111), 3, 'lll.jpg', 'https://ccc.com/', '', 0, 'pyton,c',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (11, 'abcd@gmail.com', '시간이nullnull', '배두나', password(1111), 2, 'mmm.jpg', 'https://ddd.com/', '', 1, 'php',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (12, 'qwerty@gmail.com', '벌레잡이', '김희애', password(1111), 1, 'nnn.jpg', '', '', 1, 'javascript',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (13, 'awesome@gmail.com', '길가던개발자', '김서형', password(1111), 3, 'ooo.jpg', 'https://eee.com/', '', 0, '',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (14, 'wigglewiggle@naver.com', '위글위글', '염정아', password(1111), 2, 'ppp.jpg', '', '', 0, 'go',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (15, 'brownTshirt@gmail.com', '비틀즈', '김민아', password(1111), 1, 'qqq.jpg', 'https://fff.com/', '', 0, 'go',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (16, 'beatifulworld@gmail.com', '미투유투', '김태리', password(1111), 3, 'rrr.jpg', 'https://ggg.com/', '', 0, 'c,kotilin',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (17, 'Iloveiiiii@naver.com', '으하하', '이영애', password(1111), 2, 'sss.jpg', '', '', 0, 'ruby',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (18, 'solution@naver.com', '정답을알려줘', '고두심', password(1111), 3, 'ttt.jpg', 'https://hhh.com/', '', 0, 'c,swift',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (19, 'oasis@gmail.com', '락이좋아', '이정은', password(1111), 1, 'uuu.jpg', 'https://iii.com/', '', 0, 'swift',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (20, 'blur@gmail.com', '사랑곰', '김혜수', password(1111), 3, 'vvv.jpg', 'https://jjj.com/', '', 1, 'php',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (21, 'articmonkey@gmail.com', '북극원숭이', '강소라', password(1111), 2, 'www.jpg', 'https://kkk.com/', '', 0, 'go,swift',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (22, 'Iamrockstar@naver.com', '내꿈은축구왕', '송혜교', password(1111), 3, 'xxx.jpg', 'https://lll.com/', '', 1, 'ruby',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (23, 'youngAndrich@gmail.com', '영앤리치', '최지우', password(1111), 1, 'yyy.jpg', 'https://mmm.com/', '', 0, '',0,1);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (24, 'givemeamoney@gmail.com', '호머심슨', '이나영', password(1111), 2, 'zzz.jpg', '', '', 0, 'c++',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (25, 'emeraldsword@naver.com', '에메랄드칼', '하지원', password(1111), 3, 'xyz.jpg', 'https://nnn.com/', '', 1, 'c,python',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'user5.jpg', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'user6.jpg', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',1,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'user7.jpg', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (8, 'asdf@naver.com', '아브라카다브라', '김태희', password(1111), 1, 'user8.jpg', 'https://bbb.com/', '', 0, 'ruby',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (9, 'qwer@naver.com', '코딩대장', '최희진', password(1111), 2, 'user9.jpg', '', '', 0, 'go,java',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (10, 'zxcv@gmail.com', '저놈자바라', '공효진', password(1111), 3, 'user10.jpg', 'https://ccc.com/', '', 0, 'pyton,c',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (11, 'abcd@gmail.com', '시간이nullnull', '배두나', password(1111), 2, 'user11.jpg', 'https://ddd.com/', '', 1, 'php',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (12, 'qwerty@gmail.com', '벌레잡이', '김희애', password(1111), 1, 'user12.jpg', '', '', 1, 'javascript',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (13, 'awesome@gmail.com', '길가던개발자', '김서형', password(1111), 3, 'user13.jpg', 'https://eee.com/', '', 0, '',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (14, 'wigglewiggle@naver.com', '위글위글', '염정아', password(1111), 2, 'user14.jpg', '', '', 0, 'go',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (15, 'brownTshirt@gmail.com', '비틀즈', '김민아', password(1111), 1, 'user15.jpg', 'https://fff.com/', '', 0, 'go',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (16, 'beatifulworld@gmail.com', '미투유투', '김태리', password(1111), 3, 'user16.jpg', 'https://ggg.com/', '', 0, 'c,kotilin',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (17, 'Iloveiiiii@naver.com', '으하하', '이영애', password(1111), 2, 'user17.jpg', '', '', 0, 'ruby',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (18, 'solution@naver.com', '정답을알려줘', '고두심', password(1111), 3, 'user18.jpg', 'https://hhh.com/', '', 0, 'c,swift',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (19, 'oasis@gmail.com', '락이좋아', '이정은', password(1111), 1, 'user19.jpg', 'https://iii.com/', '', 0, 'swift',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (20, 'blur@gmail.com', '사랑곰', '김혜수', password(1111), 3, 'user20.jpg', 'https://jjj.com/', '', 1, 'php',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (21, 'articmonkey@gmail.com', '북극원숭이', '강소라', password(1111), 2, 'user21.jpg', 'https://kkk.com/', '', 0, 'go,swift',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (22, 'Iamrockstar@naver.com', '내꿈은축구왕', '송혜교', password(1111), 3, 'user22.jpg', 'https://lll.com/', '', 1, 'ruby',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (23, 'youngAndrich@gmail.com', '영앤리치', '최지우', password(1111), 1, 'user23.jpg', 'https://mmm.com/', '', 0, '',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (24, 'givemeamoney@gmail.com', '호머심슨', '이나영', password(1111), 2, 'user24.jpg', '', '', 0, 'c++',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (25, 'emeraldsword@naver.com', '에메랄드칼', '하지원', password(1111), 3, 'user25.jpg', 'https://nnn.com/', '', 1, 'c,python',0,0);
 
 
 
@@ -102,32 +102,32 @@ INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (33, 11, 10,'인공지능�
 
 
 
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java.png','#E8EBA7','##37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (2, 'python', 'python.png','#6D9AF1','##37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (3, 'ruby', 'ruby.png','#F56C6E','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (4, 'go', 'go.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js.png','#E8EBA7','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (7, 'C++', 'cpp.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (8, 'android', 'android.png','#5EA4AE','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (9, 'swift', 'swift.png','#E8EBA7','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (10, 'mysql', 'mysql.png','#F56C6E','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (11, 'php', 'php.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (12, '일상', 'dailylife.jpg','#6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (13, '스터디', 'study.jpg','#6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (14, '비전공', 'nonmj.jpg','#6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (15, '취업', 'chwi.jpg','#6C5DDF','FFFFFF');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (16, 'react', 'react.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux.png','#5EA4AE','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css.png','#F56C6E','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (21, 'spring', 'spring.png','#5EA4AE','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html.png','#E8EBA7','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs.png','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle.png','#F56C6E','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio.png','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java','#E8EBA7','##37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (2, 'python', 'python','#6D9AF1','##37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (3, 'ruby', 'ruby','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (4, 'go', 'go','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (7, 'C++', 'cpp','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (8, 'android', 'android','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (9, 'swift', 'swift','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (10, 'mysql', 'mysql','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (11, 'php', 'php','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (12, '일상', 'dailylife','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (13, '스터디', 'study','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (14, '비전공', 'nonmj','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (15, '취업', 'chwi','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (16, 'react', 'react','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (21, 'spring', 'spring','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio','#F56C6E','#37393E');
 
 
 
