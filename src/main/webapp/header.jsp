@@ -7,10 +7,10 @@ String contextPath = request.getServletContext().getContextPath();
 User user = (User) session.getAttribute("loginUser");
 %>
 
-<link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css"/>
+<link rel="stylesheet" href="<%=contextPath%>/node_modules/@fortawesome/fontawesome-free/css/all.css"/>
 <link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href='../../style.css'>
+  href="<%=contextPath%>/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href='<%=contextPath%>/style.css'>
 
 </head>
 <body>

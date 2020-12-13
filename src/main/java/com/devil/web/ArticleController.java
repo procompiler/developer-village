@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,7 +84,7 @@ public class ArticleController {
   }
 
   @RequestMapping("/detail")
-  public ModelAndView detail(int no, HttpSession session) throws Exception {
+  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
       throw new Exception("해당 게시글이 없습니다.");
@@ -97,9 +98,9 @@ public class ArticleController {
     map.put("userNo", ((User) session.getAttribute("loginUser")).getNo());
     map.put("articleNo", no);
     if (bookmarkService.get(map) != null) {
-      session.setAttribute("bookmarked", true);
+      request.setAttribute("bookmarked", true);
     } else {
-      session.setAttribute("bookmarked", false);
+      request.setAttribute("bookmarked", false);
     }
 
     mv.setViewName("/article/detail.jsp");
