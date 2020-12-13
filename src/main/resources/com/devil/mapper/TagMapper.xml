@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="TagDao">
-	<resultMap type="tag" id="TagMap">
-		<id column="tno" property="no" />
-		<result column="name" property="name" />
-		<result column="photo" property="photo"/>
-		<result column="tag_color" property="tagColor" />
+	<resultMap type="tag"         id="TagMap">
+		<id column="tno"            property="no" />
+		<result column="name"       property="name" />
+		<result column="photo"      property="photo"/>
+		<result column="tag_color"  property="tagColor" />
 		<result column="font_color" property="fontColor" />
-		<result column="state" property="state" />
+		<result column="state"      property="state" />
 	</resultMap>
 
 	<insert id="insert" parameterType="tag">
@@ -20,14 +20,14 @@
 
 	<sql id="sql1">
 		select
-		tno,
-		name,
-		photo,
-		tag_color,
-		font_color,
-		state
+			tno,
+			name,
+			photo,
+			tag_color,
+			font_color,
+			state
 		from
-		tag
+		  tag
 	</sql>
 
 	<select id="findAll" resultMap="TagMap" parameterType="string">

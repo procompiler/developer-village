@@ -37,7 +37,7 @@
 
   <ul id='tags'>
     <c:forEach items="${tags}" var="tag">
-      <li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
+      <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li>
     </c:forEach>
   </ul>
 
