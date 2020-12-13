@@ -1,6 +1,5 @@
 package com.devil.web;
 
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,26 +9,28 @@ import com.devil.domain.Follow;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-
 @Controller
 @RequestMapping("/follow/tag")
-public class FollowAddTagController {
-
+public class FollowTagController{
   @Autowired
   FollowService followService;
-
-  @RequestMapping("/add")
-  public String add(HttpSession session, Follow follow, HttpServletRequest request)
+  @RequestMapping("add")
+  public String add(Follow follow, HttpSession session, HttpServletRequest request)
       throws Exception {
+    follow.setUserNo(((User)session.getAttribute("loginUser")).getNo());
 
-    User loginUser = (User) session.getAttribute("loginUser");
-
-    if (followService.addTag(follow) == 0) {
-      throw new Exception("이미 팔로우하고 있는 태그입니다.");
-    }
-
+    followService.addTag(follow);
     return "redirect:" + request.getHeader("Referer");
 
+  }
+
+  @RequestMapping("delete")
+  protected String delete(Follow follow, HttpSession session, HttpServletRequest request)
+      throws Exception {
+
+    follow.setUserNo(((User)session.getAttribute("loginUser")).getNo());
+
+    followService.deleteTag(follow);
+    return "redirect:" + request.getHeader("Referer");
   }
 }
