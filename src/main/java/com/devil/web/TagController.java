@@ -109,7 +109,7 @@ public class TagController {
     // 태그 사진 파일 저장
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
-      String saveFilePath = servletContext.getRealPath("/upload/" + filename);
+      String saveFilePath = servletContext.getRealPath("/upload/tag/" + filename);
       photoFile.write(saveFilePath);
       tag.setPhoto(filename);
 
