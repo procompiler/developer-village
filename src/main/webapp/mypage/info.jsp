@@ -36,12 +36,12 @@
 		</c:when>
 	</c:choose>
 </div>
-<a class="btn btn-outline-primary" href="articlelist">작성게시글</a>
-<a class="btn btn-outline-primary" href="commentlist">작성댓글</a>
-<a class="btn btn-outline-primary" href="taglist">팔로잉 태그</a>
-<a class="btn btn-outline-primary" href="userlist">팔로잉 유저</a>
-<a class="btn btn-outline-primary" href="followerlist">팔로워</a>
-<a class="btn btn-outline-primary" href="bookmarklist">북마크</a>
-<a class="btn btn-outline-primary" href="badgelist">뱃지</a>
+<a class="btn btn-outline-primary" href="../article/writtenList">작성게시글</a>
+<a class="btn btn-outline-primary" href="../comment/writtenList">작성댓글</a>
+<a class="btn btn-outline-primary" href="../follow/tagList">팔로잉 태그</a>
+<a class="btn btn-outline-primary" href="../follow/userList">팔로잉 유저</a>
+<a class="btn btn-outline-primary" href="../follow/followerList">팔로워</a>
+<a class="btn btn-outline-primary" href="../bookmark/list">북마크</a>
+<a class="btn btn-outline-primary" href="../collect/list">뱃지</a>
 </body>
 </html>

@@ -20,8 +20,8 @@
 </head>
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/mypage/info"></jsp:include>
-	<h2>팔로우하는 유저</h2>
+    <jsp:include page="/mypage/info.jsp"></jsp:include>
+	<h2>팔로워</h2>
 	<table border='1'>
 	 <thead>
 		<tr>
@@ -30,12 +30,12 @@
 		</tr>
    <thead>
    <tbody>
-   <c:forEach items="${users}" var="u">
+   <c:forEach items="${userList}" var="u">
 		<tr>
 			<td><a href='../user/detail?no=${u.no}'> <img
 					src='../upload/user/${u.photo}_40x40.jpg'
 					style='border-radius: 70px' alt='[${u.nickname}]'>${u.nickname}</a></td>
-		  <td><a class='btn btn-outline-danger' href='../follow/user/delete?followeeNo=${u.no}'>언팔로우</a></td>
+		  <td><a class='btn btn-outline-danger' href='delete?followeeNo=${u.no}'>언팔로우</a></td>
 		</tr>
 		</c:forEach>
 		</tbody>
