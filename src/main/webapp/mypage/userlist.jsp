@@ -35,7 +35,7 @@
 			<td><a href='../user/detail?no=${u.no}'> <img
 					src='../upload/user/${u.photo}_40x40.jpg'
 					style='border-radius: 70px' alt='[${u.nickname}]'>${u.nickname}</a></td>
-		  <td><a class='btn btn-outline-danger' href='../follow/user/delete?uno=${u.no}'>언팔로우</a></td>
+		  <td><a class='btn btn-outline-danger' href='../follow/user/delete?followeeNo=${u.no}'>언팔로우</a></td>
 		</tr>
 		</c:forEach>
 		</tbody>

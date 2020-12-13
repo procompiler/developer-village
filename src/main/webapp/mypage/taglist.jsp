@@ -37,7 +37,7 @@ div.card {
 					<h5 class="card-title"><a href='../tag/detail?no=${t.no}'>#${t.name}</a></h5>
 			  <img style="float: right;"src='../upload/tag/${t.photo}_80x80.png'alt='${t.photo}'>
 					<p>0개</p>
-					<a href="../follow/tag/delete?tno=${t.no}" class="btn btn-outline-danger">언팔로우</a>
+					<a href="../follow/tag/delete?followeeNo=${t.no}" class="btn btn-outline-danger">언팔로우</a>
 				</div>
 			</div>
 			</div>

@@ -10,8 +10,8 @@ import com.devil.domain.User;
 import com.devil.service.FollowService;
 
 @Controller
-@RequestMapping("/follow/tag")
-public class FollowTagController{
+@RequestMapping("/follow/user")
+public class FollowUserController{
   @Autowired
   FollowService followService;
   @RequestMapping("add")
@@ -19,7 +19,7 @@ public class FollowTagController{
       throws Exception {
     follow.setUserNo(((User)session.getAttribute("loginUser")).getNo());
 
-    followService.addTag(follow);
+    followService.addUser(follow);
     return "redirect:" + request.getHeader("Referer");
 
   }
@@ -30,7 +30,7 @@ public class FollowTagController{
 
     follow.setUserNo(((User)session.getAttribute("loginUser")).getNo());
 
-    followService.deleteTag(follow);
+    followService.deleteUser(follow);
     return "redirect:" + request.getHeader("Referer");
   }
 }

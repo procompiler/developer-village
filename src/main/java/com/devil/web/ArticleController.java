@@ -83,6 +83,7 @@ public class ArticleController {
     return mv;
   }
 
+
   @RequestMapping("/detail")
   public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
     Article article = articleService.get(no);
