@@ -14,7 +14,7 @@
 	<form action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example"
 			name='categoryNo'>
-<!-- 			<option value='1'>커뮤니티</option> -->
+    	<option value='1'>자유게시판</option> 
 			<option value='2'>QnA</option>
 			<option value='3'>채용공고</option>
 			<option value='4'>스터디</option>

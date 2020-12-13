@@ -14,7 +14,7 @@
 	<h1>
 		<c:choose>
 			<c:when test="${param.categoryNo == 1}">
-				<p>커뮤니티</p>
+				<p>자유게시판</p>
 			</c:when>
 			<c:when test="${param.categoryNo == 2}">
 				<p>QnA</p>

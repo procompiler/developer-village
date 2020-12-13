@@ -21,7 +21,7 @@ User user = (User) session.getAttribute("loginUser");
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
     </div>
-    <a href="<%=contextPath%>/article/writtenList">
+    <a href="<%=contextPath%>/app/article/writtenList">
      <div class="user-card">
       <div class="user-photo">
         <img src="<%=contextPath%>/upload/user/<%=user.getPhoto()%>_60x60.jpg"/>
@@ -32,7 +32,7 @@ User user = (User) session.getAttribute("loginUser");
     </div>
     </a>
     <div class="buttons">
-      <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/app/community/taglist'>커뮤니티</a></li>
+      <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/app/article/list?categoryNo=1'>자유게시판</a></li>
       <li><i class="fas fa-question fa-fw"></i><a href='<%=contextPath%>/app/article/list?categoryNo=2'>질문</a></li>
       <li><i class="far fa-building fa-fw"></i><a href='<%=contextPath%>/app/article/list?categoryNo=3'>채용공고</a></li>
       <li><i class="fas fa-pencil-alt fa-fw"></i><a href='<%=contextPath%>/app/article/list?categoryNo=4'>스터디</a></li>
@@ -41,6 +41,7 @@ User user = (User) session.getAttribute("loginUser");
     <hr>
     <div class="buttons">
       <li><i class="fas fa-tags fa-fw"></i><a href="<%=contextPath%>/app/tag/list">태그</a></li>
+<%--       <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/app/community/taglist'>커뮤니티</a></li> --%>
       <div id="tag">
         <li><i class="fas fa-hashtag"></i><a href="#">Java</a></li>
         <li><i class="fas fa-hashtag"></i><a href="#">JavaScript</a></li>
