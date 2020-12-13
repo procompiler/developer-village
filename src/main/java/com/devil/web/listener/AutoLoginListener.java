@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import com.devil.domain.User;
-import com.devil.service.UserService;
 
 @WebListener
 public class AutoLoginListener implements ServletRequestListener {
@@ -14,7 +13,7 @@ public class AutoLoginListener implements ServletRequestListener {
   public void requestInitialized(ServletRequestEvent sre) {
       HttpSession session = ((HttpServletRequest)sre.getServletRequest()).getSession();
       if (session.getAttribute("loginUser") == null) {
-        User user = new User().setNo(1).setName("배두나").setNickname("시간이nullnull").setEmail("abcd@gmail.com");
+        User user = new User().setNo(11).setName("배두나").setNickname("시간이nullnull").setEmail("abcd@gmail.com");
         session.setAttribute("loginUser", user);
         System.out.println(user);
       }
