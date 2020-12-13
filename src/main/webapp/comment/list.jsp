@@ -8,14 +8,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>댓글 조회</title>
+<title>댓글 목록</title>
+<link rel="stylesheet"
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous" />
+  
 <link rel="stylesheet"
   href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href='../../style.css'>
 </head>
 
 <body>
-	<hr size='3'>
 	<h2>Comments</h2>
 
 	<c:forEach items="${comments}" var="comment">
@@ -70,7 +74,7 @@
 				
 				<form action='../comment/add' method='post'>
 					<input type='hidden' name="momno" value='${comment.no}'><br>
-					<input type='hidden' name="arno" value='${article.no}'><br>
+					<input type='hidden' name="arno" value='${comment.articleNo}'><br>
 					<input type='hidden' name="step" value='1'><br> <input
 						type='text' name='content'><br>
 					<button class='btn btn-primary'>대댓글</button>
@@ -83,7 +87,7 @@
 
 	<form method='post' action='../comment/add'>
 		<input type='hidden' name="momno" value='0'><br> <input
-			type='hidden' name="arno" value='${article.no }'><br> <input
+			type='hidden' name="arno" value='${param.no}'><br> <input
 			type='hidden' name="step" value='0'><br> <input
 			type='text' name='content'><br>
 		<button class='btn btn-primary'>댓글쓰기</button>
