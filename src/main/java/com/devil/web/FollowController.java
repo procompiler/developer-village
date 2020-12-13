@@ -14,7 +14,7 @@ import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/follow")
-public class FollowTagController{
+public class FollowController{
   @Autowired
   FollowService followService;
   @Autowired
