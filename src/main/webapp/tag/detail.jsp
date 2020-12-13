@@ -20,9 +20,10 @@
 	<br><h3>${tag.name}</h3><br>
 
 	<form action='updatePhoto' method='post' enctype='multipart/form-data'>
-		<input type='hidden' name='no' value='${tag.no}'> <img
-			src='../../upload/tag/${tag.photo}_160x160.png' alt='[${tag.photo}]'>
-		<input type='file' name='photo'>
+		<input type='hidden' name='no' value='${tag.no}'>
+		 <img
+			src='../../upload/tag/${tag.photo}_160x160.png' alt='[태그 이미지]'>
+		<input type='file' name='photoFile'>
 		<button class="btn btn-primary">이미지 변경</button>
 	</form>
 
