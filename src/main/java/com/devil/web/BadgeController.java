@@ -1,167 +1,159 @@
 package com.devil.web;
 
+<<<<<<< HEAD
+import java.util.UUID;
+import javax.servlet.ServletContext;
+import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import com.devil.domain.Badge;
 import com.devil.service.BadgeService;
+import net.coobird.thumbnailator.ThumbnailParameter;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
+import net.coobird.thumbnailator.name.Rename;
+
 
 @Controller
 @RequestMapping("/badge")
 public class BadgeController {
 
-  @Autowired
-  BadgeService badgeService;
+
+  @Autowired ServletContext servletContext;
+  @Autowired BadgeService badgeService;
 
 
 
+  @RequestMapping("/form")
+  public ModelAndView form() throws Exception {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("/badge/form.jsp");
+
+    return mv;
+  }
+
+  @RequestMapping("add")
+  public String add(String name, String content,Part photoFile) throws Exception {
+
+    Badge badge = new Badge();
+    badge.setName(name);
+    badge.setContent(content);
+
+    String filename = UUID.randomUUID().toString();
+    String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
+
+    photoFile.write(saveFilePath);
+    badge.setPhoto(filename);
+
+    generatePhotoThumbnail(saveFilePath);
+
+    badgeService.add(badge);
+    return "redirect:list";
+  }
 
 
+  @RequestMapping("delete")
+  public String delete(int no) throws Exception {
 
+    if (badgeService.delete(no) == 0) {
+      throw new Exception("해당 번호의 뱃지 없습니다.");
+    }
+    return "redirect:list";
+  }
 
+  @RequestMapping("detail")
+  public ModelAndView deatil(int no) throws Exception {
+    Badge badge = badgeService.get(no);
 
+    if (badge == null) {
+      throw new Exception("해당 뱃지가 없습니다!");
+    }
 
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("badge", badge);
+    mv.setViewName("/badge/detail.jsp");
+    return mv;
+  }
 
+  @RequestMapping("list")
+  public ModelAndView list() throws Exception {
+    ModelAndView mv = new ModelAndView();
 
+    mv.addObject("list", badgeService.list((String)null));
+    mv.setViewName("/badge/list.jsp");
+    return mv;
 
+  }
 
+  @RequestMapping("update")
+  public String update(Badge badge) throws Exception {
 
+    badgeService.update(badge);
+    return "redirect:list";
+  }
 
+  @RequestMapping("updatePhoto")
+  public String updatePhoto(int no, Part photoFile) throws Exception {
 
+    Badge badge = new Badge();
+    badge.setNo(no);
 
+    // 뱃지 사진 파일 저장
+    if (photoFile.getSize() > 0) {
+      String filename = UUID.randomUUID().toString();
+      String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
+      photoFile.write(saveFilePath);
+      badge.setPhoto(filename);
 
-  //  @RequestMapping("/form")
-  //  public ModelAndView form() throws Exception {
-  //    ModelAndView mv = new ModelAndView();
-  //    mv.addObject("tags", tagService.list((String) null));
-  //    mv.setViewName("/article/form.jsp");
-  //
-  //    return mv;
-  //  }
-  //
-  //  @RequestMapping("/add")
-  //  public String add(Article article, int[] tagNo, HttpSession session) throws Exception {
-  //
-  //    User loginUser = (User) session.getAttribute("loginUser");
-  //    article.setWriter(loginUser);
-  //
-  //    List<Tag> tags = new ArrayList<>();
-  //    if (tagNo != null) {
-  //      for (int no : tagNo) {
-  //        tags.add(new Tag().setNo(no));
-  //      }
-  //    }
-  //    article.setTags(tags);
-  //    articleService.add(article);
-  //    return "redirect:list?categoryNo=" + article.getCategoryNo();
-  //  }
-  //
-  //  @RequestMapping("/list")
-  //  public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
-  //      String keywordTag) throws Exception {
-  //
-  //    ModelAndView mv = new ModelAndView();
-  //
-  //    if (keyword != null) {
-  //      mv.addObject("articles", articleService.list(keyword));
-  //
-  //    } else if (keywordTitle != null) {
-  //      HashMap<String, Object> keywordMap = new HashMap<>();
-  //      keywordMap.put("title", keywordTitle);
-  //      keywordMap.put("writer", keywordWriter);
-  //      keywordMap.put("tag", keywordTag);
-  //
-  //      mv.addObject("articles", articleService.list(keywordMap));
-  //
-  //    } else {
-  //      mv.addObject("articles", articleService.list());
-  //    }
-  //
-  //    mv.setViewName("/article/list.jsp");
-  //    return mv;
-  //  }
-  //
-  //  @RequestMapping("/detail")
-  //  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
-  //    Article article = articleService.get(no);
-  //    if (article == null) {
-  //      throw new Exception("해당 게시글이 없습니다.");
-  //    }
-  //
-  //    ModelAndView mv = new ModelAndView();
-  //    mv.addObject("article", article);
-  //    mv.addObject("tags", article.getTags());
-  //
-  //    Map<String, Object> map = new HashMap<>();
-  //    map.put("userNo", ((User) session.getAttribute("loginUser")).getNo());
-  //    map.put("articleNo", no);
-  //    if (bookmarkService.get(map) != null) {
-  //      request.setAttribute("bookmarked", true);
-  //    } else {
-  //      request.setAttribute("bookmarked", false);
-  //    }
-  //
-  //    mv.setViewName("/article/detail.jsp");
-  //    return mv;
-  //  }
-  //
-  //  @RequestMapping(value="/update", method=RequestMethod.GET)
-  //  public ModelAndView updateForm(int no) throws Exception {
-  //    ModelAndView mv = new ModelAndView();
-  //    mv.addObject("article", articleService.get(no));
-  //    mv.addObject("tags", tagService.list((String) null));
-  //    mv.setViewName("/article/update.jsp");
-  //    return mv;
-  //  }
-  //
-  //  @RequestMapping(value="/update", method=RequestMethod.POST)
-  //  public String update(Article article, int[] tagNo) throws Exception {
-  //
-  //    List<Tag> tags = new ArrayList<>();
-  //    if (tagNo != null) {
-  //      for (int no : tagNo) {
-  //        tags.add(new Tag().setNo(no));
-  //      }
-  //    }
-  //    article.setTags(tags);
-  //
-  //    if (articleService.update(article) == 0) {
-  //      throw new Exception("해당 번호의 게시글이 없습니다.");
-  //    }
-  //    return "redirect:detail?no=" + article.getNo();
-  //  }
-  //
-  //
-  //  @RequestMapping("/delete")
-  //  public String delete(int no) throws Exception {
-  //    if (articleService.delete(no) == 0) {
-  //      throw new Exception("해당 번호의 게시글이 없습니다.");
-  //    }
-  //    return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
-  //  }
-  //
-  //
-  //  @InitBinder
-  //  public void initBinder(WebDataBinder binder) {
-  //    // String ===> Date 프로퍼티 에디터 준비
-  //    DatePropertyEditor propEditor = new DatePropertyEditor();
-  //
-  //    // WebDataBinder에 프로퍼티 에디터 등록하기
-  //    binder.registerCustomEditor(
-  //        java.util.Date.class, // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
-  //        propEditor // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-  //        );
-  //  }
-  //
-  //  class DatePropertyEditor extends PropertyEditorSupport {
-  //    @Override
-  //    public void setAsText(String text) throws IllegalArgumentException {
-  //      try {
-  //        // 클라이언트가 텍스트로 보낸 날짜 값을 java.sql.Date 객체로 만들어 보관한다.
-  //        setValue(java.sql.Date.valueOf(text));
-  //      } catch (Exception e) {
-  //        throw new IllegalArgumentException(e);
-  //      }
-  //    }
-  //  }
+      // 뱃지 사진의 썸네일 이미지 파일 생성하기
+      generatePhotoThumbnail(saveFilePath);
+    }
 
+    if (badge.getPhoto() == null) {
+      throw new Exception("사진을 선택하지 않았습니다.");
+    }
+
+    badgeService.update(badge);
+    return "redirect:detail?no=" + badge.getNo();
+  }
+
+  private void generatePhotoThumbnail(String saveFilePath) {
+    try {
+      Thumbnails.of(saveFilePath)//
+      .size(20, 20)//
+      .crop(Positions.CENTER)
+      .outputFormat("png")//
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_40x40";
+        }
+      });
+
+      Thumbnails.of(saveFilePath)//
+      .size(80, 80)//
+      .outputFormat("png") //
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_80x80";
+        }
+      });
+
+      Thumbnails.of(saveFilePath)
+      .size(160, 160)
+      .outputFormat("png")
+      .crop(Positions.CENTER)
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_160x160";
+        }
+      });
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }

@@ -36,10 +36,15 @@ public class TagController {
   }
 
   @RequestMapping("/add")
-  public String add(Tag tag, Part photoFile)
+  public String add(String name, String tagColor, String fontColor, Part photoFile)
       throws Exception {
     String filename = UUID.randomUUID().toString();
     String saveFilePath = servletContext.getRealPath("/upload/tag/" + filename);
+
+    Tag tag = new Tag();
+    tag.setName(name);
+    tag.setTagColor(tagColor);
+    tag.setFontColor(fontColor);
 
     photoFile.write(saveFilePath);
     tag.setPhoto(filename);
@@ -68,12 +73,12 @@ public class TagController {
 
     User loginUser = (User) session.getAttribute("loginUser");
 
-    List<Tag> tagList = (List<Tag>)tagService.list((String) null);
+    List<Tag> tagList = tagService.list((String) null);
     List<Integer> userTagNoList = new ArrayList<>();
     for (Tag tag : tagService.list(loginUser)) {
       userTagNoList.add(tag.getNo());
     }
-    
+
     for (Tag tag : tagList) {
       if (!userTagNoList.contains(tag.getNo())) {
         continue;

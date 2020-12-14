@@ -16,7 +16,7 @@
   <c:forEach items="${tagList}" var="t">
     <div class="col">
       <div class="card" style="width: 15rem;">
-        <div class="card-band" style="background-color: #${t.tagColor}"></div>
+        <div class="card-band" style="background-color: ${t.tagColor}"></div>
         <div class="card-body">
           <h5 class="card-title">
             <a href='list?tagNo=${t.no}'>#${t.name}</a>
