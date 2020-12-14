@@ -32,7 +32,6 @@ public class TagController {
   public ModelAndView form() throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.setViewName("/tag/form.jsp");
-
     return mv;
   }
 
@@ -53,10 +52,11 @@ public class TagController {
   @RequestMapping("/detail")
   public ModelAndView detail(int no) throws Exception {
     Tag tag = tagService.get(no);
+    
     if (tag == null) {
       throw new Exception("해당 태그가 없습니다!");
     }
-
+    
     ModelAndView mv = new ModelAndView();
     mv.addObject("tag", tag);
     mv.setViewName("/tag/detail.jsp");
@@ -94,10 +94,8 @@ public class TagController {
 
   @RequestMapping("/updatePhoto")
   public String updatePhoto(int no, Part photoFile) throws Exception {
-
     Tag tag = new Tag();
     tag.setNo(no);
-
     // 태그 사진 파일 저장
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
