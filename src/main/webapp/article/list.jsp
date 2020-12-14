@@ -25,6 +25,9 @@
 			<c:when test="${param.categoryNo == 4}">
 				<p>스터디</p>
 			</c:when>
+			<c:when test="${tag != null}">
+			  <p># ${tag.name}</p>
+			</c:when>
 			<c:otherwise>
 				<p>전체 게시글</p>
 			</c:otherwise>
