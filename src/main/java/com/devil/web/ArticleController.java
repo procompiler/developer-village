@@ -90,7 +90,7 @@ public class ArticleController {
   public ModelAndView list(HttpSession session) throws Exception {
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("articles", articleService.list((User)session.getAttribute("loginUser")));
+    mv.addObject("articleList", articleService.list((User)session.getAttribute("loginUser")));
     mv.setViewName("/article/writtenList.jsp");
     return mv;
   }
