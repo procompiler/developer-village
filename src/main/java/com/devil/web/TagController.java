@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +37,10 @@ public class TagController {
   }
 
   @RequestMapping("/add")
-  public String add(String name, String tagColor, String fontColor, Part photoFile)
+  public String add(Tag tag, Part photoFile)
       throws Exception {
     String filename = UUID.randomUUID().toString();
     String saveFilePath = servletContext.getRealPath("/upload/tag/" + filename);
-
-    Tag tag = new Tag();
-    tag.setName(name);
-    tag.setTagColor(tagColor);
-    tag.setFontColor(fontColor);
 
     photoFile.write(saveFilePath);
     tag.setPhoto(filename);
@@ -70,32 +64,30 @@ public class TagController {
   }
 
   @RequestMapping("/list")
-  public ModelAndView list(HttpSession session, HttpServletResponse response) throws Exception {
+  public ModelAndView list(HttpSession session) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
 
+    List<Tag> tagList = (List<Tag>)tagService.list((String) null);
     List<Integer> userTagNoList = new ArrayList<>();
     for (Tag tag : tagService.list(loginUser)) {
       userTagNoList.add(tag.getNo());
     }
-
+    
+    for (Tag tag : tagList) {
+      if (!userTagNoList.contains(tag.getNo())) {
+        continue;
+      }
+      tag.setFollowed(true);
+    }
     ModelAndView mv = new ModelAndView();
-    mv.addObject("tags", tagService.list((String) null));
-    mv.addObject("userTagNoList", userTagNoList);
+    mv.addObject("tagList", tagList);
     mv.setViewName("/tag/list.jsp");
-
     return mv;
   }
 
   @RequestMapping("/update")
-  public String update(int no, String name, String tagColor, String fontColor) throws Exception {
-
-    Tag tag = new Tag();
-    tag.setName(name);
-    tag.setNo(no);
-    tag.setTagColor(tagColor);
-    tag.setFontColor(fontColor);
-
+  public String update(Tag tag) throws Exception {
     tagService.update(tag);
     return "redirect:detail?no=" + tag.getNo();
   }

@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 		  }
 		%>
 		<tr>
-			<td id="title"><a href='articlelist?tagNo=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
+			<td id="title"><a href='list?tagNo=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
 			<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
 				alt='<%=tag.getPhoto()%>'></td>
 			<td><span id="color"
@@ -45,6 +46,3 @@
 	</tbody>
 </table>
 <jsp:include page="/footer.jsp"></jsp:include>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
