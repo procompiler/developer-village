@@ -1,38 +1,28 @@
 package com.devil.web;
 
-import java.io.IOException;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 
-@WebServlet("/report/reportArticle")
-public class ReportArticleServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
+@Controller
+public class ReportArticleServlet {
+  ArticleService articleService;
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    ServletContext ctx = request.getServletContext();
-    ArticleService articleService = (ArticleService) ctx.getAttribute("articleService");
+  public ReportArticleServlet(ArticleService articleService) {
+    this.articleService = articleService;
+  }
 
+  @RequestMapping("/report/reportArticle")
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     response.setContentType("text/html;charset=UTF-8");
 
-    try {
-      int no = Integer.parseInt(request.getParameter("no"));
-      Article reportedArticle = articleService.get(no);
-      request.setAttribute("reportedArticle", reportedArticle);
+    Article reportedArticle = articleService.get(Integer.parseInt(request.getParameter("no")));
+    request.setAttribute("reportedArticle", reportedArticle);
 
-      request.getRequestDispatcher("/report/report-article.jsp").include(request, response);
+    return "/report/report-article.jsp";
 
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
-    }
   }
 }
