@@ -60,7 +60,7 @@ public class ArticleController {
 
   @RequestMapping("/list")
   public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag) throws Exception {
+      String keywordTag, Integer tagNo) throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
@@ -75,6 +75,9 @@ public class ArticleController {
 
       mv.addObject("articles", articleService.list(keywordMap));
 
+    } else if (tagNo != null) {
+      mv.addObject("tag", tagService.get(tagNo));
+      mv.addObject("articles", articleService.listByTagNo(tagNo));
     } else {
       mv.addObject("articles", articleService.list());
     }
@@ -87,11 +90,20 @@ public class ArticleController {
   public ModelAndView list(HttpSession session) throws Exception {
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("articles", articleService.list((User)session.getAttribute("loginUser")));
+    mv.addObject("articleList", articleService.list((User)session.getAttribute("loginUser")));
     mv.setViewName("/article/writtenList.jsp");
     return mv;
   }
 
+  @RequestMapping("/community")
+  public ModelAndView tagList() throws Exception {
+
+    ModelAndView mv = new ModelAndView();
+
+    mv.addObject("tagList", tagService.list((String)null));
+    mv.setViewName("/article/community.jsp");
+    return mv;
+  }
 
   @RequestMapping("/detail")
   public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
@@ -143,7 +155,6 @@ public class ArticleController {
     return "redirect:detail?no=" + article.getNo();
   }
 
-
   @RequestMapping("/delete")
   public String delete(int no) throws Exception {
     if (articleService.delete(no) == 0) {
@@ -151,7 +162,6 @@ public class ArticleController {
     }
     return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
   }
-
 
   @InitBinder
   public void initBinder(WebDataBinder binder) {

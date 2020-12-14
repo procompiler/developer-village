@@ -22,7 +22,6 @@
 		<button>변경</button>
 	</form>
 	<br>
-
 	<form action='update' method='post'>
 		<input type='hidden' name='no' value='${user.no}'><br>
 		<p>
@@ -47,7 +46,6 @@
 				<p>깃허브 가입회원</p>
 			</c:when>
 		</c:choose>
-
 		<p>
 			소개: <input type='text' name='bio' value='${user.bio}'>
 		</p>

@@ -7,6 +7,7 @@ public class Tag {
   private String tagColor;
   private String fontColor;
   private int state; // 활성상태 0 안보임 1 보임
+  private boolean followed;
 
   public int getNo() {
     return no;
@@ -49,4 +50,11 @@ public class Tag {
   public void setState(int state) {
     this.state = state;
   }
+  public boolean isFollowed() {
+    return followed;
+  }
+  public void setFollowed(boolean followed) {
+    this.followed = followed;
+  }
+  
 }

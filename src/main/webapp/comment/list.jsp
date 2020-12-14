@@ -11,7 +11,7 @@
 <title>댓글 목록</title>
 </head>
 <body>
-	<<h2>Comments</h2>
+	<br><h2>Comments</h2>
 
 	<c:forEach items="${comments}" var="comment">
 		<c:if test="${fn:length(comments) != 0}">

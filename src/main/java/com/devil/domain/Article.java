@@ -2,7 +2,6 @@ package com.devil.domain;
 
 import java.util.Date;
 import java.util.List;
-
 public class Article {
   private int no;
   private User writer;

@@ -1,5 +1,6 @@
 package com.devil.web;
 
+<<<<<<< HEAD
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
@@ -14,12 +15,16 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
 
+
 @Controller
 @RequestMapping("/badge")
 public class BadgeController {
 
+
   @Autowired ServletContext servletContext;
   @Autowired BadgeService badgeService;
+
+
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {

@@ -21,5 +21,4 @@ public class CollectController {
     mv.setViewName("/collect/list.jsp");
     return mv;
   }
-
 }
