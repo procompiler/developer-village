@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.devil.domain.Badge;
 import com.devil.service.BadgeService;
-
+/*
 @Controller
 public class BadgeListController  {
 	BadgeService badgeService;
@@ -39,5 +39,5 @@ public class BadgeListController  {
     return "/badge/form.jsp";
   }
 	
-	
+	*/
 }

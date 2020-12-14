@@ -1,5 +1,5 @@
 package com.devil.web;
-
+/*
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
@@ -18,8 +18,11 @@ import net.coobird.thumbnailator.name.Rename;
 @RequestMapping("/badge")
 public class BadgeController {
 
-  @Autowired ServletContext servletContext;
-  @Autowired BadgeService badgeService;
+  @Autowired
+  ServletContext servletContext;
+
+  @Autowired
+  BadgeService badgeService;
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
@@ -29,15 +32,16 @@ public class BadgeController {
     return mv;
   }
 
-  @RequestMapping("add")
-  public String add(String name, String content,Part photoFile) throws Exception {
+  @RequestMapping("/add")
+  public String add(String name, String content,Part photoFile)
+      throws Exception {
+
+    String filename = UUID.randomUUID().toString();
+    String saveFilePath = servletContext.getRealPath("/upload/tag/" + filename);
 
     Badge badge = new Badge();
     badge.setName(name);
     badge.setContent(content);
-
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
 
     photoFile.write(saveFilePath);
     badge.setPhoto(filename);
@@ -49,14 +53,6 @@ public class BadgeController {
   }
 
 
-  @RequestMapping("delete")
-  public String delete(int no) throws Exception {
-
-    if (badgeService.delete(no) == 0) {
-      throw new Exception("해당 번호의 뱃지 없습니다.");
-    }
-    return "redirect:list";
-  }
 
   @RequestMapping("detail")
   public ModelAndView deatil(int no) throws Exception {
@@ -72,7 +68,7 @@ public class BadgeController {
     return mv;
   }
 
-  @RequestMapping("list")
+  @RequestMapping("/list")
   public ModelAndView list() throws Exception {
     ModelAndView mv = new ModelAndView();
 
@@ -82,14 +78,14 @@ public class BadgeController {
 
   }
 
-  @RequestMapping("update")
+  @RequestMapping("/update")
   public String update(Badge badge) throws Exception {
 
     badgeService.update(badge);
     return "redirect:list";
   }
 
-  @RequestMapping("updatePhoto")
+  @RequestMapping("/badge/updatePhoto")
   public String updatePhoto(int no, Part photoFile) throws Exception {
 
     Badge badge = new Badge();
@@ -98,7 +94,7 @@ public class BadgeController {
     // 뱃지 사진 파일 저장
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
-      String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
+      String saveFilePath = servletContext.getRealPath("/upload/user/" + filename);
       photoFile.write(saveFilePath);
       badge.setPhoto(filename);
 
@@ -151,4 +147,7 @@ public class BadgeController {
       e.printStackTrace();
     }
   }
+*/
+
+
 }

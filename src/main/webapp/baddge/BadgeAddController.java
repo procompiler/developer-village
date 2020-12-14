@@ -1,7 +1,6 @@
 package com.devil.web;
 
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -13,15 +12,15 @@ import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
-
+/*
 @Controller
 public class BadgeAddController {
-	
-	BadgeService badgeService;
-	
-	 public BadgeAddController(BadgeService badgeService) {
-		    this.badgeService = badgeService;
-		  }
+
+  BadgeService badgeService;
+
+  public BadgeAddController(BadgeService badgeService) {
+    this.badgeService = badgeService;
+  }
 
   @RequestMapping("/badge/add")
   public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -30,7 +29,7 @@ public class BadgeAddController {
     Badge badge = new Badge();
     badge.setName(request.getParameter("name"));
     badge.setContent(request.getParameter("content"));
-    
+
     Part photoPart = request.getPart("photo");
 
     String filename = UUID.randomUUID().toString();
@@ -46,31 +45,32 @@ public class BadgeAddController {
     return "redirect:list";
   }
 
-    private void generatePhotoThumbnail(String saveFilePath) {
-        try {
-          Thumbnails.of(saveFilePath)
-          .size(30, 30)
-          .outputFormat("jpg")
-          .crop(Positions.CENTER)
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_30x30";
-            }
-          });
+  private void generatePhotoThumbnail(String saveFilePath) {
+    try {
+      Thumbnails.of(saveFilePath)
+      .size(30, 30)
+      .outputFormat("jpg")
+      .crop(Positions.CENTER)
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_30x30";
+        }
+      });
 
-          Thumbnails.of(saveFilePath)
-          .size(120, 120)
-          .outputFormat("jpg")
-          .crop(Positions.CENTER)
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_120x120";
-            }
-          });
-        } catch (Exception e) {
-    	e.printStackTrace();
+      Thumbnails.of(saveFilePath)
+      .size(120, 120)
+      .outputFormat("jpg")
+      .crop(Positions.CENTER)
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_120x120";
+        }
+      });
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 }
+*/
