@@ -1,6 +1,5 @@
 package com.devil.web;
 
-<<<<<<< HEAD
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
