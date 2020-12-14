@@ -60,7 +60,7 @@ public class ArticleController {
 
   @RequestMapping("/list")
   public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag) throws Exception {
+      String keywordTag, int tagNo) throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
@@ -75,6 +75,8 @@ public class ArticleController {
 
       mv.addObject("articles", articleService.list(keywordMap));
 
+    } else if (tagNo != 0) {
+      mv.addObject("articles", articleService.listByTagNo(tagNo));
     } else {
       mv.addObject("articles", articleService.list());
     }
