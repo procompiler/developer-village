@@ -87,12 +87,12 @@ public class UserController {
   }
 
   @RequestMapping("list")
-  public ModelAndView list() throws Exception {
+  public ModelAndView list(String keyword) throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
     mv.addObject("followingUsers", userService.list((User)httpSession.getAttribute("loginUser")));
-    mv.addObject("list", userService.list((String)null));
+    mv.addObject("list", userService.list(keyword));
     mv.setViewName("/user/list.jsp");
 
     return mv;

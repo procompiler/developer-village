@@ -26,7 +26,7 @@
 	<br>
 
 	<%
-	  List<Report> list = (List<Report>) request.getAttribute("reportList");
+	  List<Report> list = (List<Report>) request.getAttribute("reportArticleList");
 	%>
 
 	<table border='1'>

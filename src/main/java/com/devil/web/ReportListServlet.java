@@ -1,41 +1,33 @@
 package com.devil.web;
 
-import java.io.IOException;
 import java.util.List;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Report;
 import com.devil.service.ReportService;
 
-@WebServlet("/report/list")
-public class ReportListServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
+@Controller
+public class ReportListServlet {
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  ReportService reportService;
 
-    ServletContext ctx = request.getServletContext();
-    ReportService reportService = (ReportService) ctx.getAttribute("reportService");
+  public ReportListServlet(ReportService reportService) {
+    this.reportService = reportService;
+  }
 
+  @RequestMapping("/report/list")
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     response.setContentType("text/html;charset=UTF-8");
-    try {
 
-      List<Report> reportList = null;
-      reportList = reportService.list(null);
+    List<Report> reportArticleList = reportService.articleList((String)null);
+    List<Report> reportCommentList = reportService.commentList((String)null);
 
-      request.setAttribute("reportList", reportList);
-      request.getRequestDispatcher("/report/list.jsp").include(request, response);
+    request.setAttribute("reportCommentList", reportCommentList);
+    request.setAttribute("reportArticleList", reportArticleList);
+    return "/report/list.jsp";
 
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
-    }
   }
 
 }
