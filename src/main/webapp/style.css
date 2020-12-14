@@ -22,6 +22,8 @@ body {
 
 /* 상단바 */
 header {
+  position: fixed;
+	z-index: 2;
   background-color: #2E3034;
   color: #6C5DDF;
   text-align: center;

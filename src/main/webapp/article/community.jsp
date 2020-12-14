@@ -3,7 +3,8 @@
 <%@page import="com.devil.domain.Tag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,38 +12,30 @@
 <title>커뮤니티</title>
 <jsp:include page="/header.jsp"></jsp:include>
 <h1>커뮤니티</h1>
-<table border='1'>
-	<thead>
-		<tr>
-			<th>태그이름</th>
-			<th>태그사진</th>
-			<th>미리보기</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<%
-		  List<Tag> list = (List<Tag>) request.getAttribute("list");
-		List<Tag> userTagNoList = (List<Tag>) request.getAttribute("userTagNoList");
-		for (Tag tag : list) {
-		  boolean followed = userTagNoList.contains(tag.getNo());
-		  if (tag.getState() == 0) {
-		    continue;
-		  }
-		%>
-		<tr>
-			<td id="title"><a href='list?tagNo=<%=tag.getNo()%>'><%=tag.getName()%></a></td>
-			<td><img src='../upload/tag/<%=tag.getPhoto()%>_80x80.png'
-				alt='<%=tag.getPhoto()%>'></td>
-			<td><span id="color"
-				style="background-color:#<%=tag.getTagColor()%>; color:#<%=tag.getFontColor()%>"><%=tag.getName()%></span></td>
-			<td><a class="btn <%=followed ? " btn-hollow" : ""%>"
-				href="../follow/tag/<%=followed ? "delete" : "add"%>?tno=<%=tag.getNo()%>">
-					<%=followed ? "언팔로우" : "팔로우"%></a></td>
-		</tr>
-		<%
-		  }
-		%>
-	</tbody>
-</table>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <c:forEach items="${tagList}" var="t">
+    <div class="col">
+      <div class="card" style="width: 15rem;">
+        <div class="card-band" style="background-color: #${t.tagColor}"></div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href='detail?no=${t.no}'>#${t.name}</a>
+          </h5>
+          <img style="float: right;"
+            src='../../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
+          <c:choose>
+            <c:when test="${t.followed}">
+              <a class="btn btn-outline-danger"
+                href="../follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
+            </c:when>
+            <c:otherwise>
+              <a class="btn btn-primary"
+                href="../follow/addTag?followeeNo=${t.no}">팔로우</a>
+            </c:otherwise>
+          </c:choose>
+        </div>
+      </div>
+    </div>
+  </c:forEach>
+</div>
 <jsp:include page="/footer.jsp"></jsp:include>
