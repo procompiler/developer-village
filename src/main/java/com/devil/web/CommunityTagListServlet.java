@@ -13,7 +13,7 @@ import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.TagService;
 
-@WebServlet("/community/taglist")
+@WebServlet("/community")
 public class CommunityTagListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
