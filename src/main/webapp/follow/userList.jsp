@@ -6,21 +6,8 @@
 <html>
 <head>
 <title>마이페이지</title>
-<link rel="stylesheet" type="text/css" href='../style.css'>
-<link rel="stylesheet"
-	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-	crossorigin="anonymous" />
-<style>
-#urls {
-	padding: 5px;
-	font-size: 2em;
-}
-</style>
-</head>
-<body>
 	<jsp:include page="/header.jsp"></jsp:include>
-	<jsp:include page="/mypage/info.jsp"></jsp:include>
+	<jsp:include page="/user/info.jsp"></jsp:include>
 	<h2>팔로우하는 유저</h2>
 	<div class="row row-cols-1 row-cols-md-3 g-4">
 		<c:forEach items="${userList}" var="u">

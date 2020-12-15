@@ -21,7 +21,7 @@ User user = (User) session.getAttribute("loginUser");
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
     </d /iv>
-    <a href="<%=contextPath%>/app/article/writtenList">
+    <a href="<%=contextPath%>/app/user/detail?no=<%=user.getNo()%>">
      <div class="user-card">
       <div class="user-photo">
         <img src="<%=contextPath%>/upload/user/<%=user.getPhoto()%>_60x60.jpg"/>
