@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,6 @@ public class UserController {
   @Autowired UserService userService;
   @Autowired ServletContext servletContext;
   @Autowired FollowService followService;
-  @Autowired HttpSession httpSession;
 
   @RequestMapping("add")
   public String add(
@@ -64,35 +64,37 @@ public class UserController {
   }
 
   @RequestMapping("detail")
-  protected ModelAndView detail(int no) throws Exception {
+  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
 
     User user = userService.get(no);
     if (user == null) {
       throw new Exception("해당 번호의 유저가 없습니다!");
     }
 
-    Map<String, Object> map = new HashMap<>();
-    map.put("userNo", ((User)httpSession.getAttribute("loginUser")).getNo());
-    map.put("followeeNo", no);
-    if (followService.getUser(map) != null) {
-      httpSession.setAttribute("followed", true);
-    } else {
-      httpSession.setAttribute("followed", false);
-    }
-
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", user);
+
+    Map<String, Object> map = new HashMap<>();
+    map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
+    map.put("followeeNo", no);
+    if (followService.getUser(map) != null) {
+      session.setAttribute("followed", true);
+    } else {
+      session.setAttribute("followed", false);
+    }
+
     mv.setViewName("/user/detail.jsp");
     return mv;
   }
 
   @RequestMapping("list")
-  public ModelAndView list(String keyword) throws Exception {
+  public ModelAndView list(String keyword, HttpSession session) throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
-    mv.addObject("followingUsers", userService.list((User)httpSession.getAttribute("loginUser")));
     mv.addObject("list", userService.list(keyword));
+
+    mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
     mv.setViewName("/user/list.jsp");
 
     return mv;

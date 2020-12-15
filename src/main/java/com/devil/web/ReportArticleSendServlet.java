@@ -1,36 +1,29 @@
 package com.devil.web;
 
-import java.io.IOException;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
 import com.devil.domain.Article;
 import com.devil.domain.Report;
 import com.devil.domain.User;
 import com.devil.service.ReportService;
 
-@WebServlet("/report/reportArticle-send")
-public class ReportArticleSendServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
+@Controller
+public class ReportArticleSendServlet {
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  ReportService reportService;
 
-    HttpSession session = request.getSession();
-    ServletContext ctx = request.getServletContext();
-    ReportService reportService =
-        (ReportService) ctx.getAttribute("reportService");
+  public ReportArticleSendServlet(ReportService reportService) {
+    this.reportService = reportService;
+  }
 
+  //@RequestMapping("/report/reportArticle-send")
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     Article reportedArticle = new Article();
     reportedArticle.setNo(Integer.parseInt(request.getParameter("articleNo")));
 
-    User reporter = (User) session.getAttribute("loginUser");
+    User reporter = (User) request.getSession().getAttribute("loginUser");
 
 
     Report report = new Report();
@@ -40,14 +33,8 @@ public class ReportArticleSendServlet extends HttpServlet {
 
     response.setContentType("text/html;charset=UTF-8");
 
-    try {
-      reportService.reportArticle(report);
-      response.sendRedirect("../article/detail?no=" + reportedArticle.getNo());
+    reportService.reportArticle(report);
+    return "../article/detail?no=" + reportedArticle.getNo();
 
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
-      return;
-    }
   }
 }

@@ -88,7 +88,7 @@
 			<td><%=user.getNo()%></td>
 			<td><%=user.getEmail()%></td>
 			<td><a href='detail?no=<%=user.getNo()%>'> <img
-					src='../upload/user/<%=user.getPhoto()%>_40x40.jpg'
+					src='../../upload/user/<%=user.getPhoto()%>_40x40.jpg'
 					style='border-radius: 70px' alt='[<%=user.getPhoto()%>_80x80]'><%=user.getNickname()%></a></td>
 			<td><%=user.getName()%></td>
 			<td><%=formatter.format(user.getCreatedDate())%></td>
