@@ -542,11 +542,6 @@ INSERT INTO repo_arc (rpno, arno) VALUES (2,7);
 INSERT INTO repo_comt (rpno, cno) VALUES (3,5);
 INSERT INTO repo_comt (rpno, cno) VALUES (4,3);
 
-INSERT INTO repo_user (rpno, arno) VALUES (5,3);
-INSERT INTO repo_user (rpno, arno) VALUES (6,10);
-
-
-
 
 INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (1,1,1, '0');
 INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (2,2,2, '10');

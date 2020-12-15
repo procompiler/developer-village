@@ -16,8 +16,8 @@
 
 	<form action='updatePhoto' method='post' enctype='multipart/form-data'>
 		<input type='hidden' name='no' value='${user.no}'><br> <a
-			href='../upload/user/${user.photo}%>'> <img
-			src='../upload/user/${user.photo}_160x160.jpg' alt='[${user.photo}]'></a><br>
+			href='../../upload/user/${user.photo}%>'> <img
+			src='../../upload/user/${user.photo}_160x160.jpg' alt='[${user.photo}]'></a><br>
 		<input type='file' name='photo'><br>
 		<button>변경</button>
 	</form>
@@ -65,11 +65,11 @@
 		<p>
 			트위터: <input type='text' name='twitterURL' value='${user.twitterURL}'>
 		</p>
-		<% boolean followed = (Boolean) request.getAttribute("followed"); %>
+<%-- 		<% boolean followed = (Boolean) request.getAttribute("followed"); %>
 		<a class="btn <%=followed ? "btn-outline-danger" : "btn-primary"%>" 
 			href='../follow/user/<%=followed ? "delete" : "add"%>?followeeNo=${user.no}'>
 			<%=followed ? "언팔로우" : "팔로우"%>
-		</a>
+		</a> --%>
 		<c:if test="${user.state == 1}">
       탈퇴한 회원
       </c:if>
