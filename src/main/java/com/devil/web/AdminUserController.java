@@ -20,16 +20,16 @@ public class AdminUserController {
   @Autowired ServletContext servletContext;
   @Autowired FollowService followService;
 
-  @RequestMapping("/UserDelete")
+  @RequestMapping("/userDelete")
   public String delete(int no) throws Exception {
 
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-    return "redirect:list";
+    return "redirect:userList";
   }
 
-  @RequestMapping("/UserDetail")
+  @RequestMapping("/userDetail")
   public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
 
     User user = userService.get(no);
@@ -49,7 +49,7 @@ public class AdminUserController {
       session.setAttribute("followed", false);
     }
 
-    mv.setViewName("/user/detail.jsp");
+    mv.setViewName("/admin/detail.jsp");
     return mv;
   }
 
@@ -61,7 +61,7 @@ public class AdminUserController {
     mv.addObject("list", userService.list(keyword));
 
     mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
-    mv.setViewName("/user/list.jsp");
+    mv.setViewName("/admin/list.jsp");
 
     return mv;
   }
