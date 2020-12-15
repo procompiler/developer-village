@@ -2,6 +2,8 @@
   pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +38,7 @@
 	      <tr>
 	        <td>${badge.no}</td>
 	        <td id="name"><a href='detail?no=${badge.no}'>${badge.name}</a></td>
-	        <td><img style="width: 40px;" src='../upload/badge/${badge.photo}_160x160.png'></td>
+	        <td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
 	        <td>${badge.content}</td>
 	      <tr>
 	    </c:forEach>
