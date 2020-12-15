@@ -19,27 +19,27 @@
 </style>
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/mypage/info.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/mypage/info.jsp"></jsp:include>
 	<h2>팔로우하는 유저</h2>
-	<table border='1'>
-	 <thead>
-		<tr>
-			<th>닉네임</th>
-			<th></th>
-		</tr>
-   <thead>
-   <tbody>
-   <c:forEach items="${userList}" var="u">
-		<tr>
-			<td><a href='../user/detail?no=${u.no}'> <img
-					src='../upload/user/${u.photo}_40x40.jpg'
-					style='border-radius: 70px' alt='[${u.nickname}]'>${u.nickname}</a></td>
-		  <td><a class='btn btn-outline-danger' href='delete?followeeNo=${u.no}'>언팔로우</a></td>
-		</tr>
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		<c:forEach items="${userList}" var="u">
+			<div class="col">
+					<div class="card h-100">
+					<a href='../user/detail?no=${u.no}'> <img class="card-img-top"
+						src='../upload/user/${u.photo}_40x40.jpg'
+						style='border-radius: 70px' alt='[${u.nickname}]'>
+						<div class="card-body">
+							<h5 class="card-title">${u.nickname}</h5>
+							<p class="card-text"></p>
+							<a class='btn btn-outline-danger'
+								href='delete?followeeNo=${u.no}'>언팔로우</a>
+						</div>
+					</a>
+				</div>
+			</div>
 		</c:forEach>
-		</tbody>
-	</table>
+	</div>
 	<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>
