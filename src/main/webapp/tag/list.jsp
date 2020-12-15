@@ -18,34 +18,33 @@
   '${param.keyword}'(으)로 검색한 결과입니다.
   </c:if>
 </form>
-<table border='1'>
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			<c:forEach items="${tagList}" var="t">
-				<div class="col">
-					<div class="card" style="width: 15rem;">
-						<div class="card-band" style="background-color: #${t.tagColor}"></div>
-						<div class="card-body">
-							<h5 class="card-title">
-								<a href='detail?no=${t.no}'>#${t.name}</a>
-							</h5>
-							<img style="float: right;"
-								src='../../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
-							<c:if test="${t.state == 0}">
-								<p>삭제됨</p>
-							</c:if>
-							<c:choose>
-								<c:when test="${t.followed}">
-									<a class="btn btn-outline-danger"
-										href="../follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
-								</c:when>
-								<c:otherwise>
-									<a class="btn btn-primary"
-										href="../follow/addTag?followeeNo=${t.no}">팔로우</a>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+	<c:forEach items="${tagList}" var="t">
+		<div class="col">
+			<div class="card" style="width: 15rem;">
+				<div class="card-band" style="background-color: ${t.tagColor}"></div>
+				<div class="card-body">
+					<h5 class="card-title">
+						<a href='detail?no=${t.no}'>#${t.name}</a>
+					</h5>
+					<img style="float: right;"
+						src='../../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
+					<c:if test="${t.state == 0}">
+						<p>삭제됨</p>
+					</c:if>
+					<c:choose>
+						<c:when test="${t.followed}">
+							<a class="btn btn-outline-danger"
+								href="../follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
+						</c:when>
+						<c:otherwise>
+							<a class="btn btn-primary"
+								href="../follow/addTag?followeeNo=${t.no}">팔로우</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
-			</c:forEach>
+			</div>
 		</div>
-		<jsp:include page="/footer.jsp"></jsp:include>
+	</c:forEach>
+</div>
+<jsp:include page="/footer.jsp"></jsp:include>

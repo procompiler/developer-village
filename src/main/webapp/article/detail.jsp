@@ -42,7 +42,8 @@
       <br>
       <p class="card-text">
         <img src='../../upload/user/${article.writer.photo}_40x40.jpg'
-          style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>${article.writer.nickname}</p>
+          style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>
+          <a href='../user/detail?no=${article.writer.no}'>${article.writer.nickname}</a></p>
       <p class="card-text text-end">조회수: ${article.viewCount}</p>
       <hr>
       <p class="card-text">
@@ -54,8 +55,11 @@
   </div>
 </div>
 <br>
+  <c:if test="">
   <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
   <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
+  </c:if>
+  
   <a class="btn btn-danger"
     href='../report/reportArticle?no=${article.no}'>신고</a>
       <c:choose>

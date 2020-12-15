@@ -33,7 +33,7 @@
 			</c:otherwise>
 		</c:choose>
 	</h1>
-	<button type='button' class="btn btn-primary" onclick="location.href='form'">글쓰기</button>
+	<a class="btn btn-primary" href="form">글쓰기</a>
   
   <c:if test="${param.keyword != null}">
   '${param.keyword}'로 검색한 결과입니다.
@@ -78,7 +78,7 @@
               <ul id='tags'>
                 <c:forEach items="${article.tags}" var="tag">
                   <li id='color'
-                    style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+                    style="background-color: #${tag.tagColor}; color: #${tag.fontColor};">${tag.name}</li>
                 </c:forEach>
               </ul> <a href='detail?no=${article.no}'>${article.title}</a>
             </td>

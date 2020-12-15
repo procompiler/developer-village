@@ -15,8 +15,6 @@
 </head>
   <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
-  <button type='button'
-      onclick="location.href='${pageContext.request.contextPath}/badge/form.jsp'">뱃지추가</button>
 	<button type='button' class='btn btn-primary'
 	onclick="location.href='form'">뱃지 추가</button>
 	
@@ -38,7 +36,7 @@
 	      <tr>
 	        <td>${badge.no}</td>
 	        <td id="name"><a href='detail?no=${badge.no}'>${badge.name}</a></td>
-	        <td><img style="width: 40px;" src="../upload/badge/${badge.photo}_160x160.png"></td>
+	        <td><img style="width: 40px;" src='../upload/badge/${badge.photo}_160x160.png'></td>
 	        <td>${badge.content}</td>
 	      <tr>
 	    </c:forEach>

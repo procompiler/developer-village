@@ -90,11 +90,11 @@ public class ArticleController {
   public ModelAndView list(HttpSession session) throws Exception {
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("articles", articleService.list((User)session.getAttribute("loginUser")));
+    mv.addObject("articleList", articleService.list((User)session.getAttribute("loginUser")));
     mv.setViewName("/article/writtenList.jsp");
     return mv;
   }
-  
+
   @RequestMapping("/community")
   public ModelAndView tagList() throws Exception {
 
@@ -155,7 +155,6 @@ public class ArticleController {
     return "redirect:detail?no=" + article.getNo();
   }
 
-
   @RequestMapping("/delete")
   public String delete(int no) throws Exception {
     if (articleService.delete(no) == 0) {
@@ -163,7 +162,6 @@ public class ArticleController {
     }
     return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
   }
-
 
   @InitBinder
   public void initBinder(WebDataBinder binder) {

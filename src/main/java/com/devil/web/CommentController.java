@@ -59,7 +59,7 @@ public class CommentController {
   @RequestMapping("/writtenList")
   public ModelAndView list(HttpSession session) throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.addObject("comments", commentService.listByWriter((User)session.getAttribute("loginUser")));
+    mv.addObject("commentList", commentService.listByWriter((User)session.getAttribute("loginUser")));
     mv.setViewName("/comment/writtenList.jsp");
     return mv;
   }
