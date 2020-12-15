@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>회원관리</title>
 	  <jsp:include page="/header.jsp"></jsp:include>
-	<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
+	<a href='../admin/userList' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
 	<h1>
@@ -87,8 +87,8 @@
 		<tr>
 			<td><%=user.getNo()%></td>
 			<td><%=user.getEmail()%></td>
-			<td><a href='detail?no=<%=user.getNo()%>'> <img
-					src='../upload/user/<%=user.getPhoto()%>_40x40.jpg'
+			<td><a href='userDetail?no=<%=user.getNo()%>'> <img
+					src='../../upload/user/<%=user.getPhoto()%>_40x40.jpg'
 					style='border-radius: 70px' alt='[<%=user.getPhoto()%>_80x80]'><%=user.getNickname()%></a></td>
 			<td><%=user.getName()%></td>
 			<td><%=formatter.format(user.getCreatedDate())%></td>

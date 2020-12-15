@@ -50,8 +50,13 @@ public class DefaultReportService implements ReportService {
   }
 
   @Override
-  public List<Report> list(String keyword) throws Exception {
-    return reportDao.findAll(keyword);
+  public List<Report> articleList(String keyword) throws Exception {
+    return reportDao.findAllArticle(keyword);
+  }
+
+  @Override
+  public List<Report> commentList(String keyword) throws Exception {
+    return reportDao.findAllComment(keyword);
   }
 
   @Override

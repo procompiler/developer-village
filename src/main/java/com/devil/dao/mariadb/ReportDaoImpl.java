@@ -53,9 +53,16 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public List<Report> findAll(String keyword) throws Exception {
+  public List<Report> findAllArticle(String keyword) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("ReportDao.findAll", keyword);
+      return sqlSession.selectList("ReportDao.findAllArticle", keyword);
+    }
+  }
+
+  @Override
+  public List<Report> findAllComment(String keyword) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ReportDao.findAllComment", keyword);
     }
   }
 
