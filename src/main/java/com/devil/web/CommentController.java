@@ -13,6 +13,7 @@ import com.devil.domain.Comment;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.CommentService;
+import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/comment")
@@ -22,6 +23,8 @@ public class CommentController {
   ArticleService articleService;
   @Autowired
   CommentService commentService;
+  @Autowired
+  UserService userService;
 
   @RequestMapping(value = "/add", method=RequestMethod.POST)
   public String add(int arno, int step, int momno, String content, HttpSession session) throws Exception {
@@ -59,6 +62,7 @@ public class CommentController {
   @RequestMapping("/writtenList")
   public ModelAndView list(User user, HttpSession session) throws Exception {
     ModelAndView mv = new ModelAndView();
+    mv.addObject("user", userService.get(user.getNo()));
     mv.addObject("commentList", commentService.listByWriter(user));
     mv.setViewName("/comment/writtenList.jsp");
     return mv;
