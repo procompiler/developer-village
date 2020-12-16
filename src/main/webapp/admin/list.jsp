@@ -10,12 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
-	  <jsp:include page="/header.jsp"></jsp:include>
+	  <jsp:include page="/admin-header.jsp"></jsp:include>
 	<a href='../admin/userList' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
 	<h1>
-		<a href='list' style='text-decoration: none;'>전체 회원관리</a>
+		<a href='userList' style='text-decoration: none;'>전체 회원관리</a>
 	</h1>
 	<br>
 

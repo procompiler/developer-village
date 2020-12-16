@@ -67,6 +67,13 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
+  public List<Report> findAll(String keyword) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ReportDao.findAll", keyword);
+    }
+  }
+
+  @Override
   public Report findByNo(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectOne("ReportDao.findByNo", no);

@@ -26,13 +26,15 @@
 	<br>
 
 	<%
-	  List<Report> list = (List<Report>) request.getAttribute("reportArticleList");
+	  List<Report> list = (List<Report>) request.getAttribute("reportList");
 	%>
 
 	<table border='1'>
 		<tr>
+		<th>번호</th>
 			<th>신고자</th>
 			<th>피신고자</th>
+			<th>신고날짜</th>
 			<th>신고링크</th>
 			<th>신고사유</th>
 			<th>신고승인</th>
@@ -42,47 +44,41 @@
 		  for (Report report : list) {
 		%>
 		<%
-		  boolean blockAdmit = false;
-		%>
-		<%
 		  String reportType = null;
 		%>
 		<%
 		  switch (report.getReportTypeNo()) {
-		  case 1:
-		    reportType = "욕설";
-		    break;
-		  case 2:
-		    reportType = "권리침해";
-		    break;
-		  case 3:
-		    reportType = "폭력적 또는 혐오성 게시글";
-		    break;
-		  case 4:
-		    reportType = "불법광고";
-		    break;
-		  case 5:
-		    reportType = "음란성";
-		    break;
-		  case 6:
-		    reportType = "도배";
-		    break;
+		  case 1: reportType = "욕설"; break;
+		  case 2: reportType = "권리침해"; break;
+		  case 3: reportType = "폭력적 또는 혐오성 게시글"; break;
+		  case 4: reportType = "불법광고"; break;
+		  case 5: reportType = "음란성"; break;
+		  case 6: reportType = "도배"; break;
 		}
 		%>
 
+
 		<tr>
+		  <td><%=report.getNo()%></td>
 			<td><%=report.getReporter().getNickname()%> [<%=report.getReporter().getEmail()%>]</td>
-			<td><%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]
-			<%
-			if(report.getReportedArticle() == null) {%>
+			<td>
+			<%if(report.getReportedArticle() == null) {%>
 			<%=report.getReportedComment().getWriter().getNickname()%> [<%=report.getReportedComment().getWriter().getEmail()%>]
-			<% }	%>
-			
+      <%} else {%>	
+			<%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]
+      <%} %>
 			</td>
+			<td><%=report.getCreatedDate()%></td>
+			<td>
+			<%if(report.getReportedArticle() == null) {%>
+				  <a href='../article/detail?no=<%=report.getReportedComment().getArticleNo()%>'
+        style='text-decoration: none;'>댓글 신고 링크</a>
+        <%} else {%>
+			<a href='../article/detail?no=<%=report.getReportedArticle().getNo()%>'
+				style='text-decoration: none;'>게시글 신고 링크</a>
+				<%} %>
 			
-			<td><a
-				href='../article/detail?no=<%=report.getReportedArticle().getNo()%>'
-				style='text-decoration: none;'>신고 링크</a></td>
+				</td>
 			<td><%=reportType%></td>
 
 			<td>

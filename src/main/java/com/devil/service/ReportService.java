@@ -8,5 +8,6 @@ public interface ReportService {
   int reportComment(Report report) throws Exception;
   List<Report> articleList (String keyword) throws Exception;
   List<Report> commentList (String keyword) throws Exception;
+  List<Report> list (String keyword) throws Exception;
   Report get(int no) throws Exception;
 }

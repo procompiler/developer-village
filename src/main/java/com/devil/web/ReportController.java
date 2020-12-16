@@ -79,8 +79,7 @@ public class ReportController {
   public ModelAndView list(String keyword) throws Exception {
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("reportArticleList", reportService.articleList((String)null));
-    mv.addObject("reportCommentList", reportService.commentList((String)null));
+    mv.addObject("reportList", reportService.list((String)null));
     mv.setViewName("/report/list.jsp");
 
     return mv;
