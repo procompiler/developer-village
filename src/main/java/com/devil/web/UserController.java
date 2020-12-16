@@ -64,7 +64,7 @@ public class UserController {
       if (user == null) {
         throw new Exception("해당 번호의 유저가 없습니다!");
       }
-  
+      
       ModelAndView mv = new ModelAndView();
       mv.addObject("user", user);
   

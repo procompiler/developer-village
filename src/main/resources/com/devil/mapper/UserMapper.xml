@@ -25,6 +25,8 @@
 		<result column="noti"   		property="noti" />
 		<result column="bio" 	    	property="bio" />
 		<result column="state" 	  	property="state" />
+		<result column="fwing_cnt"  property="followingCount"/>
+		<result column="fwer_cnt"   property="followerCount"/>
 	</resultMap>
 
 	<sql id="sql1">
@@ -44,7 +46,9 @@
 		u.pwd,
 		u.photo,
 		u.cdt,
-		u.log_type
+		u.log_type,
+		(select count(*) from follow f where u.uno = f.fwer_no) as fwing_cnt,
+		(select count(*) from follow f where u.uno = f.fwing_no) as fwer_cnt
 		from
 		user u
 	</sql>
@@ -99,24 +103,7 @@
   
 	<select id="findByEmailPassword" parameterType="map"
 		resultMap="UserMap">
-		select
-	    u.uno,
-	    u.email,
-	    u.nick,
-	    u.name,
-	    u.hp_url,
-	    u.gh_url,
-	    u.in_url,
-	    u.tw_url,
-	    u.rnt_vsdt,
-	    u.bio,
-	    u.state,
-	    u.pwd,
-	    u.photo,
-	    u.cdt,
-	    u.log_type
-    from
-	    user u
+		<include refid="sql1" />
 		where
 		u.email = #{email}
 		and u.pwd = password(#{password})
