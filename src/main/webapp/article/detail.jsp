@@ -6,6 +6,8 @@
 <head>
 <title>게시글 조회</title>
   <jsp:include page="/header.jsp"></jsp:include>
+</head>
+<body>
   <h1>
     <c:choose>
       <c:when test="${article.categoryNo == 1}">
@@ -73,3 +75,5 @@
  <br>
   <jsp:include page="/app/comment/list"></jsp:include>
   <jsp:include page="/footer.jsp"></jsp:include>
+</body>
+</html>

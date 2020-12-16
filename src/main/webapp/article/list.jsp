@@ -10,6 +10,8 @@
 <head>
 <title>게시글목록</title>
 	<jsp:include page="/header.jsp"></jsp:include>
+</head>
+<body>
 
 	<h1>
 		<c:choose>
@@ -118,3 +120,6 @@
 	</form>
 	</p>
 	<jsp:include page="/footer.jsp"></jsp:include>
+	
+	</body>
+	</html>

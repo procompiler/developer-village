@@ -8,6 +8,8 @@
 <head>
 <title>게시글 수정</title>
 	<jsp:include page="/header.jsp"></jsp:include>
+</head>
+<body>
 	<h1>
 		<c:choose>
 			<c:when test="${article.categoryNo == 1}">

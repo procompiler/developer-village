@@ -11,8 +11,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원관리</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+<title>활동정지회원</title>
+    <jsp:include page="/admin-header.jsp"></jsp:include>
 
 </head>
 <body>

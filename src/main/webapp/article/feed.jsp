@@ -9,6 +9,8 @@
 <title>마이페이지</title>
 <jsp:include page="/header.jsp"></jsp:include>
 <jsp:include page="/user/info.jsp"></jsp:include>
+</head>
+<body>
 <h2>피드</h2>
 <table border='1'>
 	<thead>
