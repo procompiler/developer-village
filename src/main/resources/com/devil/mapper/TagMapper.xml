@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="TagDao">
+<mapper namespace="com.devil.dao.TagDao">
 	<resultMap type="tag"         id="TagMap">
 		<id column="tno"            property="no" />
 		<result column="name"       property="name" />

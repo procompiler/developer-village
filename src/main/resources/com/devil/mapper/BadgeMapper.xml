@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="BadgeDao">
+<mapper namespace="com.devil.dao.BadgeDao">
 
 	<resultMap type="badge"     id="BadgeMap">
 		<id column="bno"          property="no" />
@@ -11,8 +11,8 @@
 		<result column="photo"    property="photo" />
 		<result column="content"  property="content" />
 		<result column="state"    property="state" />
-		<result column="tno"    property="tagNo"/>
-		<result column="adt"    property="collectDate"/>
+		<result column="tno"      property="tagNo"/>
+		<result column="adt"      property="collectDate"/>
     <!-- 
 		<association property="tagNo"  javaType="tag">
 			<id column="tno"             property="tagNo" />

@@ -34,10 +34,10 @@ public class BadgeController {
 
   @RequestMapping("/add")
   public String add(String name, String content,Part photoFile) throws Exception {
-	 
+
 	  String filename = UUID.randomUUID().toString();
 	  String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
-	  
+
     Badge badge = new Badge();
     badge.setName(name);
     badge.setContent(content);

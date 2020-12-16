@@ -3,29 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ReportDao">
-	<resultMap type="report" id="ReportMap">
-		<id column="rpno" property="no" />
-		<result column="rptno" property="reportTypeNo" />
-		<result column="cdt" property="createdDate" />
+<mapper namespace="com.devil.dao.ReportDao">
+	<resultMap type="report" 	id="ReportMap">
+		<id column="rpno" 		property="no" />
+		<result column="rptno" 	property="reportTypeNo" />
+		<result column="cdt" 	property="createdDate" />
 		<result column="status" property="status" />
-		<result column="pdt" property="processDate" />
+		<result column="pdt" 	property="processDate" />
 
 		<association property="reporter" javaType="user">
-			<id column="uno" property="no" />
-			<result column="reporter_nick" property="nickname" />
-			<result column="reporter_email" property="email" />
+			<id column="uno"				 property="no" />
+			<result column="reporter_nick" 	 property="nickname" />
+			<result column="reporter_email"  property="email" />
 		</association>
 
 		<association property="reportedArticle" javaType="article">
 			<id column="arno" property="no" />
-			<result column="article_title" property="title" />
+			<result column="article_title" 	 property="title" />
 			<result column="article_content" property="content" />
 
 			<association property="writer" javaType="user">
 				<id column="uno" property="no" />
 				<result column="article_writer" property="nickname" />
-				<result column="article_email" property="email" />
+				<result column="article_email"  property="email" />
 			</association>
 		</association>
 
@@ -36,7 +36,7 @@
 
 			<association property="writer" javaType="user">
 				<id column="uno" property="no" />
-				<result column="comment_nick" property="nickname" />
+				<result column="comment_nick"  property="nickname" />
 				<result column="comment_email" property="email" />
 			</association>
 		</association>

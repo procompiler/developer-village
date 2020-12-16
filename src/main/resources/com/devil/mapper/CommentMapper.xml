@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="CommentDao">
+<mapper namespace="com.devil.dao.CommentDao">
   <resultMap type="comment"   id="CommentMap">
     <id column="cno"          property="no"/>
     <result column="arno"     property="articleNo"/>
