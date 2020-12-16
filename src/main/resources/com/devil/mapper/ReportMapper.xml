@@ -88,16 +88,15 @@
 		#{reporter.no}, now())
 	</insert>
 
-	<insert id="insertReportedComment" parameterType="report">
-		insert into repo_comt(rpno, cno)
-		values(#{no}, #{reportedComment.no})
-	</insert>
-
 	<insert id="insertReportedArticle" parameterType="report">
 		insert into repo_arc(rpno, arno)
 		values(#{no}, #{reportedArticle.no})
 	</insert>
 
+	<insert id="insertReportedComment" parameterType="report">
+		insert into repo_comt(rpno, cno)
+		values(#{no}, #{reportedComment.no})
+	</insert>
 
 	<update id="insertStatus" parameterType="block">
 		update report set

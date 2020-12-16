@@ -11,7 +11,7 @@ public interface ReportDao {
   public List<Report> findAllArticle(String keyword) throws Exception;
   public List<Report> findAllComment(String keyword) throws Exception;
   public List<Report> findAll(String keyword) throws Exception;
-  public int delete(int no) throws Exception;
+  public int delete(int no) throws Exception; // Mapper에 구현 안함
   public Report findByNo(int no) throws Exception;
   public int insertStatus(Block block) throws Exception;
 }

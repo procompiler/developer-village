@@ -13,11 +13,6 @@
 		<result column="state"      property="state" />
 	</resultMap>
 
-	<insert id="insert" parameterType="tag">
-		insert into tag(tno, name, photo, tag_color, font_color)
-		values(#{no}, #{name}, #{photo}, #{tagColor}, #{fontColor})
-	</insert>
-
 	<sql id="sql1">
 		select
 			tno,
@@ -29,6 +24,11 @@
 		from
 		  tag
 	</sql>
+
+	<insert id="insert" parameterType="tag">
+		insert into tag(tno, name, photo, tag_color, font_color)
+		values(#{no}, #{name}, #{photo}, #{tagColor}, #{fontColor})
+	</insert>
 
 	<select id="findAll" resultMap="TagMap" parameterType="string">
 		<include refid="sql1" />

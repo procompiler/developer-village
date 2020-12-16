@@ -5,32 +5,27 @@
 
 <mapper namespace="com.devil.dao.UserDao">
 
-	<resultMap type="user" 			id="UserMap">
-		<id column="uno"			property="no" />
-		<result column="email" 		property="email" />
-		<result column="nick" 		property="nickname" />
-		<result column="name" 		property="name" />
-		<result column="pwd" 		property="password" />
-		<result column="cdt" 		property="createdDate" />
+	<resultMap type="user"        id="UserMap">
+		<id column="uno"		      	property="no" />
+		<result column="email" 		  property="email" />
+		<result column="nick" 		  property="nickname" />
+		<result column="name" 		  property="name" />
+		<result column="pwd" 		    property="password" />
+		<result column="cdt" 		    property="createdDate" />
 		<result column="rnt_vsdt" 	property="recentVisitedDate" />
 		<result column="log_type" 	property="loginType" />
-		<result column="photo" 		property="photo" />
-		<result column="hp_url"	 	property="homepageURL" />
-		<result column="gh_url" 	property="githubURL" />
-		<result column="in_url" 	property="instarURL" />
-		<result column="tw_url" 	property="twitterURL" />
-		<result column="blocked" 	property="blocked" />
-		<result column="tech" 		property="tech" />
-		<result column="auth" 		property="auth" />
-		<result column="noti" 		property="noti" />
-		<result column="bio" 		property="bio" />
-		<result column="state" 		property="state" />
+		<result column="photo" 	  	property="photo" />
+		<result column="hp_url"	   	property="homepageURL" />
+		<result column="gh_url"   	property="githubURL" />
+		<result column="in_url"   	property="instarURL" />
+		<result column="tw_url"   	property="twitterURL" />
+		<result column="blocked"  	property="blocked" />
+		<result column="tech"   		property="tech" />
+		<result column="auth"   		property="auth" />
+		<result column="noti"   		property="noti" />
+		<result column="bio" 	    	property="bio" />
+		<result column="state" 	  	property="state" />
 	</resultMap>
-
-	<insert id="insert" parameterType="user">
-		insert into user(email,nick,name,pwd,log_type, photo)
-		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
-	</insert>
 
 	<sql id="sql1">
 		select
@@ -64,6 +59,10 @@
     from user u
 	</sql>
 
+	<insert id="insert" parameterType="user">
+		insert into user(email,nick,name,pwd,log_type, photo)
+		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
+	</insert>
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">
 		<include refid="sql1" />

@@ -8,7 +8,7 @@ public interface CommentDao {
   public int insert(Comment comment) throws Exception;
   public int update(Comment comment) throws Exception;
   public List<Comment> findAll(String keyword) throws Exception;
-  public int delete(int no) throws Exception;
+  public int delete(int no) throws Exception; // Mapper에 구현 안함
   public List<Comment> findByArticleNo(int articleNo) throws Exception;
   public int inactive(int no) throws Exception;
   public List<Comment> findByWriter(User user) throws Exception;
