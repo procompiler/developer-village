@@ -60,6 +60,11 @@ public class DefaultReportService implements ReportService {
   }
 
   @Override
+  public List<Report> list(String keyword) throws Exception {
+    return reportDao.findAll(keyword);
+  }
+
+  @Override
   public Report get(int no) throws Exception {
     Report report = reportDao.findByNo(no);
     return report;
