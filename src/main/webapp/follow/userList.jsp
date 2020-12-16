@@ -19,7 +19,7 @@
 					<div class="card-body">
 						<h5 class="card-title">${u.nickname}</h5>
 						<p class="card-text"></p>
-						<a class='btn btn-outline-danger' href='delete?followeeNo=${u.no}'>언팔로우</a>
+						<a class='btn btn-outline-danger' href='deleteUser?followeeNo=${u.no}'>언팔로우</a>
 					</div>
 				</a>
 			</div>

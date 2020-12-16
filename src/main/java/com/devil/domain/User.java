@@ -22,7 +22,9 @@ public class User {
   private int noti; // 알람알림여부 0 Off 1 On
   private String bio;
   private int state; // 활성상태 0 안보임 1 보임
-
+  private int followerCount;
+  private int followingCount;
+  
   public int getNo() {
     return no;
   }
@@ -165,5 +167,17 @@ public class User {
   public User setState(int state) {
     this.state = state;
     return this;
+  }
+  public int getFollowerCount() {
+    return followerCount;
+  }
+  public void setFollowerCount(int followerCount) {
+    this.followerCount = followerCount;
+  }
+  public int getFollowingCount() {
+    return followingCount;
+  }
+  public void setFollowingCount(int followingCount) {
+    this.followingCount = followingCount;
   }
 }

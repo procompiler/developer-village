@@ -34,6 +34,8 @@
 	<p>닉네임: ${user.nickname}</p>
 	<p>이메일 ${user.email}</p>
 	<p>기술 목록 ${user.tech}</p>
+	<p><a href="../follow/userList">팔로잉: ${user.followingCount}</a></p>
+	<p><a href="../follow/followerList">팔로워: ${user.followerCount}</a></p>
 	<div>
 		<c:choose>
 			<c:when test="${empty user.homepageURL}">
@@ -64,6 +66,8 @@
 	<p>닉네임: ${loginUser.nickname}</p>
 	<p>이메일 ${loginUser.email}</p>
 	<p>기술 목록 ${loginUser.tech}</p>
+	 <p><a href="../follow/userList">팔로잉: ${user.followingCount}</a></p>
+  <p><a href="../follow/followerList">팔로워: ${user.followerCount}</a></p>
 	<div>
 		<c:choose>
 			<c:when test="${empty loginUser.homepageURL}">
