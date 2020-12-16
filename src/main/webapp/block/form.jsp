@@ -20,7 +20,6 @@
 		<textarea name="blockedReason" cols="60" rows="10"></textarea>
 		<br>
 		<input type='hidden' name='reportNo' value='${report.no}'>
-		${report.reportedUser.nickname}님을
 		<button class="btn btn-primary">차단하기</button>
 	</form>
 	 <jsp:include page="/footer.jsp"></jsp:include>

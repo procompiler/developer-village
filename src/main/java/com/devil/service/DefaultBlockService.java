@@ -26,7 +26,10 @@ public class DefaultBlockService implements BlockService {
   public int block(Block block) throws Exception {
     try {
 //      factoryProxy.startTransaction();
-      blockDao.insert(block);
+      int count = blockDao.insertArticleReport(block);
+      if (count == 0) {
+        blockDao.insertCommentReport(block);
+      }
       userDao.insertBlocked(block);
       reportDao.insertStatus(block);
 //      factoryProxy.commit();

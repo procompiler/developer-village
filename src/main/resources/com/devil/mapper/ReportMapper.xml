@@ -11,28 +11,34 @@
 		<result column="status" property="status" />
 		<result column="pdt" 	  property="processDate" />
 
-		<association property="reporter" javaType="user">
+		<association property="reporter"   javaType="user">
 			<id column="uno"				         property="no" />
 			<result column="reporter_nick" 	 property="nickname" />
 			<result column="reporter_email"  property="email" />
 		</association>
+		
+		<association property="reportedUser" javaType="user">
+			<id column="uno"				           property="no" />
+			<result column="reported_user_nick" 	   property="nickname" />
+			<result column="reported_user_email"    property="email" />
+		</association>
 
-		<association property="reportedArticle" javaType="article">
-			<id column="arno" property="no" />
-			<result column="article_title" 	 property="title" />
-			<result column="article_content" property="content" />
+		<association property="reportedArticle"  javaType="article">
+			<id column="arno"                      property="no" />
+			<result column="article_title" 	       property="title" />
+			<result column="article_content"       property="content" />
 
-			<association property="writer" javaType="user">
+			<association property="writer"    javaType="user">
 				<id column="article_uno"        property="no" />
 				<result column="article_writer" property="nickname" />
 				<result column="article_email"  property="email" />
 			</association>
 		</association>
 
-		<association property="reportedComment" javaType="comment">
-			<id column="cno"                 property="no" />
-			<result column="comment_content" property="content" />
-			<result column="comment_article" property="articleNo" />
+		<association property="reportedComment"  javaType="comment">
+			<id column="cno"                       property="no" />
+			<result column="comment_content"       property="content" />
+			<result column="comment_article"       property="articleNo" />
 
 			<association property="writer"   javaType="user">
 				<id column="comment_uno"       property="no" />

@@ -23,7 +23,7 @@ public class BlockController {
   UserService userService;
 
   @RequestMapping("form")
-  public ModelAndView form(int reportNo, User reportedUser) throws Exception {
+  public ModelAndView form(int reportNo) throws Exception {
     Report report = reportService.get(reportNo);
     ModelAndView mv = new ModelAndView();
     mv.addObject("report", report);
@@ -35,7 +35,6 @@ public class BlockController {
   public String add(Block block, int reportNo) throws Exception {
     Report report = reportService.get(reportNo);
     block.setReport(report);
-
     blockService.block(block);
     return "redirect:list";
   }

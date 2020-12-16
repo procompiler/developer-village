@@ -5,9 +5,9 @@
 <html>
 <head>
 <title>게시글작성</title>
+	<jsp:include page="/header.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="/header.jsp"></jsp:include>
 
 	<h1>게시글 작성</h1>
 	<br>

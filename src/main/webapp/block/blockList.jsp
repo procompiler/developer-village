@@ -12,7 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+<link rel="stylesheet"
+    <jsp:include page="/admin-header.jsp"></jsp:include>
 
 </head>
 <body>
