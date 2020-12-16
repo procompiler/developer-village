@@ -16,6 +16,7 @@
 			<th>번호</th>
 			<th>제목</th>
 			<th>등록일</th>
+			<th>댓글수</th>
 			<th>조회수</th>
 			<th>삭제</th>
 		</tr>
@@ -33,6 +34,7 @@
 				</td>
 				<td><fmt:formatDate value="${a.createdDate}"
 						pattern="yyyy.MM.dd" /></td>
+			  <td>${a.commentCount}</td>
 				<td>${a.viewCount}</td>
 				<td><a class='btn btn-outline-danger'
 					href='delete?articleNo=${a.no}'>삭제</a></td>
