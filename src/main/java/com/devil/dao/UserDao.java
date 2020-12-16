@@ -1,6 +1,7 @@
 package com.devil.dao;
 
 import java.util.List;
+import java.util.Map;
 import com.devil.domain.Block;
 import com.devil.domain.User;
 
@@ -11,7 +12,7 @@ public interface UserDao {
   List<User> findByName(String name) throws Exception;
   List<User> findAll(String keyword) throws Exception;
   int update(User user) throws Exception;
-  User findByEmailPassword(String email, String password) throws Exception;
+  User findByEmailPassword(Map<String, Object> params) throws Exception;
   int inactive(int no) throws Exception;
   List<User> findByFollower(User user) throws Exception;
   int insertBlocked(Block block) throws Exception;

@@ -6,6 +6,7 @@ import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 import com.devil.service.UserService;
@@ -21,10 +22,17 @@ public class UserController {
   @Autowired ServletContext servletContext;
   @Autowired FollowService followService;
 
+  @RequestMapping("form")
+  public ModelAndView form() throws Exception {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("/user/form.html");
+    return mv;
+  }
+
   @RequestMapping("add")
   public String add(
       String email, String nickname, String name,
-      String password, String loginType, Part photoFile) throws Exception {
+      String password, String loginType) throws Exception {
 
     User user = new User();
     user.setEmail(email);
@@ -33,20 +41,8 @@ public class UserController {
     user.setPassword(password);
     user.setLoginType(loginType);
 
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = servletContext.getRealPath("/upload/user/" + filename);
-
-    // 해당 위치에 업로드된 사진 파일을 저장한다.
-    photoFile.write(saveFilePath);
-
-    // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
-    user.setPhoto(filename);
-
-    // 회원 사진의 썸네일 생성하기
-    generatePhotoThumnail(saveFilePath);
-
     userService.add(user);
-    return "redirect:list";
+    return "redirect:../../index.jsp";
   }
 
   @RequestMapping("delete")
