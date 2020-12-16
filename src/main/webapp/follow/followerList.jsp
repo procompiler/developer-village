@@ -11,16 +11,11 @@
 	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
-<style>
-#urls {
-	padding: 5px;
-	font-size: 2em;
-}
-</style>
+
 </head>
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/mypage/info.jsp"></jsp:include>
+    <jsp:include page="/user/info.jsp"></jsp:include>
 	<h2>팔로워</h2>
 	<table border='1'>
 	 <thead>

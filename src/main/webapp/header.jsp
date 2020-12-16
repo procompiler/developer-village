@@ -20,8 +20,8 @@ User user = (User) session.getAttribute("loginUser");
     <div id="sitename">
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
-    </div>
-    <a href="<%=contextPath%>/app/article/writtenList">
+    </d /iv>
+    <a href="<%=contextPath%>/app/user/detail?no=<%=user.getNo()%>">
      <div class="user-card">
       <div class="user-photo">
         <img src="<%=contextPath%>/upload/user/<%=user.getPhoto()%>_60x60.jpg"/>
@@ -60,7 +60,7 @@ User user = (User) session.getAttribute("loginUser");
   </div>
   <div>
     <a class="btn" href="<%=contextPath%>/app/user/form.html">회원가입</a>
-    <a class="btn" href="<%=contextPath%>/app/admin/userList">회원관리</a>
+    <a class="btn" href="<%=contextPath%>/app/user/list">회원관리</a>
     <a class="btn" href="<%=contextPath%>/app/auth/login">로그인</a>
     <a class="btn" href="<%=contextPath%>/app/article/form">글쓰기</a>
   </div>
