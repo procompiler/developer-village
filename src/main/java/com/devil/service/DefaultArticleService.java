@@ -62,7 +62,9 @@ public class DefaultArticleService implements ArticleService {
 
   @Override
   public int update(Article article) throws Exception {
-    //articleDao.insertTags(article);
+    articleDao.deleteTags(article.getNo());
+    articleDao.insertTags(article);
+
     return articleDao.update(article);
   }
 
@@ -84,5 +86,10 @@ public class DefaultArticleService implements ArticleService {
   @Override
   public List<Article> listByTagNo(int tagNo) throws Exception {
     return articleDao.findByTagNo(tagNo);
+  }
+
+  @Override
+  public List<Article> feedList(User user) throws Exception {
+    return articleDao.findFeedByUser(user);
   }
 }

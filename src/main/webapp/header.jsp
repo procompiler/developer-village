@@ -40,7 +40,7 @@ User user = (User) session.getAttribute("loginUser");
     </div>
     <hr>
     <div class="buttons">
-      <li><i class="fas fa-tags fa-fw"></i><a href="<%=contextPath%>/app/article/community">태그</a></li>
+      <li><i class="fas fa-tags fa-fw"></i><a href="<%=contextPath%>/app/tag/list">태그</a></li>
 <%--       <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/app/community/taglist'>커뮤니티</a></li> --%>
       <div id="tag">
         <li><i class="fas fa-hashtag"></i><a href="<%=contextPath%>/app/article/list?tagNo=1">Java</a></li>

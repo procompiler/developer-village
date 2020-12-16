@@ -1,7 +1,10 @@
 package com.devil.web;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,43 +56,43 @@ public class UserController {
     }
     return "redirect:list";
   }
-  //
-  //  @RequestMapping("detail")
-  //  public ModelAndView detail(int no, HttpSession session) throws Exception {
-  //
-  //    User user = userService.get(no);
-  //    if (user == null) {
-  //      throw new Exception("해당 번호의 유저가 없습니다!");
-  //    }
-  //
-  //    ModelAndView mv = new ModelAndView();
-  //    mv.addObject("user", user);
-  //
-  //    Map<String, Object> map = new HashMap<>();
-  //    map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
-  //    map.put("followeeNo", no);
-  //    if (followService.getUser(map) != null) {
-  //      session.setAttribute("followed", true);
-  //    } else {
-  //      session.setAttribute("followed", false);
-  //    }
-  //
-  //    mv.setViewName("/user/detail.jsp");
-  //    return mv;
-  //  }
-  //
-  //  @RequestMapping("list")
-  //  public ModelAndView list(String keyword, HttpSession session) throws Exception {
-  //
-  //    ModelAndView mv = new ModelAndView();
-  //
-  //    mv.addObject("list", userService.list(keyword));
-  //
-  //    mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
-  //    mv.setViewName("/user/list.jsp");
-  //
-  //    return mv;
-  //  }
+  
+    @RequestMapping("detail")
+    public ModelAndView detail(int no, HttpSession session) throws Exception {
+  
+      User user = userService.get(no);
+      if (user == null) {
+        throw new Exception("해당 번호의 유저가 없습니다!");
+      }
+  
+      ModelAndView mv = new ModelAndView();
+      mv.addObject("user", user);
+  
+      Map<String, Object> map = new HashMap<>();
+      map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
+      map.put("followeeNo", no);
+      if (followService.getUser(map) != null) {
+        session.setAttribute("followed", true);
+      } else {
+        session.setAttribute("followed", false);
+      }
+  
+      mv.setViewName("/user/detail.jsp");
+      return mv;
+    }
+  
+    @RequestMapping("list")
+    public ModelAndView list(String keyword, HttpSession session) throws Exception {
+  
+      ModelAndView mv = new ModelAndView();
+  
+      mv.addObject("list", userService.list(keyword));
+  
+      mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
+      mv.setViewName("/user/list.jsp");
+  
+      return mv;
+    }
 
   @RequestMapping("update")
   public String update(User user) throws Exception {

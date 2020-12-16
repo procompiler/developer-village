@@ -5,18 +5,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../style.css">
+  <jsp:include page="/header.jsp"></jsp:include>
+
 </head>
 <body>
-  <jsp:include page="/header.jsp"></jsp:include>
   <a href='../admin/userList' style='text-decoration: none;'>전체회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
@@ -26,7 +25,7 @@
   <br>
 
   <%
-    List<Block> list = (List<Block>) request.getAttribute("blockList");
+    List<Block> blockList = (List<Block>) request.getAttribute("blockList");
   %>
 
 <%
@@ -43,9 +42,8 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       <th>차단종료일</th>
       <th>상태</th>
     </tr>
-
     <%
-      for (Block block : list) {
+      for (Block block : blockList) {
         blockTermination.setTime(block.getPermittedDate());
         blockTermination.add(Calendar.DATE, block.getBlockedDates());
     %>
