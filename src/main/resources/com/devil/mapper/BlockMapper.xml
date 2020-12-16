@@ -78,6 +78,6 @@
     <select id="findByUserNo" resultMap="BlockMap" parameterType="int">
      <include refid="sql1"/>
       where u.uno=#{reportedUser.no} 
-     <!--[CDATA[  and now() <= date_add(b.cdt, interval b.dates day) ]]-->
+     <![CDATA[  and now() <= date_add(b.cdt, interval b.dates day) ]]>
     </select>
 </mapper>

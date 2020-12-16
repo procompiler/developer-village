@@ -19,6 +19,7 @@
 			<th>제목</th>
 			<th>작성자</th>
 			<th>등록일</th>
+			<th>댓글수</th>
 			<th>조회수</th>
 		</tr>
 	</thead>
@@ -36,6 +37,8 @@
 				<td><a href='../user/detail?no=${a.writer.no}'>${a.writer.nickname}</a></td>
 				<td><fmt:formatDate value="${a.createdDate}"
 						pattern="yyyy.MM.dd" /></td>
+
+				<td>${a.commentCount}</td>
 				<td>${a.viewCount}</td>
 			</tr>
 		</c:forEach>

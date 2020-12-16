@@ -17,4 +17,5 @@ public interface UserDao {
   List<User> findByFollower(User user) throws Exception;
   int insertBlocked(Block block) throws Exception;
   List<User> findFollower(User user) throws Exception;
+  int updateLoginTimeStamp(User user) throws Exception;
 }

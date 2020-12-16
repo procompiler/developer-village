@@ -16,6 +16,7 @@
     <result column="state"      property="state"/>
     <result column="st_status"  property="studyStatus"/>
     <result column="rc_edt"     property="endDate"/>
+    <result column="cmt_cnt"    property="commentCount"/>
 
     <association property="writer"     javaType="user">
       <id column="uno"                 property="no"/>
@@ -47,7 +48,8 @@
       t.tno,
       t.name tag_name,
       t.tag_color,
-      t.font_color
+      t.font_color,
+      (select count(*) from comment c where a.arno = c.arno) as cmt_cnt
     from 
       article a
       inner join user u on a.writer=u.uno
@@ -96,7 +98,8 @@
 		  feed.tno,
 		  feed.tag_name,
 		  feed.tag_color,
-		  feed.font_color
+		  feed.font_color,
+		  (select count(*) from comment c where feed.arno = c.arno) as cmt_cnt
 		from (
 		  select
 	      a.arno, 

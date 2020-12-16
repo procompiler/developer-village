@@ -49,6 +49,7 @@
 				<th>작성자</th>
 				<th>등록일</th>
 				<th>조회수</th>
+				<th>댓글수</th>
 				<th>상태</th>
 			</tr>
 		</thead>
@@ -70,6 +71,7 @@
 						<td><fmt:formatDate value="${article.createdDate}"
 								pattern="yyyy.MM.dd" /></td>
 						<td>${article.viewCount}</td>
+						<td>${article.commentCount}</td>
 						<td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
 					</tr>
 				</c:if>
@@ -88,6 +90,7 @@
             <td><fmt:formatDate value="${article.createdDate}"
                 pattern="yyyy.MM.dd" /></td>
             <td>${article.viewCount}</td>
+            <td>${article.commentCount}</td>
             <td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
           </tr>
 				</c:if>

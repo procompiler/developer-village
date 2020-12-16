@@ -12,4 +12,5 @@ public interface UserService {
   int delete(int no) throws Exception;
   List<User> list(User user) throws Exception;
   List<User> listFollower(User user) throws Exception;
+  int updateLoginTimeStamp(User user) throws Exception;
 }

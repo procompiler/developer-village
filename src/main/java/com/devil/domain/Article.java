@@ -16,6 +16,7 @@ public class Article {
   private int studyStatus;
   private Date endDate;
   private List<Tag> tags;
+  private int commentCount;
 
   public int getStudyStatus() {
     return studyStatus;
@@ -107,6 +108,14 @@ public class Article {
     this.tags = tags;
     return this;
   }
+  public int getCommentCount() {
+    return commentCount;
+  }
+  public void setCommentCount(int commentCount) {
+    this.commentCount = commentCount;
+  }
+  
+  
 }
 
 
