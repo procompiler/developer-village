@@ -1,20 +1,16 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.List"%>
-<%@page import="com.devil.domain.Report"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
 <link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../style.css">
-    <jsp:include page="/admin-header.jsp"></jsp:include>
+<jsp:include page="/admin-header.jsp"></jsp:include>
 </head>
 <body>
 	<a href='../admin/userList' style='text-decoration: none;'>전체회원관리</a>
@@ -25,13 +21,9 @@
 	</h1>
 	<br>
 
-	<%
-	  List<Report> list = (List<Report>) request.getAttribute("reportList");
-	%>
-
 	<table border='1'>
 		<tr>
-		<th>번호</th>
+			<th>번호</th>
 			<th>신고자</th>
 			<th>피신고자</th>
 			<th>신고날짜</th>
@@ -39,77 +31,66 @@
 			<th>신고사유</th>
 			<th>신고승인</th>
 		</tr>
+		<c:forEach items="${reportList}" var="report">
+			<tr>
+				<td>${report.no}</td>
+				<td>${report.reporter.nickname}[${report.reporter.email}]</td>
+				<td><c:if test="${report.reportedArticle == null}">
+          ${report.reportedComment.writer.nickname}[${report.reportedComment.writer.email}]
+        </c:if> <c:if test="${report.reportedArticle != null}">
+          ${report.reportedArticle.writer.nickname}[${report.reportedArticle.writer.email}]
+        </c:if></td>
+				<td>${report.getCreatedDate()}</td>
+				<td><c:if test="${report.reportedArticle == null}">
+						<a href='../article/detail?no=${report.reportedComment.articleNo}'
+							style='text-decoration: none;'>댓글 신고 링크</a>
+					</c:if> <c:if test="${report.reportedArticle != null}">
+						<a href='../article/detail?no=${report.reportedArticle.no}'
+							style='text-decoration: none;'>게시글 신고 링크</a>
+					</c:if></td>
+				<td><c:choose>
+						<c:when test="${report.reportTypeNo == 1}">
+							<p>욕설</p>
+						</c:when>
+						<c:when test="${report.reportTypeNo == 2}">
+							<p>권리침해</p>
+						</c:when>
+						<c:when test="${report.reportTypeNo == 3}">
+							<p>폭력적 또는 혐오성 게시글</p>
+						</c:when>
+						<c:when test="${report.reportTypeNo == 4}">
+							<p>불법광고</p>
+						</c:when>
+						<c:when test="${report.reportTypeNo == 5}">
+							<p>음란성</p>
+						</c:when>
+						<c:otherwise>
+							<p>도배</p>
+						</c:otherwise>
+					</c:choose></td>
 
-		<%
-		  for (Report report : list) {
-		%>
-		<%
-		  String reportType = null;
-		%>
-		<%
-		  switch (report.getReportTypeNo()) {
-		  case 1: reportType = "욕설"; break;
-		  case 2: reportType = "권리침해"; break;
-		  case 3: reportType = "폭력적 또는 혐오성 게시글"; break;
-		  case 4: reportType = "불법광고"; break;
-		  case 5: reportType = "음란성"; break;
-		  case 6: reportType = "도배"; break;
-		}
-		%>
+				<td>
+					<form action="../block/form" method=get>
+						<input type='hidden' name='reportNo' value='${report.no}'>
 
-
-		<tr>
-		  <td><%=report.getNo()%></td>
-			<td><%=report.getReporter().getNickname()%> [<%=report.getReporter().getEmail()%>]</td>
-			<td>
-			<%if(report.getReportedArticle() == null) {%>
-			<%=report.getReportedComment().getWriter().getNickname()%> [<%=report.getReportedComment().getWriter().getEmail()%>]
-      <%} else {%>	
-			<%=report.getReportedArticle().getWriter().getNickname()%> [<%=report.getReportedArticle().getWriter().getEmail()%>]
-      <%} %>
-			</td>
-			<td><%=report.getCreatedDate()%></td>
-			<td>
-			<%if(report.getReportedArticle() == null) {%>
-				  <a href='../article/detail?no=<%=report.getReportedComment().getArticleNo()%>'
-        style='text-decoration: none;'>댓글 신고 링크</a>
-        <%} else {%>
-			<a href='../article/detail?no=<%=report.getReportedArticle().getNo()%>'
-				style='text-decoration: none;'>게시글 신고 링크</a>
-				<%} %>
-			
+						<c:choose>
+							<c:when test="${report.status == 1}">
+								<button class="btn btn-primary">신고승인</button>
+							</c:when>
+							<c:when test="${report.status == 2}">
+								<p>차단중</p>
+							</c:when>
+							<c:otherwise>
+								<p>차단해제</p>
+							</c:otherwise>
+						</c:choose>
+					</form>
 				</td>
-			<td><%=reportType%></td>
 
-			<td>
-				<form action="../block/form" method=get>
-					<input type='hidden' name='reportNo' value='<%=report.getNo()%>'>
-					
-				<%
-      switch (report.getStatus()) {
-      case 1:%>
-      <button class="btn btn-primary">신고승인</button> 
-        <%
-        break;
-      case 2: %>
-         차단중 
-       <%
-        break;
-      case 3: %>
-         차단해제 
-        <%
-        break;
-    }
-    %>
-				</form>
-			</td>
-		</tr>
-		<%
-		  }
-		%>
+		</c:forEach>
 	</table>
-	<jsp:include page="/footer.jsp"></jsp:include>
-	  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	
-</body>
+	<jsp:include page="/footer.jsp"></jsp:include>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ㄴ</body>
 </html>
