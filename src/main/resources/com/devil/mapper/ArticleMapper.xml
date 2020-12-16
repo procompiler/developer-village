@@ -91,6 +91,75 @@
     order by ua.cdt desc
   </select>
   
+  <select id="findFeedByUser" resultMap="ArticleMap" parameterType="user">
+		select 
+		  feed.arno,
+		  feed.title,
+		  feed.content,
+		  feed.cdt,
+		  feed.cano,
+		  feed.vw_cnt,
+		  feed.uno,
+		  feed.article_nick,
+		  feed.article_photo,
+		  feed.tno,
+		  feed.tag_name,
+		  feed.tag_color,
+		  feed.font_color
+		from (
+		  select
+	      a.arno, 
+	      a.title,
+	      a.content,
+	      a.cdt,  
+	      a.cano,  
+	      a.vw_cnt, 
+	      a.state,
+	      u.uno,
+	      u.nick article_nick,
+	      u.photo article_photo,
+	      t.tno,
+	      t.name tag_name,
+	      t.tag_color,
+	      t.font_color
+		  from
+		    article a 
+		    inner join follow f on a.writer = f.fwing_no
+		    inner join arc_tag at on at.arno = a.arno
+		    inner join tag t on at.tno = t.tno
+		    inner join user u on a.writer = u.uno
+		  where 
+		    fwer_no = #{no}
+		    
+		  union
+		  
+		  select
+			  a.arno, 
+	      a.title,
+	      a.content,
+	      a.cdt,  
+	      a.cano,  
+	      a.vw_cnt, 
+	      a.state,
+	      u.uno,
+	      u.nick article_nick,
+	      u.photo article_photo,
+	      t.tno,
+	      t.name tag_name,
+	      t.tag_color,
+	      t.font_color
+		  from 
+		    arc_tag at
+		    inner join usr_tag ut on at.tno = ut.tno
+		    inner join tag t on at.tno = t.tno
+		    inner join article a on at.arno = a.arno
+		    inner join user u on a.writer = u.uno
+		  where 
+		    ut.uno = #{no}
+		) feed
+		order by feed.arno desc
+  </select>
+  
   <select id="findByWriter" resultMap="ArticleMap" parameterType="user">
     <include refid="sql1"/>
     where a.writer=#{no}
@@ -127,7 +196,6 @@
     <set>
       <if test="title != null">title = #{title},</if>
       <if test="content != null">content = #{content},</if>
-      
     </set>
     where arno = #{no}
   </update>

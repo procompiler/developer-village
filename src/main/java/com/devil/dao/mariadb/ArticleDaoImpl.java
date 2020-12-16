@@ -80,6 +80,7 @@ public class ArticleDaoImpl implements ArticleDao {
       return sqlSession.delete("ArticleDao.insertTags", article);
     }
   }
+
   @Override
   public int inactive(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
@@ -105,6 +106,13 @@ public class ArticleDaoImpl implements ArticleDao {
   public List<Article> findByTagNo(int tagNo) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("ArticleDao.findByTagNo", tagNo);
+    }
+  }
+
+  @Override
+  public List<Article> findFeedByUser(User user) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("ArticleDao.findFeedByUser", user);
     }
   }
 }

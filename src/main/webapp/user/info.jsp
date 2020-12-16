@@ -81,6 +81,8 @@
 		</c:choose>
 	</div>
 	<a class="btn btn-outline-primary"
+    href="../article/feed">피드</a>
+	<a class="btn btn-outline-primary"
 		href="../article/writtenList?no=${loginUser.no}">작성게시글</a>
 	<a class="btn btn-outline-primary"
 		href="../comment/writtenList?no=${loginUser.no}">작성댓글</a>
