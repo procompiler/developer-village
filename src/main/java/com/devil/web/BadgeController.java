@@ -18,11 +18,8 @@ import net.coobird.thumbnailator.name.Rename;
 @RequestMapping("/badge")
 public class BadgeController {
 
-
   @Autowired ServletContext servletContext;
   @Autowired BadgeService badgeService;
-
-
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
@@ -41,7 +38,6 @@ public class BadgeController {
     Badge badge = new Badge();
     badge.setName(name);
     badge.setContent(content);
-
 
     photoFile.write(saveFilePath);
     badge.setPhoto(filename);
@@ -131,12 +127,12 @@ public class BadgeController {
       });
 
       Thumbnails.of(saveFilePath)//
-      .size(80, 80)//
+      .size(60, 60)//
       .outputFormat("png") //
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
-          return name + "_80x80";
+          return name + "_60x60";
         }
       });
 

@@ -6,7 +6,7 @@ public class Badge {
   private int no;
   private String name;
   private String photo;
-  private int tagNo;
+  private Tag tag;
   private int state; // 활성상태 0 안보임 1 보임
   private String content;
   private Date collectDate;
@@ -47,13 +47,13 @@ public class Badge {
     return this;
   }
 
-  public int getTagNo() {
-    return tagNo;
+
+  public Tag getTag() {
+    return tag;
   }
 
-  public Badge setTagNo(int tagNo) {
-    this.tagNo = tagNo;
-    return this;
+  public void setTag(Tag tag) {
+    this.tag = tag;
   }
 
   public String getContent() {
