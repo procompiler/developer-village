@@ -2,11 +2,58 @@
 @import
   url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap')
   ;
-
+  /* 헤더 */
+  header {
+  background-color: #2E3034;
+  height: 150px;
+  }
+  
+  header a.btn {
+  color: white;
+  }
+  
+  .site-admin {
+  color: white;
+  font-weight: bold;
+  
+  }
+/* 바디 */
 body {
-	color: #DBDBDB;
   background-color: #37393E;
+  color: white;
   font-family: 'Noto Sans KR', sans-serif;
   font-family: 'Roboto', sans-serif;
   line-height: 2em;
+}
+
+.container {
+  margin: 70px auto 20px 240px;
+  padding: 30px;
+}
+
+.main-color {
+  color: #6C5DDF;
+}
+
+/* 하단바 */
+footer {
+  clear: both;
+  padding: 20px;
+  margin-left: 250px;
+}
+
+footer hr {
+  border: 1px solid #535353;
+}
+
+footer img {
+  width: 43px;
+}
+
+
+footer #pro-logo {
+  border-radius: 7px;
+  -moz-border-radius: 70px;
+  -khtml-border-radius: 70px;
+  -webkit-border-radius: 70px;
 }

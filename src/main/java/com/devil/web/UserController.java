@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +25,17 @@ public class UserController {
   @Autowired ServletContext servletContext;
   @Autowired FollowService followService;
 
+  @RequestMapping("form")
+  public ModelAndView form() throws Exception {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("/user/form.html");
+    return mv;
+  }
+
   @RequestMapping("add")
   public String add(
       String email, String nickname, String name,
-      String password, String loginType, Part photoFile) throws Exception {
+      String password, String loginType) throws Exception {
 
     User user = new User();
     user.setEmail(email);
@@ -38,20 +44,8 @@ public class UserController {
     user.setPassword(password);
     user.setLoginType(loginType);
 
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = servletContext.getRealPath("/upload/user/" + filename);
-
-    // 해당 위치에 업로드된 사진 파일을 저장한다.
-    photoFile.write(saveFilePath);
-
-    // DB에 사진 파일 이름을 저장하기 위해 객체에 보관한다.
-    user.setPhoto(filename);
-
-    // 회원 사진의 썸네일 생성하기
-    generatePhotoThumnail(saveFilePath);
-
     userService.add(user);
-    return "redirect:list";
+    return "redirect:../../index.jsp";
   }
 
   @RequestMapping("delete")
@@ -62,43 +56,43 @@ public class UserController {
     }
     return "redirect:list";
   }
-
-  @RequestMapping("detail")
-  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
-
-    User user = userService.get(no);
-    if (user == null) {
-      throw new Exception("해당 번호의 유저가 없습니다!");
+  
+    @RequestMapping("detail")
+    public ModelAndView detail(int no, HttpSession session) throws Exception {
+  
+      User user = userService.get(no);
+      if (user == null) {
+        throw new Exception("해당 번호의 유저가 없습니다!");
+      }
+  
+      ModelAndView mv = new ModelAndView();
+      mv.addObject("user", user);
+  
+      Map<String, Object> map = new HashMap<>();
+      map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
+      map.put("followeeNo", no);
+      if (followService.getUser(map) != null) {
+        session.setAttribute("followed", true);
+      } else {
+        session.setAttribute("followed", false);
+      }
+  
+      mv.setViewName("/user/detail.jsp");
+      return mv;
     }
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("user", user);
-
-    Map<String, Object> map = new HashMap<>();
-    map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
-    map.put("followeeNo", no);
-    if (followService.getUser(map) != null) {
-      session.setAttribute("followed", true);
-    } else {
-      session.setAttribute("followed", false);
+  
+    @RequestMapping("list")
+    public ModelAndView list(String keyword, HttpSession session) throws Exception {
+  
+      ModelAndView mv = new ModelAndView();
+  
+      mv.addObject("list", userService.list(keyword));
+  
+      mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
+      mv.setViewName("/user/list.jsp");
+  
+      return mv;
     }
-
-    mv.setViewName("/user/detail.jsp");
-    return mv;
-  }
-
-  @RequestMapping("list")
-  public ModelAndView list(String keyword, HttpSession session) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
-
-    mv.addObject("list", userService.list(keyword));
-
-    mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
-    mv.setViewName("/user/list.jsp");
-
-    return mv;
-  }
 
   @RequestMapping("update")
   public String update(User user) throws Exception {

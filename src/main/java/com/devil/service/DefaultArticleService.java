@@ -6,31 +6,30 @@ import org.springframework.stereotype.Service;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
 import com.devil.domain.User;
-import com.devil.util.SqlSessionFactoryProxy;
 
 @Service
 public class DefaultArticleService implements ArticleService {
   ArticleDao articleDao;
-  SqlSessionFactoryProxy factoryProxy;
+//  SqlSessionFactoryProxy factoryProxy;
 
-  public DefaultArticleService(ArticleDao articleDao, SqlSessionFactoryProxy factoryProxy) {
+  public DefaultArticleService(ArticleDao articleDao/*, SqlSessionFactoryProxy factoryProxy*/) {
     this.articleDao = articleDao;
-    this.factoryProxy = factoryProxy;
+//    this.factoryProxy = factoryProxy;
   }
 
   @Override
   public int add(Article article) throws Exception {
     try {
-      factoryProxy.startTransaction();
+//      factoryProxy.startTransaction();
       articleDao.insert(article);
       articleDao.insertTags(article);
-      factoryProxy.commit();
+//      factoryProxy.commit();
       return 1;
     } catch (Exception e) {
-      factoryProxy.rollback();
+//      factoryProxy.rollback();
       throw e;
     } finally {
-      factoryProxy.endTransaction();
+//      factoryProxy.endTransaction();
     }
   }
   @Override

@@ -55,10 +55,8 @@
   </div>
 </div>
 <br>
-  <c:if test="">
   <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
   <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
-  </c:if>
   
   <a class="btn btn-danger"
     href='../report/reportArticle?no=${article.no}'>신고</a>

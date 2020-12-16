@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ArticleDao">
+<mapper namespace="com.devil.dao.ArticleDao">
   <resultMap type="article" id="ArticleMap">
     <id column="arno"           property="no"/>
     <result column="cano"       property="categoryNo"/>
@@ -45,21 +45,6 @@
     
   </resultMap>
   
-  
-  <insert id="insert" parameterType="article" 
-  useGeneratedKeys="true" keyColumn="arno" keyProperty="no">
-    insert into article(title,writer,rc_edt,content,cano) 
-    values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
-  </insert>
-  
-  <insert id="insertTags" parameterType="article">
-    insert into arc_tag(tno, arno) 
-    values
-    <foreach collection="tags" item="tag" separator=",">
-      (#{tag.no},#{no})
-    </foreach>
-  </insert>
-  
   <sql id="sql1">
     select 
       a.arno, 
@@ -83,6 +68,20 @@
       left outer join arc_tag at2 on a.arno=at2.arno
       left outer join tag t on at2.tno = t.tno
   </sql>
+  
+  <insert id="insert" parameterType="article" 
+  useGeneratedKeys="true" keyColumn="arno" keyProperty="no">
+    insert into article(title,writer,rc_edt,content,cano) 
+    values(#{title}, #{writer.no}, #{endDate}, #{content}, #{categoryNo})
+  </insert>
+  
+  <insert id="insertTags" parameterType="article">
+    insert into arc_tag(tno, arno) 
+    values
+    <foreach collection="tags" item="tag" separator=",">
+      (#{tag.no},#{no})
+    </foreach>
+  </insert>
   
   <select id="findByBookmarker" resultMap="ArticleMap" parameterType="user">
     <include refid="sql1"/>

@@ -3,40 +3,40 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ReportDao">
-	<resultMap type="report" id="ReportMap">
-		<id column="rpno" property="no" />
-		<result column="rptno" property="reportTypeNo" />
-		<result column="cdt" property="createdDate" />
+<mapper namespace="com.devil.dao.ReportDao">
+	<resultMap type="report" 	id="ReportMap">
+		<id column="rpno" 		  property="no" />
+		<result column="rptno" 	property="reportTypeNo" />
+		<result column="cdt" 	  property="createdDate" />
 		<result column="status" property="status" />
-		<result column="pdt" property="processDate" />
+		<result column="pdt" 	  property="processDate" />
 
 		<association property="reporter" javaType="user">
-			<id column="uno" property="no" />
-			<result column="reporter_nick" property="nickname" />
-			<result column="reporter_email" property="email" />
+			<id column="uno"				         property="no" />
+			<result column="reporter_nick" 	 property="nickname" />
+			<result column="reporter_email"  property="email" />
 		</association>
 
 		<association property="reportedArticle" javaType="article">
 			<id column="arno" property="no" />
-			<result column="article_title" property="title" />
+			<result column="article_title" 	 property="title" />
 			<result column="article_content" property="content" />
 
 			<association property="writer" javaType="user">
-				<id column="uno" property="no" />
+				<id column="article_uno"        property="no" />
 				<result column="article_writer" property="nickname" />
-				<result column="article_email" property="email" />
+				<result column="article_email"  property="email" />
 			</association>
 		</association>
 
 		<association property="reportedComment" javaType="comment">
-			<id column="cno" property="no" />
+			<id column="cno"                 property="no" />
 			<result column="comment_content" property="content" />
 			<result column="comment_article" property="articleNo" />
 
-			<association property="writer" javaType="user">
-				<id column="uno" property="no" />
-				<result column="comment_nick" property="nickname" />
+			<association property="writer"   javaType="user">
+				<id column="comment_uno"       property="no" />
+				<result column="comment_nick"  property="nickname" />
 				<result column="comment_email" property="email" />
 			</association>
 		</association>
@@ -44,34 +44,40 @@
 	</resultMap>
 
 	<sql id="sql1">
-		select
-		r.rpno,
-		r.rptno,
-		r.uno,
-		r.cdt,
-		r.status,
-		r.pdt,
-		u.uno,
-		u.nick reporter_nick,
-		u.email reporter_email,
-		ra.arno,
-		rc.cno,
-		a.arno,
-		u2.uno article_uno,
-		u2.nick article_writer,
-		u2.email article_email
-		u3.uno comment_uno,
-		u3.nick comment_writer,
-		u3.email comment_email
-		from
-		report r
-		inner join user u on r.uno=u.uno
-		left outer join repo_arc ra on r.rpno=ra.rpno
-		left outer join article a on ra.arno=a.arno
-		left outer join user u2 on a.writer=u2.uno
-		left outer join repo_comt rc on r.rpno=rc.rpno
-		left outer join comment c on rc.cno=c.cno
-		left outer join user u3 on c.writer=u3.uno
+	select
+    r.rpno,
+    r.rptno,
+    r.uno,
+    r.cdt,
+    r.status,
+    r.pdt,
+    u.uno,
+    u.nick reporter_nick,
+    u.email reporter_email,
+    
+    ra.arno,
+    u2.uno article_uno,
+    u2.nick article_writer,
+    u2.email article_email,
+    
+    rc.cno,
+    c.arno comment_article,
+    c.cno,
+    c.uno comment_uno,
+    u3.nick comment_nick,
+    u3.email comment_email
+    
+    from
+    report r
+    inner join user u on r.uno=u.uno
+    left outer join repo_arc ra on r.rpno=ra.rpno
+    left outer join article a on ra.arno=a.arno
+    left outer join user u2 on a.writer=u2.uno
+    
+    left outer join repo_comt rc on r.rpno=rc.rpno
+    left outer join comment c on rc.cno=c.cno
+    left outer join article a2 on a2.arno=c.arno
+    left outer join user u3 on c.uno=u3.uno
 	</sql>
 
 	<insert id="insert" parameterType="report"
@@ -82,22 +88,30 @@
 		#{reporter.no}, now())
 	</insert>
 
-	<insert id="insertReportedComment" parameterType="report">
-		insert into repo_comt(rpno, cno)
-		values(#{no}, #{reportedComment.no})
-	</insert>
-
 	<insert id="insertReportedArticle" parameterType="report">
 		insert into repo_arc(rpno, arno)
 		values(#{no}, #{reportedArticle.no})
 	</insert>
 
+	<insert id="insertReportedComment" parameterType="report">
+		insert into repo_comt(rpno, cno)
+		values(#{no}, #{reportedComment.no})
+	</insert>
 
 	<update id="insertStatus" parameterType="block">
 		update report set
 		status = 2
 		where rpno=#{report.no}
 	</update>
+
+  <select id="findAll" resultMap="ReportMap" parameterType="string">
+  <include refid="sql1"/>
+  <if test="keyword != null">
+    where
+     r.rptno like concat('%', #{keyword}, '%')
+    </if>
+    order by r.rpno desc
+  </select>
 
 	<select id="findAllArticle" resultMap="ReportMap"
 		parameterType="string">
@@ -162,33 +176,8 @@
 	</select>
 
 	<select id="findByNo" resultMap="ReportMap" parameterType="int">
-		select
-		r.rpno,
-		r.rptno,
-		r.uno,
-		r.cdt,
-		r.status,
-		r.pdt,
-		u.uno,
-		u.nick reporter_nick,
-		u.email reporter_email,
-		ra.arno,
-		a.arno ,
-		u2.uno,
-		u2.nick article_writer,
-		u2.email article_email,
-		    u3.uno comment_uno,
-    u3.nick comment_writer,
-    u3.email comment_email
-		from
-		report r
-		inner join user u on r.uno=u.uno
-		left outer join repo_arc ra on r.rpno=ra.rpno
-		left outer join article a on ra.arno=a.arno
-		left outer join user u2 on a.writer=u2.uno
-		left outer join repo_comt rc on r.rpno=rc.rpno
-    left outer join comment c on rc.cno=c.cno
-    left outer join user u3 on c.writer=u3.uno
+  <include refid="sql1"/>
+
 		where r.rpno=#{no}
 	</select>
 
