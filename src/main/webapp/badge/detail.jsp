@@ -26,7 +26,7 @@ if (badge == null) {
 
 <form action='updatePhoto' method='post' enctype='multipart/form-data'>
 <input type='text' name='no' value='<%=badge.getNo()%>' readonly style='display:hidden;'><br>
-<img src='../../upload/badge/${badge.photo}.png' alt='[<%=badge.getPhoto()%>]'>
+<img src='../../upload/badge/<%=badge.getPhoto()%>.png' alt='[뱃지 이미지]'>
 <input type='file' name='photo'><br>
 <button>이미지 변경</button>
 </form>

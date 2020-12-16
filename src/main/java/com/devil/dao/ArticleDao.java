@@ -18,7 +18,7 @@ public interface ArticleDao {
   List<Article> findByBookmarker(User user) throws Exception;
   List<Article> findByWriter(User user);
   List<Article> findByTagNo(int tagNo) throws Exception;
-
   int insertTags(Article article) throws Exception;
   int deleteTags(int articleNo) throws Exception;
+  List<Article> findFeedByUser(User user) throws Exception;
 }

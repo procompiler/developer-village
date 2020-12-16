@@ -88,4 +88,8 @@ public class DefaultArticleService implements ArticleService {
     return articleDao.findByTagNo(tagNo);
   }
 
+  @Override
+  public List<Article> feedList(User user) throws Exception {
+    return articleDao.findFeedByUser(user);
+  }
 }

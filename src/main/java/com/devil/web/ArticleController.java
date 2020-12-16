@@ -90,12 +90,21 @@ public class ArticleController {
   }
 
   @RequestMapping("/writtenList")
-  public ModelAndView list(User user, HttpSession session) throws Exception {
+  public ModelAndView list(User user) throws Exception {
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", userService.get(user.getNo()));
     mv.addObject("articleList", articleService.list(user));
     mv.setViewName("/article/writtenList.jsp");
+    return mv;
+  }
+  
+  @RequestMapping("/feed")
+  public ModelAndView list(HttpSession session) throws Exception {
+
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("articleList", articleService.feedList((User)session.getAttribute("loginUser")));
+    mv.setViewName("/article/feed.jsp");
     return mv;
   }
 
