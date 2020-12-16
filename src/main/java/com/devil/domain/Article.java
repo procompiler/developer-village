@@ -15,7 +15,6 @@ public class Article {
   private int state;
   private int studyStatus;
   private Date endDate;
-  private List<Comment> comments;
   private List<Tag> tags;
 
   public int getStudyStatus() {
@@ -85,13 +84,6 @@ public class Article {
   }
   public Article setState(int state) {
     this.state = state;
-    return this;
-  }
-  public List<Comment> getComments() {
-    return comments;
-  }
-  public Article setComments(List<Comment> comments) {
-    this.comments = comments;
     return this;
   }
   public Date getCreatedDate() {

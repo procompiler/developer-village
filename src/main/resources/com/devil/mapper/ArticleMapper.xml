@@ -30,19 +30,6 @@
       <result column="font_color"  property="fontColor"/>
     </collection>
     
-    <collection property="comments"    ofType="comment">
-      <id column="cno"                 property="no"/>
-      <result column="comment_content" property="content"/>
-      <result column="comment_cdt"     property="createdDate"/>
-      <result column="comment_state"   property="state"/>
-      
-      <association property="writer"       javaType="user">
-	      <id column="uno"                   property="no"/>
-	      <result column="comment_nick"      property="nickname"/>
-	      <result column="comment_photo"     property="photo"/>
-      </association>
-    </collection>
-    
   </resultMap>
   
   <sql id="sql1">

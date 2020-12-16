@@ -108,16 +108,6 @@ public class ArticleController {
     return mv;
   }
 
-  @RequestMapping("/community")
-  public ModelAndView tagList() throws Exception {
-
-    ModelAndView mv = new ModelAndView();
-
-    mv.addObject("tagList", tagService.list((String)null));
-    mv.setViewName("/article/community.jsp");
-    return mv;
-  }
-
   @RequestMapping("/detail")
   public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
     Article article = articleService.get(no);
