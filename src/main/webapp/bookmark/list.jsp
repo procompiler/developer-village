@@ -30,7 +30,7 @@
           <td id='title'>
             <ul id='tags'>
               <c:forEach items="${a.tags}" var="tag">
-                <li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
+                <li id='color' style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</li>
               </c:forEach>
             </ul> 
             <a href='detail?no=${a.no}'>${a.title}</a>
