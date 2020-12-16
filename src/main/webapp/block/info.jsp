@@ -10,12 +10,10 @@
 <head>
 <meta charset="UTF-8">
 <title>차단 알림</title>
-<link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href='../style.css'>
+  <jsp:include page="/header.jsp"></jsp:include>
+
 </head>
 <body>
-	<jsp:include page="/header.jsp"></jsp:include>
 	<h1>차단 알림</h1>
 
 <%
@@ -30,7 +28,7 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	<h3>현재 차단중입니다.</h3>
 
   <p>차단 사유 : </p>
-  <p><%=block.getBlockedReason()%></p>
+  <p>${blockedUser.blockedReason}</p>
 
    <%
    blockTermination.setTime(block.getPermittedDate());

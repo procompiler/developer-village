@@ -5,17 +5,18 @@
 
 <mapper namespace="com.devil.dao.BlockDao">
 	<resultMap type="block" 	  id="BlockMap">
-		<id column="blno"		  property="no" />
-		<result column="cdt"	  property="permittedDate" />
+		<id column="blno"		      property="no" />
+		<result column="cdt"	    property="permittedDate" />
 		<result column="dates"	  property="blockedDates"/>
 		<result column="bl_rsn"	  property="blockedReason" />
 		<result column="unbl_rsn" property="unBlockedReason" />
 
 <association property="reportedUser" javaType="user">
-    <id column="uno" property="no"/>
-    <result column="blocked_nick"	 property="nickname"/>
+    <id column="uno"                 property="no"/>
+    <result column="blocked_nick"	   property="nickname"/>
     <result column="blocked_email"	 property="email"/>
 </association>
+
 	</resultMap>
 	
 	<sql id="sql1">
