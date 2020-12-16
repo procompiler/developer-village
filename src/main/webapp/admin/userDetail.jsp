@@ -14,18 +14,13 @@
 	<jsp:include page="/header.jsp"></jsp:include>
 	<h1>[회원 상세조회]</h1>
 
-	<form action='updatePhoto' method='post' enctype='multipart/form-data'>
-		<input type='hidden' name='no' value='${user.no}'><br> <a
-			href='../../upload/user/${user.photo}%>'> <img
-			src='../../upload/user/${user.photo}_160x160.jpg' alt='[${user.photo}]'></a><br>
-		<input type='file' name='photo'><br>
-		<button>변경</button>
-	</form>
+		<input type='hidden' name='no' value='${user.no}'><br>
+		 <a href='../../upload/user/${user.photo}%>'> 
+		 <img	src='../../upload/user/${user.photo}_160x160.jpg' alt='[${user.photo}]'></a><br>
 	<br>
-	<form action='update' method='post'>
 		<input type='hidden' name='no' value='${user.no}'><br>
 		<p>
-			닉네임: <input type='text' name='nickname' value='${user.nickname}'>
+			닉네임: ${user.nickname}
 		</p>
 		<p>이메일: ${user.email}</p>
 		<p>이름: ${user.name}</p>
@@ -47,23 +42,22 @@
 			</c:when>
 		</c:choose>
 		<p>
-			소개: <input type='text' name='bio' value='${user.bio}'>
+			소개: ${user.bio}
 		</p>
 		<p>
-			기술: <input type='text' name='tech' value='${user.tech}'>
+			기술: ${user.tech}
 		</p>
 		<p>
-			개인 홈페이지: <input type='text' name='homepage'
-				value='${user.homepageURL}'>
+			개인 홈페이지: ${user.homepageURL}
 		</p>
 		<p>
-			깃허브: <input type='text' name='githubURL' value='${user.githubURL}'>
+			깃허브: ${user.githubURL}
 		</p>
 		<p>
-			인스타그램: <input type='text' name='instarURL' value='${user.instarURL}'>
+			인스타그램: ${user.instarURL}
 		</p>
 		<p>
-			트위터: <input type='text' name='twitterURL' value='${user.twitterURL}'>
+			트위터:${user.twitterURL}
 		</p>
 <%-- 		<% boolean followed = (Boolean) request.getAttribute("followed"); %>
 		<a class="btn <%=followed ? "btn-outline-danger" : "btn-primary"%>" 
@@ -73,11 +67,5 @@
 		<c:if test="${user.state == 1}">
       탈퇴한 회원
       </c:if>
-		<%-- <p style='color:red'><%=user.getState() == 1 ? "" : "탈퇴한 회원" %></p>
- --%>
-		<button>정보 수정</button>
-		<button type='button' class='btn-danger'
-			onclick="location.href='delete?no=${user.no}'">회원 탈퇴</button>
 		<a href='list' style='color: blue;'>회원 목록으로</a>
-	</form>
 	<jsp:include page="/footer.jsp"></jsp:include>

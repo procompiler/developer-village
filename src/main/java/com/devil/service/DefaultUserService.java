@@ -2,6 +2,7 @@ package com.devil.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 import com.devil.dao.UserDao;
 import com.devil.domain.User;
@@ -31,7 +32,7 @@ public class DefaultUserService implements UserService {
 
   @Override
   public User get(String email, String password) throws Exception {
-    HashMap<String,Object> map = new HashMap<>();
+    Map<String,Object> map = new HashMap<>();
     map.put("email", email);
     map.put("password", password);
     return userDao.findByEmailPassword(map);
@@ -39,6 +40,11 @@ public class DefaultUserService implements UserService {
   @Override
   public int update(User user) throws Exception {
     return userDao.update(user);
+  }
+
+  @Override
+  public int updateLoginTimeStamp(User user) throws Exception {
+    return userDao.updateLoginTimeStamp(user);
   }
 
   @Override

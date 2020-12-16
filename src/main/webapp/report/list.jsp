@@ -82,13 +82,13 @@
 			<td><%=reportType%></td>
 
 			<td>
-				<form action="../block/form" method="get">
+				<form action="../block/form" method=get>
 					<input type='hidden' name='reportNo' value='<%=report.getNo()%>'>
 					
 				<%
       switch (report.getStatus()) {
       case 1:%>
-      <button>신고승인</button> 
+      <button class="btn btn-primary">신고승인</button> 
         <%
         break;
       case 2: %>

@@ -1,4 +1,3 @@
-<%@page import="com.devil.domain.Report"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,16 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>차단하기</title>
-<link rel="stylesheet"
-  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
- <link rel="stylesheet" type="text/css" href='../style.css'> 
+  <jsp:include page="/header.jsp"></jsp:include>
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
 	<h1>유저 차단하기</h1>
-	<%
-  Report report = (Report) request.getAttribute("report");
-  %>
 	<form action="add" method="post">
 		차단일수 : <select name="blockingDate">
 			<option value="1">1일</option>
@@ -24,11 +17,11 @@
 			<option value="30">30일</option>
 			<option value="9876">영구차단</option>
 		</select><br> 차단사유 :
-		<textarea name="block-reason" cols="60" rows="10"></textarea>
+		<textarea name="blockedReason" cols="60" rows="10"></textarea>
 		<br>
-		<input type='hidden' name='reportNo' value='<%=report.getNo()%>'>
-		<%=report.getReportedArticle().getWriter().getNickname()%>님을
-		<button>차단하기</button>
+		<input type='hidden' name='reportNo' value='${report.no}'>
+		${report.reportedUser.nickname}님을
+		<button class="btn btn-primary">차단하기</button>
 	</form>
 	 <jsp:include page="/footer.jsp"></jsp:include>
 	 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

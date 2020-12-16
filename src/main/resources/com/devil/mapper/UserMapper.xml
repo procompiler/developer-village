@@ -40,6 +40,7 @@
 		u.bio,
 		u.blocked,
 		u.state,
+		u.rnt_vsdt,
 		u.pwd,
 		u.photo,
 		u.cdt,
@@ -60,8 +61,8 @@
 	</sql>
 
 	<insert id="insert" parameterType="user">
-		insert into user(email,nick,name,pwd,log_type, photo)
-		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
+		insert into user(email,nick,name,pwd,log_type, photo, rnt_vsdt)
+		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo}, now())
 	</insert>
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">
@@ -71,7 +72,7 @@
 			where
 			email like concat('%', #{keyword}, '%')
 			or nick like concat('%', #{keyword}, '%')
-		</if>
+		</if> 
 		order by uno desc
 	</select>
 
@@ -107,6 +108,7 @@
 	    u.gh_url,
 	    u.in_url,
 	    u.tw_url,
+	    u.rnt_vsdt,
 	    u.bio,
 	    u.state,
 	    u.pwd,
@@ -135,6 +137,14 @@
 		</set>
 		where uno = #{no}
 	</update>
+
+  <insert id="updateLoginTimeStamp" parameterType="user">
+      update user set
+      rnt_vsdt = now()
+    where uno = #{no}
+    <![CDATA[  and rnt_vsdt <= now() ]]>
+  
+  </insert>
 
 	<update id="insertBlocked" parameterType="block">
     update user set
