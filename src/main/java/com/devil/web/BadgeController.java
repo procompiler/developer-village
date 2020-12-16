@@ -14,7 +14,6 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
 
-
 @Controller
 @RequestMapping("/badge")
 public class BadgeController {
@@ -33,21 +32,21 @@ public class BadgeController {
     return mv;
   }
 
-  @RequestMapping("add")
+  @RequestMapping("/add")
   public String add(String name, String content,Part photoFile) throws Exception {
-
+	 
+	  String filename = UUID.randomUUID().toString();
+	  String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
+	  
     Badge badge = new Badge();
     badge.setName(name);
     badge.setContent(content);
 
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
 
     photoFile.write(saveFilePath);
     badge.setPhoto(filename);
 
     generatePhotoThumbnail(saveFilePath);
-
     badgeService.add(badge);
     return "redirect:list";
   }

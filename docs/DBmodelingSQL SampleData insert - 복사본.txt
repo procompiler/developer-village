@@ -1,0 +1,558 @@
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'user1.jpg', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'user2.jpg', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'user3.jpg', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4.jpg', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 0, 'java,phython',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'user5.jpg', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'user6.jpg', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',1,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'user7.jpg', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (8, 'asdf@naver.com', '아브라카다브라', '김태희', password(1111), 1, 'user8.jpg', 'https://bbb.com/', '', 0, 'ruby',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (9, 'qwer@naver.com', '코딩대장', '최희진', password(1111), 2, 'user9.jpg', '', '', 0, 'go,java',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (10, 'zxcv@gmail.com', '저놈자바라', '공효진', password(1111), 3, 'user10.jpg', 'https://ccc.com/', '', 0, 'pyton,c',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (11, 'abcd@gmail.com', '시간이nullnull', '배두나', password(1111), 2, 'user11.jpg', 'https://ddd.com/', '', 1, 'php',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (12, 'qwerty@gmail.com', '벌레잡이', '김희애', password(1111), 1, 'user12.jpg', '', '', 1, 'javascript',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (13, 'awesome@gmail.com', '길가던개발자', '김서형', password(1111), 3, 'user13.jpg', 'https://eee.com/', '', 0, '',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (14, 'wigglewiggle@naver.com', '위글위글', '염정아', password(1111), 2, 'user14.jpg', '', '', 0, 'go',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (15, 'brownTshirt@gmail.com', '비틀즈', '김민아', password(1111), 1, 'user15.jpg', 'https://fff.com/', '', 0, 'go',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (16, 'beatifulworld@gmail.com', '미투유투', '김태리', password(1111), 3, 'user16.jpg', 'https://ggg.com/', '', 0, 'c,kotilin',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (17, 'Iloveiiiii@naver.com', '으하하', '이영애', password(1111), 2, 'user17.jpg', '', '', 0, 'ruby',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (18, 'solution@naver.com', '정답을알려줘', '고두심', password(1111), 3, 'user18.jpg', 'https://hhh.com/', '', 0, 'c,swift',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (19, 'oasis@gmail.com', '락이좋아', '이정은', password(1111), 1, 'user19.jpg', 'https://iii.com/', '', 0, 'swift',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (20, 'blur@gmail.com', '사랑곰', '김혜수', password(1111), 3, 'user20.jpg', 'https://jjj.com/', '', 1, 'php',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (21, 'articmonkey@gmail.com', '북극원숭이', '강소라', password(1111), 2, 'user21.jpg', 'https://kkk.com/', '', 0, 'go,swift',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (22, 'Iamrockstar@naver.com', '내꿈은축구왕', '송혜교', password(1111), 3, 'user22.jpg', 'https://lll.com/', '', 1, 'ruby',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (23, 'youngAndrich@gmail.com', '영앤리치', '최지우', password(1111), 1, 'user23.jpg', 'https://mmm.com/', '', 0, '',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (24, 'givemeamoney@gmail.com', '호머심슨', '이나영', password(1111), 2, 'user24.jpg', '', '', 0, 'c++',0,0);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (25, 'emeraldsword@naver.com', '에메랄드칼', '하지원', password(1111), 3, 'user25.jpg', 'https://nnn.com/', '', 1, 'c,python',0,0);
+
+
+
+INSERT INTO category (cano,name) VALUES (1, '자유게시판');
+INSERT INTO category (cano,name) VALUES (2, 'QnA');
+INSERT INTO category (cano,name) VALUES (3, '채용공고');
+INSERT INTO category (cano,name) VALUES (4, '스터디');
+
+
+
+
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (1, 1, 1,'자바너무재밌다 짱짱짱 즐거운인생','자바를 배우면 우리 인생이 즐겁고 편안해집니다 자바를 믿으세요.','2020-11-20',55);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (2, 3, 1,'프로컴파일러 진짜 짱짱','사랑해요 여러분','2020-11-20',12);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (3, 13, 3,'웹사이트 프론트엔드 개발자 구인','웹사이트 프론트엔드 개발자 구인','2020-11-20',20);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (4, 4, 1,'오늘 저녁 메뉴 고민중인데, 같이 골라주세요!','뜨끈하고 맛있는걸로 먹고싶네요!!','2020-11-22',22);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (5, 25, 4,'자바의 정석 같이 보실분','혼자 보려니까 힘드네요, 같이 보실 분 찾습니다.','2020-11-23',10);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (6, 6, 1,'JAVA Spring 개발자인데..','다른 언어 어떤거 공부하면 좋을까요?','2020-11-24',22);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (7, 7, 2,'Null poing Exception이 떴습니다.','진짜 짜증나고 null null하네요,','2020-11-25',40);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (8, 8, 2,'오버라이딩이랑 오버로딩 차이가 뭔가요?','ㅠㅠㅠ갑자기 엄청 헷갈리네요.','2020-11-25',20);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (9, 9, 2,'이거 왜안되나요.','사진 첨부합니다. 아시는 분 답변 부탁드려요ㅠ','2020-11-25',44);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (10, 10, 2,'탕수육 부먹인가요 찍먹인가요?','저는 그냥 다먹어요하하하하','2020-11-26',19);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (11, 11, 2,'국비지원 교육 하려고 하는데...','자바랑 인공지능 중에서 고민되네요','2020-11-26',5);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (12, 12, 3,'인공지능 관련 S/W 개발자 신입/경력 모집','인공지능 관련 S/W 개발자 신입/경력 모집','2020-11-26',11);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (13, 2, 1,'이거 왜안되나요. ','사진 첨부합니다.','2020-11-20',2);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (14, 14, 3,'웹(JAVA/SPRING) 개발자 인원 모집','웹(JAVA/SPRING) 개발자 인원 모집','2020-11-27',7);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (15, 15, 3,'C++ 개발자 채용(Anti-Malware engine)','C++ 개발자 채용(Anti-Malware engine)','2020-11-28',20);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (16, 16, 3,'JAVA/HTML/CSS 능숙하신 개발자 모집','JAVA/HTML/CSS 능숙하신 개발자 모집','2020-11-29',18);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (17, 17, 4,'자바스크립트 불도저하실분','010-1111-2222 연락주세요','2020-11-29',33);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (18, 18, 4,'강남역, 평일 저녁 자바 스터디 구해요','어느정도 기본은 되신 분이면 좋겠습니다.','2020-11-29',40);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (19, 19, 4,'알고리즘 스터디 같이해요','스터디 같이해요','2020-11-30',34);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (20, 20, 4,'서울 주말 모각코 모집','스터디 같이해요','2020-11-30',56);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (21, 21, 4,'부산 파이썬 스터디 충원','스터디 같이해요','2020-12-01',36);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (22, 22, 1,'프로젝트 진행중인데 힘드네요.','진짜 힘드네요 하하하','2020-12-04',25);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (23, 23, 2,'sql문 오류좀 봐주세요.','하나도 모르겠네요.','2020-12-05',76);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (24, 24, 3,'신입 JAVA 개발자 및 경렬직 웹 기획자 채용','신입 JAVA 개발자 및 경렬직 웹 기획자 채용','2020-12-06',2);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (25, 5, 1,'얼죽아 오늘부로 탈퇴합니다.','날씨 진짜 춥네요.','2020-12-06',3);
+
+
+
+
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (1, 1, 10,'자바 짱짱... 헐... 널...null..','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (2, 1, 9,'그쵸 재밌는인생, 자바가 완성해 줍니다.','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (3, 1, 8,'저도 즐거워요 엄씨에스~ 즐거워','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (4, 2, 2,'진짜 너무 좋습니다. 여러분.','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (5, 2, 3,'프로컴파일러 진짜 짱짱','2020-11-20');
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (6, 2, 4,'민섭님 좋아요','2020-11-21',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (7, 2, 4,'하연님 좋아요','2020-11-21',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (8, 2, 4,'종엽님 좋아요','2020-11-22',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (9, 2, 4,'지연님 좋아요','2020-11-22',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (10, 2, 4,'진영님 좋아요','2020-11-22',1,5);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (11, 4, 10,'저는 양식 추천합니다.','2020-11-22');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (12, 4, 5,'샤브샤브 어떠세요!!','2020-11-22');
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (13, 5, 1,'저는 양식 추천합니다.','2020-11-22',1,22);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (14, 4, 4,'햄버거도 좋아요','2020-11-23',1,11);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (15, 4, 4,'감자튀김 좋아요','2020-11-23',1,11);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (16, 4, 4,'샤브샤브 갑자기 땡기네요.','2020-11-23',1,12);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (19, 6, 20,'파이썬 해보시는거 어떠세요.','2020-11-25');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (20, 8, 8,'오버로딩은 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법이고, 오버로딩 메서드의 파라미터 개수나 파라미터 타입이 다르더라도, 같은 기능을 수행한다면 같은 이름을 부여함으로써 프로그램의 일관성을 도와주는 문법입니다.','2020-11-25');
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (21, 8, 2,'감사합니다ㅠㅠ','2020-11-26',1,20);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (21, 10, 4,'탕수육 is 뭔들..','2020-11-26');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (22, 10, 7,'저는 찍먹이요!','2020-11-26');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 10, 2,'찍먹파랑 부먹파랑 싸움나요...','2020-11-27');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 13, 2,'맵퍼 확인해보세요.','2020-11-28');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 13, 2,'오타난거같은데...','2020-11-28');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (23, 11, 1,'비전공자이시면 자바 추천이요.','2020-11-26');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (24, 11, 8,'저도 비전공인데, 자바로 시작했어요.','2020-11-27');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (25, 17, 20,'문자 드렸어요.','2020-11-28');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (18, 18, 4,'몇시에 진행하나요?','2020-11-30');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (26, 22, 1,'저도요.','2020-12-04');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (28, 22, 2,'저도요.','2020-11-05');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (29, 22, 3,'저도요.','2020-11-05');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (30, 22, 4,'저도요.','2020-11-06');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (31, 25, 4,'오늘 진짜 추움.....ㅠ','2020-12-06');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (32, 25, 5,'맞아요 진짜 추워요ㅠㅠ','2020-12-06');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (33, 11, 10,'인공지능은 수학 지식이 있어야 해요, 사람마다 달라서 그냥 추천해드리기 애매하네요.','2020-12-06');
+
+
+
+
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java','#E8EBA7','##37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (2, 'python', 'python','#6D9AF1','##37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (3, 'ruby', 'ruby','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (4, 'go', 'go','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (7, 'C++', 'cpp','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (8, 'android', 'android','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (9, 'swift', 'swift','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (10, 'mysql', 'mysql','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (11, 'php', 'php','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (12, '일상', 'dailylife','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (13, '스터디', 'study','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (14, '비전공', 'nonmj','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (15, '취업', 'chwi','#6C5DDF','FFFFFF');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (16, 'react', 'react','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (21, 'spring', 'spring','#5EA4AE','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (22, 'html', 'html','#E8EBA7','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (23, 'R', 'r','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (24, 'node.js', 'nodejs','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (25, 'oracle', 'oracle','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio', 'visual-studio','#F56C6E','#37393E');
+
+
+
+
+
+INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome.jpg',null);
+INSERT INTO badge (bno,name,photo,tno) VALUES (1, 'JAVA', 'java',1);
+INSERT INTO badge (bno,name,photo,tno) VALUES (2, 'Phython', 'python',2);
+INSERT INTO badge (bno,name,photo,tno) VALUES (3, 'Ruby', 'ruby',3);
+INSERT INTO badge (bno,name,photo,tno) VALUES (4, 'Go', 'go',4);
+INSERT INTO badge (bno,name,photo,tno) VALUES (5, 'JavaScript', 'js',5);
+INSERT INTO badge (bno,name,photo,tno) VALUES (6, 'C', 'c',6);
+INSERT INTO badge (bno,name,photo,tno) VALUES (7, 'C++', 'cpp',7);
+INSERT INTO badge (bno,name,photo,tno) VALUES (8, 'Android', 'android',8);
+INSERT INTO badge (bno,name,photo,tno) VALUES (9, 'Swift', 'swift',9);
+INSERT INTO badge (bno,name,photo,tno) VALUES (10, 'MySql', 'mysql',10);
+INSERT INTO badge (bno,name,photo,tno) VALUES (11, 'PHP', 'php',11);
+INSERT INTO badge (bno,name,photo,tno) VALUES (12, 'DailyLife', 'dailylife',12);
+INSERT INTO badge (bno,name,photo,tno) VALUES (13, 'Study', 'study',12);
+INSERT INTO badge (bno,name,photo,tno) VALUES (16, 'React', 'react',16);
+INSERT INTO badge (bno,name,photo,tno) VALUES (17, 'Docker', 'docker',17);
+INSERT INTO badge (bno,name,photo,tno) VALUES (18, 'TypeScript', 'typescript',18);
+INSERT INTO badge (bno,name,photo,tno) VALUES (19, 'Linux', 'linux',19);
+INSERT INTO badge (bno,name,photo,tno) VALUES (20, 'CSS', 'css',20);
+INSERT INTO badge (bno,name,photo,tno) VALUES (21, 'Spring', 'spring',21);
+INSERT INTO badge (bno,name,photo,tno) VALUES (22, 'HTML', 'html',22);
+INSERT INTO badge (bno,name,photo,tno) VALUES (23, 'R', 'r',23);
+INSERT INTO badge (bno,name,photo,tno) VALUES (24, 'Node.js', 'nodejs',24);
+INSERT INTO badge (bno,name,photo,tno) VALUES (25, 'Oracle', 'oracle',25);
+INSERT INTO badge (bno,name,photo,tno) VALUES (26, 'Visual Studio', 'visual-studio',26);
+
+
+
+INSERT INTO repo_type (rptno, name) VALUES (1,'욕설');
+INSERT INTO repo_type (rptno, name) VALUES (2,'불법광고');
+INSERT INTO repo_type (rptno, name) VALUES (3,'음란성');
+INSERT INTO repo_type (rptno, name) VALUES (4,'도배');
+INSERT INTO repo_type (rptno, name) VALUES (5,'권리침해');
+INSERT INTO repo_type (rptno, name) VALUES (6,'폭력적 또는 혐오성');
+INSERT INTO repo_type (rptno, name) VALUES (7,'기타');
+
+
+
+
+INSERT INTO usr_bdg(uno,bno,adt) VALUES (3,4,'2020-05-07');
+INSERT INTO usr_bdg(uno,bno,adt) VALUES (4,5,'2020-06-09');
+
+
+
+INSERT INTO usr_bmk_arc (uno,arno,cdt) VALUES (1,2,'2020-01-02');
+INSERT INTO usr_bmk_arc (uno,arno,cdt) VALUES (2,3,'2020-02-03');
+INSERT INTO usr_bmk_arc (uno,arno,cdt) VALUES (3,4,'2020-05-05');
+INSERT INTO usr_bmk_arc (uno,arno,cdt) VALUES (4,1,'2020-04-07');
+INSERT INTO usr_bmk_arc (uno,arno,cdt) VALUES (5,2,'2020-06-05');
+
+
+
+INSERT INTO usr_tag (uno,tno,cdt) VALUES (1,1,'2020-01-01');
+INSERT INTO usr_tag (uno,tno,cdt) VALUES (2,2,'2020.03.04');
+INSERT INTO usr_tag (uno,tno,cdt) VALUES (3,3,'2020-07-07');
+INSERT INTO usr_tag (uno,tno,cdt) VALUES (4,4,'2020-08-08');
+INSERT INTO usr_tag (uno,tno,cdt) VALUES (5,1,'2020-09-09');
+
+
+
+INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (1, 4, '1','1','2020-11-26');
+INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (2, 5, '2','2','2020-11-27');
+INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (3, 6, '3','2','2020-11-28');
+INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (4, 2, '5','3','2020-11-29');
+
+
+
+
+INSERT INTO bdg_eva (beno,bename) VALUES (1, '가입일');
+INSERT INTO bdg_eva (beno,bename) VALUES (2, '방문횟수');
+INSERT INTO bdg_eva (beno,bename) VALUES (3, '댓글수');
+INSERT INTO bdg_eva (beno,bename) VALUES (4, '게시글수');
+
+
+
+
+INSERT INTO arc_tag (arno,tno) VALUES (1, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (1, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (2, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (2, 20);
+INSERT INTO arc_tag (arno,tno) VALUES (2, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (4, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (5, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (6, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (6, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (6, 26);
+INSERT INTO arc_tag (arno,tno) VALUES (7, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (8, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (9, 20);
+INSERT INTO arc_tag (arno,tno) VALUES (9, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (10, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (11, 14);
+INSERT INTO arc_tag (arno,tno) VALUES (11, 15);
+INSERT INTO arc_tag (arno,tno) VALUES (13, 10);
+INSERT INTO arc_tag (arno,tno) VALUES (13, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (17, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (18, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (18, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 2);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (19, 15);
+INSERT INTO arc_tag (arno,tno) VALUES (20, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (21, 13);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 20);
+INSERT INTO arc_tag (arno,tno) VALUES (22, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (23, 10);
+INSERT INTO arc_tag (arno,tno) VALUES (23, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (25, 12);
+
+
+
+
+INSERT INTO arc_pht (pno,arno,adr) VALUES (1, 3, 'aaa.gif');
+INSERT INTO arc_pht (pno,arno,adr) VALUES (2, 3, 'bbb.gif');
+INSERT INTO arc_pht (pno,arno,adr) VALUES (3, 1, 'okok.gif');
+
+
+
+
+INSERT INTO follow(fwing_no,fwer_no,cdt) VALUES (1,2,'2020-04-07');
+INSERT INTO follow(fwing_no,fwer_no,cdt) VALUES (2,3,'2020-06-08');
+INSERT INTO follow(fwing_no,fwer_no,cdt) VALUES (3,4,'2020-08-09');
+INSERT INTO follow(fwing_no,fwer_no,cdt) VALUES (4,5,'2020-09-09');
+INSERT INTO follow(fwing_no,fwer_no,cdt) VALUES (5,1,'2020-07-08');
+
+
+
+
+INSERT INTO noti (nno,uno,content,type,url) VALUES (1, 1,'101번 게시글에 댓글이 달렸습니다.','1','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (2, 1,'댓글에 대댓글이 달렸습니다.','2','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (3, 2,'xxx님이 팔로우했습니다.','3','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (4, 2,'yyy님이 팔로우했습니다.','3','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (5, 2,'zzz님이 팔로우했습니다.','3','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (6, 3,'새 뱃지를 받으셨습니다!','4','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (7, 4,'새 뱃지를 받으셨습니다!','4','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (8, 5,'민섭짱짱님이 팔로우했습니다.','3','null');
+INSERT INTO noti (nno,uno,content,type,url) VALUES (9, 5,'깃허브망령님이 팔로우했습니다.','3','null');
+
+
+
+
+INSERT INTO region(rgno, name) VALUES(10001,'서울'); 
+INSERT INTO region (rgno,name) VALUES (10002, '부산');
+INSERT INTO region (rgno,name) VALUES (10003, '대구');
+INSERT INTO region (rgno,name) VALUES (10004, '인천');
+INSERT INTO region (rgno,name) VALUES (10005, '광주');
+INSERT INTO region (rgno,name) VALUES (10006, '대전');
+INSERT INTO region (rgno,name) VALUES (10007, '울산');
+INSERT INTO region (rgno,name) VALUES (10008, '경기');
+INSERT INTO region (rgno,name) VALUES (10009, '강원');
+INSERT INTO region (rgno,name) VALUES (10010, '충북');
+INSERT INTO region (rgno,name) VALUES (10011, '충남');
+INSERT INTO region (rgno,name) VALUES (10012, '경북');
+INSERT INTO region (rgno,name) VALUES (10013, '경남');
+INSERT INTO region (rgno,name) VALUES (10014, '전북');
+INSERT INTO region (rgno,name) VALUES (10015, '전남');
+INSERT INTO region (rgno,name) VALUES (10016, '제주');
+INSERT INTO region (rgno,name) VALUES (10017, '세종');
+
+
+INSERT INTO relo (relo,rgno,name) VALUES (1, '10001', '강남구');
+INSERT INTO relo (relo,rgno,name) VALUES (2, '10001', '강동구');
+INSERT INTO relo (relo,rgno,name) VALUES (3, '10001', '강북구');
+INSERT INTO relo (relo,rgno,name) VALUES (4, '10001', '강서구');
+INSERT INTO relo (relo,rgno,name) VALUES (5, '10001', '관악구');
+INSERT INTO relo (relo,rgno,name) VALUES (6, '10001', '광진구');
+INSERT INTO relo (relo,rgno,name) VALUES (7, '10001', '구로구');
+INSERT INTO relo (relo,rgno,name) VALUES (8, '10001', '금천구');
+INSERT INTO relo (relo,rgno,name) VALUES (9, '10001', '노원구');
+INSERT INTO relo (relo,rgno,name) VALUES (10, '10001', '도봉구');
+INSERT INTO relo (relo,rgno,name) VALUES (11, '10001', '동대문구');
+INSERT INTO relo (relo,rgno,name) VALUES (12, '10001', '동작구');
+INSERT INTO relo (relo,rgno,name) VALUES (13, '10001', '마포구');
+INSERT INTO relo (relo,rgno,name) VALUES (14, '10001', '서대문구');
+INSERT INTO relo (relo,rgno,name) VALUES (15, '10001', '서초구');
+INSERT INTO relo (relo,rgno,name) VALUES (16, '10001', '성동구');
+INSERT INTO relo (relo,rgno,name) VALUES (17, '10001', '성북구');
+INSERT INTO relo (relo,rgno,name) VALUES (18, '10001', '송파구');
+INSERT INTO relo (relo,rgno,name) VALUES (19, '10001', '양천구');
+INSERT INTO relo (relo,rgno,name) VALUES (20, '10001', '영등포구');
+INSERT INTO relo (relo,rgno,name) VALUES (21, '10001', '용산구');
+INSERT INTO relo (relo,rgno,name) VALUES (22, '10001', '은평구');
+INSERT INTO relo (relo,rgno,name) VALUES (23, '10001', '종로구');
+INSERT INTO relo (relo,rgno,name) VALUES (24, '10001', '중구');
+INSERT INTO relo (relo,rgno,name) VALUES (25, '10001', '중랑구');
+INSERT INTO relo (relo,rgno,name) VALUES (26, '10002', '강서구');
+INSERT INTO relo (relo,rgno,name) VALUES (27, '10002', '금정구');
+INSERT INTO relo (relo,rgno,name) VALUES (28, '10002', '기장군');
+INSERT INTO relo (relo,rgno,name) VALUES (29, '10002', '남구');
+INSERT INTO relo (relo,rgno,name) VALUES (30, '10002', '동구');
+INSERT INTO relo (relo,rgno,name) VALUES (31, '10002', '동래구');
+INSERT INTO relo (relo,rgno,name) VALUES (32, '10002', '부산진');
+INSERT INTO relo (relo,rgno,name) VALUES (33, '10002', '북구');
+INSERT INTO relo (relo,rgno,name) VALUES (34, '10002', '사상구');
+INSERT INTO relo (relo,rgno,name) VALUES (35, '10002', '사하구');
+INSERT INTO relo (relo,rgno,name) VALUES (36, '10002', '서구');
+INSERT INTO relo (relo,rgno,name) VALUES (37, '10002', '수영구');
+INSERT INTO relo (relo,rgno,name) VALUES (38, '10002', '연제구');
+INSERT INTO relo (relo,rgno,name) VALUES (39, '10002', '영도구');
+INSERT INTO relo (relo,rgno,name) VALUES (40, '10002', '중구');
+INSERT INTO relo (relo,rgno,name) VALUES (41, '10002', '해운대구');
+INSERT INTO relo (relo,rgno,name) VALUES (42, '10003', '남구');
+INSERT INTO relo (relo,rgno,name) VALUES (43, '10003', '달서구');
+INSERT INTO relo (relo,rgno,name) VALUES (44, '10003', '달성군');
+INSERT INTO relo (relo,rgno,name) VALUES (45, '10003', '동구');
+INSERT INTO relo (relo,rgno,name) VALUES (46, '10003', '북구');
+INSERT INTO relo (relo,rgno,name) VALUES (47, '10003', '서구');
+INSERT INTO relo (relo,rgno,name) VALUES (48, '10003', '수성구');
+INSERT INTO relo (relo,rgno,name) VALUES (49, '10003', '중구');
+INSERT INTO relo (relo,rgno,name) VALUES (50, '10004', '강화군');
+INSERT INTO relo (relo,rgno,name) VALUES (51, '10004', '계양구');
+INSERT INTO relo (relo,rgno,name) VALUES (52, '10004', '남구');
+INSERT INTO relo (relo,rgno,name) VALUES (53, '10004', '남동구');
+INSERT INTO relo (relo,rgno,name) VALUES (54, '10004', '동구');
+INSERT INTO relo (relo,rgno,name) VALUES (55, '10004', '부평구');
+INSERT INTO relo (relo,rgno,name) VALUES (56, '10004', '서구');
+INSERT INTO relo (relo,rgno,name) VALUES (57, '10004', '연수구');
+INSERT INTO relo (relo,rgno,name) VALUES (58, '10004', '중구');
+INSERT INTO relo (relo,rgno,name) VALUES (59, '10005', '광산구');
+INSERT INTO relo (relo,rgno,name) VALUES (60, '10005', '남구');
+INSERT INTO relo (relo,rgno,name) VALUES (61, '10005', '동구');
+INSERT INTO relo (relo,rgno,name) VALUES (62, '10005', '북구');
+INSERT INTO relo (relo,rgno,name) VALUES (63, '10005', '서구');
+INSERT INTO relo (relo,rgno,name) VALUES (64, '10006', '대덕구');
+INSERT INTO relo (relo,rgno,name) VALUES (65, '10006', '동구');
+INSERT INTO relo (relo,rgno,name) VALUES (66, '10006', '서구');
+INSERT INTO relo (relo,rgno,name) VALUES (67, '10006', '유성구');
+INSERT INTO relo (relo,rgno,name) VALUES (68, '10006', '중구');
+INSERT INTO relo (relo,rgno,name) VALUES (69, '10007', '남구');
+INSERT INTO relo (relo,rgno,name) VALUES (70, '10007', '동구');
+INSERT INTO relo (relo,rgno,name) VALUES (71, '10007', '북구');
+INSERT INTO relo (relo,rgno,name) VALUES (72, '10007', '중구');
+INSERT INTO relo (relo,rgno,name) VALUES (73, '10007', '울주군');
+INSERT INTO relo (relo,rgno,name) VALUES (74, '10008', '가평군');
+INSERT INTO relo (relo,rgno,name) VALUES (75, '10008', '고양시');
+INSERT INTO relo (relo,rgno,name) VALUES (76, '10008', '과천시');
+INSERT INTO relo (relo,rgno,name) VALUES (77, '10008', '광명시');
+INSERT INTO relo (relo,rgno,name) VALUES (78, '10008', '광주시');
+INSERT INTO relo (relo,rgno,name) VALUES (79, '10008', '구리시');
+INSERT INTO relo (relo,rgno,name) VALUES (80, '10008', '군포시');
+INSERT INTO relo (relo,rgno,name) VALUES (81, '10008', '김포시');
+INSERT INTO relo (relo,rgno,name) VALUES (82, '10008', '남양주');
+INSERT INTO relo (relo,rgno,name) VALUES (83, '10008', '동구천시');
+INSERT INTO relo (relo,rgno,name) VALUES (84, '10008', '부천시');
+INSERT INTO relo (relo,rgno,name) VALUES (85, '10008', '성남시');
+INSERT INTO relo (relo,rgno,name) VALUES (86, '10008', '수원시');
+INSERT INTO relo (relo,rgno,name) VALUES (87, '10008', '시흥시');
+INSERT INTO relo (relo,rgno,name) VALUES (88, '10008', '안산시');
+INSERT INTO relo (relo,rgno,name) VALUES (89, '10008', '안성시');
+INSERT INTO relo (relo,rgno,name) VALUES (90, '10008', '안양시');
+INSERT INTO relo (relo,rgno,name) VALUES (91, '10008', '양주시');
+INSERT INTO relo (relo,rgno,name) VALUES (92, '10008', '양평군');
+INSERT INTO relo (relo,rgno,name) VALUES (93, '10008', '여주군');
+INSERT INTO relo (relo,rgno,name) VALUES (94, '10008', '연천군');
+INSERT INTO relo (relo,rgno,name) VALUES (95, '10008', '오산시');
+INSERT INTO relo (relo,rgno,name) VALUES (96, '10008', '용인시');
+INSERT INTO relo (relo,rgno,name) VALUES (97, '10008', '의왕시');
+INSERT INTO relo (relo,rgno,name) VALUES (98, '10008', '의정부');
+INSERT INTO relo (relo,rgno,name) VALUES (99, '10008', '이천시');
+INSERT INTO relo (relo,rgno,name) VALUES (100, '10008', '파주시');
+INSERT INTO relo (relo,rgno,name) VALUES (101, '10008', '평택시');
+INSERT INTO relo (relo,rgno,name) VALUES (102, '10008', '포턴시');
+INSERT INTO relo (relo,rgno,name) VALUES (103, '10008', '하남시');
+INSERT INTO relo (relo,rgno,name) VALUES (104, '10008', '화성시');
+INSERT INTO relo (relo,rgno,name) VALUES (105, '10009', '강릉시');
+INSERT INTO relo (relo,rgno,name) VALUES (106, '10009', '고성군');
+INSERT INTO relo (relo,rgno,name) VALUES (107, '10009', '동해시');
+INSERT INTO relo (relo,rgno,name) VALUES (108, '10009', '삼척시');
+INSERT INTO relo (relo,rgno,name) VALUES (109, '10009', '속초시');
+INSERT INTO relo (relo,rgno,name) VALUES (110, '10009', '양구군');
+INSERT INTO relo (relo,rgno,name) VALUES (111, '10009', '양양군');
+INSERT INTO relo (relo,rgno,name) VALUES (112, '10009', '영월군');
+INSERT INTO relo (relo,rgno,name) VALUES (113, '10009', '원주시');
+INSERT INTO relo (relo,rgno,name) VALUES (114, '10009', '인제군');
+INSERT INTO relo (relo,rgno,name) VALUES (115, '10009', '정선군');
+INSERT INTO relo (relo,rgno,name) VALUES (116, '10009', '철원군');
+INSERT INTO relo (relo,rgno,name) VALUES (117, '10009', '춘천시');
+INSERT INTO relo (relo,rgno,name) VALUES (118, '10009', '평창군');
+INSERT INTO relo (relo,rgno,name) VALUES (119, '10009', '홍천군');
+INSERT INTO relo (relo,rgno,name) VALUES (120, '10009', '화천군');
+INSERT INTO relo (relo,rgno,name) VALUES (121, '10009', '횡성군');
+INSERT INTO relo (relo,rgno,name) VALUES (122, '10010', '괴산군');
+INSERT INTO relo (relo,rgno,name) VALUES (123, '10010', '단양군');
+INSERT INTO relo (relo,rgno,name) VALUES (124, '10010', '보은군');
+INSERT INTO relo (relo,rgno,name) VALUES (125, '10010', '영동군');
+INSERT INTO relo (relo,rgno,name) VALUES (126, '10010', '옥천군');
+INSERT INTO relo (relo,rgno,name) VALUES (127, '10010', '음성군');
+INSERT INTO relo (relo,rgno,name) VALUES (128, '10010', '제천시');
+INSERT INTO relo (relo,rgno,name) VALUES (129, '10010', '증평군');
+INSERT INTO relo (relo,rgno,name) VALUES (130, '10010', '진천군');
+INSERT INTO relo (relo,rgno,name) VALUES (131, '10010', '청원군');
+INSERT INTO relo (relo,rgno,name) VALUES (132, '10010', '청주시');
+INSERT INTO relo (relo,rgno,name) VALUES (133, '10010', '충주시');
+INSERT INTO relo (relo,rgno,name) VALUES (134, '10011', '계룡시');
+INSERT INTO relo (relo,rgno,name) VALUES (135, '10011', '공주시');
+INSERT INTO relo (relo,rgno,name) VALUES (136, '10011', '금산군');
+INSERT INTO relo (relo,rgno,name) VALUES (137, '10011', '논산시');
+INSERT INTO relo (relo,rgno,name) VALUES (138, '10011', '당진시');
+INSERT INTO relo (relo,rgno,name) VALUES (139, '10011', '보령시');
+INSERT INTO relo (relo,rgno,name) VALUES (140, '10011', '부여군');
+INSERT INTO relo (relo,rgno,name) VALUES (141, '10011', '서산시');
+INSERT INTO relo (relo,rgno,name) VALUES (142, '10011', '서천군');
+INSERT INTO relo (relo,rgno,name) VALUES (143, '10011', '아산시');
+INSERT INTO relo (relo,rgno,name) VALUES (144, '10011', '연기군');
+INSERT INTO relo (relo,rgno,name) VALUES (145, '10011', '예산군');
+INSERT INTO relo (relo,rgno,name) VALUES (146, '10011', '천안시');
+INSERT INTO relo (relo,rgno,name) VALUES (147, '10011', '청양군');
+INSERT INTO relo (relo,rgno,name) VALUES (148, '10011', '태안군');
+INSERT INTO relo (relo,rgno,name) VALUES (149, '10011', '홍성군');
+INSERT INTO relo (relo,rgno,name) VALUES (150, '10012', '경산시');
+INSERT INTO relo (relo,rgno,name) VALUES (151, '10012', '경주시');
+INSERT INTO relo (relo,rgno,name) VALUES (152, '10012', '고령군');
+INSERT INTO relo (relo,rgno,name) VALUES (153, '10012', '구미시');
+INSERT INTO relo (relo,rgno,name) VALUES (154, '10012', '군위군');
+INSERT INTO relo (relo,rgno,name) VALUES (155, '10012', '김천시');
+INSERT INTO relo (relo,rgno,name) VALUES (156, '10012', '문경시');
+INSERT INTO relo (relo,rgno,name) VALUES (157, '10012', '봉화군');
+INSERT INTO relo (relo,rgno,name) VALUES (158, '10012', '상주시');
+INSERT INTO relo (relo,rgno,name) VALUES (159, '10012', '성주군');
+INSERT INTO relo (relo,rgno,name) VALUES (160, '10012', '안동시');
+INSERT INTO relo (relo,rgno,name) VALUES (161, '10012', '영덕군');
+INSERT INTO relo (relo,rgno,name) VALUES (162, '10012', '영양군');
+INSERT INTO relo (relo,rgno,name) VALUES (163, '10012', '영주시');
+INSERT INTO relo (relo,rgno,name) VALUES (164, '10012', '영천시');
+INSERT INTO relo (relo,rgno,name) VALUES (165, '10012', '예천군');
+INSERT INTO relo (relo,rgno,name) VALUES (166, '10012', '울진군');
+INSERT INTO relo (relo,rgno,name) VALUES (167, '10012', '의성군');
+INSERT INTO relo (relo,rgno,name) VALUES (168, '10012', '청도군');
+INSERT INTO relo (relo,rgno,name) VALUES (169, '10012', '청송군');
+INSERT INTO relo (relo,rgno,name) VALUES (170, '10012', '칠곡군');
+INSERT INTO relo (relo,rgno,name) VALUES (171, '10012', '포항시');
+INSERT INTO relo (relo,rgno,name) VALUES (172, '10013', '거제시');
+INSERT INTO relo (relo,rgno,name) VALUES (173, '10013', '거창군');
+INSERT INTO relo (relo,rgno,name) VALUES (174, '10013', '고성군');
+INSERT INTO relo (relo,rgno,name) VALUES (175, '10013', '김해시');
+INSERT INTO relo (relo,rgno,name) VALUES (176, '10013', '남해군');
+INSERT INTO relo (relo,rgno,name) VALUES (177, '10013', '밀양시');
+INSERT INTO relo (relo,rgno,name) VALUES (178, '10013', '사천시');
+INSERT INTO relo (relo,rgno,name) VALUES (179, '10013', '산청군');
+INSERT INTO relo (relo,rgno,name) VALUES (180, '10013', '양산시');
+INSERT INTO relo (relo,rgno,name) VALUES (181, '10013', '의령군');
+INSERT INTO relo (relo,rgno,name) VALUES (182, '10013', '진주시');
+INSERT INTO relo (relo,rgno,name) VALUES (183, '10013', '창녕군');
+INSERT INTO relo (relo,rgno,name) VALUES (184, '10013', '창원시');
+INSERT INTO relo (relo,rgno,name) VALUES (185, '10013', '통영시');
+INSERT INTO relo (relo,rgno,name) VALUES (186, '10013', '하동군');
+INSERT INTO relo (relo,rgno,name) VALUES (187, '10013', '함안군');
+INSERT INTO relo (relo,rgno,name) VALUES (188, '10013', '함양군');
+INSERT INTO relo (relo,rgno,name) VALUES (189, '10013', '합천군');
+INSERT INTO relo (relo,rgno,name) VALUES (190, '10014', '고창군');
+INSERT INTO relo (relo,rgno,name) VALUES (191, '10014', '군산시');
+INSERT INTO relo (relo,rgno,name) VALUES (192, '10014', '김제시');
+INSERT INTO relo (relo,rgno,name) VALUES (193, '10014', '남원시');
+INSERT INTO relo (relo,rgno,name) VALUES (194, '10014', '무주군');
+INSERT INTO relo (relo,rgno,name) VALUES (195, '10014', '부안군');
+INSERT INTO relo (relo,rgno,name) VALUES (196, '10014', '순창군');
+INSERT INTO relo (relo,rgno,name) VALUES (197, '10014', '완주군');
+INSERT INTO relo (relo,rgno,name) VALUES (198, '10014', '익산시');
+INSERT INTO relo (relo,rgno,name) VALUES (199, '10014', '임실군');
+INSERT INTO relo (relo,rgno,name) VALUES (200, '10014', '장수군');
+INSERT INTO relo (relo,rgno,name) VALUES (201, '10014', '전주시');
+INSERT INTO relo (relo,rgno,name) VALUES (202, '10014', '정읍시');
+INSERT INTO relo (relo,rgno,name) VALUES (203, '10014', '진안군');
+INSERT INTO relo (relo,rgno,name) VALUES (204, '10015', '강진군');
+INSERT INTO relo (relo,rgno,name) VALUES (205, '10015', '고흥군');
+INSERT INTO relo (relo,rgno,name) VALUES (206, '10015', '곡성군');
+INSERT INTO relo (relo,rgno,name) VALUES (207, '10015', '광양시');
+INSERT INTO relo (relo,rgno,name) VALUES (208, '10015', '구례군');
+INSERT INTO relo (relo,rgno,name) VALUES (209, '10015', '나주시');
+INSERT INTO relo (relo,rgno,name) VALUES (210, '10015', '담양군');
+INSERT INTO relo (relo,rgno,name) VALUES (211, '10015', '목포시');
+INSERT INTO relo (relo,rgno,name) VALUES (212, '10015', '무안군');
+INSERT INTO relo (relo,rgno,name) VALUES (213, '10015', '보성군');
+INSERT INTO relo (relo,rgno,name) VALUES (214, '10015', '순천시');
+INSERT INTO relo (relo,rgno,name) VALUES (215, '10015', '신안군');
+INSERT INTO relo (relo,rgno,name) VALUES (216, '10015', '여수시');
+INSERT INTO relo (relo,rgno,name) VALUES (217, '10015', '영광군');
+INSERT INTO relo (relo,rgno,name) VALUES (218, '10015', '영암군');
+INSERT INTO relo (relo,rgno,name) VALUES (219, '10015', '완도군');
+INSERT INTO relo (relo,rgno,name) VALUES (220, '10015', '장성군');
+INSERT INTO relo (relo,rgno,name) VALUES (221, '10015', '장흥군');
+INSERT INTO relo (relo,rgno,name) VALUES (222, '10015', '진도군');
+INSERT INTO relo (relo,rgno,name) VALUES (223, '10015', '함평군');
+INSERT INTO relo (relo,rgno,name) VALUES (224, '10015', '해남군');
+INSERT INTO relo (relo,rgno,name) VALUES (225, '10015', '화순군');
+INSERT INTO relo (relo,rgno,name) VALUES (226, '10016', '서귀포시');
+INSERT INTO relo (relo,rgno,name) VALUES (227, '10016', '제주시');
+
+
+
+
+
+INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (1, '5','7','null','null');
+INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (2, '3','1','null','null');
+INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (3, '2','3','null','null');
+
+
+
+
+INSERT INTO repo_arc (rpno, arno) VALUES (1,7);
+INSERT INTO repo_arc (rpno, arno) VALUES (2,7);
+
+INSERT INTO repo_comt (rpno, cno) VALUES (3,5);
+INSERT INTO repo_comt (rpno, cno) VALUES (4,3);
+
+INSERT INTO repo_user (rpno, arno) VALUES (5,3);
+INSERT INTO repo_user (rpno, arno) VALUES (6,10);
+
+
+
+
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (1,1,1, '0');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (2,2,2, '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (3,3,3, '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (4,4,4, '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (5,5,4, '100');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (6,6,3, '500');
+
+
