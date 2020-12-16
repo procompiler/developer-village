@@ -83,6 +83,11 @@
     </foreach>
   </insert>
   
+    <delete id="deleteTags" parameterType="int">
+    delete from arc_tag
+    where arno=#{no}
+    </delete>
+  
   <select id="findByBookmarker" resultMap="ArticleMap" parameterType="user">
     <include refid="sql1"/>
     left outer join usr_bmk_arc ua on a.arno=ua.arno
@@ -146,7 +151,7 @@
       a.state,
       u.nick article_nick,
       u.photo article_photo,
-      a.vw_cnt
+      a.vw_cnt,
     from 
       article a
       inner join user u on a.writer=u.uno
@@ -177,4 +182,5 @@
       state = 0
     where arno=#{no}
   </update>
+  
 </mapper>

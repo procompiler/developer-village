@@ -56,5 +56,5 @@ public class Tag {
   public void setFollowed(boolean followed) {
     this.followed = followed;
   }
-  
+
 }

@@ -20,7 +20,7 @@ INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,t
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (20, 'blur@gmail.com', '사랑곰', '김혜수', password(1111), 3, 'user20.jpg', 'https://jjj.com/', '', 1, 'php',0,0);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (21, 'articmonkey@gmail.com', '북극원숭이', '강소라', password(1111), 2, 'user21.jpg', 'https://kkk.com/', '', 0, 'go,swift',0,0);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (22, 'Iamrockstar@naver.com', '내꿈은축구왕', '송혜교', password(1111), 3, 'user22.jpg', 'https://lll.com/', '', 1, 'ruby',0,0);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (23, 'youngAndrich@gmail.com', '영앤리치', '최지우', password(1111), 1, 'user23.jpg', 'https://mmm.com/', '', 0, '',0,1);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (23, 'xunnn1593@gmail.com', '영앤리치', '이재현', password(1111), 1, 'user23.jpg', 'https://mmm.com/', '', 0, '',0,1);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (24, 'givemeamoney@gmail.com', '호머심슨', '이나영', password(1111), 2, 'user24.jpg', '', '', 0, 'c++',0,0);
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti) VALUES (25, 'emeraldsword@naver.com', '에메랄드칼', '하지원', password(1111), 3, 'user25.jpg', 'https://nnn.com/', '', 1, 'c,python',0,0);
 
@@ -59,6 +59,8 @@ INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (22, 22, 
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (23, 23, 2,'sql문 오류좀 봐주세요.','하나도 모르겠네요.','2020-12-05',76);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (24, 24, 3,'신입 JAVA 개발자 및 경렬직 웹 기획자 채용','신입 JAVA 개발자 및 경렬직 웹 기획자 채용','2020-12-06',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (25, 5, 1,'얼죽아 오늘부로 탈퇴합니다.','날씨 진짜 춥네요.','2020-12-06',3);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (26, 4, 1,'Ruby가 뭔가요?','보석인가요?','2020-12-09',5);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (27, 4, 1,'Go가 뭔가요?','포켓몬고 인가요?','2020-12-11',1);
 
 
 
@@ -245,6 +247,8 @@ INSERT INTO arc_tag (arno,tno) VALUES (22, 22);
 INSERT INTO arc_tag (arno,tno) VALUES (23, 10);
 INSERT INTO arc_tag (arno,tno) VALUES (23, 1);
 INSERT INTO arc_tag (arno,tno) VALUES (25, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (26, 3);
+INSERT INTO arc_tag (arno,tno) VALUES (27, 4);
 
 
 
