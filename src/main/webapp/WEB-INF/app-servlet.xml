@@ -11,6 +11,8 @@
     <!-- 페이지 컨트롤러 등 컴포넌트가 들어 있는 패키지를 지정한다. 
          프론트 컨트롤러는 이 패키지의 클래스를 조사하여
          설정한 대로 객체를 생성하고 관리할 것이다. -->
-    <context:component-scan base-package="com.devil"/>
+    <context:component-scan base-package="com.devil">
+     <context:exclude-filter type="regex" expression="com.devil.admin.*"/>
+  </context:component-scan> 
 
 </beans>

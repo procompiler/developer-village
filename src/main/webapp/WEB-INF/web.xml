@@ -6,6 +6,53 @@
   version="4.0"
   metadata-complete="false">
   <display-name>developer-village</display-name>
+  
+    <!-- 글로벌 Spring IoC 컨테이너 준비 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>  
+  
+    <!-- ContextLoaderListener가 사용할 IoC 컨테이너 설정 파일 정보 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/config/app-context.xml</param-value>
+  </context-param>
+  
+   <!-- Spring WebMVC의 프론트 컨트롤러 역할을 수행할 서블릿 지정 -->
+  <servlet>
+    <servlet-name>app</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 다음 설정은 생략해도 된다. 
+    왜? 설정 파일의 이름을 규칙에 따라 작성했기 때문이다. -->
+    <!--  
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/app-servlet.xml</param-value>
+    </init-param>
+    -->
+    <load-on-startup>1</load-on-startup>
+                  <multipart-config>
+            <max-file-size>10000000</max-file-size>
+          </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>app</servlet-name>
+    <url-pattern>/app/*</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>admin</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+              <multipart-config>
+            <max-file-size>10000000</max-file-size>
+          </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -28,6 +75,7 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   
+  <!-- 
   <servlet>
           <servlet-name>app</servlet-name>
           <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -45,5 +93,6 @@
           <servlet-name>app</servlet-name>
           <url-pattern>/app/*</url-pattern>
       </servlet-mapping>
-    
+     -->
+     
 </web-app>
