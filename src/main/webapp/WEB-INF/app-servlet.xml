@@ -11,14 +11,7 @@
         https://www.springframework.org/schema/context/spring-context.xsd
         http://mybatis.org/schema/mybatis-spring
         http://mybatis.org/schema/mybatis-spring.xsd">
-    <!-- 페이지 컨트롤러 등 컴포넌트가 들어 있는 패키지를 지정한다. 
-         프론트 컨트롤러는 이 패키지의 클래스를 조사하여
-         설정한 대로 객체를 생성하고 관리할 것이다. -->
-<<<<<<< HEAD
-    <context:component-scan base-package="com.devil">
-     <context:exclude-filter type="regex" expression="com.devil.admin.*"/>
-  </context:component-scan> 
-=======
+
     <context:component-scan base-package="com.devil"/>
     
     <bean id="sqlSessionFactory"
@@ -39,6 +32,6 @@
   <context:property-placeholder location="classpath:com/devil/conf/jdbc.properties"/>  
   
   <mybatis:scan base-package="com.devil.dao" />
->>>>>>> e338704d8e1f32cd773a3d5e841740be045cc0da
+
 
 </beans>
