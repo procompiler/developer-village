@@ -6,38 +6,68 @@
 <head>
 <meta charset="UTF-8">
 <title>뱃지 정보</title>
-<jsp:include page="/header.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href='../style.css'>
+<!--<jsp:include page="/admin-header.jsp"></jsp:include> -->
+<link rel="stylesheet" type="text/css" href='../badge-style.css'>
 <link rel="stylesheet"
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
   crossorigin="anonymous" />
 </head>
 <body>
-<h1>뱃지 정보</h1>
+	<div class="badge">
+ <div class="badgebox">
 
-<form action='updatePhoto' method='post' enctype='multipart/form-data'>
-<input type='text' name='no' value='${badge.no}' readonly style='display:hidden;'><br>
-<img src='../../upload/badge/${badge.photo}_160x160.png' alt='[뱃지 이미지]'>
-<input type='file' name='photoFile'><br>
-<button class="btn btn-primary">이미지 변경</button>
-</form>
-<form action='update' method='post'>
-<input type='hidden' name='no' value='${badge.no}'>
-<p>이름 : ${badge.name}</p>
-<textarea name='content'>${badge.content}</textarea><br>
-<p>수여기준</p>
-<p>태그 : ${badge.tag.name}의</p>
-<p>게시글 : ${badge.tag.name}개</p>
-<p>댓글 : ${badge.tag.name}개</p>
-<p>방문 : ${badge.tag.name}회</p>
-<p>가입 : ${badge.tag.name}일 후</p>
-<p>뱃지 설명 : ${badge.tag.name}</p>
+ 	<div class="badgeinfotext">
+  	뱃지 정보
+ 	</div>
+ 	<div>
+ 		<div class="firstBox" style="float:left">
+		 	<div class="photo">
+		 	<td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
+		 	</div>
+		 	<div class="badgephotoupdatetext">
+		 	사진 업로드
+		 	</div>
+ 		</div>
+ 		<div class="secondBox">
+		 	<div class="badgename">
+		 	뱃지 이름
+		 	</div>
+		 	<div class="badgenamebox">
+		 	뱃지이름박스
+		 	</div>
+ 		</div>
+ 	</div>
 
-<button>뱃지 수정</button>
-</form>
 
-<jsp:include page="/footer.jsp"></jsp:include>
+
+
+ 
+ 
+	 <div class="badgeLine2">
+	 	<span>뱃지 설명</span>
+	 </div>
+ 	<div class="badgeexambox">
+ 	
+ 		<span id="badgeExam">
+ 		
+ 		</span>
+	</div>
+	
+	
+	
+ </div>
+ 
+ 
+ <div class="badge-update-box">
+ 	<div class="badge-update-box-text">
+ 	뱃지수정
+ 	</div>
+ </div>
+ </div>
+ 
+
+
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
