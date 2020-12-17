@@ -10,7 +10,15 @@ public class Block {
   private String blockedReason;
   private String unBlockedReason;
   private Report report;
+  private Date blockTerminationDate;
 
+  public Date getBlockTermination() {
+    return blockTerminationDate;
+  }
+  public Block setBlockTermination(Date blockTermination) {
+    this.blockTerminationDate = blockTermination;
+    return this;
+  }
   public int getNo() {
     return no;
   }
