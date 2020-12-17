@@ -28,6 +28,9 @@ dependencies {
     // Spring WebMVC라이브러리
     implementation 'org.springframework:spring-webmvc:5.3.2'
     
+    // log4j 2.x 라이브러리
+    implementation 'org.apache.logging.log4j:log4j-core:2.14.0'
+    
     // Thumbnailator 썸네일 생성 라이브러리
     implementation 'net.coobird:thumbnailator:0.4.13'
     

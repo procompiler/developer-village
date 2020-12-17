@@ -5,12 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>차단하기</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+    <jsp:include page="/admin-header.jsp"></jsp:include>
+
 </head>
 <body>
+  <a href='../admin/userList' style='text-decoration: none;'>전체회원관리</a>
+  <a href='../report/list' style='text-decoration: none;'>신고내역</a>
+  <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
 	<h1>유저 차단하기</h1>
 	<form action="add" method="post">
-		차단일수 : <select name="blockingDate">
+		차단일수 : <select name="blockedDates">
 			<option value="1">1일</option>
 			<option value="3">3일</option>
 			<option value="7">7일</option>
