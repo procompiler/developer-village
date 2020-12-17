@@ -40,7 +40,7 @@ User user = (User) session.getAttribute("loginUser");
     </div>
     <hr>
     <div class="buttons">
-      <li><i class="fas fa-tags fa-fw"></i><a href="<%=contextPath%>/app/article/community">태그</a></li>
+      <li><i class="fas fa-tags fa-fw"></i><a href="<%=contextPath%>/app/tag/list">태그</a></li>
 <%--       <li><i class="fas fa-user-friends fa-fw"></i><a href='<%=contextPath%>/app/community/taglist'>커뮤니티</a></li> --%>
       <div id="tag">
         <li><i class="fas fa-hashtag"></i><a href="<%=contextPath%>/app/article/list?tagNo=1">Java</a></li>
@@ -59,8 +59,8 @@ User user = (User) session.getAttribute("loginUser");
     </form>
   </div>
   <div>
-    <a class="btn" href="<%=contextPath%>/app/user/form.html">회원가입</a>
-    <a class="btn" href="<%=contextPath%>/app/user/list">회원관리</a>
+    <a class="btn" href="<%=contextPath%>/app/user/form">회원가입</a>
+    <a class="btn" href="<%=contextPath%>/app/admin/userList" target="_blank">관리자 페이지</a>
     <a class="btn" href="<%=contextPath%>/app/auth/login">로그인</a>
     <a class="btn" href="<%=contextPath%>/app/article/form">글쓰기</a>
   </div>

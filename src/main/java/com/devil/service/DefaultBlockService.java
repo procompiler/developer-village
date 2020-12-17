@@ -6,36 +6,40 @@ import com.devil.dao.BlockDao;
 import com.devil.dao.ReportDao;
 import com.devil.dao.UserDao;
 import com.devil.domain.Block;
-import com.devil.util.SqlSessionFactoryProxy;
 
 @Service
 public class DefaultBlockService implements BlockService {
   BlockDao blockDao;
   UserDao userDao;
   ReportDao reportDao;
-  SqlSessionFactoryProxy factoryProxy;
+//  SqlSessionFactoryProxy factoryProxy;
 
   public DefaultBlockService(BlockDao blockDao, UserDao userDao,
-      ReportDao reportDao, SqlSessionFactoryProxy factoryProxy) {
+      ReportDao reportDao/*, SqlSessionFactoryProxy factoryProxy*/) {
     this.blockDao = blockDao;
     this.userDao = userDao;
     this.reportDao = reportDao;
-    this.factoryProxy = factoryProxy;
+//    this.factoryProxy = factoryProxy;
   }
 
   @Override
   public int block(Block block) throws Exception {
     try {
-      factoryProxy.startTransaction();
-      blockDao.insert(block);
+//      factoryProxy.startTransaction();
+      try {
+        blockDao.insertArticleReport(block);
+      } catch(Exception e) {
+        blockDao.insertCommentReport(block);
+      }
+
       userDao.insertBlocked(block);
       reportDao.insertStatus(block);
-      factoryProxy.commit();
+//      factoryProxy.commit();
       return 1;
     } catch (Exception e) {
       throw e;
     } finally {
-      factoryProxy.endTransaction();
+//      factoryProxy.endTransaction();
     }
   }
 

@@ -11,16 +11,16 @@
 <jsp:include page="/user/info.jsp"></jsp:include>
 </head>
 <body>
-<h2>작성글</h2>
+<h2>피드</h2>
 <table border='1'>
 	<thead>
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
+			<th>작성자</th>
 			<th>등록일</th>
 			<th>댓글수</th>
 			<th>조회수</th>
-			<th>삭제</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,12 +34,12 @@
 						</c:forEach>
 					</ul> <a href='detail?no=${a.no}'>${a.title}</a>
 				</td>
+				<td><a href='../user/detail?no=${a.writer.no}'>${a.writer.nickname}</a></td>
 				<td><fmt:formatDate value="${a.createdDate}"
 						pattern="yyyy.MM.dd" /></td>
-			  <td>${a.commentCount}</td>
+
+				<td>${a.commentCount}</td>
 				<td>${a.viewCount}</td>
-				<td><a class='btn btn-outline-danger'
-					href='delete?articleNo=${a.no}'>삭제</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

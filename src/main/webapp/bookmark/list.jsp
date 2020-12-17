@@ -11,7 +11,7 @@
 <head>
 <title>마이페이지</title>
     <jsp:include page="/header.jsp"></jsp:include>
-  <jsp:include page="/user/info.jsp"></jsp:include>
+    <jsp:include page="/user/info.jsp"></jsp:include>
 	<h2>북마크리스트</h2>
   <table border='1'>
     <thead>
@@ -19,6 +19,7 @@
         <th>번호</th>
         <th>제목</th>
         <th>등록일</th>
+        <th>댓글수</th>
         <th>조회수</th>
         <th>삭제</th>
       </tr>
@@ -30,13 +31,14 @@
           <td id='title'>
             <ul id='tags'>
               <c:forEach items="${a.tags}" var="tag">
-                <li id='color' style="background-color: #${tag.tagColor}">${tag.name}</li>
+                <li id='color' style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</li>
               </c:forEach>
             </ul> 
             <a href='detail?no=${a.no}'>${a.title}</a>
           </td>
           <td><fmt:formatDate value="${a.createdDate}"
               pattern="yyyy.MM.dd" /></td>
+          <td>${a.commentCount}</td>
           <td>${a.viewCount}</td>
           <td><a class='btn btn-outline-danger'
             href='../article/delete?articleNo=${a.no}'>삭제</a></td>

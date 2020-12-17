@@ -3,34 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="UserDao">
+<mapper namespace="com.devil.dao.UserDao">
 
-	<resultMap type="user" id="UserMap">
-		<id column="uno" property="no" />
-		<result column="email" property="email" />
-		<result column="nick" property="nickname" />
-		<result column="name" property="name" />
-		<result column="pwd" property="password" />
-		<result column="cdt" property="createdDate" />
-		<result column="rnt_vsdt" property="recentVisitedDate" />
-		<result column="log_type" property="loginType" />
-		<result column="photo" property="photo" />
-		<result column="hp_url" property="homepageURL" />
-		<result column="gh_url" property="githubURL" />
-		<result column="in_url" property="instarURL" />
-		<result column="tw_url" property="twitterURL" />
-		<result column="blocked" property="blocked" />
-		<result column="tech" property="tech" />
-		<result column="auth" property="auth" />
-		<result column="noti" property="noti" />
-		<result column="bio" property="bio" />
-		<result column="state" property="state" />
+	<resultMap type="user"        id="UserMap">
+		<id column="uno"		      	property="no" />
+		<result column="email" 		  property="email" />
+		<result column="nick" 		  property="nickname" />
+		<result column="name" 		  property="name" />
+		<result column="pwd" 		    property="password" />
+		<result column="cdt" 		    property="createdDate" />
+		<result column="rnt_vsdt" 	property="recentVisitedDate" />
+		<result column="log_type" 	property="loginType" />
+		<result column="photo" 	  	property="photo" />
+		<result column="hp_url"	   	property="homepageURL" />
+		<result column="gh_url"   	property="githubURL" />
+		<result column="in_url"   	property="instarURL" />
+		<result column="tw_url"   	property="twitterURL" />
+		<result column="blocked"  	property="blocked" />
+		<result column="tech"   		property="tech" />
+		<result column="auth"   		property="auth" />
+		<result column="noti"   		property="noti" />
+		<result column="bio" 	    	property="bio" />
+		<result column="state" 	  	property="state" />
+		<result column="fwing_cnt"  property="followingCount"/>
+		<result column="fwer_cnt"   property="followerCount"/>
 	</resultMap>
-
-	<insert id="insert" parameterType="user">
-		insert into user(email,nick,name,pwd,log_type, photo)
-		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo})
-	</insert>
 
 	<sql id="sql1">
 		select
@@ -45,10 +42,13 @@
 		u.bio,
 		u.blocked,
 		u.state,
+		u.rnt_vsdt,
 		u.pwd,
 		u.photo,
 		u.cdt,
-		u.log_type
+		u.log_type,
+		(select count(*) from follow f where u.uno = f.fwer_no) as fwing_cnt,
+		(select count(*) from follow f where u.uno = f.fwing_no) as fwer_cnt
 		from
 		user u
 	</sql>
@@ -64,6 +64,10 @@
     from user u
 	</sql>
 
+	<insert id="insert" parameterType="user">
+		insert into user(email,nick,name,pwd,log_type, photo, rnt_vsdt)
+		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo}, now())
+	</insert>
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">
 		<include refid="sql1" />
@@ -72,7 +76,7 @@
 			where
 			email like concat('%', #{keyword}, '%')
 			or nick like concat('%', #{keyword}, '%')
-		</if>
+		</if> 
 		order by uno desc
 	</select>
 
@@ -99,23 +103,7 @@
   
 	<select id="findByEmailPassword" parameterType="map"
 		resultMap="UserMap">
-		select
-	    u.uno,
-	    u.email,
-	    u.nick,
-	    u.name,
-	    u.hp_url,
-	    u.gh_url,
-	    u.in_url,
-	    u.tw_url,
-	    u.bio,
-	    u.state,
-	    u.pwd,
-	    u.photo,
-	    u.cdt,
-	    u.log_type
-    from
-	    user u
+		<include refid="sql1" />
 		where
 		u.email = #{email}
 		and u.pwd = password(#{password})
@@ -136,6 +124,14 @@
 		</set>
 		where uno = #{no}
 	</update>
+
+  <insert id="updateLoginTimeStamp" parameterType="user">
+      update user set
+      rnt_vsdt = now()
+    where uno = #{no}
+    <![CDATA[  and rnt_vsdt <= now() ]]>
+  
+  </insert>
 
 	<update id="insertBlocked" parameterType="block">
     update user set

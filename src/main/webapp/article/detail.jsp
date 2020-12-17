@@ -6,6 +6,8 @@
 <head>
 <title>게시글 조회</title>
   <jsp:include page="/header.jsp"></jsp:include>
+</head>
+<body>
   <h1>
     <c:choose>
       <c:when test="${article.categoryNo == 1}">
@@ -55,10 +57,8 @@
   </div>
 </div>
 <br>
-  <c:if test="">
   <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
   <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
-  </c:if>
   
   <a class="btn btn-danger"
     href='../report/reportArticle?no=${article.no}'>신고</a>
@@ -75,3 +75,5 @@
  <br>
   <jsp:include page="/app/comment/list"></jsp:include>
   <jsp:include page="/footer.jsp"></jsp:include>
+</body>
+</html>

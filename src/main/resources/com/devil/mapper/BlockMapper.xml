@@ -3,18 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="BlockDao">
-	<resultMap type="block" id="BlockMap">
-		<id column="blno" property="no" />
-		<result column="cdt" property="permittedDate" />
-		<result column="dates" property="blockedDates"/>
-		<result column="bl_rsn" property="blockedReason" />
+<mapper namespace="com.devil.dao.BlockDao">
+	<resultMap type="block" 	  id="BlockMap">
+		<id column="blno"		      property="no" />
+		<result column="cdt"	    property="permittedDate" />
+		<result column="dates"	  property="blockedDates"/>
+		<result column="bl_rsn"	  property="blockedReason" />
 		<result column="unbl_rsn" property="unBlockedReason" />
 
 <association property="reportedUser" javaType="user">
     <id column="uno" property="no"/>
-    <result column="blocked_nick" property="nickname"/>
-    <result column="blocked_email" property="email"/>
+    <result column="blocked_nick"	   property="nickname"/>
+    <result column="blocked_email"	 property="email"/>
 </association>
 	</resultMap>
 	
@@ -33,7 +33,7 @@
      inner join user u on b.uno=u.uno
 	</sql>
 	
-	<insert id="insert" parameterType="block">
+	<insert id="insertArticleReport" parameterType="block">
 		insert into block(uno, cdt, dates, bl_rsn)
 		values(
 			(select
@@ -42,6 +42,20 @@
 			  report rp 
 			  inner join repo_arc rpa on rp.rpno = rpa.rpno
 			  inner join article ar on rpa.arno = ar.arno
+			where
+			  rp.rpno=#{report.no})
+		,	now(), #{blockedDates}, #{blockedReason})
+	</insert>
+	
+	<insert id="insertCommentReport" parameterType="block">
+		insert into block(uno, cdt, dates, bl_rsn)
+		values(
+			(select
+			  c.cno
+			from 
+			  report rp 
+			  inner join repo_comt rpc on rp.rpno = rpc.rpno
+			  inner join comment c on rpc.cno = c.cno
 			where
 			  rp.rpno=#{report.no})
 		,	now(), #{blockedDates}, #{blockedReason})
@@ -64,6 +78,6 @@
     <select id="findByUserNo" resultMap="BlockMap" parameterType="int">
      <include refid="sql1"/>
       where u.uno=#{reportedUser.no} 
-     <!--[CDATA[  and now() <= date_add(b.cdt, interval b.dates day) ]]-->
+     <![CDATA[  and now() <= date_add(b.cdt, interval b.dates day) ]]>
     </select>
 </mapper>

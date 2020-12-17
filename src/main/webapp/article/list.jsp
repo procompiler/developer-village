@@ -10,6 +10,8 @@
 <head>
 <title>게시글목록</title>
 	<jsp:include page="/header.jsp"></jsp:include>
+</head>
+<body>
 
 	<h1>
 		<c:choose>
@@ -47,6 +49,7 @@
 				<th>작성자</th>
 				<th>등록일</th>
 				<th>조회수</th>
+				<th>댓글수</th>
 				<th>상태</th>
 			</tr>
 		</thead>
@@ -68,6 +71,7 @@
 						<td><fmt:formatDate value="${article.createdDate}"
 								pattern="yyyy.MM.dd" /></td>
 						<td>${article.viewCount}</td>
+						<td>${article.commentCount}</td>
 						<td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
 					</tr>
 				</c:if>
@@ -77,8 +81,8 @@
             <td id='title'>
               <ul id='tags'>
                 <c:forEach items="${article.tags}" var="tag">
-                  <li id='color'
-                    style="background-color: #${tag.tagColor}; color: #${tag.fontColor};">${tag.name}</li>
+                    <li id='color'
+                      style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
                 </c:forEach>
               </ul> <a href='detail?no=${article.no}'>${article.title}</a>
             </td>
@@ -86,6 +90,7 @@
             <td><fmt:formatDate value="${article.createdDate}"
                 pattern="yyyy.MM.dd" /></td>
             <td>${article.viewCount}</td>
+            <td>${article.commentCount}</td>
             <td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
           </tr>
 				</c:if>
@@ -115,3 +120,6 @@
 	</form>
 	</p>
 	<jsp:include page="/footer.jsp"></jsp:include>
+	
+	</body>
+	</html>

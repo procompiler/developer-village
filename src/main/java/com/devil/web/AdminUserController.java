@@ -49,7 +49,7 @@ public class AdminUserController {
       session.setAttribute("followed", false);
     }
 
-    mv.setViewName("/admin/detail.jsp");
+    mv.setViewName("/admin/userDetail.jsp");
     return mv;
   }
 
@@ -61,7 +61,7 @@ public class AdminUserController {
     mv.addObject("list", userService.list(keyword));
 
     mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
-    mv.setViewName("/admin/list.jsp");
+    mv.setViewName("/admin/userList.jsp");
 
     return mv;
   }

@@ -87,7 +87,7 @@ CREATE TABLE `user` (
   `auth`     INTEGER      NOT NULL DEFAULT 0, -- 관리자여부
   `noti`     INTEGER      NOT NULL DEFAULT 0, -- 알람알림여부
   `bio`      MEDIUMTEXT   NULL,     -- 자기소개
-  `state`    INTEGER      NOT NULL DEFAULT 1 -- 활성상태`
+  `state`    INTEGER      NOT NULL DEFAULT 1 -- 활성상태
 );
 
 -- 유저
@@ -231,8 +231,9 @@ ALTER TABLE `tag`
 
 -- 게시글_태그
 CREATE TABLE `arc_tag` (
-  `arno` INTEGER NOT NULL, -- 게시글번호
-  `tno`  INTEGER NOT NULL  -- 태그번호
+  `arno`  INTEGER NOT NULL, -- 게시글번호
+  `tno`   INTEGER NOT NULL  -- 태그번호
+
 );
 
 -- 게시글_태그

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>뱃지 조회</title>
+<title>뱃지 정보</title>
 <jsp:include page="/header.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href='../style.css'>
 <link rel="stylesheet"
@@ -14,7 +14,7 @@
   crossorigin="anonymous" />
 </head>
 <body>
-<h1>뱃지 조회</h1>
+<h1>뱃지 정보</h1>
 
 <form action='updatePhoto' method='post' enctype='multipart/form-data'>
 <input type='text' name='no' value='${badge.no}' readonly style='display:hidden;'><br>
@@ -26,11 +26,16 @@
 <input type='hidden' name='no' value='${badge.no}'>
 <p>이름 : ${badge.name}</p>
 <textarea name='content'>${badge.content}</textarea><br>
-<p>태그 : ${badge.tag.name}</p>
+<p>수여기준</p>
+<p>태그 : ${badge.tag.name}의</p>
+<p>게시글 : ${badge.tag.name}개</p>
+<p>댓글 : ${badge.tag.name}개</p>
+<p>방문 : ${badge.tag.name}회</p>
+<p>가입 : ${badge.tag.name}일 후</p>
+<p>뱃지 설명 : ${badge.tag.name}</p>
+
 <button>뱃지 수정</button>
 </form>
-<p><a class='btn' href='list'>뱃지 목록으로</a></p>
-<a class='btn' href='delete?no=<${badge.no}'>뱃지 삭제</a>
 
 <jsp:include page="/footer.jsp"></jsp:include>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

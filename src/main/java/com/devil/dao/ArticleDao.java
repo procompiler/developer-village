@@ -11,7 +11,6 @@ public interface ArticleDao {
   int delete(int no) throws Exception;
   Article findByNo(int no) throws Exception;
   int updateViewCount(int no) throws Exception;
-  int insertTags(Article article) throws Exception;
   List<Article> findByDetailKeyword(Map<String, Object> keywords);
   List<Article> findByCategoryNo(int categoryNo);
   int inactive(int no) throws Exception;
@@ -19,4 +18,7 @@ public interface ArticleDao {
   List<Article> findByBookmarker(User user) throws Exception;
   List<Article> findByWriter(User user);
   List<Article> findByTagNo(int tagNo) throws Exception;
+  int insertTags(Article article) throws Exception;
+  int deleteTags(int articleNo) throws Exception;
+  List<Article> findFeedByUser(User user) throws Exception;
 }

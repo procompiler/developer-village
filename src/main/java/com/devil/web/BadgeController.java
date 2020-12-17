@@ -18,11 +18,8 @@ import net.coobird.thumbnailator.name.Rename;
 @RequestMapping("/badge")
 public class BadgeController {
 
-
   @Autowired ServletContext servletContext;
   @Autowired BadgeService badgeService;
-
-
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
@@ -34,14 +31,13 @@ public class BadgeController {
 
   @RequestMapping("/add")
   public String add(String name, String content,Part photoFile) throws Exception {
-	 
-	  String filename = UUID.randomUUID().toString();
-	  String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
-	  
+
+    String filename = UUID.randomUUID().toString();
+    String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
+
     Badge badge = new Badge();
     badge.setName(name);
     badge.setContent(content);
-
 
     photoFile.write(saveFilePath);
     badge.setPhoto(filename);
@@ -52,7 +48,7 @@ public class BadgeController {
   }
 
 
-  @RequestMapping("delete")
+  @RequestMapping("/delete")
   public String delete(int no) throws Exception {
 
     if (badgeService.delete(no) == 0) {
@@ -61,7 +57,7 @@ public class BadgeController {
     return "redirect:list";
   }
 
-  @RequestMapping("detail")
+  @RequestMapping("/detail")
   public ModelAndView deatil(int no) throws Exception {
     Badge badge = badgeService.get(no);
 
@@ -89,10 +85,10 @@ public class BadgeController {
   public String update(Badge badge) throws Exception {
 
     badgeService.update(badge);
-    return "redirect:list";
+    return "redirect:detail?no=" + badge.getNo();
   }
 
-  @RequestMapping("updatePhoto")
+  @RequestMapping("/updatePhoto")
   public String updatePhoto(int no, Part photoFile) throws Exception {
 
     Badge badge = new Badge();
@@ -120,7 +116,7 @@ public class BadgeController {
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath)//
-      .size(20, 20)//
+      .size(40, 40)//
       .crop(Positions.CENTER)
       .outputFormat("png")//
       .toFiles(new Rename() {
@@ -131,12 +127,12 @@ public class BadgeController {
       });
 
       Thumbnails.of(saveFilePath)//
-      .size(80, 80)//
+      .size(60, 60)//
       .outputFormat("png") //
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
-          return name + "_80x80";
+          return name + "_60x60";
         }
       });
 

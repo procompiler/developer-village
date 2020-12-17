@@ -9,13 +9,14 @@ import com.devil.domain.User;
 
 @WebListener
 public class AutoLoginListener implements ServletRequestListener {
+
   @Override
   public void requestInitialized(ServletRequestEvent sre) {
-      HttpSession session = ((HttpServletRequest)sre.getServletRequest()).getSession();
-      if (session.getAttribute("loginUser") == null) {
-        User user = new User().setNo(11).setName("배두나").setNickname("시간이nullnull").setEmail("abcd@gmail.com");
-        session.setAttribute("loginUser", user);
-        System.out.println(user);
-      }
+    HttpSession session = ((HttpServletRequest)sre.getServletRequest()).getSession();
+    if (session.getAttribute("loginUser") == null) {
+      User user = new User().setNo(11).setName("배두나").setNickname("시간이nullnull").setEmail("abcd@gmail.com");
+      session.setAttribute("loginUser", user);
+      System.out.println(user.getNickname());
+    }
   }
 }

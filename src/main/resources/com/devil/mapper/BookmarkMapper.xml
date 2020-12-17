@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="BookmarkDao">
+<mapper namespace="com.devil.dao.BookmarkDao">
 	<resultMap type="bookmark" id="BookmarkMap">
-		<id column="uno" property="userNo" />
-		<id column="arno" property="articleNo" />
-		<result column="cdt" property="createdDate" />
+		<id column="uno"	   property="userNo" />
+		<id column="arno"	   property="articleNo" />
+		<result column="cdt"   property="createdDate" />
 	</resultMap>
 
 

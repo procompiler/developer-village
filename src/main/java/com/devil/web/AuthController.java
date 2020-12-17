@@ -60,8 +60,24 @@ public class AuthController {
     if (user == null) {
       return "/auth/loginError.jsp";
     }
+    userService.updateLoginTimeStamp(user);
+    System.out.println(user.getRecentVisitedDate());
     session.setAttribute("loginUser", user);
     return "redirect:../../index.jsp";
 
   }
+  @RequestMapping("logout")
+  public ModelAndView logout(HttpSession session, HttpServletResponse response) throws Exception {
+
+    User loginUser = (User) session.getAttribute("loginUser");
+    if (loginUser != null) {
+      session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.
+    }
+
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("loginUser", loginUser);
+    mv.setViewName("/auth/logout.jsp");
+    return mv;
+  }
+
 }

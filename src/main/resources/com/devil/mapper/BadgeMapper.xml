@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="BadgeDao">
+<mapper namespace="com.devil.dao.BadgeDao">
 
 	<resultMap type="badge"     id="BadgeMap">
 		<id column="bno"          property="no" />
@@ -11,27 +11,30 @@
 		<result column="photo"    property="photo" />
 		<result column="content"  property="content" />
 		<result column="state"    property="state" />
-		<result column="tno"    property="tagNo"/>
-		<result column="adt"    property="collectDate"/>
-    <!-- 
-		<association property="tagNo"  javaType="tag">
-			<id column="tno"             property="tagNo" />
+		<result column="adt"      property="collectDate"/>
+		<association property="tag"  javaType="tag">
+			<id column="tno"             property="no" />
 			<result column="tag_name"    property="name" />
-			<result column="tag_color"   property="tagColor" />
-			<result column="font_color"  property="fontColor" />
 		</association>
-  -->
 	</resultMap>
 
+  
+	<insert id="insert" parameterType="badge">
+		insert into badge(bno,name,photo,content)
+		values(#{no},#{name}, #{photo}, #{content})
+	</insert>
+	
 	<sql id="sql1">
 		select
 			b.bno,
 			b.name,
 			b.photo,
-			b.content
+			b.content,
+			t.tno,
+			t.name tag_name
 		from
 			badge b
-			inner join tag t on t.tno= b.bno
+			left outer join tag t on t.tno= b.bno
 	</sql>
 	
 	<select id="findByNo" resultMap="BadgeMap" parameterType="int">
@@ -63,11 +66,7 @@
     </if>
     order by b.bno desc
   </select>
-
-	<insert id="insert" parameterType="badge">
-		insert into badge(bno,name,photo,content)
-		values(#{no},#{name}, #{photo}, #{content})
-	</insert>
+  
 
 	<update id="update" parameterType="badge">
 		update badge

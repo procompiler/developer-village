@@ -20,6 +20,7 @@ import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.BookmarkService;
 import com.devil.service.TagService;
+import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/article")
@@ -31,6 +32,8 @@ public class ArticleController {
   TagService tagService;
   @Autowired
   BookmarkService bookmarkService;
+  @Autowired
+  UserService userService;
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
@@ -87,21 +90,21 @@ public class ArticleController {
   }
 
   @RequestMapping("/writtenList")
-  public ModelAndView list(HttpSession session) throws Exception {
+  public ModelAndView list(User user) throws Exception {
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("articleList", articleService.list((User)session.getAttribute("loginUser")));
+    mv.addObject("user", userService.get(user.getNo()));
+    mv.addObject("articleList", articleService.list(user));
     mv.setViewName("/article/writtenList.jsp");
     return mv;
   }
-
-  @RequestMapping("/community")
-  public ModelAndView tagList() throws Exception {
+  
+  @RequestMapping("/feed")
+  public ModelAndView list(HttpSession session) throws Exception {
 
     ModelAndView mv = new ModelAndView();
-
-    mv.addObject("tagList", tagService.list((String)null));
-    mv.setViewName("/article/community.jsp");
+    mv.addObject("articleList", articleService.feedList((User)session.getAttribute("loginUser")));
+    mv.setViewName("/article/feed.jsp");
     return mv;
   }
 
