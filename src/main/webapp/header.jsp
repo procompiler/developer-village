@@ -20,7 +20,7 @@ User user = (User) session.getAttribute("loginUser");
     <div id="sitename">
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
-    </d /iv>
+    </div>
     <a href="<%=contextPath%>/app/user/detail?no=<%=user.getNo()%>">
      <div class="user-card">
       <div class="user-photo">
