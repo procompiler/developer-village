@@ -47,27 +47,53 @@
   .site-admin2 li {
     width: 100px;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 115px;
     display: inline-block;
   }
   
   .site-admin2 li p {
     font-size: 30px;
-    
   }
 /* 바디 */
+
 body {
   background-color: #37393E;
-  color: white;
+  color: #DBDBDB;
   font-family: 'Noto Sans KR', sans-serif;
   font-family: 'Roboto', sans-serif;
   line-height: 2em;
 }
 
+a {
+  text-decoration:none;
+  color: white;
+  color: #DBDBDB;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.mini-navi {
+	margin-bottom: 20px;
+}
+
+ .mini-navi a {
+  margin-right : 30px;
+ }
+
+form {
+	text-align: center;
+	padding-left : 50px;
+	background-color: #2E3034;
+	height: 140px;
+	border-radius: 15px;
+}
+
 .container {
-  margin: 30px 250px 50px 250px;
+  margin: 10px 250px 50px 250px;
   padding: 30px;
-  background-color: #2E3034;
   border-radius: 10px;
    }
 

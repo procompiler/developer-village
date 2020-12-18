@@ -14,11 +14,14 @@
 <title>회원관리</title>
 	  <jsp:include page="/admin-header.jsp"></jsp:include>
 	  </head>
-	<a href='../admin/userList' style='text-decoration: none;'>전체 회원관리</a>
+	  <body>
+	<div class="mini-navi">
+	<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
+  </div>
 	<h1>
-		<a href='userList' style='text-decoration: none;'>전체 회원관리</a>
+		<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
 	</h1>
 	<br>
 
@@ -39,12 +42,13 @@
 	  String keyword = request.getParameter("keyword");
   %>
 	<form action='userList' method='get'>
+	회원 검색
 		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'	value='<%=keyword != null ? keyword : ""%>'>
 		<button>유저 검색</button>
 	</form>
 	</p>
 
-<body>
+
 	<table border='1'>
 		<tr>
 			<th>번호</th>
