@@ -35,7 +35,6 @@ public class BlockController {
   public String add(Block block, int reportNo) throws Exception {
     Report report = reportService.get(reportNo);
     block.setReport(report);
-    System.out.println(block.getBlockedDates());
     blockService.block(block);
     return "redirect:list";
   }
