@@ -16,7 +16,7 @@ import com.devil.service.BlockService;
 // 필터 역할:
 // - 차단된 유저일 경우 게시글/댓글 등록시 경고창을 띄운다.
 //
-@WebFilter(value={"/article/form", "/comment/add"})
+@WebFilter(value={"/app/article/form", "/app/comment/add"})
 public class BlockFilter implements Filter {
 
   @Override
@@ -32,12 +32,11 @@ public class BlockFilter implements Filter {
       BlockService blockService =
           (BlockService) request.getServletContext().getAttribute("blockService");
       User loginUser = (User) httpRequest.getSession().getAttribute("loginUser");
-      System.out.println(loginUser.getNickname());
+      System.out.printf("블록필터 실행중!!!! => 접속자: %s\n", loginUser.getNickname());
 
-      Block block = blockService.get(loginUser.getNo());
-      System.out.println(block);
 
-      // select
+      Block block = blockService.getBlockedUser(loginUser.getNo());
+
       if (block != null) {
         httpResponse.sendRedirect("../block/info");
         return;

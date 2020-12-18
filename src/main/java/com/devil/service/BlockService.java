@@ -7,6 +7,7 @@ public interface BlockService {
   public int block(Block block) throws Exception;
   public List<Block> list (String keyword) throws Exception;
   public Block get(int no) throws Exception;
+  public Block getBlockedUser(int blockedUser) throws Exception;
   public int update(Block block) throws Exception;
 
 }

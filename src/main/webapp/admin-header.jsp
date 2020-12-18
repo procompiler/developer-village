@@ -19,17 +19,24 @@ User user = (User) session.getAttribute("loginUser");
   <div class="site-admin">
   <i class="fas fa-cogs"></i>
     사이트 관리
-    devil
+    
+    <span class="site-admin-devil">Devil</span>
     
   </div>
 
 <hr>
 
-  <div>
-    <i class="fas fa-user-alt"></i><a class="btn" href="<%=contextPath%>/app/user/form.html">회원 관리</a>
-    <i class="fas fa-cookie-bite"></i><a class="btn" href="<%=contextPath%>/app/admin/userList">뱃지 관리</a>
-    <i class="fas fa-tag"></i><a class="btn" href="<%=contextPath%>/app/auth/login">태그 관리</a>
-    <i class="fas fa-chart-pie"></i><a class="btn" href="<%=contextPath%>/app/article/form">통계</a>
+  <div class="site-admin2">
+  <ul>
+    <li><a class="btn" href="<%=contextPath%>/app/admin/userList">
+    <p><i class="fas fa-user-alt"></i></p>회원 관리</a></li>
+    <li><a class="btn" href="<%=contextPath%>/app/badge/list">
+    <p><i class="fas fa-cookie-bite"></i></p>뱃지 관리</a></li>
+    <li><a class="btn" href="<%=contextPath%>/app/tag/list">
+    <p><i class="fas fa-tag"></i></p>태그 관리</a></li>
+    <li><a class="btn" href="<%=contextPath%>/app/article/form">
+    <p><i class="fas fa-chart-pie"></i></p>통계</a></li>
+  </ul>  
   </div>
 </header>
 

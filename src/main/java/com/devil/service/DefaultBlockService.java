@@ -12,20 +12,20 @@ public class DefaultBlockService implements BlockService {
   BlockDao blockDao;
   UserDao userDao;
   ReportDao reportDao;
-//  SqlSessionFactoryProxy factoryProxy;
+  //  SqlSessionFactoryProxy factoryProxy;
 
   public DefaultBlockService(BlockDao blockDao, UserDao userDao,
       ReportDao reportDao/*, SqlSessionFactoryProxy factoryProxy*/) {
     this.blockDao = blockDao;
     this.userDao = userDao;
     this.reportDao = reportDao;
-//    this.factoryProxy = factoryProxy;
+    //    this.factoryProxy = factoryProxy;
   }
 
   @Override
   public int block(Block block) throws Exception {
     try {
-//      factoryProxy.startTransaction();
+      //      factoryProxy.startTransaction();
       try {
         blockDao.insertArticleReport(block);
       } catch(Exception e) {
@@ -34,12 +34,12 @@ public class DefaultBlockService implements BlockService {
 
       userDao.insertBlocked(block);
       reportDao.insertStatus(block);
-//      factoryProxy.commit();
+      //      factoryProxy.commit();
       return 1;
     } catch (Exception e) {
       throw e;
     } finally {
-//      factoryProxy.endTransaction();
+      //      factoryProxy.endTransaction();
     }
   }
 
@@ -51,6 +51,11 @@ public class DefaultBlockService implements BlockService {
   @Override
   public Block get(int no) throws Exception {
     return blockDao.findByNo(no);
+  }
+
+  @Override
+  public Block getBlockedUser(int blockedUser) throws Exception {
+    return blockDao.findByUser(blockedUser);
   }
 
   @Override
