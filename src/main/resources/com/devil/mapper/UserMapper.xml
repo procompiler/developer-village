@@ -114,6 +114,7 @@
 		<set>
 			<if test="nickname != null">nick = #{nickname},</if>
 			<if test="password != null">pwd = password(#{password}),</if>
+			<if test="name != null">name = #{name},</if>
 			<if test="homepageURL != null">hp_url = #{homepageURL},</if>
 			<if test="githubURL != null">gh_url = #{githubURL},</if>
 			<if test="instarURL != null">in_url = #{instarURL},</if>

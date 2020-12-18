@@ -1,0 +1,480 @@
+@import
+  url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap')
+  ;
+
+/* �젅�씠�븘�썐 */
+body {
+  background-color: #37393E;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  line-height: 2em;
+}
+.badge {
+  width: 1693px;
+  height: 969px;
+  margin: 142px 1px 0 0;
+  padding: 108px 439px 71px 394px;
+}
+.badgebox {
+  width: 860px;
+  height: 644px;
+  margin: 0 0 36px;
+  padding: 41px 85px 35px 79px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #2e3034;
+}
+
+.badgeexambox {
+  width: 682px;
+  height: 168px;
+  margin: 15px 7px 0;
+  padding: 41.1px 37.2px 34.3px 37.2px;
+  border-radius: 12px;
+  background-color: #4a4d53;
+}
+
+.badge-update-box {
+  width: 860px;
+  height: 110px;
+  margin: 36px 0 0;
+  padding: 24px 92px 25px 67px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #2e3034;
+}
+
+.photo {
+  width: 167px;
+  height: 167px;
+  margin: 67px 40px 0 0;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.badgephotoupdatetext {
+  width: 140px;
+  height: 35px;
+  margin: 48px 53px 8px 7px;
+  padding: 7px 27px 7px 25px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #7563fc;
+}
+
+.badgename {
+  width: 83px;
+  height: 29px;
+  margin: 47px 0 59px 48px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.badgenamebox {
+  width: 327px;
+  height: 27px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #dbdbdb;
+}
+/*
+.badgenamebox {
+  width: 367px;
+  height: 49px;
+  margin: 78px 27px 20px 4px;
+  padding: 12px 20px 10px;
+  border-radius: 12px;
+  background-color: #4a4d53;
+}*/
+.badgeinfotext {
+  width: 153px;
+  height: 46px;
+  margin: 0 47px 47px 0;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.badgeexamtext {
+  width: 83px;
+  height: 29px;
+  margin: 23px 117px 0 0;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.badgeexamtext {
+  width: 607.7px;
+  height: 92.6px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #dbdbdb;
+}
+.badgeLine2 {
+  width: 83px;
+  height: 29px;
+  margin: 23px 117px 0 0;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.badge-update-box-text {
+  width: 701px;
+  height: 61px;
+  padding: 16px 217.1px 5px 216.2px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #6c5ddf;
+}
+
+.container {
+  margin: 70px auto 20px 240px;
+  padding: 30px;
+}
+
+.main-color {
+  color: #6C5DDF;
+}
+
+/* �긽�떒諛� */
+header {
+  position: fixed;
+	z-index: 2;
+  background-color: #2E3034;
+  color: #6C5DDF;
+  text-align: center;
+  box-shadow: 5px 5px 7px 3px #212327;
+  float: right;
+  left: 220px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+}
+
+#search {
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 0px;
+  padding: 10px;
+  color: white;
+  background-color: #212325;
+  background-image: url("search.png");
+  background-size: 30px;
+  background-position: 5px 4px;
+  background-repeat: no-repeat;
+  outline: none;
+  font-size: 12px;
+  float: left;
+  margin-left: 35px;
+  width: 300px;
+}
+
+header button {
+  margin: 5px;
+}
+
+header a.btn {
+	float: right;
+}
+
+nav {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  background-color: #212327;
+  overflow-x: hidden;
+  margin: 0px 10px 0px 0px;
+  line-height: 3em;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.1em;
+  float: left;
+}
+
+nav i {
+	margin-right: 10px;
+}
+
+input::placeholder {
+  padding-left: 5px;
+  color: #dbdbdb;
+}
+
+nav ul hr {
+  border: 1px solid #3b3b3b;
+}
+
+nav ul {
+  padding-left: 0;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #6C5DDF;
+}
+
+
+nav i {
+  padding-right: 10px;
+}
+
+nav .buttons li {
+  text-align: left;
+  padding-left: 40px;
+}
+
+nav #sitename {
+  padding-bottom: 50px;
+  font-family: 'Aldrich';
+  line-height: 40px;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+nav #logo-nav {
+  text-align: center;
+  padding-top: 30px;
+  width: 77px;
+}
+
+
+/* �븯�떒諛� */
+footer {
+  clear: both;
+  padding: 20px;
+  margin-left: 250px;
+}
+
+footer hr {
+  border: 1px solid #535353;
+}
+
+footer img {
+  width: 43px;
+}
+
+
+footer #pro-logo {
+  border-radius: 7px;
+  -moz-border-radius: 70px;
+  -khtml-border-radius: 70px;
+  -webkit-border-radius: 70px;
+}
+
+
+/* �뀒�씠釉� */
+table {
+  border-collapse: collapse;
+  border-style: hidden;
+  display: block;
+  margin: 20px 0px;
+  border-color: #37393E;
+}
+
+tbody tr {
+  background-color: #2E3034;
+}
+
+thead tr {
+  background-color: #6C5DDF;
+}
+
+th, td {
+  border-left: hidden;
+  border-right: hidden;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 紐⑸줉 �젣紐� */
+#title {
+  text-align: left;
+}
+
+#tags {
+  list-style: none;
+  padding: unset;
+  margin: 5px 0px;
+}
+
+#tags li {
+  margin-right: 8px;
+  display: inline;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+#color {
+  text-align: center;
+  color: #37393E;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+  padding: 2px 5px;
+}
+
+#menubar {
+  height: 30px;
+  padding: 5px;
+}
+
+/*�궗�씠�뱶諛� �쑀�� �봽濡쒗븘*/
+.user-card {
+  padding: 8px 12px;
+}
+
+.user-card::after {
+  content: "";
+  display: block;
+  clear: left;
+}
+
+.user-photo {
+  width: 60px;
+  height: 60px;
+  margin-left: 12px;
+  margin-right: 15px;
+  float: left;
+}
+
+.user-photo img {
+  border-radius: 50%;
+}
+
+.user-name {
+  float: left;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  vertical-align: auto;
+}
+
+/* 踰꾪듉 */
+.btn {
+  border-radius: 10px;
+  margin: 10px 10px 10px 0px;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover {
+  color: #6C5DDF;
+  color: white;
+}
+
+.btn-primary {
+  border-color: #6C5DDF;
+  background-color: #6C5DDF;
+}
+
+.btn-primary:hover {
+  border-color: #5D4ECB;
+  background-color: #5D4ECB;
+  color: white;
+}
+
+.btn-outline-primary {
+  border-color: #6C5DDF;
+}
+
+.btn-outline-primary:hover {
+  border-color: #6C5DDF;
+  background-color: #6C5DDF;
+  color: white;
+}
+
+.btn-danger {
+  border-color: #F56C6E;
+  background-color: #F56C6E;
+  color: white;
+}
+
+.btn-danger:hover {
+  border-color: #EF4D4F;
+  background-color: #EF4D4F;
+  color: white;
+}
+
+.btn-outline-danger {
+  border-color: #F56C6E;
+}
+
+.btn-outline-danger:hover {
+  border-color: #F56C6E;
+  background-color: #F56C6E;
+  color: white;
+}
+/* 留곹겕 */
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6C5DDF;
+}
+
+a:visited {
+  color: #5D4ECB;
+}
+
+#urls {
+  padding: 5px;
+  font-size: 2em;
+}
+
+/*移대뱶*/
+div.card {
+  background-color: #2E3034;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+
+.card-band {
+  height: 15px;
+  border-radius: 6px 6px 0px 0px;
+}

@@ -9,6 +9,7 @@ import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
@@ -94,10 +95,21 @@ public class UserController {
       return mv;
     }
 
-  @RequestMapping("update")
+  @RequestMapping(value="/update", method=RequestMethod.POST)
   public String update(User user) throws Exception {
-    userService.update(user);
-    return "redirect:list";
+    System.out.println(user.getNo());
+    if (userService.update(user) == 0) {
+      throw new Exception("삭제된 회원입니다.");
+    }
+    return "redirect:detail?no=" + user.getNo();
+  }
+  
+  @RequestMapping(value="/updateForm", method=RequestMethod.GET)
+  public ModelAndView updateForm(int no) throws Exception {
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("user", userService.get(no));
+    mv.setViewName("/user/updateForm.jsp");
+    return mv;
   }
 
   @RequestMapping("/user/updatePhoto")
