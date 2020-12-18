@@ -10,6 +10,30 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: 2em;
 }
+.badgeinnerboxletftop {
+	width: 230px;
+height: 366px;
+left: 439px;
+top: 139px;
+margin: left;
+background: #2E3034;
+}
+.badgeinnerboxrighttop {
+	width: 522px;
+height: 366px;
+left: 681px;
+top: 139px;
+margin: right;
+background: #2E3034;
+}
+.badgeinnerboxbottom {
+	width: 764px;
+height: 221px;
+left: 439px;
+top: 505px;
+margin: center bottom;
+background: #2E3034;
+}
 .badge {
   width: 1693px;
   height: 969px;
@@ -87,15 +111,15 @@ body {
   text-align: left;
   color: #dbdbdb;
 }
-/*
-.badgenamebox {
+
+.badgenameboxtext {
   width: 367px;
   height: 49px;
   margin: 78px 27px 20px 4px;
   padding: 12px 20px 10px;
   border-radius: 12px;
   background-color: #4a4d53;
-}*/
+}
 .badgeinfotext {
   width: 153px;
   height: 46px;
