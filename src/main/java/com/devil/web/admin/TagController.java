@@ -31,7 +31,7 @@ public class TagController {
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("/admin/tag/form.jsp");
+    mv.setViewName("/adminJsp/tag/form.jsp");
     return mv;
   }
 
@@ -64,7 +64,7 @@ public class TagController {
     
     ModelAndView mv = new ModelAndView();
     mv.addObject("tag", tag);
-    mv.setViewName("/admin/tag/detail.jsp");
+    mv.setViewName("/adminJsp/tag/detail.jsp");
     return mv;
   }
 
@@ -87,7 +87,7 @@ public class TagController {
     }
     ModelAndView mv = new ModelAndView();
     mv.addObject("tagList", tagList);
-    mv.setViewName("/admin/tag/list.jsp");
+    mv.setViewName("/adminJsp/tag/list.jsp");
     return mv;
   }
 
