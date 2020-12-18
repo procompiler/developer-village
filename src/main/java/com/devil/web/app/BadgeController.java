@@ -29,7 +29,7 @@ public class BadgeController {
     return mv;
   }
 
-  @RequestMapping("/add")
+  @RequestMapping("add")
   public String add(String name, String content,Part photoFile) throws Exception {
 
     String filename = UUID.randomUUID().toString();
@@ -48,7 +48,7 @@ public class BadgeController {
   }
 
 
-  @RequestMapping("/delete")
+  @RequestMapping("delete")
   public String delete(int no) throws Exception {
 
     if (badgeService.delete(no) == 0) {
@@ -57,7 +57,7 @@ public class BadgeController {
     return "redirect:list";
   }
 
-  @RequestMapping("/detail")
+  @RequestMapping("detail")
   public ModelAndView deatil(int no) throws Exception {
     Badge badge = badgeService.get(no);
 
@@ -88,7 +88,7 @@ public class BadgeController {
     return "redirect:detail?no=" + badge.getNo();
   }
 
-  @RequestMapping("/updatePhoto")
+  @RequestMapping("updatePhoto")
   public String updatePhoto(int no, Part photoFile) throws Exception {
 
     Badge badge = new Badge();
