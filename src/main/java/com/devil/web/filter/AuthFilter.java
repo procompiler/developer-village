@@ -30,13 +30,6 @@ public class AuthFilter implements Filter {
     HttpServletResponse httpResponse = (HttpServletResponse) response;
 
     if (httpRequest.getServletPath().startsWith("/auth") ||
-        httpRequest.getServletPath().endsWith(".html") ||
-        httpRequest.getServletPath().endsWith(".css") ||
-        httpRequest.getServletPath().endsWith(".js") ||
-        httpRequest.getServletPath().endsWith(".gif") ||
-        httpRequest.getServletPath().endsWith(".jpg") ||
-        httpRequest.getServletPath().endsWith(".jpeg") ||
-        httpRequest.getServletPath().endsWith(".png") ||
         httpRequest.getSession().getAttribute("loginUser") != null) {
       chain.doFilter(request, response);
     } else {

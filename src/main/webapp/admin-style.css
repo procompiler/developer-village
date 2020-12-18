@@ -5,31 +5,97 @@
   /* 헤더 */
   header {
   background-color: #2E3034;
-  height: 150px;
-  }
+  height: 160px;
+  box-shadow: 5px 5px 7px 3px #212327;  }
   
   header a.btn {
   color: white;
   }
   
+  header hr {
+  margin: 0px;
+  }
+  
   .site-admin {
   color: white;
   font-weight: bold;
+  font-size : 24px;
+  letter-spacing: -1px;
+  margin-left: 50px;
+  padding-top : 5px;
+  }
   
+  .site-admin-devil {
+  font-weight: light;
+  font-size : 16px;
+  margin-left: 30px;
+  color: #787878;
+  font-weight: normal;
+  }
+  
+    .site-admin2 {
+  color: white;
+  font-weight: bold;
+  margin-left: 250px;
+  }
+  
+  .site-admin2 ul {
+    padding-top: 10px;
+    list-style-type: none; 
+  }
+  
+  .site-admin2 li {
+    width: 100px;
+    text-align: center;
+    margin-left: 115px;
+    display: inline-block;
+  }
+  
+  .site-admin2 li p {
+    font-size: 30px;
   }
 /* 바디 */
+
 body {
   background-color: #37393E;
-  color: white;
+  color: #DBDBDB;
   font-family: 'Noto Sans KR', sans-serif;
   font-family: 'Roboto', sans-serif;
   line-height: 2em;
 }
 
-.container {
-  margin: 70px auto 20px 240px;
-  padding: 30px;
+a {
+  text-decoration:none;
+  color: white;
+  color: #DBDBDB;
 }
+
+h1 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.mini-navi {
+	margin-bottom: 20px;
+}
+
+ .mini-navi a {
+  margin-right : 30px;
+ }
+
+form {
+	text-align: center;
+	padding-left : 50px;
+	background-color: #2E3034;
+	height: 140px;
+	border-radius: 15px;
+}
+
+.container {
+  margin: 10px 250px 50px 250px;
+  padding: 30px;
+  border-radius: 10px;
+   }
 
 .main-color {
   color: #6C5DDF;
@@ -40,6 +106,8 @@ footer {
   clear: both;
   padding: 20px;
   margin-left: 250px;
+  margin-right: 100px;
+  
 }
 
 footer hr {

@@ -75,7 +75,7 @@
       where b.blno=#{no} 
     </select>
     
-    <select id="findByUserNo" resultMap="BlockMap" parameterType="int">
+    <select id="findByUser" resultMap="BlockMap" parameterType="int">
      <include refid="sql1"/>
       where u.uno=#{reportedUser.no} 
      <![CDATA[  and now() <= date_add(b.cdt, interval b.dates day) ]]>
