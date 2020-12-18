@@ -18,7 +18,7 @@
   <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
 	<button type='button' class='btn btn-primary'
-	onclick="location.href='form'">뱃지 추가</button>
+	onclick="location.href='form.jsp'">뱃지 추가</button>
 	
   <c:if test="${param.keyword != null}">
   '${param.keyword}'로 검색한 결과입니다.

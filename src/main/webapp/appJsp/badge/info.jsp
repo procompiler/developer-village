@@ -17,11 +17,11 @@
 	<div class="badge">
  <div class="badgebox">
 
+ 	<div>
+ 		<div class="badgeinnerboxletftop" style="float:left">
  	<div class="badgeinfotext">
   	뱃지 정보
  	</div>
- 	<div>
- 		<div class="firstBox" style="float:left">
 		 	<div class="photo">
 		 	<td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
 		 	</div>
@@ -29,13 +29,14 @@
 		 	사진 업로드
 		 	</div>
  		</div>
- 		<div class="secondBox">
+ 		<div class="badgeinnerboxrighttop" style="float:right">
 		 	<div class="badgename">
 		 	뱃지 이름
 		 	</div>
 		 	<div class="badgenamebox">
 		 	뱃지이름박스
 		 	</div>
+		 	<div class="badgenameboxtext">sdf</div>
  		</div>
  	</div>
 
@@ -44,13 +45,13 @@
 
  
  
-	 <div class="badgeLine2">
+	 <div class=".badgeinnerboxbottom" style="float:bottom">
 	 	<span>뱃지 설명</span>
 	 </div>
  	<div class="badgeexambox">
  	
  		<span id="badgeExam">
- 		
+ 		 sdfsdffds
  		</span>
 	</div>
 	
