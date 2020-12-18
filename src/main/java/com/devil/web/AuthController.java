@@ -61,7 +61,6 @@ public class AuthController {
       return "/auth/loginError.jsp";
     }
     userService.updateLoginTimeStamp(user);
-    System.out.println(user.getRecentVisitedDate());
     session.setAttribute("loginUser", user);
     return "redirect:../../index.jsp";
 
