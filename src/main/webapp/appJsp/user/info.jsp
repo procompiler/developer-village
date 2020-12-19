@@ -60,12 +60,12 @@
 
 
 <c:otherwise>
-	<img src='../../upload/${loginUser.photo}_160x160.jpg'
-		alt='[${loginUser.photo}.jpg]'>
+	<img src='../../upload/${user.photo}_160x160.jpg'
+		alt='[${user.photo}.jpg]'>
 	<br>
-	<p>닉네임: ${loginUser.nickname}</p>
-	<p>이메일 ${loginUser.email}</p>
-	<p>기술 목록 ${loginUser.tech}</p>
+	<p>닉네임: ${user.nickname}</p>
+	<p>이메일 ${user.email}</p>
+	<p>기술 목록 ${user.tech}</p>
 	 <p><a href="../follow/userList">팔로잉: ${user.followingCount}</a></p>
   <p><a href="../follow/followerList">팔로워: ${user.followerCount}</a></p>
 	<div>

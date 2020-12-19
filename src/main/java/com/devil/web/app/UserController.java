@@ -22,9 +22,12 @@ import net.coobird.thumbnailator.name.Rename;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-  @Autowired UserService userService;
-  @Autowired ServletContext servletContext;
-  @Autowired FollowService followService;
+  @Autowired
+  UserService userService;
+  @Autowired
+  ServletContext servletContext;
+  @Autowired
+  FollowService followService;
 
   @RequestMapping("form")
   public ModelAndView form() throws Exception {
@@ -34,9 +37,8 @@ public class UserController {
   }
 
   @RequestMapping("add")
-  public String add(
-      String email, String nickname, String name,
-      String password, String loginType) throws Exception {
+  public String add(String email, String nickname, String name, String password, String loginType)
+      throws Exception {
 
     User user = new User();
     user.setEmail(email);
@@ -57,45 +59,51 @@ public class UserController {
     }
     return "redirect:list";
   }
-  
-    @RequestMapping("detail")
-    public ModelAndView detail(int no, HttpSession session) throws Exception {
-  
-      User user = userService.get(no);
+
+  @RequestMapping("detail")
+  public ModelAndView detail(int no, HttpSession session) throws Exception {
+
+    User loginUser = (User) session.getAttribute("loginUser");
+    User user;
+    
+    if (no == loginUser.getNo()) {
+      user = loginUser;
+    } else {
+      user = userService.get(no);      
       if (user == null) {
-        throw new Exception("해당 번호의 유저가 없습니다!");
+        throw new Exception("해당 번호의 유저가 없습니다!");        
       }
-      
-      ModelAndView mv = new ModelAndView();
-      mv.addObject("user", user);
-  
-      Map<String, Object> map = new HashMap<>();
-      map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
-      map.put("followeeNo", no);
-      if (followService.getUser(map) != null) {
-        session.setAttribute("followed", true);
-      } else {
-        session.setAttribute("followed", false);
-      }
-  
-      mv.setViewName("/appJsp/user/detail.jsp");
-      return mv;
-    }
-  
-    @RequestMapping("list")
-    public ModelAndView list(String keyword, HttpSession session) throws Exception {
-  
-      ModelAndView mv = new ModelAndView();
-  
-      mv.addObject("list", userService.list(keyword));
-  
-      mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
-      mv.setViewName("/appJsp/user/list.jsp");
-  
-      return mv;
     }
 
-  @RequestMapping(value="/update", method=RequestMethod.POST)
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("user", user);
+    
+    Map<String, Object> map = new HashMap<>();
+    map.put("userNo", loginUser.getNo());
+    map.put("followeeNo", no);
+    if (followService.getUser(map) != null) {
+      session.setAttribute("followed", true);
+    } else {
+      session.setAttribute("followed", false);
+    }
+    mv.setViewName("/appJsp/user/detail.jsp");
+    return mv;
+  }
+
+  @RequestMapping("list")
+  public ModelAndView list(String keyword, HttpSession session) throws Exception {
+
+    ModelAndView mv = new ModelAndView();
+
+    mv.addObject("list", userService.list(keyword));
+
+    mv.addObject("followingUsers", userService.list((User) session.getAttribute("loginUser")));
+    mv.setViewName("/appJsp/user/list.jsp");
+
+    return mv;
+  }
+
+  @RequestMapping(value = "/update", method = RequestMethod.POST)
   public String update(User user) throws Exception {
     System.out.println(user.getNo());
     if (userService.update(user) == 0) {
@@ -103,8 +111,8 @@ public class UserController {
     }
     return "redirect:detail?no=" + user.getNo();
   }
-  
-  @RequestMapping(value="/updateForm", method=RequestMethod.GET)
+
+  @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
   public ModelAndView updateForm(int no) throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", userService.get(no));
@@ -140,47 +148,42 @@ public class UserController {
   private void generatePhotoThumnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath)//
-      .size(40, 40)//
-      .crop(Positions.CENTER)
-      .outputFormat("jpg")//
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
-        }
-      });
+          .size(40, 40)//
+          .crop(Positions.CENTER).outputFormat("jpg")//
+          .toFiles(new Rename() {
+            @Override
+            public String apply(String name, ThumbnailParameter param) {
+              return name + "_40x40";
+            }
+          });
 
       Thumbnails.of(saveFilePath)//
-      .size(60, 60)//
-      .crop(Positions.CENTER)
-      .outputFormat("jpg")//
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
-        }
-      });
+          .size(60, 60)//
+          .crop(Positions.CENTER).outputFormat("jpg")//
+          .toFiles(new Rename() {
+            @Override
+            public String apply(String name, ThumbnailParameter param) {
+              return name + "_40x40";
+            }
+          });
 
       Thumbnails.of(saveFilePath)//
-      .size(80, 80)//
-      .outputFormat("jpg") //
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_80x80";
-        }
-      });
+          .size(80, 80)//
+          .outputFormat("jpg") //
+          .toFiles(new Rename() {
+            @Override
+            public String apply(String name, ThumbnailParameter param) {
+              return name + "_80x80";
+            }
+          });
 
       Thumbnails.of(saveFilePath)//
-      .size(160, 160)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_160x160";
-        }
-      });
+          .size(160, 160).outputFormat("jpg").crop(Positions.CENTER).toFiles(new Rename() {
+            @Override
+            public String apply(String name, ThumbnailParameter param) {
+              return name + "_160x160";
+            }
+          });
     } catch (Exception e) {
       e.printStackTrace();
     }

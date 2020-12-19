@@ -47,6 +47,7 @@
 		u.photo,
 		u.cdt,
 		u.log_type,
+		u.tech,
 		(select count(*) from follow f where u.uno = f.fwer_no) as fwing_cnt,
 		(select count(*) from follow f where u.uno = f.fwing_no) as fwer_cnt
 		from

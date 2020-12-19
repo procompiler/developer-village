@@ -38,7 +38,6 @@ header {
   margin-top: 5px;
   border-radius: 10px;
   border: 0px;
-  padding: 10px;
   color: white;
   background-color: #212325;
   background-image: url("search.png");
@@ -58,6 +57,10 @@ header button {
 
 header a.btn {
   float: right;
+}
+
+header .btn {
+  margin: 0px;
 }
 
 nav {
@@ -98,6 +101,8 @@ nav ul {
 nav a {
   text-decoration: none;
 }
+
+
 
 nav a:hover {
   color: #6C5DDF;

@@ -16,7 +16,7 @@
 <div class="row">
 <div class="col-9">
 <h2>프로필 수정</h2>
-<form action='<c:url value='/app/user/update'/>' method='post'>
+<form action='update' method='post'>
     <input type='hidden' name='no' value='${user.no}'><br> <a
       href='../../upload/user/${user.photo}%>'> <img
       src='../../upload/user/${user.photo}_160x160.jpg'
