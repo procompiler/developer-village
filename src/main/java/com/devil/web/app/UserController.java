@@ -99,11 +99,17 @@ public class UserController {
   }
 
   @RequestMapping(value = "update", method = RequestMethod.POST)
-  public String update(User user) throws Exception {
-    System.out.println(user.getNo());
+  public String update(User user, HttpSession session) throws Exception {
+    if (user.getNo() != ((User)session.getAttribute("loginUser")).getNo()) {
+      throw new Exception("잘못된 접근입니다.");
+    }
+    
     if (userService.update(user) == 0) {
       throw new Exception("삭제된 회원입니다.");
     }
+    
+    session.setAttribute("loginUser", userService.get(user.getNo()));
+    
     return "redirect:detail?no=" + user.getNo();
   }
 
@@ -116,8 +122,11 @@ public class UserController {
   }
 
   @RequestMapping("updatePhoto")
-  public String updatePhoto(int no, Part photoFile) throws Exception {
-
+  public String updatePhoto(int no, Part photoFile, HttpSession session) throws Exception {
+    if (no != ((User)session.getAttribute("loginUser")).getNo()) {
+      throw new Exception("잘못된 접근입니다.");
+    }
+    
     User user = new User();
     user.setNo(no);
 
@@ -127,7 +136,6 @@ public class UserController {
       String saveFilePath = servletContext.getRealPath("/upload/user/" + filename);
       photoFile.write(saveFilePath);
       user.setPhoto(filename);
-
       // 회원 사진의 썸네일 이미지 파일 생성하기
       generatePhotoThumnail(saveFilePath);
     }
@@ -137,6 +145,7 @@ public class UserController {
     }
 
     userService.update(user);
+    session.setAttribute("loginUser", userService.get(user.getNo()));
     return "redirect:detail?no=" + user.getNo();
   }
 
