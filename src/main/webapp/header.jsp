@@ -4,7 +4,6 @@
 
 <%
 String contextPath = request.getServletContext().getContextPath();
-User user = (User) session.getAttribute("loginUser");
 %>
 
 <link rel="stylesheet" href="<%=contextPath%>/node_modules/@fortawesome/fontawesome-free/css/all.css"/>
@@ -20,13 +19,13 @@ User user = (User) session.getAttribute("loginUser");
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
     </div>
-    <a href="<%=contextPath%>/app/user/detail?no=<%=user.getNo()%>">
+    <a href="<%=contextPath%>/app/user/detail?no=${loginUser.no}">
      <div class="user-card">
       <div class="user-photo">
-        <img src="<%=contextPath%>/upload/user/<%=user.getPhoto()%>_60x60.jpg"/>
+        <img src="<%=contextPath%>/upload/user/${loginUser.photo}_60x60.jpg"/>
       </div>
         <h3 class="user-name">
-          <%=user.getNickname()%>
+          ${loginUser.nickname}
         </h3>
     </div>
     </a>
