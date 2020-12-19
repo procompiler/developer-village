@@ -85,7 +85,7 @@
 		</c:choose>
 	</div>
 	<a class="btn btn-outline-primary" 
-	  href="../user/updateForm?no=${user.no}">프로필 수정</a>
+	  href="../user/updateForm?no=${loginUser.no}">프로필 수정</a>
 	<br>
 	<a class="btn btn-outline-primary"
     href="../article/feed">피드</a>

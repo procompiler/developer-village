@@ -10,56 +10,88 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 조회</title>
+<title>프로필 수정</title>
 <jsp:include page="/header.jsp"></jsp:include>
-</head>
-<body>
-	<h1>[회원 수정]</h1>
-  <form action='<c:url value='/app/user/update'/>' method='post'>
-	<input type='hidden' name='no' value='${user.no}'><br>
-	<a href='../../upload/user/${user.photo}%>'> <img
-		src='../../upload/user/${user.photo}_160x160.jpg'
-		alt='[${user.photo}]'></a>
-	<br>
-	<br>
-	<br>
-	<p>닉네임 : <input type='text' class="form-control" name='nick' value='${user.nickname}'></p>
-  <p>이메일 : <input type='text' class="form-control" name='email' value='${user.email}'></p>
-	<p>이름: <input type='text' class="form-control" name='name' value='${user.name}'></p>
 
-	<p>
-		가입일:
-		<fmt:formatDate value="${user.createdDate}" pattern="yyyy.MM.dd" />
-	</p>
-
-	<c:choose>
-		<c:when test="${user.loginType == 1}">
-			<p>기본 가입회원</p>
-		</c:when>
-		<c:when test="${user.loginType == 2}">
-			<p>구글 가입회원</p>
-		</c:when>
-		<c:when test="${user.loginType == 3}">
-			<p>깃허브 가입회원</p>
-		</c:when>
-	</c:choose>
-	소개:<div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label"
-        ></label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='bio'>${user.bio}</textarea>
+<div class="row">
+<div class="col-9" style="background:black;">
+<h2>프로필 수정</h2>
+<form action='<c:url value='/app/user/update'/>' method='post'>
+    <input type='hidden' name='no' value='${user.no}'><br> <a
+      href='../../upload/user/${user.photo}%>'> <img
+      src='../../upload/user/${user.photo}_160x160.jpg'
+      alt='[${user.photo}]'></a>
+    <div class="mb-3 row">
+      <label for="nickname" class='form-label col-sm-2 col-form-label'>닉네임</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control" id='nickname'
+          name='nickname' value='${user.nickname}'>
+      </div>
     </div>
-	<p>기술</p>주 언어<div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label"
-        ></label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='tech'>${user.tech}</textarea>
+    <div class="mb-3 row">
+      <label for="name" class='form-label col-sm-2 col-form-label'>이름</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control-plaintext light" id='name'
+          name='name' value='${user.name}' readonly>
+      </div>
     </div>
-	<p>개인 홈페이지: ${user.homepageURL}</p>
-	<p>깃허브: ${user.githubURL}</p>
-	<p>인스타그램: ${user.instarURL}</p>
-	<p>트위터:${user.twitterURL}</p>
-	
-	<a href='list' style='color: blue;'>회원 목록으로</a>
+    <div class="mb-3 row">
+      <label for="email" class='form-label col-sm-2 col-form-label'>이메일</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control-plaintext light" id='email'
+          name='name' value='${user.email}' readonly>
+      </div>
+    </div>
+    
+    <div class="mb-3 row">
+      <label for="bio" class="form-label col-sm-2 col-form-label">소개</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="bio" rows="3" name='bio'>${user.bio}</textarea>
+      </div>
+    </div>
+    
+    <div class="mb-3 row">
+      <label for="tech" class="form-label col-sm-2 col-form-label">기술</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="tech" rows="3" name='tech'>${user.tech}</textarea>
+      </div>
+    </div>
+    
+    <div class="mb-3 row">
+      <label for="homepageURL" class='form-label col-sm-2 col-form-label'>개인 홈페이지</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control" id='homepageURL'
+          name='homepageURL' value='${user.homepageURL}'>
+      </div>
+    </div>
+    
+    <div class="mb-3 row">
+      <label for="githubURL" class='form-label col-sm-2 col-form-label'>깃허브</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control" id='githubURL'
+          name='githubURL' value='${user.githubURL}'>
+      </div>
+    </div>
+    
+    <div class="mb-3 row">
+      <label for="instarURL" class='form-label col-sm-2 col-form-label'>인스타</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control" id='instarURL'
+          name='instarURL' value='${user.instarURL}'>
+      </div>
+    </div>
+    
+    <div class="mb-3 row">
+      <label for="twitterURL" class='form-label col-sm-2 col-form-label'>트위터</label>
+      <div class="col-sm-10">
+        <input type='text' class="form-control" id='twitterURL'
+          name='twitterURL' value='${user.twitterURL}'>
+      </div>
+    </div>
+    
 	<button class="btn btn-primary">수정</button>
-	</form>
-	
-	<jsp:include page="/footer.jsp"></jsp:include>
+</form>
+</div>
+</div>
+
+<jsp:include page="/footer.jsp"></jsp:include>

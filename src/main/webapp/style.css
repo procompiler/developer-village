@@ -4,8 +4,6 @@
 
 /* 레이아웃 */
 body {
-  background-color: #37393E;
-  color: white;
   font-family: 'Noto Sans KR', sans-serif;
   font-family: 'Roboto', sans-serif;
   line-height: 2em;
@@ -23,7 +21,7 @@ body {
 /* 상단바 */
 header {
   position: fixed;
-	z-index: 2;
+  z-index: 2;
   background-color: #2E3034;
   color: #6C5DDF;
   text-align: center;
@@ -59,7 +57,7 @@ header button {
 }
 
 header a.btn {
-	float: right;
+  float: right;
 }
 
 nav {
@@ -80,7 +78,7 @@ nav {
 }
 
 nav i {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 input::placeholder {
@@ -252,53 +250,6 @@ th, td {
   font-weight: bold;
 }
 
-.btn:hover {
-  color: #6C5DDF;
-  color: white;
-}
-
-.btn-primary {
-  border-color: #6C5DDF;
-  background-color: #6C5DDF;
-}
-
-.btn-primary:hover {
-  border-color: #5D4ECB;
-  background-color: #5D4ECB;
-  color: white;
-}
-
-.btn-outline-primary {
-  border-color: #6C5DDF;
-}
-
-.btn-outline-primary:hover {
-  border-color: #6C5DDF;
-  background-color: #6C5DDF;
-  color: white;
-}
-
-.btn-danger {
-  border-color: #F56C6E;
-  background-color: #F56C6E;
-  color: white;
-}
-
-.btn-danger:hover {
-  border-color: #EF4D4F;
-  background-color: #EF4D4F;
-  color: white;
-}
-
-.btn-outline-danger {
-  border-color: #F56C6E;
-}
-
-.btn-outline-danger:hover {
-  border-color: #F56C6E;
-  background-color: #F56C6E;
-  color: white;
-}
 /* 링크 */
 
 a:link {
@@ -318,6 +269,11 @@ a:visited {
   padding: 5px;
   font-size: 2em;
 }
+
+.form-control {
+	border: 0px;
+}
+
 
 /*카드*/
 div.card {

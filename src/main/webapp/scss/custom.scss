@@ -9,4 +9,14 @@ $theme-colors: (
 $body-bg: #37393E;
 $body-color: white;
 
+
+$input-bg: #4A4D53;
+$input-focus-bg: #212327;
+
+
+$border-radius: .3rem;
+$border-radius-sm: .25rem;
+$border-radius-lg: .35rem;
+$border-radius-pill: 50rem;
+
 @import "../node_modules/bootstrap/scss/bootstrap";
