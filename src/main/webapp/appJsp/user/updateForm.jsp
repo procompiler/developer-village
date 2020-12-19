@@ -63,6 +63,3 @@
 	</form>
 	
 	<jsp:include page="/footer.jsp"></jsp:include>
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

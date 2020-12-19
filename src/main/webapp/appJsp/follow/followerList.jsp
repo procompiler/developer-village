@@ -15,7 +15,7 @@
 </head>
 <body>
     <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/app/user/info.jsp"></jsp:include>
+    <jsp:include page="/appJsp/user/info.jsp"></jsp:include>
 	<h2>팔로워</h2>
 	<table border='1'>
 	 <thead>

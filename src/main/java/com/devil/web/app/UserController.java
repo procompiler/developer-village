@@ -108,7 +108,7 @@ public class UserController {
   public ModelAndView updateForm(int no) throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", userService.get(no));
-    mv.setViewName("/user/updateForm.jsp");
+    mv.setViewName("/appJsp/user/updateForm.jsp");
     return mv;
   }
 

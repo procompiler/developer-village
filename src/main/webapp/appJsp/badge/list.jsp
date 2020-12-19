@@ -9,16 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>뱃지 목록</title>
-<link rel="stylesheet" type="text/css" href='../style.css'>
-<link rel="stylesheet"
-  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-  crossorigin="anonymous" />
-</head>
   <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
-	<button type='button' class='btn btn-primary'
-	onclick="location.href='form.jsp'">뱃지 추가</button>
+	<a class='btn btn-primary' href='form.jsp'>뱃지 추가</a>
 	
   <c:if test="${param.keyword != null}">
   '${param.keyword}'로 검색한 결과입니다.

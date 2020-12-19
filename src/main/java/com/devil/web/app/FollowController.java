@@ -75,7 +75,7 @@ public class FollowController{
   public ModelAndView listUser(HttpSession session) throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("userList", userService.list((User)session.getAttribute("loginUser")));
-    mv.setViewName("/follow/userList.jsp");
+    mv.setViewName("/appJsp/follow/userList.jsp");
     return mv;
   }
 
