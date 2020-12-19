@@ -28,7 +28,7 @@
    <c:forEach items="${userList}" var="u">
 		<tr>
 			<td><a href='../user/detail?no=${u.no}'> <img
-					src='../upload/user/${u.photo}_40x40.jpg'
+					src='../../upload/user/${u.photo}_60x60.jpg'
 					style='border-radius: 70px' alt='[${u.nickname}]'>${u.nickname}</a></td>
 		  <td><a class='btn btn-outline-danger' href='delete?followeeNo=${u.no}'>언팔로우</a></td>
 		</tr>

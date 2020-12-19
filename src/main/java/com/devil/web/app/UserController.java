@@ -151,16 +151,17 @@ public class UserController {
 
   private void generatePhotoThumnail(String saveFilePath) {
     try {
-      Thumbnails.of(saveFilePath)//
-          .size(40, 40)//
-          .crop(Positions.CENTER).outputFormat("jpg")//
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_40x40";
-            }
-          });
 
+      Thumbnails.of(saveFilePath)//
+      .size(40, 40)//
+      .crop(Positions.CENTER).outputFormat("jpg")//
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_40x40";
+        }
+      });
+      
       Thumbnails.of(saveFilePath)//
           .size(60, 60)//
           .crop(Positions.CENTER).outputFormat("jpg")//
@@ -172,12 +173,12 @@ public class UserController {
           });
 
       Thumbnails.of(saveFilePath)//
-          .size(80, 80)//
+          .size(100, 100)//
           .outputFormat("jpg") //
           .toFiles(new Rename() {
             @Override
             public String apply(String name, ThumbnailParameter param) {
-              return name + "_80x80";
+              return name + "_100x100";
             }
           });
 

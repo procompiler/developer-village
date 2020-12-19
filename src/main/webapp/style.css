@@ -248,7 +248,7 @@ th, td {
 /* 버튼 */
 .btn {
   border-radius: 10px;
-  margin: 10px 10px 10px 0px;
+  margin: 10px 5px 10px 5px;
   color: white;
   font-weight: bold;
 }
@@ -288,4 +288,8 @@ div.card {
 .card-band {
   height: 15px;
   border-radius: 6px 6px 0px 0px;
+}
+
+.card-img-top, .card-img {
+	width: auto;
 }
