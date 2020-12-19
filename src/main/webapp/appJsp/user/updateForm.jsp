@@ -14,7 +14,7 @@
 <jsp:include page="/header.jsp"></jsp:include>
 
 <div class="row">
-<div class="col-9" style="background:black;">
+<div class="col-9">
 <h2>프로필 수정</h2>
 <form action='<c:url value='/app/user/update'/>' method='post'>
     <input type='hidden' name='no' value='${user.no}'><br> <a
