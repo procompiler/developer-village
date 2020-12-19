@@ -25,7 +25,6 @@ header {
   background-color: #2E3034;
   color: #6C5DDF;
   text-align: center;
-  box-shadow: 5px 5px 7px 3px #212327;
   float: right;
   left: 220px;
   position: fixed;
@@ -35,7 +34,6 @@ header {
 }
 
 #search {
-  margin-top: 5px;
   border-radius: 10px;
   border: 0px;
   color: white;
@@ -47,7 +45,7 @@ header {
   outline: none;
   font-size: 12px;
   float: left;
-  margin-left: 35px;
+  margin-left: 20px;
   width: 300px;
 }
 

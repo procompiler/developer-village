@@ -9,16 +9,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<style>
-#urls {
-	padding: 5px;
-	font-size: 2em;
-}
-</style>
 <h1>사용자 정보</h1>
 <c:choose>
 <c:when test="${user.no != loginUser.no && null ne user}">
-	<img src='../../upload/${user.photo}_160x160.jpg'
+	<img src='../../upload/user/${user.photo}_160x160.jpg'
 		alt='[${user.photo}.jpg]'>
 	<c:choose>
 		<c:when test="${followed}">
@@ -39,16 +33,16 @@
 	<div>
 		<c:choose>
 			<c:when test="${empty user.homepageURL}">
-				<a href="${user.homepageURL}"><i class="fas fa-home"></i></a>
+				<a class="btn" href="${user.homepageURL}"><i class="fas fa-home fa-lg"></i></a>
 			</c:when>
 			<c:when test="${empty user.githubURL}">
-				<a href="${user.githubURL}"><i class="fab fa-github-alt"></i></a>
+				<a class="btn" href="${user.githubURL}"><i class="fab fa-github-alt fa-lg"></i></a>
 			</c:when>
 			<c:when test="${empty user.instarURL}">
-				<a href="${user.instarURL}"><i class="fab fa-instagram"></i></a>
+				<a class="btn" href="${user.instarURL}"><i class="fab fa-instagram fa-lg"></i></a>
 			</c:when>
 			<c:when test="${empty user.twitterURL}">
-				<a href="${user.twitterURL}"><i class="fab fa-twitter"></i></a>
+				<a class="btn" href="${user.twitterURL}"><i class="fab fa-twitter fa-lg"></i></a>
 			</c:when>
 		</c:choose>
 	</div>
@@ -60,31 +54,29 @@
 
 
 <c:otherwise>
-	<img src='../../upload/${user.photo}_160x160.jpg'
-		alt='[${user.photo}.jpg]'>
+	<img src='../../upload/user/${loginUser.photo}_160x160.jpg'
+		alt='[${loginUser.photo}.jpg]'>
 	<br>
-	<p>닉네임: ${user.nickname}</p>
-	<p>이메일 ${user.email}</p>
-	<p>기술 목록 ${user.tech}</p>
-	 <p><a href="../follow/userList">팔로잉: ${user.followingCount}</a></p>
-  <p><a href="../follow/followerList">팔로워: ${user.followerCount}</a></p>
+	<p>닉네임: ${loginUser.nickname}</p>
+	<p>이메일 ${loginUser.email}</p>
+	<p>기술 목록 ${loginUser.tech}</p>
+	 <p><a href="../follow/userList">팔로잉: ${loginUser.followingCount}</a></p>
+  <p><a href="../follow/followerList">팔로워: ${loginUser.followerCount}</a></p>
 	<div>
-		<c:choose>
-			<c:when test="${empty loginUser.homepageURL}">
-				<a href="${loginUser.homepageURL}"><i class="fas fa-home"></i></a>
-			</c:when>
-			<c:when test="${empty loginUser.githubURL}">
-				<a href="${loginUser.githubURL}"><i class="fab fa-github-alt"></i></a>
-			</c:when>
-			<c:when test="${empty loginUser.instarURL}">
-				<a href="${loginUser.instarURL}"><i class="fab fa-instagram"></i></a>
-			</c:when>
-			<c:when test="${empty loginUser.twitterURL}">
-				<a href="${loginUser.twitterURL}"><i class="fab fa-twitter"></i></a>
-			</c:when>
-		</c:choose>
+			<c:if test="${not empty loginUser.homepageURL}">
+				<a class="btn" href="${loginUser.homepageURL}"><i class="fas fa-home fa-lg"></i></a>
+			</c:if>
+			<c:if test="${not empty loginUser.githubURL}">
+				<a class="btn" href="${loginUser.githubURL}"><i class="fab fa-github-alt fa-lg"></i></a>
+			</c:if>
+			<c:if test="${not empty loginUser.instarURL}">
+				<a class="btn" href="${loginUser.instarURL}"><i class="fab fa-instagram fa-lg"></i></a>
+			</c:if>
+			<c:if test="${not empty loginUser.twitterURL}">
+				<a class="btn" href="${loginUser.twitterURL}"><i class="fab fa-twitter fa-lg"></i></a>
+			</c:if>
 	</div>
-	<a class="btn btn-outline-primary" 
+	<a class="btn btn-primary" 
 	  href="../user/updateForm?no=${loginUser.no}">프로필 수정</a>
 	<br>
 	<a class="btn btn-outline-primary"

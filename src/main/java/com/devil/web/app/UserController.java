@@ -64,20 +64,15 @@ public class UserController {
   public ModelAndView detail(int no, HttpSession session) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
-    User user;
-    
-    if (no == loginUser.getNo()) {
-      user = loginUser;
-    } else {
-      user = userService.get(no);      
-      if (user == null) {
-        throw new Exception("해당 번호의 유저가 없습니다!");        
-      }
+    User user = userService.get(no);
+
+    if (user == null) {
+      throw new Exception("해당 번호의 유저가 없습니다!");
     }
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", user);
-    
+
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
     map.put("followeeNo", no);
@@ -103,7 +98,7 @@ public class UserController {
     return mv;
   }
 
-  @RequestMapping(value = "/update", method = RequestMethod.POST)
+  @RequestMapping(value = "update", method = RequestMethod.POST)
   public String update(User user) throws Exception {
     System.out.println(user.getNo());
     if (userService.update(user) == 0) {
@@ -112,7 +107,7 @@ public class UserController {
     return "redirect:detail?no=" + user.getNo();
   }
 
-  @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
+  @RequestMapping(value = "updateForm", method = RequestMethod.GET)
   public ModelAndView updateForm(int no) throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", userService.get(no));
@@ -120,7 +115,7 @@ public class UserController {
     return mv;
   }
 
-  @RequestMapping("/user/updatePhoto")
+  @RequestMapping("updatePhoto")
   public String updatePhoto(int no, Part photoFile) throws Exception {
 
     User user = new User();
@@ -137,7 +132,7 @@ public class UserController {
       generatePhotoThumnail(saveFilePath);
     }
 
-    if (user.getPhoto() != null) {
+    if (user.getPhoto() == null) {
       throw new Exception("사진을 선택하지 않았습니다.");
     }
 
