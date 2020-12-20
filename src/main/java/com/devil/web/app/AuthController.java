@@ -58,7 +58,7 @@ public class AuthController {
 
     User user = userService.get(email, password);
     if (user == null) {
-      return "/auth/loginError.jsp";
+      return "/appJsp/auth/loginError.jsp";
     }
     userService.updateLoginTimeStamp(user);
     session.setAttribute("loginUser", user);

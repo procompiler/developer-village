@@ -14,27 +14,32 @@
 
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
-    <jsp:include page="/appJsp/user/info.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/appJsp/user/info.jsp"></jsp:include>
 	<h2>팔로워</h2>
-	<table border='1'>
-	 <thead>
-		<tr>
-			<th>닉네임</th>
-			<th></th>
-		</tr>
-   <thead>
-   <tbody>
-   <c:forEach items="${userList}" var="u">
-		<tr>
-			<td><a href='../user/detail?no=${u.no}'> <img
-					src='../../upload/user/${u.photo}_60x60.jpg'
-					style='border-radius: 70px' alt='[${u.nickname}]'>${u.nickname}</a></td>
-		  <td><a class='btn btn-outline-danger' href='delete?followeeNo=${u.no}'>언팔로우</a></td>
-		</tr>
-		</c:forEach>
-		</tbody>
-	</table>
+	<div class="row row-cols-1 row-cols-md-4 row-cols-lg-5">
+	<c:forEach items="${userList}" var="u">
+		<div class="col">
+			<div class="card h-100">
+				<div class="mx-auto p-3">
+						<a href='../user/detail?no=${u.no}'> <img class="card-img-top"
+							src='../../upload/user/${u.photo}_80x80.jpg'
+							style='border-radius: 70px' alt='[${u.nickname}]' />
+						</a>
+					</div>
+				<div class="card-body mx-auto">
+					<h5 class="card-title text-center"><a href='../user/detail?no=${u.no}'>${u.nickname}</a></h5>
+					<c:choose>
+					<c:when test="${u.followed}">
+					<a class='btn btn-outline-danger'href='deleteUser?followeeNo=${u.no}'>언팔로우</a>
+					</c:when>
+					<c:otherwise>
+					<a class='btn btn-primary'href='addUser?followeeNo=${u.no}'>팔로우</a>
+					</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+	</div>
 	<jsp:include page="/footer.jsp"></jsp:include>
-</body>
-</html>

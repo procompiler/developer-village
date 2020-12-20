@@ -1,5 +1,7 @@
 package com.devil.web.app;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,8 +83,23 @@ public class FollowController{
 
   @RequestMapping("followerList")
   public ModelAndView listFollower(HttpSession session) throws Exception {
+    User loginUser = (User) session.getAttribute("loginUser");
+
+    List<User> followerList = userService.listFollower(loginUser);
+    List<Integer> userFollowingNoList = new ArrayList<>();
+    for (User user : userService.list(loginUser)) {
+      userFollowingNoList.add(user.getNo());
+    }
+
+    for (User user : followerList) {
+      if (!userFollowingNoList.contains(user.getNo())) {
+        continue;
+      }
+      user.setFollowed(true);
+    }
+    
     ModelAndView mv = new ModelAndView();
-    mv.addObject("userList", userService.listFollower((User)session.getAttribute("loginUser")));
+    mv.addObject("userList", followerList);
     mv.setViewName("/appJsp/follow/followerList.jsp");
     return mv;
   }

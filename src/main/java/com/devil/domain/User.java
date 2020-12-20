@@ -24,6 +24,7 @@ public class User {
   private int state; // 활성상태 0 안보임 1 보임
   private int followerCount;
   private int followingCount;
+  private boolean followed;
   
   public int getNo() {
     return no;
@@ -179,5 +180,11 @@ public class User {
   }
   public void setFollowingCount(int followingCount) {
     this.followingCount = followingCount;
+  }
+  public boolean getFollowed() {
+    return followed;
+  }
+  public void setFollowed(boolean followed) {
+    this.followed = followed;
   }
 }

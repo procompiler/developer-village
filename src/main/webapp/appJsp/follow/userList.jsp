@@ -17,14 +17,11 @@
 					src='../../upload/user/${u.photo}_80x80.jpg'
 					style='border-radius: 70px' alt='[${u.nickname}]'/></a></div>
 					<div class="card-body mx-auto">
-						<h5 class="card-title text-center">${u.nickname}</h5>
+						<h5 class="card-title text-center"><a href='../user/detail?no=${u.no}'>${u.nickname}</a></h5>
 						<a class='btn btn-outline-danger' href='deleteUser?followeeNo=${u.no}'>언팔로우</a>
 					</div>
-				</a>
 			</div>
 		</div>
 	</c:forEach>
 </div>
 <jsp:include page="/footer.jsp"></jsp:include>
-</body>
-</html>
