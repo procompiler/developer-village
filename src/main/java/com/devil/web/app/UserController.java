@@ -32,7 +32,7 @@ public class UserController {
   @RequestMapping("form")
   public ModelAndView form() throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("/appJsp/user/form.html");
+    mv.setViewName("/appJsp/user/form.jsp");
     return mv;
   }
 

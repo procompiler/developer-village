@@ -23,7 +23,7 @@
 					<input type='hidden' name='cno' value='${comment.no}'> 
 					<input type='hidden' name='arno' value='${comment.articleNo}'> 
 					<input type='hidden' name='step' value='${comment.step}'> 
-					<img src='../upload/user/${comment.writer.photo}_40x40.jpg'
+					<img src='../../upload/user/${comment.writer.photo}_40x40.jpg'
 						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'>
 					<a href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
 					<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
