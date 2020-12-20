@@ -116,6 +116,27 @@ h1 {
   border-radius: 10px;
    }
 
+table {
+  border-collapse: collapse;
+  border-style: hidden;
+  display: block;
+  margin: 20px 0px;
+  border-color: #37393E;
+  font-size : 15px;
+  width: 
+}
+
+.tbody tr {
+	background-color: #2E3034;
+}
+
+th, td {
+	border-bottom: 1px solid #5C5C5C;
+  border-left: hidden;
+  border-right: hidden;
+  padding: 10px;
+}
+
 .main-color {
   color: #6C5DDF;
 }

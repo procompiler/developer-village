@@ -13,15 +13,17 @@
 <jsp:include page="/admin-header.jsp"></jsp:include>
 </head>
 <body>
-	<a href='../admin/userList' style='text-decoration: none;'>전체회원관리</a>
-	<a href='../report/list' style='text-decoration: none;'>신고내역</a>
-	<a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
-	<h1>
-		<a href='list' style='text-decoration: none;'>신고내역</a>
-	</h1>
-	<br>
+  <div class="mini-navi">
+  <a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
+  <a href='../report/list' style='text-decoration: none;'>신고내역</a>
+  <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
+  </div>
+  <h1>
+    <a href='../user/list' style='text-decoration: none;'>신고내역</a>
+  </h1>
 
 	<table border='1'>
+	<tbody class="tbody">
 		<tr>
 			<th>번호</th>
 			<th>신고자</th>
@@ -88,8 +90,8 @@
 				</td>
 
 		</c:forEach>
+	</tbody>
 	</table>
-	
 	<jsp:include page="/footer.jsp"></jsp:include>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 ㄴ</body>
