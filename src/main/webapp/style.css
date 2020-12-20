@@ -293,3 +293,11 @@ div.card {
 .card-img-top, .card-img {
 	width: auto;
 }
+
+/*유저페이지*/
+.user-info .card-img-top {
+	margin-top: -70px;
+}
+.user-info .urls .btn {
+  margin: 0px;
+}
