@@ -81,24 +81,33 @@
 		order by uno desc
 	</select>
 
-	<select id="findByNo" resultMap="UserMap" parameterType="int">
+	<select id="findByNo" resultMap="UserMap" parameterType="map">
 		<include refid="sql1" />
-		where u.uno=#{no}
+		where u.uno=#{userNo}
+		<if test="type == 'app'">
+		   and u.state = 1
+		</if>
 	</select>
 
 	<select id="findByFollower" resultMap="UserMap"
-		parameterType="user">
+		parameterType="map">
     <include refid="sql2" />
     inner join follow f on f.fwing_no = u.uno
-		where f.fwer_no=#{no}
+		where f.fwer_no=#{user.no}
+		<if test="type == 'app'">
+       and u.state = 1
+    </if>
 		order by f.cdt desc
 	</select>
 	
 	 <select id="findFollower" resultMap="UserMap"
-    parameterType="user">
+    parameterType="map">
     <include refid="sql2" />
     inner join follow f on f.fwer_no = u.uno
-    where f.fwing_no=#{no}
+    where f.fwing_no=#{user.no}
+    <if test="type == 'app'">
+       and u.state = 1
+    </if>
     order by f.cdt desc
   </select>
   

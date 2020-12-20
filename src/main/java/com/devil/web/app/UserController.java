@@ -64,7 +64,10 @@ public class UserController {
   public ModelAndView detail(int no, HttpSession session) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
-    User user = userService.get(no);
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", no);
+    User user = userService.get(params);
 
     if (user == null) {
       throw new Exception("해당 번호의 유저가 없습니다!");
@@ -76,6 +79,7 @@ public class UserController {
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
     map.put("followeeNo", no);
+    
     if (followService.getUser(map) != null) {
       session.setAttribute("followed", true);
     } else {
@@ -91,8 +95,11 @@ public class UserController {
     ModelAndView mv = new ModelAndView();
 
     mv.addObject("list", userService.list(keyword));
-
-    mv.addObject("followingUsers", userService.list((User) session.getAttribute("loginUser")));
+    
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("user", (User) session.getAttribute("loginUser"));
+    mv.addObject("followingUsers", userService.listFollowing(params));
     mv.setViewName("/appJsp/user/list.jsp");
 
     return mv;
@@ -108,7 +115,10 @@ public class UserController {
       throw new Exception("삭제된 회원입니다.");
     }
     
-    session.setAttribute("loginUser", userService.get(user.getNo()));
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", user.getNo());
+    session.setAttribute("loginUser", userService.get(params));
     
     return "redirect:detail?no=" + user.getNo();
   }
@@ -116,7 +126,10 @@ public class UserController {
   @RequestMapping(value = "updateForm", method = RequestMethod.GET)
   public ModelAndView updateForm(int no) throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.addObject("user", userService.get(no));
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", no);
+    mv.addObject("user", userService.get(params));
     mv.setViewName("/appJsp/user/updateForm.jsp");
     return mv;
   }
@@ -145,7 +158,10 @@ public class UserController {
     }
 
     userService.update(user);
-    session.setAttribute("loginUser", userService.get(user.getNo()));
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", user.getNo());
+    session.setAttribute("loginUser", userService.get(params));
     return "redirect:detail?no=" + user.getNo();
   }
 

@@ -1,7 +1,9 @@
 package com.devil.web.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,8 +77,12 @@ public class FollowController{
 
   @RequestMapping("userList")
   public ModelAndView listUser(HttpSession session) throws Exception {
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("user", (User)session.getAttribute("loginUser"));
+    
     ModelAndView mv = new ModelAndView();
-    mv.addObject("userList", userService.list((User)session.getAttribute("loginUser")));
+    mv.addObject("userList", userService.listFollowing(params));
     mv.setViewName("/appJsp/follow/userList.jsp");
     return mv;
   }
@@ -84,10 +90,13 @@ public class FollowController{
   @RequestMapping("followerList")
   public ModelAndView listFollower(HttpSession session) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("user", loginUser);
 
-    List<User> followerList = userService.listFollower(loginUser);
+    List<User> followerList = userService.listFollower(params);
     List<Integer> userFollowingNoList = new ArrayList<>();
-    for (User user : userService.list(loginUser)) {
+    for (User user : userService.listFollowing(params)) {
       userFollowingNoList.add(user.getNo());
     }
 

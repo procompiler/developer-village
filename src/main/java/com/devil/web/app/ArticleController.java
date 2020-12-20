@@ -92,8 +92,12 @@ public class ArticleController {
   @RequestMapping("/writtenList")
   public ModelAndView list(User user) throws Exception {
 
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", user.getNo());
+
     ModelAndView mv = new ModelAndView();
-    mv.addObject("user", userService.get(user.getNo()));
+    mv.addObject("user", userService.get(params));
     mv.addObject("articleList", articleService.list(user));
     mv.setViewName("/appJsp/article/writtenList.jsp");
     return mv;

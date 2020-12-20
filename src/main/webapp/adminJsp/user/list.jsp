@@ -13,8 +13,6 @@
 <meta charset="UTF-8">
 <title>회원관리</title>
 	  <jsp:include page="/admin-header.jsp"></jsp:include>
-	  </head>
-	  <body>
 	<div class="mini-navi">
 	<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
@@ -31,10 +29,6 @@
 	%>
 	<%
 	  List<User> list = (List<User>) request.getAttribute("list");
-	  List<User> followingUsers = (List<User>) request.getAttribute("followingUsers");
-	%>
-	<%
-	  User loginUser = (User) request.getSession().getAttribute("loginUser");
 	%>
 
 	<p>
@@ -47,7 +41,6 @@
 		<button>유저 검색</button>
 	</form>
 	</p>
-
 
 	<table border='1'>
 		<tr>
@@ -63,17 +56,9 @@
 		<%
 		  List<Integer> userNoList = new ArrayList<>();
 		%>
-		<%
-		  for (User u : followingUsers) {
-		  userNoList.add(u.getNo());
-		}
-		%>
 
 		<%
 		  for (User user : list) {
-		%>
-		<%
-		  boolean followed = userNoList.contains(user.getNo());
 		%>
 		<%
 		  String loginType = null;
@@ -94,6 +79,3 @@
 		<%}%>
 		</table>
 		  <jsp:include page="/footer.jsp"></jsp:include>
-		  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

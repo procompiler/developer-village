@@ -1,6 +1,8 @@
 package com.devil.web.app;
 
 import java.beans.PropertyEditorSupport;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,8 +63,13 @@ public class CommentController {
 
   @RequestMapping("/writtenList")
   public ModelAndView list(User user, HttpSession session) throws Exception {
+    
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", user.getNo());
+    
     ModelAndView mv = new ModelAndView();
-    mv.addObject("user", userService.get(user.getNo()));
+    mv.addObject("user", userService.get(params));
     mv.addObject("commentList", commentService.listByWriter(user));
     mv.setViewName("/appJsp/comment/writtenList.jsp");
     return mv;
