@@ -23,7 +23,6 @@
 	<h1>
 		<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
 	</h1>
-	<br>
 
 	<%
 	  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -37,18 +36,17 @@
 	  User loginUser = (User) request.getSession().getAttribute("loginUser");
 	%>
 
-	<p>
 	<%
 	  String keyword = request.getParameter("keyword");
   %>
+  <div id="search-bar">
+	<span style="float: left">회원 검색</span>
 	<form action='userList' method='get'>
-	회원 검색
-		<input type='text' placeholder="닉네임 또는 이메일 입력.." name='keyword'	value='<%=keyword != null ? keyword : ""%>'>
-		<button>유저 검색</button>
+	<input id="search" type="search" placeholder="닉네임 또는 이메일 입력.." style=" padding-left: 40px;">
 	</form>
-	</p>
+	</div>
 
-
+  <p style="font-weight: bold">총 회원수 <span class="main-color"><%=list.size()%></span>명</p>
 	<table border='1'>
 		<tr>
 			<th>번호</th>

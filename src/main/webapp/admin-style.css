@@ -46,7 +46,6 @@
   
   .site-admin2 li {
     width: 100px;
-    text-align: center;
     margin-left: 115px;
     display: inline-block;
   }
@@ -83,12 +82,32 @@ h1 {
   margin-right : 30px;
  }
 
-form {
-	text-align: center;
+#search-bar {
+	margin-top: 20px;
+  margin-bottom: 40px;
+	padding-top: 35px;
 	padding-left : 50px;
 	background-color: #2E3034;
-	height: 140px;
+	height: 100px;
+	width: 1000px;
 	border-radius: 15px;
+	
+}
+
+#search {
+  border-radius: 10px;
+  border: 0px;
+  color: white;
+  background-color: #212325;
+  background-image: url("search.png");
+  background-size: 30px;
+  background-position: 5px 4px;
+  background-repeat: no-repeat;
+  outline: none;
+  font-size: 12px;
+  float: left;
+  margin-left: 20px;
+  width: 300px;
 }
 
 .container {
