@@ -32,7 +32,10 @@ public class UserController {
   @RequestMapping("/detail")
   public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
 
-    User user = userService.get(no);
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "admin");
+    params.put("userNo", no);
+    User user = userService.get(params);
     if (user == null) {
       throw new Exception("해당 번호의 유저가 없습니다!");
     }
@@ -60,7 +63,6 @@ public class UserController {
 
     mv.addObject("list", userService.list(keyword));
 
-    mv.addObject("followingUsers", userService.list((User)session.getAttribute("loginUser")));
     mv.setViewName("/adminJsp/user/list.jsp");
 
     return mv;
