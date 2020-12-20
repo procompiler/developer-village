@@ -96,10 +96,7 @@ public class UserController {
 
     mv.addObject("list", userService.list(keyword));
     
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
-    params.put("user", (User) session.getAttribute("loginUser"));
-    mv.addObject("followingUsers", userService.listFollowing(params));
+    mv.addObject("followingUsers", userService.listFollowing((User) session.getAttribute("loginUser")));
     mv.setViewName("/appJsp/user/list.jsp");
 
     return mv;

@@ -90,24 +90,18 @@
 	</select>
 
 	<select id="findByFollower" resultMap="UserMap"
-		parameterType="map">
+		parameterType="user">
     <include refid="sql2" />
     inner join follow f on f.fwing_no = u.uno
-		where f.fwer_no=#{user.no}
-		<if test="type == 'app'">
-       and u.state = 1
-    </if>
+		where f.fwer_no=#{no} and u.state = 1
 		order by f.cdt desc
 	</select>
 	
 	 <select id="findFollower" resultMap="UserMap"
-    parameterType="map">
+    parameterType="user">
     <include refid="sql2" />
     inner join follow f on f.fwer_no = u.uno
-    where f.fwing_no=#{user.no}
-    <if test="type == 'app'">
-       and u.state = 1
-    </if>
+    where f.fwing_no=#{no} and u.state = 1
     order by f.cdt desc
   </select>
   

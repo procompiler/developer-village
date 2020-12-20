@@ -29,7 +29,7 @@ public class TagController {
 
     List<Tag> tagList = tagService.list((String) null);
     List<Integer> userTagNoList = new ArrayList<>();
-    for (Tag tag : tagService.list(loginUser)) {
+    for (Tag tag : tagService.listByFollower(loginUser)) {
       userTagNoList.add(tag.getNo());
     }
 

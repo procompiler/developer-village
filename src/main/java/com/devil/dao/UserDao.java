@@ -14,8 +14,8 @@ public interface UserDao {
   List<User> findAll(String keyword) throws Exception;
   User findByEmailPassword(Map<String, Object> map) throws Exception;
   int inactive(int no) throws Exception;
-  List<User> findByFollower(Map<String, Object> params) throws Exception;
+  List<User> findByFollower(User user) throws Exception;
   int insertBlocked(Block block) throws Exception;
-  List<User> findFollower(Map<String, Object> params) throws Exception;
+  List<User> findFollower(User user) throws Exception;
   int updateLoginTimeStamp(User user) throws Exception;
 }

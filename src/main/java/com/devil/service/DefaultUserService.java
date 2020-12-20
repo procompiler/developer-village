@@ -53,12 +53,12 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public List<User> listFollowing(Map<String, Object> params) throws Exception {
-    return userDao.findByFollower(params);
+  public List<User> listFollowing(User user) throws Exception {
+    return userDao.findByFollower(user);
   }
 
   @Override
-  public List<User> listFollower(Map<String, Object> params) throws Exception {
-    return userDao.findFollower(params);
+  public List<User> listFollower(User user) throws Exception {
+    return userDao.findFollower(user);
   }
 }
