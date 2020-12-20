@@ -35,15 +35,15 @@
   %>
   <div id="search-bar">
 	<span style="float: left">회원 검색</span>
-	<form action='userList' method='get'>
+	<form action='list' method='get' autocomplete="off">
 	<input id="search" type="search" placeholder="닉네임 또는 이메일 입력.." style=" padding-left: 40px;">
 	</form>
 	</div>
 
   <p style="font-weight: bold">총 회원수 <span class="main-color"><%=list.size()%></span>명</p>
-	</p>
 
-	<table border='1'>
+	<table border='1' >
+	 <tbody class="tbody">
 		<tr>
 			<th>번호</th>
 			<th>이름(이메일)</th>
@@ -67,7 +67,7 @@
 
 		<tr>
 			<td><%=user.getNo()%></td>
-			<td><a href='userDetail?no=<%=user.getNo()%>'> <img
+			<td><a href='detail?no=<%=user.getNo()%>'> <img
           src='../../upload/user/<%=user.getPhoto()%>_40x40.jpg'
           style='border-radius: 70px' alt='[<%=user.getPhoto()%>_80x80]'>
           <%=user.getName()%>[<%=user.getEmail()%>]</td>
@@ -78,5 +78,6 @@
 			<td style='color: red;'><%=user.getBlocked() == 1 ? "차단중" : "" %></td>
 		</tr>
 		<%}%>
+		</tbody>
 		</table>
 		  <jsp:include page="/footer.jsp"></jsp:include>
