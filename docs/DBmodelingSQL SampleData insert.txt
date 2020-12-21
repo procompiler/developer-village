@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti, rnt_vsdt) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'user1.jpg', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1,now());
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'user2.jpg', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0,now());
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'user3.jpg', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1,now());
