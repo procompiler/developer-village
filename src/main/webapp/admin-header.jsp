@@ -28,13 +28,13 @@ User user = (User) session.getAttribute("loginUser");
 
   <div class="site-admin2">
   <ul>
-    <li><a class="btn" href="<%=contextPath%>/app/admin/userList">
+    <li><a class="btn" href="<%=contextPath%>/admin/user/list">
     <p><i class="fas fa-user-alt"></i></p>회원 관리</a></li>
-    <li><a class="btn" href="<%=contextPath%>/app/badge/list">
+    <li><a class="btn" href="<%=contextPath%>/admin/badge/list">
     <p><i class="fas fa-cookie-bite"></i></p>뱃지 관리</a></li>
-    <li><a class="btn" href="<%=contextPath%>/app/tag/list">
+    <li><a class="btn" href="<%=contextPath%>/admin/tag/list">
     <p><i class="fas fa-tag"></i></p>태그 관리</a></li>
-    <li><a class="btn" href="<%=contextPath%>/app/article/form">
+    <li><a class="btn" href="<%=contextPath%>/admin/article/form">
     <p><i class="fas fa-chart-pie"></i></p>통계</a></li>
   </ul>  
   </div>

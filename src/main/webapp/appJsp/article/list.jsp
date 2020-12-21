@@ -65,7 +65,7 @@
 										style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
 								</c:forEach>
 							</ul>
-							<a href='detail?no=${article.no}'>${article.title}</a>
+							<a href='detail?no=${article.no}'>${article.title}</a><span style="color:#6C5DDF;"> [${article.commentCount}]</span>
 						</td>
 						<td>${article.writer.nickname}</td>
 						<td><fmt:formatDate value="${article.createdDate}"

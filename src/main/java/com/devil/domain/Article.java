@@ -5,7 +5,7 @@ import java.util.List;
 public class Article {
   private int no;
   private User writer;
-  private int categoryNo; // 1 커뮤니티 2 QnA 3 채용공고 4 스터디
+  private int categoryNo; // 1 자유게시판 2 QnA 3 채용공고 4 스터디
   private String title;
   private String content;
   private Date createdDate;
@@ -114,8 +114,8 @@ public class Article {
   public void setCommentCount(int commentCount) {
     this.commentCount = commentCount;
   }
-  
-  
+
+
 }
 
 

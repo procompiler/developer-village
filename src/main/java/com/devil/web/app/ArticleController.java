@@ -141,11 +141,21 @@ public class ArticleController {
   }
 
   @RequestMapping(value="/update", method=RequestMethod.GET)
-  public ModelAndView updateForm(int no) throws Exception {
+  public ModelAndView updateForm(int no, HttpSession session) throws Exception {
+
+    User loginUser = (User) session.getAttribute("loginUser");
+    Article article = articleService.get(no);
     ModelAndView mv = new ModelAndView();
-    mv.addObject("article", articleService.get(no));
-    mv.addObject("tags", tagService.list((String) null));
-    mv.setViewName("/adminJsp/article/update.jsp");
+
+    if (loginUser.getNo() == article.getWriter().getNo()
+        && loginUser.getEmail().equalsIgnoreCase(article.getWriter().getEmail())) {
+      mv.addObject("article", articleService.get(no));
+      mv.addObject("tags", tagService.list((String) null));
+      mv.setViewName("/appJsp/article/update.jsp");
+    } else if (loginUser != article.getWriter()) {
+      // 게시글 수정 권한이 없다는 알럿 띄우기
+      mv.setViewName("redirect:detail?no=" + article.getNo());
+    }
     return mv;
   }
 

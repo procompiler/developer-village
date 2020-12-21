@@ -20,8 +20,10 @@
 
     <association property="writer"     javaType="user">
       <id column="uno"                 property="no"/>
-      <result column="article_nick"    property="nickname"/>
-      <result column="article_photo"   property="photo"/>
+      <result column="article_writer_name"   property="name"/>
+      <result column="article_writer_email"   property="email"/>
+      <result column="article_writer_nick"    property="nickname"/>
+      <result column="article_writer_photo"   property="photo"/>
     </association>
     
     <collection property="tags"    ofType="tag">
@@ -43,8 +45,10 @@
       a.vw_cnt, 
       a.state,
       u.uno,
-      u.nick article_nick,
-      u.photo article_photo,
+      u.name article_writer_name,
+      u.email article_writer_email,
+      u.nick article_writer_nick,
+      u.photo article_writer_photo,
       t.tno,
       t.name tag_name,
       t.tag_color,
@@ -93,8 +97,8 @@
 		  feed.cano,
 		  feed.vw_cnt,
 		  feed.uno,
-		  feed.article_nick,
-		  feed.article_photo,
+		  feed.article_writer_nick,
+		  feed.article_writer_photo,
 		  feed.tno,
 		  feed.tag_name,
 		  feed.tag_color,
@@ -110,8 +114,8 @@
 	      a.vw_cnt, 
 	      a.state,
 	      u.uno,
-	      u.nick article_nick,
-	      u.photo article_photo,
+	      u.nick article_writer_nick,
+	      u.photo article_writer_photo,
 	      t.tno,
 	      t.name tag_name,
 	      t.tag_color,
@@ -136,8 +140,8 @@
 	      a.vw_cnt, 
 	      a.state,
 	      u.uno,
-	      u.nick article_nick,
-	      u.photo article_photo,
+	      u.nick article_writer_nick,
+	      u.photo article_writer_photo,
 	      t.tno,
 	      t.name tag_name,
 	      t.tag_color,
@@ -207,8 +211,8 @@
       a.cdt,  
       a.cano,
       a.state,
-      u.nick article_nick,
-      u.photo article_photo,
+      u.nick article_writer_nick,
+      u.photo article_writer_photo,
       a.vw_cnt,
     from 
       article a
