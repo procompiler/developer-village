@@ -13,28 +13,28 @@
 </head>
 <body>
 
-	<h1>
-		<c:choose>
-			<c:when test="${param.categoryNo == 1}">
-				<p>자유게시판</p>
-			</c:when>
-			<c:when test="${param.categoryNo == 2}">
-				<p>QnA</p>
-			</c:when>
-			<c:when test="${param.categoryNo == 3}">
-				<p>채용공고</p>
-			</c:when>
-			<c:when test="${param.categoryNo == 4}">
-				<p>스터디</p>
-			</c:when>
-			<c:when test="${tag != null}">
-			  <p># ${tag.name}</p>
-			</c:when>
-			<c:otherwise>
-				<p>전체 게시글</p>
-			</c:otherwise>
-		</c:choose>
-	</h1>
+  <h1>
+    <c:choose>
+      <c:when test="${param.categoryNo == 1}">
+        <p>자유게시판</p>
+      </c:when>
+      <c:when test="${param.categoryNo == 2}">
+        <p>QnA</p>
+      </c:when>
+      <c:when test="${param.categoryNo == 3}">
+        <p>채용공고</p>
+      </c:when>
+      <c:when test="${param.categoryNo == 4}">
+        <p>스터디</p>
+      </c:when>
+      <c:when test="${tag != null}">
+        <p># ${tag.name}</p>
+      </c:when>
+      <c:otherwise>
+        <p>전체 게시글</p>
+      </c:otherwise>
+    </c:choose>
+  </h1>
 	<a class="btn btn-primary" href="form">글쓰기</a>
   
   <c:if test="${param.keyword != null}">
@@ -50,12 +50,11 @@
 				<th>등록일</th>
 				<th>조회수</th>
 				<th>댓글수</th>
-				<th>상태</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${articles}" var="article">
-				<c:if test="${param.categoryNo != 0 && article.categoryNo == param.categoryNo}">
+				<c:if test="${param.categoryNo != 0 && article.categoryNo == param.categoryNo && article.state == 1}">
 					<tr>
 						<td>${article.no}</td>
 						<td id='title'>
@@ -65,14 +64,13 @@
 										style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
 								</c:forEach>
 							</ul>
-							<a href='detail?no=${article.no}'>${article.title}</a>
+							<a href='detail?no=${article.no}'>${article.title}</a><span style="color:#6C5DDF;">[${article.commentCount}]</span>
 						</td>
 						<td>${article.writer.nickname}</td>
 						<td><fmt:formatDate value="${article.createdDate}"
 								pattern="yyyy.MM.dd" /></td>
 						<td>${article.viewCount}</td>
 						<td>${article.commentCount}</td>
-						<td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
 					</tr>
 				</c:if>
 				<c:if test="${param.categoryNo == null}">
@@ -91,7 +89,6 @@
                 pattern="yyyy.MM.dd" /></td>
             <td>${article.viewCount}</td>
             <td>${article.commentCount}</td>
-            <td>${article.state == 1 ? "" : "삭제된 게시글"}</td>
           </tr>
 				</c:if>
 			</c:forEach>

@@ -34,7 +34,6 @@ public class BlockFilter implements Filter {
       User loginUser = (User) httpRequest.getSession().getAttribute("loginUser");
       System.out.printf("블록필터 실행중!!!! => 접속자: %s\n", loginUser.getNickname());
 
-
       Block block = blockService.getBlockedUser(loginUser.getNo());
 
       if (block != null) {

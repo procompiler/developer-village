@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>게시글 조회</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+<title>게시글 관리</title>
+    <jsp:include page="/admin-header.jsp"></jsp:include>
 </head>
 <body>
   <h1>
@@ -31,22 +31,20 @@
 
   <ul id='tags'>
     <c:forEach items="${tags}" var="tag">
-      <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li>
+      <span>#${tag.name}</span>
     </c:forEach>
   </ul>
 
   <div style="width: 60rem; background-color: #37393E;">
     <div class="card-body">
       <h2 class="card-title">${article.title}</h2>
-      <h6 class="card-subtitle mb-2 text-muted">
-        <fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd" />
-      </h6>
-      <br>
       <p class="card-text">
-        <img src='../../upload/user/${article.writer.photo}_40x40.jpg'
-          style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>
-          <a href='../user/detail?no=${article.writer.no}'>${article.writer.nickname}</a></p>
-      <p class="card-text text-end">조회수: ${article.viewCount}</p>
+        등록일: <fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd" />
+      </p>
+      <p class="card-text">
+          작성자: <a href='../user/detail?no=${article.writer.no}'>${article.writer.nickname}</a></p>
+      <p class="card-text">조회수: ${article.viewCount}</p>
+      <p class="card-text">상태: ${article.state == 1 ? "게시" : "미게시"}</p>
       <hr>
       <p class="card-text">
         <br><br>
@@ -57,19 +55,17 @@
   </div>
 </div>
 <br>
+  <a class="btn btn-primary" href='<c:url value='list'/>'>목록</a>
   <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
-  <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
   
-  <a class="btn btn-danger"
-    href='../report/reportArticle?no=${article.no}'>신고</a>
       <c:choose>
-      <c:when test="${bookmarked == true}">
-        <a class="btn btn-outline-danger"
-        href="../bookmark/delete?articleNo=${article.no}">북마크취소</a>
+      <c:when test="${article.state == 1}">
+        <a class="btn btn-danger"
+        href='inactivate?no=${article.no}'>미게시</a>
       </c:when>
       <c:otherwise>
-        <a class="btn btn-primary"
-        href="../bookmark/add?articleNo=${article.no}">북마크</a>
+        <a class="btn btn-outline-danger"
+       href='activate?no=${article.no}'>게시</a>
       </c:otherwise>
     </c:choose>
  <br>

@@ -58,7 +58,6 @@ String contextPath = request.getServletContext().getContextPath();
   </div>
   <div>
     <a class="btn" href="<%=contextPath%>/app/user/form">회원가입</a>
-    <a class="btn" href="<%=contextPath%>/admin/user/list" target="_blank">관리자 페이지</a>
     <a class="btn" href="<%=contextPath%>/app/auth/login">로그인</a>
     <a class="btn" href="<%=contextPath%>/app/article/form">글쓰기</a>
   </div>

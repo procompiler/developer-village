@@ -1,9 +1,7 @@
-package com.devil.web.app;
+package com.devil.web.admin;
 
 import java.beans.PropertyEditorSupport;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,10 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.Article;
-import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.BookmarkService;
@@ -37,32 +33,6 @@ public class ArticleController {
   UserService userService;
   @Autowired
   CommentService commentService;
-
-  @RequestMapping("/form")
-  public ModelAndView form() throws Exception {
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("tags", tagService.list((String) null));
-    mv.setViewName("/appJsp/article/form.jsp");
-
-    return mv;
-  }
-
-  @RequestMapping("/add")
-  public String add(Article article, int[] tagNo, HttpSession session) throws Exception {
-
-    User loginUser = (User) session.getAttribute("loginUser");
-    article.setWriter(loginUser);
-
-    List<Tag> tags = new ArrayList<>();
-    if (tagNo != null) {
-      for (int no : tagNo) {
-        tags.add(new Tag().setNo(no));
-      }
-    }
-    article.setTags(tags);
-    articleService.add(article);
-    return "redirect:list?categoryNo=" + article.getCategoryNo();
-  }
 
   @RequestMapping("list")
   public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
@@ -88,32 +58,10 @@ public class ArticleController {
       mv.addObject("articles", articleService.list());
     }
 
-    mv.setViewName("/appJsp/article/list.jsp");
+    mv.setViewName("/adminJsp/article/list.jsp");
     return mv;
   }
 
-  @RequestMapping("/writtenList")
-  public ModelAndView list(User user) throws Exception {
-
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
-    params.put("userNo", user.getNo());
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("user", userService.get(params));
-    mv.addObject("articleList", articleService.list(user));
-    mv.setViewName("/appJsp/article/writtenList.jsp");
-    return mv;
-  }
-
-  @RequestMapping("/feed")
-  public ModelAndView list(HttpSession session) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("articleList", articleService.feedList((User)session.getAttribute("loginUser")));
-    mv.setViewName("/appJsp/article/feed.jsp");
-    return mv;
-  }
 
   @RequestMapping("/detail")
   public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
@@ -136,56 +84,24 @@ public class ArticleController {
       request.setAttribute("bookmarked", false);
     }
 
-    mv.setViewName("/appJsp/article/detail.jsp");
+    mv.setViewName("/adminJsp/article/detail.jsp");
     return mv;
   }
 
-  @RequestMapping(value="/update", method=RequestMethod.GET)
-  public ModelAndView updateForm(int no, HttpSession session) throws Exception {
-
-    User loginUser = (User) session.getAttribute("loginUser");
-    Article article = articleService.get(no);
-
-    System.out.println(loginUser.getAuth());
-    System.out.println(article.getWriter().getAuth());
-
-    ModelAndView mv = new ModelAndView();
-
-    if (loginUser.getNo() == article.getWriter().getNo()
-        && loginUser.getEmail().equalsIgnoreCase(article.getWriter().getEmail())) {
-      mv.addObject("article", articleService.get(no));
-      mv.addObject("tags", tagService.list((String) null));
-      mv.setViewName("/appJsp/article/update.jsp");
-    } else if (loginUser != article.getWriter()) {
-      // 게시글 수정 권한이 없다는 알럿 띄우기
-      mv.setViewName("redirect:detail?no=" + article.getNo());
-    }
-    return mv;
-  }
-
-  @RequestMapping(value="/update", method=RequestMethod.POST)
-  public String update(Article article, int[] tagNo) throws Exception {
-
-    List<Tag> tags = new ArrayList<>();
-    if (tagNo != null) {
-      for (int no : tagNo) {
-        tags.add(new Tag().setNo(no));
-      }
-    }
-    article.setTags(tags);
-
-    if (articleService.update(article) == 0) {
-      throw new Exception("해당 번호의 게시글이 없습니다.");
-    }
-    return "redirect:detail?no=" + article.getNo();
-  }
-
-  @RequestMapping("/delete")
-  public String delete(int no) throws Exception {
+  @RequestMapping("/inactivate")
+  public String inactivate(int no) throws Exception {
     if (articleService.delete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
-    return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
+    return "redirect:/admin/article/detail?no=" + no;
+  }
+
+  @RequestMapping("/activate")
+  public String activate(int no) throws Exception {
+    if (articleService.undelete(no) == 0) {
+      throw new Exception("해당 번호의 게시글이 없습니다.");
+    }
+    return "redirect:/admin/article/detail?no=" + no;
   }
 
   @InitBinder

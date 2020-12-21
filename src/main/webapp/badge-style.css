@@ -28,7 +28,7 @@ background: #2E3034;
 }
 .badgeinnerboxbottom {
 	width: 764px;
-height: 221px;
+/*height: 221px;*/
 left: 439px;
 top: 505px;
 margin: center bottom;
@@ -58,14 +58,6 @@ background: #2E3034;
   background-color: #4a4d53;
 }
 
-.badge-update-box {
-  width: 860px;
-  height: 110px;
-  margin: 36px 0 0;
-  padding: 24px 92px 25px 67px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: #2e3034;
-}
 
 .photo {
   width: 167px;
@@ -75,6 +67,7 @@ background: #2E3034;
 }
 
 .badgephotoupdatetext {
+  text-align:center;
   width: 140px;
   height: 35px;
   margin: 48px 53px 8px 7px;
@@ -121,9 +114,9 @@ background: #2E3034;
   background-color: #4a4d53;
 }
 .badgeinfotext {
-  width: 153px;
-  height: 46px;
-  margin: 0 47px 47px 0;
+  width: 100%;
+  /*height: 46px;*/
+  margin: 3px;
   font-family: Roboto;
   font-size: 24px;
   font-weight: bold;
@@ -176,15 +169,28 @@ background: #2E3034;
   text-align: left;
   color: #ffffff;
 }
-.badge-update-box-text {
-  width: 701px;
-  height: 61px;
-  padding: 16px 217.1px 5px 216.2px;
-  border-radius: 6px;
+
+.badge-update-box {
+  width: 860px;
+  height: 110px;
+  margin: 36px 0 0;
+  padding: 25px 82px 25px 82px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: #6c5ddf;
+  background-color: #2e3034;
 }
 
+.badge-update-box-text {
+    text-align: center;
+    width: 700px;
+    height: 60px;
+    border-radius: 6px;
+    margin: 25px 82px 25px 82px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #6c5ddf;
+}
+.id {
+	margin: 5px;
+}
 .container {
   margin: 70px auto 20px 240px;
   padding: 30px;

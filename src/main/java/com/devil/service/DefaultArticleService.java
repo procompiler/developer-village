@@ -70,7 +70,12 @@ public class DefaultArticleService implements ArticleService {
 
   @Override
   public int delete(int no) throws Exception {
-    return articleDao.inactive(no);
+    return articleDao.inactivate(no);
+  }
+
+  @Override
+  public int undelete(int no) throws Exception {
+    return articleDao.activate(no);
   }
 
   @Override

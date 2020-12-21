@@ -51,7 +51,7 @@
 		insert into block(uno, cdt, dates, bl_rsn)
 		values(
 			(select
-			  c.cno
+			  c.uno
 			from 
 			  report rp 
 			  inner join repo_comt rpc on rp.rpno = rpc.rpno

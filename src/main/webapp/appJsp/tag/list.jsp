@@ -36,5 +36,5 @@
         </div>
       </div>
     </div>
-  </c:forEach>/div>
+  </c:forEach>
 <jsp:include page="/footer.jsp"></jsp:include>
