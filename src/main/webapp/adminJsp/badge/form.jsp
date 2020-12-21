@@ -18,7 +18,7 @@
   <jsp:include page="/header.jsp"></jsp:include>
   
 <h1>뱃지 등록</h1>
-<form action="../../../badge/add" method="post" enctype="multipart/form-data">
+<form action="../badge/add" method="post" enctype="multipart/form-data">
 이름 : <input type="text" name="name"><br>
 내용 : <textarea name="content" cols="60" rows="10"></textarea><br>
 뱃지 사진 : <input type="file" name="photoFile"><br>

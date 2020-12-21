@@ -48,8 +48,8 @@
 		u.cdt,
 		u.log_type,
 		u.tech,
-		(select count(*) from follow f where u.uno = f.fwer_no) as fwing_cnt,
-		(select count(*) from follow f where u.uno = f.fwing_no) as fwer_cnt
+		(select count(*) from follow f inner join user u2 on f.fwing_no=u2.uno where u.uno = f.fwer_no and u2.state=1) as fwing_cnt,
+		(select count(*) from follow f inner join user u2 on f.fwer_no=u2.uno where u.uno = f.fwing_no and u2.state=1) as fwer_cnt
 		from
 		user u
 	</sql>
@@ -90,24 +90,18 @@
 	</select>
 
 	<select id="findByFollower" resultMap="UserMap"
-		parameterType="map">
+		parameterType="user">
     <include refid="sql2" />
     inner join follow f on f.fwing_no = u.uno
-		where f.fwer_no=#{user.no}
-		<if test="type == 'app'">
-       and u.state = 1
-    </if>
+		where f.fwer_no=#{no} and u.state = 1
 		order by f.cdt desc
 	</select>
 	
 	 <select id="findFollower" resultMap="UserMap"
-    parameterType="map">
+    parameterType="user">
     <include refid="sql2" />
     inner join follow f on f.fwer_no = u.uno
-    where f.fwing_no=#{user.no}
-    <if test="type == 'app'">
-       and u.state = 1
-    </if>
+    where f.fwing_no=#{no} and u.state = 1
     order by f.cdt desc
   </select>
   

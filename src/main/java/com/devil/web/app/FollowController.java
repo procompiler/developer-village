@@ -50,7 +50,7 @@ public class FollowController{
   @RequestMapping("tagList")
   public ModelAndView list(HttpSession session) throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.addObject("tagList", tagService.list((User)session.getAttribute("loginUser")));
+    mv.addObject("tagList", tagService.listByFollower((User)session.getAttribute("loginUser")));
     mv.setViewName("/appJsp/follow/tagList.jsp");
     return mv;
   }
@@ -77,12 +77,8 @@ public class FollowController{
 
   @RequestMapping("userList")
   public ModelAndView listUser(HttpSession session) throws Exception {
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
-    params.put("user", (User)session.getAttribute("loginUser"));
-    
     ModelAndView mv = new ModelAndView();
-    mv.addObject("userList", userService.listFollowing(params));
+    mv.addObject("userList", userService.listFollowing((User)session.getAttribute("loginUser")));
     mv.setViewName("/appJsp/follow/userList.jsp");
     return mv;
   }
@@ -90,13 +86,10 @@ public class FollowController{
   @RequestMapping("followerList")
   public ModelAndView listFollower(HttpSession session) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
-    params.put("user", loginUser);
 
-    List<User> followerList = userService.listFollower(params);
+    List<User> followerList = userService.listFollower(loginUser);
     List<Integer> userFollowingNoList = new ArrayList<>();
-    for (User user : userService.listFollowing(params)) {
+    for (User user : userService.listFollowing(loginUser)) {
       userFollowingNoList.add(user.getNo());
     }
 

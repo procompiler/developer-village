@@ -1,4 +1,4 @@
-package com.devil.web.app;
+package com.devil.web.admin;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class BlockController {
     Report report = reportService.get(reportNo);
     ModelAndView mv = new ModelAndView();
     mv.addObject("report", report);
-    mv.setViewName("/appJsp/block/form.jsp");
+    mv.setViewName("/adminJsp/block/form.jsp");
     return mv;
   }
 
@@ -44,7 +44,7 @@ public class BlockController {
     User loginUser = (User) session.getAttribute("loginUser");
     ModelAndView mv = new ModelAndView();
     mv.addObject("blockedUser", blockService.get(loginUser.getNo()));
-    mv.setViewName("/appJsp/block/info.jsp");
+    mv.setViewName("/adminJsp/block/info.jsp");
     return mv;
   }
 
@@ -56,7 +56,7 @@ public class BlockController {
     } else {
       mv.addObject("blockList", blockService.list(null));
     }
-    mv.setViewName("/appJsp/block/blockList.jsp");
+    mv.setViewName("/adminJsp/block/blockList.jsp");
     return mv;
   }
 }

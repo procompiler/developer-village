@@ -40,7 +40,7 @@ public class DefaultTagService implements TagService {
   }
 
   @Override
-  public List<Tag> list(User user) throws Exception {
+  public List<Tag> listByFollower(User user) throws Exception {
     return tagDao.findByFollower(user);
   }
 
