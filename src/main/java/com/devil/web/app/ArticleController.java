@@ -19,6 +19,7 @@ import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.BookmarkService;
+import com.devil.service.CommentService;
 import com.devil.service.TagService;
 import com.devil.service.UserService;
 
@@ -34,6 +35,8 @@ public class ArticleController {
   BookmarkService bookmarkService;
   @Autowired
   UserService userService;
+  @Autowired
+  CommentService commentService;
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
@@ -102,7 +105,7 @@ public class ArticleController {
     mv.setViewName("/appJsp/article/writtenList.jsp");
     return mv;
   }
-  
+
   @RequestMapping("/feed")
   public ModelAndView list(HttpSession session) throws Exception {
 
@@ -122,6 +125,7 @@ public class ArticleController {
     ModelAndView mv = new ModelAndView();
     mv.addObject("article", article);
     mv.addObject("tags", article.getTags());
+    mv.addObject("comments", commentService.getByArticleNo(no));
 
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", ((User) session.getAttribute("loginUser")).getNo());

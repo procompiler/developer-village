@@ -51,6 +51,8 @@ public class CommentController {
     return "redirect:../article/detail?no=" + comment.getArticleNo();
   }
 
+  // article/detail에서 더이상 /comment/list를 직접 경유하지 않음
+  // 추후에도 사용하지 않는다면 코드 삭제 예정
   @RequestMapping("/list")
   public ModelAndView list(int no) throws Exception {
     ModelAndView mv = new ModelAndView();
@@ -63,11 +65,11 @@ public class CommentController {
 
   @RequestMapping("/writtenList")
   public ModelAndView list(User user, HttpSession session) throws Exception {
-    
+
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", user.getNo());
-    
+
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", userService.get(params));
     mv.addObject("commentList", commentService.listByWriter(user));

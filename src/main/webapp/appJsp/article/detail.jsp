@@ -73,7 +73,7 @@
       </c:otherwise>
     </c:choose>
  <br>
-  <jsp:include page="/app/comment/list"></jsp:include>
+  <jsp:include page="/appJsp/comment/list.jsp"></jsp:include>
   <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>
