@@ -11,7 +11,7 @@
 <title>뱃지 목록</title>
   <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
-	<a class='btn btn-primary' href='form.jsp'>뱃지 추가</a>
+	<a class='btn btn-primary' href='form'>뱃지 추가</a>
 	
   <c:if test="${param.keyword != null}">
   '${param.keyword}'로 검색한 결과입니다.

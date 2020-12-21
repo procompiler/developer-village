@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>뱃지 정보</title>
 <!--<jsp:include page="/admin-header.jsp"></jsp:include> -->
-<link rel="stylesheet" type="text/css" href='../badge-style.css'>
+<link rel="stylesheet" type="text/css" href='../../badge-style.css'>
 <link rel="stylesheet"
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
@@ -17,43 +17,47 @@
 	<div class="badge">
  <div class="badgebox">
 
- 	<div>
- 		<div class="badgeinnerboxletftop" style="float:left">
- 	<div class="badgeinfotext">
-  	뱃지 정보
- 	</div>
-		 	<div class="photo">
-		 	<td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
-		 	</div>
-		 	<div class="badgephotoupdatetext">
-		 	사진 업로드
-		 	</div>
- 		</div>
- 		<div class="badgeinnerboxrighttop" style="float:right">
-		 	<div class="badgename">
-		 	뱃지 이름
-		 	</div>
-		 	<div class="badgenamebox">
-		 	뱃지이름박스
-		 	</div>
-		 	<div class="badgenameboxtext">sdf</div>
- 		</div>
- 	</div>
-
-
-
-
- 
- 
-	 <div class=".badgeinnerboxbottom" style="float:bottom">
-	 	<span>뱃지 설명</span>
-	 </div>
- 	<div class="badgeexambox">
  	
- 		<span id="badgeExam">
- 		 sdfsdffds
- 		</span>
-	</div>
+ 	
+ 	
+ 	<div class="badgeinfotext">
+	  	뱃지 정보
+ 	</div>
+ 	<table>
+ 		<tr>
+ 			<td>
+			 	<div class="photo">
+			 	<img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'>
+			 	</div>
+			 	<div class="badgephotoupdatetext">
+			 	사진 업로드
+			 	</div>
+ 			</td>
+ 			<td>
+		 		<div class="badgeinnerboxrighttop">
+				 	<div class="badgename">
+				 	뱃지 이름
+				 	</div>
+				 	<div class="badgenamebox">
+				 	뱃지이름박스
+				 	</div>
+				 	<div class="badgenameboxtext">sdf</div>
+		 		</div>
+ 			</td>
+ 		</tr>
+ 		<tr>
+ 			<td colspan="2">
+				 <div class="badgeinnerboxbottom">
+				 	<span>뱃지 설명</span>
+				 </div>
+			 	<div class="badgeexambox">
+			 		<span id="badgeExam">
+			 		 sdfsdffds
+			 		</span>
+				</div>
+ 			</td>
+ 		</tr> 	
+ 	</table>
 	
 	
 	
@@ -61,10 +65,16 @@
  
  
  <div class="badge-update-box">
- 	<div class="badge-update-box-text">
- 	뱃지수정
+ 	<div id='textnameupdate' class="badge-update-box-text" >
+	 	<span style="
+	 	position: relative;
+	 	top: 25%;
+	 	">
+	 		뱃지수정
+	 	</span>
  	</div>
  </div>
+
  </div>
  
 
