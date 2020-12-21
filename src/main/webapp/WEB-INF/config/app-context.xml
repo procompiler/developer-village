@@ -34,7 +34,7 @@
     <property name="password" value="${jdbc.password}"/>
   </bean>
   
-  <context:property-placeholder location="classpath:com/devil/conf/jdbc.properties"/>  
+  <context:property-placeholder location="classpath:com/devil/config/jdbc.properties"/>  
   
   <mybatis:scan base-package="com.devil.dao" />
   

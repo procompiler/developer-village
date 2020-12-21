@@ -9,7 +9,7 @@
 
 </head>
 <body>
-  <a href='../admin/userList' style='text-decoration: none;'>전체회원관리</a>
+  <a href='../admin/user/list' style='text-decoration: none;'>전체회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
 	<h1>유저 차단하기</h1>

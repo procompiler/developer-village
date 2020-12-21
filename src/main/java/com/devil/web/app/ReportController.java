@@ -75,13 +75,4 @@ public class ReportController {
 
   }
 
-  @RequestMapping("list")
-  public ModelAndView list(String keyword) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("reportList", reportService.list((String)null));
-    mv.setViewName("/appJsp/report/list.jsp");
-
-    return mv;
-  }
 }
