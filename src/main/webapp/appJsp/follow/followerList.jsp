@@ -14,9 +14,8 @@
 		<div class="col mb-3">
 			<div class="card h-100">
 				<div class="mx-auto p-3">
-						<a href='../user/detail?no=${u.no}'> <img class="card-img-top"
-							src='../../upload/user/${u.photo}_80x80.jpg'
-							style='border-radius: 70px' alt='[${u.nickname}]' />
+						<a href='../user/detail?no=${u.no}'> <img class="card-img-top rounded-circle"
+							src='../../upload/user/${u.photo}_100x100.jpg' alt='[${u.nickname}]' />
 						</a>
 					</div>
 				<div class="card-body mx-auto">
