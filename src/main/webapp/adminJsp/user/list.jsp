@@ -43,7 +43,7 @@
   <p style="font-weight: bold">총 회원수 <span class="main-color"><%=list.size()%></span>명</p>
 
 	<table border='1' >
-	 <tbody class="tbody">
+	<thead>
 		<tr>
 			<th>번호</th>
 			<th>이름(이메일)</th>
@@ -53,7 +53,7 @@
 			<th>상태</th>
 			<th>차단상태</th>
 		</tr>
-
+  </thead>
 		<%
 		  List<Integer> userNoList = new ArrayList<>();
 		%>
@@ -65,11 +65,12 @@
 		  String loginType = null;
 		%>
 
+	 <tbody>
 		<tr>
 			<td><%=user.getNo()%></td>
 			<td><a href='detail?no=<%=user.getNo()%>'> <img
           src='../../upload/user/<%=user.getPhoto()%>_40x40.jpg'
-          style='border-radius: 70px' alt='[<%=user.getPhoto()%>_80x80]'>
+          style='border-radius: 70px' alt='[<%=user.getPhoto()%>_40x40]'>
           <%=user.getName()%>[<%=user.getEmail()%>]</td>
 			<td><%=user.getNickname()%></a></td>
 			<td><%=formatter.format(user.getCreatedDate())%></td>

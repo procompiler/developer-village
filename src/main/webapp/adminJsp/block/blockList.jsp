@@ -37,7 +37,7 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
   <p style="font-weight: bold">총 활동정지 회원수 <span class="main-color"><%=blockList.size()%></span>명</p>
 
   <table border='1'>
-     <tbody class="tbody">
+  <thead>
     <tr>
       <th>정지회원 이름(이메일)</th>
       <th>차단사유</th>
@@ -46,6 +46,8 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
       <th>차단종료일</th>
       <th>상태</th>
     </tr>
+    </thead>
+     <tbody>
     <%
       for (Block block : blockList) {
         blockTermination.setTime(block.getPermittedDate());

@@ -23,7 +23,7 @@
   </h1>
 
 	<table border='1'>
-	<tbody class="tbody">
+	<thead>
 		<tr>
 			<th>번호</th>
 			<th>신고자</th>
@@ -33,6 +33,8 @@
 			<th>신고사유</th>
 			<th>신고승인</th>
 		</tr>
+		</thead>
+	<tbody>
 		<c:forEach items="${reportList}" var="report">
 			<tr>
 				<td>${report.no}</td>
@@ -44,10 +46,10 @@
         </c:if></td>
 				<td>${report.getCreatedDate()}</td>
 				<td><c:if test="${report.reportedArticle == null}">
-						<a href='../article/detail?no=${report.reportedComment.articleNo}'
+						<a href='../../app/article/detail?no=${report.reportedComment.articleNo}'
 							style='text-decoration: none;'>댓글 신고 링크</a>
 					</c:if> <c:if test="${report.reportedArticle != null}">
-						<a href='../article/detail?no=${report.reportedArticle.no}'
+						<a href='../../app/article/detail?no=${report.reportedArticle.no}'
 							style='text-decoration: none;'>게시글 신고 링크</a>
 					</c:if></td>
 				<td><c:choose>
