@@ -84,7 +84,7 @@ CREATE TABLE `user` (
   `tw_url`   VARCHAR(255) NULL,     -- 트위터주소
   `blocked`  INTEGER      NOT NULL DEFAULT 0, -- 차단여부
   `tech`     MEDIUMTEXT   NULL,     -- 기술스택
-  `auth`     INTEGER      NOT NULL DEFAULT 0, -- 관리자여부
+  `auth`     INTEGER      NOT NULL DEFAULT 1, -- 관리자여부
   `noti`     INTEGER      NOT NULL DEFAULT 0, -- 알람알림여부
   `bio`      MEDIUMTEXT   NULL,     -- 자기소개
   `state`    INTEGER      NOT NULL DEFAULT 1 -- 활성상태
