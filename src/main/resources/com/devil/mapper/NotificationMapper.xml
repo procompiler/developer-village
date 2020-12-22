@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devil.dao.FollowDao">
+
+  <resultMap type="follow" id="FollowTagMap">
+    <id column="uno"       property="userNo" />
+    <id column="tno"       property="followeeNo" />
+    <result column="cdt"   property="createdDate" />
+  </resultMap>
+  
+  <resultMap type="follow" id="FollowUserMap">
+    <id column="fwer_no"   property="userNo" />
+    <id column="fwing_no"  property="followeeNo" />
+    <result column="cdt"   property="createdDate" />
+  </resultMap>
+
+  <insert id="insertTag" parameterType="follow">
+    insert into usr_tag(uno, tno)
+    values(#{userNo}, #{followeeNo})
+  </insert>
+  
+  <insert id="insertUser" parameterType="follow">
+    insert into follow(fwer_no, fwing_no)
+    values(#{userNo}, #{followeeNo})
+  </insert>
+
+  <delete id="deleteTag" parameterType="follow">
+    delete from usr_tag
+    where uno=#{userNo} and tno=#{followeeNo}
+  </delete>
+  
+  <delete id="deleteUser" parameterType="follow">
+    delete from follow
+    where fwer_no=#{userNo} and fwing_no=#{followeeNo}
+  </delete>
+
+	<select id="findByUserTag" resultMap="FollowTagMap" parameterType="map">
+    select
+      uno,
+      tno, 
+      cdt
+    from usr_tag
+    where uno=#{userNo} and tno=#{followeeNo}
+	</select>
+	
+  <select id="findByUserUser" resultMap="FollowUserMap" parameterType="map">
+    select
+      fwer_no,
+      fwing_no, 
+      cdt
+    from follow
+    where fwer_no=#{userNo} and fwing_no=#{followeeNo}
+  </select>
+</mapper>
