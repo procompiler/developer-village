@@ -6,8 +6,8 @@
 <html>
 <head>
 <title>마이페이지</title>
-	<jsp:include page="/header.jsp"></jsp:include>
-	<jsp:include page="/appJsp/user/info.jsp"></jsp:include>
+	<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="../user/info.jsp"></jsp:include>
 	<h2>팔로워</h2>
 	<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
 	<c:forEach items="${userList}" var="u">
@@ -37,4 +37,4 @@
 <div class="col-2">
 </div>
 </div>
-	<jsp:include page="/footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>

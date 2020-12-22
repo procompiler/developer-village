@@ -10,8 +10,8 @@
 <html>
 <head>
 <title>마이페이지</title>
-<jsp:include page="/header.jsp"></jsp:include>
-<jsp:include page="/appJsp/user/info.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../user/info.jsp"></jsp:include>
 <h2>북마크리스트</h2>
 <div class="d-grid gap-3"/>
 <c:forEach items="${bookmarkList}" var="a">
@@ -62,4 +62,4 @@
 </div>
 <div class="col-3"></div>
 </div>
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>

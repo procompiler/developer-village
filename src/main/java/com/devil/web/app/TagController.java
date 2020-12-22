@@ -6,8 +6,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.TagService;
@@ -23,7 +23,7 @@ public class TagController {
   TagService tagService;
 
   @RequestMapping("/list")
-  public ModelAndView list(HttpSession session) throws Exception {
+  public void list(HttpSession session, Model model) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
 
@@ -39,9 +39,6 @@ public class TagController {
       }
       tag.setFollowed(true);
     }
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("tagList", tagList);
-    mv.setViewName("/appJsp/tag/list.jsp");
-    return mv;
+    model.addAttribute("tagList", tagList);
   }
 }

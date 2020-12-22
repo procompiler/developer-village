@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 <div class="row">
@@ -71,4 +71,4 @@
 		</select><br>
 		<button>회원가입 완료</button>
 	</form>
- <jsp:include page="/footer.jsp"></jsp:include>
+ <jsp:include page="../footer.jsp"></jsp:include>

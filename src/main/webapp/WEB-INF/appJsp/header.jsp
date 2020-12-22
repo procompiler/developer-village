@@ -19,7 +19,7 @@ String contextPath = request.getServletContext().getContextPath();
       <li><span class="main-font-color">D</span>eveloper</li>
       <li><span class="main-font-color">V</span>illage</li>
     </div>
-    <a href="<%=contextPath%>/app/user/detail?no=${loginUser.no}">
+    <a href="<%=contextPath%>/app/user/${loginUser.no}">
      <div class="user-card">
       <div class="user-photo">
         <img src="<%=contextPath%>/upload/user/${loginUser.photo}_60x60.jpg"/>

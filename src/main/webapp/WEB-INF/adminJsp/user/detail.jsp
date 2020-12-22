@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 조회</title>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 	<h1>[회원 상세조회]</h1>
@@ -60,6 +60,6 @@
       탈퇴한 회원
       </c:if>
 	<a href='list' style='color: blue;'>회원 목록으로</a>
-	<jsp:include page="/footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

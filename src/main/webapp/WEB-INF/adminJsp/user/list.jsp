@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
-	  <jsp:include page="/admin-header.jsp"></jsp:include>
+	  <jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 	<div class="mini-navi">
@@ -83,6 +83,6 @@
 		<%}%>
 		</tbody>
 		</table>
-		  <jsp:include page="/footer.jsp"></jsp:include>
+		  <jsp:include page="../footer.jsp"></jsp:include>
  </body>
 </html>

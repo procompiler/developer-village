@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>뱃지 조회</title>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href='../style.css'>
 <link rel="stylesheet"
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -32,7 +32,7 @@
 <p><a class='btn' href='list'>뱃지 목록으로</a></p>
 <a class="btn btn-primary" href='delete?no=${badge.no}'>삭제</a>
 
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

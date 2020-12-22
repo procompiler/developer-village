@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>태그 조회</title>
-	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="../header.jsp"></jsp:include>
 </head>
 
 <body>
@@ -34,4 +34,4 @@
 			style='color: white;'>태그삭제</a>
 	</form>
 
-	<jsp:include page="/footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
