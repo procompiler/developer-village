@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그아웃</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+  <jsp:include page="../header.jsp"></jsp:include>
 
     <meta http-equiv='Refresh' content='1;url=loginUser'>
   

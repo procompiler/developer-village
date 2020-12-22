@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>프로필 수정</title>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 
 <div class="row">
 	<div class="col-9">
@@ -99,4 +99,4 @@
 	</div>
 </div>
 
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>

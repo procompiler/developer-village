@@ -29,10 +29,7 @@ public class TagController {
   TagService tagService;
 
   @RequestMapping("/form")
-  public ModelAndView form() throws Exception {
-    ModelAndView mv = new ModelAndView();
-    mv.setViewName("/adminJsp/tag/form.jsp");
-    return mv;
+  public void form() throws Exception {
   }
 
   @RequestMapping("/add")

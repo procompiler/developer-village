@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>태그목록</title>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 <h1>태그 목록</h1>
@@ -49,6 +49,6 @@
 		</div>
 	</c:forEach>
 </div>
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

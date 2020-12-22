@@ -10,6 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 조회</title>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <jsp:include page="info.jsp"></jsp:include>
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>

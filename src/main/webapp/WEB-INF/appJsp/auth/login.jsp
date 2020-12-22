@@ -5,7 +5,7 @@
 <head>
 <meta charset='UTF-8'>
 <title>로그인</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+  <jsp:include page="../header.jsp"></jsp:include>
 
 </head>
 <body>
@@ -30,5 +30,5 @@
 		</div>
 	</form>
 </body>
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 </html>

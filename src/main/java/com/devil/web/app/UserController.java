@@ -1,16 +1,19 @@
 package com.devil.web.app;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 import com.devil.service.UserService;
@@ -29,15 +32,12 @@ public class UserController {
   @Autowired
   FollowService followService;
 
-  @RequestMapping("form")
-  public ModelAndView form() throws Exception {
-    ModelAndView mv = new ModelAndView();
-    mv.setViewName("/appJsp/user/form.jsp");
-    return mv;
+  @GetMapping("form")
+  public void form() throws Exception {
   }
 
   @RequestMapping("add")
-  public String add(String email, String nickname, String name, String password, String loginType)
+  public String add(String email, String nickname, String name, String password, String loginType, MultipartFile photoFile)
       throws Exception {
 
     User user = new User();
@@ -47,21 +47,29 @@ public class UserController {
     user.setPassword(password);
     user.setLoginType(loginType);
 
+    String filename = UUID.randomUUID().toString();
+    String saveFilePath = servletContext.getRealPath("/upload/" + filename);
+
+    photoFile.transferTo(new File(saveFilePath));
+    user.setPhoto(filename);
+
+    generatePhotoThumbnail(saveFilePath);
+
     userService.add(user);
-    return "redirect:../../index.jsp";
+    return "redirect:.";
   }
 
-  @RequestMapping("delete")
+  @GetMapping("delete")
   public String delete(int no) throws Exception {
 
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-    return "redirect:list";
+    return "redirect:.";
   }
 
-  @RequestMapping("detail")
-  public ModelAndView detail(int no, HttpSession session) throws Exception {
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model, HttpSession session) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
     Map<String, Object> params = new HashMap<String, Object>();
@@ -72,9 +80,7 @@ public class UserController {
     if (user == null) {
       throw new Exception("해당 번호의 유저가 없습니다!");
     }
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("user", user);
+    model.addAttribute("user", user);
 
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
@@ -85,54 +91,46 @@ public class UserController {
     } else {
       session.setAttribute("followed", false);
     }
-    mv.setViewName("/appJsp/user/detail.jsp");
-    return mv;
+    return "user/detail";
   }
 
-  @RequestMapping("list")
-  public ModelAndView list(String keyword, HttpSession session) throws Exception {
+  @GetMapping
+  public String list(Model model, String keyword, HttpSession session) throws Exception {
 
-    ModelAndView mv = new ModelAndView();
+    model.addAttribute("list", userService.list(keyword));
+    model.addAttribute("followingUsers",userService.listFollowing((User) session.getAttribute("loginUser")));
 
-    mv.addObject("list", userService.list(keyword));
-    
-    mv.addObject("followingUsers", userService.listFollowing((User) session.getAttribute("loginUser")));
-    mv.setViewName("/appJsp/user/list.jsp");
-
-    return mv;
+    return "user/list";
   }
 
-  @RequestMapping(value = "update", method = RequestMethod.POST)
-  public String update(User user, HttpSession session) throws Exception {
+  @PostMapping("update")
+  public String update(Model model, User user, HttpSession session) throws Exception {
     if (user.getNo() != ((User)session.getAttribute("loginUser")).getNo()) {
       throw new Exception("잘못된 접근입니다.");
     }
     
     if (userService.update(user) == 0) {
       throw new Exception("삭제된 회원입니다.");
-    }
-    
+    } else {
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", user.getNo());
     session.setAttribute("loginUser", userService.get(params));
     
-    return "redirect:detail?no=" + user.getNo();
+    return "redirect:./" + user.getNo();
+    }
   }
 
-  @RequestMapping(value = "updateForm", method = RequestMethod.GET)
-  public ModelAndView updateForm(int no) throws Exception {
-    ModelAndView mv = new ModelAndView();
+  @GetMapping("updateForm")
+  public void updateForm(Model model, int no) throws Exception {
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", no);
-    mv.addObject("user", userService.get(params));
-    mv.setViewName("/appJsp/user/updateForm.jsp");
-    return mv;
+    model.addAttribute("user", userService.get(params));
   }
 
-  @RequestMapping("updatePhoto")
-  public String updatePhoto(int no, Part photoFile, HttpSession session) throws Exception {
+  @PostMapping("updatePhoto")
+  public String updatePhoto(int no, MultipartFile photoFile, HttpSession session) throws Exception {
     if (no != ((User)session.getAttribute("loginUser")).getNo()) {
       throw new Exception("잘못된 접근입니다.");
     }
@@ -144,10 +142,10 @@ public class UserController {
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
       String saveFilePath = servletContext.getRealPath("/upload/user/" + filename);
-      photoFile.write(saveFilePath);
+      photoFile.transferTo(new File(saveFilePath));
       user.setPhoto(filename);
       // 회원 사진의 썸네일 이미지 파일 생성하기
-      generatePhotoThumnail(saveFilePath);
+      generatePhotoThumbnail(saveFilePath);
     }
 
     if (user.getPhoto() == null) {
@@ -159,10 +157,10 @@ public class UserController {
     params.put("type", "app");
     params.put("userNo", user.getNo());
     session.setAttribute("loginUser", userService.get(params));
-    return "redirect:detail?no=" + user.getNo();
+    return "redirect:./" + user.getNo();
   }
 
-  private void generatePhotoThumnail(String saveFilePath) {
+  private void generatePhotoThumbnail(String saveFilePath) {
     try {
 
       Thumbnails.of(saveFilePath)//
