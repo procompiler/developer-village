@@ -3,55 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.devil.dao.FollowDao">
+<mapper namespace="com.devil.dao.UserDao">
 
-  <resultMap type="follow" id="FollowTagMap">
-    <id column="uno"       property="userNo" />
-    <id column="tno"       property="followeeNo" />
+  <resultMap type="notification" id="NotificationMap">
+    <id column="nno"       property="no"/>
+    <result column="uno"       property="userNo" />
     <result column="cdt"   property="createdDate" />
-  </resultMap>
-  
-  <resultMap type="follow" id="FollowUserMap">
-    <id column="fwer_no"   property="userNo" />
-    <id column="fwing_no"  property="followeeNo" />
-    <result column="cdt"   property="createdDate" />
+    <result column="content" property="content"/>
+    <result column="type"    property="type"/>
+    <result column="url"    property="url"/>
   </resultMap>
 
-  <insert id="insertTag" parameterType="follow">
-    insert into usr_tag(uno, tno)
-    values(#{userNo}, #{followeeNo})
-  </insert>
-  
-  <insert id="insertUser" parameterType="follow">
-    insert into follow(fwer_no, fwing_no)
-    values(#{userNo}, #{followeeNo})
+  <insert id="insert" parameterType="notification">
+    insert into noti(uno, content, type, url)
+    values(#{userNo}, #{content}, #{type}, #{url})
   </insert>
 
-  <delete id="deleteTag" parameterType="follow">
-    delete from usr_tag
-    where uno=#{userNo} and tno=#{followeeNo}
-  </delete>
-  
-  <delete id="deleteUser" parameterType="follow">
-    delete from follow
-    where fwer_no=#{userNo} and fwing_no=#{followeeNo}
-  </delete>
-
-	<select id="findByUserTag" resultMap="FollowTagMap" parameterType="map">
+  <select id="findAll" resultMap="NotificationMap" parameterType="User">
     select
-      uno,
-      tno, 
-      cdt
-    from usr_tag
-    where uno=#{userNo} and tno=#{followeeNo}
-	</select>
-	
-  <select id="findByUserUser" resultMap="FollowUserMap" parameterType="map">
-    select
-      fwer_no,
-      fwing_no, 
-      cdt
-    from follow
-    where fwer_no=#{userNo} and fwing_no=#{followeeNo}
+      nno,
+      uno, 
+      cdt,
+      content,
+      type,
+      url
+    from noti
+    where uno={no}
   </select>
 </mapper>
