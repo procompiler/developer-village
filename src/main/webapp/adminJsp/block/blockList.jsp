@@ -55,7 +55,7 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     %>
 
     <tr>
-      <td><%=block.getReportedUser().getNickname()%> [<%=block.getReportedUser().getEmail()%>]</td>
+      <td id="profile"><%=block.getReportedUser().getNickname()%> [<%=block.getReportedUser().getEmail()%>]</td>
       <td><%=block.getBlockedReason()%></td>
       <td><%=block.getUnBlockedReason() == null ? "" : block.getUnBlockedReason()%></td>
       <td><%=formatter.format(block.getPermittedDate())%></td>
