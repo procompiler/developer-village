@@ -1,6 +1,5 @@
 package com.devil.domain;
 
-
 public class BadgeStan {
   private int bsno; // 평가기준번호
   private int bno; // 뱃지번호
@@ -35,7 +34,4 @@ public class BadgeStan {
     this.count = count;
     return this;
   }
-
-
-
 }
