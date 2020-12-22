@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>뱃지 목록</title>
-  <jsp:include page="../admin-header.jsp"></jsp:include>
+  <jsp:include page="../header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
 	<a class='btn btn-primary' href='form'>뱃지 추가</a>
 	

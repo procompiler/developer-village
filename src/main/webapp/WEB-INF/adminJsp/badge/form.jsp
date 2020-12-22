@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href='../../style.css'>
 </head>
 <body>
-  <jsp:include page="../admin-header.jsp"></jsp:include>
+  <jsp:include page="../header.jsp"></jsp:include>
   
 <h1>뱃지 등록</h1>
 <form action="add" method="post" enctype="multipart/form-data">

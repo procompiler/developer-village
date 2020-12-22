@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>뱃지 조회</title>
-<jsp:include page="../admin-header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href='../style.css'>
 <link rel="stylesheet"
   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"

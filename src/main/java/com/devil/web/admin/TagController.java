@@ -1,15 +1,19 @@
 package com.devil.web.admin;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.TagService;
@@ -28,12 +32,12 @@ public class TagController {
   @Autowired
   TagService tagService;
 
-  @RequestMapping("/form")
+  @GetMapping("/form")
   public void form() throws Exception {
   }
 
   @RequestMapping("/add")
-  public String add(String name, String tagColor, String fontColor, Part photoFile)
+  public String add(String name, String tagColor, String fontColor, MultipartFile photoFile)
       throws Exception {
     String filename = UUID.randomUUID().toString();
     String saveFilePath = servletContext.getRealPath("/upload/tag/" + filename);
@@ -43,30 +47,28 @@ public class TagController {
     tag.setTagColor(tagColor);
     tag.setFontColor(fontColor);
 
-    photoFile.write(saveFilePath);
+    photoFile.transferTo(new File(saveFilePath));
     tag.setPhoto(filename);
 
     generatePhotoThumbnail(saveFilePath);
     tagService.add(tag);
-    return "redirect:list";
+    return "redirect:.";
   }
 
-  @RequestMapping("/detail")
-  public ModelAndView detail(int no) throws Exception {
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model) throws Exception {
     Tag tag = tagService.get(no);
     
     if (tag == null) {
       throw new Exception("해당 태그가 없습니다!");
     }
     
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("tag", tag);
-    mv.setViewName("/adminJsp/tag/detail.jsp");
-    return mv;
+    model.addAttribute("tag", tag);
+    return "tag/detail";
   }
 
-  @RequestMapping("/list")
-  public ModelAndView list(HttpSession session) throws Exception {
+  @GetMapping("/list")
+  public void list(HttpSession session, Model model) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
 
@@ -82,27 +84,24 @@ public class TagController {
       }
       tag.setFollowed(true);
     }
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("tagList", tagList);
-    mv.setViewName("/adminJsp/tag/list.jsp");
-    return mv;
+    model.addAttribute("tagList", tagList);
   }
 
-  @RequestMapping("/update")
+  @PostMapping("/update")
   public String update(Tag tag) throws Exception {
     tagService.update(tag);
-    return "redirect:detail?no=" + tag.getNo();
+    return "redirect:./" + tag.getNo();
   }
 
-  @RequestMapping("/updatePhoto")
-  public String updatePhoto(int no, Part photoFile) throws Exception {
+  @PostMapping("/updatePhoto")
+  public String updatePhoto(int no, MultipartFile photoFile) throws Exception {
     Tag tag = new Tag();
     tag.setNo(no);
     // 태그 사진 파일 저장
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
       String saveFilePath = servletContext.getRealPath("/upload/tag/" + filename);
-      photoFile.write(saveFilePath);
+      photoFile.transferTo(new File(saveFilePath));
       tag.setPhoto(filename);
 
       generatePhotoThumbnail(saveFilePath);
@@ -114,15 +113,15 @@ public class TagController {
 
     tagService.update(tag);
 
-    return "redirect:detail?no=" + tag.getNo();
+    return "redirect:./" + tag.getNo();
   }
 
-  @RequestMapping("/delete")
+  @GetMapping("/delete")
   public String delete(int no) throws Exception {
     if (tagService.delete(no) == 0) {
       throw new Exception("해당 번호의 태그가 없습니다.");
     }
-    return "redirect:list";
+    return "redirect:.";
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {

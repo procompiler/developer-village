@@ -3,12 +3,13 @@ package com.devil.web.admin;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 import com.devil.service.UserService;
@@ -20,51 +21,48 @@ public class UserController {
   @Autowired ServletContext servletContext;
   @Autowired FollowService followService;
 
-  @RequestMapping("/delete")
+  @GetMapping("/delete")
   public String delete(int no) throws Exception {
 
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-    return "redirect:list";
+    return "redirect:.";
   }
 
-  @RequestMapping("/detail")
-  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model, HttpSession session) throws Exception {
 
+    User loginUser = (User) session.getAttribute("loginUser");
     Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "admin");
+    params.put("type", "app");
     params.put("userNo", no);
     User user = userService.get(params);
+
     if (user == null) {
       throw new Exception("해당 번호의 유저가 없습니다!");
     }
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("user", user);
+    model.addAttribute("user", user);
 
     Map<String, Object> map = new HashMap<>();
-    map.put("userNo", ((User)session.getAttribute("loginUser")).getNo());
+    map.put("userNo", loginUser.getNo());
     map.put("followeeNo", no);
+    
     if (followService.getUser(map) != null) {
       session.setAttribute("followed", true);
     } else {
       session.setAttribute("followed", false);
     }
-
-    mv.setViewName("/adminJsp/user/detail.jsp");
-    return mv;
+    return "user/detail";
   }
 
-  @RequestMapping("/list")
-  public ModelAndView list(String keyword, HttpSession session) throws Exception {
+  @GetMapping
+  public String list(Model model, String keyword, HttpSession session) throws Exception {
 
-    ModelAndView mv = new ModelAndView();
+    model.addAttribute("list", userService.list(keyword));
+    model.addAttribute(
+        "followingUsers",userService.listFollowing((User) session.getAttribute("loginUser")));
 
-    mv.addObject("list", userService.list(keyword));
-
-    mv.setViewName("/adminJsp/user/list.jsp");
-
-    return mv;
+    return "user/list";
   }
 }
