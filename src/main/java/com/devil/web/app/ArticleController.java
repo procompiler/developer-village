@@ -65,21 +65,14 @@ public class ArticleController {
   }
 
   @RequestMapping("list")
-  public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag, Integer tagNo) throws Exception {
+  public ModelAndView list(
+      String keyword,
+      Integer tagNo) throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
     if (keyword != null) {
       mv.addObject("articles", articleService.list(keyword));
-
-    } else if (keywordTitle != null) {
-      HashMap<String, Object> keywordMap = new HashMap<>();
-      keywordMap.put("title", keywordTitle);
-      keywordMap.put("writer", keywordWriter);
-      keywordMap.put("tag", keywordTag);
-
-      mv.addObject("articles", articleService.list(keywordMap));
 
     } else if (tagNo != null) {
       mv.addObject("tag", tagService.get(tagNo));

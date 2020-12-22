@@ -87,6 +87,38 @@ input::placeholder {
   color: #dbdbdb;
 }
 
+/* 게시판 검색 */
+ #article {
+	border-radius: 10px;
+  border: 0px;
+  color: white;
+  background-color: #212325;
+  background-image: url("search.png");
+  background-size: 30px;
+  background-position: 165px 2px;
+  background-repeat: no-repeat;
+  outline: none;
+  font-size: 12px;
+	padding-left: 10px;
+	width: 200px;
+  float: right;
+  position: absolute;
+  right: 300px;
+  top: 200px;
+}
+
+ #condition {
+    border-radius: 8px;
+    border: 0px;
+    color: white;
+    background-color: #212325;
+    position: absolute;
+    right: 520px;
+    top: 202px;
+    height: 30px;
+    font-size: 12px;
+ }
+
 nav ul hr {
   border: 1px solid #3b3b3b;
 }
@@ -156,15 +188,13 @@ footer #pro-logo {
   -webkit-border-radius: 70px;
 }
 
-
 /* 테이블 */
 table {
   border-collapse: collapse;
   border-style: hidden;
-  display: block;
-  margin: 20px 0px;
+  margin: 110px 0px auto 70px;
   border-radius: 10px;
-  border-color: #37393E;
+  width: 1200px;
 }
 
 tbody tr {
@@ -261,6 +291,19 @@ th, td {
   font-weight: bold;
 }
 
+.btn2 {
+  border-radius: 10px;
+  margin: 10px 5px 10px 5px;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+  text-align: center;
+  position: absolute;
+  float: right;
+  top: 190px;
+  right: 155px;
+}
+
 /* 링크 */
 
 a:link {
@@ -270,10 +313,6 @@ a:link {
 
 a:hover {
   color: #6C5DDF;
-}
-
-a:visited {
-  color: #5D4ECB;
 }
 
 #urls {
