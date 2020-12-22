@@ -1,6 +1,5 @@
 package com.devil.web.app;
 
-import java.beans.PropertyEditorSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +16,7 @@ import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.BookmarkService;
+import com.devil.service.CommentService;
 import com.devil.service.TagService;
 import com.devil.service.UserService;
 
@@ -34,6 +32,8 @@ public class ArticleController {
   BookmarkService bookmarkService;
   @Autowired
   UserService userService;
+  @Autowired
+  CommentService commentService;
 
   @RequestMapping("/form")
   public ModelAndView form() throws Exception {
@@ -102,7 +102,7 @@ public class ArticleController {
     mv.setViewName("/appJsp/article/writtenList.jsp");
     return mv;
   }
-  
+
   @RequestMapping("/feed")
   public ModelAndView list(HttpSession session) throws Exception {
 
@@ -122,6 +122,7 @@ public class ArticleController {
     ModelAndView mv = new ModelAndView();
     mv.addObject("article", article);
     mv.addObject("tags", article.getTags());
+    mv.addObject("comments", commentService.getByArticleNo(no));
 
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", ((User) session.getAttribute("loginUser")).getNo());
@@ -137,11 +138,25 @@ public class ArticleController {
   }
 
   @RequestMapping(value="/update", method=RequestMethod.GET)
-  public ModelAndView updateForm(int no) throws Exception {
+  public ModelAndView updateForm(int no, HttpSession session) throws Exception {
+
+    User loginUser = (User) session.getAttribute("loginUser");
+    Article article = articleService.get(no);
+
+    System.out.println(loginUser.getAuth());
+    System.out.println(article.getWriter().getAuth());
+
     ModelAndView mv = new ModelAndView();
-    mv.addObject("article", articleService.get(no));
-    mv.addObject("tags", tagService.list((String) null));
-    mv.setViewName("/adminJsp/article/update.jsp");
+
+    if (loginUser.getNo() == article.getWriter().getNo()
+        && loginUser.getEmail().equalsIgnoreCase(article.getWriter().getEmail())) {
+      mv.addObject("article", articleService.get(no));
+      mv.addObject("tags", tagService.list((String) null));
+      mv.setViewName("/appJsp/article/update.jsp");
+    } else if (loginUser != article.getWriter()) {
+      // 게시글 수정 권한이 없다는 알럿 띄우기
+      mv.setViewName("redirect:detail?no=" + article.getNo());
+    }
     return mv;
   }
 
@@ -168,30 +183,6 @@ public class ArticleController {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
     return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
-  }
-
-  @InitBinder
-  public void initBinder(WebDataBinder binder) {
-    // String ===> Date 프로퍼티 에디터 준비
-    DatePropertyEditor propEditor = new DatePropertyEditor();
-
-    // WebDataBinder에 프로퍼티 에디터 등록하기
-    binder.registerCustomEditor(
-        java.util.Date.class, // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
-        propEditor // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-        );
-  }
-
-  class DatePropertyEditor extends PropertyEditorSupport {
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-      try {
-        // 클라이언트가 텍스트로 보낸 날짜 값을 java.sql.Date 객체로 만들어 보관한다.
-        setValue(java.sql.Date.valueOf(text));
-      } catch (Exception e) {
-        throw new IllegalArgumentException(e);
-      }
-    }
   }
 
 }

@@ -84,7 +84,7 @@ CREATE TABLE `user` (
   `tw_url`   VARCHAR(255) NULL,     -- 트위터주소
   `blocked`  INTEGER      NOT NULL DEFAULT 0, -- 차단여부
   `tech`     MEDIUMTEXT   NULL,     -- 기술스택
-  `auth`     INTEGER      NOT NULL DEFAULT 0, -- 관리자여부
+  `auth`     INTEGER      NOT NULL DEFAULT 1, -- 관리자여부
   `noti`     INTEGER      NOT NULL DEFAULT 0, -- 알람알림여부
   `bio`      MEDIUMTEXT   NULL,     -- 자기소개
   `state`    INTEGER      NOT NULL DEFAULT 1 -- 활성상태
@@ -189,7 +189,7 @@ ALTER TABLE `badge`
 CREATE TABLE `bdg_stan` (
   `bsno`  INTEGER NOT NULL, -- 뱃지평가기준번호
   `bno`   INTEGER NOT NULL, -- 뱃지번호
-  `beno`  INTEGER NOT NULL, -- 뱃지평가번호
+  `beno`  INTEGER NOT NULL, -- 뱃지 평가번호
   `count` INTEGER NULL      -- 기준횟수
 );
 
@@ -231,9 +231,8 @@ ALTER TABLE `tag`
 
 -- 게시글_태그
 CREATE TABLE `arc_tag` (
-  `arno`  INTEGER NOT NULL, -- 게시글번호
-  `tno`   INTEGER NOT NULL  -- 태그번호
-
+  `arno` INTEGER NOT NULL, -- 게시글번호
+  `tno`  INTEGER NOT NULL  -- 태그번호
 );
 
 -- 게시글_태그
@@ -352,7 +351,8 @@ CREATE TABLE `noti` (
   `cdt`     DATETIME     NOT NULL DEFAULT now(), -- 알람생성일
   `content` MEDIUMTEXT   NULL,     -- 알람내용
   `type`    INTEGER      NOT NULL DEFAULT 1, -- 알람타입
-  `url`     VARCHAR(255) NULL      --  URL
+  `url`     VARCHAR(255) NULL,     --  URL
+  `rdt`     DATETIME     NULL      -- 확인시점
 );
 
 -- 알람
@@ -587,7 +587,7 @@ ALTER TABLE `bdg_stan`
 ALTER TABLE `bdg_stan`
   ADD CONSTRAINT `FK_bdg_eva_TO_bdg_stan` -- 뱃지평가 -> 뱃지평가기준
     FOREIGN KEY (
-      `beno` -- 뱃지평가번호
+      `beno` -- 뱃지 평가번호
     )
     REFERENCES `bdg_eva` ( -- 뱃지평가
       `beno` -- 뱃지평가명번호

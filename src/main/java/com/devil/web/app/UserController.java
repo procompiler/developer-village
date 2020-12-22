@@ -187,7 +187,7 @@ public class UserController {
 
       Thumbnails.of(saveFilePath)//
           .size(100, 100)//
-          .outputFormat("jpg") //
+          .crop(Positions.CENTER).outputFormat("jpg") //
           .toFiles(new Rename() {
             @Override
             public String apply(String name, ThumbnailParameter param) {

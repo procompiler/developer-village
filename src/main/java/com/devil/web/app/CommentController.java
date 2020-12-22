@@ -1,13 +1,10 @@
 package com.devil.web.app;
 
-import java.beans.PropertyEditorSupport;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,6 +48,8 @@ public class CommentController {
     return "redirect:../article/detail?no=" + comment.getArticleNo();
   }
 
+  // article/detail에서 더이상 /comment/list를 직접 경유하지 않음
+  // 추후에도 사용하지 않는다면 코드 삭제 예정
   @RequestMapping("/list")
   public ModelAndView list(int no) throws Exception {
     ModelAndView mv = new ModelAndView();
@@ -63,11 +62,11 @@ public class CommentController {
 
   @RequestMapping("/writtenList")
   public ModelAndView list(User user, HttpSession session) throws Exception {
-    
+
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", user.getNo());
-    
+
     ModelAndView mv = new ModelAndView();
     mv.addObject("user", userService.get(params));
     mv.addObject("commentList", commentService.listByWriter(user));
@@ -93,26 +92,4 @@ public class CommentController {
     return "redirect:../article/detail?no=" + articleNo;
   }
 
-  @InitBinder
-  public void initBinder(WebDataBinder binder) {
-    // String ===> Date 프로퍼티 에디터 준비
-    DatePropertyEditor propEditor = new DatePropertyEditor();
-
-    // WebDataBinder에 프로퍼티 에디터 등록하기
-    binder.registerCustomEditor(java.util.Date.class, // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
-        propEditor // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-        );
-  }
-
-  class DatePropertyEditor extends PropertyEditorSupport {
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-      try {
-        // 클라이언트가 텍스트로 보낸 날짜 값을 java.sql.Date 객체로 만들어 보관한다.
-        setValue(java.sql.Date.valueOf(text));
-      } catch (Exception e) {
-        throw new IllegalArgumentException(e);
-      }
-    }
-  }
 }

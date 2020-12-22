@@ -116,39 +116,46 @@ h1 {
   border-radius: 10px;
    }
 
+.main-color {
+  color: #6C5DDF;
+}
+
+/* 테이블 */
+
 table {
   border-collapse: collapse;
   border-style: hidden;
-  display: block;
   margin: 20px 0px;
-  border-color: #37393E;
+  display: block;
   font-size : 15px;
 	border-radius: 10px;
-	-moz-border-radius:10px;
 	background-color: #2E3034;
 	width: 1000px;
 }
 
 thead {
-	width: 1000px;
-	border-bottom: 3px solid #5C5C5C;
-	text-align: center;
-	display: table;
+	 width: 1000px;
 }
 
-tbody {
-    width: 1000px;
-    display: table;
+thead tr {
+	text-align: center;
+  border-bottom: 3px solid #787878;;
+}
+
+tbody, td, tfoot, th, thead, tr {
+	 width: 1000px;
+}
+
+ tbody {
     text-align: left;
 }
-th, td {
-  border-left: hidden;
-  border-right: hidden;
-  padding: 5px 15px 5px 10px;
-}
+ th, td {
+  padding: 15px;
+  text-align: center;
+  }
 
-.main-color {
-  color: #6C5DDF;
+#profile {
+	text-align: left;
 }
 
 /* 하단바 */
