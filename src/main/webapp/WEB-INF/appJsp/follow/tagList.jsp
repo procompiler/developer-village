@@ -8,8 +8,8 @@
 <html>
 <head>
 <title>마이페이지</title>
-<jsp:include page="/header.jsp"></jsp:include>
-<jsp:include page="/appJsp/user/info.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../user/info.jsp"></jsp:include>
 
 <h2>팔로우하는 태그</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -30,4 +30,4 @@
 		</div>
 	</c:forEach>
 </div>
-<jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
