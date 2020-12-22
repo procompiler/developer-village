@@ -1,12 +1,15 @@
 package com.devil.web.admin;
 
+import java.io.File;
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 import com.devil.domain.Badge;
 import com.devil.service.BadgeService;
 import net.coobird.thumbnailator.ThumbnailParameter;
@@ -21,16 +24,12 @@ public class BadgeController {
   @Autowired ServletContext servletContext;
   @Autowired BadgeService badgeService;
 
-  @RequestMapping("/form")
-  public ModelAndView form() throws Exception {
-    ModelAndView mv = new ModelAndView();
-    mv.setViewName("/adminJsp/badge/form.jsp");
-
-    return mv;
+  @GetMapping("/form")
+  public void form() {
   }
 
   @RequestMapping("add")
-  public String add(String name, String content,Part photoFile) throws Exception {
+  public String add(String name, String content,MultipartFile photoFile) throws Exception {
 
     String filename = UUID.randomUUID().toString();
     String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
@@ -39,45 +38,41 @@ public class BadgeController {
     badge.setName(name);
     badge.setContent(content);
 
-    photoFile.write(saveFilePath);
+    photoFile.transferTo(new File(saveFilePath));
     badge.setPhoto(filename);
 
     generatePhotoThumbnail(saveFilePath);
+    
     badgeService.add(badge);
-    return "redirect:list";
+    return "redirect:.";
   }
 
 
-  @RequestMapping("delete")
+  @GetMapping("delete")
   public String delete(int no) throws Exception {
 
     if (badgeService.delete(no) == 0) {
       throw new Exception("해당 번호의 뱃지 없습니다.");
     }
-    return "redirect:list";
+    return "redirect:.";
   }
 
-  @RequestMapping("detail")
-  public ModelAndView deatil(int no) throws Exception {
+  @GetMapping("{no}")
+  public String deatil(@PathVariable int no,Model model) throws Exception {
     Badge badge = badgeService.get(no);
 
     if (badge == null) {
       throw new Exception("해당 뱃지가 없습니다!");
     }
 
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("badge", badge);
-    mv.setViewName("/adminJsp/badge/detail.jsp");
-    return mv;
+    model.addAttribute("badge", badge);
+    return "badge/detail";
   }
 
-  @RequestMapping("list")
-  public ModelAndView list() throws Exception {
-    ModelAndView mv = new ModelAndView();
-
-    mv.addObject("list", badgeService.list((String)null));
-    mv.setViewName("/adminJsp/badge/list.jsp");
-    return mv;
+  @GetMapping("list")
+  public String list(Model model) throws Exception {
+    model.addAttribute("list", badgeService.list(""));
+    return "badge/list";
 
   }
 
@@ -85,11 +80,11 @@ public class BadgeController {
   public String update(Badge badge) throws Exception {
 
     badgeService.update(badge);
-    return "redirect:detail?no=" + badge.getNo();
+    return "redirect:.";
   }
 
   @RequestMapping("updatePhoto")
-  public String updatePhoto(int no, Part photoFile) throws Exception {
+  public String updatePhoto(int no, MultipartFile photoFile) throws Exception {
 
     Badge badge = new Badge();
     badge.setNo(no);
@@ -98,7 +93,7 @@ public class BadgeController {
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
       String saveFilePath = servletContext.getRealPath("/upload/badge/" + filename);
-      photoFile.write(saveFilePath);
+      photoFile.transferTo(new File(saveFilePath));
       badge.setPhoto(filename);
 
       // 뱃지 사진의 썸네일 이미지 파일 생성하기
@@ -110,7 +105,7 @@ public class BadgeController {
     }
 
     badgeService.update(badge);
-    return "redirect:detail?no=" + badge.getNo();
+    return "redirect:./" + badge.getNo();
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
