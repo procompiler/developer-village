@@ -2,6 +2,7 @@
 <%@page import="com.devil.domain.Tag"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
+
 <%@page import="java.text.DateFormat"%>
 <%@page import="com.devil.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -95,19 +96,20 @@
 		</div>
 		<div class="row mt-4">
 			<div class="col-2">
-				<div class="list-group">
-					<a class="list-group-item"
+				<div class="btn-group-vertical float-start">
+					<a class="btn btn-outline-primary"
 						href="../article/writtenList?no=${loginUser.no}">작성게시글</a> <a
-						class="list-group-item" href="../article/feed">피드</a> <a
-						class="list-group-item"
+						class="btn btn-outline-primary" href="../article/feed">피드</a> <a
+						class="btn btn-outline-primary"
 						href="../comment/writtenList?no=${loginUser.no}">작성댓글</a> <a
-						class="list-group-item" href="../follow/tagList">팔로잉 태그</a> <a
-						class="list-group-item" href="../follow/userList">팔로잉 유저</a> <a
-						class="list-group-item" href="../follow/followerList">팔로워</a> <a
-						class="list-group-item" href="../bookmark/list">북마크</a> <a
-						class="list-group-item" href="../collect/list">뱃지</a>
+						class="btn btn-outline-primary" href="../follow/tagList">팔로잉
+						태그</a> <a class="btn btn-outline-primary" href="../follow/userList">팔로잉
+						유저</a> <a class="btn btn-outline-primary"
+						href="../follow/followerList">팔로워</a> <a
+						class="btn btn-outline-primary" href="../bookmark/list">북마크</a> <a
+						class="btn btn-outline-primary" href="../collect/list">뱃지</a>
 				</div>
-			</div>
-			<div class="col-8">
+				</div>
+				<div class="col-7">
 	</c:otherwise>
 </c:choose>
