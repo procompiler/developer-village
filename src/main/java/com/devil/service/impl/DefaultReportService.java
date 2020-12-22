@@ -1,9 +1,10 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.ReportDao;
 import com.devil.domain.Report;
+import com.devil.service.ReportService;
 
 @Service
 public class DefaultReportService implements ReportService {

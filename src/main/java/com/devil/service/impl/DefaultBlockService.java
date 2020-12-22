@@ -1,4 +1,4 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import com.devil.dao.BlockDao;
 import com.devil.dao.ReportDao;
 import com.devil.dao.UserDao;
 import com.devil.domain.Block;
+import com.devil.service.BlockService;
 
 @Service
 public class DefaultBlockService implements BlockService {

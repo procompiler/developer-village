@@ -1,4 +1,4 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import com.devil.dao.UserDao;
 import com.devil.domain.User;
+import com.devil.service.UserService;
 
 @Service
 public class DefaultUserService implements UserService {
