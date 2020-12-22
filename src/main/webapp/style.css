@@ -161,6 +161,7 @@ table {
   border-style: hidden;
   display: block;
   margin: 20px 0px;
+  border-radius: 10px;
   border-color: #37393E;
 }
 

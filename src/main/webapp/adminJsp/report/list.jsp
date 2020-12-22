@@ -38,8 +38,8 @@
 		<c:forEach items="${reportList}" var="report">
 			<tr>
 				<td>${report.no}</td>
-				<td>${report.reporter.nickname}[${report.reporter.email}]</td>
-				<td><c:if test="${report.reportedArticle == null}">
+				<td id="profile">${report.reporter.nickname}[${report.reporter.email}]</td>
+				<td id="profile"><c:if test="${report.reportedArticle == null}">
           ${report.reportedComment.writer.nickname}[${report.reportedComment.writer.email}]
         </c:if> <c:if test="${report.reportedArticle != null}">
           ${report.reportedArticle.writer.nickname}[${report.reportedArticle.writer.email}]
