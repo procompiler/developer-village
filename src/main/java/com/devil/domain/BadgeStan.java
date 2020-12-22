@@ -1,12 +1,11 @@
 package com.devil.domain;
 
-import java.util.Date;
-
 public class BadgeStan {
   private int bno;
   private int bsno; // 활성상태 0 안보임 1 보임
   private int beno; // 활성상태 0 안보임 1 보임
   private int count; // 활성상태 0 안보임 1 보임
+  
 public int getBno() {
 	return bno;
 }

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <h1>
+  <h1 style="margin-left: 70px; font-weight: bold">
     <c:choose>
       <c:when test="${param.categoryNo == 1}">
         <p>자유게시판</p>
@@ -35,10 +35,21 @@
       </c:otherwise>
     </c:choose>
   </h1>
-	<a class="btn btn-primary" href="form">글쓰기</a>
+  
+  <form action='${contextPath}?' method='get' autocomplete="off">
+     <select id="condition" name="condition">
+      <option value="1">제목</option>
+      <option value="2">작성자</option>
+      <option value="3">태그</option>
+     </select>
+    <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+    <input type='text' id="article" name='keyword' value='' placeholder="게시판 내 검색">
+  </form>
+  
+	<a class="btn2 btn-primary" href="form">글쓰기</a>
   
   <c:if test="${param.keyword != null}">
-  '${param.keyword}'로 검색한 결과입니다.
+  <span style="margin-left: 70px;">'${param.keyword}'로 검색한 결과입니다.</span>
   </c:if>
   
 	<table border='1'>
@@ -46,10 +57,10 @@
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
+				<th>댓글수</th>
 				<th>작성자</th>
 				<th>등록일</th>
 				<th>조회수</th>
-				<th>댓글수</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -64,13 +75,13 @@
 										style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
 								</c:forEach>
 							</ul>
-							<a href='detail?no=${article.no}'>${article.title}</a><span style="color:#6C5DDF;">[${article.commentCount}]</span>
+							<a href='detail?no=${article.no}'>${article.title}</a><span style="color:#6C5DDF;"></span>
 						</td>
+						<td><i class="fas fa-comment"></i> ${article.commentCount}</td>
 						<td>${article.writer.nickname}</td>
 						<td><fmt:formatDate value="${article.createdDate}"
 								pattern="yyyy.MM.dd" /></td>
 						<td>${article.viewCount}</td>
-						<td>${article.commentCount}</td>
 					</tr>
 				</c:if>
 				<c:if test="${param.categoryNo == null}">
@@ -94,28 +105,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<p>
-	<form action='${contextPath}?' method='get'>
-	   <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
-		<input type='text' class="col-sm-3" name='keyword' value='' placeholder="게시판 내 검색">
-		<button class="btn btn-primary">검색</button>
-	</form>
-	</p>
-	<hr>
 
-	<h2>게시판 통합 상세 검색</h2>
-		
-	<p>
-	<form action='list' method='get'>
-    제목: <input type='text' class="col-sm-3" name='keywordTitle'
-			value='${keywordTitle != null ? keywordTitle : ""}'><br>
-		작성자: <input type='text' class="col-sm-3" name='keywordWriter'
-			value='${keywordWriter != null ? keywordWriter : ""}'><br>
-		태그: <input type='text' class="col-sm-3" name='keywordTag'
-			value='${keywordTag != null ? keywordTag : ""}'><br>
-		<button class="btn btn-primary">검색</button>
-	</form>
-	</p>
 	<jsp:include page="/footer.jsp"></jsp:include>
 	
 	</body>

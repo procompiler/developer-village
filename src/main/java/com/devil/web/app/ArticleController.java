@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,11 +35,11 @@ public class ArticleController {
   @Autowired
   CommentService commentService;
 
-  @GetMapping("/form")
+  @RequestMapping("/form")
   public ModelAndView form() throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("tags", tagService.list((String) null));
-    mv.setViewName("/app/article/form.jsp");
+    mv.setViewName("/appJsp/article/form.jsp");
 
     return mv;
   }
@@ -63,17 +61,14 @@ public class ArticleController {
     return "redirect:list?categoryNo=" + article.getCategoryNo();
   }
 
-  @GetMapping("list")
-  public void list(
-      String keyword,
-      String keywordTitle,
-      String keywordWriter,
-      String keywordTag,
-      Integer tagNo,
-      Model model) throws Exception {
+  @RequestMapping("list")
+  public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
+      String keywordTag, Integer tagNo) throws Exception {
+
+    ModelAndView mv = new ModelAndView();
 
     if (keyword != null) {
-      model.addAttribute("articles", articleService.list(keyword));
+      mv.addObject("articles", articleService.list(keyword));
 
     } else if (keywordTitle != null) {
       HashMap<String, Object> keywordMap = new HashMap<>();
@@ -81,15 +76,17 @@ public class ArticleController {
       keywordMap.put("writer", keywordWriter);
       keywordMap.put("tag", keywordTag);
 
-      model.addAttribute("articles", articleService.list(keywordMap));
+      mv.addObject("articles", articleService.list(keywordMap));
 
     } else if (tagNo != null) {
-      model.addAttribute("tag", tagService.get(tagNo));
-      model.addAttribute("articles", articleService.listByTagNo(tagNo));
+      mv.addObject("tag", tagService.get(tagNo));
+      mv.addObject("articles", articleService.listByTagNo(tagNo));
     } else {
-      model.addAttribute("articles", articleService.list());
+      mv.addObject("articles", articleService.list());
     }
 
+    mv.setViewName("/appJsp/article/list.jsp");
+    return mv;
   }
 
   @RequestMapping("/writtenList")
