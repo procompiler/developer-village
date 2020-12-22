@@ -7,6 +7,7 @@
 	<resultMap type="block" 	  id="BlockMap">
 		<id column="blno"		      property="no" />
 		<result column="cdt"	    property="permittedDate" />
+		<result column="edt"      property="blockTerminationDate" />
 		<result column="dates"	  property="blockedDates"/>
 		<result column="bl_rsn"	  property="blockedReason" />
 		<result column="unbl_rsn" property="unBlockedReason" />
@@ -19,9 +20,10 @@
 	</resultMap>
 	
 	<sql id="sql1">
-	   select
+	 select
      b.blno,
      b.cdt,
+     adddate(b.cdt, interval b.dates day) edt,
      b.dates,
      b.bl_rsn,
      b.unbl_rsn,
@@ -31,6 +33,13 @@
    from
      block b
      inner join user u on b.uno=u.uno
+<!--      
+     update user set
+       blocked = 0
+     where 
+      uno not in (select uno from ... where b.uno = uno)
+-->
+      
 	</sql>
 	
 	<insert id="insertArticleReport" parameterType="block">
