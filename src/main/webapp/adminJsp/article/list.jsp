@@ -27,7 +27,7 @@
   </c:if>
 
 	<form action='${contextPath}?' method='get'>
-		<input type='text' class="col-sm-3" name='keyword' value=''
+		<input type='text' class="col-sm-3" name='keyword' value='${param.keyword}'
 			placeholder="게시판 내 검색">
 		<button class="btn btn-primary">검색</button>
 	</form>
