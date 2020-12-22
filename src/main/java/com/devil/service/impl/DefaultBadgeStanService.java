@@ -1,10 +1,11 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.BadgeStanDao;
 import com.devil.domain.BadgeStan;
 import com.devil.domain.User;
+import com.devil.service.BadgeStanService;
 
 @Service
 public class DefaultBadgeStanService implements BadgeStanService {
