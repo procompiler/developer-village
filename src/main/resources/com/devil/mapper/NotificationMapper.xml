@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devil.dao.UserDao">
+
+  <resultMap type="notification" id="NotificationMap">
+    <id column="nno"       property="no"/>
+    <result column="uno"       property="userNo" />
+    <result column="cdt"   property="createdDate" />
+    <result column="content" property="content"/>
+    <result column="type"    property="type"/>
+    <result column="url"    property="url"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="notification">
+    insert into noti(uno, content, type, url)
+    values(#{userNo}, #{content}, #{type}, #{url})
+  </insert>
+
+  <select id="findAll" resultMap="NotificationMap" parameterType="User">
+    select
+      nno,
+      uno, 
+      cdt,
+      content,
+      type,
+      url
+    from noti
+    where uno={no}
+  </select>
+</mapper>
