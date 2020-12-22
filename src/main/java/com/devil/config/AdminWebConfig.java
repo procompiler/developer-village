@@ -23,7 +23,7 @@ public class AdminWebConfig implements WebMvcConfigurer {
 
   @Bean
   public ViewResolver viewResolver() {
-    return new InternalResourceViewResolver("/WEB-INF/jsp/admin/", ".jsp");
+    return new InternalResourceViewResolver("/WEB-INF/adminJsp/", ".jsp");
   }
 
   @Bean
