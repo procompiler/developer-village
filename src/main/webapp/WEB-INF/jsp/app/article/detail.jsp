@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>게시글 조회</title>
-  <jsp:include page="/header.jsp"></jsp:include>
+  <jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
   <h1>
