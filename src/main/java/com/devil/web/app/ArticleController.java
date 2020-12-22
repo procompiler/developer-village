@@ -1,6 +1,5 @@
 package com.devil.web.app;
 
-import java.beans.PropertyEditorSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,11 +37,11 @@ public class ArticleController {
   @Autowired
   CommentService commentService;
 
-  @RequestMapping("/form")
+  @GetMapping("/form")
   public ModelAndView form() throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("tags", tagService.list((String) null));
-    mv.setViewName("/appJsp/article/form.jsp");
+    mv.setViewName("/app/article/form.jsp");
 
     return mv;
   }
@@ -64,14 +63,17 @@ public class ArticleController {
     return "redirect:list?categoryNo=" + article.getCategoryNo();
   }
 
-  @RequestMapping("list")
-  public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag, Integer tagNo) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
+  @GetMapping("list")
+  public void list(
+      String keyword,
+      String keywordTitle,
+      String keywordWriter,
+      String keywordTag,
+      Integer tagNo,
+      Model model) throws Exception {
 
     if (keyword != null) {
-      mv.addObject("articles", articleService.list(keyword));
+      model.addAttribute("articles", articleService.list(keyword));
 
     } else if (keywordTitle != null) {
       HashMap<String, Object> keywordMap = new HashMap<>();
@@ -79,17 +81,15 @@ public class ArticleController {
       keywordMap.put("writer", keywordWriter);
       keywordMap.put("tag", keywordTag);
 
-      mv.addObject("articles", articleService.list(keywordMap));
+      model.addAttribute("articles", articleService.list(keywordMap));
 
     } else if (tagNo != null) {
-      mv.addObject("tag", tagService.get(tagNo));
-      mv.addObject("articles", articleService.listByTagNo(tagNo));
+      model.addAttribute("tag", tagService.get(tagNo));
+      model.addAttribute("articles", articleService.listByTagNo(tagNo));
     } else {
-      mv.addObject("articles", articleService.list());
+      model.addAttribute("articles", articleService.list());
     }
 
-    mv.setViewName("/appJsp/article/list.jsp");
-    return mv;
   }
 
   @RequestMapping("/writtenList")
@@ -186,30 +186,6 @@ public class ArticleController {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
     return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
-  }
-
-  @InitBinder
-  public void initBinder(WebDataBinder binder) {
-    // String ===> Date 프로퍼티 에디터 준비
-    DatePropertyEditor propEditor = new DatePropertyEditor();
-
-    // WebDataBinder에 프로퍼티 에디터 등록하기
-    binder.registerCustomEditor(
-        java.util.Date.class, // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
-        propEditor // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-        );
-  }
-
-  class DatePropertyEditor extends PropertyEditorSupport {
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-      try {
-        // 클라이언트가 텍스트로 보낸 날짜 값을 java.sql.Date 객체로 만들어 보관한다.
-        setValue(java.sql.Date.valueOf(text));
-      } catch (Exception e) {
-        throw new IllegalArgumentException(e);
-      }
-    }
   }
 
 }

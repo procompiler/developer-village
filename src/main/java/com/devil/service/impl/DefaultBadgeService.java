@@ -1,10 +1,11 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
 import com.devil.domain.User;
+import com.devil.service.BadgeService;
 
 @Service
 public class DefaultBadgeService implements BadgeService {
@@ -19,12 +20,12 @@ public class DefaultBadgeService implements BadgeService {
     return badgeDao.insert(badge);
   }
 
-  
+
   @Override
   public List<Badge> list(String keyword) throws Exception {
     return badgeDao.findAll(keyword);
   }
-   
+
   @Override
   public Badge get(int no) throws Exception {
     Badge badge = badgeDao.findByNo(no);

@@ -1,10 +1,11 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.TagDao;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
+import com.devil.service.TagService;
 
 @Service
 public class DefaultTagService implements TagService {

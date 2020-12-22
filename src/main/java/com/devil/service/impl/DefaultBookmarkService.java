@@ -1,9 +1,10 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import com.devil.dao.BookmarkDao;
 import com.devil.domain.Bookmark;
+import com.devil.service.BookmarkService;
 
 @Service
 public class DefaultBookmarkService implements BookmarkService {

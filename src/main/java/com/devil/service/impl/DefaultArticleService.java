@@ -1,4 +1,4 @@
-package com.devil.service;
+package com.devil.service.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
 import com.devil.domain.User;
+import com.devil.service.ArticleService;
 
 @Service
 public class DefaultArticleService implements ArticleService {
