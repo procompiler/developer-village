@@ -1,11 +1,9 @@
-@import
-  url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap')
-  ;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+  
 
 /* 레이아웃 */
 body {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Apple SD Gothic Neo", 'Roboto', sans-serif, "Nanum Gothic";
   line-height: 2em;
 }
 
