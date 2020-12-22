@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>게시글 수정</title>
-	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="../admin-header.jsp"></jsp:include>
 </head>
 <body>
 	<h1>
@@ -54,8 +54,6 @@
   
 		<button class="btn btn-primary">수정</button>
 	</form>
-
-	<jsp:include page="/footer.jsp"></jsp:include>
 
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -9,7 +9,7 @@
 <html>
 <head>
 <title>게시글 관리</title>
-<jsp:include page="/admin-header.jsp"></jsp:include>
+<jsp:include page="../admin-header.jsp"></jsp:include>
 </head>
 <body>
   <div class="mini-navi">
@@ -79,8 +79,6 @@
 		</tbody>
 	</table>
 
-
-	<jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>

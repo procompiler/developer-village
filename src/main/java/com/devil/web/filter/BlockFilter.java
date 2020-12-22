@@ -6,7 +6,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.devil.domain.Block;
@@ -16,7 +15,7 @@ import com.devil.service.BlockService;
 // 필터 역할:
 // - 차단된 유저일 경우 게시글/댓글 등록시 경고창을 띄운다.
 //
-@WebFilter(value={"/app/article/form", "/app/comment/add"})
+//@WebFilter(value={"/app/article/form", "/app/comment/add"})
 public class BlockFilter implements Filter {
 
   @Override
@@ -45,6 +44,7 @@ public class BlockFilter implements Filter {
     } catch (Exception e) {
       e.printStackTrace();
     }
+
   }
 
 }

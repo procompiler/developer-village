@@ -9,7 +9,7 @@
 <html>
 <head>
 <title>게시글목록</title>
-	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 
@@ -106,7 +106,7 @@
 		</tbody>
 	</table>
 
-	<jsp:include page="/footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 	
 	</body>
 	</html>

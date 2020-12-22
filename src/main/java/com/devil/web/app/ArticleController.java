@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import com.devil.domain.Article;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
@@ -24,6 +23,7 @@ import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/article")
+@SessionAttributes("loginUser")
 public class ArticleController {
 
   @Autowired
@@ -37,20 +37,19 @@ public class ArticleController {
   @Autowired
   CommentService commentService;
 
-  @RequestMapping("/form")
-  public ModelAndView form() throws Exception {
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("tags", tagService.list((String) null));
-    mv.setViewName("/appJsp/article/form.jsp");
-
-    return mv;
+  @GetMapping("form")
+  public void form(Model model) throws Exception {
+    model.addAttribute("tags", tagService.list((String) null));
   }
 
-  @RequestMapping("/add")
-  public String add(Article article, int[] tagNo, HttpSession session) throws Exception {
+  @PostMapping("add")
+  public String add(Article article,
+      int[] tagNo,
+      @ModelAttribute("loginUser") User loginUser) throws Exception {
 
-    User loginUser = (User) session.getAttribute("loginUser");
     article.setWriter(loginUser);
+    System.out.println("000111"+loginUser.getName());
+    System.out.println("000111"+loginUser.getNo());
 
     List<Tag> tags = new ArrayList<>();
     if (tagNo != null) {
@@ -87,78 +86,60 @@ public class ArticleController {
     }
   }
 
-  @RequestMapping("/writtenList")
-  public ModelAndView list(User user) throws Exception {
+  @GetMapping("writtenList")
+  public void writtenList(User user, Model model) throws Exception {
 
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", user.getNo());
 
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("user", userService.get(params));
-    mv.addObject("articleList", articleService.list(user));
-    mv.setViewName("/appJsp/article/writtenList.jsp");
-    return mv;
+    model.addAttribute("user", userService.get(params));
+    model.addAttribute("articleList", articleService.list(user));
   }
 
-  @RequestMapping("/feed")
-  public ModelAndView list(HttpSession session) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("articleList", articleService.feedList((User)session.getAttribute("loginUser")));
-    mv.setViewName("/appJsp/article/feed.jsp");
-    return mv;
+  @GetMapping("feed")
+  public void feed(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
+    model.addAttribute("articleList", articleService.feedList(loginUser));
   }
 
-  @RequestMapping("/detail")
-  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
+  @GetMapping("detail")
+  public void detail(int no, @ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
       throw new Exception("해당 게시글이 없습니다.");
     }
 
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("article", article);
-    mv.addObject("tags", article.getTags());
-    mv.addObject("comments", commentService.getByArticleNo(no));
+    model.addAttribute("article", article);
+    model.addAttribute("tags", article.getTags());
+    model.addAttribute("comments", commentService.getByArticleNo(no));
 
     Map<String, Object> map = new HashMap<>();
-    map.put("userNo", ((User) session.getAttribute("loginUser")).getNo());
+    map.put("userNo", loginUser.getNo());
     map.put("articleNo", no);
     if (bookmarkService.get(map) != null) {
-      request.setAttribute("bookmarked", true);
+      model.addAttribute("bookmarked", true);
     } else {
-      request.setAttribute("bookmarked", false);
+      model.addAttribute("bookmarked", false);
     }
-
-    mv.setViewName("/appJsp/article/detail.jsp");
-    return mv;
   }
 
-  @RequestMapping(value="/update", method=RequestMethod.GET)
-  public ModelAndView updateForm(int no, HttpSession session) throws Exception {
+  @GetMapping("/update")
+  public void updateForm(int no, @ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
 
-    User loginUser = (User) session.getAttribute("loginUser");
     Article article = articleService.get(no);
 
-    System.out.println(loginUser.getAuth());
-    System.out.println(article.getWriter().getAuth());
-
-    ModelAndView mv = new ModelAndView();
-
-    if (loginUser.getNo() == article.getWriter().getNo()
-        && loginUser.getEmail().equalsIgnoreCase(article.getWriter().getEmail())) {
-      mv.addObject("article", articleService.get(no));
-      mv.addObject("tags", tagService.list((String) null));
-      mv.setViewName("/appJsp/article/update.jsp");
+    // 자신이 작성한 글이 아니면 글을 수정하지 못하도록 조건문을 걸었음
+    // 이후 interceptor로 구현해야 할 듯...!
+    if (loginUser.getEmail().equalsIgnoreCase(article.getWriter().getEmail())) {
+      model.addAttribute("article", articleService.get(no));
+      model.addAttribute("tags", tagService.list((String) null));
     } else if (loginUser != article.getWriter()) {
-      // 게시글 수정 권한이 없다는 알럿 띄우기
-      mv.setViewName("redirect:detail?no=" + article.getNo());
+      // 추후에 할 일 : 게시글 수정 권한이 없다는 알럿 띄우고 현재 페이지에 머물도록 수정하기
+      throw new Exception("게시글 수정 권한이 없습니다.");
     }
-    return mv;
   }
 
-  @RequestMapping(value="/update", method=RequestMethod.POST)
+  @PostMapping("/update")
   public String update(Article article, int[] tagNo) throws Exception {
 
     List<Tag> tags = new ArrayList<>();
@@ -175,7 +156,7 @@ public class ArticleController {
     return "redirect:detail?no=" + article.getNo();
   }
 
-  @RequestMapping("/delete")
+  @GetMapping("/delete")
   public String delete(int no) throws Exception {
     if (articleService.delete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");

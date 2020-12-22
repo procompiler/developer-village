@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>게시글 관리</title>
-    <jsp:include page="/admin-header.jsp"></jsp:include>
+    <jsp:include page="../admin-header.jsp"></jsp:include>
 </head>
 <body>
   <h1>
@@ -69,7 +69,6 @@
       </c:otherwise>
     </c:choose>
  <br>
-  <jsp:include page="/appJsp/comment/list.jsp"></jsp:include>
-  <jsp:include page="/footer.jsp"></jsp:include>
+  <jsp:include page="../../appJsp/comment/list.jsp"></jsp:include>
 </body>
 </html>
