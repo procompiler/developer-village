@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>댓글 목록</title>
-</head>
-<body>
-	<br><h2>Comments</h2>
-
+	<p><h2>Comments</h2></p>
+  
 	<c:forEach items="${comments}" var="comment">
 		<c:if test="${fn:length(comments) != 0}">
 			<c:if test="${comment.step == 0 && comment.motherNo == 0}">
@@ -25,7 +18,7 @@
 					<input type='hidden' name='step' value='${comment.step}'> 
 					
 					<img src='../../upload/user/${comment.writer.photo}_40x40.jpg'
-						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'>
+						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'><br>
 					<a href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
 					<c:if test="${comment.state == 1}"><textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea></c:if>
 					<c:if test="${comment.state == 0}">삭제된 댓글 입니다.</c:if>
@@ -80,12 +73,25 @@
 	</c:forEach>
 
 	<form method='post' action='../comment/add'>
-		<input type='hidden' name="momno" value='0'><br> <input
-			type='hidden' name="arno" value='${param.no}'><br> <input
-			type='hidden' name="step" value='0'><br> <input
-			type='text' name='content'><br>
-		<button class='btn btn-primary'>댓글쓰기</button>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">${loginUser.nickname}</label>
+		  <input type='hidden' name="momno" value='0'>
+		  <input type='hidden' name="arno" value='${param.no}'>
+		  <input type='hidden' name="step" value='0'><br>
+		  <input type='text' class="form-control" id="exampleFormControlInput1" name='content' height="100">
+		  <button class='btn btn-primary'>댓글쓰기</button>
+    </div>
 	</form>
+	
+	<form method='post' action='../comment/add'>
+  <div class="input-group">
+  <span class="input-group-text" style="background-color: #37393E">  <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
+               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'> ${loginUser.nickname}</span>
+  <textarea class="form-control" aria-label="With textarea" name='content' placeholder='댓글을 남겨보세요' cols="20px"></textarea>
+  </div>
+  <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
+</form>
+
+
+	
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
