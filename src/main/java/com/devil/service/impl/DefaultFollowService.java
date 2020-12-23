@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.devil.dao.FollowDao;
 import com.devil.dao.NotificationDao;
 import com.devil.dao.UserDao;
-import com.devil.domain.Article;
 import com.devil.domain.Follow;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
@@ -42,12 +41,8 @@ public class DefaultFollowService implements FollowService {
   @Override
   public int addUser(Follow follow) throws Exception {
     int count = followDao.insertUser(follow);
-
-    /*
-    // 알림 만들기
-    getNotiInfo(follow)
-    notificationDao.insert(makeNoti());
-    */
+    // 알림 insert
+    notificationDao.insert(makeNoti(getNotiInfo(follow), follow.getFolloweeNo()));
     return count;
   }
 
@@ -61,7 +56,7 @@ public class DefaultFollowService implements FollowService {
     return followDao.findByUserUser(map);
   }
 
-  /*
+  // 알림 정보 가져오기
   public User getNotiInfo(Follow follow) throws Exception {
     Map<String, Object> params = new HashMap<>();
     params.put("type", "app");
@@ -69,21 +64,22 @@ public class DefaultFollowService implements FollowService {
     return userDao.findByNo(params);
   }
   
-  public Notification getNoti(User user, int ) {
-    Notification noti = new Notification();
-    noti.setContent(makeNotiContent(user));
-    noti.setUrl(makeNotiUrl(user));
-    noti.setType(1);
-    noti.setUserNo();
-    return noti;    
+  // 알림 만들기
+  public Notification makeNoti(User user, int userNo) {
+    return new Notification()
+        .setUserNo(userNo)
+        .setContent(makeNotiContent(user))
+        .setUrl(makeNotiUrl(user))
+        .setType(1);
   }
 
+  // 알림 컨텐츠 만들기
   public String makeNotiContent(User user) {
-    return user.getNickname() + "님께서 팔로우하셨습니다!";
+    return user.getNickname() + "님께서 팔로우하셨습니다.";
   }
 
+  // 알림 주소 만들기
   public String makeNotiUrl(User user) {
     return "/user/detail?no=" + user.getNo();
   }
-  */
 }

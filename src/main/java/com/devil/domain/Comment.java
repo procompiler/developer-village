@@ -17,8 +17,6 @@ public class Comment {
   private int articleNo;
   private String articleTitle;
 
-
-
   public int getMotherNo() {
     return motherNo;
   }

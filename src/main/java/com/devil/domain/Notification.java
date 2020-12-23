@@ -13,37 +13,43 @@ public class Notification {
   public int getNo() {
     return no;
   }
-  public void setNo(int no) {
+  public Notification setNo(int no) {
     this.no = no;
+    return this;
   }
   public int getUserNo() {
     return userNo;
   }
-  public void setUserNo(int userNo) {
+  public Notification setUserNo(int userNo) {
     this.userNo = userNo;
+    return this;
   }
   public Date getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(Date createdDate) {
+  public Notification setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+    return this;
   }
   public String getContent() {
     return content;
   }
-  public void setContent(String content) {
+  public Notification setContent(String content) {
     this.content = content;
+    return this;
   }
   public int getType() {
     return type;
   }
-  public void setType(int type) {
+  public Notification setType(int type) {
     this.type = type;
+    return this;
   }
   public String getUrl() {
     return url;
   }
-  public void setUrl(String url) {
+  public Notification setUrl(String url) {
     this.url = url;
+    return this;
   }
 }

@@ -5,6 +5,4 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../header.jsp"></jsp:include>
 <jsp:include page="info.jsp"></jsp:include>
-<jsp:include page="../footer.jsp"></jsp:include>
