@@ -9,6 +9,7 @@ public class Notification {
   String content; 
   int type; //1. 게시글 2. 댓글  3. 팔로워  4. 뱃지
   String url;
+  String photo;
   
   public int getNo() {
     return no;
@@ -50,6 +51,13 @@ public class Notification {
   }
   public Notification setUrl(String url) {
     this.url = url;
+    return this;
+  }
+  public String getPhoto() {
+    return photo;
+  }
+  public Notification setPhoto(String photo) {
+    this.photo = photo;
     return this;
   }
 }

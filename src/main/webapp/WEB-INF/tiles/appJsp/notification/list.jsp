@@ -6,30 +6,28 @@
 
 <jsp:include page="../user/info.jsp"></jsp:include>
 <h2>알림</h2>
-<div class="d-grid gap-3"/>
+<div class="d-grid gap-3" />
 <c:forEach items="${notificationList}" var="n">
-  <div class="card">
-    <div class="row g-0">
-      <div class="col-sm-2">
-      </div>
-      <div class="col-sm-10">
-        <div class="card-body">
-          <p class="card-text">
-            <small class="text-muted"><fmt:formatDate
-                value="${a.createdDate}" pattern="yyyy.MM.dd" /></small></p>
-          </div>
-          <div class="position-absolute bottom-0 end-0 mx-3">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item"><i class="far fa-comment mr-2"></i></li>
-              <li class="list-inline-item">${a.commentCount}</li>
-              <li class="list-inline-item"><i class="fas fa-eye mr-2"></i></li>
-              <li class="list-inline-item">${a.viewCount}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<a href="../${n.url}">
+		<div class="card">
+			<div class="row g-0">
+				<div class="col-sm-2">
+					<div class="text-center mr-2 mt-4">
+						<img class="card-img-top rounded-circle" alt='[${n.photo}]'
+							src='../../upload/user/${n.photo}_60x60.jpg' />
+					</div>
+				</div>
+				<div class="col-sm-10">
+					<div class="card-body">
+						<p class="card-text">${n.content}</p>
+						<p class="card-text">
+							<small class="text-muted"><fmt:formatDate
+									value="${n.createdDate}" pattern="yyyy.MM.dd" /></small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 </c:forEach>
 </div>
 </div>

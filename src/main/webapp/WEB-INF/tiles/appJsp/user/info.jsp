@@ -108,6 +108,7 @@
 						href="../follow/followerList">팔로워</a> <a
 						class="btn btn-outline-primary" href="../bookmark/list">북마크</a> <a
 						class="btn btn-outline-primary" href="../collect/list">뱃지</a>
+						<a class="btn btn-outline-primary" href="../notification/list">알림</a>
 				</div>
 				</div>
 				<div class="col-7">

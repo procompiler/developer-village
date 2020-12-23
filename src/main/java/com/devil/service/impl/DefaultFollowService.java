@@ -73,7 +73,8 @@ public class DefaultFollowService implements FollowService {
         .setUserNo(userNo)
         .setContent(makeNotiContent(user))
         .setUrl(makeNotiUrl(user))
-        .setType(1);
+        .setPhoto(user.getPhoto())
+        .setType(3);
   }
 
   // 알림 컨텐츠 만들기

@@ -1,6 +1,8 @@
 package com.devil.web.app;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.NotificationService;
+import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/notification")
@@ -23,9 +26,18 @@ public class NotificationController {
 
   @Autowired
   NotificationService notificationService;
+  @Autowired
+  UserService userService;
 
   @GetMapping("/list")
-  public void list(@ModelAttribute User loginUser, Model model) throws Exception {
+  public void list(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
+    System.out.println(loginUser.getNo());
+    System.out.println(loginUser.getName());
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", loginUser.getNo());
+
+    model.addAttribute("user", userService.get(params));
     List<Notification> notificationList = notificationService.list(loginUser);
     model.addAttribute("notificationList", notificationList);
   }

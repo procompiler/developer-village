@@ -12,22 +12,25 @@
     <result column="content" property="content"/>
     <result column="type"    property="type"/>
     <result column="url"    property="url"/>
+    <result column="photo"  property="photo"/>
   </resultMap>
 
   <insert id="insert" parameterType="notification">
-    insert into noti(uno, content, type, url)
-    values(#{userNo}, #{content}, #{type}, #{url})
+    insert into noti(uno, content, type, url, photo)
+    values(#{userNo}, #{content}, #{type}, #{url}, #{photo})
   </insert>
 
-  <select id="findAll" resultMap="NotificationMap" parameterType="User">
+  <select id="findByUser" resultMap="NotificationMap" parameterType="User">
     select
       nno,
       uno, 
       cdt,
       content,
       type,
-      url
+      url,
+      photo
     from noti
-    where uno={no}
+    where uno=#{no}
+    order by cdt desc
   </select>
 </mapper>
