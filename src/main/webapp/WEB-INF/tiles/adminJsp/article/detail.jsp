@@ -5,7 +5,6 @@
 <html>
 <head>
 <title>게시글 관리</title>
-    <jsp:include page="../admin-header.jsp"></jsp:include>
 </head>
 <body>
   <h1>
@@ -56,7 +55,6 @@
 </div>
 <br>
   <a class="btn btn-primary" href='<c:url value='list'/>'>목록</a>
-  <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
   
       <c:choose>
       <c:when test="${article.state == 1}">
@@ -69,6 +67,6 @@
       </c:otherwise>
     </c:choose>
  <br>
-  <jsp:include page="../../appJsp/comment/list.jsp"></jsp:include>
+  <jsp:include page="../comment/list.jsp"></jsp:include>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DEVIL</title>
+<title>DEVIL ADMIN</title>
 <link rel="stylesheet"
 	href="${appRoot}/node_modules/@fortawesome/fontawesome-free/css/all.css" />
 <link rel="stylesheet" type="text/css" href='${appRoot}/custom.css'>

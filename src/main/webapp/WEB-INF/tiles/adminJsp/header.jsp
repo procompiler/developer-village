@@ -1,4 +1,4 @@
-adminJsp<%@page import="com.devil.domain.User"%>
+<%@page import="com.devil.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,7 +23,7 @@ adminJsp<%@page import="com.devil.domain.User"%>
     <p><i class="fas fa-cookie-bite"></i></p>뱃지 관리</a></li>
     <li><a class="btn" href="${appRoot}/admin/tag/list">
     <p><i class="fas fa-tag"></i></p>태그 관리</a></li>
-    <li><a class="btn" href="${appRoot}/admin/article/form">
+    <li><a class="btn" href="${appRoot}/admin/article/list">
     <p><i class="fas fa-chart-pie"></i></p>통계</a></li>
   </ul>  
   </div>

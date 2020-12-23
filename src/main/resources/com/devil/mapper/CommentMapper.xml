@@ -69,9 +69,16 @@
       cno=#{no} and arno=#{articleNo}
   </update>
   
-  <update id="inactive" parameterType="int">
+  <update id="inactivate" parameterType="int">
     update comment set
       state = 0,
+      ddt=now()
+    where cno=#{no}
+  </update>
+  
+  <update id="activate" parameterType="int">
+    update comment set
+      state = 1,
       ddt=now()
     where cno=#{no}
   </update>
@@ -97,10 +104,5 @@
     <include refid="sql1"/>
     where c.uno=#{no}
   </select>
-  
-<!--
-  <select id="findAll" resultMap="CommentMap"	parameterType="string">
-  </select>
-  -->
-  
+    
 </mapper>
