@@ -41,5 +41,4 @@
 		<button type="submit" class="btn btn-primary">게시글 작성</button>
 		<button type='button' class='btn btn-danger'
 			onclick="location.href='list'">취소</button>
-
 	</form>
