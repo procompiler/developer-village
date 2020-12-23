@@ -15,14 +15,9 @@ public class DefaultNotificationService implements NotificationService {
     this.notificationDao = notificationDao;
   }
 
-@Override
-public List<Notification> list(User user) throws Exception {
-  // TODO Auto-generated method stub
-  return null;
-}
-@Override
-public int add(Notification notification) throws Exception {
-  // TODO Auto-generated method stub
-  return 0;
-}
+  @Override
+  public List<Notification> list(User user) throws Exception {
+    return notificationDao.findByUser(user);
+  }
+
 }

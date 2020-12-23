@@ -8,8 +8,7 @@
 </head>
 
 <body>
- <jsp:include page="WEB-INF/zappJsp/header.jsp"></jsp:include>
- <jsp:include page="WEB-INF/appJsp/footer.jsp"></jsp:include>
+ <jsp:forward page="/app/main.do"/>
 </body>
 
 </html>

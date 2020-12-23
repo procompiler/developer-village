@@ -9,24 +9,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import com.devil.domain.Notification;
+import com.devil.domain.Tag;
 import com.devil.domain.User;
-import com.devil.service.NotificationService;
+import com.devil.service.TagService;
 
 @Controller
-@RequestMapping("/notification")
+@RequestMapping
 @SessionAttributes("loginUser")
-public class NotificationController {
+public class MainController {
 
   @Autowired
   ServletContext servletContext;
 
   @Autowired
-  NotificationService notificationService;
+  TagService tagService;
 
-  @GetMapping("/list")
-  public void list(@ModelAttribute User loginUser, Model model) throws Exception {
-    List<Notification> notificationList = notificationService.list(loginUser);
-    model.addAttribute("notificationList", notificationList);
+  @GetMapping("main.do")
+  public String initMain(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
+    
+    List<Tag> tagList = tagService.list((String) null);
+    model.addAttribute("tagList", tagList);
+    return "main/main";
   }
 }
