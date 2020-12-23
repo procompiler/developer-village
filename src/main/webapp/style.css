@@ -191,7 +191,7 @@ table {
   border-collapse: separate;
   border-style: hidden;
   margin: 30px 0px auto 70px;
-  border-spacing: 0px 10px;
+  border-spacing: 0px 6px;
   width: 1200px;
   overflow: hidden;
 }
@@ -199,7 +199,7 @@ table {
 
 
 tbody tr {
-	height: 60px;
+	height: 70px;
   background-color: #2E3034;
 }
 
@@ -219,7 +219,7 @@ th, td {
 #tags {
   list-style: none;
   padding: unset;
-  margin: 5px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 #tags li {
@@ -338,4 +338,14 @@ div.card {
 }
 .user-info .urls .btn {
   margin: 0px;
+}
+
+/* 로그인 페이지 */
+#login {
+	text-align: center;
+	border-radius: 10px;
+	background-color: #232326;
+	padding: 60px;
+	margin: 0px auto;
+  width: 850px;
 }

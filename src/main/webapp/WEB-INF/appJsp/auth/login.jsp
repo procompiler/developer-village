@@ -9,26 +9,25 @@
 
 </head>
 <body>
-	<h1>로그인</h1>
+<div id="login">
 	<form action='login' method='post'>
-	<div class="card-body">
-	 <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 77px; text-align: center;"/>
-		<div class="mb-3 row">
-        <label for="email">Email</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="email" name='email'>${user.email}</textarea>
-        </div>
+	 <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 120px;"/>
+		<p style="margin-top: 30px; margin-bottom: 1rem; font-size: 28px; font-weight: bold;">
+		로그인을 해주세요!</p>
+		<p>데빌은 국내최대 개발자 커뮤니티입니다.</p>
+		  <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" name='email' placeholder="name@example.com">${user.email}
+          <label for="floatingInput">Email address</label>
       </div>
-    <div class="mb-3 row">
-      <label for="password">Password</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="password" name='password'>${user.password}</textarea>
-      </div>
+      
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" name='password' placeholder="Password">${user.password}
+        <label for="floatingPassword">Password</label>
     </div>
 			<input type='checkbox' name='saveEmail'> 이메일 저장<br>
 		<button>로그인</button>
-		</div>
 	</form>
+	</div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>
