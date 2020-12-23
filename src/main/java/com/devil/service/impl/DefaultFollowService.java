@@ -3,6 +3,8 @@ package com.devil.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.FollowDao;
 import com.devil.dao.NotificationDao;
 import com.devil.dao.UserDao;
@@ -38,6 +40,7 @@ public class DefaultFollowService implements FollowService {
     return followDao.findByUserTag(map);
   }
 
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   @Override
   public int addUser(Follow follow) throws Exception {
     int count = followDao.insertUser(follow);
@@ -60,7 +63,7 @@ public class DefaultFollowService implements FollowService {
   public User getNotiInfo(Follow follow) throws Exception {
     Map<String, Object> params = new HashMap<>();
     params.put("type", "app");
-    params.put("no", follow.getUserNo());
+    params.put("userNo", follow.getUserNo());
     return userDao.findByNo(params);
   }
   
@@ -75,11 +78,11 @@ public class DefaultFollowService implements FollowService {
 
   // 알림 컨텐츠 만들기
   public String makeNotiContent(User user) {
-    return user.getNickname() + "님께서 팔로우하셨습니다.";
+    return user.getNickname() + "님이 팔로우했습니다.";
   }
 
   // 알림 주소 만들기
   public String makeNotiUrl(User user) {
-    return "/user/detail?no=" + user.getNo();
+    return "/user/" + user.getNo();
   }
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.devil.domain.Follow;
@@ -28,7 +27,7 @@ public class FollowController{
   @Autowired
   UserService userService;
   
-  @PostMapping("addTag")
+  @GetMapping("addTag")
   public String addTag(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {
     follow.setUserNo(loginUser.getNo());
@@ -52,7 +51,7 @@ public class FollowController{
     model.addAttribute("tagList", tagService.listByFollower(loginUser));
   }
 
-  @PostMapping("addUser")
+  @GetMapping("addUser")
   public String addUser(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {
     follow.setUserNo(loginUser.getNo());

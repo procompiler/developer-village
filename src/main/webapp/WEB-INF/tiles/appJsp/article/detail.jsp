@@ -37,7 +37,7 @@
       <p class="card-text">
         <img src='../../upload/user/${article.writer.photo}_40x40.jpg'
           style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>
-          <a href='../user/detail?no=${article.writer.no}'>${article.writer.nickname}</a></p>
+          <a href='../user/${article.writer.no}'>${article.writer.nickname}</a></p>
       <p class="card-text text-end">조회수: ${article.viewCount}</p>
       <hr>
       <p class="card-text">
