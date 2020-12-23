@@ -1,19 +1,10 @@
 <%@page import="com.devil.domain.Badge"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>뱃지 조회</title>
-<jsp:include page="../header.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href='../style.css'>
-<link rel="stylesheet"
-  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-  crossorigin="anonymous" />
-</head>
-<body>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+    
 <h1>뱃지 조회</h1>
 
 <form action='updatePhoto' method='post' enctype='multipart/form-data'>

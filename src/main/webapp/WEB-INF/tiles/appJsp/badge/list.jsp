@@ -4,12 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>뱃지 목록</title>
-  <jsp:include page="/header.jsp"></jsp:include>
   <h1>뱃지 목록</h1>
 	<a class='btn btn-primary' href='form'>뱃지 추가</a>
 	
@@ -45,6 +39,5 @@
   </form>
   </p>
   
-  <jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>
