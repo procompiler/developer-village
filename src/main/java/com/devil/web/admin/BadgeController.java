@@ -44,7 +44,7 @@ public class BadgeController {
     generatePhotoThumbnail(saveFilePath);
     
     badgeService.add(badge);
-    return "redirect:.";
+    return "redirect:list";
   }
 
 
@@ -54,11 +54,11 @@ public class BadgeController {
     if (badgeService.delete(no) == 0) {
       throw new Exception("해당 번호의 뱃지 없습니다.");
     }
-    return "redirect:.";
+    return "redirect:list";
   }
 
-  @GetMapping("{no}")
-  public String deatil(@PathVariable int no,Model model) throws Exception {
+  @GetMapping("detail")
+  public String detail(int no,Model model) throws Exception {
     Badge badge = badgeService.get(no);
 
     if (badge == null) {
@@ -80,7 +80,7 @@ public class BadgeController {
   public String update(Badge badge) throws Exception {
 
     badgeService.update(badge);
-    return "redirect:.";
+    return "redirect:list";
   }
 
   @RequestMapping("updatePhoto")
@@ -105,7 +105,7 @@ public class BadgeController {
     }
 
     badgeService.update(badge);
-    return "redirect:./" + badge.getNo();
+    return "redirect:list";
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
