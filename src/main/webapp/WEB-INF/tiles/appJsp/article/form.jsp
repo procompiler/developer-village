@@ -4,14 +4,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>게시글작성</title>
-	<jsp:include page="../header.jsp"></jsp:include>
-</head>
-<body>
 
 	<h1>게시글 작성</h1>
 	<br>
@@ -53,8 +45,3 @@
 			onclick="location.href='list'">취소</button>
 
 	</form>
-	
-	<jsp:include page="../footer.jsp"></jsp:include>
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

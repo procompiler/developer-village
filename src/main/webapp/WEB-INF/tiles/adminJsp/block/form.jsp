@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>차단하기</title>
-    <jsp:include page="/admin-header.jsp"></jsp:include>
 
-</head>
-<body>
   <a href='../admin/user/list' style='text-decoration: none;'>전체회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
   <a href='../block/list' style='text-decoration: none;'>활동정지회원</a>
@@ -26,7 +18,3 @@
 		<input type='hidden' name='reportNo' value='${report.no}'>
 		<button class="btn btn-primary">차단하기</button>
 	</form>
-	 <jsp:include page="/footer.jsp"></jsp:include>
-	 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

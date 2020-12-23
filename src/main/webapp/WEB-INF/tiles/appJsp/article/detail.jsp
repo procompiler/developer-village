@@ -64,5 +64,3 @@
         href="../bookmark/add?articleNo=${article.no}">북마크</a>
       </c:otherwise>
     </c:choose>
- <br>
-  <jsp:include page="../../appJsp/comment/list.jsp"></jsp:include>

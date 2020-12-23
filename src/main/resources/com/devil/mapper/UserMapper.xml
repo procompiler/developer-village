@@ -66,8 +66,8 @@
 	</sql>
 
 	<insert id="insert" parameterType="user">
-		insert into user(email,nick,name,pwd,log_type, photo, rnt_vsdt)
-		values(#{email}, #{nickname}, #{name}, password(#{password}), #{loginType}, #{photo}, now())
+		insert into user(email,nick,name,pwd, photo, rnt_vsdt)
+		values(#{email}, #{nickname}, #{name}, password(#{password}), #{photo}, now())
 	</insert>
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">

@@ -7,14 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원관리</title>
-	  <jsp:include page="../header.jsp"></jsp:include>
-</head>
-<body>
 	<div class="mini-navi">
 	<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
@@ -83,6 +75,3 @@
 		<%}%>
 		</tbody>
 		</table>
-		  <jsp:include page="../footer.jsp"></jsp:include>
- </body>
-</html>

@@ -12,6 +12,7 @@
   
   <definition name="*/*.admin" template="/WEB-INF/tiles/template/admin_template.jsp">
     <put-attribute name="header" value="/WEB-INF/tiles/adminJsp/header.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/tiles/adminJsp/footer.jsp" />
     <put-attribute name="body" value="/WEB-INF/tiles/adminJsp/{1}/{2}.jsp" />
   </definition>
   
