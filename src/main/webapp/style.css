@@ -279,7 +279,7 @@ th, td {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  vertical-align: auto;
+  margin-top: 10px;
 }
 
 /* 버튼 */

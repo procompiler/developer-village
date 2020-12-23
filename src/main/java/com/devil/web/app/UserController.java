@@ -36,8 +36,8 @@ public class UserController {
   public void form() throws Exception {
   }
 
-  @RequestMapping("add")
-  public String add(String email, String nickname, String name, String password, String loginType, MultipartFile photoFile)
+  @GetMapping("add")
+  public String add(String email, String nickname, String name, String password)
       throws Exception {
 
     User user = new User();
@@ -45,15 +45,6 @@ public class UserController {
     user.setNickname(nickname);
     user.setName(name);
     user.setPassword(password);
-    user.setLoginType(loginType);
-
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = servletContext.getRealPath("/upload/" + filename);
-
-    photoFile.transferTo(new File(saveFilePath));
-    user.setPhoto(filename);
-
-    generatePhotoThumbnail(saveFilePath);
 
     userService.add(user);
     return "redirect:.";
@@ -85,7 +76,7 @@ public class UserController {
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
     map.put("followeeNo", no);
-    
+
     if (followService.getUser(map) != null) {
       session.setAttribute("followed", true);
     } else {
@@ -108,16 +99,16 @@ public class UserController {
     if (user.getNo() != ((User)session.getAttribute("loginUser")).getNo()) {
       throw new Exception("잘못된 접근입니다.");
     }
-    
+
     if (userService.update(user) == 0) {
       throw new Exception("삭제된 회원입니다.");
     } else {
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
-    params.put("userNo", user.getNo());
-    session.setAttribute("loginUser", userService.get(params));
-    
-    return "redirect:./" + user.getNo();
+      Map<String, Object> params = new HashMap<String, Object>();
+      params.put("type", "app");
+      params.put("userNo", user.getNo());
+      session.setAttribute("loginUser", userService.get(params));
+
+      return "redirect:./" + user.getNo();
     }
   }
 
@@ -134,7 +125,7 @@ public class UserController {
     if (no != ((User)session.getAttribute("loginUser")).getNo()) {
       throw new Exception("잘못된 접근입니다.");
     }
-    
+
     User user = new User();
     user.setNo(no);
 
@@ -172,34 +163,34 @@ public class UserController {
           return name + "_40x40";
         }
       });
-      
-      Thumbnails.of(saveFilePath)//
-          .size(60, 60)//
-          .crop(Positions.CENTER).outputFormat("jpg")//
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_60x60";
-            }
-          });
 
       Thumbnails.of(saveFilePath)//
-          .size(100, 100)//
-          .crop(Positions.CENTER).outputFormat("jpg") //
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_100x100";
-            }
-          });
+      .size(60, 60)//
+      .crop(Positions.CENTER).outputFormat("jpg")//
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_60x60";
+        }
+      });
 
       Thumbnails.of(saveFilePath)//
-          .size(160, 160).outputFormat("jpg").crop(Positions.CENTER).toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_160x160";
-            }
-          });
+      .size(100, 100)//
+      .crop(Positions.CENTER).outputFormat("jpg") //
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_100x100";
+        }
+      });
+
+      Thumbnails.of(saveFilePath)//
+      .size(160, 160).outputFormat("jpg").crop(Positions.CENTER).toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_160x160";
+        }
+      });
     } catch (Exception e) {
       e.printStackTrace();
     }

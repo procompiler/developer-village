@@ -3,13 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>게시글 수정</title>
-	<jsp:include page="../header.jsp"></jsp:include>
-</head>
-<body>
+
 	<h1>
 		<c:choose>
 			<c:when test="${article.categoryNo == 1}">
@@ -54,9 +48,3 @@
   
 		<button class="btn btn-primary">수정</button>
 	</form>
-
-	<jsp:include page="../footer.jsp"></jsp:include>
-
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

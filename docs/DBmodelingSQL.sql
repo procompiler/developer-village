@@ -76,7 +76,7 @@ CREATE TABLE `user` (
   `pwd`      VARCHAR(255) NULL,     -- 암호
   `cdt`      DATE         NOT NULL DEFAULT now(), -- 가입일
   `rnt_vsdt` DATETIME     NULL,     -- 최종방문일
-  `log_type` VARCHAR(50)  NOT NULL, -- 로그인유형
+  `log_type` INTEGER      NOT NULL DEFAULT 1, -- 로그인유형
   `photo`    VARCHAR(255) NULL,     -- 사진
   `hp_url`   VARCHAR(255) NULL,     -- 개인홈피주소
   `gh_url`   VARCHAR(255) NULL,     -- 깃허브주소

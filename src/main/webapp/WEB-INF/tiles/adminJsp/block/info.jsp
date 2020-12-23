@@ -5,15 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 	
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>차단 알림</title>
-  <jsp:include page="/header.jsp"></jsp:include>
 
-</head>
-<body>
 	<h1>차단 알림</h1>
 
 <%
@@ -37,7 +29,3 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
   <p>차단 기한 : </p>
   <p><%=formatter.format(blockTermination.getTime())%>
   </p>
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>

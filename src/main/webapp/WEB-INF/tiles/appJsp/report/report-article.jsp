@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>신고하기</title>
-  <jsp:include page="/header.jsp"></jsp:include>
-</head>
-<body>
 <h1>게시글 신고하기</h1>
 
 <form action="reportArticle-send" method="get">
@@ -24,6 +16,3 @@
 </select><br>
 <button>신고하기</button>
 </form>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

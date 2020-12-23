@@ -7,15 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
   
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>활동정지회원</title>
-    <jsp:include page="/admin-header.jsp"></jsp:include>
-
-</head>
-<body>
   <div class="mini-navi">
   <a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
@@ -66,8 +57,3 @@ SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     %>
     </tbody>
   </table>
-  <jsp:include page="/footer.jsp"></jsp:include>
-     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  
-</body>
-</html>

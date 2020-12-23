@@ -10,7 +10,7 @@ public class User {
   private String password;
   private Date createdDate;
   private Date recentVisitedDate;
-  private String loginType;
+  private String loginType; // 1기본 2구글 3깃허브
   private String photo;
   private String homepageURL;
   private String githubURL;
@@ -25,7 +25,7 @@ public class User {
   private int followerCount;
   private int followingCount;
   private boolean followed;
-  
+
   public int getNo() {
     return no;
   }

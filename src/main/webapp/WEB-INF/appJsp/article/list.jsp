@@ -5,13 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>게시글목록</title>
-</head>
-<body>
-
   <h1 style="margin-left: 70px; font-weight: bold">
     <c:choose>
       <c:when test="${param.categoryNo == 1}">
@@ -107,7 +100,3 @@
 		</tbody>
 	</table>
 
-	<jsp:include page="../footer.jsp"></jsp:include>
-	
-	</body>
-	</html>
