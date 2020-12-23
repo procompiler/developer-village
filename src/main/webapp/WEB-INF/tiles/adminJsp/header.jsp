@@ -23,7 +23,7 @@
     <p><i class="fas fa-cookie-bite"></i></p>뱃지 관리</a></li>
     <li><a class="btn" href="${appRoot}/admin/tag/list">
     <p><i class="fas fa-tag"></i></p>태그 관리</a></li>
-    <li><a class="btn" href="${appRoot}/admin/article/form">
+    <li><a class="btn" href="${appRoot}/admin/article/list">
     <p><i class="fas fa-chart-pie"></i></p>통계</a></li>
   </ul>  
   </div>

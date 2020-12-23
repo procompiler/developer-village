@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="appRoot" value="${pageContext.servletContext.contextPath}" />
-</div>
 <footer>
 	<hr sytle="padding-top: 30px;">
 	<div

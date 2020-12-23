@@ -1,15 +1,15 @@
 package com.devil.web.admin;
 
 import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.Article;
-import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.BookmarkService;
 import com.devil.service.CommentService;
@@ -31,14 +31,12 @@ public class ArticleController {
   @Autowired
   CommentService commentService;
 
-  @RequestMapping("list")
-  public ModelAndView list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag, Integer tagNo) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
+  @GetMapping("list")
+  public void list(String keyword, String keywordTitle, String keywordWriter,
+      String keywordTag, Integer tagNo, Model model) throws Exception {
 
     if (keyword != null) {
-      mv.addObject("articles", articleService.list(keyword));
+      model.addAttribute("articles", articleService.list(keyword));
 
     } else if (keywordTitle != null) {
       HashMap<String, Object> keywordMap = new HashMap<>();
@@ -46,43 +44,28 @@ public class ArticleController {
       keywordMap.put("writer", keywordWriter);
       keywordMap.put("tag", keywordTag);
 
-      mv.addObject("articles", articleService.list(keywordMap));
+      model.addAttribute("articles", articleService.list(keywordMap));
 
     } else if (tagNo != null) {
-      mv.addObject("tag", tagService.get(tagNo));
-      mv.addObject("articles", articleService.listByTagNo(tagNo));
+      model.addAttribute("tag", tagService.get(tagNo));
+      model.addAttribute("articles", articleService.listByTagNo(tagNo));
     } else {
-      mv.addObject("articles", articleService.list());
+      model.addAttribute("articles", articleService.list());
     }
-
-    mv.setViewName("/adminJsp/article/list.jsp");
-    return mv;
   }
 
-
-  @RequestMapping("/detail")
-  public ModelAndView detail(int no, HttpSession session, HttpServletRequest request) throws Exception {
+  @GetMapping("/detail")
+  public void detail(int no, Model model, HttpSession session, HttpServletRequest request) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
       throw new Exception("해당 게시글이 없습니다.");
     }
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("article", article);
-    mv.addObject("tags", article.getTags());
-    mv.addObject("comments", commentService.getByArticleNo(no));
+    model.addAttribute("article", article);
+    model.addAttribute("tags", article.getTags());
+    model.addAttribute("comments", commentService.getByArticleNo(no));
 
-    Map<String, Object> map = new HashMap<>();
-    map.put("userNo", ((User) session.getAttribute("loginUser")).getNo());
-    map.put("articleNo", no);
-    if (bookmarkService.get(map) != null) {
-      request.setAttribute("bookmarked", true);
-    } else {
-      request.setAttribute("bookmarked", false);
-    }
-
-    mv.setViewName("/adminJsp/article/detail.jsp");
-    return mv;
   }
 
   @RequestMapping("/inactivate")

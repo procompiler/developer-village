@@ -41,7 +41,12 @@ public class DefaultCommentService implements CommentService {
 
   @Override
   public int delete(int no) throws Exception {
-    return commentDao.inactive(no);
+    return commentDao.inactivate(no);
+  }
+
+  @Override
+  public int undelete(int no) throws Exception {
+    return commentDao.activate(no);
   }
 
   @Override

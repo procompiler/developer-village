@@ -23,17 +23,19 @@
 					<input type='hidden' name='cno' value='${comment.no}'> 
 					<input type='hidden' name='arno' value='${comment.articleNo}'> 
 					<input type='hidden' name='step' value='${comment.step}'> 
+					
 					<img src='../../upload/user/${comment.writer.photo}_40x40.jpg'
 						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'>
 					<a href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
-					<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
+					<c:if test="${comment.state == 1}"><textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea></c:if>
+					<c:if test="${comment.state == 0}">삭제된 댓글 입니다.</c:if>
+					
 					<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
 					<button class="btn btn-primary">수정</button>
 					<a class='btn btn-danger' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
 					<a class="btn btn-danger"
                   href='../report/reportComment?no=${comment.no}'>신고</a>
 					
-					${comment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 				</form>
 
 				<c:forEach items="${comments}" var="childComment">
@@ -47,18 +49,19 @@
 							<input type='hidden' name='arno' value='${childComment.articleNo}'>
 							<input type='hidden' name='step' value='${childComment.step}'>
 							<span>&nbsp;&nbsp;┗━Re&nbsp;&nbsp;</span> 
-							<img src='../upload/user/${childComment.writer.photo}_40x40.jpg'
+							
+							<img src='../../upload/user/${childComment.writer.photo}_40x40.jpg'
 								   style='border-radius: 70px'
 								   alt='[${childComment.writer.photo}_40x40]'>
 							<a href='../user/detail?no=${childComment.writer.no}'>${childComment.writer.nickname}</a>
-							<textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea>
+							<c:if test="${childComment.state == 1}"><textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea></c:if>
+              <c:if test="${childComment.state == 0}">삭제된 댓글 입니다.</c:if>
 							<fmt:formatDate value="${childComment.createdDate}" pattern="yyyy.MM.dd" />
 							<button class="btn btn-primary">수정</button>
 							<a class='btn btn-danger' href='../comment/delete?no=${childComment.no}&articleNo=${childComment.articleNo}'>삭제</a>
           <a class="btn btn-danger"
                   href='../report/reportComment?no=${childComment.no}'>신고</a>
 							
-							${childComment.state == 1 ? "정상 댓글" :  "삭제된 댓글"}
 						</form>
 					</c:if>
 				</c:forEach>

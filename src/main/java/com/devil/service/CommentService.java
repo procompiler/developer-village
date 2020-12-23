@@ -10,6 +10,7 @@ public interface CommentService {
   //Comment get(int no) throws Exception;
   int update(Comment comment) throws Exception;
   int delete(int no) throws Exception;
+  int undelete(int no) throws Exception;
   List<Comment> getByArticleNo (int articleNo) throws Exception;
   List<Comment> listByWriter(User user) throws Exception;
   Comment get(int no) throws Exception;
