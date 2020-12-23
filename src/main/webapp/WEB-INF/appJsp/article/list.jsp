@@ -46,28 +46,30 @@
     <input type='text' id="article" name='keyword' value='' placeholder="게시판 내 검색">
   </form>
   
-	<a class="btn2 btn-primary" href="form">글쓰기</a>
+	<a class="btn btn-primary" href="form"
+	 style="position: relative; left: 1190px; top: 30px;">글쓰기</a>
+  
   
   <c:if test="${param.keyword != null}">
-  <span style="margin-left: 70px;">'${param.keyword}'로 검색한 결과입니다.</span>
+  '${param.keyword}'로 검색한 결과입니다.
   </c:if>
   
 	<table border='1'>
 		<thead>
 			<tr>
-				<th>번호</th>
+				<th style="border-radius: 6px 0px 0px 6px;">번호</th>
 				<th>제목</th>
 				<th>댓글수</th>
 				<th>작성자</th>
 				<th>등록일</th>
-				<th>조회수</th>
+				<th style="border-radius: 0px 6px 6px 0px;">조회수</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${articles}" var="article">
 				<c:if test="${param.categoryNo != 0 && article.categoryNo == param.categoryNo && article.state == 1}">
 					<tr>
-						<td>${article.no}</td>
+						<td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
 						<td id='title'>
 							<ul id='tags'>
 								<c:forEach items="${article.tags}" var="tag">
@@ -81,7 +83,7 @@
 						<td>${article.writer.nickname}</td>
 						<td><fmt:formatDate value="${article.createdDate}"
 								pattern="yyyy.MM.dd" /></td>
-						<td>${article.viewCount}</td>
+						<td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
 					</tr>
 				</c:if>
 				<c:if test="${param.categoryNo == null}">
