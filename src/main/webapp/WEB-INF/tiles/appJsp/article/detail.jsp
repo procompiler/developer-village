@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>게시글 조회</title>
-  <jsp:include page="../header.jsp"></jsp:include>
-</head>
-<body>
   <h1>
     <c:choose>
       <c:when test="${article.categoryNo == 1}">
@@ -24,7 +17,6 @@
       </c:otherwise>
     </c:choose>
   </h1>
-  
 <div>
   <input type='hidden' name='no' value='${article.no}'>
   <br>
@@ -74,6 +66,3 @@
     </c:choose>
  <br>
   <jsp:include page="../../appJsp/comment/list.jsp"></jsp:include>
-  <jsp:include page="../footer.jsp"></jsp:include>
-</body>
-</html>

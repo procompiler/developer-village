@@ -4,23 +4,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>마이페이지</title>
-<jsp:include page="../header.jsp"></jsp:include>
 <jsp:include page="../user/info.jsp"></jsp:include>
-</head>
-<body>
-<h2>피드</h2>
+<h2>작성글</h2>
 <div class="d-grid gap-3"/>
 <c:forEach items="${articleList}" var="a">
   <div class="card">
+    <a class="btn position-absolute top-0 end-0"
+      href='delete?articleNo=${a.no}'><i
+      class="fas fa-minus-circle text-danger fa-lg shadow"></i></a>
     <div class="row g-0">
       <div class="col-sm-2">
         <div class="text-center mr-2 mt-4">
           <a href='../user/detail?no=${a.writer.no}'><img
-            class="card-img-top rounded-circle" 
+            class="card-img-top rounded-circle"
             src='../../upload/user/${a.writer.photo}_60x60.jpg'
             alt='[${a.writer.nickname}]' /></a><br> <small>${a.writer.nickname}</small>
         </div>
@@ -59,6 +55,3 @@
 </div>
 <div class="col-3"></div>
 </div>
-<jsp:include page="../footer.jsp"></jsp:include>
-</body>
-</html>

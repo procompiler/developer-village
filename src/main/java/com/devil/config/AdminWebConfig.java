@@ -10,7 +10,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.util.UrlPathHelper;
 import com.devil.service.UserService;
 
@@ -20,10 +22,24 @@ public class AdminWebConfig implements WebMvcConfigurer {
 
   @Autowired
   UserService userService;
+  @Bean
+  public ViewResolver tilesViewResolver() {
+    UrlBasedViewResolver vr = new UrlBasedViewResolver();
+
+    vr.setSuffix(".admin");
+
+    vr.setViewClass(TilesView.class);
+
+    vr.setOrder(1);
+
+    return vr;
+  }
 
   @Bean
-  public ViewResolver viewResolver() {
-    return new InternalResourceViewResolver("/WEB-INF/adminJsp/", ".jsp");
+  public TilesConfigurer tilesConfigurer() {
+    TilesConfigurer configurer = new TilesConfigurer();
+    configurer.setDefinitions("/WEB-INF/tiles/defs/tiles.xml");
+    return configurer;
   }
 
   @Bean
