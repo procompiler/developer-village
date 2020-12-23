@@ -6,11 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>마이페이지</title>
-<jsp:include page="../header.jsp"></jsp:include>
 <jsp:include page="../user/info.jsp"></jsp:include>
 <h2>북마크리스트</h2>
 <div class="d-grid gap-3"/>
@@ -62,4 +57,3 @@
 </div>
 <div class="col-3"></div>
 </div>
-<jsp:include page="../footer.jsp"></jsp:include>

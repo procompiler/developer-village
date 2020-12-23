@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+  <definition name="*/*.app" template="/WEB-INF/tiles/template/app_template.jsp">
+    <put-attribute name="header" value="/WEB-INF/tiles/appJsp/header.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/tiles/appJsp/footer.jsp" />
+    <put-attribute name="body" value="/WEB-INF/tiles/appJsp/{1}/{2}.jsp" />
+  </definition>
+  
+  <definition name="*/*.admin" template="/WEB-INF/tiles/template/admin_template.jsp">
+    <put-attribute name="header" value="/WEB-INF/tiles/adminJsp/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/tiles/adminJsp/{1}/{2}.jsp" />
+  </definition>
+  
+</tiles-definitions>

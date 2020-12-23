@@ -11,11 +11,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>마이페이지</title>
-<jsp:include page="../header.jsp"></jsp:include>
 <jsp:include page="../user/info.jsp"></jsp:include>
 
 <h2>작성댓글</h2>
@@ -42,6 +37,3 @@
 		</c:forEach>
 	</tbody>
 </table>
-<jsp:include page="../footer.jsp"></jsp:include>
-</body>
-</html>

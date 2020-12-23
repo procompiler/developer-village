@@ -27,8 +27,7 @@ public class FollowController{
   TagService tagService;
   @Autowired
   UserService userService;
-
-
+  
   @PostMapping("addTag")
   public String addTag(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {

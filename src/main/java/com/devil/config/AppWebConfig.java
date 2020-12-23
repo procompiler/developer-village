@@ -10,7 +10,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.util.UrlPathHelper;
 import com.devil.service.UserService;
 import com.devil.web.interceptor.AuthInterceptor;
@@ -24,8 +26,31 @@ public class AppWebConfig implements WebMvcConfigurer {
   UserService userService;
 
   @Bean
-  public ViewResolver viewResolver() {
-    return new InternalResourceViewResolver("/WEB-INF/appJsp/", ".jsp");
+  public ViewResolver tilesViewResolver() {
+    UrlBasedViewResolver vr = new UrlBasedViewResolver();
+
+    // 페이지 컨트롤러가 리턴한 URL 끝에 붙일 접미사를 지정한다.
+    vr.setSuffix(".app");
+
+    // JSP를 실행할 View 객체를 지정한다.
+    // => 보통 JSP를 처리하는 기본 뷰는 JstlView 클래스이다.
+    // => 지금 우리는 Tiles 기술을 기반으로 JSP를 처리해야 하기 때문에
+    //    JstlView 대신 TilesView를 설정해야 한다.
+    vr.setViewClass(TilesView.class);
+
+    // ViewResolver 가 여러 개 있을 경우 어느 것을 우선으로 사용할 것인지 지정한다.
+    vr.setOrder(1);
+
+    return vr;
+  }
+
+  // TilesView 객체가 사용할 설정 관리자를 준비한다.
+  @Bean
+  public TilesConfigurer tilesConfigurer() {
+    TilesConfigurer configurer = new TilesConfigurer();
+    // Tiles 설정 파일의 경로를 지정한다.
+    configurer.setDefinitions("/WEB-INF/tiles/defs/tiles.xml");
+    return configurer;
   }
 
   @Bean
