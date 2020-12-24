@@ -21,8 +21,7 @@
 					<div class="card-body">
 						<p class="card-text">${n.content}</p>
 						<p class="card-text">
-							<small class="text-muted"><fmt:formatDate
-									value="${n.createdDate}" pattern="yyyy.MM.dd" /></small>
+							<small class="text-muted">${n.difTime}</small>
 						</p>
 					</div>
 				</div>

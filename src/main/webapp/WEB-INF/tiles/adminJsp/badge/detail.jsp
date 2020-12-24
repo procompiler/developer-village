@@ -18,12 +18,8 @@
 <p>이름 : ${badge.name}</p>
 <textarea name='content'>${badge.content}</textarea><br>
 <p>태그 : ${badge.tag.name}</p>
-<button>뱃지 수정</button>
+<button class="btn btn-primary">뱃지 수정</button>
 </form>
 <p><a class='btn' href='list'>뱃지 목록으로</a></p>
 <a class="btn btn-primary" href='delete?no=${badge.no}'>삭제</a>
 
-<jsp:include page="../footer.jsp"></jsp:include>
-  <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

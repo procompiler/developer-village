@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -80,6 +80,7 @@
 				</c:forEach>
 				
 				<form method='post' action='../comment/add'>
+
           <input type='hidden' name="momno" value='${comment.no}'>
           <input type='hidden' name="arno" value='${comment.articleNo}'>
           <input type='hidden' name="step" value='1'><br>
@@ -93,12 +94,12 @@
           <textarea class="form-control" name='content' placeholder='답글을 남겨보세요!'></textarea>
           <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
         </form>
-				
-				<hr color='gray'>
+        
+        <hr color='gray'>
 
-			</c:if>
-		</c:if>
-	</c:forEach>
+      </c:if>
+    </c:if>
+  </c:forEach>
 
 	<form method='post' action='../comment/add'>
       <input type='hidden' name="momno" value='0'>
@@ -114,5 +115,4 @@
     <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
   </form>
 
-
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

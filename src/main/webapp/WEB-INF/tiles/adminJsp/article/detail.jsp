@@ -36,7 +36,7 @@
         등록일: <fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd. HH:mm" />
       </p>
       <p class="card-text">
-          작성자: <a href='../user/detail?no=${article.writer.no}'>${article.writer.nickname}</a></p>
+          작성자: <a href='../user/${article.writer.no}'>${article.writer.nickname}</a></p>
       <p class="card-text">조회수: ${article.viewCount}</p>
       <p class="card-text">상태: ${article.state == 1 ? "게시" : "미게시"}</p>
       <hr>
