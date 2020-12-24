@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.devil.domain.Article;
 import com.devil.domain.Comment;
-import com.devil.domain.Follow;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
@@ -28,10 +28,12 @@ public class CommentController {
   @Autowired
   UserService userService;
 
+
   @PostMapping("add")
   public String add(int arno, int step, int momno, String content, HttpSession session) throws Exception {
+    User loginUser = (User)session.getAttribute("loginUser");
     Comment comment = new Comment();
-    comment.setWriter((User)session.getAttribute("loginUser"));
+    comment.setWriter(loginUser);
     comment.setArticleNo(arno);
     comment.setStep(step);
     comment.setMotherNo(momno);
@@ -77,24 +79,4 @@ public class CommentController {
     return "redirect:../article/detail?no=" + articleNo;
   }
   
-  // 알림 만들기
-  public Notification makeNoti(User user, int userNo) {
-    return new Notification()
-        .setUserNo(userNo)
-        .setContent(makeNotiContent(user))
-        .setUrl(makeNotiUrl(user))
-        .setPhoto(user.getPhoto())
-        .setType(3);
-  }
-
-  // 알림 컨텐츠 만들기
-  public String makeNotiContent(User user) {
-    return user.getNickname() + "님이 팔로우했습니다.";
-  }
-
-  // 알림 주소 만들기
-  public String makeNotiUrl(User user) {
-    return "/user/" + user.getNo();
-  }
-
 }

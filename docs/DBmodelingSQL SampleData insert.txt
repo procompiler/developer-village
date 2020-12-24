@@ -141,11 +141,6 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio'
 
 
 
-<<<<<<< HEAD
-INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome.jpg',null);
-=======
-INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome',null);
->>>>>>> ba6a19ca6bbd8f82377043c624df92502e6307f8
 INSERT INTO badge (bno,name,photo,tno) VALUES (1, 'JAVA', 'java',1);
 INSERT INTO badge (bno,name,photo,tno) VALUES (2, 'Phython', 'python',2);
 INSERT INTO badge (bno,name,photo,tno) VALUES (3, 'Ruby', 'ruby',3);
@@ -170,6 +165,7 @@ INSERT INTO badge (bno,name,photo,tno) VALUES (23, 'R', 'r',23);
 INSERT INTO badge (bno,name,photo,tno) VALUES (24, 'Node.js', 'nodejs',24);
 INSERT INTO badge (bno,name,photo,tno) VALUES (25, 'Oracle', 'oracle',25);
 INSERT INTO badge (bno,name,photo,tno) VALUES (26, 'Visual Studio', 'visual-studio',26);
+INSERT INTO badge (bno,name,photo,tno) VALUES (27, '환영', 'welcome.jpg',null);
 
 
 
@@ -283,6 +279,7 @@ INSERT INTO follow(fwing_no,fwer_no,cdt) VALUES (5,1,'2020-07-08');
 
 
 
+/*
 INSERT INTO noti (nno,uno,content,type,url) VALUES (1, 1,'101번 게시글에 댓글이 달렸습니다.','1','null');
 INSERT INTO noti (nno,uno,content,type,url) VALUES (2, 1,'댓글에 대댓글이 달렸습니다.','2','null');
 INSERT INTO noti (nno,uno,content,type,url) VALUES (3, 2,'xxx님이 팔로우했습니다.','3','null');
@@ -292,7 +289,7 @@ INSERT INTO noti (nno,uno,content,type,url) VALUES (6, 3,'새 뱃지를 받으�
 INSERT INTO noti (nno,uno,content,type,url) VALUES (7, 4,'새 뱃지를 받으셨습니다!','4','null');
 INSERT INTO noti (nno,uno,content,type,url) VALUES (8, 5,'민섭짱짱님이 팔로우했습니다.','3','null');
 INSERT INTO noti (nno,uno,content,type,url) VALUES (9, 5,'깃허브망령님이 팔로우했습니다.','3','null');
-
+*/
 
 
 
