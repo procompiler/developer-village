@@ -115,7 +115,7 @@ public class ArticleController {
     return "article/detail";
   }
 
-  @GetMapping("/update")
+  @GetMapping("update")
   public void updateForm(int no, HttpSession session, Model model) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
     Article article = articleService.get(no);
@@ -131,7 +131,7 @@ public class ArticleController {
     }
   }
 
-  @PostMapping("/update")
+  @PostMapping("update")
   public String update(Article article, int[] tagNo) throws Exception {
 
     List<Tag> tags = new ArrayList<>();
@@ -148,7 +148,7 @@ public class ArticleController {
     return "redirect:detail?no=" + article.getNo();
   }
 
-  @GetMapping("/delete")
+  @GetMapping("delete")
   public String delete(int no) throws Exception {
     if (articleService.delete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");

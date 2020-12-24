@@ -69,12 +69,12 @@
   <c:if test="${article.writer.no == loginUser.no}">
 	<p style="float: right;">
 	  <br>
-	  <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
+	  <a class="btn btn-primary" href='<c:url value='update/${article.no}'/>'>수정</a>
 	  <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
 	</p>
 	</c:if>
-	  <a class="btn btn-primary" href='<c:url value='detail?no=${article.no-1}'/>'>이전글</a>
-	  <a class="btn btn-primary" href='<c:url value='detail?no=${article.no+1}'/>'>다음글</a>
+	  <a class="btn btn-primary" href='<c:url value='${article.no-1}'/>'>이전글</a>
+	  <a class="btn btn-primary" href='<c:url value='${article.no+1}'/>'>다음글</a>
 	  <a class="btn btn-primary" href='<c:url value='list?categoryNo=${article.categoryNo}'/>'>목록</a>
 	  <a class="btn btn-danger"
 	    href='../report/reportArticle?no=${article.no}'>신고</a>
