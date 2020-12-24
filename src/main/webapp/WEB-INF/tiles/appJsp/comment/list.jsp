@@ -17,18 +17,22 @@
 					<input type='hidden' name='arno' value='${comment.articleNo}'> 
 					<input type='hidden' name='step' value='${comment.step}'> 
 					
+					<p>
 					<img src='../../upload/user/${comment.writer.photo}_40x40.jpg'
-						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'><br>
+						   style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'>
 					<a href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
-					<c:if test="${comment.state == 1}"><textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea></c:if>
-					<c:if test="${comment.state == 0}">삭제된 댓글 입니다.</c:if>
+					</p>
+					
+					<c:if test="${comment.state == 1}">
+					  <textarea name='content' class="form-control" style="border-color:#4a4d53; background-color: #37393E">${comment.content}</textarea>
+					</c:if>
+					<c:if test="${comment.state == 0}"><textarea name='' style="height: 30px; width: 400px;" readonly>삭제된 댓글 입니다.</textarea></c:if>
 					
 					<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
 					<button class="btn btn-primary">수정</button>
 					<a class='btn btn-danger' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
 					<a class="btn btn-danger"
                   href='../report/reportComment?no=${comment.no}'>신고</a>
-					
 				</form>
 
 				<c:forEach items="${comments}" var="childComment">
@@ -47,7 +51,9 @@
 								   style='border-radius: 70px'
 								   alt='[${childComment.writer.photo}_40x40]'>
 							<a href='../user/detail?no=${childComment.writer.no}'>${childComment.writer.nickname}</a>
-							<c:if test="${childComment.state == 1}"><textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea></c:if>
+							<c:if test="${childComment.state == 1}">
+							  <textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea>
+							 </c:if>
               <c:if test="${childComment.state == 0}">삭제된 댓글 입니다.</c:if>
 							<fmt:formatDate value="${childComment.createdDate}" pattern="yyyy.MM.dd" />
 							<button class="btn btn-primary">수정</button>
@@ -59,13 +65,20 @@
 					</c:if>
 				</c:forEach>
 				
-				<form action='../comment/add' method='post'>
-					<input type='hidden' name="momno" value='${comment.no}'><br>
-					<input type='hidden' name="arno" value='${comment.articleNo}'><br>
-					<input type='hidden' name="step" value='1'><br> <input
-						type='text' name='content'><br>
-					<button class='btn btn-primary'>대댓글</button>
-				</form>
+				<form method='post' action='../comment/add'>
+          <div class="input-group">
+          <input type='hidden' name="momno" value='${comment.no}'>
+          <input type='hidden' name="arno" value='${comment.articleNo}'>
+          <input type='hidden' name="step" value='1'><br>
+          <span class="input-group-text" style="border-color:#4a4d53; background-color: #37393E">
+          <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
+               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'>
+          ${loginUser.nickname}</span>
+          <textarea class="form-control" aria-label="With textarea" name='content' placeholder='답글을 남겨보세요'></textarea>
+          </div>
+          <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
+        </form>
+				
 				<hr color='gray'>
 
 			</c:if>
@@ -73,25 +86,18 @@
 	</c:forEach>
 
 	<form method='post' action='../comment/add'>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">${loginUser.nickname}</label>
-		  <input type='hidden' name="momno" value='0'>
-		  <input type='hidden' name="arno" value='${param.no}'>
-		  <input type='hidden' name="step" value='0'><br>
-		  <input type='text' class="form-control" id="exampleFormControlInput1" name='content' height="100">
-		  <button class='btn btn-primary'>댓글쓰기</button>
+    <div class="input-group">
+      <input type='hidden' name="momno" value='0'>
+      <input type='hidden' name="arno" value='${param.no}'>
+      <input type='hidden' name="step" value='0'><br>
+      <span class="input-group-text" style="border-color:#4a4d53; background-color: #37393E">
+        <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
+             style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'>
+        ${loginUser.nickname}</span>
+      <textarea class="form-control" aria-label="With textarea" name='content' placeholder='댓글을 남겨보세요'></textarea>
     </div>
-	</form>
-	
-	<form method='post' action='../comment/add'>
-  <div class="input-group">
-  <span class="input-group-text" style="background-color: #37393E">  <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
-               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'> ${loginUser.nickname}</span>
-  <textarea class="form-control" aria-label="With textarea" name='content' placeholder='댓글을 남겨보세요' cols="20px"></textarea>
-  </div>
-  <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
-</form>
+    <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
+  </form>
 
 
-	
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
