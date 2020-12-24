@@ -23,6 +23,7 @@
                  style='border-radius: 70px' alt='[${comment.writer.photo}_40x40]'>
             <span style="font-weight:bold; font-size:105%;">${comment.writer.nickname}</span>
             </a>
+            <c:if test="${comment.writer.no == article.writer.no}">[작성자]</c:if>
             <span class="card-subtitle mb-2 text-muted">
               <fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd. HH:mm"/>
             </span>
