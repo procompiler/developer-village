@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/user")
+@SessionAttributes("loginUser")
 public class UserController {
   @Autowired UserService userService;
   @Autowired ServletContext servletContext;
@@ -31,27 +34,26 @@ public class UserController {
   }
 
   @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model, HttpSession session) throws Exception {
+  public String detail(@PathVariable int no, Model model, @ModelAttribute("loginUser") User loginUser) throws Exception {
 
-    User loginUser = (User) session.getAttribute("loginUser");
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", no);
     User user = userService.get(params);
+    model.addAttribute("user", user);
+    System.out.println(loginUser.getNo());
 
     if (user == null) {
       throw new Exception("해당 번호의 유저가 없습니다!");
     }
-    model.addAttribute("user", user);
-
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
     map.put("followeeNo", no);
     
     if (followService.getUser(map) != null) {
-      session.setAttribute("followed", true);
+      model.addAttribute("followed", true);
     } else {
-      session.setAttribute("followed", false);
+      model.addAttribute("followed", false);
     }
     return "user/detail";
   }
