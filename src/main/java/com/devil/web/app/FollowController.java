@@ -3,6 +3,7 @@ package com.devil.web.app;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,6 @@ import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/follow")
-@SessionAttributes("loginUser")
 public class FollowController{
   @Autowired
   FollowService followService;
@@ -28,27 +28,27 @@ public class FollowController{
   UserService userService;
   
   @GetMapping("addTag")
-  public String addTag(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
+  public String addTag(Follow follow, HttpSession httpSession, HttpServletRequest request)
       throws Exception {
-    follow.setFollower(loginUser);
+    follow.setFollower((User) httpSession.getAttribute("loginUser"));
     followService.addTag(follow);
     return "redirect:" + request.getHeader("Referer");
 
   }
 
   @GetMapping("deleteTag")
-  public String deleteTag(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
+  public String deleteTag(Follow follow, HttpSession httpSession, HttpServletRequest request)
       throws Exception {
 
-    follow.setFollower(loginUser);
+    follow.setFollower((User) httpSession.getAttribute("loginUser"));
 
     followService.deleteTag(follow);
     return "redirect:" + request.getHeader("Referer");
   }
 
   @GetMapping("tagList")
-  public void list(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
-    model.addAttribute("tagList", tagService.listByFollower(loginUser));
+  public void list(HttpSession httpSession, Model model) throws Exception {
+    model.addAttribute("tagList", tagService.listByFollower((User) httpSession.getAttribute("loginUser")));
   }
 
   @GetMapping("addUser")
@@ -70,12 +70,13 @@ public class FollowController{
   }
 
   @GetMapping("userList")
-  public void listUser(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
-    model.addAttribute("userList", userService.listFollowing(loginUser));
+  public void listUser(HttpSession httpSession, Model model) throws Exception {
+    model.addAttribute("userList", userService.listFollowing((User) httpSession.getAttribute("loginUser")));
   }
 
   @GetMapping("followerList")
-  public void listFollower(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
+  public void listFollower(HttpSession httpSession, Model model) throws Exception {
+    User loginUser = (User) httpSession.getAttribute("loginUser");
     List<User> followerList = userService.listFollower(loginUser);
     List<Integer> userFollowingNoList = new ArrayList<>();
     for (User user : userService.listFollowing(loginUser)) {

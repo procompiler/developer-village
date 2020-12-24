@@ -2,14 +2,13 @@ package com.devil.web.app;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import com.devil.domain.Comment;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
@@ -18,7 +17,6 @@ import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/comment")
-@SessionAttributes("loginUser")
 public class CommentController {
 
   @Autowired
@@ -29,10 +27,10 @@ public class CommentController {
   UserService userService;
 
   @PostMapping("add")
-  public String add(int arno, int step, int momno, String content, @ModelAttribute("loginUser") User loginUser) throws Exception {
+  public String add(HttpSession httpSession, int arno, int step, int momno, String content) throws Exception {
 
     Comment comment = new Comment();
-    comment.setWriter(loginUser);
+    comment.setWriter(((User)httpSession.getAttribute("loginUser")));
     comment.setArticleNo(arno);
     comment.setStep(step);
     comment.setMotherNo(momno);

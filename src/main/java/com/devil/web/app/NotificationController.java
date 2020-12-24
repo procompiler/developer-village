@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,6 @@ import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/notification")
-@SessionAttributes("loginUser")
 public class NotificationController {
 
   @Autowired
@@ -30,7 +30,8 @@ public class NotificationController {
   UserService userService;
 
   @GetMapping("/list")
-  public void list(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
+  public void list(HttpSession httpSession, Model model) throws Exception {
+    User loginUser = (User) httpSession.getAttribute("loginUser");
     System.out.println(loginUser.getNo());
     System.out.println(loginUser.getName());
     Map<String, Object> params = new HashMap<String, Object>();

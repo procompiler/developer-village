@@ -91,7 +91,3 @@
   </div>
   <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
 </form>
-
-
-	
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
