@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>태그 조회</title>
-	<jsp:include page="../header.jsp"></jsp:include>
-</head>
-
-<body>
 	<h1>태그 조회</h1>
 	<br><h3>${tag.name}</h3><br>
 
@@ -34,4 +26,3 @@
 			style='color: white;'>태그삭제</a>
 	</form>
 
-	<jsp:include page="../footer.jsp"></jsp:include>
