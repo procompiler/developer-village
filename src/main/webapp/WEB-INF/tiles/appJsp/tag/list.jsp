@@ -6,11 +6,6 @@
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>커뮤니티</title>
-<jsp:include page="../header.jsp"></jsp:include>
 <h1>커뮤니티</h1>
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <c:forEach items="${tagList}" var="t">
@@ -37,4 +32,3 @@
       </div>
     </div>
   </c:forEach>
-<jsp:include page="../footer.jsp"></jsp:include>

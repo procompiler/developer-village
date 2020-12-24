@@ -3,15 +3,15 @@ package com.devil.domain;
 import java.util.Date;
 
 public class Follow {
-  int userNo;
+  User follower;
   int followeeNo;
   Date createdDate;
 
-  public int getUserNo() {
-    return userNo;
+  public User getFollower() {
+    return follower;
   }
-  public Follow setUserNo(int userNo) {
-    this.userNo = userNo;
+  public Follow setFollower(User follower) {
+    this.follower = follower;
     return this;
   }
   public Date getCreatedDate() {

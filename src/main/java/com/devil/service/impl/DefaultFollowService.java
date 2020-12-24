@@ -45,7 +45,7 @@ public class DefaultFollowService implements FollowService {
   public int addUser(Follow follow) throws Exception {
     int count = followDao.insertUser(follow);
     // 알림 insert
-    notificationDao.insert(makeNoti(getNotiInfo(follow), follow.getFolloweeNo()));
+    notificationDao.insert(makeNoti(follow.getFollower(), follow.getFolloweeNo()));
     return count;
   }
 
@@ -59,13 +59,6 @@ public class DefaultFollowService implements FollowService {
     return followDao.findByUserUser(map);
   }
 
-  // 알림 정보 가져오기
-  public User getNotiInfo(Follow follow) throws Exception {
-    Map<String, Object> params = new HashMap<>();
-    params.put("type", "app");
-    params.put("userNo", follow.getUserNo());
-    return userDao.findByNo(params);
-  }
   
   // 알림 만들기
   public Notification makeNoti(User user, int userNo) {

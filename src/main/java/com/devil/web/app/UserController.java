@@ -47,7 +47,7 @@ public class UserController {
     user.setPassword(password);
 
     userService.add(user);
-    return "redirect:.";
+    return "redirect:../../";
   }
 
   @GetMapping("delete")

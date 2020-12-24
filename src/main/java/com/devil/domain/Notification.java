@@ -32,23 +32,28 @@ public class Notification {
     this.createdDate = createdDate;
     return this;
   }
+  
   public String getContent() {
     return content;
   }
+  
   public Notification setContent(String content) {
     this.content = content;
     return this;
   }
+  
   public int getType() {
     return type;
   }
+  
   public Notification setType(int type) {
     this.type = type;
     return this;
   }
+  
   public String getUrl() {
-    return url;
-  }
+    return url; 
+  } 
   public Notification setUrl(String url) {
     this.url = url;
     return this;

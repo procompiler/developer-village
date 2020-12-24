@@ -30,7 +30,7 @@ public class FollowController{
   @GetMapping("addTag")
   public String addTag(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {
-    follow.setUserNo(loginUser.getNo());
+    follow.setFollower(loginUser);
     followService.addTag(follow);
     return "redirect:" + request.getHeader("Referer");
 
@@ -40,7 +40,7 @@ public class FollowController{
   public String deleteTag(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {
 
-    follow.setUserNo(loginUser.getNo());
+    follow.setFollower(loginUser);
 
     followService.deleteTag(follow);
     return "redirect:" + request.getHeader("Referer");
@@ -54,7 +54,7 @@ public class FollowController{
   @GetMapping("addUser")
   public String addUser(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {
-    follow.setUserNo(loginUser.getNo());
+    follow.setFollower(loginUser);
     followService.addUser(follow);
     return "redirect:" + request.getHeader("Referer");
   }
@@ -63,7 +63,7 @@ public class FollowController{
   public String deleteUser(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
       throws Exception {
 
-    follow.setUserNo(loginUser.getNo());
+    follow.setFollower(loginUser);
 
     followService.deleteUser(follow);
     return "redirect:" + request.getHeader("Referer");
