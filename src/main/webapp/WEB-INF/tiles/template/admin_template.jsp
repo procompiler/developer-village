@@ -18,7 +18,6 @@
 	<div class="container">
 		<tiles:insertAttribute name="body" />
 	</div>
-	<script
-		src="${appRoot}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="${appRoot}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

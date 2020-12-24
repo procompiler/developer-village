@@ -21,22 +21,22 @@
   
   <insert id="insertTag" parameterType="follow">
     insert into usr_tag(uno, tno)
-    values(#{userNo}, #{followeeNo})
+    values(#{follower.no}, #{followeeNo})
   </insert>
   
   <insert id="insertUser" parameterType="follow">
     insert into follow(fwer_no, fwing_no)
-    values(#{userNo}, #{followeeNo})
+    values(#{follower.no}, #{followeeNo})
   </insert>
 
   <delete id="deleteTag" parameterType="follow">
     delete from usr_tag
-    where uno=#{userNo} and tno=#{followeeNo}
+    where uno=#{follower.no} and tno=#{followeeNo}
   </delete>
   
   <delete id="deleteUser" parameterType="follow">
     delete from follow
-    where fwer_no=#{userNo} and fwing_no=#{followeeNo}
+    where fwer_no=#{follower.no} and fwing_no=#{followeeNo}
   </delete>
 
 	<select id="findByUserTag" resultMap="FollowTagMap" parameterType="map">

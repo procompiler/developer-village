@@ -38,6 +38,5 @@
     <button>검색</button>
   </form>
   </p>
-  
 </body>
 </html>
