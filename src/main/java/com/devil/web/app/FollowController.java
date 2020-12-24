@@ -52,19 +52,17 @@ public class FollowController{
   }
 
   @GetMapping("addUser")
-  public String addUser(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
+  public String addUser(Follow follow, HttpSession httpSession, HttpServletRequest request)
       throws Exception {
-    follow.setFollower(loginUser);
+    follow.setFollower((User) httpSession.getAttribute("loginUser"));
     followService.addUser(follow);
     return "redirect:" + request.getHeader("Referer");
   }
 
   @GetMapping("deleteUser")
-  public String deleteUser(Follow follow, @ModelAttribute("loginUser") User loginUser, HttpServletRequest request)
+  public String deleteUser(Follow follow, HttpSession httpSession, HttpServletRequest request)
       throws Exception {
-
-    follow.setFollower(loginUser);
-
+    follow.setFollower((User) httpSession.getAttribute("loginUser"));
     followService.deleteUser(follow);
     return "redirect:" + request.getHeader("Referer");
   }

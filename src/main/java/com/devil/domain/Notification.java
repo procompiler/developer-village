@@ -10,6 +10,7 @@ public class Notification {
   int type; //1. 게시글 2. 댓글  3. 팔로워  4. 뱃지
   String url;
   String photo;
+  String difTime;
   
   public int getNo() {
     return no;
@@ -65,4 +66,11 @@ public class Notification {
     this.photo = photo;
     return this;
   }
+  public String getDifTime() {
+    return difTime;
+  }
+  public void setDifTime(String difTime) {
+    this.difTime = difTime;
+  }
+  
 }

@@ -1,6 +1,5 @@
 package com.devil.service.impl;
 
-import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -58,7 +57,6 @@ public class DefaultFollowService implements FollowService {
   public Follow getUser(Map<String, Object> map) throws Exception {
     return followDao.findByUserUser(map);
   }
-
   
   // 알림 만들기
   public Notification makeNoti(User user, int userNo) {
