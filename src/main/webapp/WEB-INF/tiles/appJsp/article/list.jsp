@@ -28,13 +28,13 @@
 	</c:choose>
 </h1>
 
-<form action='${contextPath}?' method='get' autocomplete="off">
+<form onsubmit="return searchInList(event)" action='${contextPath}?' method='get' autocomplete="off">
 	<select id="condition" name="condition">
 		<option value="1">제목</option>
 		<option value="2">작성자</option>
 		<option value="3">태그</option>
 	</select> <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
-	<input type='text' id="article" name='keyword' value=''
+	<input type='text' id="article" name='keyword' value='${param.keyword}'
 		placeholder="게시판 내 검색">
 </form>
 
@@ -78,8 +78,8 @@
 				</tr>
 			</c:if>
 			<c:if test="${param.categoryNo == null}">
-				<tr>
-					<td>${article.no}</td>
+				<tr class="articleRow">
+					<td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
 					<td id='title'>
 						<ul id='tags'>
 							<c:forEach items="${article.tags}" var="tag">
@@ -88,13 +88,26 @@
 							</c:forEach>
 						</ul> <a href='detail?no=${article.no}'>${article.title}</a>
 					</td>
+					<td>${article.commentCount}</td>
 					<td>${article.writer.nickname}</td>
 					<td><fmt:formatDate value="${article.createdDate}"
 							pattern="yyyy.MM.dd" /></td>
-					<td>${article.viewCount}</td>
-					<td>${article.commentCount}</td>
+					<td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
 				</tr>
 			</c:if>
 		</c:forEach>
 	</tbody>
 </table>
+<script>
+function searchInList(event) {
+	var keyword = document.getElementById("article").value;
+	
+	var trList = document.querySelectorAll(".articleRow");
+	for (var tr of trList) {
+		if (!tr.innerHTML.includes(keyword)) {
+	    tr.style.display = 'none';
+		}
+	}
+	return false;
+};
+</script>

@@ -63,20 +63,11 @@ public class ArticleController {
   }
 
   @GetMapping("list")
-  public void list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag, Integer tagNo, Model model) throws Exception {
+  public void list(String keyword, Integer tagNo, Model model) throws Exception {
 
 
     if (keyword != null) {
       model.addAttribute("articles", articleService.list(keyword));
-
-    } else if (keywordTitle != null) {
-      HashMap<String, Object> keywordMap = new HashMap<>();
-      keywordMap.put("title", keywordTitle);
-      keywordMap.put("writer", keywordWriter);
-      keywordMap.put("tag", keywordTag);
-
-      model.addAttribute("articles", articleService.list(keywordMap));
 
     } else if (tagNo != null) {
       model.addAttribute("tag", tagService.get(tagNo));

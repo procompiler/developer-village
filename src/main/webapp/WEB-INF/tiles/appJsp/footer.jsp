@@ -11,7 +11,7 @@
 	<div style="margin-top: 30px; text-align: left;">
 		<b>Developer’s Village</b> <span
 			style="float: right; margin-right: 30px;"> Made with love and
-			<span class="main-font-color">Procompiler</span>
+			<span class="main-color">Procompiler</span>
 		</span> <br>Devil Community Copy right 2020 <span
 			style="float: right; margin-top: 10px; margin-right: 30px;"> <img
 			id="pro-logo" src="${appRoot}/upload/procompiler.png" />

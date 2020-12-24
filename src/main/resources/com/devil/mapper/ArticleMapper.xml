@@ -171,6 +171,7 @@
   	where
   		a.title like concat('%', #{keyword}, '%')
   		or u.nick like concat('%', #{keyword}, '%')
+  		or t.name like concat('%', #{tag}, '%')
   	</if>
   	order by a.arno desc
   </select>
@@ -182,7 +183,7 @@
         a.title like concat('%', #{title}, '%')
       </if>
       <if test="owner != null">
-        and m.nick like concat('%', #{writer}, '%')
+        and u.nick like concat('%', #{writer}, '%')
       </if>
       <if test="tag != null">
         and t.name like concat('%', #{tag}, '%')

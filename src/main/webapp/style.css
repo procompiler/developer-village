@@ -165,9 +165,7 @@ nav #logo-nav {
 footer {
   clear: both;
   padding: 20px;
-  margin-left: 250px;
-  margin-right: 100px;
-  
+  margin: 0px 100px 0px 320px;
 }
 
 footer hr {
@@ -276,7 +274,7 @@ th, td {
 .user-name {
   float: left;
   padding: 8px 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
   margin-top: 10px;
