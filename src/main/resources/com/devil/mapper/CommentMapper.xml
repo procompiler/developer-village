@@ -24,6 +24,7 @@
       <result column="nick"        property="nickname"/>
       <result column="photo"       property="photo"/>
     </association>
+    
   </resultMap>
   
   <sql id="sql1">

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Comment;
-import com.devil.domain.Follow;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
@@ -76,7 +75,7 @@ public class CommentController {
 
     return "redirect:../article/detail?no=" + articleNo;
   }
-  
+
   // 알림 만들기
   public Notification makeNoti(User user, int userNo) {
     return new Notification()

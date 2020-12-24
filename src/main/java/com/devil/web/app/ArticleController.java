@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Article;
@@ -90,8 +91,8 @@ public class ArticleController {
     model.addAttribute("articleList", articleService.feedList(loginUser));
   }
 
-  @GetMapping("detail")
-  public void detail(int no, HttpSession session, Model model) throws Exception {
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, HttpSession session, Model model) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
       throw new Exception("해당 게시글이 없습니다.");
@@ -111,6 +112,7 @@ public class ArticleController {
     } else {
       model.addAttribute("bookmarked", false);
     }
+    return "article/detail";
   }
 
   @GetMapping("/update")
