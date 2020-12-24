@@ -20,10 +20,11 @@
     <result column="momno"    property="motherNo"/>
     
     <association property="writer" javaType="user">
-      <id column="uno"           property="no"/>
-      <result column="nick"      property="nickname"/>
-      <result column="photo"     property="photo"/>
+      <id column="uno"             property="no"/>
+      <result column="nick"        property="nickname"/>
+      <result column="photo"       property="photo"/>
     </association>
+    
   </resultMap>
   
   <sql id="sql1">
@@ -48,6 +49,18 @@
       comment c
       inner join article a on a.arno=c.arno
       left join user u on c.uno=u.uno
+  </sql>
+  
+  <sql id="sql2">
+    select
+      a.arno,
+      a.title,
+      a.content
+      a.writer
+    from
+      comment c
+      inner join article a on a.arno=c.arno
+    where c.cno=#{no}
   </sql>
   
   <insert id="insert" parameterType="comment">

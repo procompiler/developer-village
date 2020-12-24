@@ -14,9 +14,17 @@ public class Comment {
   private String deletedDate;
   private int state; // 활성상태 0 안보임 1 보임
   private boolean selected; // 대표 답변 여부 0 미해결 1 해결
+  private Article article;
   private int articleNo;
   private String articleTitle;
 
+  public Article getArticle() {
+    return article;
+  }
+  public Comment setArticle(Article article) {
+    this.article = article;
+    return this;
+  }
   public int getMotherNo() {
     return motherNo;
   }

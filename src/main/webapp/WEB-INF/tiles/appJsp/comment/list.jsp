@@ -109,7 +109,7 @@
         <a href='../user/${loginUser.no}'>
         <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'>
-        <span style="font-weight:bold; font-size:105%;">${loginUser.nickname}</span>
+        <span style="font-weight:bold; font-size:105%;">${loginUser.nickname}</span></a>
       </p>
       <textarea class="form-control" name='content' placeholder='댓글을 남겨보세요!'></textarea>
     <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
