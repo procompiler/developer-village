@@ -2,6 +2,8 @@ package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.ReportDao;
 import com.devil.domain.Report;
 import com.devil.service.ReportService;
@@ -9,44 +11,26 @@ import com.devil.service.ReportService;
 @Service
 public class DefaultReportService implements ReportService {
   ReportDao reportDao;
-//  SqlSessionFactoryProxy factoryProxy;
 
 
-  public DefaultReportService(ReportDao reportDao/*, SqlSessionFactoryProxy factoryProxy*/) {
+  public DefaultReportService(ReportDao reportDao) {
     this.reportDao = reportDao;
-//    this.factoryProxy = factoryProxy;
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int reportArticle(Report report) throws Exception {
-    try {
-//      factoryProxy.startTransaction();
-      reportDao.insert(report);
-      reportDao.insertReportedArticle(report);
-//      factoryProxy.commit();
-      return 1;
-    } catch (Exception e) {
-//      factoryProxy.rollback();
-      throw e;
-    } finally {
-//      factoryProxy.endTransaction();
-    }
+    reportDao.insert(report);
+    reportDao.insertReportedArticle(report);
+    return 1;
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int reportComment(Report report) throws Exception {
-    try {
-//      factoryProxy.startTransaction();
-      reportDao.insert(report);
-      reportDao.insertReportedComment(report);
-//      factoryProxy.commit();
-      return 1;
-    } catch (Exception e) {
-//      factoryProxy.rollback();
-      throw e;
-    } finally {
-//      factoryProxy.endTransaction();
-    }
+    reportDao.insert(report);
+    reportDao.insertReportedComment(report);
+    return 1;
   }
 
   @Override

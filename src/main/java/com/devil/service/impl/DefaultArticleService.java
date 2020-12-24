@@ -3,6 +3,8 @@ package com.devil.service.impl;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.ArticleDao;
 import com.devil.domain.Article;
 import com.devil.domain.User;
@@ -11,28 +13,19 @@ import com.devil.service.ArticleService;
 @Service
 public class DefaultArticleService implements ArticleService {
   ArticleDao articleDao;
-//  SqlSessionFactoryProxy factoryProxy;
 
-  public DefaultArticleService(ArticleDao articleDao/*, SqlSessionFactoryProxy factoryProxy*/) {
+  public DefaultArticleService(ArticleDao articleDao) {
     this.articleDao = articleDao;
-//    this.factoryProxy = factoryProxy;
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int add(Article article) throws Exception {
-    try {
-//      factoryProxy.startTransaction();
-      articleDao.insert(article);
-      articleDao.insertTags(article);
-//      factoryProxy.commit();
-      return 1;
-    } catch (Exception e) {
-//      factoryProxy.rollback();
-      throw e;
-    } finally {
-//      factoryProxy.endTransaction();
-    }
+    articleDao.insert(article);
+    articleDao.insertTags(article);
+    return 1;
   }
+
   @Override
   public List<Article> list(Map<String, Object> keywords) {
     return articleDao.findByDetailKeyword(keywords);

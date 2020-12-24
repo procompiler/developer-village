@@ -2,6 +2,8 @@ package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.BlockDao;
 import com.devil.dao.ReportDao;
 import com.devil.dao.UserDao;
@@ -13,35 +15,23 @@ public class DefaultBlockService implements BlockService {
   BlockDao blockDao;
   UserDao userDao;
   ReportDao reportDao;
-  //  SqlSessionFactoryProxy factoryProxy;
 
   public DefaultBlockService(BlockDao blockDao, UserDao userDao,
-      ReportDao reportDao/*, SqlSessionFactoryProxy factoryProxy*/) {
+      ReportDao reportDao) {
     this.blockDao = blockDao;
     this.userDao = userDao;
     this.reportDao = reportDao;
-    //    this.factoryProxy = factoryProxy;
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int block(Block block) throws Exception {
-    try {
-      //      factoryProxy.startTransaction();
-      try {
-        blockDao.insertArticleReport(block);
-      } catch(Exception e) {
-        blockDao.insertCommentReport(block);
-      }
+    blockDao.insertArticleReport(block);
+    blockDao.insertCommentReport(block);
 
-      userDao.insertBlocked(block);
-      reportDao.insertStatus(block);
-      //      factoryProxy.commit();
-      return 1;
-    } catch (Exception e) {
-      throw e;
-    } finally {
-      //      factoryProxy.endTransaction();
-    }
+    userDao.insertBlocked(block);
+    reportDao.insertStatus(block);
+    return 1;
   }
 
   @Override
