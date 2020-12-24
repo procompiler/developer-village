@@ -26,6 +26,18 @@ public class User {
   private int followingCount;
   private boolean followed;
 
+
+  @Override
+  public String toString() {
+    return "User [no=" + no + ", email=" + email + ", nickname=" + nickname + ", name=" + name
+        + ", password=" + password + ", createdDate=" + createdDate + ", recentVisitedDate="
+        + recentVisitedDate + ", loginType=" + loginType + ", photo=" + photo + ", homepageURL="
+        + homepageURL + ", githubURL=" + githubURL + ", instarURL=" + instarURL + ", twitterURL="
+        + twitterURL + ", blocked=" + blocked + ", tech=" + tech + ", auth=" + auth + ", noti="
+        + noti + ", bio=" + bio + ", state=" + state + ", followerCount=" + followerCount
+        + ", followingCount=" + followingCount + ", followed=" + followed + "]";
+  }
+
   public int getNo() {
     return no;
   }

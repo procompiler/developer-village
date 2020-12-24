@@ -27,10 +27,9 @@ public class CommentController {
   UserService userService;
 
   @PostMapping("add")
-  public String add(HttpSession httpSession, int arno, int step, int momno, String content) throws Exception {
-
+  public String add(int arno, int step, int momno, String content, HttpSession session) throws Exception {
     Comment comment = new Comment();
-    comment.setWriter(((User)httpSession.getAttribute("loginUser")));
+    comment.setWriter((User)session.getAttribute("loginUser"));
     comment.setArticleNo(arno);
     comment.setStep(step);
     comment.setMotherNo(momno);

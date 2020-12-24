@@ -27,7 +27,7 @@
     </c:forEach>
   </ul>
 
-  <div style="width: 60rem; background-color: #37393E;">
+  <div style="width: 80rem; background-color: #37393E;">
     <div class="card-body">
       <h2 class="card-title">${article.title}</h2>
       <h6 class="card-subtitle mb-2 text-muted">
@@ -39,7 +39,7 @@
           style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>
           <a href='../user/detail?no=${article.writer.no}'>${article.writer.nickname}</a></p>
       
-      <span class="card-text text-end">댓글수: ${article.commentCount}</span>
+      <span class="card-text text-end"><i class="fas fa-comment"></i>댓글수: ${article.commentCount}</span>
       <span class="card-text text-end">조회수: ${article.viewCount}</span>
       <hr>
       <p class="card-text">
