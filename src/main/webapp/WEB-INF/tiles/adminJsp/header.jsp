@@ -24,7 +24,7 @@
     <li><a class="btn" href="${appRoot}/admin/tag/list">
     <p><i class="fas fa-tag"></i></p>태그 관리</a></li>
     <li><a class="btn" href="${appRoot}/admin/article/list">
-    <p><i class="fas fa-chart-pie"></i></p>통계</a></li>
+    <p><i class="fas fa-tools"></i></p>게시글 관리</a></li>
   </ul>  
   </div>
 </header>

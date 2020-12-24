@@ -166,6 +166,7 @@ footer {
   clear: both;
   padding: 20px;
   margin: 0px 100px 0px 320px;
+  width: 1200px;
 }
 
 footer hr {
@@ -346,3 +347,9 @@ div.card {
 	margin: 0px auto;
   width: 850px;
 }
+
+ /* 글쓰기 폼 */
+ #articleForm{
+ margin: 30px 0px auto 70px;
+ width: 900px;
+ }

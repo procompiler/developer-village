@@ -3,13 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>태그목록</title>
-<jsp:include page="../header.jsp"></jsp:include>
-</head>
-<body>
+
 <h1>태그 목록</h1>
 <a class='btn btn-primary' href='form'>태그 추가</a>
 <form action='${contextPath}?' method='get'>
@@ -49,6 +43,3 @@
 		</div>
 	</c:forEach>
 </div>
-<jsp:include page="../footer.jsp"></jsp:include>
-</body>
-</html>

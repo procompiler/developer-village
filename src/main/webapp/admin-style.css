@@ -39,13 +39,7 @@
   margin-left: 250px;
   }
   
-  .site-admin2 ul {
-    padding-top: 10px;
-    list-style-type: none; 
-  }
-  
   .site-admin2 li {
-    width: 100px;
     margin-left: 115px;
     display: inline-block;
   }
