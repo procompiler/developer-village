@@ -60,7 +60,6 @@
 			href="../comment/writtenList?no=${user.no}">작성댓글</a>
 	</c:when>
 
-
 	<c:otherwise>
 		<div class="card text-center user-info mt-5">
 			<div class="card-body">

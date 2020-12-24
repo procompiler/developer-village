@@ -8,8 +8,8 @@
   <ul>
     <li><a href='${appRoot}'><img id="logo-nav" src="${appRoot}/upload/devil.png" /></a></li>
     <div id="sitename">
-      <li><span class="main-font-color">D</span>eveloper</li>
-      <li><span class="main-font-color">V</span>illage</li>
+      <li><span class="main-color">D</span>eveloper</li>
+      <li><span class="main-color">V</span>illage</li>
     </div>
     <a href="${appRoot}/app/user/${loginUser.no}">
      <div class="user-card">
@@ -43,8 +43,8 @@
 </nav>
 <header>
   <div style="float: left;">
-    <form autocomplete="off">
-      <input id="search" type="search" placeholder="검색어 입력.."
+    <form action="${appRoot}/app/article/list" autocomplete="off">
+      <input id="search" type="search" name="keyword" value="${param.keyword}" placeholder="검색어 입력.."
         style="padding-left: 40px;">
     </form>
   </div>

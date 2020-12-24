@@ -24,7 +24,7 @@ public class MainController {
   @Autowired
   TagService tagService;
 
-  @GetMapping("main.do")
+  @GetMapping("/main")
   public String initMain(@ModelAttribute("loginUser") User loginUser, Model model) throws Exception {
     
     List<Tag> tagList = tagService.list((String) null);
