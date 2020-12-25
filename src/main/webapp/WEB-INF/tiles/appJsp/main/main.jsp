@@ -8,14 +8,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<h1 style="margin-left: 70px; font-weight: bold">커뮤니티</h1>
 
-<div class="d-grid gap-3"/>
+<!-- 커뮤니티 -->
+ <div style="margin-left: 70px; font-weight: bold; font-size: 26px;">커뮤니티
+  <span style="position: relative; font-weight: normal; font-size: 16px;  left: 380px;">최신글</span>
+ </div>
+ 
+<div id ="recentFeed" class="d-grid gap-3"/>
 <c:forEach items="${articleList}" var="a" begin="0" end="5">
  <div class="card">
-    <a class="btn position-absolute top-0 end-0"
-      href='delete?articleNo=${a.no}'><i
-      class="fas fa-minus-circle text-danger fa-lg shadow"></i></a>
     <div class="row g-0">
       <div class="col-sm-2">
         <div class="text-center mr-2 mt-4">
@@ -35,7 +36,7 @@
           </div>
           <div class="float-start">
           <h5 class='card-title'>
-            <a href='detail?no=${a.no}'>${a.title}</a>
+            <a href='article/detail?no=${a.no}'>${a.title}</a>
           </h5>
           <p class="card-text">
             <small class="text-muted"><fmt:formatDate
@@ -54,5 +55,9 @@
     </div>
   </div>
 </c:forEach>
+  <div class="d-grid gap-2">
+     <button onclick="location.href='article/list'" class="btn btn-primary" type="button">더보기</button>
+  </div>
 </div>
-</div>
+
+<!-- 게시글 -->
