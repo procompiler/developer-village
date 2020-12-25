@@ -3,6 +3,7 @@ package com.devil.service.impl;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.CommentDao;
+import com.devil.domain.Article;
 import com.devil.domain.Comment;
 import com.devil.domain.User;
 import com.devil.service.CommentService;
@@ -29,9 +30,20 @@ public class DefaultCommentService implements CommentService {
   public List<Comment> getByArticleNo(int articleNo) throws Exception {
     return commentDao.findByArticleNo(articleNo);
   }
+
   @Override
-  public Comment get(int no) throws Exception {
-    return commentDao.findByNo(no);
+  public Article getArticleByCommentNo(int commentNo) throws Exception {
+    return commentDao.findArticleByCommentNo(commentNo);
+  }
+
+  @Override
+  public Comment getMotherComment(int commentNo) throws Exception {
+    return commentDao.findMotherComment(commentNo);
+  }
+
+  @Override
+  public Comment get(int commentNo) throws Exception {
+    return commentDao.findByNo(commentNo);
   }
 
   @Override
@@ -40,13 +52,13 @@ public class DefaultCommentService implements CommentService {
   }
 
   @Override
-  public int delete(int no) throws Exception {
-    return commentDao.inactivate(no);
+  public int delete(int commentNo) throws Exception {
+    return commentDao.inactivate(commentNo);
   }
 
   @Override
-  public int undelete(int no) throws Exception {
-    return commentDao.activate(no);
+  public int undelete(int commentNo) throws Exception {
+    return commentDao.activate(commentNo);
   }
 
   @Override

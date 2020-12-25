@@ -7,9 +7,6 @@
   <h1>뱃지 목록</h1>
 	<a class='btn btn-primary' href='form'>뱃지 추가</a>
 	
-  <c:if test="${param.keyword != null}">
-  '${param.keyword}'로 검색한 결과입니다.
-  </c:if>
 
   <table border='1'>
     <thead>
@@ -23,7 +20,7 @@
     <tbody>
 	    <c:forEach items="${list}" var="badge">
 	      <tr>
-	        <td>${badge.no}</td>
+	        <td>${badge.no}<c:if test="${badge.state == 0}">삭제된 뱃지  입니다.</c:if></td>
 	        <td id="name"><a href='detail?no=${badge.no}'>${badge.name}</a></td>
 	        <td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
 	        <td>${badge.content}</td>
@@ -32,11 +29,4 @@
     </tbody>
   </table>
   
-  <p>
-  <form action='list?' method='get'>
-    검색어: <input type='text' name='keyword' value=''>
-    <button>검색</button>
-  </form>
-  </p>
-</body>
-</html>
+

@@ -42,8 +42,7 @@ body {
   color: white;
   background-color: #37393E;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-   }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }

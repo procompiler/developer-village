@@ -5,13 +5,13 @@ import java.sql.Date;
 public class Report {
   private int no;
   private int reportTypeNo;
-  private User reporter;
   private Date CreatedDate;
-  private int status; // 처리상태 1 차단전 2차단중 3 차단해제
   private Date processDate;
+  private int status; // 처리상태 1 차단전 2차단중 3 차단해제
+  private User reporter;
+  private User reportedUser;
   private Article reportedArticle;
   private Comment reportedComment;
-  private User reportedUser;
 
   public Article getReportedArticle() {
     return reportedArticle;

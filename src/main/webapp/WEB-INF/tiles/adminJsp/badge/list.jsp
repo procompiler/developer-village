@@ -28,7 +28,7 @@
     <tbody>
 	    <c:forEach items="${list}" var="badge">
 	      <tr>
-	        <td>${badge.no}</td>
+	        <td>${badge.no}<c:if test="${badge.state == 0}">삭제된 뱃지  입니다.</c:if></td>
 	        <td id="name"><a href='detail?no=${badge.no}'>${badge.name}</a></td>
 	        <td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
 	        <td>${badge.content}</td>

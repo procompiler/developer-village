@@ -60,12 +60,9 @@ INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (22, 22, 
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (23, 23, 2,'sql문 오류좀 봐주세요.','하나도 모르겠네요.','2020-12-05',76);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (24, 24, 3,'신입 JAVA 개발자 및 경렬직 웹 기획자 채용','신입 JAVA 개발자 및 경렬직 웹 기획자 채용','2020-12-06',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (25, 5, 1,'얼죽아 오늘부로 탈퇴합니다.','날씨 진짜 춥네요.','2020-12-06',3);
-<<<<<<< HEAD
-=======
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (26, 4, 1,'Ruby가 뭔가요?','보석인가요?','2020-12-09',5);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (27, 4, 1,'Go가 뭔가요?','포켓몬고 인가요?','2020-12-11',3);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (28, 11, 1,'자바스크립트..ㅠ','이제 시작 하면 언제 끝내나요...ㅠㅠ','2020-12-15',1);
->>>>>>> ba6a19ca6bbd8f82377043c624df92502e6307f8
 
 
 
@@ -82,7 +79,7 @@ INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (9, 2, 4,'지�
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (10, 2, 4,'진영님 좋아요','2020-11-22',1,5);
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (11, 4, 10,'저는 양식 추천합니다.','2020-11-22');
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (12, 4, 5,'샤브샤브 어떠세요!!','2020-11-22');
-INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (13, 5, 1,'저는 양식 추천합니다.','2020-11-22',1,22);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (13, 5, 1,'저도 양식 추천합니다.','2020-11-22',1,11);
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (14, 4, 4,'햄버거도 좋아요','2020-11-23',1,11);
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (15, 4, 4,'감자튀김 좋아요','2020-11-23',1,11);
 INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (16, 4, 4,'샤브샤브 갑자기 땡기네요.','2020-11-23',1,12);
@@ -140,12 +137,7 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (26, 'visualstudio'
 
 
 
-
-<<<<<<< HEAD
-INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome.jpg',null);
-=======
-INSERT INTO badge (bno,name,photo,tno) VALUES (999, '환영', 'welcome',null);
->>>>>>> ba6a19ca6bbd8f82377043c624df92502e6307f8
+INSERT INTO badge (bno,name,photo,tno) VALUES (0, '환영', 'welcome',null);
 INSERT INTO badge (bno,name,photo,tno) VALUES (1, 'JAVA', 'java',1);
 INSERT INTO badge (bno,name,photo,tno) VALUES (2, 'Phython', 'python',2);
 INSERT INTO badge (bno,name,photo,tno) VALUES (3, 'Ruby', 'ruby',3);
@@ -257,13 +249,9 @@ INSERT INTO arc_tag (arno,tno) VALUES (22, 22);
 INSERT INTO arc_tag (arno,tno) VALUES (23, 10);
 INSERT INTO arc_tag (arno,tno) VALUES (23, 1);
 INSERT INTO arc_tag (arno,tno) VALUES (25, 12);
-<<<<<<< HEAD
-=======
 INSERT INTO arc_tag (arno,tno) VALUES (26, 3);
 INSERT INTO arc_tag (arno,tno) VALUES (27, 4);
 INSERT INTO arc_tag (arno,tno) VALUES (28, 5);
->>>>>>> ba6a19ca6bbd8f82377043c624df92502e6307f8
-
 
 
 

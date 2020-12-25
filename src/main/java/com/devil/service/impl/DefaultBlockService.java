@@ -45,7 +45,7 @@ public class DefaultBlockService implements BlockService {
   }
 
   @Override
-  public Block getBlockedUser(int blockedUser) throws Exception {
+  public Block getByUser(int blockedUser) throws Exception {
     return blockDao.findByUser(blockedUser);
   }
 

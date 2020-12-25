@@ -30,6 +30,7 @@
 			b.name,
 			b.photo,
 			b.content,
+			b.state,
 			t.tno,
 			t.name tag_name
 		from

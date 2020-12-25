@@ -18,7 +18,7 @@
 					type='hidden' name='step' value='${comment.step}'> <a
 					href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
 				<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
-				<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd" />
+				<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd. HH:mm" />
 
 				<c:choose>
 					<c:when test="${comment.state == 1}">

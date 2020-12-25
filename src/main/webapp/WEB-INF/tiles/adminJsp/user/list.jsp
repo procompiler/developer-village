@@ -62,7 +62,7 @@
 	 <tbody>
 		<tr>
 			<td><%=user.getNo()%></td> 
-			<td id="profile"><a href='detail?no=<%=user.getNo()%>'> <img
+			<td id="profile"><a href='<%=user.getNo()%>'> <img
           src='../../upload/user/<%=user.getPhoto()%>_40x40.jpg'
           style='border-radius: 70px' alt='[<%=user.getPhoto()%>_40x40]'>
           <%=user.getName()%>[<%=user.getEmail()%>]</td>

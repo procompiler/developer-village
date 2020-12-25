@@ -17,8 +17,7 @@
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"></label>
 			<input type="text" class="form-control"
-				id="exampleFormControlInput1" placeholder="게시글 제목"
-				name='title'>
+				     id="exampleFormControlInput1" placeholder="게시글 제목" name='title'>
 		</div>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label"

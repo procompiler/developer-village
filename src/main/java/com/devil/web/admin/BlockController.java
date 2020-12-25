@@ -3,8 +3,10 @@ package com.devil.web.admin;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.Block;
 import com.devil.domain.Report;
 import com.devil.domain.User;
@@ -23,15 +25,12 @@ public class BlockController {
   UserService userService;
 
   @RequestMapping("form")
-  public ModelAndView form(int reportNo) throws Exception {
+  public void form(int reportNo, Model model) throws Exception {
     Report report = reportService.get(reportNo);
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("report", report);
-    mv.setViewName("/adminJsp/block/form.jsp");
-    return mv;
+    model.addAttribute("report", report);
   }
 
-  @RequestMapping("add")
+  @PostMapping("add")
   public String add(Block block, int reportNo) throws Exception {
     Report report = reportService.get(reportNo);
     block.setReport(report);
@@ -39,24 +38,19 @@ public class BlockController {
     return "redirect:list";
   }
 
-  @RequestMapping("info")
-  public ModelAndView info(HttpSession session) throws Exception {
+  @GetMapping("info")
+  public void info(HttpSession session, Model model) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("blockedUser", blockService.get(loginUser.getNo()));
-    mv.setViewName("/adminJsp/block/info.jsp");
-    return mv;
+    model.addAttribute("blockedUser", blockService.get(loginUser.getNo()));
   }
 
-  @RequestMapping("list")
-  public ModelAndView list(String keyword) throws Exception {
-    ModelAndView mv = new ModelAndView();
+  @GetMapping("list")
+  public void list(String keyword, Model model) throws Exception {
     if (keyword != null) {
-      mv.addObject("blockList", blockService.list(keyword));
+      model.addAttribute("blockList", blockService.list(keyword));
     } else {
-      mv.addObject("blockList", blockService.list(null));
+      model.addAttribute("blockList", blockService.list(null));
     }
-    mv.setViewName("/adminJsp/block/blockList.jsp");
-    return mv;
   }
 }
+

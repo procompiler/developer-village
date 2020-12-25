@@ -20,10 +20,11 @@
     <result column="momno"    property="motherNo"/>
     
     <association property="writer" javaType="user">
-      <id column="uno"           property="no"/>
-      <result column="nick"      property="nickname"/>
-      <result column="photo"     property="photo"/>
+      <id column="uno"             property="no"/>
+      <result column="nick"        property="nickname"/>
+      <result column="photo"       property="photo"/>
     </association>
+    
   </resultMap>
   
   <sql id="sql1">
@@ -48,6 +49,42 @@
       comment c
       inner join article a on a.arno=c.arno
       left join user u on c.uno=u.uno
+  </sql>
+  
+  <sql id="sql2">
+    select
+      a.arno,
+      a.writer, <!-- writer의 번호 리턴 -->
+      a.cano,
+      a.title,
+      a.content,
+      a.cdt,
+      a.vw_cnt,
+      a.state,
+      c.arno,
+      c.uno,
+      c.content,
+      c.cdt,
+      c.ord,
+      c.udt,
+      c.state,
+      c.selected,
+      c.momno
+    from
+      comment c
+      inner join article a on a.arno=c.arno
+    where c.cno=#{no}
+  </sql>
+  
+  <sql id="sql3">
+    select
+      mc.uno,
+      mc.content,
+      mc.cdt,
+      mc.state
+    from
+      comment cc, comment mc 
+    where cc.momno=mc.cno and cc.cno=#{no}
   </sql>
   
   <insert id="insert" parameterType="comment">
@@ -98,6 +135,23 @@
   <select id="findByArticleNo" resultMap="CommentMap" parameterType="int">
     <include refid="sql1"/>
     where a.arno=#{articleNo}
+  </select>
+  
+  <select id="findArticleByCommentNo" resultMap="CommentMap" parameterType="int">
+    <include refid="sql2"/>
+    where c.cno=#{no}
+  </select>
+  
+  <select id="findMotherComment" resultMap="CommentMap" parameterType="int">
+    select
+      mc.arno,
+      mc.uno,
+      mc.content,
+      mc.cdt,
+      mc.state
+    from
+      comment cc, comment mc 
+    where cc.momno=mc.cno and cc.cno=#{no}
   </select>
   
   <select id="findByWriter" resultMap="CommentMap" parameterType="user">

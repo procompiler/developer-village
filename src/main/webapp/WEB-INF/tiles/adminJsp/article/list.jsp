@@ -44,7 +44,7 @@
 					<td>${article.no}</td>
 					<td id='title'>
 						<ul id='tags'>
-						</ul> <a href='detail?no=${article.no}'>${article.title}</a>
+						</ul> <a href='${article.no}'>${article.title}</a>
 					</td>
 					<td><c:choose>
 							<c:when test="${article.categoryNo == 1}">

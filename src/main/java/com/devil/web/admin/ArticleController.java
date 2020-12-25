@@ -1,12 +1,11 @@
 package com.devil.web.admin;
 
 import java.util.HashMap;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.Article;
@@ -54,8 +53,8 @@ public class ArticleController {
     }
   }
 
-  @GetMapping("/detail")
-  public void detail(int no, Model model, HttpSession session, HttpServletRequest request) throws Exception {
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
       throw new Exception("해당 게시글이 없습니다.");
@@ -66,22 +65,23 @@ public class ArticleController {
     model.addAttribute("tags", article.getTags());
     model.addAttribute("comments", commentService.getByArticleNo(no));
 
+    return "article/detail";
   }
 
-  @RequestMapping("/inactivate")
+  @GetMapping("inactivate")
   public String inactivate(int no) throws Exception {
     if (articleService.delete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
-    return "redirect:/admin/article/detail?no=" + no;
+    return "redirect:/admin/article/" + no;
   }
 
-  @RequestMapping("/activate")
+  @GetMapping("activate")
   public String activate(int no) throws Exception {
     if (articleService.undelete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
-    return "redirect:/admin/article/detail?no=" + no;
+    return "redirect:/admin/article/" + no;
   }
 
 }

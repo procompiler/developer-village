@@ -8,21 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 import com.devil.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("loginUser")
 public class UserController {
-  @Autowired UserService userService;
-  @Autowired ServletContext servletContext;
-  @Autowired FollowService followService;
+  @Autowired
+  UserService userService;
+  @Autowired
+  ServletContext servletContext;
+  @Autowired
+  FollowService followService;
 
   @GetMapping("/delete")
   public String delete(int no) throws Exception {
@@ -34,8 +34,9 @@ public class UserController {
   }
 
   @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model, @ModelAttribute("loginUser") User loginUser) throws Exception {
-
+  public String detail(@PathVariable int no, Model model, HttpSession httpSession)
+      throws Exception {
+    User loginUser = (User) httpSession.getAttribute("loginUser");
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
     params.put("userNo", no);
@@ -49,7 +50,7 @@ public class UserController {
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
     map.put("followeeNo", no);
-    
+
     if (followService.getUser(map) != null) {
       model.addAttribute("followed", true);
     } else {
@@ -58,12 +59,12 @@ public class UserController {
     return "user/detail";
   }
 
-  @GetMapping
+  @GetMapping("list")
   public String list(Model model, String keyword, HttpSession session) throws Exception {
 
     model.addAttribute("list", userService.list(keyword));
-    model.addAttribute(
-        "followingUsers",userService.listFollowing((User) session.getAttribute("loginUser")));
+    model.addAttribute("followingUsers",
+        userService.listFollowing((User) session.getAttribute("loginUser")));
 
     return "user/list";
   }

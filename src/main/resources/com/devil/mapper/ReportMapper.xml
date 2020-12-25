@@ -17,10 +17,10 @@
 			<result column="reporter_email"  property="email" />
 		</association>
 		
-		<association property="reportedUser" javaType="user">
-			<id column="uno"				           property="no" />
-			<result column="reported_user_nick" 	   property="nickname" />
-			<result column="reported_user_email"    property="email" />
+		<association property="reportedUser"     javaType="user">
+			<id column="uno"				               property="no" />
+			<result column="reported_user_nick" 	 property="nickname" />
+			<result column="reported_user_email"   property="email" />
 		</association>
 
 		<association property="reportedArticle"  javaType="article">
@@ -50,31 +50,31 @@
 	</resultMap>
 
 	<sql id="sql1">
-	select
-    r.rpno,
-    r.rptno,
-    r.uno,
-    r.cdt,
-    r.status,
-    r.pdt,
-    u.uno,
-    u.nick reporter_nick,
-    u.email reporter_email,
-    
-    ra.arno,
-    u2.uno article_uno,
-    u2.nick article_writer,
-    u2.email article_email,
-    
-    rc.cno,
-    c.arno comment_article,
-    c.cno,
-    c.uno comment_uno,
-    u3.nick comment_nick,
-    u3.email comment_email
+	  select
+	    r.rpno,
+	    r.rptno,
+	    r.uno,
+	    r.cdt,
+	    r.status,
+	    r.pdt,
+	    u.uno,
+	    u.nick reporter_nick,
+	    u.email reporter_email,
+	    
+	    ra.arno,
+	    u2.uno article_uno,
+	    u2.nick article_writer,
+	    u2.email article_email,
+	    
+	    rc.cno,
+	    c.arno comment_article,
+	    c.cno,
+	    c.uno comment_uno,
+	    u3.nick comment_nick,
+	    u3.email comment_email
     
     from
-    report r
+      report r
     inner join user u on r.uno=u.uno
     left outer join repo_arc ra on r.rpno=ra.rpno
     left outer join article a on ra.arno=a.arno
@@ -88,8 +88,7 @@
 
 	<insert id="insert" parameterType="report"
 		useGeneratedKeys="true" keyColumn="rpno" keyProperty="no">
-		insert into
-		report(rpno, rptno, uno, cdt)
+		insert into report(rpno, rptno, uno, cdt)
 		values(#{no}, #{reportTypeNo},
 		#{reporter.no}, now())
 	</insert>
@@ -122,22 +121,22 @@
 	<select id="findAllArticle" resultMap="ReportMap"
 		parameterType="string">
 		select
-		r.rpno,
-		r.rptno,
-		r.uno,
-		r.cdt,
-		r.status,
-		r.pdt,
-		u.uno,
-		u.nick reporter_nick,
-		u.email reporter_email,
-		ra.arno,
-		a.arno,
-		u2.uno article_uno,
-		u2.nick article_writer,
-		u2.email article_email
+			r.rpno,
+			r.rptno,
+			r.uno,
+			r.cdt,
+			r.status,
+			r.pdt,
+			u.uno,
+			u.nick reporter_nick,
+			u.email reporter_email,
+			ra.arno,
+			a.arno,
+			u2.uno article_uno,
+			u2.nick article_writer,
+			u2.email article_email
 		from
-		report r
+		  report r
 		inner join user u on r.uno=u.uno
 		left outer join repo_arc ra on r.rpno=ra.rpno
 		left outer join article a on ra.arno=a.arno
@@ -149,26 +148,25 @@
 		order by r.rpno desc
 	</select>
 
-	<select id="findAllComment" resultMap="ReportMap"
-		parameterType="string">
+	<select id="findAllComment" resultMap="ReportMap" parameterType="string">
 		select
-		r.rpno,
-		r.rptno,
-		r.uno,
-		r.cdt,
-		r.status,
-		r.pdt,
-		u.uno,
-		u.nick reporter_nick,
-		u.email reporter_email,
-		rc.cno,
-		c.arno comment_article,
-		c.cno,
-		c.uno,
-		u3.nick comment_nick,
-		u3.email comment_email
+			r.rpno,
+			r.rptno,
+			r.uno,
+			r.cdt,
+			r.status,
+			r.pdt,
+			u.uno,
+			u.nick reporter_nick,
+			u.email reporter_email,
+			rc.cno,
+			c.arno comment_article,
+			c.cno,
+			c.uno,
+			u3.nick comment_nick,
+			u3.email comment_email
 		from
-		report r
+		  report r
 		inner join user u on r.uno=u.uno
 		left outer join repo_comt rc on r.rpno=rc.rpno
 		left outer join comment c on rc.cno=c.cno
@@ -183,7 +181,11 @@
 
 	<select id="findByNo" resultMap="ReportMap" parameterType="int">
   <include refid="sql1"/>
+		where r.rpno=#{no}
+	</select>
 
+	<select id="findReportedUser" resultMap="ReportMap" parameterType="int">
+  <include refid="sql1"/>
 		where r.rpno=#{no}
 	</select>
 
