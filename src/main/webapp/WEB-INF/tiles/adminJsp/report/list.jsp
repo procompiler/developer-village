@@ -36,11 +36,11 @@
         </c:if></td>
 				<td>${report.getCreatedDate()}</td>
 				<td><c:if test="${report.reportedArticle == null}">
-						<a href='../../app/article/detail?no=${report.reportedComment.articleNo}'
-							style='text-decoration: none;'>댓글 신고 링크</a>
+						<a href='../article/${report.reportedComment.articleNo}'
+							style='text-decoration: none;'>댓글</a>
 					</c:if> <c:if test="${report.reportedArticle != null}">
-						<a href='../../app/article/detail?no=${report.reportedArticle.no}'
-							style='text-decoration: none;'>게시글 신고 링크</a>
+						<a href='../article/${report.reportedArticle.no}'
+							style='text-decoration: none;'>게시글</a>
 					</c:if></td>
 				<td><c:choose>
 						<c:when test="${report.reportTypeNo == 1}">
@@ -66,7 +66,6 @@
 				<td>
 					<form action="../block/form" method=get>
 						<input type='hidden' name='reportNo' value='${report.no}'>
-
 						<c:choose>
 							<c:when test="${report.status == 1}">
 								<button class="btn btn-primary">신고승인</button>

@@ -68,7 +68,7 @@ public class ArticleController {
     return "article/detail";
   }
 
-  @GetMapping("/inactivate")
+  @GetMapping("inactivate")
   public String inactivate(int no) throws Exception {
     if (articleService.delete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
@@ -76,7 +76,7 @@ public class ArticleController {
     return "redirect:/admin/article/" + no;
   }
 
-  @GetMapping("/activate")
+  @GetMapping("activate")
   public String activate(int no) throws Exception {
     if (articleService.undelete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
