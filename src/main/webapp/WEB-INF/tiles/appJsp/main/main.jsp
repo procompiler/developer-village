@@ -14,7 +14,7 @@
         <div class="card-band" style="background-color: ${t.tagColor}"></div>
         <div class="card-body">
           <h5 class="card-title">
-            <a href='../article/list?tagNo=${t.no}'>#${t.name}</a>
+            <a href='article/list?tagNo=${t.no}'>#${t.name}</a>
           </h5>
           <img style="float: right;"
             src='../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
