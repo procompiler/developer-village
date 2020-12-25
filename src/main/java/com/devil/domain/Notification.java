@@ -6,10 +6,10 @@ public class Notification {
   int no;
   int userNo;
   Date createdDate;
-  String content; 
   int type; //1. 게시글 2. 댓글  3. 팔로워  4. 뱃지
-  String url;
-  String photo;
+  User follower;
+  Comment comment;
+  Badge badge;
   String difTime;
   
   public int getNo() {
@@ -33,16 +33,6 @@ public class Notification {
     this.createdDate = createdDate;
     return this;
   }
-  
-  public String getContent() {
-    return content;
-  }
-  
-  public Notification setContent(String content) {
-    this.content = content;
-    return this;
-  }
-  
   public int getType() {
     return type;
   }
@@ -52,25 +42,28 @@ public class Notification {
     return this;
   }
   
-  public String getUrl() {
-    return url; 
-  } 
-  public Notification setUrl(String url) {
-    this.url = url;
-    return this;
-  }
-  public String getPhoto() {
-    return photo;
-  }
-  public Notification setPhoto(String photo) {
-    this.photo = photo;
-    return this;
-  }
   public String getDifTime() {
     return difTime;
   }
   public void setDifTime(String difTime) {
     this.difTime = difTime;
   }
-  
+  public User getFollower() {
+    return follower;
+  }
+  public void setFollower(User follower) {
+    this.follower = follower;
+  }
+  public Comment getComment() {
+    return comment;
+  }
+  public void setComment(Comment comment) {
+    this.comment = comment;
+  }
+  public Badge getBadge() {
+    return badge;
+  }
+  public void setBadge(Badge badge) {
+    this.badge = badge;
+  }
 }

@@ -9,28 +9,64 @@
     <id column="nno"       property="no"/>
     <result column="uno"       property="userNo" />
     <result column="cdt"   property="createdDate" />
-    <result column="content" property="content"/>
     <result column="type"    property="type"/>
-    <result column="url"    property="url"/>
-    <result column="photo"  property="photo"/>
+    <association property="follower" javaType="user">
+    <id column="fwer_no"  property="no"/>
+      <result column="fwer_nick" property="nickname"/>
+      <result column="fwer_photo" property="photo"/>
+    </association>
+    <association property="badge" javaType="badge">
+      <id column="bno"  property="no"/>
+      <result column="b_name" property="name"/>
+      <result column="b_photo" property="photo"/>
+    </association>
+    <association property="comment" javaType="comment">
+      <id column="cno" property="no"/>
+      <result column="arno"  property="articleNo"/>
+      <result column="title" property="articleTitle"/>
+      <association property="writer" javaType="user">
+        <id column="c_uno"   property="no"/>
+        <result column="c_nick"      property="nick"/>
+        <result column="c_photo"     property="photo"/>
+      </association>
+    </association>
   </resultMap>
 
   <insert id="insert" parameterType="notification">
-    insert into noti(uno, content, type, url, photo)
-    values(#{userNo}, #{content}, #{type}, #{url}, #{photo})
+    insert into noti(type, cno, fwer_no, bno, uno)
+    values(#{type}, #{comment.no}, #{follower.no}, #{badge.no},
+    <if test="follower != null">
+      (select fwing_no from follower where #{follower.no} = fwer_no)
+    </if>
+    <if test="comment != null">
+      (select c)
+    </if>
+    )
   </insert>
-
+  
   <select id="findByUser" resultMap="NotificationMap" parameterType="User">
     select
-      nno,
-      uno, 
-      cdt,
-      content,
-      type,
-      url,
-      photo
-    from noti
-    where uno=#{no}
+      n.nno,
+      n.uno, 
+      n.cdt,
+      n.type,
+      n.rdt,
+      n.fwer_no,
+      u.nick fwer_nick,
+      u.photo fwer_photo,
+      n.bno,
+      b.name b_name,
+      b.photo b_photo,
+      n.cno,
+      u2.uno c_uno,
+      u2.nick c_nick,
+      u2.photo c_photo
+    from noti n
+    left outer join user u on u.uno = n.fwer_no
+    left outer join badge b on b.bno = n.bno
+    left outer join comment c on c.cno = n.cno
+    left outer join user u2 on c.uno = u2.uno
+    where n.uno=1
     order by cdt desc
   </select>
 </mapper>

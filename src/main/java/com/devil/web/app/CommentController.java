@@ -9,9 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.devil.domain.Article;
 import com.devil.domain.Comment;
-import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.CommentService;
@@ -30,8 +28,9 @@ public class CommentController {
 
 
   @PostMapping("add")
-  public String add(int arno, int step, int momno, String content, HttpSession session) throws Exception {
-    User loginUser = (User)session.getAttribute("loginUser");
+  public String add(int arno, int step, int momno, String content, HttpSession session)
+      throws Exception {
+    User loginUser = (User) session.getAttribute("loginUser");
     Comment comment = new Comment();
     comment.setWriter(loginUser);
     comment.setArticleNo(arno);
@@ -78,5 +77,5 @@ public class CommentController {
 
     return "redirect:../article/detail?no=" + articleNo;
   }
-  
+
 }

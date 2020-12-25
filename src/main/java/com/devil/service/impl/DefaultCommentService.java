@@ -3,16 +3,13 @@ package com.devil.service.impl;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.CommentDao;
-import com.devil.dao.NotificationDao;
 import com.devil.domain.Comment;
-import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.CommentService;
 
 @Service
 public class DefaultCommentService implements CommentService {
   CommentDao commentDao;
-  NotificationDao notificationDao;
 
   public DefaultCommentService(CommentDao commentDao) {
     this.commentDao = commentDao;
@@ -20,8 +17,7 @@ public class DefaultCommentService implements CommentService {
 
   @Override
   public int add(Comment comment) throws Exception {
-    int count = commentDao.insert(comment);
-    return count;
+    return commentDao.insert(comment);
   }
 
   @Override
@@ -33,6 +29,7 @@ public class DefaultCommentService implements CommentService {
   public List<Comment> getByArticleNo(int articleNo) throws Exception {
     return commentDao.findByArticleNo(articleNo);
   }
+
   @Override
   public Comment get(int no) throws Exception {
     return commentDao.findByNo(no);
