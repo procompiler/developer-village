@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import com.devil.domain.Article;
 import com.devil.domain.Comment;
 import com.devil.domain.Report;
@@ -22,9 +21,9 @@ public class ReportController {
   @Autowired CommentService commentService;
 
   @RequestMapping("reportArticle")
-  public String reportArticle(int articleNo, Model model) throws Exception {
-    model.addAttribute("reportedArticle", articleService.get(articleNo));
-    return "./report-article";
+  public String reportArticle(int no, Model model) throws Exception {
+    model.addAttribute("reportedArticle", articleService.get(no));
+    return "report/report-article";
   }
 
   @RequestMapping("reportArticle-send")
@@ -34,24 +33,18 @@ public class ReportController {
     reportedArticle.setNo(articleNo);
 
     User reporter = (User) session.getAttribute("loginUser");
-
     report.setReportedArticle(reportedArticle);
     report.setReporter(reporter);
     report.setReportTypeNo(Integer.parseInt(reason));
-
     reportService.reportArticle(report);
-    return "redirect:../article/detail?no=" + reportedArticle.getNo();
 
+    return "redirect:../article/" + reportedArticle.getNo();
   }
 
   @RequestMapping("reportComment")
-  public ModelAndView reportComment(int no) throws Exception {
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("reportedComment", commentService.get(no));
-    mv.setViewName("/appJsp/report/report-comment.jsp");
-
-    return mv;
+  public String reportComment(int no, Model model) throws Exception {
+    model.addAttribute("reportedComment", commentService.get(no));
+    return "report/report-comment";
   }
 
   @RequestMapping("reportComment-send")
@@ -68,7 +61,7 @@ public class ReportController {
     report.setReportTypeNo(Integer.parseInt(reason));
 
     reportService.reportComment(report);
-    return "redirect:../article/detail?no=" + reportedComment.getArticleNo();
+    return "redirect:../article/" + reportedComment.getArticleNo();
 
   }
 
