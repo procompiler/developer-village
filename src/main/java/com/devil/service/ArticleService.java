@@ -7,12 +7,12 @@ import com.devil.domain.User;
 
 public interface ArticleService {
   int add(Article article) throws Exception;
-  List<Article> list(String keyword) throws Exception;
   Article get(int no) throws Exception;
   int update(Article article) throws Exception;
   int delete(int no) throws Exception;
   int undelete(int no) throws Exception;
   List<Article> list() throws Exception;
+  List<Article> list(String keyword) throws Exception;
   List<Article> list(Map<String, Object> keywords) throws Exception;
   List<Article> list(int categoryNo) throws Exception;
   List<Article> list(User user) throws Exception;

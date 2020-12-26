@@ -67,26 +67,35 @@
     right: 0px;" type="button">더보기</button>
  </div>
 <table id="QATable">
-<c:forEach items="${qnaList}" var="article" begin="0" end="3">
-<%--       <c:if
-        test="${article.categoryNo == 2 && article.state == 1}">
-        <tr>
+<c:forEach items="${qnaList}" var="article" begin="0" end="2">
+      <c:if test="${param.categoryNo == null}">
+        <tr class="articleRow">
           <td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
-          <td id='title'>
+          <td id='title' style="width: 490px;">
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
                 <li id='color'
                   style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
               </c:forEach>
-            </ul> <a href='${article.no}'>${article.title}</a><span
-            style="color: #6C5DDF;"></span>
+            </ul> <a href='${article.no}'>${article.title}</a>
           </td>
-          <td><i class="fas fa-comment"></i> ${article.commentCount}</td>
+          <td><i class="fas fa-comment"></i>${article.commentCount}</td>
           <td>${article.writer.nickname}</td>
           <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
         </tr>
-      </c:if> --%>
-      <c:if test="${param.categoryNo == null && article.categoryNo == 2 && article.state == 1}">
+      </c:if>
+    </c:forEach>
+  </table>  
+  
+<!-- 스터디 -->
+<div id="studyTitle">스터디
+  <button onclick="location.href='article/list?categoryNo=4'" 
+  class="btn btn-primary" style="margin: 0px; position: absolute;
+    right: 0px;" type="button">더보기</button>
+ </div>
+<table id="studyTable">
+<c:forEach items="${studyList}" var="article" begin="0" end="3">
+      <c:if test="${param.categoryNo == null}">
         <tr class="articleRow">
           <td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
           <td id='title'>
@@ -104,4 +113,39 @@
       </c:if>
     </c:forEach>
   </table>  
+  
+ <!-- 인기태그 -->
+  <div id="tagTitle">인기태그
+  <button onclick="location.href='tag/list'" 
+  class="btn btn-primary" style="margin: 0px; position: absolute;
+    right: 0px;" type="button">더보기</button>
+ </div>
+ 
+ <div style="position: absolute;
+    bottom: 15px; position: absolute; left: 1050px;" class="row row-cols-1 row-cols-md-3 g-4">
+  <c:forEach items="${tagList}" var="t" begin="0" end="2">
+    <div class="col">
+      <div class="card" style="width: 15rem;">
+        <div class="card-band" style="background-color: ${t.tagColor}"></div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href='../article/list?tagNo=${t.no}'>#${t.name}</a>
+          </h5>
+          <img style="float: right;"
+            src='../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
+          <c:choose>
+            <c:when test="${t.followed}">
+              <a class="btn btn-outline-danger"
+                href="../follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
+            </c:when>
+            <c:otherwise>
+              <a class="btn btn-primary"
+                href="../follow/addTag?followeeNo=${t.no}">팔로우</a>
+            </c:otherwise>
+          </c:choose>
+        </div>
+      </div>
+    </div>
+  </c:forEach>
+</div>
 </div>

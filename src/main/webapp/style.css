@@ -23,6 +23,33 @@
  margin: 0px;
  }
 
+#studyTitle{
+    width: 800px;
+    position: absolute;
+    left: 1050px;
+    top: 410px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+ #studyTable {
+ width: 800px;
+ position: absolute;
+ left: 1050px;
+ top: 453px;
+ margin: 0px;
+ }
+ 
+ #tagTitle{
+    width: 800px;
+    position: absolute;
+    left: 1050px;
+    bottom: 200px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+
 /* 레이아웃 */
 body {
   font-family: "Apple SD Gothic Neo", 'Roboto', sans-serif, "Nanum Gothic";
@@ -337,7 +364,6 @@ div.card {
   background-color: #2E3034;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-  padding-left: 10px;
 }
 
 .card-band {
