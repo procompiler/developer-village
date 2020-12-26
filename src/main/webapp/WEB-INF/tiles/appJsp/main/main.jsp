@@ -62,12 +62,14 @@
 
 <!-- 질문 -->
 <div id="QAtitle">QnA
-  <button onclick="location.href='article/list?categoryNo=2'" class="btn btn-primary" type="button">더보기</button>
+  <button onclick="location.href='article/list?categoryNo=2'" 
+  class="btn btn-primary" style="margin: 0px; position: absolute;
+    right: 0px;" type="button">더보기</button>
  </div>
 <table id="QATable">
-<c:forEach items="${articleList}" var="article" begin="0" end="3">
-      <c:if
-        test="${param.categoryNo != 0 && article.categoryNo == param.categoryNo && article.state == 1}">
+<c:forEach items="${qnaList}" var="article" begin="0" end="3">
+<%--       <c:if
+        test="${article.categoryNo == 2 && article.state == 1}">
         <tr>
           <td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
           <td id='title'>
@@ -83,8 +85,8 @@
           <td>${article.writer.nickname}</td>
           <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
         </tr>
-      </c:if>
-      <c:if test="${param.categoryNo == null}">
+      </c:if> --%>
+      <c:if test="${param.categoryNo == null && article.categoryNo == 2 && article.state == 1}">
         <tr class="articleRow">
           <td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
           <td id='title'>
@@ -95,7 +97,7 @@
               </c:forEach>
             </ul> <a href='${article.no}'>${article.title}</a>
           </td>
-          <td>${article.commentCount}</td>
+          <td><i class="fas fa-comment"></i>${article.commentCount}</td>
           <td>${article.writer.nickname}</td>
           <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
         </tr>

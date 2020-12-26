@@ -31,6 +31,9 @@ public class MainController {
 
     List<Article> articleList = articleService.list();
     model.addAttribute("articleList", articleList);
+
+    List<Article> qnaList = articleService.list(2);
+    model.addAttribute("qnaList", qnaList);
     return "main/main";
   }
 }

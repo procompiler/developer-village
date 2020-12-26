@@ -10,7 +10,7 @@
 	  width: 800px;
     position: absolute;
     left: 1050px;
-    top: 90px;
+    top: 100px;
     font-weight: bold;
     font-size: 26px;
 }
@@ -19,6 +19,7 @@
  width: 800px;
  position: absolute;
  left: 1050px;
+ top: 140px;
  margin: 0px;
  }
 
