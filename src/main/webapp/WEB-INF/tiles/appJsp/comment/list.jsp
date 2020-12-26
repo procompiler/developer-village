@@ -12,9 +12,9 @@
 			<c:if test="${comment.step == 0 && comment.motherNo == 0}">
 				<form action='../comment/update?no=${comment.no}&articleNo=${comment.articleNo}'
 					    method='post' class="card-body">
-					<input type='hidden' name='momno' value='${comment.motherNo}'>
-					<input type='hidden' name='cno' value='${comment.no}'> 
-					<input type='hidden' name='arno' value='${comment.articleNo}'> 
+					<input type='hidden' name='motherNo' value='${comment.motherNo}'>
+					<input type='hidden' name='no' value='${comment.no}'> 
+					<input type='hidden' name='articleNo' value='${comment.articleNo}'> 
 					<input type='hidden' name='step' value='${comment.step}'> 
 					
 					<p>
@@ -50,9 +50,9 @@
 					             && childComment.motherNo == comment.no}">
 						<form action='../comment/update?no=${childComment.no}&articleNo=${childComment.articleNo}'
 							    method='post' class="card-body" style="margin-left:80px;">
-							<input type='hidden' name='momno' value='${childComment.motherNo}'> 
-							<input type='hidden' name='cno' value='${childComment.no}'> 
-							<input type='hidden' name='arno' value='${childComment.articleNo}'>
+							<input type='hidden' name='mothernNo' value='${childComment.motherNo}'> 
+							<input type='hidden' name='no' value='${childComment.no}'> 
+							<input type='hidden' name='artcleNo' value='${childComment.articleNo}'>
 							<input type='hidden' name='step' value='${childComment.step}'>
 							
 							<p>
@@ -82,8 +82,8 @@
 				
 				<form method='post' action='../comment/add'>
 
-          <input type='hidden' name="momno" value='${comment.no}'>
-          <input type='hidden' name="arno" value='${comment.articleNo}'>
+          <input type='hidden' name="motherNo" value='${comment.no}'>
+          <input type='hidden' name="articleNo" value='${comment.articleNo}'>
           <input type='hidden' name="step" value='1'><br>
           
         <p><a href='../user/${loginUser.no}'>
@@ -103,8 +103,8 @@
   </c:forEach>
 
 	<form method='post' action='../comment/add'>
-      <input type='hidden' name="momno" value='0'>
-      <input type='hidden' name="arno" value='${param.no}'>
+      <input type='hidden' name="motherNo" value='0'>
+      <input type='hidden' name="articleNo" value='${param.no}'>
       <input type='hidden' name="step" value='0'><br>
       <p>
         <a href='../user/${loginUser.no}'>
@@ -115,5 +115,3 @@
       <textarea class="form-control" name='content' placeholder='댓글을 남겨보세요!'></textarea>
     <button class="btn btn-primary" style="margin-left:1200px;">등록</button>
   </form>
-
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

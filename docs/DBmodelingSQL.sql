@@ -109,9 +109,6 @@ CREATE UNIQUE INDEX `UIX_nick`
     `nick` ASC -- 닉네임
   );
 
-ALTER TABLE `user`
-  MODIFY COLUMN `uno` INTEGER NOT NULL AUTO_INCREMENT;
-
 -- 게시글
 CREATE TABLE `article` (
   `arno`      INTEGER      NOT NULL, -- 게시글번호
@@ -262,7 +259,8 @@ ALTER TABLE `follow`
 CREATE TABLE `usr_bdg` (
   `uno` INTEGER NOT NULL, -- 사용자번호
   `bno` INTEGER NOT NULL, -- 뱃지번호
-  `adt` DATE    NOT NULL DEFAULT now() -- 수여일
+  `adt` DATE    NOT NULL DEFAULT now(), -- 수여일
+  `ord` INTEGER NOT NULL DEFAULT 0 -- 순서
 );
 
 -- 유저_뱃지
@@ -346,13 +344,14 @@ ALTER TABLE `usr_bmk_arc`
 
 -- 알람
 CREATE TABLE `noti` (
-  `nno`     INTEGER      NOT NULL, -- 알람번호
-  `uno`     INTEGER      NOT NULL, -- 사용자번호
-  `cdt`     DATETIME     NOT NULL DEFAULT now(), -- 알람생성일
-  `content` MEDIUMTEXT   NULL,     -- 알람내용
-  `type`    INTEGER      NOT NULL DEFAULT 1, -- 알람타입
-  `url`     VARCHAR(255) NULL,     --  URL
-  `rdt`     DATETIME     NULL      -- 확인시점
+  `nno`     INTEGER  NOT NULL, -- 알람번호
+  `uno`     INTEGER  NOT NULL, -- 사용자번호
+  `cdt`     DATETIME NOT NULL DEFAULT now(), -- 알람생성일
+  `type`    INTEGER  NOT NULL DEFAULT 1, -- 알람타입
+  `rdt`     DATETIME NULL,     -- 확인시점
+  `cno`     INTEGER  NULL,     -- 댓글번호
+  `fwer_no` INTEGER  NULL,     -- 팔로워번호
+  `bno`     INTEGER  NULL      -- 획득뱃지번호
 );
 
 -- 알람
@@ -711,6 +710,36 @@ ALTER TABLE `noti`
     )
     REFERENCES `user` ( -- 유저
       `uno` -- 사용자번호
+    );
+
+-- 알람
+ALTER TABLE `noti`
+  ADD CONSTRAINT `FK_comment_TO_noti` -- 댓글 -> 알람
+    FOREIGN KEY (
+      `cno` -- 댓글번호
+    )
+    REFERENCES `comment` ( -- 댓글
+      `cno` -- 댓글번호
+    );
+
+-- 알람
+ALTER TABLE `noti`
+  ADD CONSTRAINT `FK_user_TO_noti2` -- 유저 -> 알람2
+    FOREIGN KEY (
+      `fwer_no` -- 팔로워번호
+    )
+    REFERENCES `user` ( -- 유저
+      `uno` -- 사용자번호
+    );
+
+-- 알람
+ALTER TABLE `noti`
+  ADD CONSTRAINT `FK_badge_TO_noti` -- 뱃지 -> 알람
+    FOREIGN KEY (
+      `bno` -- 획득뱃지번호
+    )
+    REFERENCES `badge` ( -- 뱃지
+      `bno` -- 뱃지번호
     );
 
 -- 유저_팔로우_태그
