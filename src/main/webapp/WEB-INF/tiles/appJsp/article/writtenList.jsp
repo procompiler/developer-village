@@ -31,7 +31,7 @@
           </div>
           <div class="float-start">
           <h5 class='card-title'>
-            <a href='detail?no=${a.no}'>${a.title}</a>
+            <a href='${a.no}'>${a.title}</a>
           </h5>
           <p class="card-text">
             <small class="text-muted"><fmt:formatDate
@@ -53,5 +53,6 @@
 </div>
 </div>
 </div>
-<div class="col-3"></div>
+<div class="col-3">
+</div>
 </div>

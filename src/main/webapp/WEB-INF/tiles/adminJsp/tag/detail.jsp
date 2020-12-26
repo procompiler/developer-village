@@ -25,4 +25,3 @@
 		<a href='delete?no=${tag.no}' class="btn btn-danger"
 			style='color: white;'>태그삭제</a>
 	</form>
-

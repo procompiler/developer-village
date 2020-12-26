@@ -50,7 +50,6 @@ public class DefaultReportService implements ReportService {
 
   @Override
   public Report get(int no) throws Exception {
-    Report report = reportDao.findByNo(no);
-    return report;
+    return reportDao.findByNo(no);
   }
 }

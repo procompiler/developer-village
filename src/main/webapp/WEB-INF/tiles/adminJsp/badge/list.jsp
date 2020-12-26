@@ -6,7 +6,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
   <h1>뱃지 목록</h1>
 	<a class='btn btn-primary' href='form'>뱃지 추가</a>
-	
+
+  <div id="search-bar">
+  <span style="float: left">뱃지 검색</span>
+  <form action='list' method='get' autocomplete="off">
+  <input id="search" type="search" name='keyword' 
+  value='${parm.keyword}' placeholder="검색어 입력.." style=" padding-left: 40px; margin-right: 30px;">
+  <button class="btn btn-primary">검색</button>
+  </form>
+  </div>
 
   <table border='1'>
     <thead>
@@ -28,5 +36,3 @@
 	    </c:forEach>
     </tbody>
   </table>
-  
-

@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-	<h1>게시글 작성</h1>
-	<br>
+	<h1 style="margin-left: 70px; font-weight: bold">게시글 작성</h1>
+	
+	<div id="articleForm">
 	<form action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example"
 			name='categoryNo'>
@@ -13,7 +14,6 @@
 			<option value='3'>채용공고</option>
 			<option value='4'>스터디</option>
 		</select>
-<br>
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"></label>
 			<input type="text" class="form-control"
@@ -25,7 +25,6 @@
 			<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="게시글을 작성하세요!"
 				rows="20" name='content'></textarea>
 		</div>
-
 		<p>
 			태그<br>
 			<c:forEach items="${tags}" var="tag">
@@ -41,3 +40,4 @@
 		<button type='button' class='btn btn-danger'
 			onclick="location.href='list'">취소</button>
 	</form>
+</div>
