@@ -259,7 +259,8 @@ ALTER TABLE `follow`
 CREATE TABLE `usr_bdg` (
   `uno` INTEGER NOT NULL, -- 사용자번호
   `bno` INTEGER NOT NULL, -- 뱃지번호
-  `adt` DATE    NOT NULL DEFAULT now() -- 수여일
+  `adt` DATE    NOT NULL DEFAULT now(), -- 수여일
+  `ord` INTEGER NOT NULL DEFAULT 0 -- 순서
 );
 
 -- 유저_뱃지

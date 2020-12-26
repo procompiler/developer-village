@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Comment;
-import com.devil.domain.Follow;
-import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.CommentService;
@@ -30,18 +28,14 @@ public class CommentController {
 
 
   @PostMapping("add")
-  public String add(int arno, int step, int momno, String content, HttpSession session)
+  public String add(Comment comment, HttpSession session)
       throws Exception {
+    System.out.println(comment);
     User loginUser = (User) session.getAttribute("loginUser");
-    Comment comment = new Comment();
     comment.setWriter(loginUser);
-    comment.setArticleNo(arno);
-    comment.setStep(step);
-    comment.setMotherNo(momno);
-    comment.setContent(content);
     commentService.add(comment);
 
-    return "redirect:../article/detail?no=" + comment.getArticleNo();
+    return "redirect:../article/" + comment.getArticleNo();
   }
 
   // article/detail에서 더이상 /comment/list를 직접 경유하지 않음
@@ -68,7 +62,7 @@ public class CommentController {
     if (commentService.update(comment) == 0) {
       throw new Exception("해당 댓글이 없습니다.");
     }
-    return "redirect:../article/detail?no=" + comment.getArticleNo();
+    return "redirect:../article/" + comment.getArticleNo();
   }
 
   @GetMapping("delete")
@@ -77,16 +71,8 @@ public class CommentController {
       throw new Exception("해당 번호의 댓글이 없습니다.");
     }
 
-    return "redirect:../article/detail?no=" + articleNo;
+    return "redirect:../article/" + articleNo;
   }
   
-  // 알림 만들기
-  public Notification makeNoti(Comment comment) {
-    Notification notification = new Notification()
-        .setComment(comment);
-    if (comment.getMotherNo() == 0) {
-      return notification.setType(1);
-    }
-    return notification.setType(2);
-  }
+
 }

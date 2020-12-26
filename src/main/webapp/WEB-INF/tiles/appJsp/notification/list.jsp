@@ -37,7 +37,7 @@
         <div class="col-sm-10">
           <div class="card-body">
             <p class="card-text">
-              <a href="../article/detail?articleNo=${n.comment.articleNo}">
+              <a href="../article/${n.comment.articleNo}">
               <c:if test="${n.type == 1}">
               ${n.comment.writer.nickname}님이 <b>"${n.comment.articleTitle}"</b> 게시글에 댓글을 남겼습니다.
               </c:if>
