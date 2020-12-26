@@ -9,7 +9,6 @@ import com.devil.dao.NotificationDao;
 import com.devil.dao.UserDao;
 import com.devil.domain.Follow;
 import com.devil.domain.Notification;
-import com.devil.domain.User;
 import com.devil.service.FollowService;
 
 @Service
@@ -44,7 +43,7 @@ public class DefaultFollowService implements FollowService {
   public int addUser(Follow follow) throws Exception {
     int count = followDao.insertUser(follow);
     // 알림 insert
-    notificationDao.insert(makeNoti(follow.getFollower(), follow.getFolloweeNo()));
+    notificationDao.insert(makeNoti(follow));
     return count;
   }
 
@@ -59,22 +58,10 @@ public class DefaultFollowService implements FollowService {
   }
   
   // 알림 만들기
-  public Notification makeNoti(User user, int userNo) {
+  public Notification makeNoti(Follow follow) {
     return new Notification()
-        .setUserNo(userNo)
-        .setContent(makeNotiContent(user))
-        .setUrl(makeNotiUrl(user))
-        .setPhoto(user.getPhoto())
-        .setType(3);
-  }
-
-  // 알림 컨텐츠 만들기
-  public String makeNotiContent(User user) {
-    return user.getNickname() + "님이 팔로우했습니다.";
-  }
-
-  // 알림 주소 만들기
-  public String makeNotiUrl(User user) {
-    return "/user/" + user.getNo();
+    .setUserNo(follow.getFolloweeNo())
+    .setFollower(follow.getFollower())
+    .setType(3);
   }
 }

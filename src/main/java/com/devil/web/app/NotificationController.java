@@ -41,6 +41,7 @@ public class NotificationController {
     
     List<Notification> notificationList = notificationService.list(loginUser);
     for (Notification n : notificationList) {
+      System.out.println(n.getType());
       n.setDifTime(formatTimeString(n.getCreatedDate()));
     }
     model.addAttribute("notificationList", notificationList);

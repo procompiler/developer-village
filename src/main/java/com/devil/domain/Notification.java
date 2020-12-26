@@ -36,34 +36,36 @@ public class Notification {
   public int getType() {
     return type;
   }
-  
   public Notification setType(int type) {
     this.type = type;
     return this;
   }
-  
   public String getDifTime() {
     return difTime;
   }
-  public void setDifTime(String difTime) {
+  public Notification setDifTime(String difTime) {
     this.difTime = difTime;
-  }
-  public User getFollower() {
-    return follower;
-  }
-  public void setFollower(User follower) {
-    this.follower = follower;
+    return this;
   }
   public Comment getComment() {
     return comment;
   }
-  public void setComment(Comment comment) {
+  public Notification setComment(Comment comment) {
     this.comment = comment;
+    return this;
+  }
+  public User getFollower() {
+    return follower;
+  }
+  public Notification setFollower(User follower) {
+    this.follower = follower;
+    return this;
   }
   public Badge getBadge() {
     return badge;
   }
-  public void setBadge(Badge badge) {
+  public Notification setBadge(Badge badge) {
     this.badge = badge;
+    return this;
   }
 }

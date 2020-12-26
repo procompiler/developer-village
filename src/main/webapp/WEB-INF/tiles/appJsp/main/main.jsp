@@ -17,7 +17,7 @@
             <a href='../article/list?tagNo=${t.no}'>#${t.name}</a>
           </h5>
           <img style="float: right;"
-            src='upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
+            src='../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
         </div>
       </div>
     </div>

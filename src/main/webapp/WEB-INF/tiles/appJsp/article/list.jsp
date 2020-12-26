@@ -67,7 +67,7 @@
 								<li id='color'
 									style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
 							</c:forEach>
-						</ul> <a href='detail?no=${article.no}'>${article.title}</a><span
+						</ul> <a href='${article.no}'>${article.title}</a><span
 						style="color: #6C5DDF;"></span>
 					</td>
 					<td><i class="fas fa-comment"></i> ${article.commentCount}</td>
