@@ -43,7 +43,7 @@ public class DefaultFollowService implements FollowService {
   public int addUser(Follow follow) throws Exception {
     int count = followDao.insertUser(follow);
     // 알림 insert
-    notificationDao.insert(makeNoti(follow));
+    
     return count;
   }
 

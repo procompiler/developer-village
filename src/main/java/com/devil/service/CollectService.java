@@ -1,13 +1,9 @@
 package com.devil.service;
 
-import java.util.Map;
-import com.devil.domain.Follow;
+import com.devil.domain.Collect;
 
 public interface CollectService {
-  int addTag(Follow follow) throws Exception;
-  int deleteTag(Follow follow) throws Exception;
-  Follow getTag(Map<String, Object> map) throws Exception;
-  Follow getUser(Map<String, Object> map) throws Exception;
-  int addUser(Follow follow) throws Exception;
-  int deleteUser(Follow follow) throws Exception;
+  int add(Collect collect) throws Exception;
+  int delete(Collect collect) throws Exception;
+  int updateOrder(Collect collect) throws Exception;
 }

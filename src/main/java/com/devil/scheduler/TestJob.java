@@ -11,5 +11,6 @@ public class TestJob {
     // 스프링의 스케쥴러는 매 10초마다 이 메서드를 호출할 것이다.
     System.out.println("=====> TestJob.job1()");
   }
+  
 }
 
