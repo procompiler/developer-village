@@ -6,6 +6,7 @@ public class Collect {
   User user;
   Badge badge;
   Date collectedDate;
+  int order;
   
   public User getUser() {
     return user;
@@ -28,4 +29,14 @@ public class Collect {
     this.collectedDate = collectedDate;
     return this;
   }
+  public int getOrder() {
+    return order;
+  }
+  public void setOrder(int order) {
+    this.order = order;
+  }
+  public void setUser(User user) {
+    this.user = user;
+  }
+  
 }

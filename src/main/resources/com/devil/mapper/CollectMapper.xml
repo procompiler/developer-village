@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devil.dao.CollectDao">
+  
+  <insert id="insert" parameterType="collect">
+    insert into usr_tag(uno, bno, ord)
+    values(#{user.no}, #{badge.no}, #{order})
+  </insert>
+
+  <delete id="delete" parameterType="collect">
+    delete from usr_tag
+    where uno=#{user.no} and tno=#{badge.no}
+  </delete>
+  
+  <update id="updateOrder" parameterType="collect">
+    update usr_tag set
+      ord = #{ord}
+    where uno=#{user.no} and tno=#{badge.no}
+  </update>
+</mapper>
