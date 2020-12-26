@@ -207,7 +207,10 @@
     </select>
     
     <select id="findByCategoryNo" resultMap="ArticleMap" parameterType="int">
-    select 
+     <include refid="sql1"/>
+     where a.cano=#{categoryNo} and a.state=1
+     order by a.arno desc
+    <!-- select 
       a.arno, 
       a.title,
       a.content,
@@ -216,11 +219,12 @@
       a.state,
       u.nick article_writer_nick,
       u.photo article_writer_photo,
-      a.vw_cnt,
+      a.vw_cnt
     from 
       article a
       inner join user u on a.writer=u.uno
      where a.cano=#{categoryNo}  
+     order by a.arno desc -->
     </select>
     
   

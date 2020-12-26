@@ -117,5 +117,22 @@ public class Comment {
   public void setArticleTitle(String articleTitle) {
     this.articleTitle = articleTitle;
   }
+  @Override
+  public String toString() {
+    return "Comment [no=" + no + ", writer=" + writer + ", content=" + content + ", createdDate="
+        + createdDate + ", ord=" + ord + ", step=" + step + ", motherNo=" + motherNo
+        + ", updatedDate=" + updatedDate + ", deletedDate=" + deletedDate + ", state=" + state
+        + ", selected=" + selected + ", article=" + article + ", articleNo=" + articleNo
+        + ", articleTitle=" + articleTitle + ", getArticle()=" + getArticle() + ", getMotherNo()="
+        + getMotherNo() + ", getArticleNo()=" + getArticleNo() + ", getUpdatedDate()="
+        + getUpdatedDate() + ", getDeletedDate()=" + getDeletedDate() + ", getState()=" + getState()
+        + ", isSelected()=" + isSelected() + ", getNo()=" + getNo() + ", getWriter()=" + getWriter()
+        + ", getContent()=" + getContent() + ", getCreatedDate()=" + getCreatedDate()
+        + ", getOrd()=" + getOrd() + ", getStep()=" + getStep() + ", getArticleTitle()="
+        + getArticleTitle() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+        + ", toString()=" + super.toString() + "]";
+  }
+  
+  
 
 }

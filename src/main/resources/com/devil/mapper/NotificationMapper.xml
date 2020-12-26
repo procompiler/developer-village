@@ -5,32 +5,82 @@
 
 <mapper namespace="com.devil.dao.NotificationDao">
 
-  <resultMap type="notification" id="NotificationMap">
-    <id column="nno"       property="no"/>
-    <result column="uno"       property="userNo" />
-    <result column="cdt"   property="createdDate" />
-    <result column="content" property="content"/>
-    <result column="type"    property="type"/>
-    <result column="url"    property="url"/>
-    <result column="photo"  property="photo"/>
-  </resultMap>
+	<resultMap type="notification" id="NotificationMap">
+		<id column="nno" property="no" />
+		<result column="uno" property="userNo" />
+		<result column="cdt" property="createdDate" />
+		<result column="type" property="type" />
+		
+		<association property="follower" javaType="user">
+			<id column="fwer_no" property="no" />
+			<result column="fwer_nick" property="nickname" />
+			<result column="fwer_photo" property="photo" />
+		</association>
+		
+		<association property="comment" javaType="comment">
+			<id column="cno" property="no" />
+			<result column="arno" property="articleNo" />
+			<result column="title" property="articleTitle" />
+			<result column="momno" property="motherNo"/>
+			
+			<association property="writer" javaType="user">
+				<id column="c_uno" property="no" />
+				<result column="c_nick" property="nickname" />
+				<result column="c_photo" property="photo" />
+			</association>
+			
+		</association>
+		
+		<association property="badge" javaType="badge">
+			<id column="bno" property="no" />
+			<result column="b_name" property="name" />
+			<result column="b_photo" property="photo" />
+		</association>
+	</resultMap>
 
-  <insert id="insert" parameterType="notification">
-    insert into noti(uno, content, type, url, photo)
-    values(#{userNo}, #{content}, #{type}, #{url}, #{photo})
-  </insert>
+	<insert id="insert" parameterType="notification">
+		insert into noti(type, cno, fwer_no, bno, uno)
+		values(#{type},
+		#{comment.no}, #{follower.no}, #{badge.no},
+		<choose>
+			<when test="comment == null">
+				#{userNo}
+			</when>
+			<otherwise>
+				(select c.uno from comment c where c.cno = #{comment.no})
+			</otherwise>
+		</choose>
+		)
+	</insert>
 
-  <select id="findByUser" resultMap="NotificationMap" parameterType="User">
-    select
-      nno,
-      uno, 
-      cdt,
-      content,
-      type,
-      url,
-      photo
-    from noti
-    where uno=#{no}
-    order by cdt desc
-  </select>
+	<select id="findByUser" resultMap="NotificationMap"
+		parameterType="User">
+		select
+		n.nno,
+		n.uno,
+		n.cdt,
+		n.type,
+		n.rdt,
+		n.fwer_no,
+		u.nick fwer_nick,
+		u.photo fwer_photo,
+		n.bno,
+		b.name b_name,
+		b.photo b_photo,
+		n.cno,
+		u2.uno c_uno,
+		u2.nick c_nick,
+		u2.photo c_photo,
+		c.momno,
+		a.title
+		from noti n
+		left outer join user u on u.uno = n.fwer_no
+		left outer join badge b on b.bno = n.bno
+		left outer join comment c on c.cno = n.cno
+		left outer join article a on c.arno = a.arno
+		left outer join user
+		u2 on c.uno = u2.uno
+		where n.uno=#{no}
+		order by cdt desc
+	</select>
 </mapper>
