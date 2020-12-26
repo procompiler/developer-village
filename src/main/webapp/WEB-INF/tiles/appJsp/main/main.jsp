@@ -77,9 +77,9 @@
                 <li id='color'
                   style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
               </c:forEach>
-            </ul> <a href='${article.no}'>${article.title}</a>
+            </ul> <a href='article/${article.no}'>${article.title}</a>
           </td>
-          <td><i class="fas fa-comment"></i>${article.commentCount}</td>
+          <td><i class="fas fa-comment"></i> ${article.commentCount}</td>
           <td>${article.writer.nickname}</td>
           <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
         </tr>
@@ -104,9 +104,9 @@
                 <li id='color'
                   style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
               </c:forEach>
-            </ul> <a href='${article.no}'>${article.title}</a>
+            </ul> <a href='article/${article.no}'>${article.title}</a>
           </td>
-          <td><i class="fas fa-comment"></i>${article.commentCount}</td>
+          <td><i class="fas fa-comment"></i> ${article.commentCount}</td>
           <td>${article.writer.nickname}</td>
           <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
         </tr>
@@ -129,18 +129,18 @@
         <div class="card-band" style="background-color: ${t.tagColor}"></div>
         <div class="card-body">
           <h5 class="card-title">
-            <a href='../article/list?tagNo=${t.no}'>#${t.name}</a>
+            <a href='article/list?tagNo=${t.no}'>#${t.name}</a>
           </h5>
           <img style="float: right;"
             src='../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
           <c:choose>
             <c:when test="${t.followed}">
               <a class="btn btn-outline-danger"
-                href="../follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
+                href="follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
             </c:when>
             <c:otherwise>
               <a class="btn btn-primary"
-                href="../follow/addTag?followeeNo=${t.no}">팔로우</a>
+                href="follow/addTag?followeeNo=${t.no}">팔로우</a>
             </c:otherwise>
           </c:choose>
         </div>
