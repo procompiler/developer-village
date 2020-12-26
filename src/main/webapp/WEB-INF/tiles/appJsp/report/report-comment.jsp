@@ -5,7 +5,7 @@
 
 <form action="reportComment-send" method="get">
 <br>
-<h4>'${reportedComment.writer.nickname}'님의 댓글을 신고합니다.</h4>
+<h4>'${reportedComment.writer.name}'님의 댓글을 신고합니다.</h4>
 <br>
 <input type='hidden' name='commentNo' value='${reportedComment.no}'>
 <input type='hidden' name='commentArticleNo' value='${reportedComment.articleNo}'>

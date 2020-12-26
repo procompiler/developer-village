@@ -23,7 +23,7 @@ public class DefaultCommentService implements CommentService {
   @Override
   public int add(Comment comment) throws Exception {
     int count = commentDao.insert(comment);
-    notificationDao.insert(makeNoti(comment));
+    //notificationDao.insert(makeNoti(comment));
     return count;
   }
 

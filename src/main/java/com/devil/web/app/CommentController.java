@@ -26,11 +26,8 @@ public class CommentController {
   @Autowired
   UserService userService;
 
-
   @PostMapping("add")
-  public String add(Comment comment, HttpSession session)
-      throws Exception {
-    System.out.println(comment);
+  public String add(Comment comment, HttpSession session) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
     comment.setWriter(loginUser);
     commentService.add(comment);
@@ -73,6 +70,5 @@ public class CommentController {
 
     return "redirect:../article/" + articleNo;
   }
-  
 
 }
