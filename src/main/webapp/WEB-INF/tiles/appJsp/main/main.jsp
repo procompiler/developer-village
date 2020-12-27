@@ -116,15 +116,13 @@
   </div>
   
  <!-- 인기태그 -->
- <br>
- <br>
- <br>
  <div class="col-sm-12">
+ <br>
+ <br>
   <div id="tagTitle">인기태그<a href="tag/list">
 <i class="fas fa-ellipsis-h"></i></a>
  </div>
-
- 
+<br>
  <div class="row row-cols-md-12 g-1">
   <c:forEach items="${tagList}" var="t" begin="0" end="3">
     <div class="col">
