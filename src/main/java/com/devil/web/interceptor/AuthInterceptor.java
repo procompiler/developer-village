@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-// 로그인 여부를 검사하는 인터셉터
 public class AuthInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -13,6 +12,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     if (request.getPathInfo().startsWith("/auth") ||
         request.getPathInfo().startsWith("/main") ||
+        request.getPathInfo().startsWith("/user/form") ||
+        request.getPathInfo().startsWith("/article/list") ||
+        request.getPathInfo().startsWith("/tag/list") ||
         request.getSession().getAttribute("loginUser") != null) {
       return true; // 다음 인터셉터나 페이지 컨트롤러 실행!
     }
