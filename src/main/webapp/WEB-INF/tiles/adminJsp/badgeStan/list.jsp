@@ -13,7 +13,8 @@
 
 <form action='../badgeStan/update' method='post'>
   <c:forEach items="${badgeStands}" var="s">
-    <input type='hidden' name='standardNo' value='${s.no}' />
+    <input type='hidden' name='badgeNo' value='${badge.no}'/>
+    <input type='hidden' name='no' value='${s.no}' />
     <input type='hidden' name='evaluationNo' value='${s.evaluationNo}' />
     <input type='text' name='evaluationName' readonly
       value='${s.evaluationName}' />
@@ -26,7 +27,7 @@
   <input type='hidden' name="badgeNo" value="${badge.no}"/>
   <select name="evaluationNo" class="form-select">
     <option selected>수여기준</option>
-    <option value="1">가입일</option>
+    <option value="1">가입일수</option>
     <option value="2">팔로워수</option>
     <option value="3">게시글수</option>
     <option value="4">댓글수</option>

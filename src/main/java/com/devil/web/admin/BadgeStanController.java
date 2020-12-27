@@ -19,12 +19,12 @@ public class BadgeStanController {
   @RequestMapping("add")
   public String add(BadgeStan badgeStan) throws Exception {
     badgeStanService.add(badgeStan);
-    return "redirect:../badge/" + badgeStan.getNo();
+    return "redirect:../badge/" + badgeStan.getBadgeNo();
   }
 
   @RequestMapping("update")
   public String update(BadgeStan badgeStan) throws Exception {
     badgeStanService.update(badgeStan);
-    return "redirect:../badge/" + badgeStan.getNo();
+    return "redirect:../badge/" + badgeStan.getBadgeNo();
   }
 }

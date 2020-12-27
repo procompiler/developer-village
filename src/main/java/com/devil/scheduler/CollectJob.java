@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.devil.domain.Badge;
-import com.devil.domain.BadgeStandard;
+import com.devil.domain.BadgeStan;
 import com.devil.domain.Collect;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
@@ -42,12 +42,12 @@ public class CollectJob {
           break;
         }
         // 가지고 있지 않은 뱃지 기준 충족되는지 알아보기
-        List<BadgeStandard> standards = badge.getStandards();
+        List<BadgeStan> standards = badge.getBadgeStans();
         // 전체 기준 갯수
         int totalStandards = standards.size();
         // 충족되는 기준 갯수
         int count = 0;
-        for (BadgeStandard standard : badge.getStandards()) {
+        for (BadgeStan standard : badge.getBadgeStans()) {
           System.out.println(standard.getEvaluationName());
           System.out.println("필요 count: " + standard.getCount());
           Map<String, Object> params = new HashMap<>();

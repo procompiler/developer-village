@@ -16,7 +16,7 @@
 	<insert id="insert" parameterType="badgeStan">
 		insert into
 		bdg_stan(beno, count, bno)
-		values(#{beno}, #{count}, #{bno})
+		values(#{evaluationNo}, #{count}, #{badgeNo})
 	</insert>
 
 	<sql id="sql1">
@@ -38,12 +38,7 @@
   </select>
 
 	<update id="update" parameterType="badgeStan">
-		update bdg_stan
-		<set>
-			<if test="count != null">count = #{count}</if>
-		</set>
+		update bdg_stan set count = #{count}
 		where bsno=#{no}
 	</update>
-<!-- 
-	 -->
 </mapper>
