@@ -37,13 +37,14 @@ public class UserController {
   }
 
   @RequestMapping("add")
-  public String add(String name, String email, String password, String tel, String nickname) throws Exception {
+  public String add(String name, String email, String password, String tel, String nickname, String photo) throws Exception {
     User user = new User();
     user.setName(name);
     user.setEmail(email);
     user.setPassword(password);
     user.setTel(tel);
     user.setNickname(nickname);
+    user.setPhoto(photo);
     userService.add(user);
     return "redirect:.";
   }

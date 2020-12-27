@@ -40,6 +40,8 @@
         <div class="col-sm-10">
           <input type='text' class="form-control" name='name' placeholder="Name">
         </div>
+        <input type='hidden' class="form-control" name='photo' 
+        value="fe8a0349-0080-4cc6-85d2-25dc1646441c">
       </div>
 
 		<div class="d-grid gap-2">
