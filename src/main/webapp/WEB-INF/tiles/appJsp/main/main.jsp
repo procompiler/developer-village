@@ -10,6 +10,8 @@
 
 
 <!-- 커뮤니티 -->
+<div class="row">
+<div class="col-md-4 col-sm-12">
  <div style="margin-left: 70px; font-weight: bold; font-size: 26px;">커뮤니티
   <span style="position: relative; font-weight: normal; font-size: 16px;  left: 480px;">최신글</span>
  </div>
@@ -58,9 +60,12 @@
   <div class="d-grid gap-2">
      <button onclick="location.href='article/list'" class="btn btn-primary" type="button">더보기</button>
   </div>
-
+  </div>
+</div>
 
 <!-- 질문 -->
+<div class="row">
+<div class="col-md-6 col-sm-12">
 <div id="QAtitle">QnA
   <button onclick="location.href='article/list?categoryNo=2'" 
   class="btn btn-primary" style="margin: 0px; position: absolute;
@@ -86,8 +91,12 @@
       </c:if>
     </c:forEach>
   </table>  
+  </div>
+  </div>
   
 <!-- 스터디 -->
+<div class="row">
+<div class="col-md-6 col-sm-12">
 <div id="studyTitle">스터디
   <button onclick="location.href='article/list?categoryNo=4'" 
   class="btn btn-primary" style="margin: 0px; position: absolute;
@@ -113,8 +122,12 @@
       </c:if>
     </c:forEach>
   </table>  
+  </div>
+  </div>
   
  <!-- 인기태그 -->
+ <div class="row">
+ <div class="col-md-6 col-sm-12">
   <div id="tagTitle">인기태그
   <button onclick="location.href='tag/list'" 
   class="btn btn-primary" style="margin: 0px; position: absolute;
@@ -147,5 +160,7 @@
       </div>
     </div>
   </c:forEach>
+</div>
+</div>
 </div>
 </div>

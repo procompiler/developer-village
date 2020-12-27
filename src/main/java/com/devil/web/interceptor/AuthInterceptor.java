@@ -11,7 +11,8 @@ public class AuthInterceptor implements HandlerInterceptor {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
 
-    if (request.getPathInfo().startsWith("/auth") ||
+    if (request.getPathInfo().startsWith("/auth/login") ||
+        request.getPathInfo().startsWith("/user/form") ||
         request.getPathInfo().startsWith("/main") ||
         request.getSession().getAttribute("loginUser") != null) {
       return true; // 다음 인터셉터나 페이지 컨트롤러 실행!
