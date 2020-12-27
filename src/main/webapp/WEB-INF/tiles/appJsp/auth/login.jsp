@@ -27,6 +27,13 @@
 		<div class="d-grid gap-2">
      <button class="btn btn-primary" type="submit">로그인</button>
     </div>
+    <div style="text-align:center;">
+		<a href="#">아이디 찾기</a>
+		<span>  |  </span>
+		<a href="#">비밀번호 찾기</a>
+		<span> | </span>
+		<a href="../user/form">회원가입</a>
+		</div>
 	</form>
-	</div>
+</div>
 

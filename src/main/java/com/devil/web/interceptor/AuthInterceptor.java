@@ -13,6 +13,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     if (request.getPathInfo().startsWith("/auth") ||
         request.getPathInfo().startsWith("/main") ||
         request.getPathInfo().startsWith("/user/form") ||
+        request.getPathInfo().startsWith("/user/add") ||
         request.getPathInfo().startsWith("/article/list") ||
         request.getPathInfo().startsWith("/tag/list") ||
         request.getSession().getAttribute("loginUser") != null) {

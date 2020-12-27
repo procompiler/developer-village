@@ -36,18 +36,10 @@ public class UserController {
   public void form() throws Exception {
   }
 
-  @GetMapping("add")
-  public String add(String email, String nickname, String name, String password)
-      throws Exception {
-
-    User user = new User();
-    user.setEmail(email);
-    user.setNickname(nickname);
-    user.setName(name);
-    user.setPassword(password);
-
+  @RequestMapping("add")
+  public String add(User user) throws Exception {
     userService.add(user);
-    return "redirect:../../";
+    return "redirect:.";
   }
 
   @GetMapping("delete")
