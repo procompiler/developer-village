@@ -10,6 +10,7 @@
 		<result column="email" 		  property="email" />
 		<result column="nick" 		  property="nickname" />
 		<result column="name" 		  property="name" />
+		<result column="tel"        property="tel" />
 		<result column="pwd" 		    property="password" />
 		<result column="cdt" 		    property="createdDate" />
 		<result column="rnt_vsdt" 	property="recentVisitedDate" />
@@ -59,6 +60,8 @@
     u.uno,
     u.nick,
     u.name,
+    u.email,
+    u.pwd,
     u.state,
     u.photo,
     u.blocked
@@ -66,8 +69,8 @@
 	</sql>
 
 	<insert id="insert" parameterType="user">
-		insert into user(email,nick,name,pwd, photo, rnt_vsdt)
-		values(#{email}, #{nickname}, #{name}, password(#{password}), #{photo}, now())
+		insert into user(email,nick,name,tel, pwd, rnt_vsdt, photo)
+		values(#{email}, #{nickname}, #{name}, #{tel}, password(#{password}), now(), #{photo})
 	</insert>
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">
@@ -112,7 +115,24 @@
 		u.email = #{email}
 		and u.pwd = password(#{password})
 	</select>
-
+	
+	<select id="findId" parameterType="map"
+		resultMap="UserMap">
+		<include refid="sql2" />
+		where
+		u.name = #{name}
+		and u.tel = #{tel}
+	</select>
+  
+	<select id="findPassword" parameterType="map"
+		resultMap="UserMap">
+		<include refid="sql2" />
+		where
+		u.email = #{email}
+		and u.name = #{name}
+  	and u.tel = #{tel}
+	</select>
+	
 	<update id="update" parameterType="user">
 		update user
 		<set>

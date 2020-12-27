@@ -2,6 +2,8 @@ package com.devil.service.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.CommentDao;
 import com.devil.dao.NotificationDao;
 import com.devil.domain.Article;
@@ -21,9 +23,10 @@ public class DefaultCommentService implements CommentService {
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int add(Comment comment) throws Exception {
     int count = commentDao.insert(comment);
-    //notificationDao.insert(makeNoti(comment));
+    notificationDao.insert(makeNoti(comment));
     return count;
   }
 

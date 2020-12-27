@@ -34,7 +34,6 @@ public class CommentController {
 
     return "redirect:../article/" + comment.getArticleNo();
   }
-
   // article/detail에서 더이상 /comment/list를 직접 경유하지 않음
   // 추후에도 사용하지 않는다면 코드 삭제 예정
   @GetMapping("list")

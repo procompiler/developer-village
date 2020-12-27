@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import com.devil.domain.Badge;
+import com.devil.domain.Tag;
 import com.devil.service.BadgeService;
 import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
@@ -57,6 +58,18 @@ public class BadgeController {
     return "redirect:list";
   }
 
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model) throws Exception {
+    Badge badge = badgeService.get(no);
+    
+    if (badge == null) {
+      throw new Exception("해당 뱃지가 없습니다!");
+    }
+    
+    model.addAttribute("badge", badge);
+    return "badge/detail";
+  }
+  /*
   @GetMapping("detail")
   public String detail(int no,Model model) throws Exception {
     Badge badge = badgeService.get(no);
@@ -68,14 +81,25 @@ public class BadgeController {
     model.addAttribute("badge", badge);
     return "badge/detail";
   }
-
+*/
   @GetMapping("list")
   public String list(Model model) throws Exception {
     model.addAttribute("list", badgeService.list(""));
     return "badge/list";
-
   }
+  /* 수여 기준
+  @GetMapping("info")
+  public String badgeStans(int no,Model model) throws Exception {
+    Badge badge = badgeService.get(no);
 
+    if (badge == null) {
+      throw new Exception("해당 뱃지가 없습니다!");
+    }
+
+    model.addAttribute("badge", badge);
+    return "badge/info";
+  }
+*/
   @RequestMapping("update")
   public String update(Badge badge) throws Exception {
 

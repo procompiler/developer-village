@@ -7,10 +7,6 @@
   <h1>뱃지 목록</h1>
 	<a class='btn btn-primary' href='form'>뱃지 추가</a>
 	
-  <c:if test="${param.keyword != null}">
-  '${param.keyword}'로 검색한 결과입니다.
-  </c:if>
-
   <table border='1'>
     <thead>
       <tr>
@@ -31,12 +27,6 @@
 	    </c:forEach>
     </tbody>
   </table>
-  
-  <p>
-  <form action='list?' method='get'>
-    검색어: <input type='text' name='keyword' value=''>
-    <button>검색</button>
-  </form>
-  </p>
+
 </body>
 </html>

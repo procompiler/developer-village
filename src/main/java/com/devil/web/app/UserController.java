@@ -36,23 +36,14 @@ public class UserController {
   public void form() throws Exception {
   }
 
-  @GetMapping("add")
-  public String add(String email, String nickname, String name, String password)
-      throws Exception {
-
-    User user = new User();
-    user.setEmail(email);
-    user.setNickname(nickname);
-    user.setName(name);
-    user.setPassword(password);
-
+  @PostMapping("add")
+  public String add(User user) throws Exception {
     userService.add(user);
-    return "redirect:../../";
+    return "redirect:.";
   }
 
   @GetMapping("delete")
   public String delete(int no) throws Exception {
-
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
@@ -61,7 +52,6 @@ public class UserController {
 
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model, HttpSession session) throws Exception {
-
     User loginUser = (User) session.getAttribute("loginUser");
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
@@ -87,10 +77,8 @@ public class UserController {
 
   @GetMapping
   public String list(Model model, String keyword, HttpSession session) throws Exception {
-
     model.addAttribute("list", userService.list(keyword));
     model.addAttribute("followingUsers",userService.listFollowing((User) session.getAttribute("loginUser")));
-
     return "user/list";
   }
 
@@ -154,9 +142,9 @@ public class UserController {
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
 
-      Thumbnails.of(saveFilePath)//
-      .size(40, 40)//
-      .crop(Positions.CENTER).outputFormat("jpg")//
+      Thumbnails.of(saveFilePath)
+      .size(40, 40)
+      .crop(Positions.CENTER).outputFormat("jpg")
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
@@ -164,9 +152,9 @@ public class UserController {
         }
       });
 
-      Thumbnails.of(saveFilePath)//
+      Thumbnails.of(saveFilePath)
       .size(60, 60)//
-      .crop(Positions.CENTER).outputFormat("jpg")//
+      .crop(Positions.CENTER).outputFormat("jpg")
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
@@ -174,9 +162,9 @@ public class UserController {
         }
       });
 
-      Thumbnails.of(saveFilePath)//
+      Thumbnails.of(saveFilePath)
       .size(100, 100)//
-      .crop(Positions.CENTER).outputFormat("jpg") //
+      .crop(Positions.CENTER).outputFormat("jpg")
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
@@ -184,7 +172,7 @@ public class UserController {
         }
       });
 
-      Thumbnails.of(saveFilePath)//
+      Thumbnails.of(saveFilePath)
       .size(160, 160).outputFormat("jpg").crop(Positions.CENTER).toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {

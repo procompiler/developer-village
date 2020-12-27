@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.devil.dao.BadgeDao;
 import com.devil.domain.Badge;
+import com.devil.domain.BadgeStan;
 import com.devil.domain.User;
 import com.devil.service.BadgeService;
 
@@ -46,4 +47,10 @@ public class DefaultBadgeService implements BadgeService {
   public List<Badge> list(User user) throws Exception {
     return badgeDao.findByCollector(user);
   }
+
+@Override
+public List<BadgeStan> badgeStans(int bno) throws Exception {
+	 return badgeDao.findByInfo(bno);
+}
+
 }
