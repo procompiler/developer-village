@@ -12,6 +12,7 @@
 	href="${appRoot}/node_modules/@fortawesome/fontawesome-free/css/all.css" />
 <link rel="stylesheet" type="text/css" href='${appRoot}/custom.css'>
 <link rel="stylesheet" type="text/css" href='${appRoot}/admin-style.css'>
+<link rel="stylesheet" type="text/css" href='${appRoot}/badge-style.css'>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

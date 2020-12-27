@@ -2,7 +2,7 @@
   url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap')
   ;
 
-/* �젅�씠�븘�썐 */
+/* 占쎌쟿占쎌뵠占쎈툡占쎌뜍 */
 body {
   background-color: #37393E;
   color: white;
@@ -70,7 +70,7 @@ background: #2E3034;
   text-align:center;
   width: 140px;
   height: 35px;
-  margin: 48px 53px 8px 7px;
+  margin: 10px 10px 10px 15px;
   padding: 7px 27px 7px 25px;
   border-radius: 6px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -200,7 +200,7 @@ background: #2E3034;
   color: #6C5DDF;
 }
 
-/* �긽�떒諛� */
+/* 占쎄맒占쎈뼊獄쏉옙 */
 header {
   position: fixed;
 	z-index: 2;
@@ -310,7 +310,7 @@ nav #logo-nav {
 }
 
 
-/* �븯�떒諛� */
+/* 占쎈릭占쎈뼊獄쏉옙 */
 footer {
   clear: both;
   padding: 20px;
@@ -334,7 +334,7 @@ footer #pro-logo {
 }
 
 
-/* �뀒�씠釉� */
+/* 占쎈�믭옙�뵠�뇡占� */
 table {
   border-collapse: collapse;
   border-style: hidden;
@@ -358,7 +358,7 @@ th, td {
   text-align: center;
 }
 
-/* 紐⑸줉 �젣紐� */
+/* 筌뤴뫖以� 占쎌젫筌륅옙 */
 #title {
   text-align: left;
 }
@@ -390,7 +390,7 @@ th, td {
   padding: 5px;
 }
 
-/*�궗�씠�뱶諛� �쑀�� �봽濡쒗븘*/
+/*占쎄텢占쎌뵠占쎈굡獄쏉옙 占쎌�占쏙옙 占쎈늄嚥≪뮉釉�*/
 .user-card {
   padding: 8px 12px;
 }
@@ -422,7 +422,7 @@ th, td {
   vertical-align: auto;
 }
 
-/* 踰꾪듉 */
+/* 甕곌쑵�뱣 */
 .btn {
   border-radius: 10px;
   margin: 10px 10px 10px 0px;
@@ -477,7 +477,7 @@ th, td {
   background-color: #F56C6E;
   color: white;
 }
-/* 留곹겕 */
+/* 筌띻낱寃� */
 
 a:link {
   color: white;
@@ -497,7 +497,7 @@ a:visited {
   font-size: 2em;
 }
 
-/*移대뱶*/
+/*燁삳�諭�*/
 div.card {
   background-color: #2E3034;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
