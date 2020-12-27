@@ -8,12 +8,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
 <!-- 커뮤니티 -->
-<div class="row">
-<div class="col-md-4 col-sm-12">
- <div style="margin-left: 70px; font-weight: bold; font-size: 26px;">커뮤니티
-  <span style="position: relative; font-weight: normal; font-size: 16px;  left: 480px;">최신글</span>
+<div id="index" class="row">
+<div class="col-sm-6 main-block-left" style="margin-top: 35px;">
+ <div style="font-weight: bold; font-size: 26px;">커뮤니티 최신글
  </div>
  
 <div id ="recentFeed" class="d-grid gap-3"/>
@@ -63,20 +61,19 @@
   </div>
 </div>
 
+
+
 <!-- 질문 -->
-<div class="row">
-<div class="col-md-6 col-sm-12">
-<div id="QAtitle">QnA
-  <button onclick="location.href='article/list?categoryNo=2'" 
-  class="btn btn-primary" style="margin: 0px; position: absolute;
-    right: 0px;" type="button">더보기</button>
- </div>
+<div class="col-sm-6 main-block-right">
 <table id="QATable">
-<c:forEach items="${qnaList}" var="article" begin="0" end="2">
+<caption>QnA<a href="article/list?categoryNo=2">
+<i class="fas fa-ellipsis-h"></i></a></caption>
+
+<c:forEach items="${qnaList}" var="article" begin="0" end="4">
       <c:if test="${param.categoryNo == null}">
         <tr class="articleRow">
-          <td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
-          <td id='title' style="width: 490px;">
+          <td style="border-radius: 6px 0px 0px 6px; width: 50px;">${article.no}</td>
+          <td id='title' style="width: 400px;">
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
                 <li id='color'
@@ -86,27 +83,21 @@
           </td>
           <td><i class="fas fa-comment"></i> ${article.commentCount}</td>
           <td>${article.writer.nickname}</td>
-          <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
+          <td style="border-radius: 0px 6px 6px 0px; width: 70px;">${article.viewCount}</td>
         </tr>
       </c:if>
     </c:forEach>
   </table>  
-  </div>
-  </div>
-  
+
 <!-- 스터디 -->
-<div class="row">
-<div class="col-md-6 col-sm-12">
-<div id="studyTitle">스터디
-  <button onclick="location.href='article/list?categoryNo=4'" 
-  class="btn btn-primary" style="margin: 0px; position: absolute;
-    right: 0px;" type="button">더보기</button>
- </div>
 <table id="studyTable">
-<c:forEach items="${studyList}" var="article" begin="0" end="3">
+<caption>스터디<a href="article/list?categoryNo=4">
+<i class="fas fa-ellipsis-h"></i></a></caption>
+
+<c:forEach items="${studyList}" var="article" begin="0" end="4">
       <c:if test="${param.categoryNo == null}">
         <tr class="articleRow">
-          <td style="border-radius: 6px 0px 0px 6px;">${article.no}</td>
+          <td style="border-radius: 6px 0px 0px 6px; width: 50px;">${article.no}</td>
           <td id='title'>
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
@@ -117,26 +108,25 @@
           </td>
           <td><i class="fas fa-comment"></i> ${article.commentCount}</td>
           <td>${article.writer.nickname}</td>
-          <td style="border-radius: 0px 6px 6px 0px;">${article.viewCount}</td>
+          <td style="border-radius: 0px 6px 6px 0px; width: 70px;">${article.viewCount}</td>
         </tr>
       </c:if>
     </c:forEach>
   </table>  
   </div>
-  </div>
   
  <!-- 인기태그 -->
- <div class="row">
- <div class="col-md-6 col-sm-12">
-  <div id="tagTitle">인기태그
-  <button onclick="location.href='tag/list'" 
-  class="btn btn-primary" style="margin: 0px; position: absolute;
-    right: 0px;" type="button">더보기</button>
+ <br>
+ <br>
+ <br>
+ <div class="col-sm-12">
+  <div id="tagTitle">인기태그<a href="tag/list">
+<i class="fas fa-ellipsis-h"></i></a>
  </div>
+
  
- <div style="position: absolute;
-    bottom: 15px; position: absolute; left: 1050px;" class="row row-cols-1 row-cols-md-3 g-4">
-  <c:forEach items="${tagList}" var="t" begin="0" end="2">
+ <div class="row row-cols-md-12 g-1">
+  <c:forEach items="${tagList}" var="t" begin="0" end="3">
     <div class="col">
       <div class="card" style="width: 15rem;">
         <div class="card-band" style="background-color: ${t.tagColor}"></div>
@@ -160,7 +150,6 @@
       </div>
     </div>
   </c:forEach>
-</div>
-</div>
-</div>
+  </div>
+    </div>
 </div>
