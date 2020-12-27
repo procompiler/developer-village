@@ -10,6 +10,7 @@
 		<result column="email" 		  property="email" />
 		<result column="nick" 		  property="nickname" />
 		<result column="name" 		  property="name" />
+		<result column="tel"        property="tel" />
 		<result column="pwd" 		    property="password" />
 		<result column="cdt" 		    property="createdDate" />
 		<result column="rnt_vsdt" 	property="recentVisitedDate" />
@@ -68,8 +69,8 @@
 	</sql>
 
 	<insert id="insert" parameterType="user">
-		insert into user(email,nick,name,tel, pwd, rnt_vsdt)
-		values(#{email}, #{nickname}, #{name}, #{tel}, password(#{password}), now())
+		insert into user(email,nick,name,tel, pwd, rnt_vsdt, photo)
+		values(#{email}, #{nickname}, #{name}, #{tel}, password(#{password}), now(), #{photo})
 	</insert>
 
 	<select id="findAll" resultMap="UserMap" parameterType="string">

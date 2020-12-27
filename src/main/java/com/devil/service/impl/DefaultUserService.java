@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.UserDao;
 import com.devil.domain.User;
 import com.devil.service.UserService;
@@ -17,6 +19,7 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int add(User user) throws Exception {
     return userDao.insert(user);
   }

@@ -10,13 +10,17 @@
     </div>
     
   <c:choose>
-    <c:when test="${param.userPwd == null}">
-      <p>회원 정보를 찾을 수 없습니다.</p>
+    <c:when test="${param.userPwd == ''}">
+    <p style="text-align:center; margin-bottom: 4rem;">
+      <span style="font-size: 23px;">
+      회원 정보를 찾을 수 없습니다.</span><br>
+      <span>입력하신 정보를 확인하시길 바랍니다.</span>
+    </p>
     </c:when>
     <c:when test="${param.userPwd != null}">
       <p style="text-align:center;">
       회원님의 비밀번호는<br> 
-      <span style="font-size: 23px; font-weight: bold;">[${param.userPwd}]</span> 입니다.
+      <span style="font-size: 23px; font-weight: bold;">#(${param.userPwd})</span> 입니다.
       </p>
     </c:when>
   </c:choose>

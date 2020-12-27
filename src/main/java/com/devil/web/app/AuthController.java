@@ -64,10 +64,13 @@ public class AuthController {
 
   @RequestMapping("searchId-send")
   public String searchId(String name, String tel, Model model) throws Exception {
-    String userId = userService.getId(name, tel).getEmail();
-    System.out.println(userId);
-    model.addAttribute("userId", userId);
-    return "redirect:./searchIdResult";
+    String userId;
+    try {
+      userId = userService.getId(name, tel).getEmail();
+    } catch(Exception e) {
+      userId = "";
+    }
+    return "redirect:./searchIdResult?userId=" + userId;
   }
 
   @GetMapping("searchIdResult")
@@ -80,9 +83,13 @@ public class AuthController {
 
   @PostMapping("searchPwd-send")
   public String searchPwd(String email, String name, String tel, Model model) throws Exception {
-    String userPwd = userService.getPwd(email, name, tel).getPassword();
-    model.addAttribute("userPwd", userPwd);
-    return "redirect:./searchPwdResult?" + userPwd;
+    String userPwd;
+    try {
+      userPwd = userService.getPwd(email, name, tel).getPassword();
+    } catch(Exception e) {
+      userPwd = "";
+    }
+    return "redirect:./searchPwdResult?userPwd=" + userPwd;
   }
 
   @GetMapping("searchPwdResult")
