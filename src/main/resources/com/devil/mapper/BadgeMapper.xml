@@ -16,7 +16,7 @@
 			<id column="tno" property="no" />
 			<result column="tag_name" property="name" />
 		</association>
-		<collection property="standards" ofType="BadgeStan">
+		<collection property="badgeStans" ofType="BadgeStan">
 			<id column="bsno" property="no" />
 			<result column="bno" property="badgeNo"/>
 			<result column="beno" property="evaluationNo" />

@@ -5,22 +5,22 @@
 
 <mapper namespace="com.devil.dao.CollectDao">
 	<insert id="insert" parameterType="collect">
-		insert into usr_tag(uno, bno,
+		insert into usr_bdg(uno, bno,
 		ord)
 		values(#{user.no}, #{badge.no}, #{order})
 	</insert>
 
 	<delete id="delete" parameterType="collect">
-		delete from usr_tag
+		delete from usr_bdg
 		where
-		uno=#{user.no} and tno=#{badge.no}
+		uno=#{user.no} and bno=#{badge.no}
 	</delete>
 
 	<update id="updateOrder" parameterType="collect">
-		update usr_tag set
+		update usr_bdg set
 		ord =
 		#{ord}
-		where uno=#{user.no} and tno=#{badge.no}
+		where uno=#{user.no} and bno=#{badge.no}
 	</update>
 
 
@@ -30,7 +30,8 @@
 		</if>
 		<if test="evaluationNo==2">
 			select count(*)
-			from follow f
+			from user u
+			inner join user follow f
 			inner join user u2
 			on f.fwer_no=u2.uno
 			where u.uno = f.fwing_no

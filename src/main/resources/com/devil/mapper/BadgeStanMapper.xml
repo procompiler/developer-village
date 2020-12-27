@@ -34,7 +34,7 @@
 	 <select id="findByBadgeNo" resultMap="BadgeStanMap"
     parameterType="int">
     <include refid="sql1" />
-    where bs.bno=#{no}
+    where bs.bno=#{badgeNo}
   </select>
 
 	<update id="update" parameterType="badgeStan">

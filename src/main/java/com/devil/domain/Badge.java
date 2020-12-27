@@ -12,7 +12,6 @@ public class Badge {
   private String content;
   private Date collectDate;
   private List<BadgeStan> badgeStans;
-  private List<BadgeStandard> standards;
 
   public int getState() {
     return state;
@@ -77,20 +76,13 @@ public class Badge {
     return this;
   }
 
-public List<BadgeStan> getBadgeStans() {
-	return badgeStans;
-}
-
-public Badge setBadgeStans(List<BadgeStan> badgeStans) {
-	this.badgeStans = badgeStans;
-	return this;
-}
- 
-  public List<BadgeStandard> getStandards() {
-    return standards;
+  public List<BadgeStan> getBadgeStans() {
+    return badgeStans;
   }
 
-  public void setStandards(List<BadgeStandard> standards) {
-    this.standards = standards;
+  public Badge setBadgeStans(List<BadgeStan> badgeStans) {
+    this.badgeStans = badgeStans;
+    return this;
   }
+
 }
