@@ -18,5 +18,5 @@
   <option value="5">음란성</option>
   <option value="6">도배</option>
 </select><br>
-<button class="btn btn-primary" style="float:right;">댓글신고하기</button>
+<button class="btn btn-primary" style="float:right;">신고하기</button>
 </form>

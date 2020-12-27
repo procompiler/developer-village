@@ -25,20 +25,29 @@
 	</insert>
 	
 	<sql id="sql1">
-		select
-			b.bno,
-			b.name,
-			b.photo,
-			b.content,
-			b.state,
-			t.tno,
-			t.name tag_name
-		from
-			badge b
-			left outer join tag t on t.tno= b.bno
+		 select
+            b.bno,
+            b.name,
+            b.photo,
+            b.content,
+            b.state,
+            t.tno,
+            t.name tag_name,
+            be.bename,
+            bs.count
+        from
+            badge b
+            left outer join tag t on t.tno= b.bno
+            left outer join bdg_stan bs on b.bno=bs.bno
+          left outer join bdg_eva be on bs.beno=be.beno
 	</sql>
 	
 	<select id="findByNo" resultMap="BadgeMap" parameterType="int">
+	 <include refid="sql1"/>
+		where b.bno=#{no}
+	</select>
+	
+		<select id="findByInfo" resultMap="BadgeMap" parameterType="int">
 	 <include refid="sql1"/>
 		where b.bno=#{no}
 	</select>

@@ -6,7 +6,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.devil.domain.User;
 import com.devil.service.UserService;
 
-// 로그인 여부를 검사하는 인터셉터
 public class AutoLoginInterceptor implements HandlerInterceptor {
 
   UserService userService;

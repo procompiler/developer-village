@@ -17,7 +17,7 @@
 		<div class="row g-0">
 			<div class="col-sm-2">
 				<div class="text-center mr-2 mt-4">
-					<a href='../user/detail?no=${a.writer.no}'><img
+					<a href='../user/${a.writer.no}'><img
 						class="card-img-top rounded-circle"
 						src='../../upload/user/${a.writer.photo}_60x60.jpg'
 						alt='[${a.writer.nickname}]' /></a><br> <small>${a.writer.nickname}</small>
@@ -33,7 +33,7 @@
 					</div>
 					<div class="float-start">
 					<h5 class='card-title'>
-						<a href='detail?no=${a.no}'>${a.title}</a>
+						<a href='../article/${a.no}'>${a.title}</a>
 					</h5>
 					<p class="card-text">
 						<small class="text-muted"><fmt:formatDate

@@ -14,7 +14,7 @@
 						</a>
 					</div>
 				<div class="card-body mx-auto">
-					<h5 class="card-title text-center"><a href='../user/detail?no=${u.no}'>${u.nickname}</a></h5>
+					<h5 class="card-title text-center"><a href='../user/${u.no}'>${u.nickname}</a></h5>
 					<c:choose>
 					<c:when test="${u.followed}">
 					<a class='btn btn-outline-danger'href='deleteUser?followeeNo=${u.no}'>언팔로우</a>

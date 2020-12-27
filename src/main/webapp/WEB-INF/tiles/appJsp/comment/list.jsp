@@ -52,11 +52,6 @@
 					<c:if test="${comment.state == 0}">
 					  <textarea name='' class="form-control" style="border-color:#4a4d53; background-color: #37393E" readonly>삭제된 댓글 입니다.</textarea>
 					</c:if>
-					
-					<c:if test="${comment.writer.no == loginUser.no}">
-					<button class="btn btn-primary">수정</button>
-					<a class='btn btn-danger' href='../comment/delete?no=${comment.no}&articleNo=${comment.articleNo}'>삭제</a>
-					</c:if>
         <hr>
 				</form>
         
