@@ -22,8 +22,8 @@ public class User {
   private int noti; // 알람알림여부 0 Off 1 On
   private String bio;
   private int state; // 활성상태 0 안보임 1 보임
-  private int followerCount;
-  private int followingCount;
+  private int followerCount; // 팔로워수
+  private int followingCount; // 팔로잉수
   private boolean followed;
 
 

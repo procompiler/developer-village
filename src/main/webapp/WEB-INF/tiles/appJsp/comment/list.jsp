@@ -118,7 +118,6 @@
           <button class="btn btn-primary" style="float:right;">등록</button>
         </form>
         <br>
-        
       </c:if>
     </c:if>
   </c:forEach>

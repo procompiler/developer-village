@@ -44,7 +44,6 @@
  	</table>
  </div>
  
- 
  <div class="badge-update-box">
  	<div id='textnameupdate' class="badge-update-box-text" >
 	 	<span style="

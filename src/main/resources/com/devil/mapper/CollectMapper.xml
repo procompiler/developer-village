@@ -4,22 +4,88 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.devil.dao.CollectDao">
-  
-  <insert id="insert" parameterType="collect">
-    insert into usr_tag(uno, bno, ord)
-    values(#{user.no}, #{badge.no}, #{order})
-  </insert>
+	<insert id="insert" parameterType="collect">
+		insert into usr_tag(uno, bno,
+		ord)
+		values(#{user.no}, #{badge.no}, #{order})
+	</insert>
 
-  <delete id="delete" parameterType="collect">
-    delete from usr_tag
-    where uno=#{user.no} and tno=#{badge.no}
-  </delete>
-  
-  <update id="updateOrder" parameterType="collect">
-    update usr_tag set
-      ord = #{ord}
-    where uno=#{user.no} and tno=#{badge.no}
-  </update>
-  
-  
+	<delete id="delete" parameterType="collect">
+		delete from usr_tag
+		where
+		uno=#{user.no} and tno=#{badge.no}
+	</delete>
+
+	<update id="updateOrder" parameterType="collect">
+		update usr_tag set
+		ord =
+		#{ord}
+		where uno=#{user.no} and tno=#{badge.no}
+	</update>
+
+
+	<select id="findCountByUser" resultType="int" parameterType="map">
+		<if test="evaluationNo==1">
+			select datediff(now(), cdt) from user where uno=#{userNo}
+		</if>
+		<if test="evaluationNo==2">
+			select count(*)
+			from follow f
+			inner join user u2
+			on f.fwer_no=u2.uno
+			where u.uno = f.fwing_no
+			and u2.state=1
+		</if>
+		<if test="evaluationNo==3">
+			select count(*)
+			from article a
+			left outer join arc_tag at
+			on a.arno = at.arno
+			left outer join tag t on at.tno = t.tno
+			left outer
+			join user u on a.writer = u.uno
+			where
+			t.tno = #{tagNo} and u.uno = #{userNo}
+		</if>
+		<if test="evaluationNo==4">
+			select count(*)
+			from comment c
+			left outer join arc_tag at on c.arno = at.arno
+			left outer join tag t on at.tno = t.tno
+			left outer join user u on c.uno = u.uno
+			where
+			t.tno = #{tagNo} and u.uno = #{userNo}
+		</if>
+	</select>
+  <!-- 
+	<select id="findArticleCountByUserAndTag" resultType="int"
+		parameterType="map">
+		select count(*)
+		from article a
+		left outer join arc_tag at
+		on a.arno = at.arno
+		left outer join tag t on at.tno = t.tno
+		left outer
+		join user u on a.writer = u.uno
+		where
+		t.tno = 1 and u.uno = 11
+	</select>
+
+	<select id="findCommentCountByUserAndTag" resultType="int"
+		parameterType="map">
+		select count(*)
+		from comment c
+		left outer join arc_tag at
+		on c.arno = at.arno
+		left outer join tag t on at.tno = t.tno
+		left outer
+		join user u on c.uno = u.uno
+		where
+		t.tno = 1 and u.uno = 11
+	</select>
+
+	<select id="findCreatedDate"
+ -->
+
+
 </mapper>

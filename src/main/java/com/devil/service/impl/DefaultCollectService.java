@@ -1,5 +1,6 @@
 package com.devil.service.impl;
 
+import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,11 @@ public class DefaultCollectService implements CollectService {
   @Override
   public int delete(Collect collect) throws Exception {
     return collectDao.delete(collect);
+  }
+  
+  @Override
+  public int getCount(Map<String, Object> params) throws Exception {
+    return collectDao.findCountByUser(params);
   }
   
   // 알림 만들기
