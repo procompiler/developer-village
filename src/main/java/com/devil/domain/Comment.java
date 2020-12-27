@@ -14,10 +14,11 @@ public class Comment {
   private String deletedDate;
   private int state; // 활성상태 0 안보임 1 보임
   private boolean selected; // 대표 답변 여부 0 미해결 1 해결
-  private Article article;
+  //private Article article;
   private int articleNo;
   private String articleTitle;
 
+  /*
   public Article getArticle() {
     return article;
   }
@@ -25,6 +26,7 @@ public class Comment {
     this.article = article;
     return this;
   }
+  */
   public int getMotherNo() {
     return motherNo;
   }
@@ -122,8 +124,8 @@ public class Comment {
     return "Comment [no=" + no + ", writer=" + writer + ", content=" + content + ", createdDate="
         + createdDate + ", ord=" + ord + ", step=" + step + ", motherNo=" + motherNo
         + ", updatedDate=" + updatedDate + ", deletedDate=" + deletedDate + ", state=" + state
-        + ", selected=" + selected + ", article=" + article + ", articleNo=" + articleNo
-        + ", articleTitle=" + articleTitle + ", getArticle()=" + getArticle() + ", getMotherNo()="
+        + ", selected=" + selected + ", articleNo=" + articleNo
+        + ", articleTitle=" + articleTitle + ", getMotherNo()="
         + getMotherNo() + ", getArticleNo()=" + getArticleNo() + ", getUpdatedDate()="
         + getUpdatedDate() + ", getDeletedDate()=" + getDeletedDate() + ", getState()=" + getState()
         + ", isSelected()=" + isSelected() + ", getNo()=" + getNo() + ", getWriter()=" + getWriter()

@@ -1,6 +1,7 @@
 package com.devil.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Badge {
   private int no;
@@ -10,6 +11,7 @@ public class Badge {
   private int state; // 활성상태 0 안보임 1 보임
   private String content;
   private Date collectDate;
+  private List<BadgeStandard> standards;
 
   public int getState() {
     return state;
@@ -73,4 +75,11 @@ public class Badge {
     this.collectDate = collectDate;
   }
 
+  public List<BadgeStandard> getStandards() {
+    return standards;
+  }
+
+  public void setStandards(List<BadgeStandard> standards) {
+    this.standards = standards;
+  }
 }

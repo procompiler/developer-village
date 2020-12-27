@@ -26,18 +26,6 @@ public class CommentController {
   @Autowired
   UserService userService;
 
-
-  @PostMapping("add")
-  public String add(Comment comment, HttpSession session)
-      throws Exception {
-    System.out.println(comment);
-    User loginUser = (User) session.getAttribute("loginUser");
-    comment.setWriter(loginUser);
-    commentService.add(comment);
-
-    return "redirect:../article/" + comment.getArticleNo();
-  }
-
   // article/detail에서 더이상 /comment/list를 직접 경유하지 않음
   // 추후에도 사용하지 않는다면 코드 삭제 예정
   @GetMapping("list")
@@ -74,5 +62,15 @@ public class CommentController {
     return "redirect:../article/" + articleNo;
   }
   
+
+  @PostMapping("add")
+  public String add(Comment comment, HttpSession session)
+      throws Exception {
+    User loginUser = (User) session.getAttribute("loginUser");
+    comment.setWriter(loginUser);
+    commentService.add(comment);
+
+    return "redirect:../article/" + comment.getArticleNo();
+  }
 
 }
