@@ -1,11 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
   /* 메인 인덱스 페이지 */
-  #recentFeed {
-    width: 540px;
+ #recentFeed {
+    width: 640px;
     min-height: 110px;
-    text-overflow: hidden;
     margin: 10px 0px 0px 70px;
   }
+
+#QAtitle{
+	  width: 800px;
+    position: absolute;
+    left: 1050px;
+    top: 100px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+ #QATable {
+ width: 800px;
+ position: absolute;
+ left: 1050px;
+ top: 140px;
+ margin: 0px;
+ }
+
+#studyTitle{
+    width: 800px;
+    position: absolute;
+    left: 1050px;
+    top: 410px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+ #studyTable {
+ width: 800px;
+ position: absolute;
+ left: 1050px;
+ top: 453px;
+ margin: 0px;
+ }
+ 
+ #tagTitle{
+    width: 800px;
+    position: absolute;
+    left: 1050px;
+    bottom: 200px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
 
 /* 레이아웃 */
 body {
@@ -172,7 +215,7 @@ footer {
   clear: both;
   padding: 20px;
   margin: 0px 100px 0px 320px;
-  width: 1200px;
+  width: 1600px;
 }
 
 footer hr {
@@ -321,7 +364,6 @@ div.card {
   background-color: #2E3034;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-  padding-left: 10px;
 }
 
 .card-band {

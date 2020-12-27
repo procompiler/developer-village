@@ -12,6 +12,7 @@ public class AuthInterceptor implements HandlerInterceptor {
       throws Exception {
 
     if (request.getPathInfo().startsWith("/auth") ||
+        request.getPathInfo().startsWith("/main") ||
         request.getSession().getAttribute("loginUser") != null) {
       return true; // 다음 인터셉터나 페이지 컨트롤러 실행!
     }

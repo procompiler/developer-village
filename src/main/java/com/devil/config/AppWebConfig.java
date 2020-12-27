@@ -16,7 +16,6 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.util.UrlPathHelper;
 import com.devil.service.UserService;
 import com.devil.web.interceptor.AuthInterceptor;
-import com.devil.web.interceptor.AutoLoginInterceptor;
 
 @ComponentScan("com.devil.web.app")
 @EnableWebMvc
@@ -72,7 +71,7 @@ public class AppWebConfig implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     // 자동 로그인을 수행하는 인터셉터 삽입
-    registry.addInterceptor(new AutoLoginInterceptor(userService));
+    //registry.addInterceptor(new AutoLoginInterceptor(userService));
 
     // 모든 "/app/*" 요청에 대해 로그인 여부를 검사하는 인터셉터 삽입
     registry.addInterceptor(new AuthInterceptor());

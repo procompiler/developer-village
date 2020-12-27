@@ -11,6 +11,7 @@
       <li><span class="main-color">D</span>eveloper</li>
       <li><span class="main-color">V</span>illage</li>
     </div>
+       <c:if test="${not empty loginUser}">
     <a href="${appRoot}/app/user/${loginUser.no}">
      <div class="user-card">
       <div class="user-photo">
@@ -21,6 +22,7 @@
         </h3>
     </div>
     </a>
+       </c:if>
     <div class="buttons">
       <li><i class="fas fa-user-friends fa-fw"></i><a href='${appRoot}/app/article/list?categoryNo=1'>자유게시판</a></li>
       <li><i class="fas fa-question fa-fw"></i><a href='${appRoot}/app/article/list?categoryNo=2'>질문</a></li>
@@ -49,9 +51,15 @@
     </form>
   </div>
   <div>
+  <c:if test="${empty loginUser}">
     <a class="btn" href="${appRoot}/app/user/form">회원가입</a>
     <a class="btn" href="${appRoot}/app/auth/login">로그인</a>
+    </c:if>
+    <c:if test="${not empty loginUser}">
+    <img src="${appRoot}/upload/user/${loginUser.photo}_40x40.jpg" class="card-img-top rounded-circle" style="float: right">
+    <a class="btn" href="${appRoot}/app/auth/logout">로그아웃</a>
     <a class="btn" href="${appRoot}/app/article/form">글쓰기</a>
+    </c:if>
   </div>
 </header>
 

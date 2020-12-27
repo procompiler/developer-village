@@ -40,14 +40,18 @@
 
 	<insert id="insert" parameterType="notification">
 		insert into noti(type, cno, fwer_no, bno, uno)
-		values(#{type},
-		#{comment.no}, #{follower.no}, #{badge.no},
+		values(#{type}, #{comment.no}, #{follower.no}, #{badge.no},
 		<choose>
 			<when test="comment == null">
 				#{userNo}
 			</when>
 			<otherwise>
-				(select c.uno from comment c where c.cno = #{comment.no})
+			 <if test="type==1">
+				(select a.writer from comment c inner join article a on a.arno = c.arno where c.cno = #{comment.no})
+				</if>
+				<if test="type==2">
+				(select c.uno from comment c inner join comment c2 on c.momno = c2.cno where c.cno = #{comment.no})
+				</if>
 			</otherwise>
 		</choose>
 		)

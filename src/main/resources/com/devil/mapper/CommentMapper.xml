@@ -87,7 +87,7 @@
     where cc.momno=mc.cno and cc.cno=#{no}
   </sql>
   
-  <insert id="insert" parameterType="comment">
+  <insert id="insert" parameterType="comment" useGeneratedKeys="true" keyColumn="cno" keyProperty="no">
     insert into comment(cno, arno, content, uno, step, momno) 
     <if test="content != ''">
       values(#{no}, #{articleNo}, #{content}, #{writer.no}, #{step}, #{motherNo})

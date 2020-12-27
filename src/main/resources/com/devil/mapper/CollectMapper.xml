@@ -20,4 +20,6 @@
       ord = #{ord}
     where uno=#{user.no} and tno=#{badge.no}
   </update>
+  
+  
 </mapper>
