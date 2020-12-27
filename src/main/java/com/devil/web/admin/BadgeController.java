@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import com.devil.domain.Badge;
-import com.devil.domain.Tag;
 import com.devil.service.BadgeService;
+import com.devil.service.BadgeStanService;
 import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -24,6 +24,7 @@ public class BadgeController {
 
   @Autowired ServletContext servletContext;
   @Autowired BadgeService badgeService;
+  @Autowired BadgeStanService badgeStanService;
 
   @GetMapping("/form")
   public void form() {
@@ -67,8 +68,10 @@ public class BadgeController {
     }
     
     model.addAttribute("badge", badge);
+    model.addAttribute("badgeStands", badgeStanService.list(badge.getNo()));
     return "badge/detail";
   }
+  
   /*
   @GetMapping("detail")
   public String detail(int no,Model model) throws Exception {
@@ -102,11 +105,12 @@ public class BadgeController {
 */
   @RequestMapping("update")
   public String update(Badge badge) throws Exception {
-
+    
     badgeService.update(badge);
     return "redirect:list";
   }
-
+  
+  
   @RequestMapping("updatePhoto")
   public String updatePhoto(int no, MultipartFile photoFile) throws Exception {
 

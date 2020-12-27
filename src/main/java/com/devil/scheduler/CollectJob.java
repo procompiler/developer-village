@@ -3,7 +3,6 @@ package com.devil.scheduler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.stereotype.Component;
 import com.devil.domain.Badge;
 import com.devil.domain.BadgeStandard;
 import com.devil.domain.Collect;
@@ -13,7 +12,7 @@ import com.devil.service.BadgeService;
 import com.devil.service.CollectService;
 import com.devil.service.UserService;
 
-@Component
+// @Component
 public class CollectJob {
   CollectService collectService;
   UserService userService;
@@ -25,13 +24,13 @@ public class CollectJob {
     this.userService = userService;
     this.badgeService = badgeService;
   }
-  
-  // 유저: 가입일수 / 팔로워수 / 태그리스트 - 게시글수 / 
-  
+
+  // 유저: 가입일수 / 팔로워수 / 태그리스트 - 게시글수 /
+
   // 초 분 시 일 월 요일
-  //@Scheduled(cron = "* * * * * *")
+  // @Scheduled(cron = "* * * * * *")
   public void add() throws Exception {
-    List<Badge> badges  = badgeService.list((String) null);
+    List<Badge> badges = badgeService.list((String) null);
     List<User> users = userService.list(null);
     for (User user : users) {
       List<Badge> collectedBadges = badgeService.list(user);
@@ -70,7 +69,7 @@ public class CollectJob {
         System.out.println(user.getNickname() + "님은 조건 충족이 되지 않습니다.");
         System.out.println("필요기준 갯수: " + totalStandards);
         System.out.println("충족기준 갯수: " + count);
-      }      
+      }
     }
   }
 }

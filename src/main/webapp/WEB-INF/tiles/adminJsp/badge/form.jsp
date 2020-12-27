@@ -11,4 +11,3 @@
 뱃지 사진 : <input type="file" name="photoFile"><br>
 <button class="btn btn-primary">등록</button>
 </form>
-

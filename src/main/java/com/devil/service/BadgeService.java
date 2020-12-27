@@ -14,5 +14,5 @@ public interface BadgeService {
   //List<Badge> list(Map<String,Object> keywords) throws Exception;
   //List<Badge> list() throws Exception;
   List<Badge> list (User user) throws Exception;
- List<BadgeStan> badgeStans(int bno) throws Exception;
+ //List<BadgeStan> badgeStans(int bno) throws Exception;
 }
