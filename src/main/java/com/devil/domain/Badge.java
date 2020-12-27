@@ -11,7 +11,11 @@ public class Badge {
   private int state; // 활성상태 0 안보임 1 보임
   private String content;
   private Date collectDate;
+<<<<<<< HEAD
   private List<BadgeStan> badgeStans;
+=======
+  private List<BadgeStandard> standards;
+>>>>>>> e7cead434b9603a28ad04997a214b048a546bb74
 
   public int getState() {
     return state;
@@ -76,6 +80,7 @@ public class Badge {
     return this;
   }
 
+<<<<<<< HEAD
 public List<BadgeStan> getBadgeStans() {
 	return badgeStans;
 }
@@ -85,4 +90,13 @@ public Badge setBadgeStans(List<BadgeStan> badgeStans) {
 	return this;
 }
  
+=======
+  public List<BadgeStandard> getStandards() {
+    return standards;
+  }
+
+  public void setStandards(List<BadgeStandard> standards) {
+    this.standards = standards;
+  }
+>>>>>>> e7cead434b9603a28ad04997a214b048a546bb74
 }
