@@ -59,6 +59,8 @@
     u.uno,
     u.nick,
     u.name,
+    u.email,
+    u.pwd,
     u.state,
     u.photo,
     u.blocked
@@ -112,29 +114,24 @@
 		u.email = #{email}
 		and u.pwd = password(#{password})
 	</select>
-  
-    <!-- 회원가입시 전화번호를 입력하도록 방식 수정 후 전화번호도 입력 받기 -->
-	<select id="findPassword" parameterType="map"
-		resultMap="UserMap">
-		<include refid="sql1" />
-		where
-		u.email = #{email}
-		and u.name = #{name}
-<!-- 		and u.tel = #{tel} -->
-	</select>
 	
-	<!-- 회원가입시 전화번호를 입력하도록 방식 수정 후 활성화
-  
 	<select id="findId" parameterType="map"
 		resultMap="UserMap">
-		<include refid="sql1" />
+		<include refid="sql2" />
 		where
 		u.name = #{name}
 		and u.tel = #{tel}
 	</select>
+  
+	<select id="findPassword" parameterType="map"
+		resultMap="UserMap">
+		<include refid="sql2" />
+		where
+		u.email = #{email}
+		and u.name = #{name}
+  	and u.tel = #{tel}
+	</select>
 	
-	 -->
-
 	<update id="update" parameterType="user">
 		update user
 		<set>

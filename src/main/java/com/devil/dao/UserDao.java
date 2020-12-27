@@ -13,6 +13,8 @@ public interface UserDao {
   List<User> findByName(String name) throws Exception;
   List<User> findAll(String keyword) throws Exception;
   User findByEmailPassword(Map<String, Object> map) throws Exception;
+  User findId(Map<String, Object> map) throws Exception;
+  User findPassword(Map<String, Object> map) throws Exception;
   int inactive(int no) throws Exception;
   List<User> findByFollower(User user) throws Exception;
   int insertBlocked(Block block) throws Exception;

@@ -38,6 +38,24 @@ public class DefaultUserService implements UserService {
     map.put("password", password);
     return userDao.findByEmailPassword(map);
   }
+
+  @Override
+  public User getId(String name, String tel) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    map.put("name", name);
+    map.put("tel", tel);
+    return userDao.findId(map);
+  }
+
+  @Override
+  public User getPwd(String email, String name, String tel) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    map.put("email", email);
+    map.put("name", name);
+    map.put("tel", tel);
+    return userDao.findPassword(map);
+  }
+
   @Override
   public int update(User user) throws Exception {
     return userDao.update(user);

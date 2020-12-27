@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<div id="login">
+<div id="auth">
 	<form action='login' method='post'>
   <div style="text-align: center">
 	 <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 120px;"/>
@@ -28,9 +28,9 @@
      <button class="btn btn-primary" type="submit">로그인</button>
     </div>
     <div style="text-align:center;">
-		<a href="#">아이디 찾기</a>
+		<a href="searchId">아이디 찾기</a>
 		<span>  |  </span>
-		<a href="#">비밀번호 찾기</a>
+		<a href="searchPwd">비밀번호 찾기</a>
 		<span> | </span>
 		<a href="../user/form">회원가입</a>
 		</div>

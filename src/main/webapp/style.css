@@ -389,7 +389,7 @@ div.card {
 }
 
 /* 로그인 페이지 */
-#login {
+#auth {
 	border-radius: 10px;
 	background-color: #232326;
 	padding: 60px;

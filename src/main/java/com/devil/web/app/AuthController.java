@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,15 +47,46 @@ public class AuthController {
     userService.updateLoginTimeStamp(user);
     session.setAttribute("loginUser", user);
     return "redirect:../../index.jsp";
-
   }
+
   @GetMapping("logout")
   public String logout(HttpSession session) throws Exception {
-
     User loginUser = (User) session.getAttribute("loginUser");
     if (loginUser != null) {
       session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.
     }
     return "redirect:../../index.jsp";
   }
+
+  @GetMapping("searchId")
+  public void searchId() throws Exception {
+  }
+
+  @RequestMapping("searchId-send")
+  public String searchId(String name, String tel, Model model) throws Exception {
+    String userId = userService.getId(name, tel).getEmail();
+    System.out.println(userId);
+    model.addAttribute("userId", userId);
+    return "redirect:./searchIdResult";
+  }
+
+  @GetMapping("searchIdResult")
+  public void searchIdResult(String userId) throws Exception {
+  }
+
+  @GetMapping("searchPwd")
+  public void searchPwd() throws Exception {
+  }
+
+  @PostMapping("searchPwd-send")
+  public String searchPwd(String email, String name, String tel, Model model) throws Exception {
+    String userPwd = userService.getPwd(email, name, tel).getPassword();
+    model.addAttribute("userPwd", userPwd);
+    return "redirect:./searchPwdResult?" + userPwd;
+  }
+
+  @GetMapping("searchPwdResult")
+  public void searchPwdResult(String password) throws Exception {
+  }
+
 }
