@@ -1,28 +1,28 @@
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti, rnt_vsdt,tel) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'user1', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1,now(),010-1111-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'user2', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0,now(),010-2222-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'user3', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1,now(),010-3333-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 0, 'java,phython',0,0,now(),010-4444-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'user5', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1,now(),010-5555-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'user6', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',0,0,now(),010-6666-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'user7', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0,now(),010-7777-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (8, 'asdf@naver.com', '아브라카다브라', '김희선', password(1111), 1, 'user8', 'https://bbb.com/', '', 0, 'ruby',1,1,now(),010-8888-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (9, 'qwer@naver.com', '코딩대장', '공민지', password(1111), 2, 'user9', '', '', 0, 'go,java',0,0,now(),010-9999-0000);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (10, 'zxcv@gmail.com', '저놈자바라', '공효진', password(1111), 3, 'user10', 'https://ccc.com/', '', 0, 'pyton,c',1,0,now(),010-45345-1111);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (11, 'abcd@gmail.com', '시간이nullnull', '배두나', password(1111), 2, 'user11', 'https://ddd.com/', '', 1, 'php',1,0,now(),010-2222-1335);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (12, 'qwerty@gmail.com', '벌레잡이', '김희애', password(1111), 1, 'user12', '', '', 1, 'javascript',1,0,now(),010-7643-3457);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (13, 'awesome@gmail.com', '길가던개발자', '김서형', password(1111), 3, 'user13', 'https://eee.com/', '', 0, '',1,0,now(),010-3434-5675);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (14, 'wigglewiggle@naver.com', '위글위글', '염정아', password(1111), 2, 'user14', '', '', 0, 'go',0,1,now(),010-5555-2222);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (15, 'brownTshirt@gmail.com', '비틀즈', '김민아', password(1111), 1, 'user15', 'https://fff.com/', '', 0, 'go',1,0,now(),010-3434-1233);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (16, 'beatifulworld@gmail.com', '미투유투', '김태리', password(1111), 3, 'user16', 'https://ggg.com/', '', 0, 'c,kotilin',1,0,now(),010-6666-6666);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (17, 'Iloveiiiii@naver.com', '으하하', '이영애', password(1111), 2, 'user17', '', '', 0, 'ruby',1,0,now(),010-7777-7777);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (18, 'solution@naver.com', '정답을알려줘', '고두심', password(1111), 3, 'user18', 'https://hhh.com/', '', 0, 'c,swift',1,0,now(),010-8888-8888);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (19, 'oasis@gmail.com', '락이좋아', '이정은', password(1111), 1, 'user19', 'https://iii.com/', '', 0, 'swift',1,1,now(),010-9999-9999);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (20, 'blur@gmail.com', '사랑곰', '김혜수', password(1111), 3, 'user20', 'https://jjj.com/', '', 1, 'php',1,0,now(),010-1010-1010);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (21, 'articmonkey@gmail.com', '북극원숭이', '강소라', password(1111), 2, 'user21', 'https://kkk.com/', '', 0, 'go,swift',1,0,now(),010-1111-1212);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (22, 'Iamrockstar@naver.com', '내꿈은축구왕', '송혜교', password(1111), 3, 'user22', 'https://lll.com/', '', 1, 'ruby',1,0,now(),010-2222-1313);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (23, 'youngAndrich@gmail.com', '영앤리치', '이재현', password(1111), 1, 'user23', 'https://mmm.com/', '', 0, '',1,1,now(),010-2323-2323);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (24, 'givemeamoney@gmail.com', '호머심슨', '이나영', password(1111), 2, 'user24', '', '', 0, 'c++',1,0,now(),010-2424-2424);
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (25, 'emeraldsword@naver.com', '에메랄드칼', '하지원', password(1111), 3, 'user25', 'https://nnn.com/', '', 1, 'c,python',1,0,now(),010-2525-2525);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti, rnt_vsdt,tel) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'user1', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1,now(),01011110000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'user2', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0,now(),01022220000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'user3', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1,now(),01033330000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 0, 'java,phython',0,0,now(),01044440000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'user5', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1,now(),01055550000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'user6', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',0,0,now(),01066660000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'user7', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0,now(),01077770000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (8, 'asdf@naver.com', '아브라카다브라', '김희선', password(1111), 1, 'user8', 'https://bbb.com/', '', 0, 'ruby',1,1,now(),01088880000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (9, 'qwer@naver.com', '코딩대장', '공민지', password(1111), 2, 'user9', '', '', 0, 'go,java',0,0,now(),01099990000);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (10, 'zxcv@gmail.com', '저놈자바라', '공효진', password(1111), 3, 'user10', 'https://ccc.com/', '', 0, 'pyton,c',1,0,now(),01045341111);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (11, 'abcd@gmail.com', '시간이nullnull', '배두나', password(1111), 2, 'user11', 'https://ddd.com/', '', 1, 'php',1,0,now(),01022221335);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (12, 'qwerty@gmail.com', '벌레잡이', '김희애', password(1111), 1, 'user12', '', '', 1, 'javascript',1,0,now(),01076433457);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (13, 'awesome@gmail.com', '길가던개발자', '김서형', password(1111), 3, 'user13', 'https://eee.com/', '', 0, '',1,0,now(),01034345675);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (14, 'wigglewiggle@naver.com', '위글위글', '염정아', password(1111), 2, 'user14', '', '', 0, 'go',0,1,now(),01055552222);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (15, 'brownTshirt@gmail.com', '비틀즈', '김민아', password(1111), 1, 'user15', 'https://fff.com/', '', 0, 'go',1,0,now(),01034341233);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (16, 'beatifulworld@gmail.com', '미투유투', '김태리', password(1111), 3, 'user16', 'https://ggg.com/', '', 0, 'c,kotilin',1,0,now(),01066666666);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (17, 'Iloveiiiii@naver.com', '으하하', '이영애', password(1111), 2, 'user17', '', '', 0, 'ruby',1,0,now(),01077777777);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (18, 'solution@naver.com', '정답을알려줘', '고두심', password(1111), 3, 'user18', 'https://hhh.com/', '', 0, 'c,swift',1,0,now(),01088888888);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (19, 'oasis@gmail.com', '락이좋아', '이정은', password(1111), 1, 'user19', 'https://iii.com/', '', 0, 'swift',1,1,now(),01099999999);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (20, 'blur@gmail.com', '사랑곰', '김혜수', password(1111), 3, 'user20', 'https://jjj.com/', '', 1, 'php',1,0,now(),01010101010);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (21, 'articmonkey@gmail.com', '북극원숭이', '강소라', password(1111), 2, 'user21', 'https://kkk.com/', '', 0, 'go,swift',1,0,now(),01011111212);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (22, 'Iamrockstar@naver.com', '내꿈은축구왕', '송혜교', password(1111), 3, 'user22', 'https://lll.com/', '', 1, 'ruby',1,0,now(),01022221313);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (23, 'youngAndrich@gmail.com', '영앤리치', '이재현', password(1111), 1, 'user23', 'https://mmm.com/', '', 0, '',1,1,now(),01023232323);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (24, 'givemeamoney@gmail.com', '호머심슨', '이나영', password(1111), 2, 'user24', '', '', 0, 'c++',1,0,now(),01024242424);
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (25, 'emeraldsword@naver.com', '에메랄드칼', '하지원', password(1111), 3, 'user25', 'https://nnn.com/', '', 1, 'c,python',1,0,now(),01025252525);
 
 
 
@@ -284,6 +284,54 @@ INSERT INTO noti (nno,uno,content,type,url) VALUES (9, 5,'깃허브망령님이 
 */
 
 
+INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (1, '5','7','null','null');
+INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (2, '3','1','null','null');
+INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (3, '2','3','null','null');
+
+
+
+
+INSERT INTO repo_arc (rpno, arno) VALUES (1,7);
+INSERT INTO repo_arc (rpno, arno) VALUES (2,7);
+
+INSERT INTO repo_comt (rpno, cno) VALUES (3,5);
+INSERT INTO repo_comt (rpno, cno) VALUES (4,3);
+
+INSERT INTO repo_user (rpno, arno) VALUES (5,3);
+INSERT INTO repo_user (rpno, arno) VALUES (6,10);
+
+
+
+
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (1,1,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (2,1,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (3,1,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (4,1,'4', '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (5,2,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (6,2,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (7,2,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (8,2,'4', '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (9,3,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (10,3,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (11,3,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (12,3,'4', '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (13,4,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (14,4,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (15,4,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (16,4,'4', '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (17,5,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (18,5,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (19,5,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (20,5,'4', '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (21,6,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (22,6,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (23,6,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (24,6,'4', '50');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (25,7,'1', '1');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (26,7,'2', '10');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (27,7,'3', '20');
+INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (28,7,'4', '50');
+
 
 INSERT INTO region(rgno, name) VALUES(10001,'서울'); 
 INSERT INTO region (rgno,name) VALUES (10002, '부산');
@@ -531,56 +579,3 @@ INSERT INTO relo (relo,rgno,name) VALUES (224, '10015', '해남군');
 INSERT INTO relo (relo,rgno,name) VALUES (225, '10015', '화순군');
 INSERT INTO relo (relo,rgno,name) VALUES (226, '10016', '서귀포시');
 INSERT INTO relo (relo,rgno,name) VALUES (227, '10016', '제주시');
-
-
-
-
-
-INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (1, '5','7','null','null');
-INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (2, '3','1','null','null');
-INSERT INTO block (blno,uno,dates,bl_rsn,unbl_rsn) VALUES (3, '2','3','null','null');
-
-
-
-
-INSERT INTO repo_arc (rpno, arno) VALUES (1,7);
-INSERT INTO repo_arc (rpno, arno) VALUES (2,7);
-
-INSERT INTO repo_comt (rpno, cno) VALUES (3,5);
-INSERT INTO repo_comt (rpno, cno) VALUES (4,3);
-
-INSERT INTO repo_user (rpno, arno) VALUES (5,3);
-INSERT INTO repo_user (rpno, arno) VALUES (6,10);
-
-
-
-
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (1,1,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (2,1,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (3,1,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (4,1,'4', '50');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (5,2,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (6,2,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (7,2,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (8,2,'4', '50');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (9,3,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (10,3,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (11,3,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (12,3,'4', '50');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (13,4,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (14,4,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (15,4,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (16,4,'4', '50');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (17,5,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (18,5,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (19,5,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (20,5,'4', '50');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (21,6,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (22,6,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (23,6,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (24,6,'4', '50');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (25,7,'1', '1');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (26,7,'2', '10');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (27,7,'3', '20');
-INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (28,7,'4', '50');
-
