@@ -8,4 +8,5 @@ public interface NotificationDao {
   int insert(Notification notification) throws Exception;
   List<Notification> findByUser(User user) throws Exception;
   int updateReadDate(int no) throws Exception;
+  int count(User user) throws Exception;
 }

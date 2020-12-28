@@ -84,7 +84,7 @@
 		left outer join article a on c.arno = a.arno
 		left outer join user
 		u2 on c.uno = u2.uno
-		where n.uno=2 and n.rdt is null
+		where n.uno=#{no} and n.rdt is null
 		order by cdt desc
 	</select>
 	
@@ -92,9 +92,9 @@
     update noti set rdt=now() where nno=#{no}
   </update>
   
-    <select id="count" resultMap="int"
+    <select id="count" resultType="int"
     parameterType="User">
-    select (*)
+    select count(*)
     from noti n
     left outer join user u on u.uno = n.fwer_no
     left outer join badge b on b.bno = n.bno
@@ -102,7 +102,7 @@
     left outer join article a on c.arno = a.arno
     left outer join user
     u2 on c.uno = u2.uno
-    where n.uno=2 and n.rdt is null
+    where n.uno=#{no} and n.rdt is null
   </select>
 	
 </mapper>

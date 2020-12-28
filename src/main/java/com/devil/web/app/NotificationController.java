@@ -46,6 +46,8 @@ public class NotificationController {
     }
     model.addAttribute("notificationList", notificationList);
   }
+  
+ 
 
   private static class MAX_TIME {
     public static final int SEC = 60;

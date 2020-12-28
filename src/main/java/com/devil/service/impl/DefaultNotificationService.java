@@ -25,4 +25,8 @@ public class DefaultNotificationService implements NotificationService {
     return notificationDao.updateReadDate(no);
   }
 
+  @Override
+  public int size(User user) throws Exception {
+    return notificationDao.count(user);
+  }
 }
