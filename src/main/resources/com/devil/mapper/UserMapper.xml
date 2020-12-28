@@ -116,16 +116,14 @@
 		and u.pwd = password(#{password})
 	</select>
 	
-	<select id="findId" parameterType="map"
-		resultMap="UserMap">
+	<select id="findId" parameterType="map" resultMap="UserMap">
 		<include refid="sql2" />
 		where
 		u.name = #{name}
 		and u.tel = #{tel}
 	</select>
   
-	<select id="findPassword" parameterType="map"
-		resultMap="UserMap">
+	<select id="findPassword" parameterType="map" resultMap="UserMap">
 		<include refid="sql2" />
 		where
 		u.email = #{email}
@@ -149,13 +147,18 @@
 		</set>
 		where uno = #{no}
 	</update>
+	
+	<update id="updatePwd" parameterType="map">
+    update user set
+    pwd = password(#{password})
+    where uno = #{no}
+  </update>
 
   <insert id="updateLoginTimeStamp" parameterType="user">
-      update user set
-      rnt_vsdt = now()
+    update user set
+    rnt_vsdt = now()
     where uno = #{no}
     <![CDATA[  and rnt_vsdt <= now() ]]>
-  
   </insert>
 
 	<update id="insertBlocked" parameterType="block">

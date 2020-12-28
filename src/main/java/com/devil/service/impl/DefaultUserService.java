@@ -65,6 +65,14 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  public int updatePwd(int userNo, String password) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    map.put("no", userNo);
+    map.put("password", password);
+    return userDao.updatePwd(map);
+  }
+
+  @Override
   public int updateLoginTimeStamp(User user) throws Exception {
     return userDao.updateLoginTimeStamp(user);
   }

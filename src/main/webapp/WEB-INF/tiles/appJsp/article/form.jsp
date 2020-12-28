@@ -16,12 +16,12 @@
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"></label>
 			<input  type="text" class="form-control"
-				     id="exampleFormControlInput1" placeholder="게시글 제목" name='title'>
+				     id="inputTitle" placeholder="게시글 제목" name='title'>
 		</div>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label"
 				></label>
-			<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="게시글을 작성하세요!"
+			<textarea class="form-control" id="inputContent" placeholder="게시글을 작성하세요!"
 				rows="20" name='content'></textarea>
 		</div>
 		<p>
@@ -48,8 +48,8 @@
 		var selectedElements =  document.querySelectorAll(query);
 		var selectedElementsCnt = selectedElements.length;
 		
-		if (document.querySelector("#exampleFormControlInput1").value.length < 1 ||
-			document.querySelector("#exampleFormControlTextarea1").value.length < 1 ||
+		if (document.querySelector("#inputTitle").value.length < 1 ||
+			document.querySelector("#inputContent").value.length < 1 ||
 			selectedElementsCnt < 1 ) {
 			alert("필수 입력 항목을 모두 채우세요!")
 		  return false;

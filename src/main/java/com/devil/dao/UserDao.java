@@ -12,6 +12,7 @@ public interface UserDao {
   List<User> findFollower(User user) throws Exception;
   int insert(User user) throws Exception;
   int update(User user) throws Exception;
+  int updatePwd(Map<String, Object> map) throws Exception;
   int delete(int no) throws Exception;
   int insertBlocked(Block block) throws Exception;
   int updateLoginTimeStamp(User user) throws Exception;

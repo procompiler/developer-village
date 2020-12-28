@@ -41,4 +41,10 @@
 		update bdg_stan set count = #{count}
 		where bsno=#{no}
 	</update>
+	
+	 <delete id="delete" parameterType="int">
+    delete from bdg_stan
+    where
+    bsno=#{no}
+  </delete>
 </mapper>
