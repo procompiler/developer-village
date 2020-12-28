@@ -16,11 +16,11 @@
 	<div class="mb-4 mt-3">
 	<div class="col-sm-5">
   <label for="photoFile" class="form-label">사진업로드</label>
-  <input class="form-control form-control-sm bg-dark" name='photoFile' type="file">
-	<button class="btn btn-primary">이미지 변경</button>
-</div>
-</div>
-	
+  <input class="form-control form-control-sm" name='photoFile' type="file">
+	<br>
+	<button class="btn btn-primary mt-3">이미지 변경</button>
+  </div>
+ </div>
 </form>
 <br>
 <form action='update' method='post'>
