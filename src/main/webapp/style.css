@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
   /* 메인 인덱스 페이지 */
   #index {
-  margin-left: 60px;
+  margin-left: 30px;
   }
   
  #recentFeed {
     margin-top: 10px;
   }
-
-	 #QATable {
-	  width: 700px;
-	 }
 
  caption {
   caption-side: top;
@@ -23,17 +19,16 @@
 	color: white;
  }
 
- #studyTable {
- width: 700px;
- }
- 
  #tagTitle{
     font-weight: bold;
     font-size: 26px;
-    color: white;
 }
 
-
+#index table {
+	width: 700px;
+	margin: 0px;
+	margin-left: 30px;
+}
 /* 레이아웃 */
 body {
   font-family: "Apple SD Gothic Neo", 'Roboto', sans-serif, "Nanum Gothic";

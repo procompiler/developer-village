@@ -11,8 +11,10 @@ public class AuthInterceptor implements HandlerInterceptor {
       throws Exception {
 
     if (request.getPathInfo().startsWith("/auth/login") ||
-        request.getPathInfo().startsWith("/user/form") ||
         request.getPathInfo().startsWith("/main") ||
+        request.getPathInfo().startsWith("/user/form") ||
+        request.getPathInfo().startsWith("/auth/searchId") ||
+        request.getPathInfo().startsWith("/auth/searchPwd") ||
         request.getPathInfo().startsWith("/user/form") ||
         request.getPathInfo().startsWith("/user/add") ||
         request.getPathInfo().startsWith("/article/list") ||

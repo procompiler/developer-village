@@ -10,7 +10,7 @@
 
 <!-- 커뮤니티 -->
 <div id="index" class="row">
-<div class="col-sm-6 main-block-left" style="margin-top: 35px;">
+<div class="col-sm-6 main-block-left" style="margin-top: 10px;">
  <div style="font-weight: bold; font-size: 26px;">커뮤니티 최신글
  </div>
  
@@ -88,6 +88,7 @@
       </c:if>
     </c:forEach>
   </table>  
+<br>
 
 <!-- 스터디 -->
 <table id="studyTable">
