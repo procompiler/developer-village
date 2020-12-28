@@ -119,6 +119,13 @@ h1 {
   color: #6C5DDF;
 }
 
+#detail {
+	background-color: #2E3034;
+	padding: 30px;
+	margin-top: 30px;
+	border-radius: 10px;
+}
+
 /* 테이블 */
 
 table {

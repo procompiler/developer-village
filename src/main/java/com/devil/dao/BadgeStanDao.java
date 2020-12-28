@@ -7,4 +7,5 @@ public interface BadgeStanDao {
   public int insert(BadgeStan badgeStan) throws Exception;
   public int update(BadgeStan badgeStan) throws Exception;
   public List<BadgeStan> findByBadgeNo(int badgeNo) throws Exception;
+  public int delete(int no) throws Exception;
 }

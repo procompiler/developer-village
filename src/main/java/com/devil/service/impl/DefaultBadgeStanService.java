@@ -28,4 +28,10 @@ public class DefaultBadgeStanService implements BadgeStanService {
   public List<BadgeStan> list(int badgeNo) throws Exception {
     return badgeStanDao.findByBadgeNo(badgeNo);
   }
+
+  @Override
+  public int delete(int no) throws Exception {
+    return badgeStanDao.delete(no);
+  }
+  
 }
