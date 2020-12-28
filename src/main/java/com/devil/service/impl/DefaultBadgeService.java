@@ -48,9 +48,9 @@ public class DefaultBadgeService implements BadgeService {
     return badgeDao.findByCollector(user);
   }
 
-@Override
-public List<BadgeStan> badgeStans(int bno) throws Exception {
-	 return badgeDao.findByInfo(bno);
-}
+//@Override
+//public List<BadgeStan> badgeStans(int bno) throws Exception {
+//	 return badgeDao.findByInfo(bno);
+//}
 
 }

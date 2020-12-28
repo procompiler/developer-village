@@ -6,20 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>뱃지 정보</title>
-<!--<jsp:include page="/admin-header.jsp"></jsp:include> -->
-<link rel="stylesheet" type="text/css" href='../../badge-style.css'>
-<link rel="stylesheet"
-  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-  crossorigin="anonymous" />
 </head>
 <body>
 	<div class="badge">
  <div class="badgebox">
-
- 	
- 	
- 	
  	<div class="badgeinfotext">
 	  	뱃지 정보
  	</div>
@@ -58,12 +48,7 @@
  			</td>
  		</tr> 	
  	</table>
-	
-	
-	
  </div>
- 
- 
  <div class="badge-update-box">
  	<div id='textnameupdate' class="badge-update-box-text" >
 	 	<span style="
@@ -76,9 +61,6 @@
  </div>
 
  </div>
- 
-
-
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

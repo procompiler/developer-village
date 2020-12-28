@@ -1,30 +1,31 @@
 package com.devil.domain;
 
 public class BadgeStan {
-  private int bsno; // 평가기준번호
-  private int bno; // 뱃지번호
-  private int beno; //  뱃지평가번호 1가입일 2방문횟수 3 댓글수 4게시글수
-  private int count; //횟수
-
-  public int getBno() {
-    return bno;
+  private int no;
+  private int badgeNo;
+  private int evaluationNo;
+  private String evaluationName;
+  private int count;
+  
+  public int getNo() {
+    return no;
   }
-  public BadgeStan setBno(int bno) {
-    this.bno = bno;
+  public BadgeStan setNo(int no) {
+    this.no = no;
     return this;
   }
-  public int getBsno() {
-    return bsno;
+  public int getEvaluationNo() {
+    return evaluationNo;
   }
-  public BadgeStan setBsno(int bsno) {
-    this.bsno = bsno;
+  public BadgeStan setEvaluationNo(int evaluationNo) {
+    this.evaluationNo = evaluationNo;
     return this;
   }
-  public int getBeno() {
-    return beno;
+  public String getEvaluationName() {
+    return evaluationName;
   }
-  public BadgeStan setBeno(int beno) {
-    this.beno = beno;
+  public BadgeStan setEvaluationName(String evaluationName) {
+    this.evaluationName = evaluationName;
     return this;
   }
   public int getCount() {
@@ -32,6 +33,13 @@ public class BadgeStan {
   }
   public BadgeStan setCount(int count) {
     this.count = count;
+    return this;
+  }
+  public int getBadgeNo() {
+    return badgeNo;
+  }
+  public BadgeStan setBadgeNo(int badgeNo) {
+    this.badgeNo = badgeNo;
     return this;
   }
 }

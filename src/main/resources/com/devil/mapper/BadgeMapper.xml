@@ -5,78 +5,90 @@
 
 <mapper namespace="com.devil.dao.BadgeDao">
 
-	<resultMap type="badge"     id="BadgeMap">
-		<id column="bno"          property="no" />
-		<result column="name"     property="name" />
-		<result column="photo"    property="photo" />
-		<result column="content"  property="content" />
-		<result column="state"    property="state" />
-		<result column="adt"      property="collectDate"/>
-		<association property="tag"  javaType="tag">
-			<id column="tno"             property="no" />
-			<result column="tag_name"    property="name" />
+	<resultMap type="badge" id="BadgeMap">
+		<id column="bno" property="no" />
+		<result column="name" property="name" />
+		<result column="photo" property="photo" />
+		<result column="content" property="content" />
+		<result column="state" property="state" />
+		<result column="adt" property="collectDate" />
+		<association property="tag" javaType="tag">
+			<id column="tno" property="no" />
+			<result column="tag_name" property="name" />
 		</association>
+		<collection property="badgeStans" ofType="BadgeStan">
+			<id column="bsno" property="no" />
+			<result column="bno" property="badgeNo"/>
+			<result column="beno" property="evaluationNo" />
+			<result column="bename" property="evaluationName" />
+			<result column="count" property="count" />
+		</collection>
 	</resultMap>
 
-  
 	<insert id="insert" parameterType="badge">
-		insert into badge(bno,name,photo,content)
-		values(#{no},#{name}, #{photo}, #{content})
+		insert into
+		badge(bno,name,photo,content)
+		values(#{no},#{name},#{photo},#{content})
 	</insert>
-	
+
 	<sql id="sql1">
-		 select
-            b.bno,
-            b.name,
-            b.photo,
-            b.content,
-            b.state,
-            t.tno,
-            t.name tag_name,
-            be.bename,
-            bs.count
-        from
-            badge b
-            left outer join tag t on t.tno= b.bno
-            left outer join bdg_stan bs on b.bno=bs.bno
-          left outer join bdg_eva be on bs.beno=be.beno
+		select
+		b.bno,
+		b.name,
+		b.photo,
+		b.content,
+		b.state,
+		t.tno,
+		t.name tag_name,
+		bs.bsno,
+		bs.count,
+		bs.beno,
+		be.bename
+		from
+		badge b
+		left outer join tag t on t.tno= b.tno
+		left outer join bdg_stan bs on b.bno=bs.bno
+		left outer join bdg_eva be on bs.beno=be.beno
 	</sql>
-	
+
 	<select id="findByNo" resultMap="BadgeMap" parameterType="int">
-	 <include refid="sql1"/>
-		where b.bno=#{no}
-	</select>
-	
-		<select id="findByInfo" resultMap="BadgeMap" parameterType="int">
-	 <include refid="sql1"/>
+		<include refid="sql1" />
 		where b.bno=#{no}
 	</select>
 
-	<select id="findByCollector" resultMap="BadgeMap" parameterType="user">
-	  select
-      b.bno,
-      b.name,
-      b.photo,
-      b.content,
-      ub.adt
-    from
-      badge b
-      inner join usr_bdg ub on b.bno = ub.bno
-			where
-			 ub.uno= #{no}
-		order by ub.adt desc
+	<select id="findByInfo" resultMap="BadgeMap" parameterType="int">
+		<include refid="sql1" />
+		where b.bno=#{no}
 	</select>
-	
+
+	<select id="findByCollector" resultMap="BadgeMap"
+		parameterType="user">
+		select
+		b.bno,
+		b.name,
+		b.photo,
+		b.content,
+		ub.adt
+		from
+		badge b
+		inner join usr_bdg ub on b.bno = ub.bno
+		where
+		ub.uno= #{no}
+		order by
+		ub.adt desc
+	</select>
+
 	<select id="findAll" resultMap="BadgeMap" parameterType="string">
-    <include refid="sql1"/>
-    <if test="keyword != null">
-      where
-        b.name like concat('%', #{keyword}, '%')
-        or b.content like concat('%', #{keyword}, '%')
-    </if>
-    order by b.bno desc
-  </select>
-  
+		<include refid="sql1" />
+		<if test="keyword != null">
+			where
+			b.name like concat('%', #{keyword}, '%')
+			or b.content
+			like concat('%', #{keyword}, '%')
+		</if>
+		/*order by b.bno desc*/
+	</select>
+
 
 	<update id="update" parameterType="badge">
 		update badge
@@ -90,12 +102,15 @@
 
 	<update id="inactive" parameterType="int">
 		update badge set
-		  state = 0
+		state = 0
 		where bno=#{no}
 	</update>
 
 	<delete id="delete" parameterType="int">
 		delete from badge
-		where bno=#{no}
+		where
+		bno=#{no}
 	</delete>
+	
+	
 </mapper>

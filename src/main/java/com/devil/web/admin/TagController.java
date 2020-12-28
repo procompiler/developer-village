@@ -51,8 +51,8 @@ public class TagController {
     tag.setPhoto(filename);
 
     generatePhotoThumbnail(saveFilePath);
-    tagService.add(tag);
-    return "redirect:.";
+    tagService.add(tag); 
+    return "redirect:list";
   }
 
   @GetMapping("{no}")

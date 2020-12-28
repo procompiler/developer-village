@@ -5,94 +5,40 @@
 
 <mapper namespace="com.devil.dao.BadgeStanDao">
 
-	<resultMap type="badgeStan"     id="BadgeStanMap">
-		<id column="bsno"          property="bsno" />
-		<result column="count"  property="count" />
-		
-		<association property="badge"  javaType="badge">
-		<id column="bno"             property="no" />
-		<result column="photo"    property="photo" />
-    <result column="content"  property="content" />
-    <result column="state"    property="state" />
-		</association>
-		
-	  <association property="bdg_eva"  javaType="badge">
-    <id column="beno"             property="beno" />
-    <result column="bename"    property="bename" />
-    </association>
+	<resultMap type="badgeStan" id="BadgeStanMap">
+		<id column="bsno" property="no" />
+		<result column="count" property="count" />
+		<result column="bno" property="badgeNo" />
+		<result column="beno" property="evaluationNo" />
+		<result column="bename" property="evaluationName" />
 	</resultMap>
 
-  
 	<insert id="insert" parameterType="badgeStan">
-		insert into badgeStan(bsno,beno,count,bno)
-		values(#{bsno},#{beno}, #{count}, #{bno})
+		insert into
+		bdg_stan(beno, count, bno)
+		values(#{evaluationNo}, #{count}, #{badgeNo})
 	</insert>
-	
+
 	<sql id="sql1">
 		select
-			bs.bno,
-			bs.name,
-			bs.photo,
-			bs.content,
-			t.tno,
-			t.name tag_name
-			eva.
-			eva.
+		  bs.bsno,
+		  bs.bno,
+		  bs.count,
+		  bs.beno,
+		  be.bename
 		from
-			badgeStan bs
-			left outer join badge b on b.bno= bs.bno
-			left outer join bdg_eva eva on eva.beno = bs.beno
+		  bdg_stan bs
+		inner join bdg_eva be on bs.beno = be.beno
 	</sql>
 	
-	<select id="findByNo" resultMap="BadgeStanMap" parameterType="int">
-	 <include refid="sql1"/>
-		where b.bno=#{no}
-	</select>
-
-	<select id="findByCollector" resultMap="BadgeStanMap" parameterType="user">
-	  select
-      b.bno,
-      b.name,
-      b.photo,
-      b.content,
-      ub.adt
-    from
-      badge b
-      inner join usr_bdg ub on b.bno = ub.bno
-			where
-			 ub.uno= #{no}
-		order by ub.adt desc
-	</select>
-	
-	<select id="findAll" resultMap="BadgeStanMap" parameterType="string">
-    <include refid="sql1"/>
-    <if test="keyword != null">
-      where
-        b.name like concat('%', #{keyword}, '%')
-        or b.content like concat('%', #{keyword}, '%')
-    </if>
-    order by b.bno desc
+	 <select id="findByBadgeNo" resultMap="BadgeStanMap"
+    parameterType="int">
+    <include refid="sql1" />
+    where bs.bno=#{badgeNo}
   </select>
-  
 
 	<update id="update" parameterType="badgeStan">
-		update badge
-		<set>
-			<if test=" != null">name = #{name},</if>
-			<if test="content != null">content = #{content},</if>
-			<if test="photo != null">photo = #{photo}</if>
-		</set>
-		where bsno=#{bsno}
+		update bdg_stan set count = #{count}
+		where bsno=#{no}
 	</update>
-
-	<update id="inactive" parameterType="int">
-		update badgeStan set
-		  state = 0
-		where bsno=#{bsno}
-	</update>
-
-	<delete id="delete" parameterType="int">
-		delete from badgeStan
-		where bsno=#{bsno}
-	</delete>
 </mapper>

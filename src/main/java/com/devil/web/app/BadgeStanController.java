@@ -15,12 +15,10 @@ public class BadgeStanController {
   @Autowired BadgeStanService badgeStanService;
 
   @RequestMapping("list")
-  public ModelAndView list() throws Exception {
+  public ModelAndView list(int badgeNo) throws Exception {
     ModelAndView mv = new ModelAndView();
-
-    mv.addObject("list", badgeStanService.list((String)null));
+    mv.addObject("list", badgeStanService.list(badgeNo));
     mv.setViewName("/appJsp/badgeStan/list.jsp");
     return mv;
-
   }
 }

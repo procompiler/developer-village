@@ -11,7 +11,7 @@ public class Collect {
   public User getUser() {
     return user;
   }
-  public Collect setCollector(User user) {
+  public Collect setUser(User user) {
     this.user = user;
     return this;
   }
@@ -35,8 +35,4 @@ public class Collect {
   public void setOrder(int order) {
     this.order = order;
   }
-  public void setUser(User user) {
-    this.user = user;
-  }
-  
 }

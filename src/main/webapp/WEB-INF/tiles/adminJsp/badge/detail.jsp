@@ -34,8 +34,8 @@
       </div>
       
 	<button class="btn btn-primary">뱃지 수정</button>
-<a class="btn btn-danger" href='delete?no=${badge.no}' style='color: white;'>삭제</a>
 </form>
+<jsp:include page="../badgeStan/list.jsp"></jsp:include>
 
 <a class='col-sm-3' href='list'>뱃지 목록으로</a>
 </div>
