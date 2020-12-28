@@ -8,6 +8,7 @@ import com.devil.domain.User;
 public interface UserDao {
   int insert(User user) throws Exception;
   int update(User user) throws Exception;
+  int updatePwd(Map<String, Object> map) throws Exception;
   int delete(int no) throws Exception;
   User findByNo(Map<String, Object> params) throws Exception;
   List<User> findByName(String name) throws Exception;

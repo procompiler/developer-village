@@ -12,6 +12,7 @@ public interface UserService {
   User getPwd(String email, String name, String tel) throws Exception;
   int add(User user) throws Exception;
   int update(User user) throws Exception;
+  int updatePwd(int userNo, String password) throws Exception;
   int delete(int no) throws Exception;
   List<User> listFollowing(User user) throws Exception;
   List<User> listFollower(User user) throws Exception;

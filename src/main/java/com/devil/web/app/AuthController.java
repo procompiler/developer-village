@@ -82,18 +82,32 @@ public class AuthController {
   }
 
   @PostMapping("searchPwd-send")
-  public String searchPwd(String email, String name, String tel, Model model) throws Exception {
-    String userPwd;
+  public String searchPwd(String email, String name, String tel) throws Exception {
+    int userNo;
     try {
-      userPwd = userService.getPwd(email, name, tel).getPassword();
+      userNo = userService.getPwd(email, name, tel).getNo();
     } catch(Exception e) {
-      userPwd = "";
+      userNo = -1;
     }
-    return "redirect:./searchPwdResult?userPwd=" + userPwd;
+    return "redirect:./searchPwdResult?userNo=" + userNo ;
   }
 
   @GetMapping("searchPwdResult")
-  public void searchPwdResult(String password) throws Exception {
+  public void searchPwdResult() throws Exception {
   }
 
+  @PostMapping("searchPwdResult-send")
+  public String searchPwdResult(int userNo, String password) throws Exception {
+    userService.updatePwd(userNo, password);
+    return "redirect:login";
+  }
+
+  @PostMapping("updatePwd")
+  public void updatePwd(int userNo, String password) throws Exception {
+    userService.updatePwd(userNo, password);
+  }
+
+  @PostMapping("updateInfo")
+  public void updateInfo() throws Exception {
+  }
 }
