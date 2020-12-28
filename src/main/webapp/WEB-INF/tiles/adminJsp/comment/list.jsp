@@ -5,21 +5,29 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<br>
+
+<div class="row">
+<div id="detail" class="row col-sm-8 mb-4 mt-5">
 <h3>Comments</h3>
 
 <c:forEach items="${comments}" var="comment">
 	<c:if test="${fn:length(comments) != 0}">
 		<c:if test="${comment.step == 0 && comment.motherNo == 0}">
-			<p>
 				<span type='hidden' name='momno' value='${comment.motherNo}'></span>
 				<input type='hidden' name='cno' value='${comment.no}'> <input
 					type='hidden' name='arno' value='${comment.articleNo}'> <input
-					type='hidden' name='step' value='${comment.step}'> <a
-					href='../user/detail?no=${comment.writer.no}'>${comment.writer.nickname}</a>
-				<textarea name='content' style="height: 30px; width: 400px;">${comment.content}</textarea>
+					type='hidden' name='step' value='${comment.step}'> 
+					<a href='../user/${comment.writer.no}'>${comment.writer.nickname}</a>
+					
+					 <div class="mb-3 row">
+        <div class="col-sm-12">
+          <textarea class="form-control" id="exampleTextarea" rows="3" name='content' readonly>${comment.content}</textarea>
+        </div>
+      </div>
 				<fmt:formatDate value="${comment.createdDate}" pattern="yyyy.MM.dd. HH:mm" />
 
+<div class="mb-3 row">
+        <div class="col-sm-5">
 				<c:choose>
 					<c:when test="${comment.state == 1}">
 						<a class="btn btn-danger"
@@ -30,9 +38,10 @@
 							href='../comment/activate?no=${comment.no}&articleNo=${comment.articleNo}'>게시</a>
 					</c:otherwise>
 				</c:choose>
+  </div>
+</div>
 
 				${comment.state == 1 ? "게시중" :  "미게시중"}
-			</p>
 
 			<c:forEach items="${comments}" var="childComment">
 				<c:if
@@ -42,12 +51,20 @@
 						<input type='hidden' name='cno' value='${childComment.no}'>
 						<input type='hidden' name='arno' value='${childComment.articleNo}'>
 						<input type='hidden' name='step' value='${childComment.step}'>
-						<span>&nbsp;&nbsp;┗━Re&nbsp;&nbsp;</span> <a
-							href='../user/detail?no=${childComment.writer.no}'>${childComment.writer.nickname}</a>
-						<textarea name='content' style="height: 30px; width: 400px;">${childComment.content}</textarea>
+						<span>&nbsp;&nbsp;┗━Re&nbsp;&nbsp;</span> 
+						<a href='../user/${childComment.writer.no}'>${childComment.writer.nickname}</a>
+							
+        <div class="mb-3 row">
+        <div class="col-sm-12">
+          <textarea class="form-control" id="exampleTextarea" rows="3" name='content'>${childComment.content}</textarea>
+        </div>
+      </div>
+							
 						<fmt:formatDate value="${childComment.createdDate}"
 							pattern="yyyy.MM.dd" />
 
+      <div class="mb-3 row">
+        <div class="col-sm-5">
 						<c:choose>
 							<c:when test="${comment.state == 1}">
 								<a class="btn btn-danger"
@@ -58,9 +75,10 @@
 									href='../comment/activate?no=${comment.no}&articleNo=${comment.articleNo}'>게시</a>
 							</c:otherwise>
 						</c:choose>
+						  </div>
+						</div>
+						
 						${childComment.state == 1 ? "게시중" :  "미게시중"}
-					</p>
-
 				</c:if>
 			</c:forEach>
 
@@ -69,3 +87,5 @@
 		</c:if>
 	</c:if>
 </c:forEach>
+</div>
+</div>

@@ -75,6 +75,11 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  public int undelete(int no) throws Exception {
+    return userDao.active(no);
+  }
+
+  @Override
   public List<User> listFollowing(User user) throws Exception {
     return userDao.findByFollower(user);
   }

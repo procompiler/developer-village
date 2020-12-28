@@ -41,6 +41,11 @@ public class DefaultTagService implements TagService {
   }
 
   @Override
+  public int undelete(int no) throws Exception {
+    return tagDao.active(no);
+  }
+
+  @Override
   public List<Tag> listByFollower(User user) throws Exception {
     return tagDao.findByFollower(user);
   }

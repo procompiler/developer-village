@@ -38,7 +38,7 @@ public class UserController {
       throws Exception {
     User loginUser = (User) httpSession.getAttribute("loginUser");
     Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
+    params.put("type", "admin");
     params.put("userNo", no);
     User user = userService.get(params);
     model.addAttribute("user", user);
@@ -49,13 +49,6 @@ public class UserController {
     }
     Map<String, Object> map = new HashMap<>();
     map.put("userNo", loginUser.getNo());
-    map.put("followeeNo", no);
-
-    if (followService.getUser(map) != null) {
-      model.addAttribute("followed", true);
-    } else {
-      model.addAttribute("followed", false);
-    }
     return "user/detail";
   }
 
@@ -63,9 +56,24 @@ public class UserController {
   public String list(Model model, String keyword, HttpSession session) throws Exception {
 
     model.addAttribute("list", userService.list(keyword));
-    model.addAttribute("followingUsers",
-        userService.listFollowing((User) session.getAttribute("loginUser")));
 
     return "user/list";
   }
+
+  @GetMapping("inactivate")
+  public String inactivate(int no) throws Exception {
+    if (userService.delete(no) == 0) {
+      throw new Exception("해당 번호의 유저가 없습니다.");
+    }
+    return "redirect:/admin/user/" + no;
+  }
+
+  @GetMapping("activate")
+  public String activate(int no) throws Exception {
+    if (userService.undelete(no) == 0) {
+      throw new Exception("해당 번호의 유저가 없습니다.");
+    }
+    return "redirect:/admin/user/" + no;
+  }
+
 }

@@ -71,10 +71,10 @@
 								<button class="btn btn-primary">신고승인</button>
 							</c:when>
 							<c:when test="${report.status == 2}">
-								<p>차단중</p>
+								<p style="color:red">차단중</p>
 							</c:when>
 							<c:otherwise>
-								<p>차단해제</p>
+								<p style="color:yellow;">차단해제</p>
 							</c:otherwise>
 						</c:choose>
 					</form>

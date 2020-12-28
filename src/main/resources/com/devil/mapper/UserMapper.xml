@@ -174,4 +174,10 @@
 		state = 0
 		where uno=#{no}
 	</update>
+	
+	<update id="active" parameterType="int">
+    update user set
+    state = 1
+    where uno=#{no}
+  </update>
 </mapper>
