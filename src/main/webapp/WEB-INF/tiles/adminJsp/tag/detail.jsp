@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="row">
 	<h1>태그 수정</h1>
@@ -28,8 +29,17 @@
 			폰트색: <input type='color' name='fontColor' value='${tag.fontColor}'>
 		</p><br>
 		<button class="btn btn-primary">태그 수정</button>
-		<a href='delete?no=${tag.no}' class="btn btn-danger"
-			style='color: white;'>태그삭제</a>
+		
+		<c:choose>
+      <c:when test="${tag.state == 1}">
+        <a class="btn btn-danger"
+        href='inactivate?no=${tag.no}'>태그삭제</a>
+      </c:when>
+      <c:otherwise>
+        <a class="btn btn-outline-danger"
+       href='activate?no=${tag.no}'>태그복구</a>
+      </c:otherwise>
+    </c:choose>
 	</form>
 <a class='col-sm-3' href='list'>태그 목록으로</a>
 </div>

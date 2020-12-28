@@ -126,6 +126,16 @@ h1 {
 	border-radius: 10px;
 }
 
+.user-label {
+	color: #787878;
+	margin-right: 30px;
+}
+
+#exampleTextarea {
+	 background: #2E3034;
+	 outline-color: none;
+
+}
 /* 테이블 */
 
 table {
@@ -145,7 +155,7 @@ thead {
 
 thead tr {
 	text-align: center;
-  border-bottom: 3px solid #787878;;
+  border-bottom: 3px solid #787878;
 }
 
 tbody, td, tfoot, th, thead, tr {

@@ -51,7 +51,7 @@ public class TagController {
     tag.setPhoto(filename);
 
     generatePhotoThumbnail(saveFilePath);
-    tagService.add(tag); 
+    tagService.add(tag);
     return "redirect:list";
   }
 
@@ -116,12 +116,20 @@ public class TagController {
     return "redirect:./" + tag.getNo();
   }
 
-  @GetMapping("/delete")
+  @GetMapping("inactivate")
   public String delete(int no) throws Exception {
     if (tagService.delete(no) == 0) {
       throw new Exception("해당 번호의 태그가 없습니다.");
     }
-    return "redirect:../tag/list";
+    return "redirect:/admin/tag/" + no;
+  }
+
+  @GetMapping("activate")
+  public String activate(int no) throws Exception {
+    if (tagService.undelete(no) == 0) {
+      throw new Exception("해당 번호의 게시글이 없습니다.");
+    }
+    return "redirect:/admin/tag/" + no;
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {

@@ -76,6 +76,12 @@
 		where tno=#{no}
 	</update>
 
+  <update id="active" parameterType="int">
+    update tag set
+    state = 1
+    where tno=#{no}
+  </update>
+
 	<select id="findByNo" resultMap="TagMap" parameterType="int">
 		<include refid="sql1" />
 		where tno=#{no}

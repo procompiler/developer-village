@@ -22,7 +22,7 @@ public class User {
   private int auth; // 관리자 여부 0 관리자 1 일반 회원
   private int noti; // 알람알림여부 0 Off 1 On
   private String bio;
-  private int state; // 활성상태 0 안보임 1 보임
+  private int state; // 활성상태 0 탈퇴 1 기본
   private int followerCount; // 팔로워수
   private int followingCount; // 팔로잉수
   private boolean followed;
