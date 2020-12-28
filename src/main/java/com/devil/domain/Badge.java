@@ -12,7 +12,7 @@ public class Badge {
   private String content;
   private Date collectDate;
   private List<BadgeStan> badgeStans;
-
+  
   public int getState() {
     return state;
   }
@@ -80,9 +80,9 @@ public class Badge {
     return badgeStans;
   }
 
-  public Badge setBadgeStans(List<BadgeStan> badgeStans) {
+  public void setBadgeStans(List<BadgeStan> badgeStans) {
     this.badgeStans = badgeStans;
-    return this;
   }
-
+  
+  
 }

@@ -10,9 +10,11 @@ public class AuthInterceptor implements HandlerInterceptor {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
 
-    if (request.getPathInfo().startsWith("/auth") ||
+    if (request.getPathInfo().startsWith("/auth/login") ||
+        request.getPathInfo().startsWith("/user/form") ||
         request.getPathInfo().startsWith("/main") ||
         request.getPathInfo().startsWith("/user/form") ||
+        request.getPathInfo().startsWith("/user/add") ||
         request.getPathInfo().startsWith("/article/list") ||
         request.getPathInfo().startsWith("/tag/list") ||
         request.getSession().getAttribute("loginUser") != null) {

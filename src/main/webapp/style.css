@@ -1,52 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
   /* 메인 인덱스 페이지 */
+  #index {
+  margin-left: 60px;
+  }
+  
  #recentFeed {
-    width: 640px;
-    min-height: 110px;
-    margin: 10px 0px 0px 70px;
+    margin-top: 10px;
   }
 
-#QAtitle{
-	  width: 800px;
-    position: absolute;
-    left: 1050px;
-    top: 100px;
-    font-weight: bold;
-    font-size: 26px;
-}
+	 #QATable {
+	  width: 700px;
+	 }
 
- #QATable {
- width: 800px;
- position: absolute;
- left: 1050px;
- top: 140px;
- margin: 0px;
+ caption {
+  caption-side: top;
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
  }
 
-#studyTitle{
-    width: 800px;
-    position: absolute;
-    left: 1050px;
-    top: 410px;
-    font-weight: bold;
-    font-size: 26px;
-}
+ caption a {
+	color: white;
+ }
 
  #studyTable {
- width: 800px;
- position: absolute;
- left: 1050px;
- top: 453px;
- margin: 0px;
+ width: 700px;
  }
  
  #tagTitle{
-    width: 800px;
-    position: absolute;
-    left: 1050px;
-    bottom: 200px;
     font-weight: bold;
     font-size: 26px;
+    color: white;
 }
 
 
@@ -57,8 +41,7 @@ body {
 }
 
 .container {
-  margin: 70px 10px 20px 240px;
-  padding: 30px;
+  margin: 70px 0px 20px 230px;
 }
 
 .main-color {
@@ -389,7 +372,7 @@ div.card {
 }
 
 /* 로그인 페이지 */
-#login {
+#auth {
 	border-radius: 10px;
 	background-color: #232326;
 	padding: 60px;

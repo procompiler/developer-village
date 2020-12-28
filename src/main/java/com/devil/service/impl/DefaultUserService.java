@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.devil.dao.UserDao;
 import com.devil.domain.User;
 import com.devil.service.UserService;
@@ -17,6 +19,7 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
   public int add(User user) throws Exception {
     return userDao.insert(user);
   }
@@ -38,6 +41,24 @@ public class DefaultUserService implements UserService {
     map.put("password", password);
     return userDao.findByEmailPassword(map);
   }
+
+  @Override
+  public User getId(String name, String tel) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    map.put("name", name);
+    map.put("tel", tel);
+    return userDao.findId(map);
+  }
+
+  @Override
+  public User getPwd(String email, String name, String tel) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    map.put("email", email);
+    map.put("name", name);
+    map.put("tel", tel);
+    return userDao.findPassword(map);
+  }
+
   @Override
   public int update(User user) throws Exception {
     return userDao.update(user);

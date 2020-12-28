@@ -66,49 +66,60 @@ DROP TABLE IF EXISTS `relo` RESTRICT;
 
 -- 유저신고
 DROP TABLE IF EXISTS `repo_user` RESTRICT;
+  
+  -- 유저
+CREATE TABLE user (
+  uno      INTEGER      NOT NULL COMMENT '사용자번호', -- 사용자번호
+  email    VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
+  nick     VARCHAR(50)  NULL     COMMENT '닉네임', -- 닉네임
+  tel      VARCHAR(30)  NULL     COMMENT '전화번호', -- 전화번호
+  name     VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
+  pwd      VARCHAR(255) NULL     COMMENT '암호', -- 암호
+  cdt      DATE         NOT NULL DEFAULT now() COMMENT '가입일', -- 가입일
+  rnt_vsdt DATETIME     NULL     COMMENT '최종방문일', -- 최종방문일
+  log_type INTEGER      NOT NULL DEFAULT 1 COMMENT '로그인유형', -- 로그인유형
+  photo    VARCHAR(255) NULL     COMMENT '사진', -- 사진
+  hp_url   VARCHAR(255) NULL     COMMENT '개인홈피주소', -- 개인홈피주소
+  gh_url   VARCHAR(255) NULL     COMMENT '깃허브주소', -- 깃허브주소
+  in_url   VARCHAR(255) NULL     COMMENT '인스타주소', -- 인스타주소
+  tw_url   VARCHAR(255) NULL     COMMENT '트위터주소', -- 트위터주소
+  blocked  INTEGER      NOT NULL DEFAULT 0 COMMENT '차단여부', -- 차단여부
+  tech     MEDIUMTEXT   NULL     COMMENT '기술스택', -- 기술스택
+  auth     INTEGER      NOT NULL DEFAULT 1 COMMENT '관리자여부', -- 관리자여부
+  noti     INTEGER      NOT NULL DEFAULT 0 COMMENT '알람알림여부', -- 알람알림여부
+  bio      MEDIUMTEXT   NULL     COMMENT '자기소개', -- 자기소개
+  state    INTEGER      NOT NULL DEFAULT 1 COMMENT '활성상태' -- 활성상태
+)
+COMMENT '유저';
 
 -- 유저
-CREATE TABLE `user` (
-  `uno`      INTEGER      NOT NULL, -- 사용자번호
-  `email`    VARCHAR(40)  NOT NULL, -- 이메일
-  `nick`     VARCHAR(50)  NULL,     -- 닉네임
-  `name`     VARCHAR(50)  NOT NULL, -- 이름
-  `pwd`      VARCHAR(255) NULL,     -- 암호
-  `cdt`      DATE         NOT NULL DEFAULT now(), -- 가입일
-  `rnt_vsdt` DATETIME     NULL,     -- 최종방문일
-  `log_type` INTEGER      NOT NULL DEFAULT 1, -- 로그인유형
-  `photo`    VARCHAR(255) NULL,     -- 사진
-  `hp_url`   VARCHAR(255) NULL,     -- 개인홈피주소
-  `gh_url`   VARCHAR(255) NULL,     -- 깃허브주소
-  `in_url`   VARCHAR(255) NULL,     -- 인스타주소
-  `tw_url`   VARCHAR(255) NULL,     -- 트위터주소
-  `blocked`  INTEGER      NOT NULL DEFAULT 0, -- 차단여부
-  `tech`     MEDIUMTEXT   NULL,     -- 기술스택
-  `auth`     INTEGER      NOT NULL DEFAULT 1, -- 관리자여부
-  `noti`     INTEGER      NOT NULL DEFAULT 0, -- 알람알림여부
-  `bio`      MEDIUMTEXT   NULL,     -- 자기소개
-  `state`    INTEGER      NOT NULL DEFAULT 1 -- 활성상태
-);
-
--- 유저
-ALTER TABLE `user`
-  ADD CONSTRAINT `PK_user` -- 유저 기본키
+ALTER TABLE user
+  ADD CONSTRAINT PK_user -- 유저 기본키
     PRIMARY KEY (
-      `uno` -- 사용자번호
+      uno -- 사용자번호
     );
 
 -- 이메일 유니크
-CREATE UNIQUE INDEX `UIX_email`
-  ON `user` ( -- 유저
-    `email` ASC -- 이메일
+CREATE UNIQUE INDEX UIX_email
+  ON user ( -- 유저
+    email ASC -- 이메일
   );
 
 -- 닉네임 유니크
-CREATE UNIQUE INDEX `UIX_nick`
-  ON `user` ( -- 유저
-    `nick` ASC -- 닉네임
+CREATE UNIQUE INDEX UIX_nick
+  ON user ( -- 유저
+    nick ASC -- 닉네임
   );
 
+-- 전화 유니크
+CREATE UNIQUE INDEX UIX_tel
+  ON user ( -- 유저
+    tel ASC -- 전화번호
+  );
+
+ALTER TABLE user
+  MODIFY COLUMN uno INTEGER NOT NULL AUTO_INCREMENT COMMENT '사용자번호';
+  
 -- 게시글
 CREATE TABLE `article` (
   `arno`      INTEGER      NOT NULL, -- 게시글번호

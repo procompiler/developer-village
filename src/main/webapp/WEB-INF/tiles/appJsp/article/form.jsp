@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-	<h1 style="margin-left: 70px; font-weight: bold">게시글 작성</h1>
+<h1 style="margin-left: 70px; font-weight: bold">게시글 작성</h1>
 	
-	<div id="articleForm">
+<div id="articleForm">
 	<form action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example" name='categoryNo'>
     	<option value='1'>자유게시판</option> 
