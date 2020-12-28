@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<div class="row">
 <div id="auth">
   <div style="text-align: center; margin-bottom: 50px;">
    <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 120px;"/>
@@ -60,5 +61,6 @@ document.querySelector("#userForm").onsubmit = () => {
 };
 </script>
 	</form>
+</div>
 	
 </div>

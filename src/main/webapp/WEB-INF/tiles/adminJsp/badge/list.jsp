@@ -4,9 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-  <h1>뱃지 목록</h1>
-	<a class='btn btn-primary' href='form'>뱃지 추가</a>
 
+<div class="row">
+  <h1>뱃지 목록</h1>
+  <div class="col-sm-6">
+	<a class='btn btn-primary' href='form'>뱃지 추가</a>
   <div id="search-bar">
   <span style="float: left">뱃지 검색</span>
   <form action='list' method='get' autocomplete="off">
@@ -14,25 +16,31 @@
   value='${parm.keyword}' placeholder="검색어 입력.." style=" padding-left: 40px; margin-right: 30px;">
   <button class="btn btn-primary">검색</button>
   </form>
+  <c:if test="${param.keyword != null}">
+  '${param.keyword}'(으)로 검색한 결과입니다.
+  </c:if>
   </div>
+</div>
 
-  <table border='1'>
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>뱃지이름</th>
-        <th>뱃지사진</th>
-        <th>뱃지내용</th>
-      </tr>
-    </thead>
-    <tbody>
-	    <c:forEach items="${list}" var="badge">
-	      <tr>
-	        <td>${badge.no}<c:if test="${badge.state == 0}">삭제된 뱃지  입니다.</c:if></td>
-	        <td id="name"><a href=${badge.no}>${badge.name}</a></td>
-	        <td><img style="width: 40px;" src='../../upload/badge/${badge.photo}_60x60.png'></td>
-	        <td>${badge.content}</td>
-	      <tr>
-	    </c:forEach>
-    </tbody>
-  </table>
+<div class="row col-sm-10 g-3">
+  <c:forEach items="${badgeList}" var="b">
+    <div class="col">
+      <div class="card" style="width: 14rem;">
+        <div class="card-band" style="background-color: ${t.tagColor}"></div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href='${b.no}'>#${b.name}</a>
+          </h5>
+          <img style="float: right;"
+            src='../../upload/badge/${b.photo}_80x80.png' alt='${b.name}'>
+          <a class="btn btn-outline-primary" href='${b.no}'>뱃지 수정</a>
+          <c:if test="${b.state == 0}">
+            <p style="color:red;">삭제됨</p>
+          </c:if>
+        </div>
+      </div>
+    </div>
+  </c:forEach>
+</div>
+
+</div>

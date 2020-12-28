@@ -44,7 +44,7 @@ public class BadgeController {
     badge.setPhoto(filename);
 
     generatePhotoThumbnail(saveFilePath);
-    
+
     badgeService.add(badge);
     return "redirect:list";
   }
@@ -62,11 +62,11 @@ public class BadgeController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) throws Exception {
     Badge badge = badgeService.get(no);
-    
+
     if (badge == null) {
       throw new Exception("해당 뱃지가 없습니다!");
     }
-    
+
     model.addAttribute("badge", badge);
     model.addAttribute("badgeStans", badgeStanService.list(badge.getNo()));
     return "badge/detail";
@@ -84,10 +84,10 @@ public class BadgeController {
     model.addAttribute("badge", badge);
     return "badge/detail";
   }
-*/
+   */
   @GetMapping("list")
-  public String list(Model model) throws Exception {
-    model.addAttribute("list", badgeService.list(""));
+  public String list(Model model, String keyword) throws Exception {
+    model.addAttribute("badgeList", badgeService.list(keyword));
     return "badge/list";
   }
   /* 수여 기준
@@ -102,12 +102,12 @@ public class BadgeController {
     model.addAttribute("badge", badge);
     return "badge/info";
   }
-*/
+   */
   @RequestMapping("update")
   public String update(Badge badge) throws Exception {
     
     badgeService.update(badge);
-    return "redirect:list";
+    return "redirect:./" + badge.getNo();
   }
   
   
@@ -133,29 +133,29 @@ public class BadgeController {
     }
 
     badgeService.update(badge);
-    return "redirect:list";
+    return "redirect:." + badge.getNo();
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath)//
-      .size(40, 40)//
+      .size(60, 60)//
       .crop(Positions.CENTER)
       .outputFormat("png")//
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
+          return name + "_60x60";
         }
       });
 
       Thumbnails.of(saveFilePath)//
-      .size(60, 60)//
+      .size(80, 80)//
       .outputFormat("png") //
       .toFiles(new Rename() {
         @Override
         public String apply(String name, ThumbnailParameter param) {
-          return name + "_60x60";
+          return name + "_80x80";
         }
       });
 

@@ -124,8 +124,8 @@
 <i class="fas fa-ellipsis-h"></i></a>
  </div>
 <br>
- <div class="row row-cols-md-12 g-1">
-  <c:forEach items="${tagList}" var="t" begin="0" end="3">
+ <div class="row col-sm-12 g-1">
+  <c:forEach items="${tagList}" var="t" begin="0" end="4">
     <div class="col">
       <div class="card" style="width: 15rem;">
         <div class="card-band" style="background-color: ${t.tagColor}"></div>
