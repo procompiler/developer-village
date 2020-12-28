@@ -8,10 +8,6 @@
     margin-top: 10px;
   }
 
-	 #QATable {
-	  width: 700px;
-	 }
-
  caption {
   caption-side: top;
   color: white;
@@ -23,10 +19,6 @@
 	color: white;
  }
 
- #studyTable {
- width: 700px;
- }
- 
  #tagTitle{
     font-weight: bold;
     font-size: 26px;

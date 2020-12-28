@@ -5,6 +5,7 @@
 <c:set var="appRoot" value="${pageContext.servletContext.contextPath}" />
 
 <header>
+<div class="row">
   <div class="site-admin">
   <i class="fas fa-cogs"></i>
     사이트 관리
@@ -14,8 +15,7 @@
   </div>
 
 <hr>
-
-  <div class="site-admin2">
+  <div class="col-sm-12 site-admin2">
   <ul>
     <li><a class="btn" href="${appRoot}/admin/user/list">
     <p><i class="fas fa-user-alt"></i></p>회원 관리</a></li>
@@ -26,6 +26,7 @@
     <li><a class="btn" href="${appRoot}/admin/article/list">
     <p><i class="fas fa-tools"></i></p>게시글 관리</a></li>
   </ul>  
+  </div>
   </div>
 </header>
 

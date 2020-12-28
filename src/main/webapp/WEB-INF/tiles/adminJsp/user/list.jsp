@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<div class="col-sm-6">
 	<div class="mini-navi">
 	<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
   <a href='../report/list' style='text-decoration: none;'>신고내역</a>
@@ -15,7 +16,7 @@
 	<h1>
 		<a href='../user/list' style='text-decoration: none;'>전체 회원관리</a>
 	</h1>
-
+</div>
 	<%
 	  SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -30,7 +31,8 @@
   <div id="search-bar">
 	<span style="float: left">회원 검색</span>
 	<form action='list' method='get' autocomplete="off">
-	<input id="search" type="search" placeholder="닉네임 또는 이메일 입력.." style=" padding-left: 40px;">
+	<input id="search" name="keyword" type="search" placeholder="닉네임 또는 이메일 입력.." style=" padding-left: 40px; margin-right: 30px;">
+	<button class="btn btn-primary">검색</button>
 	</form>
 	</div>
 

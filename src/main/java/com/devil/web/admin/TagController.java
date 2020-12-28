@@ -58,21 +58,21 @@ public class TagController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) throws Exception {
     Tag tag = tagService.get(no);
-    
+
     if (tag == null) {
       throw new Exception("해당 태그가 없습니다!");
     }
-    
+
     model.addAttribute("tag", tag);
     return "tag/detail";
   }
 
   @GetMapping("/list")
-  public void list(HttpSession session, Model model) throws Exception {
+  public void list(HttpSession session, Model model, String keyword) throws Exception {
 
     User loginUser = (User) session.getAttribute("loginUser");
 
-    List<Tag> tagList = tagService.list((String) null);
+    List<Tag> tagList = tagService.list(keyword);
     List<Integer> userTagNoList = new ArrayList<>();
     for (Tag tag : tagService.listByFollower(loginUser)) {
       userTagNoList.add(tag.getNo());
@@ -121,18 +121,18 @@ public class TagController {
     if (tagService.delete(no) == 0) {
       throw new Exception("해당 번호의 태그가 없습니다.");
     }
-    return "redirect:.";
+    return "redirect:../tag/list";
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
       Thumbnails.of(saveFilePath).size(40, 40).crop(Positions.CENTER).outputFormat("png")
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_40x40";
-            }
-          });
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_40x40";
+        }
+      });
 
       Thumbnails.of(saveFilePath).size(80, 80).outputFormat("png").toFiles(new Rename() {
         @Override
@@ -142,12 +142,12 @@ public class TagController {
       });
 
       Thumbnails.of(saveFilePath).size(160, 160).outputFormat("png").crop(Positions.CENTER)
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_160x160";
-            }
-          });
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_160x160";
+        }
+      });
     } catch (Exception e) {
       e.printStackTrace();
     }

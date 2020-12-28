@@ -3,20 +3,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<h1>태그 목록</h1>
+
+<div class="row">
+<h1>태그 관리</h1>
+
+<div class="col-sm-6">
 <a class='btn btn-primary' href='form'>태그 추가</a>
-<form action='${contextPath}?' method='get'>
-	<input type='text' class="col-sm-3" name='keyword' value=''
-		placeholder="태그 검색">
-	<button class="btn btn-primary">검색</button>
-	<c:if test="${param.keyword != null}">
+  <div id="search-bar">
+  <span style="float: left">태그 검색</span>
+  <form action='${contextPath}?' method='get' autocomplete="off">
+  <input id="search" name="keyword" type="text" placeholder="태그 이름 검색.." style=" padding-left: 40px; margin-right: 30px;">
+  <button class="btn btn-primary">검색</button>
+  </form>
+  </div>
+  <c:if test="${param.keyword != null}">
   '${param.keyword}'(으)로 검색한 결과입니다.
   </c:if>
-</form>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+</div>
+
+
+<div class="row col-sm-10 g-3">
 	<c:forEach items="${tagList}" var="t">
 		<div class="col">
-			<div class="card" style="width: 15rem;">
+			<div class="card" style="width: 14rem;">
 				<div class="card-band" style="background-color: ${t.tagColor}"></div>
 				<div class="card-body">
 					<h5 class="card-title">
@@ -24,21 +33,13 @@
 					</h5>
 					<img style="float: right;"
 						src='../../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
+					<a class="btn btn-outline-primary" href='${t.no}'>태그 수정</a>
 					<c:if test="${t.state == 0}">
-						<p>삭제됨</p>
+						<p style="color:red;">삭제됨</p>
 					</c:if>
-					<c:choose>
-						<c:when test="${t.followed}">
-							<a class="btn btn-outline-danger"
-								href="../follow/deleteTag?followeeNo=${t.no}">언팔로우</a>
-						</c:when>
-						<c:otherwise>
-							<a class="btn btn-primary"
-								href="../follow/addTag?followeeNo=${t.no}">팔로우</a>
-						</c:otherwise>
-					</c:choose>
 				</div>
 			</div>
 		</div>
 	</c:forEach>
+</div>
 </div>
