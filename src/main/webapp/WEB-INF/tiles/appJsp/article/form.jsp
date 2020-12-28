@@ -6,7 +6,7 @@
 <h1 style="margin-left: 70px; font-weight: bold">게시글 작성</h1>
 	
 <div id="articleForm">
-	<form action='add' method='post'>
+	<form id="articleForm" action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example" name='categoryNo'>
     	<option value='1'>자유게시판</option> 
 			<option value='2'>QnA</option>
@@ -15,7 +15,7 @@
 		</select>
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"></label>
-			<input type="text" class="form-control"
+			<input  type="text" class="form-control"
 				     id="exampleFormControlInput1" placeholder="게시글 제목" name='title'>
 		</div>
 		<div class="mb-3">
@@ -39,4 +39,21 @@
 		<button type='button' class='btn btn-danger'
 			onclick="location.href='list'">취소</button>
 	</form>
+	<script>
+	  
+
+	  
+	document.querySelector("#articleForm").onsubmit = () => {
+		var query = 'input[name="tagNo"]:checked';
+		var selectedElements =  document.querySelectorAll(query);
+		var selectedElementsCnt = selectedElements.length;
+		
+		if (document.querySelector("#exampleFormControlInput1").value.length < 1 ||
+			document.querySelector("#exampleFormControlTextarea1").value.length < 1 ||
+			selectedElementsCnt < 1 ) {
+			alert("필수 입력 항목을 모두 채우세요!")
+		  return false;
+		}
+	};
+	</script>
 </div>
