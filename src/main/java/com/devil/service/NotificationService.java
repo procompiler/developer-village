@@ -6,4 +6,6 @@ import com.devil.domain.User;
 
 public interface NotificationService {
   List<Notification> list(User user) throws Exception;
+
+  int updateReadDate(int no) throws Exception;
 }

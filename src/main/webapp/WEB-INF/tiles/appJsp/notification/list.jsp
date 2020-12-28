@@ -20,7 +20,7 @@
 				</div>
 				<div class="col-sm-10">
 					<div class="card-body">
-						<p class="card-text"><a href="../user/${n.follower.no}">${n.follower.nickname}님이 팔로우하셨습니다.</a></p>
+						<p class="card-text"><a class="noti-title" data-no="${n.no}" href="../user/${n.follower.no}">${n.follower.nickname}님이 팔로우하셨습니다.</a></p>
 						<p class="card-text">
 							<small class="text-muted">${n.difTime}</small>
 						</p>
@@ -37,7 +37,7 @@
         <div class="col-sm-10">
           <div class="card-body">
             <p class="card-text">
-              <a href="../article/${n.comment.articleNo}">
+              <a class="noti-title" data-no="${n.no}" href="../article/${n.comment.articleNo}">
               <c:if test="${n.type == 1}">
               ${n.comment.writer.nickname}님이 <b>"${n.comment.articleTitle}"</b> 게시글에 댓글을 남겼습니다.
               </c:if>
@@ -62,7 +62,7 @@
         <div class="col-sm-10">
           <div class="card-body">
             <p class="card-text">
-              <a href="../collect/list">
+              <a href="../collect/list" class="noti-title" data-no="${n.no}">
               <b>${n.badge.name}</b> 뱃지가 도착했습니다!
               </a>
               </p>
@@ -81,3 +81,18 @@
 </div>
 <div class="col-3"></div>
 </div>
+
+<script>
+var el = document.querySelectorAll(".noti-title");
+var notiNo;
+
+for (var e of el) {
+  e.onclick = function(e) {
+    notiNo = e.target.getAttribute("data-no");
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../ajax/notification/updateReadDate?no=" + notiNo);
+    xhr.send();
+  };
+}
+
+</script>

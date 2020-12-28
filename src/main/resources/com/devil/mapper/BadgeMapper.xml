@@ -68,14 +68,15 @@
 		b.name,
 		b.photo,
 		b.content,
-		ub.adt
+		ub.adt,
+		ub.ord
 		from
 		badge b
 		inner join usr_bdg ub on b.bno = ub.bno
 		where
-		ub.uno= #{no}
+		ub.uno= 2
 		order by
-		ub.adt desc
+		ub.ord, ub.adt desc
 	</select>
 
 	<select id="findAll" resultMap="BadgeMap" parameterType="string">

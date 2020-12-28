@@ -20,4 +20,9 @@ public class DefaultNotificationService implements NotificationService {
     return notificationDao.findByUser(user);
   }
 
+  @Override
+  public int updateReadDate(int no) throws Exception {
+    return notificationDao.updateReadDate(no);
+  }
+
 }

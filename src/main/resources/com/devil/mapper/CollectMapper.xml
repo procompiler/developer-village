@@ -23,7 +23,6 @@
 		where uno=#{user.no} and bno=#{badge.no}
 	</update>
 
-
 	<select id="findCountByUser" resultType="int" parameterType="map">
 		<if test="evaluationNo==1">
 			select datediff(now(), cdt) from user where uno=#{userNo}
