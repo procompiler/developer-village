@@ -30,12 +30,10 @@
 		</if>
 		<if test="evaluationNo==2">
 			select count(*)
-			from user u
-			inner join user follow f
-			inner join user u2
-			on f.fwer_no=u2.uno
-			where u.uno = f.fwing_no
-			and u2.state=1
+			from follow f
+			inner join user u
+			on f.fwer_no=u.uno
+			where f.fwing_no = #{userNo} and u.state=1
 		</if>
 		<if test="evaluationNo==3">
 			select count(*)

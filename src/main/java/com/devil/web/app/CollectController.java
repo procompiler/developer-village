@@ -1,5 +1,6 @@
 package com.devil.web.app;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,26 +40,34 @@ public class CollectController {
   }
   
   @GetMapping("add")
-  public void add() throws Exception {
+  public String add() throws Exception {
     List<Badge> badges = badgeService.list((String) null);
     List<User> users = userService.list(null);
     for (User user : users) {
       System.out.println(user.getNickname());
       List<Badge> collectedBadges = badgeService.list(user);
+      List<Integer> collectedBadgeNos = new ArrayList<Integer>();
+      for (Badge badge : collectedBadges) {
+        collectedBadgeNos.add(badge.getNo());
+      }
       for (Badge badge : badges) {
         System.out.println("===" + badge.getName() + "뱃지===");
         Tag tag = badge.getTag();
         // 이미 가지고 있는 뱃지라면 건너뛰기
-        if (collectedBadges.contains(badge)) {
+        
+        if (collectedBadgeNos.contains(badge.getNo())) {
           System.out.println("이미 갖고 있는 뱃지입니다!");
-          break;
+          continue;
         }
         // 가지고 있지 않은 뱃지 기준 충족되는지 알아보기
         List<BadgeStan> standards = badgeStanService.list(badge.getNo());
         // 전체 기준 갯수
         int totalStandards = standards.size();
+        if (totalStandards == 0) {
+          System.out.println("기준이 없는 뱃지입니다.");
+          continue;
+        }
         System.out.println("totalStandards " + totalStandards);
-        
         // 충족되는 기준 갯수
         int count = 0;
         for (BadgeStan standard : standards) {
@@ -80,11 +89,13 @@ public class CollectController {
         // 충족되는 기준 갯수와 뱃지의 전체 기준 갯수가 같으면 뱃지를 수여한다.
         if (totalStandards == count && totalStandards != 0) {
           collectService.add(new Collect().setUser(user).setBadge(badge));
+          System.out.println("******" + user.getNickname() + "님이 "+ badge.getName() + "을 획득하셨습니다!*****");
         }
         System.out.println(user.getNickname() + "님은 조건 충족이 되지 않습니다.");
         System.out.println("필요기준 갯수: " + totalStandards);
         System.out.println("충족기준 갯수: " + count);
       }
     }
+    return "redirect:../badge/list";
   }
 }

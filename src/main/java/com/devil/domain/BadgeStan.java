@@ -10,31 +10,36 @@ public class BadgeStan {
   public int getNo() {
     return no;
   }
-  public void setNo(int no) {
+  public BadgeStan setNo(int no) {
     this.no = no;
+    return this;
   }
   public int getEvaluationNo() {
     return evaluationNo;
   }
-  public void setEvaluationNo(int evaluationNo) {
+  public BadgeStan setEvaluationNo(int evaluationNo) {
     this.evaluationNo = evaluationNo;
+    return this;
   }
   public String getEvaluationName() {
     return evaluationName;
   }
-  public void setEvaluationName(String evaluationName) {
+  public BadgeStan setEvaluationName(String evaluationName) {
     this.evaluationName = evaluationName;
+    return this;
   }
   public int getCount() {
     return count;
   }
-  public void setCount(int count) {
+  public BadgeStan setCount(int count) {
     this.count = count;
+    return this;
   }
   public int getBadgeNo() {
     return badgeNo;
   }
-  public void setBadgeNo(int badgeNo) {
+  public BadgeStan setBadgeNo(int badgeNo) {
     this.badgeNo = badgeNo;
+    return this;
   }
 }

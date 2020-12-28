@@ -12,14 +12,15 @@
 <body>
 
 <form action='../badgeStan/update' method='post'>
-  <c:forEach items="${badgeStands}" var="s">
+  <c:forEach items="${badgeStans}" var="s">
     <input type='hidden' name='badgeNo' value='${badge.no}'/>
-    <input type='hidden' name='no' value='${s.no}' />
+    <input type='hidden' name='stanNo' value='${s.no}' />
     <input type='hidden' name='evaluationNo' value='${s.evaluationNo}' />
     <input type='text' name='evaluationName' readonly
       value='${s.evaluationName}' />
     <input type='number' name='count' value='${s.count}' />
     <button class="btn btn-primary">기준 수정</button>
+    <br>
   </c:forEach>
 </form>
 

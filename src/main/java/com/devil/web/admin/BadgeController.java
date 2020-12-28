@@ -58,7 +58,7 @@ public class BadgeController {
     }
     return "redirect:list";
   }
-
+ 
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) throws Exception {
     Badge badge = badgeService.get(no);
@@ -68,7 +68,7 @@ public class BadgeController {
     }
     
     model.addAttribute("badge", badge);
-    model.addAttribute("badgeStands", badgeStanService.list(badge.getNo()));
+    model.addAttribute("badgeStans", badgeStanService.list(badge.getNo()));
     return "badge/detail";
   }
   

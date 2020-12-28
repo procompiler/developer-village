@@ -86,7 +86,7 @@
 			or b.content
 			like concat('%', #{keyword}, '%')
 		</if>
-		order by b.bno desc
+		/*order by b.bno desc*/
 	</select>
 
 
