@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
   
-  <div class="row">
   <h1>
     <c:choose>
       <c:when test="${article.categoryNo == 1}">
@@ -64,5 +63,4 @@
     </c:choose>
  <br>
  <hr>
- </div>
   <jsp:include page="../comment/list.jsp"></jsp:include>
