@@ -57,7 +57,7 @@
 		<div class="mb-3 row">
       <label for="nickname" class='form-label col-sm-2 col-form-label'>닉네임</label>
         <div class="col-sm-10">
-          <input id="inputNickname" type='text' class="form-control" name='nickname' placeholder="커뮤니티에서 사용할 별명">
+          <input id="inputNickname" type='text' class="form-control" name='nickname' placeholder="커뮤니티에서 사용할 별명(최소 4글자)">
         </div>
     </div>
     
