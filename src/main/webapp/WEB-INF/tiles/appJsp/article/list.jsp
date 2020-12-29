@@ -28,21 +28,24 @@
 	</c:choose>
 </h1>
 
-<form onsubmit="return searchInList(event)" action='${contextPath}?' method='get' autocomplete="off">
-	<select id="condition" name="condition">
-		<option value="1">제목</option>
-		<option value="2">작성자</option>
-		<option value="3">태그</option>
-	</select> <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
-	<input type='text' id="article" name='keyword' value='${param.keyword}'
-		placeholder="게시판 내 검색">
-</form>
-
-<a class="btn btn-primary" href="form" style="position: relative; left: 1190px; top: 30px;">글쓰기</a>
-
-<c:if test="${param.keyword != null}">
-	'${param.keyword}'로 검색한 결과입니다.
-</c:if>
+  <form action='${contextPath}?' method='get' style="float:left;">
+    <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+    <input type="text" name='keyword' value='${param.keyword}' 
+           style="  border-radius: 8px;
+									  border: 0px;
+									  color: white;
+									  background-color: #212325;
+									  background-size: 30px;
+									  outline: none;
+									  font-size: 14px;
+									  width: 200px;
+									  margin-left:70px;
+									  margin-bottom:none;"
+           placeholder="  검색어 입력">
+    <button class="btn btn-primary">검색</button>
+  </form>
+  
+<a class="btn btn-primary" href="form" style="float:right; margin-right:30px;">글쓰기</a>
 
 <table border='1'>
 	<thead>

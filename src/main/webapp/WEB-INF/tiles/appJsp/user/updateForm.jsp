@@ -9,13 +9,17 @@
 <div class="row">
 	<div class="col-9">
 		<h2>프로필 수정</h2>
+		
+		<a href="updatePwdForm?no=${user.no}" style="float:right;"class="btn btn-outline-primary">비밀번호 변경</a>
+		
 		<form action='updatePhoto' method='post' enctype='multipart/form-data'>
 			<input type='hidden' name='no' value='${user.no}'><br>
 			<a href='../../upload/user/${user.photo}'>
 			<img src='../../upload/user/${user.photo}_160x160.jpg'></a><br> 
-				<input type='file' name='photoFile'>
+				<input type='file' class="btn" name='photoFile'>
 			<button class="btn btn-primary">변경</button>
 		</form>
+		
 		<form action='update' method='post'>
 			<input type='hidden' name='no' value='${user.no}'>
 			<div class="mb-3 row">
@@ -87,7 +91,7 @@
 				</div>
 			</div>
 
-			<button class="btn btn-primary">수정</button>
+			<button style="float:right;"class="btn btn-primary">수정</button>
 		</form>
 	</div>
 </div>

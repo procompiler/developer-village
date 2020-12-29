@@ -29,6 +29,23 @@
                  placeholder="8~20자 이내의 영문, 숫자, 특수문자 중 2가지 이상 포함">
         </div>
     </div>
+    
+		<div class="mb-3 row">
+      <label for="passwordConfirm" class='form-label col-sm-2 col-form-label'>비밀번호 확인</label>
+        <div class="col-sm-10">
+          <input id="passwordConfirm" type='password' class="form-control" name='password' 
+                 placeholder="위의 비밀번호와 동일하게 입력">
+        </div>
+    </div>
+    
+    <br><hr><br>
+    
+		<div class="mb-3 row">
+      <label for="name" class='form-label col-sm-2 col-form-label'>이름</label>
+        <div class="col-sm-10">
+          <input id="inputName" type='text' class="form-control" name='name' placeholder="반드시 실명으로 기입">
+        </div>
+    </div>
 
 		<div class="mb-3 row">
       <label for="password" class='form-label col-sm-2 col-form-label'>전화번호</label>
@@ -44,32 +61,59 @@
         </div>
     </div>
     
-		<div class="mb-3 row">
-      <label for="name" class='form-label col-sm-2 col-form-label'>이름</label>
-        <div class="col-sm-10">
-          <input id="inputName" type='text' class="form-control" name='name' placeholder="반드시 실명으로 기입">
-        </div>
-    </div>
-    
     <!-- 디폴트 회원 사진 -->
     <input type='hidden' class="form-control" name='photo' value="fe8a0349-0080-4cc6-85d2-25dc1646441c">
 
 		<div class="d-grid gap-2">
      <button class="btn btn-primary">가입하기</button>
-     <button type='button' class='btn btn-danger' onclick="location.href='main'">취소</button>
+     <button id="btn" type='button' class='btn btn-danger' onclick="location.href='main'">취소</button>
     </div>
 	</form>
 </div>
-
 <script>
-  document.querySelector("#userForm").onsubmit = () => {
-	  if (document.querySelector("#inputName").value.length < 4 ||
-				document.querySelector("#inputTel").value.length < 5 ||
-				document.querySelector("#inputEmail").value.length < 8 ||
-				document.querySelector("#inputNickname").value.length < 5 ||
-				document.querySelector("#inputPassword").value.length < 7) {
-				alert("입력하지 않은 항목이 있습니다.")
-			  return false;
-			}
-		};
+document.querySelector("#userForm").onsubmit = () => {
+	var inputEmail = document.querySelector("#inputEmail");
+	var inputPassword = document.querySelector("#inputPassword");
+	var passwordConfirm = document.querySelector("#passwordConfirm");
+	var inputTel = document.querySelector("#inputTel");
+	var inputNickname = document.querySelector("#inputNickname");
+	var inputName = document.querySelector("#inputName");
+	
+	if (inputEmail.value.length < 8) {
+		alert("이름을 알맞게 입력했는지 확인하세요!");
+		return false;
+	}
+
+	if (inputPassword.value.length < 8) {
+		alert("비밀번호를 8자 이상 입력하세요!");
+		return false;
+	} else if (inputPassword.value != passwordConfirm.value) {
+		alert("비밀번호가 일치하지 않습니다.");
+		return false;
+	}
+	
+	if (inputName.value.length < 2) {
+		alert("이름을 알맞게 입력했는지 확인하세요!");
+		return false;
+	}
+	
+	if (inputTel.value.length < 8) {
+		alert("전화번호를 알맞게 입력했는지 확인하세요!");
+		return false;
+	}
+	
+	if (inputNickname.value.length < 4) {
+		alert("닉네임을 알맞게 입력했는지 확인하세요!");
+		return false;
+	}
+	
+	if (document.querySelector("#inputName").value.length < 1 ||
+		document.querySelector("#inputTel").value.length < 1 ||
+		document.querySelector("#inputEmail").value.length < 1 ||
+		document.querySelector("#inputNickname").value.length < 1 ||
+		document.querySelector("#inputPassword").value.length < 1) {
+	    alert("모든 항목을 입력해야 회원 가입이 가능합니다.");
+	    return false;
+	}
+};
 </script>
