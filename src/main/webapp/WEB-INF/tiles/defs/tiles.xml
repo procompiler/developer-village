@@ -16,4 +16,8 @@
     <put-attribute name="body" value="/WEB-INF/tiles/adminJsp/{1}/{2}.jsp" />
   </definition>
   
+  <definition name="ajax/*/*.app" template="/WEB-INF/tiles/template/ajax_template.jsp">
+    <put-attribute name="body" value="/WEB-INF/tiles/jsp/{1}/{2}.jsp" />
+  </definition>
+  
 </tiles-definitions>

@@ -30,7 +30,7 @@
 <h2>뱃지리스트</h2>
 <ul id="sortable">
 	<c:forEach items="${badgeList}" var="b">
-		<li id="${b.no}"><img src="../../upload/badge/${b.photo}_160X160.png" /></li>
+		<li data-no="${b.no}"><img src="../../upload/badge/${b.photo}_160X160.png" /></li>
 	</c:forEach>
 </ul>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -42,21 +42,42 @@
 				$(this).attr('data-previndex', ui.item.index());
 			},
 			update : function(e, ui) {
-				var newOrder = Number(ui.item.index()) + 1; // index값이 0에서 시작하기 때문에 1 더하기 
-				var oldOrder = Number($(this).attr('data-previndex')) + 1;
-				var badgeNo = ui.item.attr("id"); // item group key
-				
+				var arr = [];
+				$("#sortable li").each(function (index, element) {
+					console.log($(element).attr("data-no"));
+					arr.push($(element).attr("data-no"));
+				})
+				console.log(arr);
 			    $.ajax({
 			        type: "POST",
-			        url: "../ajax1/collect/updateOrder",   // 서버단 메소드 url 
-			        data : {'badgeNo':badgeNo, 'newOrder':newOrder, 'oldOrder':oldOrder, 'userNo':${loginUser.no}},
-			        dataType  : "json", 
+			        url: "../ajax/collect/updateOrder",   // 서버단 메소드 url 
+			        data : {
+			        	"order": arr.toString()
+			        },
+			        dataType  : "text",
 			        success  : function(data) {
 			          // 정상적으로 response 시 
 			        }
 			      });
+				/* 
+				var newOrder = Number(ui.item.index()) + 1; // index값이 0에서 시작하기 때문에 1 더하기 
+				var oldOrder = Number($(this).attr('data-previndex')) + 1;
+				var badgeNo = ui.item.attr("data-no"); // item group key
+				
+				
+				*/
 			}
 		});
 		$("#sortable").disableSelection();
 	});
+	/*
+	function getOrders() {
+		  var listElements = $("#sortable").children();
+		  listElements.forEach(function(element)) {
+			  
+		  }
+		  console.log(listElements);
+		  return listElements;
+	}
+	*/
 </script>
