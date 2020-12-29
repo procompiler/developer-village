@@ -25,12 +25,17 @@ public class DefaultBlockService implements BlockService {
 
   @Override
   @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-  public int block(Block block) throws Exception {
-    blockDao.insertArticleReport(block);
-    blockDao.insertCommentReport(block);
+  public int block(Block block, int reportLinkNo) throws Exception {
+    if(reportLinkNo == Block.TARGET_ARTICLE) {
+      blockDao.insertArticleReport(block);
+      userDao.insertBlocked(block);
+      reportDao.insertStatus(block);
+    } else {
+      blockDao.insertCommentReport(block);
+      userDao.insertBlocked(block);
+      reportDao.insertStatus(block);
+    }
 
-    userDao.insertBlocked(block);
-    reportDao.insertStatus(block);
     return 1;
   }
 

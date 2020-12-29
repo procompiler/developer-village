@@ -31,10 +31,12 @@ public class BlockController {
   }
 
   @PostMapping("add")
-  public String add(Block block, int reportNo) throws Exception {
+  public String add(Block block, int reportNo, int reportLinkNo) throws Exception {
+    //1) 신고번호로 무엇에 대한 신고인지 알아낸다.
+    //2) 서비스객체에게 해당신고를 등록하라고 요구한다.
     Report report = reportService.get(reportNo);
     block.setReport(report);
-    blockService.block(block);
+    blockService.block(block, reportLinkNo);
     return "redirect:list";
   }
 
