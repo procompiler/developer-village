@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.NotificationService;
@@ -24,8 +25,8 @@ public class NotificationController {
   NotificationService notificationService;
   @Autowired
   UserService userService;
-
-  @GetMapping("/list")
+  @GetMapping(value = "list", produces = "application/json;charset=UTF-8")
+  @ResponseBody
   public String list(HttpSession httpSession, Model model) throws Exception {
     User loginUser = (User) httpSession.getAttribute("loginUser");
     System.out.println(loginUser.getNo());
@@ -42,8 +43,6 @@ public class NotificationController {
     }
     return new Gson().toJson(notificationList);
   }
-  
- 
 
   private static class MAX_TIME {
     public static final int SEC = 60;
