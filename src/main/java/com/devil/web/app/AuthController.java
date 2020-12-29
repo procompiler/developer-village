@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.User;
+import com.devil.service.BlockService;
 import com.devil.service.UserService;
 
 @Controller
@@ -17,6 +18,7 @@ import com.devil.service.UserService;
 public class AuthController {
 
   @Autowired UserService userService;
+  @Autowired BlockService blockService;
 
   @GetMapping("login")
   public void loginForm() throws Exception {
@@ -45,6 +47,7 @@ public class AuthController {
       return "/appJsp/auth/loginError.jsp";
     }
     userService.updateLoginTimeStamp(user);
+
     session.setAttribute("loginUser", user);
     return "redirect:../../index.jsp";
   }
