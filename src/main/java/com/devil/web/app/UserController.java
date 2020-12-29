@@ -136,7 +136,7 @@ public class UserController {
     params.put("type", "app");
     params.put("userNo", user.getNo());
     session.setAttribute("loginUser", userService.get(params));
-    return "redirect:./" + user.getNo();
+    return "redirect:./updateForm?no=" + user.getNo();
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {

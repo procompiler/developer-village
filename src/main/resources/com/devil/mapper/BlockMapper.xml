@@ -37,7 +37,7 @@
      update user set
        blocked = 0
      where 
-      uno not in (select uno from ... where b.uno = uno)
+      u.uno not in (select u.uno from ... where b.uno = uno)
 -->
       
 	</sql>

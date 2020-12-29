@@ -63,6 +63,8 @@ INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (25, 5, 1
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (26, 4, 1,'Ruby가 뭔가요?','보석인가요?','2020-12-09',5);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (27, 4, 1,'Go가 뭔가요?','포켓몬고 인가요?','2020-12-11',3);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (28, 11, 1,'자바스크립트..ㅠ','이제 시작 하면 언제 끝내나요...ㅠㅠ','2020-12-15',1);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (29, 8, 1,'바닐라js가 뭔가요?','그냥 자바스크립트랑 차이가 뭔가요ㅠㅠ','2020-12-16',3);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (30, 15, 2,'현업에서 jquery 많이 쓰나요?','필수로 공부해야하나요?','2020-12-20',2);
 
 
 
@@ -161,7 +163,7 @@ INSERT INTO badge (bno,name,photo,tno) VALUES (23, 'R', 'r',23);
 INSERT INTO badge (bno,name,photo,tno) VALUES (24, 'Node.js', 'nodejs',24);
 INSERT INTO badge (bno,name,photo,tno) VALUES (25, 'Oracle', 'oracle',25);
 INSERT INTO badge (bno,name,photo,tno) VALUES (26, 'Visual Studio', 'visual-studio',26);
-INSERT INTO badge (bno,name,photo,tno) VALUES (27, '환영', 'welcome.jpg',null);
+INSERT INTO badge (bno,name,photo,tno) VALUES (27, '환영', 'welcome',27);
 
 
 
@@ -252,6 +254,8 @@ INSERT INTO arc_tag (arno,tno) VALUES (25, 12);
 INSERT INTO arc_tag (arno,tno) VALUES (26, 3);
 INSERT INTO arc_tag (arno,tno) VALUES (27, 4);
 INSERT INTO arc_tag (arno,tno) VALUES (28, 5);
+INSERT INTO arc_tag (arno,tno) VALUES (29, 5);
+INSERT INTO arc_tag (arno,tno) VALUES (30, 5);
 
 
 

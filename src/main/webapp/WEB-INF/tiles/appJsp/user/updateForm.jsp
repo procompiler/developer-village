@@ -11,8 +11,8 @@
 		<h2>프로필 수정</h2>
 		<form action='updatePhoto' method='post' enctype='multipart/form-data'>
 			<input type='hidden' name='no' value='${user.no}'><br>
-			<a href='../../upload/${user.photo}'>
-			<img src='../../upload/${user.photo}_160x160.jpg'></a><br> 
+			<a href='../../upload/user/${user.photo}'>
+			<img src='../../upload/user/${user.photo}_160x160.jpg'></a><br> 
 				<input type='file' name='photoFile'>
 			<button class="btn btn-primary">변경</button>
 		</form>
