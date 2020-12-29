@@ -1,9 +1,7 @@
 package com.devil.web.app.json;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.NotificationService;
-import com.devil.service.UserService;
 import com.google.gson.Gson;
 
 @Controller("json.notificationController")
@@ -23,19 +20,10 @@ public class NotificationController {
 
   @Autowired
   NotificationService notificationService;
-  @Autowired
-  UserService userService;
   @GetMapping(value = "list", produces = "application/json;charset=UTF-8")
   @ResponseBody
   public String list(HttpSession httpSession, Model model) throws Exception {
     User loginUser = (User) httpSession.getAttribute("loginUser");
-    System.out.println(loginUser.getNo());
-    System.out.println(loginUser.getName());
-    Map<String, Object> params = new HashMap<String, Object>();
-    params.put("type", "app");
-    params.put("userNo", loginUser.getNo());
-    model.addAttribute("user", userService.get(params));
-    
     List<Notification> notificationList = notificationService.list(loginUser);
     for (Notification n : notificationList) {
       System.out.println(n.getType());

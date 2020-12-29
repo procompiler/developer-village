@@ -76,6 +76,7 @@
 		u2.nick c_nick,
 		u2.photo c_photo,
 		c.momno,
+		c.arno,
 		a.title
 		from noti n
 		left outer join user u on u.uno = n.fwer_no

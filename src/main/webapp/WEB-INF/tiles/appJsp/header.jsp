@@ -88,7 +88,7 @@
 </header>
 
 <script id="t1" type="text/x-handlebars-template">  
-<li><image src="{{photo}}"><a class="dropdown-item" href="{{url}}">{{message}}</a></li>
+<li><image src="${appRoot}/upload/{{photo}}"><a class="dropdown-item" href="${appRoot}/app/{{url}}">{{message}}</a></li>
 </script>
 
 
@@ -97,52 +97,53 @@ console.log("안녕");
 	var notiDropButton = document.getElementById("noti-list");
 	var notiDropdownMenu = document.querySelector(".dropdown-menu");
 	var notidown = new bootstrap.Dropdown(document.querySelector('.dropdown-toggle'));
+	var notiToggle = document.querySelector(".dropdown-toggle");
 	
 	var notiTemplateSrc = document.querySelector("#t1").innerHTML;
 	var notiHtmlGenerator = Handlebars.compile(notiTemplateSrc);
 	console.log("왜 안될까?")
-	notiDropButton.addEventListener('click', function() {
-		console.log("클릭함!");
+	notiDropButton.addEventListener('show.bs.dropdown', function() {
 		var xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = () => {
-			if (xhr.readyState == 4) {
-				if (xhr.status == 200) {
-					var notiList = JSON.parse(xhr.responseText);
-					var resultHtml;
-					for (var noti of notiList) {
-						switch (noti.type) {
-						case 1:
-							noti.message = noti.comment.writer.nick + '님께서 "' + noti.comment.articleTitle + '" 게시글에 댓글을 다셨습니다.';
-							noti.url = "../article/" + noti.comment.articleNo;
-							noti.photo = "../../upload/user/" + noti.comment.writer.photo + "_60x60.png";
-							break;
-						case 2:
-							noti.message = noti.comment.writer.nick + '님께서 "' + noti.comment.articleTitle + '" 게시글의 내 댓글에 답글을 다셨습니다.';
-				      noti.url = "../article/" + noti.comment.articleNo;
-				      noti.photo = "../../upload/user/" + noti.comment.writer.photo + "_60x60.png";
-							break;
-						case 3:
-							noti.message = noti.follower.nick + "님께서 팔로우하셨습니다."
-				      noti.url = "../user/" + noti.follower.no;
-				      noti.photo = "../../upload/user/" + noti.follower.photo + "_60x60.png";
-							break;
-						case 4:
-							noti.message = noti.badge.name + "을 획득하셨습니다.";
-				      noti.url = "../collect/list";
-				      noti.photo = "../../upload/badge/" + noti.badge.photo + "_60x60.png";
-							break;
-						}}
-						notiList.forEach(function (item, index) {
-							resultHtml += notiHtmlGenerator(item);
-						});
-						console.log(resultHtml);
-						notiDropdownMenu.innerHTML = resultHtml;
-						notidown.show();
-						}
-					}
-			};
-		    xhr.open("GET", "../json/notification/list", true);
-		    xhr.send();
-		});
+	    xhr.onreadystatechange = () => {
+	      if (xhr.readyState == 4) {
+	        if (xhr.status == 200) {
+	          var notiList = JSON.parse(xhr.responseText);
+	          var resultHtml;
+	          for (var noti of notiList) {
+	            switch (noti.type) {
+	            case 1:
+	              noti.message = noti.comment.writer.nickname + '님께서 "' + noti.comment.articleTitle + '" 게시글에 댓글을 다셨습니다.';
+	              noti.url = "article/" + noti.comment.articleNo;
+	              noti.photo = "user/" + noti.comment.writer.photo + "_60x60.jpg";
+	              console.log(noti);
+	              break;
+	            case 2:
+	              noti.message = noti.comment.writer.nickname + '님께서 "' + noti.comment.articleTitle + '" 게시글의 내 댓글에 답글을 다셨습니다.';
+	              noti.url = "article/" + noti.comment.articleNo;
+	              noti.photo = "user/" + noti.comment.writer.photo + "_60x60.jpg";
+	              break;
+	            case 3:
+	              noti.message = noti.follower.nickname + "님께서 팔로우하셨습니다."
+	              noti.url = "user/" + noti.follower.no;
+	              noti.photo = "user/" + noti.follower.photo + "_60x60.jpg";
+	              break;
+	            case 4:
+	              noti.message = noti.badge.name + "을 획득하셨습니다.";
+	              noti.url = "collect/list";
+	              noti.photo = "badge/" + noti.badge.photo + "_60x60.png";
+	              break;
+	            }}
+	            notiList.forEach(function (item, index) {
+	              resultHtml += notiHtmlGenerator(item);
+	            });
+	            console.log(resultHtml);
+	            notiDropdownMenu.innerHTML = resultHtml;
+	            notidown.show();
+	            }
+	          }
+	      };
+	        xhr.open("GET", "${appRoot}/app/json/notification/list", true);
+	        xhr.send();
+	    });
 </script>
 

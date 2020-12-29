@@ -10,6 +10,7 @@
 <title>DEVIL</title>
 <link rel="stylesheet"
 	href="${appRoot}/node_modules/@fortawesome/fontawesome-free/css/all.css" />
+<link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
 <link rel="stylesheet" type="text/css" href='${appRoot}/custom.css'>
 <link rel="stylesheet" type="text/css" href='${appRoot}/style.css'>
 </head>
