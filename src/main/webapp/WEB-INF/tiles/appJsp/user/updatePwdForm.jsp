@@ -5,13 +5,11 @@
 
 <div class="row">
 	<div class="col-9">
-		<h2>비밀번호 변경</h2>
-		
-		<a href="updateForm?no=${user.no}" style="float:right;"class="btn btn-outline-primary">회원정보 변경</a>
-		  <br>
+	  <h1 style="font-weight: bold; text-align: left;">비밀번호 변경</h1>
+		<a href="updateForm?no=${user.no}" style="float:right;"class="btn btn-outline-primary">회원정보 변경</a><br>
 			<input type='hidden' name='no' value='${user.no}'>
 			<a href='../../upload/user/${user.photo}'>
-			<img src='../../upload/user/${user.photo}_160x160.jpg'></a><br> 
+			<img src='../../upload/user/${user.photo}_160x160.jpg' style="border-radius: 90px"></a><br> 
 			
 		<form id="updatePwdForm" action='updatePwd' method='post'>
 		  <br>
@@ -57,7 +55,9 @@
         </div>
     </div>
 
-			<button style="float:right;" class="btn btn-primary">수정</button>
+      <div class="mb-3 row">
+        <button class="btn btn-primary">수정</button>
+      </div>
 		</form>
 	</div>
 </div>
