@@ -106,8 +106,9 @@ public class AuthController {
   }
 
   @PostMapping("updatePwd")
-  public void updatePwd(int userNo, String password) throws Exception {
+  public String updatePwd(int userNo, String password) throws Exception {
     userService.updatePwd(userNo, password);
+    return "redirect:login";
   }
 
   @PostMapping("updateInfo")

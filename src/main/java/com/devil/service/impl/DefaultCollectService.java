@@ -1,5 +1,6 @@
 package com.devil.service.impl;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -29,8 +30,11 @@ public class DefaultCollectService implements CollectService {
   }
 
   @Override
-  public int updateOrder(Collect collect) throws Exception {
-    return collectDao.updateOrder(collect);
+  public int updateAllOrder(List<Collect> collects) throws Exception {
+    for (Collect collect : collects) {
+      collectDao.updateOrder(collect);
+    }
+    return 1;
   }
   
   @Override
