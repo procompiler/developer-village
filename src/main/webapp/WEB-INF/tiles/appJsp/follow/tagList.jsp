@@ -25,3 +25,5 @@
 		</div>
 	</c:forEach>
 </div>
+</div>
+<jsp:include page="../user/badgeList.jsp"></jsp:include>

@@ -101,7 +101,6 @@ console.log("안녕");
 	
 	var notiTemplateSrc = document.querySelector("#t1").innerHTML;
 	var notiHtmlGenerator = Handlebars.compile(notiTemplateSrc);
-	console.log("왜 안될까?")
 	notiDropButton.addEventListener('show.bs.dropdown', function() {
 		var xhr = new XMLHttpRequest();
 	    xhr.onreadystatechange = () => {

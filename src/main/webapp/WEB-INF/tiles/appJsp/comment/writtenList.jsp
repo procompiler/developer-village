@@ -30,3 +30,4 @@
 		</c:forEach>
 	</tbody>
 </table>
+<jsp:include page="../user/badgeList.jsp"></jsp:include>
