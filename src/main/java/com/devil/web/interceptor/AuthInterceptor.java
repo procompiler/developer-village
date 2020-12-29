@@ -15,6 +15,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         request.getPathInfo().startsWith("/user/form") ||
         request.getPathInfo().startsWith("/auth/searchId") ||
         request.getPathInfo().startsWith("/auth/searchPwd") ||
+        request.getPathInfo().startsWith("/auth/updatePwd") ||
         request.getPathInfo().startsWith("/user/form") ||
         request.getPathInfo().startsWith("/user/add") ||
         request.getPathInfo().startsWith("/article/list") ||

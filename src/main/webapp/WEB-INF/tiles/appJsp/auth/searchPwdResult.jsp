@@ -24,7 +24,7 @@
       
       <p style="text-align:center; font-size: 20px; margin-bottom: 1rem;">새로운 비밀번호를 입력해주세요.</p>
     
-      <form id="updatePwd" action="searchPwdResult-send" method="post">
+      <form id="updatePwd" action="updatePwd" method="post">
         <input id='userNo' type='hidden' name='userNo' value='${param.userNo}'>
         <div class="mb-3 row">
           <label for="password" class='form-label col-sm-2 col-form-label'>비밀번호</label>
