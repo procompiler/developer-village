@@ -11,6 +11,7 @@ public class Notification {
   Comment comment;
   Badge badge;
   String difTime;
+  String message;
   
   public int getNo() {
     return no;
@@ -68,4 +69,12 @@ public class Notification {
     this.badge = badge;
     return this;
   }
+  public String getMessage() {
+    return message;
+  }
+  public Notification setMessage(String message) {
+    this.message = message;
+    return this;
+  }
+  
 }

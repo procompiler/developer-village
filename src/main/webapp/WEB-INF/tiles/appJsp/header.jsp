@@ -67,9 +67,21 @@
 		<c:if test="${not empty loginUser}">
 			<img src="${appRoot}/upload/user/${loginUser.photo}_40x40.jpg"
 				class="card-img-top rounded-circle mx-2" style="float: right">
-			<a class="btn btn-secondary float-end position-relative"> 
-			<i class="fas fa-bell text-light fa-lg"></i> <div class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -10px; margin-top: 5px">${loginUser.notiCount}</div>
-			</a>
+			<div class="dropdown">
+				<button class="btn btn-secondary float-end position-relative dropdown-toggle"
+				id="noti-list"
+				data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-bell text-light fa-lg"></i>
+					<div
+						class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+						style="margin-left: -10px; margin-top: 5px">${loginUser.notiCount}</div></button>
+					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="noti-list">
+						<li><a class="dropdown-item">Action</a></li>
+						<li><a class="dropdown-item">Another action</a></li>
+						<li><a class="dropdown-item">Something else here</a></li>
+					</ul>
+				</a>
+			</div>
 			<a class="btn" href="${appRoot}/app/auth/logout">로그아웃</a>
 			<a class="btn" href="${appRoot}/app/article/form">글쓰기</a>
 		</c:if>

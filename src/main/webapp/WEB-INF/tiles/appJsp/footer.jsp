@@ -19,7 +19,3 @@
 		오호라빌딩 27층 <br> 대표명 : 유관순
 	</div>
 </footer>
-<script
-	src="${appRoot}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

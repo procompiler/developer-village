@@ -13,6 +13,7 @@
     "@sweetalert2/theme-dark": "^4.0.1",
     "bootstrap": "^5.0.0-beta1",
     "handlebars": "^4.7.6",
+    "jquery": "^3.5.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^10.12.3"
   }
