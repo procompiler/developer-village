@@ -36,7 +36,7 @@ body {
 }
 
 .container {
-  margin: 70px 0px 20px 230px;
+  margin: 100px 0px 20px 250px;
 }
 
 .main-color {
@@ -366,6 +366,18 @@ div.card {
   margin: 0px;
 }
 
+.row .col-9 {
+	text-align: center;
+	background-color: #232326;
+	border-radius: 10px;
+  padding: 60px;
+  margin-left: 80px;
+  margin-top: 50px;
+}
+
+#dangerzone {
+	text-align: left;
+}
 /* 로그인 페이지 */
 #auth {
 	border-radius: 10px;
