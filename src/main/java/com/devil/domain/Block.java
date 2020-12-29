@@ -3,6 +3,8 @@ package com.devil.domain;
 import java.sql.Date;
 
 public class Block {
+  public static final int TARGET_ARTICLE = 1;
+  public static final int TARGET_COMMENT = 2;
   private int no;
   private User reportedUser;
   private Date permittedDate;
@@ -11,7 +13,16 @@ public class Block {
   private String unBlockedReason;
   private Report report;
   private Date blockTerminationDate;
+  private int targetType;//1게시글 2댓글
 
+
+  public int getTargetType() {
+    return targetType;
+  }
+  public Block setTargetType(int targetType) {
+    this.targetType = targetType;
+    return this;
+  }
   public Date getBlockTermination() {
     return blockTerminationDate;
   }

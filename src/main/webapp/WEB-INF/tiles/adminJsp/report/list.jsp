@@ -66,6 +66,13 @@
 				<td>
 					<form action="../block/form" method=get>
 						<input type='hidden' name='reportNo' value='${report.no}'>
+						<c:if test="${report.reportedComment == null}">
+						<input type='hidden' name='reportLinkNo' value='1'>
+						</c:if>
+						<c:if test="${report.reportedArticle == null}">
+            <input type='hidden' name='reportLinkNo' value='2'>
+            </c:if>
+						
 						<c:choose>
 							<c:when test="${report.status == 1}">
 								<button class="btn btn-primary">신고승인</button>
