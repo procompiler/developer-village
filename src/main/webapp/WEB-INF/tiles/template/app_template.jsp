@@ -10,6 +10,7 @@
 <title>DEVIL</title>
 <link rel="stylesheet"
 	href="${appRoot}/node_modules/@fortawesome/fontawesome-free/css/all.css" />
+<link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
 <link rel="stylesheet" type="text/css" href='${appRoot}/custom.css'>
 <link rel="stylesheet" type="text/css" href='${appRoot}/style.css'>
 </head>
@@ -23,5 +24,6 @@
 		src="${appRoot}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 </body>
 </html>
