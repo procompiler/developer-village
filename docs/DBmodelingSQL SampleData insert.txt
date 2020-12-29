@@ -163,7 +163,7 @@ INSERT INTO badge (bno,name,photo,tno) VALUES (23, 'R', 'r',23);
 INSERT INTO badge (bno,name,photo,tno) VALUES (24, 'Node.js', 'nodejs',24);
 INSERT INTO badge (bno,name,photo,tno) VALUES (25, 'Oracle', 'oracle',25);
 INSERT INTO badge (bno,name,photo,tno) VALUES (26, 'Visual Studio', 'visual-studio',26);
-INSERT INTO badge (bno,name,photo,tno) VALUES (27, '환영', 'welcome.jpg',null);
+INSERT INTO badge (bno,name,photo,tno) VALUES (27, '환영', 'welcome',27);
 
 
 
