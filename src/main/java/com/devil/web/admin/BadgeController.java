@@ -58,7 +58,7 @@ public class BadgeController {
     }
     return "redirect:list";
   }
- 
+
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) throws Exception {
     Badge badge = badgeService.get(no);
@@ -71,7 +71,7 @@ public class BadgeController {
     model.addAttribute("badgeStans", badgeStanService.list(badge.getNo()));
     return "badge/detail";
   }
-  
+
   /*
   @GetMapping("detail")
   public String detail(int no,Model model) throws Exception {
@@ -105,12 +105,12 @@ public class BadgeController {
    */
   @RequestMapping("update")
   public String update(Badge badge) throws Exception {
-    
+
     badgeService.update(badge);
     return "redirect:./" + badge.getNo();
   }
-  
-  
+
+
   @RequestMapping("updatePhoto")
   public String updatePhoto(int no, MultipartFile photoFile) throws Exception {
 
@@ -133,7 +133,7 @@ public class BadgeController {
     }
 
     badgeService.update(badge);
-    return "redirect:." + badge.getNo();
+    return "redirect:./" + badge.getNo();
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
