@@ -12,7 +12,7 @@
 
 <form action='updatePhoto' method='post' enctype='multipart/form-data'>
 	<input type="hidden" name='no' value='${badge.no}'><br>
-		<img src='../../upload/badge/${badge.photo}_160x160.png' alt='[뱃지 이미지]'  style='border-radius: 80px'>
+		<img src='../../upload/badge/${badge.photo}_80x80.png' alt='[뱃지 이미지]'  style='border-radius: 80px'>
 	<div class="mb-4 mt-3">
 	<div class="col-sm-5">
   <label for="photoFile" class="form-label">사진업로드</label>
