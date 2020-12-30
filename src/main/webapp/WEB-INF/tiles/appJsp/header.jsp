@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="appRoot" value="${pageContext.servletContext.contextPath}" />
-
 <nav>
 	<ul>
 		<li><a href='${appRoot}'><img id="logo-nav"
@@ -18,7 +17,7 @@
 					<div class="user-photo">
 						<img src="${appRoot}/upload/user/${loginUser.photo}_60x60.jpg" />
 					</div>
-					<span class="user-name" style="font-size:18px;font-weight:bold;">${loginUser.nickname}</span>
+					<span class="user-name" style="font-size: 18px; font-weight: bold;">${loginUser.nickname}</span>
 				</div>
 			</a>
 		</c:if>
@@ -76,10 +75,8 @@
 						class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
 						style="margin-left: -10px; margin-top: 5px">${loginUser.notiCount}</div>
 				</button>
-				<ul class="dropdown-menu dropdown-menu-dark"
-					aria-labelledby="noti-list">
-
-				</ul>
+				<div class="dropdown-menu dropdown-menu-dark"
+					aria-labelledby="noti-list"></div>
 			</div>
 			<a class="btn" href="${appRoot}/app/auth/logout">로그아웃</a>
 			<a class="btn" href="${appRoot}/app/article/form">글쓰기</a>
@@ -88,12 +85,34 @@
 </header>
 
 <script id="t1" type="text/x-handlebars-template">  
-<li><image src="${appRoot}/upload/{{photo}}"><a class="dropdown-item" href="${appRoot}/app/{{url}}">{{message}}</a></li>
+<div class="dropdown-item" >
+<a href="${appRoot}/app/{{url}}" class="noti-url" data-no="{{no}}">
+  <div class="row">
+  <div class="col-2">
+    <image class="rounded-circle" src="${appRoot}/upload/{{photo}}"/> 
+  </div>
+  <div class="col-10">
+    {{message}}
+    <br>
+    <small>{{difTime}}</small>
+</div>
+</div>
+</a>
+</div>
+</div>
 </script>
 
+<script type="text/javascript">
+
+$(document).on( "click", ".noti-url", function( e ) {
+	 console.log(e.currentTarget);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../ajax/notification/updateReadDate?no=" + e.currentTarget.getAttribute("data-no"));
+    xhr.send();
+});
+</script>
 
 <script>
-console.log("안녕");
 	var notiDropButton = document.getElementById("noti-list");
 	var notiDropdownMenu = document.querySelector(".dropdown-menu");
 	var notidown = new bootstrap.Dropdown(document.querySelector('.dropdown-toggle'));
@@ -107,35 +126,33 @@ console.log("안녕");
 	      if (xhr.readyState == 4) {
 	        if (xhr.status == 200) {
 	          var notiList = JSON.parse(xhr.responseText);
-	          var resultHtml;
+	          var resultHtml ="";
 	          for (var noti of notiList) {
 	            switch (noti.type) {
 	            case 1:
-	              noti.message = noti.comment.writer.nickname + '님께서 "' + noti.comment.articleTitle + '" 게시글에 댓글을 다셨습니다.';
+	              noti.message = noti.comment.writer.nickname + '님께서 게시글에 댓글을 다셨습니다.';
 	              noti.url = "article/" + noti.comment.articleNo;
 	              noti.photo = "user/" + noti.comment.writer.photo + "_60x60.jpg";
-	              console.log(noti);
 	              break;
 	            case 2:
-	              noti.message = noti.comment.writer.nickname + '님께서 "' + noti.comment.articleTitle + '" 게시글의 내 댓글에 답글을 다셨습니다.';
+	              noti.message = noti.comment.writer.nickname + '님께서 댓글에 답글을 다셨습니다.';
 	              noti.url = "article/" + noti.comment.articleNo;
 	              noti.photo = "user/" + noti.comment.writer.photo + "_60x60.jpg";
 	              break;
 	            case 3:
-	              noti.message = noti.follower.nickname + "님께서 팔로우하셨습니다."
+	              noti.message = noti.follower.nickname + "님께서 팔로우하셨습니다.";
 	              noti.url = "user/" + noti.follower.no;
 	              noti.photo = "user/" + noti.follower.photo + "_60x60.jpg";
 	              break;
 	            case 4:
 	              noti.message = noti.badge.name + "을 획득하셨습니다.";
-	              noti.url = "collect/list";
+	              noti.url = "article/writtenList";
 	              noti.photo = "badge/" + noti.badge.photo + "_60x60.png";
 	              break;
 	            }}
 	            notiList.forEach(function (item, index) {
 	              resultHtml += notiHtmlGenerator(item);
 	            });
-	            console.log(resultHtml);
 	            notiDropdownMenu.innerHTML = resultHtml;
 	            notidown.show();
 	            }
@@ -144,5 +161,7 @@ console.log("안녕");
 	        xhr.open("GET", "${appRoot}/app/json/notification/list", true);
 	        xhr.send();
 	    });
+
 </script>
+
 
