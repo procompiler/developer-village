@@ -54,6 +54,5 @@
 </c:forEach>
 </div>
 </div>
-</div>
-<div class="col-3"></div>
-</div>
+<jsp:include page="../user/badgeList.jsp"></jsp:include>
+

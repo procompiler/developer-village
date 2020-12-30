@@ -1,39 +1,36 @@
-package com.devil.web.app;
+package com.devil.web.app.json;
 
 import java.util.Date;
 import java.util.List;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.devil.domain.Notification;
 import com.devil.domain.User;
 import com.devil.service.NotificationService;
+import com.google.gson.Gson;
 
-@Controller
-@RequestMapping("/notification")
+@Controller("json.notificationController")
+@RequestMapping("/json/notification")
 public class NotificationController {
 
   @Autowired
-  ServletContext servletContext;
-
-  @Autowired
   NotificationService notificationService;
-
-  @GetMapping("/list")
-  public void list(HttpSession httpSession, Model model) throws Exception {
+  @GetMapping(value = "list", produces = "application/json;charset=UTF-8")
+  @ResponseBody
+  public String list(HttpSession httpSession, Model model) throws Exception {
     User loginUser = (User) httpSession.getAttribute("loginUser");
     List<Notification> notificationList = notificationService.list(loginUser);
     for (Notification n : notificationList) {
+      System.out.println(n.getType());
       n.setDifTime(formatTimeString(n.getCreatedDate()));
     }
-    model.addAttribute("notificationList", notificationList);
+    return new Gson().toJson(notificationList);
   }
-
-
 
   private static class MAX_TIME {
     public static final int SEC = 60;

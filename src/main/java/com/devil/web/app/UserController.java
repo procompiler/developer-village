@@ -104,6 +104,20 @@ public class UserController {
     }
   }
 
+  @GetMapping("updatePwdForm")
+  public void updatePwdForm(int no, Model model) throws Exception {
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", no);
+    model.addAttribute("user", userService.get(params));
+  }
+
+  @PostMapping("updatePwd")
+  public String updatePwd(User user, int no, String password) throws Exception {
+    userService.updatePwd(no, password);
+    return "redirect:./" + user.getNo();
+  }
+
   @GetMapping("updateForm")
   public void updateForm(Model model, int no) throws Exception {
     Map<String, Object> params = new HashMap<String, Object>();

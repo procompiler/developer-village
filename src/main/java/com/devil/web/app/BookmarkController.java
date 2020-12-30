@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Bookmark;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
+import com.devil.service.BadgeService;
 import com.devil.service.BookmarkService;
 
 @Controller
@@ -19,6 +20,8 @@ public class BookmarkController {
   BookmarkService bookmarkService;
   @Autowired
   ArticleService articleService;
+  @Autowired
+  BadgeService badgeService;
 
   @RequestMapping("add")
   public String add(Bookmark bookmark, HttpSession httpSession, HttpServletRequest request) throws Exception {
@@ -36,6 +39,8 @@ public class BookmarkController {
 
   @RequestMapping("list")
   public void list(HttpSession httpSession, Model model) throws Exception {
-    model.addAttribute("bookmarkList", articleService.bookmarkList((User) httpSession.getAttribute("loginUser")));
+    User loginUser = (User) httpSession.getAttribute("loginUser");
+    model.addAttribute("bookmarkList", articleService.bookmarkList(loginUser));
+    model.addAttribute("badgeList", badgeService.list(loginUser));
   }
 }

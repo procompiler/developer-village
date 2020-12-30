@@ -26,6 +26,7 @@ public class User {
   private int followerCount; // 팔로워수
   private int followingCount; // 팔로잉수
   private boolean followed;
+  private int notiCount;
 
   public int getNo() {
     return no;
@@ -183,19 +184,28 @@ public class User {
   public int getFollowerCount() {
     return followerCount;
   }
-  public void setFollowerCount(int followerCount) {
+  public User setFollowerCount(int followerCount) {
     this.followerCount = followerCount;
+    return this;
   }
   public int getFollowingCount() {
     return followingCount;
   }
-  public void setFollowingCount(int followingCount) {
+  public User setFollowingCount(int followingCount) {
     this.followingCount = followingCount;
+    return this;
   }
   public boolean getFollowed() {
     return followed;
   }
-  public void setFollowed(boolean followed) {
+  public User setFollowed(boolean followed) {
     this.followed = followed;
+    return this;
+  }
+  public int getNotiCount() {
+    return notiCount;
+  }
+  public void setNotiCount(int notiCount) {
+    this.notiCount = notiCount;
   }
 }

@@ -23,24 +23,26 @@
   <input type='hidden' name='no' value='${article.no}'>
   <br>
 
-  <ul id='tags'>
-    <c:forEach items="${tags}" var="tag">
-      <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li>
-    </c:forEach>
-  </ul>
-
-  <div style="width: 80rem; background-color: #37393E;">
-    <div class="card-body">
-      <h2 class="card-title">${article.title}</h2>
+  <div style="width: 80rem; background-color: #212327; padding: 30px;">
+  
+    <div class="box-title" style="float:left;">
+      <h2>${article.title}</h2>
       <h6 class="card-subtitle mb-2 text-muted">
         <fmt:formatDate value="${article.createdDate}" pattern="yyyy.MM.dd. HH:mm" />
       </h6>
+        <ul id='tags'>
+          <c:forEach items="${tags}" var="tag">
+          <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li>
+          </c:forEach>
+        </ul>
+    </div>
       <br>
-      <p class="card-text">
+    <div class="box-userInfo" style="float: right;">
+          <a href='../user/${article.writer.no}'>
+          <span style="font-weight:bold; font-size:105%; margin: 5px">${article.writer.nickname}</span></a>
         <img src='../../upload/user/${article.writer.photo}_40x40.jpg'
-          style='border-radius: 70px' alt='[${article.writer.photo}_40x40]'><br>
-          <a href='../user/${article.writer.no}'><span style="font-weight:bold; font-size:105%;">${article.writer.nickname}</span></a></p>
-                          
+          style='border-radius: 70px; float: right; margin:5px;' alt='[${article.writer.photo}_40x40]'><br>
+    </div>
       <p>
       <a class="card-text text-end" href="#comment"><i class="fas fa-comment"></i> 댓글 ${article.commentCount}</a>
       <span class="card-text text-end"><i class="fas fa-eye"></i> 조회 ${article.viewCount}</span>

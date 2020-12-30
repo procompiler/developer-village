@@ -29,6 +29,4 @@
 	</c:forEach>
 	</div>
 	</div>
-<div class="col-2">
-</div>
-</div>
+<jsp:include page="../user/badgeList.jsp"></jsp:include>

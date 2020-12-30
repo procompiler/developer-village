@@ -15,9 +15,11 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.util.UrlPathHelper;
 import com.devil.service.BlockService;
+import com.devil.service.NotificationService;
 import com.devil.service.UserService;
 import com.devil.web.interceptor.AuthInterceptor;
 import com.devil.web.interceptor.BlockInterceptor;
+import com.devil.web.interceptor.NotifyInterceptor;
 
 @ComponentScan("com.devil.web.app")
 @EnableWebMvc
@@ -28,6 +30,9 @@ public class AppWebConfig implements WebMvcConfigurer {
 
   @Autowired
   BlockService blockService;
+  
+  @Autowired
+  NotificationService notificationService;
 
   @Bean
   public ViewResolver tilesViewResolver() {
@@ -80,9 +85,13 @@ public class AppWebConfig implements WebMvcConfigurer {
 
     // 모든 "/app/*" 요청에 대해 로그인 여부를 검사하는 인터셉터 삽입
     registry.addInterceptor(new AuthInterceptor());
+    
+    registry.addInterceptor(new NotifyInterceptor(notificationService));
 
     // 모든 유저에 대해 차단여부를 검사하는 인터셉터
     registry.addInterceptor(new BlockInterceptor(blockService));
+    
+    
 
   }
 }

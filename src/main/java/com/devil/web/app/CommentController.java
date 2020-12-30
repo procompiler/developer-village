@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Comment;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
+import com.devil.service.BadgeService;
 import com.devil.service.CommentService;
 import com.devil.service.UserService;
 
@@ -25,6 +26,8 @@ public class CommentController {
   CommentService commentService;
   @Autowired
   UserService userService;
+  @Autowired
+  BadgeService badgeService;
 
   @PostMapping("add")
   public String add(Comment comment, HttpSession session) throws Exception {
@@ -51,6 +54,7 @@ public class CommentController {
 
     model.addAttribute("user", userService.get(params));
     model.addAttribute("commentList", commentService.listByWriter(user));
+    model.addAttribute("badgeList", badgeService.list(user));
   }
 
   @PostMapping("update")

@@ -24,7 +24,7 @@
       
       <p style="text-align:center; font-size: 20px; margin-bottom: 1rem;">새로운 비밀번호를 입력해주세요.</p>
     
-      <form id="updatePwd" action="updatePwd" method="post">
+      <form id="updatePwdForm" action="updatePwd" method="post">
         <input id='userNo' type='hidden' name='userNo' value='${param.userNo}'>
         <div class="mb-3 row">
           <label for="password" class='form-label col-sm-2 col-form-label'>비밀번호</label>
@@ -32,7 +32,15 @@
             <input id='inputPassword' type='password' class="form-control" name='password' placeholder="password">
           </div>
         </div>
-
+    
+		    <div class="mb-3 row">
+		      <label for="passwordConfirm" class='form-label col-sm-2 col-form-label'>비밀번호 확인</label>
+		        <div class="col-sm-10">
+		          <input id="passwordConfirm" type='password' class="form-control" name='passwordConfirm' 
+		                 placeholder="위의 비밀번호와 동일하게 입력">
+		        </div>
+		    </div>
+		    
         <div class="d-grid gap-2">
           <button class="btn btn-primary">비밀번호 재설정</button>
         </div>
@@ -49,10 +57,16 @@
 </div>
 
 <script>
-  document.querySelector("#updatePwd").onsubmit = () => {
-    if (document.querySelector("#inputPassword").value.length < 1 ) {
-        alert("입력하지 않은 항목이 있습니다.")
-        return false;
-      }
-    };
+document.querySelector("#updatePwdForm").onsubmit = () => {
+  var inputPassword = document.querySelector("#inputPassword");
+  var passwordConfirm = document.querySelector("#passwordConfirm");
+
+  if (inputPassword.value.length < 8) {
+    alert("비밀번호를 8자 이상 입력하세요!");
+    return false;
+  } else if (inputPassword.value != passwordConfirm.value) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return false;
+  }
+};
 </script>

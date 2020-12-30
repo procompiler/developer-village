@@ -7,20 +7,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="row">
-	<div class="row col-9 mb-5">
+  <div class="col-9">
 		<h1 style="font-weight: bold; text-align: left;">프로필 수정</h1>
+		<a href="updatePwdForm?no=${user.no}" style="float:right;" class="btn btn-outline-primary">비밀번호 변경</a><br>
+		
 		<form action='updatePhoto' method='post' enctype='multipart/form-data' class="row g-3">
 			<input type='hidden' name='no' value='${user.no}'>
 			<a href='../../upload/user/${user.photo}'>
 			<img src='../../upload/user/${user.photo}_160x160.jpg' style="border-radius: 90px"></a>
 			
-	<div class="col-8">
-  <input class="form-control-sm" name='photoFile' type="file">
-  </div>
-   <div class="col-2 mb-4">
-  <button class="btn btn-primary">이미지 변경</button>
- </div>
+			<div class="col-8">
+		    <input class="form-control-sm" name='photoFile' type="file">
+		  </div>
+		  <div class="col-2 mb-4">
+		    <button class="btn btn-primary">변경</button>
+		  </div>
 		</form>
+		
 		<form action='update' method='post'>
 			<input type='hidden' name='no' value='${user.no}'>
 			<div class="mb-3 row">
@@ -91,8 +94,8 @@
 						name='twitterURL' value='${user.twitterURL}'>
 				</div>
 			</div>
-    <div class="mb-3 row">
-			<button class="btn btn-primary">수정</button>
+      <div class="mb-3 row">
+			  <button class="btn btn-primary">수정</button>
 			</div>
 		</form>
 	</div>
