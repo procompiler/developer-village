@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.devil.domain.Follow;
 import com.devil.domain.User;
+import com.devil.service.BadgeService;
 import com.devil.service.FollowService;
 import com.devil.service.TagService;
 import com.devil.service.UserService;
@@ -24,6 +25,8 @@ public class FollowController{
   TagService tagService;
   @Autowired
   UserService userService;
+  @Autowired
+  BadgeService badgeService;
   
   @GetMapping("addTag")
   public String addTag(Follow follow, HttpSession httpSession, HttpServletRequest request)
@@ -46,7 +49,9 @@ public class FollowController{
 
   @GetMapping("tagList")
   public void list(HttpSession httpSession, Model model) throws Exception {
-    model.addAttribute("tagList", tagService.listByFollower((User) httpSession.getAttribute("loginUser")));
+    User loginUser = (User) httpSession.getAttribute("loginUser");
+    model.addAttribute("tagList", tagService.listByFollower(loginUser));
+    model.addAttribute("badgeList", badgeService.list(loginUser));
   }
 
   @GetMapping("addUser")
@@ -67,7 +72,9 @@ public class FollowController{
 
   @GetMapping("userList")
   public void listUser(HttpSession httpSession, Model model) throws Exception {
-    model.addAttribute("userList", userService.listFollowing((User) httpSession.getAttribute("loginUser")));
+    User loginUser = (User) httpSession.getAttribute("loginUser");
+    model.addAttribute("userList", userService.listFollowing(loginUser));
+    model.addAttribute("badgeList", badgeService.list(loginUser));
   }
 
   @GetMapping("followerList")
@@ -86,5 +93,6 @@ public class FollowController{
       user.setFollowed(true);
     }
     model.addAttribute("userList", followerList);
+    model.addAttribute("badgeList", badgeService.list(loginUser));
   }
 }
