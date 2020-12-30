@@ -36,9 +36,17 @@ public class UserController {
   public void form() throws Exception {
   }
 
+  @GetMapping("formError")
+  public void formError() throws Exception {
+  }
+
   @PostMapping("add")
   public String add(User user) throws Exception {
-    userService.add(user);
+    try {
+      userService.add(user);
+    } catch (Exception e) {
+      return "redirect:./formError";
+    }
     return "redirect:.";
   }
 
@@ -76,7 +84,7 @@ public class UserController {
     } else {
       session.setAttribute("followed", false);
     }
-    return "user/detail";
+    return "redirect:../article/writtenList?no=" + no;
   }
 
   @GetMapping
