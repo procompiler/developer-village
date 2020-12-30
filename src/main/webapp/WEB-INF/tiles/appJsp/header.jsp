@@ -18,7 +18,7 @@
 					<div class="user-photo">
 						<img src="${appRoot}/upload/user/${loginUser.photo}_60x60.jpg" />
 					</div>
-					<h3 class="user-name">${loginUser.nickname}</h3>
+					<span class="user-name" style="font-size:18px;font-weight:bold;">${loginUser.nickname}</span>
 				</div>
 			</a>
 		</c:if>
