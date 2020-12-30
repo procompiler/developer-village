@@ -46,7 +46,7 @@ public class CollectJob {
         System.out.println("===" + badge.getName() + "뱃지===");
         Tag tag = badge.getTag();
         // 이미 가지고 있는 뱃지라면 건너뛰기
-        
+
         if (collectedBadgeNos.contains(badge.getNo())) {
           System.out.println("이미 갖고 있는 뱃지입니다!");
           continue;
@@ -68,7 +68,7 @@ public class CollectJob {
           System.out.println("필요 count: " + standard.getCount());
           Map<String, Object> params = new HashMap<>();
           params.put("userNo", user.getNo());
-          params.put("tagNo", tag == null? null : tag.getNo()); 
+          params.put("tagNo", tag == null? null : tag.getNo());
           params.put("evaluationNo", standard.getEvaluationNo());
           // 충족된다면 충족되는 기준 갯수를 하나씩 높인다.
           int userCount = collectService.getCount(params);

@@ -8,6 +8,7 @@ import com.devil.domain.User;
 public interface UserDao {
   List<User> findByName(String name) throws Exception;
   List<User> findAll(String keyword) throws Exception;
+  List<User> findAllAdmin(Map<String, Object> map) throws Exception;
   List<User> findByFollower(User user) throws Exception;
   List<User> findFollower(User user) throws Exception;
   int insert(User user) throws Exception;
@@ -23,4 +24,5 @@ public interface UserDao {
   User findId(Map<String, Object> map) throws Exception;
   User findPassword(Map<String, Object> map) throws Exception;
   User findByEmail(String email) throws Exception;
+  List<User> count(String keyword) throws Exception;
 }

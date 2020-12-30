@@ -19,4 +19,6 @@ public interface UserService {
   int updateLoginTimeStamp(User user) throws Exception;
   int delete(int no) throws Exception;
   int undelete(int no) throws Exception;
+  List<User> adminList (String keyword, int pageNo, int pageSize) throws Exception;
+  int size(String keyword) throws Exception;
 }

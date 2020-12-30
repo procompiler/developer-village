@@ -77,3 +77,20 @@
 		<%}%>
 		</tbody>
 		</table>
+
+<div>
+<c:if test="${prevPageNo == currPageNo}">
+  [이전]
+</c:if>
+<c:if test="${prevPageNo < currPageNo}">
+  <a href="?keyword=${keyword}&pageNo=${prevPageNo}&pageSize=${pageSize}">[이전]</a>
+</c:if>
+<span> ${currPageNo} </span>
+<c:if test="${nextPageNo == currPageNo}">
+  [다음]
+</c:if>
+<c:if test="${nextPageNo > currPageNo}">
+  <a href="?keyword=${keyword}&pageNo=${nextPageNo}&pageSize=${pageSize}">[다음]</a>
+</c:if>
+</div>
+
