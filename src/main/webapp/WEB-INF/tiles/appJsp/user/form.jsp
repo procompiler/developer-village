@@ -33,7 +33,7 @@
 		<div class="mb-3 row">
       <label for="passwordConfirm" class='form-label col-sm-2 col-form-label'>비밀번호 확인</label>
         <div class="col-sm-10">
-          <input id="passwordConfirm" type='password' class="form-control" name='password' 
+          <input id="passwordConfirm" type='password' class="form-control" name='passwordConfirm' 
                  placeholder="위의 비밀번호와 동일하게 입력">
         </div>
     </div>

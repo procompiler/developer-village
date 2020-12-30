@@ -31,3 +31,14 @@
 	</tbody>
 </table>
 <jsp:include page="../user/badgeList.jsp"></jsp:include>
+
+<style>
+table {
+  border-collapse: separate;
+  border-style: hidden;
+  margin: 0px 0px auto 0px;
+  border-spacing: 0px 6px;
+  width: 900px;
+  overflow: hidden;
+}
+</style>

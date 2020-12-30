@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div id="auth">
-	<form action='login' method='post'>
+	<form id="loginForm" action='login' method='post'>
   <div style="text-align: center">
 	 <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 120px;"/>
 		<p style="margin-top: 30px; margin-bottom: 1rem; font-size: 28px; font-weight: bold;">
@@ -10,12 +10,12 @@
 		<p><span class="main-color">데빌</span>은 국내최대 개발자 커뮤니티입니다.</p>
 		</div>
 		  <div class="form-floating mb-3">
-          <input type="email" class="form-control" name='email' placeholder="name@example.com">${user.email}
+          <input id="inputEmail" type="email" class="form-control" name='email' placeholder="name@example.com">${user.email}
           <label for="floatingInput">Email address</label>
       </div>
       
     <div class="form-floating">
-        <input type="password" class="form-control" name='password' placeholder="Password">${user.password}
+        <input id="inputPassword" type="password" class="form-control" name='password' placeholder="Password">${user.password}
         <label for="floatingPassword">Password</label>
     </div>
     <div class="form-check" style="margin-top: 30px;">
@@ -25,15 +25,24 @@
       </label>
 		</div>
 		<div class="d-grid gap-2">
-     <button class="btn btn-primary" type="submit">로그인</button>
+     <button class="btn btn-primary">로그인</button>
     </div>
     <div style="text-align:center;">
-		<a href="searchId">아이디 찾기</a>
+		<a href="searchId">이메일 계정 찾기</a>
 		<span>  |  </span>
-		<a href="searchPwd">비밀번호 찾기</a>
+		<a href="searchPwd">비밀번호 재설정</a>
 		<span> | </span>
 		<a href="../user/form">회원가입</a>
 		</div>
 	</form>
 </div>
 
+<script>
+  document.querySelector("#loginForm").onsubmit = () => {
+    if (document.querySelector("#inputEmail").value.length < 1 ||
+        document.querySelector("#inputPassword").value.length < 1 ) {
+        alert("입력하지 않은 항목이 있습니다.")
+        return false;
+      }
+    };
+</script>

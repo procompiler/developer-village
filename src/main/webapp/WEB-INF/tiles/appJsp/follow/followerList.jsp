@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	<jsp:include page="../user/info.jsp"></jsp:include>
-	<h2>팔로워</h2>
+	<h2>나를 팔로우하는 유저</h2>
 	<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
 	<c:forEach items="${userList}" var="u">
 		<div class="col mb-3">

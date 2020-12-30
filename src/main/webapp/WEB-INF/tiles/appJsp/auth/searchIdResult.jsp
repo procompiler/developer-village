@@ -26,7 +26,7 @@
   </c:choose>
   
   <div style="text-align:center;">
-    <a href="searchPwd">비밀번호 찾기</a>
+    <a href="searchPwd">비밀번호 재설정</a>
     <span> | </span>
     <a href="login">로그인</a>
   </div>

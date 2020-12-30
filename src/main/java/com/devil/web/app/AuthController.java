@@ -43,13 +43,18 @@ public class AuthController {
     response.addCookie(emailCookie);
 
     User user = userService.get(email, password);
-    if (user == null) {
-      return "/appJsp/auth/loginError.jsp";
+    if (user == null || user.getState() == 0) {
+      return "redirect:./loginError";
     }
+
     userService.updateLoginTimeStamp(user);
 
     session.setAttribute("loginUser", user);
     return "redirect:../../index.jsp";
+  }
+
+  @GetMapping("loginError")
+  public void loginError() {
   }
 
   @GetMapping("logout")

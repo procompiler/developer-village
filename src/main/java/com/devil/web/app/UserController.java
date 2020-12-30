@@ -36,18 +36,30 @@ public class UserController {
   public void form() throws Exception {
   }
 
+  @GetMapping("formError")
+  public void formError() throws Exception {
+  }
+
   @PostMapping("add")
   public String add(User user) throws Exception {
-    userService.add(user);
+    try {
+      userService.add(user);
+    } catch (Exception e) {
+      return "redirect:./formError";
+    }
     return "redirect:.";
   }
 
   @GetMapping("delete")
-  public String delete(int no) throws Exception {
+  public String delete(int no, HttpSession session) throws Exception {
+    User loginUser = (User) session.getAttribute("loginUser");
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-    return "redirect:.";
+    if (loginUser != null) {
+      session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.
+    }
+    return "redirect:../../index.jsp";
   }
 
   @GetMapping("{no}")
@@ -72,7 +84,7 @@ public class UserController {
     } else {
       session.setAttribute("followed", false);
     }
-    return "user/detail";
+    return "redirect:../article/writtenList?no=" + no;
   }
 
   @GetMapping
