@@ -65,7 +65,6 @@ public class ArticleController {
 
   @GetMapping("list")
   public void list(String keyword, Integer tagNo, Model model) throws Exception {
-
     if (keyword != null) {
       model.addAttribute("articles", articleService.list(keyword));
 

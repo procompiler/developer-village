@@ -29,7 +29,12 @@
 </h1>
 
   <form action='${contextPath}?' method='get' style="float:left;">
-    <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+	  <c:if test="${param.categoryNo != null}">
+	    <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+	  </c:if>
+	  <c:if test="${param.tagNo != null}">
+	    <input type='hidden' name='tagNo' value='${param.tagNo}'>
+	  </c:if>
     <input type="text" name='keyword' value='${param.keyword}' 
            style="  border-radius: 8px;
 									  border: 0px;

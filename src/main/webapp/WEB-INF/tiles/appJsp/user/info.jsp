@@ -57,9 +57,9 @@
       <div class="col-2">
         <div class="btn-group-vertical float-start">
           <a class="btn btn-outline-primary"
-            href="../article/writtenList?no=${user.no}">작성게시글</a> <a
+            href="../article/writtenList?no=${user.no}">작성 게시글</a> <a
             class="btn btn-outline-primary"
-            href="../comment/writtenList?no=${user.no}">작성댓글</a>
+            href="../comment/writtenList?no=${user.no}">작성 댓글</a>
         </div>
         </div>
         <div class="col-7">
@@ -102,10 +102,10 @@
 			<div class="col-2">
 				<div class="btn-group-vertical float-start">
 					<a class="btn btn-outline-primary"
-						href="../article/writtenList?no=${loginUser.no}">작성게시글</a> <a
+						href="../article/writtenList?no=${loginUser.no}">작성 게시글</a> <a
 						class="btn btn-outline-primary" href="../article/feed">피드</a> <a
 						class="btn btn-outline-primary"
-						href="../comment/writtenList?no=${loginUser.no}">작성댓글</a> <a
+						href="../comment/writtenList?no=${loginUser.no}">작성 댓글</a> <a
 						class="btn btn-outline-primary" href="../follow/tagList">팔로잉
 						태그</a> <a class="btn btn-outline-primary" href="../follow/userList">팔로잉
 						유저</a> <a class="btn btn-outline-primary"

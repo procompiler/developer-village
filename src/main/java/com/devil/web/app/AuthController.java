@@ -58,12 +58,12 @@ public class AuthController {
   }
 
   @GetMapping("logout")
-  public String logout(HttpSession session) throws Exception {
+  public void logout(HttpSession session) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
     if (loginUser != null) {
       session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.
     }
-    return "redirect:../../index.jsp";
+    //return "redirect:../../index.jsp";
   }
 
   @GetMapping("searchId")

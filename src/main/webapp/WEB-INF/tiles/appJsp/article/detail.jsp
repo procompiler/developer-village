@@ -69,7 +69,7 @@
   <c:if test="${article.writer.no == loginUser.no}">
 	<p style="float: right;">
 	  <br>
-	  <a class="btn btn-primary" href='<c:url value='update/${article.no}'/>'>수정</a>
+	  <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
 	  <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
 	</p>
 	</c:if>
