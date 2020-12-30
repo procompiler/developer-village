@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- 
-<meta http-equiv='Refresh' content='1;url=login'>
--->
-
 <div id="auth">
   <div style="text-align: center; margin-bottom: 50px;">
    <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 120px;"/>
@@ -25,3 +21,7 @@
     <a href="../user/form">회원가입</a>
   </div>
 </div>
+
+<!-- 
+<meta http-equiv='Refresh' content='10;url=login'>
+ -->

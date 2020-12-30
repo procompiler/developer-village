@@ -25,7 +25,7 @@
       </label>
 		</div>
 		<div class="d-grid gap-2">
-     <button class="btn btn-primary" type="submit">로그인</button>
+     <button class="btn btn-primary">로그인</button>
     </div>
     <div style="text-align:center;">
 		<a href="searchId">아이디 찾기</a>
@@ -46,4 +46,3 @@
       }
     };
 </script>
-

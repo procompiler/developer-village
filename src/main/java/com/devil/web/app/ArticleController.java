@@ -16,6 +16,7 @@ import com.devil.domain.Article;
 import com.devil.domain.Tag;
 import com.devil.domain.User;
 import com.devil.service.ArticleService;
+import com.devil.service.BadgeService;
 import com.devil.service.BookmarkService;
 import com.devil.service.CommentService;
 import com.devil.service.TagService;
@@ -35,6 +36,8 @@ public class ArticleController {
   UserService userService;
   @Autowired
   CommentService commentService;
+  @Autowired
+  BadgeService badgeService;
 
   @GetMapping("form")
   public void form(Model model) throws Exception {
@@ -83,11 +86,13 @@ public class ArticleController {
 
     model.addAttribute("user", userService.get(params));
     model.addAttribute("articleList", articleService.list(user));
+    model.addAttribute("badgeList", badgeService.list(user));
   }
 
   @GetMapping("feed")
   public void feed(HttpSession session, Model model) throws Exception {
     User loginUser = (User) session.getAttribute("loginUser");
+    model.addAttribute("badgeList", badgeService.list(loginUser));
     model.addAttribute("articleList", articleService.feedList(loginUser));
   }
 
