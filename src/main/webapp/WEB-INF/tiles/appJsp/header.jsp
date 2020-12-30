@@ -156,7 +156,7 @@ $(document).on( "click", ".noti-url", function( e ) {
 	              break;
 	            case 4:
 	              noti.message = noti.badge.name + "을 획득하셨습니다.";
-	              noti.url = "article/writtenList";
+	              noti.url = "article/writtenList?no=" + noti.userNo;
 	              noti.photo = "badge/" + noti.badge.photo + "_60x60.png";
 	              break;
 	            }}

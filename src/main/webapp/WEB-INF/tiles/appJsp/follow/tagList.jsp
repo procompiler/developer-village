@@ -6,7 +6,6 @@
 
 <jsp:include page="../user/info.jsp"></jsp:include>
 
-<h2>팔로우하는 태그</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
 	<c:forEach items="${tagList}" var="t">
 		<div class="col">

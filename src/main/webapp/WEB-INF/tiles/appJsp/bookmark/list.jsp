@@ -7,7 +7,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="../user/info.jsp"></jsp:include>
-<h2>북마크 리스트</h2>
 <div class="d-grid gap-3"/>
 <c:forEach items="${bookmarkList}" var="a">
 	<div class="card">

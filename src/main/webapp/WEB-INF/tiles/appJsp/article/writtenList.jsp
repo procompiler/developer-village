@@ -5,13 +5,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../user/info.jsp"></jsp:include>
-<h2>작성 게시글</h2>
 <div class="d-grid gap-3"/>
 <c:forEach items="${articleList}" var="a">
   <div class="card">
       <c:if test="${user.no == loginUser.no || null eq user}">
     <a class="btn position-absolute top-0 end-0"
-      href='delete?articleNo=${a.no}'><i
+      href='delete?no=${a.no}'><i
       class="fas fa-minus-circle text-danger fa-lg shadow"></i></a>
       </c:if>
     <div class="row g-0">

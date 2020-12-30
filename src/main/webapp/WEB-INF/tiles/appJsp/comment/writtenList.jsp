@@ -6,7 +6,6 @@
 
 <jsp:include page="../user/info.jsp"></jsp:include>
 
-<h2>작성 댓글</h2>
 <table border='1'>
 	<thead>
 		<tr>
@@ -20,12 +19,12 @@
 		<c:forEach items="${commentList}" var="c">
 			<tr>
 				<td>${c.articleTitle}</td>
-				<td id='content'><a href='detail?no=${c.articleNo}'>${c.content}</a>
+				<td id='content'><a href='${c.articleNo}'>${c.content}</a>
 				</td>
 				<td><fmt:formatDate value="${c.createdDate}"
 						pattern="yyyy.MM.dd" /></td>
 				<td><a class='btn btn-outline-danger'
-					href='delete?commentNo=${c.no}'>삭제</a></td>
+					href='delete?no=${c.no}'>삭제</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

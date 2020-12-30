@@ -63,33 +63,15 @@ public class ArticleController {
     return "redirect:list?categoryNo=" + article.getCategoryNo();
   }
 
-//  @GetMapping("list")
-//  public void list(String keyword, Integer tagNo, Model model) throws Exception {
-//    if (keyword != null) {
-//      model.addAttribute("articles", articleService.list(keyword));
-//
-//    } else if (tagNo != null) {
-//      model.addAttribute("tag", tagService.get(tagNo));
-//      model.addAttribute("articles", articleService.listByTagNo(tagNo));
-//    } else {
-//      model.addAttribute("articles", articleService.list());
-//    }
-//  }
-
   @GetMapping("list")
-  public void list(String keyword, Integer categoryNo, Integer tagNo, Model model) throws Exception {
-    Map<String, Object> map = new HashMap<>();
-    map.put("keyword", keyword);
+  public void list(String keyword, Integer tagNo, Model model) throws Exception {
 
-    if (keyword != null && categoryNo == null && tagNo == null) {
+    if (keyword != null) {
       model.addAttribute("articles", articleService.list(keyword));
-    } else if (categoryNo != null) {
-      map.put("categoryNo", categoryNo);
-      model.addAttribute("articles", articleService.listByCategoryNoKeyword(map));
+
     } else if (tagNo != null) {
-      map.put("tagNo", tagNo);
       model.addAttribute("tag", tagService.get(tagNo));
-      model.addAttribute("articles", articleService.listByTagNoKeyword(map));
+      model.addAttribute("articles", articleService.listByTagNo(tagNo));
     } else {
       model.addAttribute("articles", articleService.list());
     }
@@ -118,7 +100,7 @@ public class ArticleController {
   public String detail(@PathVariable int no, HttpSession session, Model model) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
-      return "redirect:./articleError";
+      throw new Exception("해당 게시글이 없습니다.");
     }
 
     model.addAttribute("article", article);
@@ -137,11 +119,6 @@ public class ArticleController {
     }
     return "article/detail";
   }
-
-  @GetMapping("articleError")
-  public void articleError() throws Exception {
-  }
-
 
   @GetMapping("update")
   public void updateForm(int no, HttpSession session, Model model) throws Exception {
@@ -178,12 +155,10 @@ public class ArticleController {
 
   @GetMapping("delete")
   public String delete(int no) throws Exception {
-    int categoryNo = articleService.get(no).getCategoryNo();
     if (articleService.delete(no) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
-    articleService.get(no).getState();
-    return "redirect:list?categoryNo=" + categoryNo;
+    return "redirect:list"; // 커뮤니티 페이지 구현 후 수정 예정
   }
 
 }

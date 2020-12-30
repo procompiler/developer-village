@@ -97,5 +97,4 @@ public class ArticleController {
     }
     return "redirect:/admin/article/" + no;
   }
-
 }

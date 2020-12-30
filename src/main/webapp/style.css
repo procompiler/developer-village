@@ -391,3 +391,11 @@ div.card {
  margin: 30px 0px auto 70px;
  width: 900px;
  }
+ 
+.dropdown-menu-dark {
+	background-color: #212327;
+}
+
+.dropdown-item a:link {
+	color: white;
+}

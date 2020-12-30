@@ -54,7 +54,6 @@ public class CommentController {
 
     model.addAttribute("user", userService.get(params));
     model.addAttribute("commentList", commentService.listByWriter(user));
-    model.addAttribute("badgeList", badgeService.list(user));
   }
 
   @PostMapping("update")

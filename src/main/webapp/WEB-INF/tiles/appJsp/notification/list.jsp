@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../user/info.jsp"></jsp:include>
-<h2>알림</h2>
 <div class="d-grid gap-3" />
 <c:forEach items="${notificationList}" var="n">
 		<div class="card">

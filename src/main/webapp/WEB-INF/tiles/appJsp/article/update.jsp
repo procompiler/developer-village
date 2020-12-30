@@ -32,7 +32,7 @@
 		</c:choose>
 	</h1>
 
-	<form action='<c:url value='/app/article/update?no=${article.no}'/>' method='post'>
+	<form action='<c:url value='update?no=${article.no}'/>' method='post'>
 		<input type='hidden' name='no' value='${article.no}'><br>
 		<input type='text' class="form-control" name='title' value='${article.title}'><br>
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
