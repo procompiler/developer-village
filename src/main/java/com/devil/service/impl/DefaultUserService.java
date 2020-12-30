@@ -43,6 +43,11 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  public User get(String email) throws Exception {
+    return userDao.findByEmail(email);
+  }
+
+  @Override
   public User getId(String name, String tel) throws Exception {
     Map<String,Object> map = new HashMap<>();
     map.put("name", name);

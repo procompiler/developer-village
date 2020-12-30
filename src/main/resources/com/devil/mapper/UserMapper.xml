@@ -92,6 +92,14 @@
 		</if>
 	</select>
 
+  <select id="findByEmail" resultMap="UserMap" parameterType="string">
+    <include refid="sql1" />
+    where email=#{email}
+    <if test="type == 'app'">
+       and u.state = 1
+    </if>
+  </select>
+
 	<select id="findByFollower" resultMap="UserMap"
 		parameterType="user">
     <include refid="sql2" />

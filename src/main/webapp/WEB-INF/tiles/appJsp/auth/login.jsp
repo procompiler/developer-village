@@ -27,6 +27,9 @@
 		<div class="d-grid gap-2">
      <button class="btn btn-primary">로그인</button>
     </div>
+    
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    
     <div style="text-align:center;">
 		<a href="searchId">이메일 계정 찾기</a>
 		<span>  |  </span>
@@ -46,3 +49,27 @@
       }
     };
 </script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+function autoServerLogin(accessToken) {
+    location.href = "googleLogin?accessToken=" + accessToken;
+}
+
+function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+
+// 구글 로그아웃 코드
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+
