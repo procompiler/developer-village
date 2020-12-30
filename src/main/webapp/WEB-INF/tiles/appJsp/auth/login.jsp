@@ -28,9 +28,9 @@
      <button class="btn btn-primary">로그인</button>
     </div>
     <div style="text-align:center;">
-		<a href="searchId">아이디 찾기</a>
+		<a href="searchId">이메일 계정 찾기</a>
 		<span>  |  </span>
-		<a href="searchPwd">비밀번호 찾기</a>
+		<a href="searchPwd">비밀번호 재설정</a>
 		<span> | </span>
 		<a href="../user/form">회원가입</a>
 		</div>

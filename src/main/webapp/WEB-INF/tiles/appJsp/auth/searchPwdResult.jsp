@@ -50,7 +50,7 @@
   </c:choose>
     
   <div style="text-align:center;">
-    <a href="searchId">아이디 찾기</a>
+    <a href="searchId">이메일 계정 찾기</a>
     <span> | </span>
     <a href="login">로그인</a>
   </div>

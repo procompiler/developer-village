@@ -43,7 +43,7 @@ public class AuthController {
     response.addCookie(emailCookie);
 
     User user = userService.get(email, password);
-    if (user == null) {
+    if (user == null || user.getState() == 0) {
       return "redirect:./loginError";
     }
 
