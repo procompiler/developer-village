@@ -118,7 +118,7 @@ public class ArticleController {
   public String detail(@PathVariable int no, HttpSession session, Model model) throws Exception {
     Article article = articleService.get(no);
     if (article == null) {
-      throw new Exception("해당 게시글이 없습니다.");
+      return "redirect:./articleError";
     }
 
     model.addAttribute("article", article);
@@ -137,6 +137,11 @@ public class ArticleController {
     }
     return "article/detail";
   }
+
+  @GetMapping("articleError")
+  public void articleError() throws Exception {
+  }
+
 
   @GetMapping("update")
   public void updateForm(int no, HttpSession session, Model model) throws Exception {

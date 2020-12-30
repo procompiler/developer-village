@@ -22,6 +22,16 @@
 				</div>
 			</a>
 		</c:if>
+		<c:if test="${empty loginUser}">
+			<a href="${appRoot}/app/auth/login">
+				<div class="user-card">
+					<div class="user-photo">
+						<img src="${appRoot}/upload/user/fe8a0349-0080-4cc6-85d2-25dc1646441c_60x60.jpg" />
+					</div>
+					<span class="user-name" style="font-size:18px;font-weight:bold;">로그인</span>
+				</div>
+			</a>
+		</c:if>
 		<div class="buttons">
 			<li><i class="fas fa-user-friends fa-fw"></i><a
 				href='${appRoot}/app/article/list?categoryNo=1'>자유게시판</a></li>
