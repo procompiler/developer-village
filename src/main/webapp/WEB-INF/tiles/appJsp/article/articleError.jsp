@@ -21,3 +21,4 @@
   </div>
 </div>
 
+<meta http-equiv='Refresh' content='10;url=../main'>

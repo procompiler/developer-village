@@ -14,7 +14,15 @@
         <span style="font-size: 20px;">회원 정보를 찾을 수 없습니다.</span><br>
         <span>입력하신 정보가 정확한지 확인하시길 바랍니다.</span>
       </p>
+      
+      <div style="text-align:center;">
+        <a href="#" onClick="history.back()">이전으로</a>
+        <span> | </span>
+        <a href="../user/form">회원가입</a>
+      </div>
+      
     </c:when>
+    
     <c:when test="${param.userNo != -1}">
       <div style="text-align: center; margin-bottom: 50px;">
        <img id="logo-nav" src="/developer-village/upload/devil.png" style="width: 120px;"/>
@@ -46,15 +54,14 @@
         </div>
       </form>
       
+    <div style="text-align:center;">
+      <a href="searchId">이메일 계정 찾기</a>
+      <span> | </span>
+      <a href="login">로그인</a>
+    </div>
+      
     </c:when>
   </c:choose>
-    
-  <div style="text-align:center;">
-    <a href="searchId">이메일 계정 찾기</a>
-    <span> | </span>
-    <a href="login">로그인</a>
-  </div>
-</div>
 
 <script>
 document.querySelector("#updatePwdForm").onsubmit = () => {
