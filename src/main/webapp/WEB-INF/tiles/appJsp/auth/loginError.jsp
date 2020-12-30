@@ -10,6 +10,7 @@
 
   <p style="text-align:center; margin-bottom: 4rem;">
     <span style="font-size: 20px;">사용자 이메일 또는 암호가 일치하지 않습니다.</span><br>
+    <span style="font-size: 20px;">또는 탈퇴한 회원입니다.</span><br>
     <span>입력하신 정보가 정확한지 확인하시길 바랍니다.</span>
   </p>
       
