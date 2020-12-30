@@ -10,9 +10,14 @@
   }
 </style>
 
-<div style="margin-top:50px;">
-	<h3>댓글</h3>
-  
+<div style="margin-top:50px;margin-left: 70px;margin-right:30px;">
+	<span style="font-weight:bold; font-size:30px; margin-left:10px">댓글</span>
+	
+	<div style="float:right;">
+	 <a href="#" style="font-size:20px;" onClick="location='javascript:location.reload()'"><i class="fas fa-redo-alt"></i></a>
+	 <a class="btn btn-outline-primary" href="#newComment">댓글 쓰기</a>
+	</div>
+	
 	<c:forEach items="${comments}" var="comment">
 		<c:if test="${fn:length(comments) != 0}">
 			<c:if test="${comment.step == 0 && comment.motherNo == 0}">
@@ -99,25 +104,27 @@
 						</form>
 					</c:if>
 				</c:forEach>
-				
-				<form method='post' action='../comment/add' style="margin-left:80px;">
-          <input type='hidden' name="motherNo" value='${comment.no}'>
-          <input type='hidden' name="articleNo" value='${comment.articleNo}'>
-          <input type='hidden' name="step" value='1'><br>
-          
-        <p><a href='../user/${loginUser.no}'>
-          <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
-               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'>
-          <span style="font-weight:bold; font-size:105%;">${loginUser.nickname}</span></a></p>
-          <textarea class="form-control" name='content' placeholder='답글을 남겨보세요!'></textarea>
-          <button class="btn btn-primary" style="float:right;">등록</button>
-        </form>
+				<details>
+				  <summary style="float:right;margin-right:30px;">답글 달기</summary>
+						<form method='post' action='../comment/add' style="margin-left:80px;">
+		          <input type='hidden' name="motherNo" value='${comment.no}'>
+		          <input type='hidden' name="articleNo" value='${comment.articleNo}'>
+		          <input type='hidden' name="step" value='1'><br>
+		          
+		        <p><a href='../user/${loginUser.no}'>
+		          <img src='../../upload/user/${loginUser.photo}_40x40.jpg'
+		               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'>
+		          <span style="font-weight:bold; font-size:105%;">${loginUser.nickname}</span></a></p>
+		          <textarea class="form-control" name='content' placeholder='답글을 남겨보세요!'></textarea>
+		          <button class="btn btn-primary" style="float:right;">등록</button>
+		        </form>
+				</details>
         <br>
       </c:if>
     </c:if>
   </c:forEach>
-    
-	<form method='post' action='../comment/add'>
+  
+	<form id="newComment" method='post' style="margin-left:15px" action='../comment/add'>
       <input type='hidden' name="motherNo" value='0'>
       <input type='hidden' name="articleNo" value='${article.no}'>
       <input type='hidden' name="step" value='0'><br>
@@ -127,7 +134,9 @@
               style='border-radius: 70px' alt='[${loginUser.photo}_40x40]'>
         <span style="font-weight:bold; font-size:105%;">${loginUser.nickname}</span></a></p>
       <textarea class="form-control" name='content' placeholder='댓글을 남겨보세요!'></textarea>
-      <button class="btn btn-primary" style="float:right;">등록</button><br>
+      <button class="btn btn-primary" style="float:right;">등록</button>
   </form>
 </div>
+
+
 

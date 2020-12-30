@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-  <h1>
+<h1 style="margin-left: 70px; font-weight: bold">
     <c:choose>
       <c:when test="${article.categoryNo == 1}">
         <p>자유게시판</p>
@@ -17,9 +17,9 @@
         <p>스터디</p>
       </c:otherwise>
     </c:choose>
-  </h1>
+</h1>
   
-<div>
+<div style="margin-left: 70px;">
   <input type='hidden' name='no' value='${article.no}'>
   <br>
 
@@ -29,7 +29,7 @@
     </c:forEach>
   </ul>
 
-  <div style="width: 80rem; background-color: #37393E;">
+  <div style="width: 75rem; background-color: #37393E;">
     <div class="card-body">
       <h2 class="card-title">${article.title}</h2>
       <h6 class="card-subtitle mb-2 text-muted">
@@ -67,11 +67,11 @@
   </div>
 <br>
   <c:if test="${article.writer.no == loginUser.no}">
-	<p style="float: right;">
+	<span style="float: right; margin-right:30px">
 	  <br>
 	  <a class="btn btn-primary" href='<c:url value='update?no=${article.no}'/>'>수정</a>
 	  <a class="btn btn-primary" href='delete?no=${article.no}'>삭제</a>
-	</p>
+	</span>
 	</c:if>
 	  <a class="btn btn-primary" href='<c:url value='${article.no-1}'/>'>이전글</a>
 	  <a class="btn btn-primary" href='<c:url value='${article.no+1}'/>'>다음글</a>
