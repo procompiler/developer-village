@@ -36,10 +36,8 @@
 	      const editor = new toastui.Editor({
 	          el: document.querySelector('#editor'),
 	          previewStyle: 'vertical',
-	          height: '500px',
-	          in
+	          height: '500px'
 	        });
-	      initialValue: ${content}
 		</script>
 		<p>
 			태그<br>
