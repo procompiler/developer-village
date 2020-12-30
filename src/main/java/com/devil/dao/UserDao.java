@@ -22,4 +22,5 @@ public interface UserDao {
   User findByEmailPassword(Map<String, Object> map) throws Exception;
   User findId(Map<String, Object> map) throws Exception;
   User findPassword(Map<String, Object> map) throws Exception;
+  User findByEmail(String email) throws Exception;
 }

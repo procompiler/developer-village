@@ -16,9 +16,9 @@
   </h1>
 
   <div id="search-bar">
-  <span style="float: left">회원 검색</span>
+  <span style="float: left">제목 검색</span>
   <form action='${contextPath}?' method='get' autocomplete="off">
-  <input id="search" name="keyword" type="text" value='${param.keyword}' placeholder="게시판 검색" style=" padding-left: 40px; margin-right: 30px;">
+  <input id="search" name="keyword" type="text" value='${param.keyword}' placeholder="제목 검색" style=" padding-left: 40px; margin-right: 30px;">
   <button class="btn btn-primary">검색</button>
   </form>
   </div>

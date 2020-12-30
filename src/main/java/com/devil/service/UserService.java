@@ -10,6 +10,7 @@ public interface UserService {
   List<User> listFollower(User user) throws Exception;
   User get(Map<String, Object> params) throws Exception;
   User get(String email, String password) throws Exception;
+  User get(String email) throws Exception;
   User getId(String name, String tel) throws Exception;
   User getPwd(String email, String name, String tel) throws Exception;
   int add(User user) throws Exception;
