@@ -1,5 +1,6 @@
 package com.devil.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -52,8 +53,15 @@ public class DefaultArticleService implements ArticleService {
   }
 
   @Override
-  public List<Article> adminList() throws Exception {
-    return articleDao.findAllAdmin((String)null);
+  public List<Article> adminList(String keyword, int pageNo, int pageSize) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    if (keyword != null) {
+      map.put("keyword", keyword);
+    }
+    map.put("startRowNo", (pageNo - 1) * pageSize);
+    map.put("pageSize", pageSize);
+
+    return articleDao.findAllAdmin(map);
   }
 
   @Override
@@ -106,5 +114,10 @@ public class DefaultArticleService implements ArticleService {
   @Override
   public List<Article> feedList(User user) throws Exception {
     return articleDao.findFeedByUser(user);
+  }
+
+  @Override
+  public int size(String keyword) throws Exception {
+    return articleDao.count(keyword);
   }
 }

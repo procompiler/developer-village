@@ -15,10 +15,6 @@
     <a href='../article/list' style='text-decoration: none;'>게시글 관리</a>
   </h1>
 
-	<c:if test="${param.keyword != null}">
-  '${param.keyword}'로 검색한 결과입니다.
-  </c:if>
-
   <div id="search-bar">
   <span style="float: left">회원 검색</span>
   <form action='${contextPath}?' method='get' autocomplete="off">
@@ -104,4 +100,20 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+<div>
+<c:if test="${prevPageNo == currPageNo}">
+  [이전]
+</c:if>
+<c:if test="${prevPageNo < currPageNo}">
+  <a href="?keyword=${keyword}&pageNo=${prevPageNo}&pageSize=${pageSize}">[이전]</a>
+</c:if>
+<span> ${currPageNo} </span>
+<c:if test="${nextPageNo == currPageNo}">
+  [다음]
+</c:if>
+<c:if test="${nextPageNo > currPageNo}">
+  <a href="?keyword=${keyword}&pageNo=${nextPageNo}&pageSize=${pageSize}">[다음]</a>
+</c:if>
+</div>
 

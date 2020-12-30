@@ -11,7 +11,7 @@ public interface ArticleService {
   int update(Article article) throws Exception;
   int delete(int no) throws Exception;
   int undelete(int no) throws Exception;
-  List<Article> adminList() throws Exception;
+  List<Article> adminList(String keyword, int pageNo, int pageSize) throws Exception;
   List<Article> list() throws Exception;
   List<Article> list(String keyword) throws Exception;
   List<Article> list(Map<String, Object> keywords) throws Exception;
@@ -22,4 +22,5 @@ public interface ArticleService {
   List<Article> listByTagNoKeyword(Map<String, Object> map) throws Exception;
   List<Article> listByCategoryNoKeyword(Map<String, Object> map) throws Exception;
   List<Article> feedList(User user) throws Exception;
+  int size(String keyword) throws Exception;
 }
