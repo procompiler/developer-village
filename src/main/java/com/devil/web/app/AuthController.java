@@ -44,12 +44,16 @@ public class AuthController {
 
     User user = userService.get(email, password);
     if (user == null) {
-      return "/appJsp/auth/loginError.jsp";
+      return "redirect:./loginError";
     }
     userService.updateLoginTimeStamp(user);
 
     session.setAttribute("loginUser", user);
     return "redirect:../../index.jsp";
+  }
+
+  @GetMapping("loginError")
+  public void loginError() {
   }
 
   @GetMapping("logout")
