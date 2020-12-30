@@ -112,7 +112,10 @@
     <li>정말로 탈퇴를 원하신다면 아래 회원탈퇴 버튼을 눌러주세요.
    </li>
 	</ul>
+	<form action="delete" method="get">
+	<input type='hidden' name='no' value='${user.no}'>
 	<button class="btn btn-danger">회원탈퇴</button>
+	</form>
 	</div>
 	</div>
 </div>

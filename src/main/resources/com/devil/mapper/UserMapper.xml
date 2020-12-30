@@ -114,6 +114,9 @@
 		where
 		u.email = #{email}
 		and u.pwd = password(#{password})
+		<if test="type == 'app'">
+       and u.state = 1
+    </if>
 	</select>
 	
 	<select id="findId" parameterType="map" resultMap="UserMap">

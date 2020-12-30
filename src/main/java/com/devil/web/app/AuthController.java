@@ -43,8 +43,8 @@ public class AuthController {
     response.addCookie(emailCookie);
 
     User user = userService.get(email, password);
-    if (user == null) {
-      return "/appJsp/auth/loginError.jsp";
+    if (user == null || user.getState() == 0) {
+      return "redirect:../../loginError.jsp";
     }
     userService.updateLoginTimeStamp(user);
 
@@ -59,6 +59,11 @@ public class AuthController {
       session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.
     }
     return "redirect:../../index.jsp";
+  }
+
+  @GetMapping("loginError")
+  public String loginError() throws Exception {
+    return "auth/loginError";
   }
 
   @GetMapping("searchId")

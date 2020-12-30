@@ -43,11 +43,15 @@ public class UserController {
   }
 
   @GetMapping("delete")
-  public String delete(int no) throws Exception {
+  public String delete(int no, HttpSession session) throws Exception {
+    User loginUser = (User) session.getAttribute("loginUser");
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-    return "redirect:.";
+    if (loginUser != null) {
+      session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.
+    }
+    return "redirect:../../index.jsp";
   }
 
   @GetMapping("{no}")
