@@ -1,13 +1,12 @@
 package com.devil.web.admin;
 
-import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 import com.devil.domain.Article;
 import com.devil.service.ArticleService;
 import com.devil.service.BookmarkService;
@@ -31,26 +30,42 @@ public class ArticleController {
   CommentService commentService;
 
   @GetMapping("list")
-  public void list(String keyword, String keywordTitle, String keywordWriter,
-      String keywordTag, Integer tagNo, Model model) throws Exception {
+  public void list(
+      @RequestParam(defaultValue = "1") int type,
+      String keyword,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "10") int pageSize,
+      Model model) throws Exception {
 
-    if (keyword != null) {
-      model.addAttribute("articles", articleService.list(keyword));
-
-    } else if (keywordTitle != null) {
-      HashMap<String, Object> keywordMap = new HashMap<>();
-      keywordMap.put("title", keywordTitle);
-      keywordMap.put("writer", keywordWriter);
-      keywordMap.put("tag", keywordTag);
-
-      model.addAttribute("articles", articleService.list(keywordMap));
-
-    } else if (tagNo != null) {
-      model.addAttribute("tag", tagService.get(tagNo));
-      model.addAttribute("articles", articleService.listByTagNo(tagNo));
-    } else {
-      model.addAttribute("articles", articleService.list());
+    if (pageNo < 1) {
+      pageNo = 1;
     }
+    if (pageSize < 3 || pageSize > 100) {
+      pageSize = 5;
+    }
+
+    model.addAttribute("articles", articleService.adminList(keyword, pageNo, pageSize));
+
+    int size = articleService.size(keyword);
+    int totalPage = size / pageSize;
+    if (size % pageSize > 0) {
+      totalPage++;
+    }
+
+    int prevPageNo = pageNo > 1 ? pageNo - 1 : 1;
+    int nextPageNo = pageNo + 1;
+    if (nextPageNo > totalPage) {
+      nextPageNo = totalPage;
+    }
+
+    model.addAttribute("currPageNo", pageNo);
+    model.addAttribute("prevPageNo", prevPageNo);
+    model.addAttribute("nextPageNo", nextPageNo);
+    model.addAttribute("totalPage", nextPageNo);
+    model.addAttribute("size", size);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("keyword", keyword);
+
   }
 
   @GetMapping("{no}")
@@ -60,7 +75,6 @@ public class ArticleController {
       throw new Exception("해당 게시글이 없습니다.");
     }
 
-    ModelAndView mv = new ModelAndView();
     model.addAttribute("article", article);
     model.addAttribute("tags", article.getTags());
     model.addAttribute("comments", commentService.getByArticleNo(no));

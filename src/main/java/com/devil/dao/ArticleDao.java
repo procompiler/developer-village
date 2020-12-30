@@ -13,13 +13,17 @@ public interface ArticleDao {
   int updateViewCount(int no) throws Exception;
   List<Article> findByDetailKeyword(Map<String, Object> keywords);
   List<Article> findByCategoryNo(int categoryNo);
+  List<Article> findByCategoryNoKeyword(Map<String, Object> map);
   int inactivate(int no) throws Exception;
   int activate(int no) throws Exception;
   List<Article> findAll(String keyword) throws Exception;
+  List<Article> findAllAdmin(Map<String, Object> map) throws Exception;
   List<Article> findByBookmarker(User user) throws Exception;
   List<Article> findByWriter(User user);
   List<Article> findByTagNo(int tagNo) throws Exception;
+  List<Article> findByTagNoKeyword(Map<String, Object> map) throws Exception;
   int insertTags(Article article) throws Exception;
   int deleteTags(int articleNo) throws Exception;
   List<Article> findFeedByUser(User user) throws Exception;
+  int count(String keyword) throws Exception;
 }

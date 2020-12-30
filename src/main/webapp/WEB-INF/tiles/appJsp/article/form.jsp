@@ -53,6 +53,7 @@
 		<button type='button' class='btn btn-danger'
 			onclick="location.href='list'">취소</button>
 	</form>
+</div>
 	<script>
 	  
 	  var formSubmitButton = document.querySelector("#form-submit");
@@ -74,4 +75,3 @@
 		}
 	};
 	</script>
-</div>

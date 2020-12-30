@@ -165,11 +165,52 @@
     where a.writer=#{no}
   </select>
   
+  <select id="findAllAdmin" resultMap="ArticleMap" parameterType="map">
+    select 
+        a.arno, 
+        a.title,
+        a.content,
+        a.cdt,  
+        a.cano,  
+        a.vw_cnt, 
+        a.state,
+        u.uno,
+        u.nick article_writer_nick
+    from 
+      article a
+      inner join user u on a.writer=u.uno
+    <if test="keyword != null">
+	   <bind name="pattern" value="'%' + keyword + '%'" />
+	    where
+	      a.title like #{pattern}
+	      or u.nick like #{pattern}
+	    </if>
+  	order by a.arno desc
+  	<if test="startRowNo != null and pageSize != null">
+    limit #{startRowNo}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="count" resultType="int" parameterType="string">
+    select 
+      count(*)
+    from 
+      article a
+      inner join user u on a.writer=u.uno
+    <if test="keyword != null">
+   <bind name="pattern" value="'%' + keyword + '%'" />
+    where
+      a.title like #{pattern}
+      or u.nick like #{pattern}
+    </if>
+  </select>
+  
   <select id="findAll" resultMap="ArticleMap" parameterType="string">
   	<include refid="sql1"/>
-  	<if test="keyword != null">
   	where
-  		a.title like concat('%', #{keyword}, '%')
+  	 a.state = 1
+  	<if test="keyword != null">
+  		and a.title like concat('%', #{keyword}, '%')
   		or u.nick like concat('%', #{keyword}, '%')
   		or t.name like concat('%', #{tag}, '%')
   	</if>
@@ -203,35 +244,40 @@
     
     <select id="findByNo" resultMap="ArticleMap" parameterType="int">
       <include refid="sql1"/>
-      where a.arno=#{no}  
+      where a.arno=#{no}
     </select>
     
     <select id="findByCategoryNo" resultMap="ArticleMap" parameterType="int">
      <include refid="sql1"/>
      where a.cano=#{categoryNo} and a.state=1
      order by a.arno desc
-    <!-- select 
-      a.arno, 
-      a.title,
-      a.content,
-      a.cdt,  
-      a.cano,
-      a.state,
-      u.nick article_writer_nick,
-      u.photo article_writer_photo,
-      a.vw_cnt
-    from 
-      article a
-      inner join user u on a.writer=u.uno
-     where a.cano=#{categoryNo}  
-     order by a.arno desc -->
     </select>
     
+    <select id="findByCategoryNoKeyword" resultMap="ArticleMap" parameterType="map">
+     <include refid="sql1"/>
+     where a.cano=#{categoryNo} and a.state=1
+    <if test="keyword != null">
+      and 
+      (a.title like concat('%', #{keyword}, '%')
+      or u.nick like concat('%', #{keyword}, '%'))
+    </if>
+     order by a.arno desc
+    </select>
   
-  <select id="findByTagNo" resultMap="ArticleMap"
-    parameterType="int">
+  <select id="findByTagNo" resultMap="ArticleMap" parameterType="int">
     <include refid="sql1"/>
-    where at.tno=#{no} and a.state=1
+    where at.tno=#{tagNo} and a.state=1
+    order by a.cdt desc
+  </select>
+  
+  <select id="findByTagNoKeyword" resultMap="ArticleMap" parameterType="map">
+    <include refid="sql1"/>
+    where at.tno=#{tagNo} and a.state=1
+    <if test="keyword != null">
+      and 
+      (a.title like concat('%', #{keyword}, '%')
+      or u.nick like concat('%', #{keyword}, '%'))
+    </if>
     order by a.cdt desc
   </select>
   

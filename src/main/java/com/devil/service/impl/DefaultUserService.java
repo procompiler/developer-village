@@ -30,6 +30,18 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
+  public List<User> adminList(String keyword, int pageNo, int pageSize) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    if (keyword != null) {
+      map.put("keyword", keyword);
+    }
+    map.put("startRowNo", (pageNo - 1) * pageSize);
+    map.put("pageSize", pageSize);
+
+    return userDao.findAllAdmin(map);
+  }
+
+  @Override
   public User get(Map<String, Object> params) throws Exception {
     return userDao.findByNo(params);
   }
@@ -40,6 +52,11 @@ public class DefaultUserService implements UserService {
     map.put("email", email);
     map.put("password", password);
     return userDao.findByEmailPassword(map);
+  }
+
+  @Override
+  public User get(String email) throws Exception {
+    return userDao.findByEmail(email);
   }
 
   @Override
@@ -95,5 +112,10 @@ public class DefaultUserService implements UserService {
   @Override
   public List<User> listFollower(User user) throws Exception {
     return userDao.findFollower(user);
+  }
+
+  @Override
+  public int size(String keyword) throws Exception {
+    return userDao.count(keyword).size();
   }
 }

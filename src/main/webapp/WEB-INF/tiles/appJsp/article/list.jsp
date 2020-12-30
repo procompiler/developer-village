@@ -29,7 +29,12 @@
 </h1>
 
   <form action='${contextPath}?' method='get' style="float:left;">
-    <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+	  <c:if test="${param.categoryNo != null}">
+	    <input type='hidden' name='categoryNo' value='${param.categoryNo}'>
+	  </c:if>
+	  <c:if test="${param.tagNo != null}">
+	    <input type='hidden' name='tagNo' value='${param.tagNo}'>
+	  </c:if>
     <input type="text" name='keyword' value='${param.keyword}' 
            style="  border-radius: 8px;
 									  border: 0px;
@@ -101,6 +106,9 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+ <a class="btn btn-outline-primary" style="float:right; margin-right:30px;" href="#" onClick="top.location='javascript:location.reload()'">맨위로</a>
+ 
 <script>
 function searchInList(event) {
 	var keyword = document.getElementById("article").value;

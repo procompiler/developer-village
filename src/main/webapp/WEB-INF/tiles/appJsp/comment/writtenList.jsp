@@ -6,7 +6,7 @@
 
 <jsp:include page="../user/info.jsp"></jsp:include>
 
-<h2>작성댓글</h2>
+<h2>작성 댓글</h2>
 <table border='1'>
 	<thead>
 		<tr>

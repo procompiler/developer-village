@@ -37,10 +37,11 @@
           <div class="float-start">
           <h5 class='card-title'>
             <a href='article/${a.no}'>${a.title}</a>
+            
           </h5>
           <p class="card-text">
             <small class="text-muted"><fmt:formatDate
-                value="${a.createdDate}" pattern="yyyy.MM.dd" /></small></p>
+                value="${a.createdDate}" pattern="yyyy.MM.dd HH.mm" /></small></p>
           </div>
           <div class="position-absolute bottom-0 end-0 mx-3">
             <ul class="list-inline mb-0">
@@ -70,7 +71,7 @@
 <i class="fas fa-ellipsis-h"></i></a></caption>
 
 <c:forEach items="${qnaList}" var="article" begin="0" end="4">
-      <c:if test="${param.categoryNo == null}">
+      <c:if test="${param.categoryNo == null && article.state == 1}">
         <tr class="articleRow">
           <td style="border-radius: 6px 0px 0px 6px; width: 50px;">${article.no}</td>
           <td id='title' style="width: 400px;">
@@ -96,7 +97,7 @@
 <i class="fas fa-ellipsis-h"></i></a></caption>
 
 <c:forEach items="${studyList}" var="article" begin="0" end="4">
-      <c:if test="${param.categoryNo == null}">
+      <c:if test="${param.categoryNo == null && article.state == 1}">
         <tr class="articleRow">
           <td style="border-radius: 6px 0px 0px 6px; width: 50px;">${article.no}</td>
           <td id='title'>
@@ -152,3 +153,5 @@
   </div>
     </div>
 </div>
+
+<meta http-equiv='Refresh' content='10;url=main'>

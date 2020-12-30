@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import com.devil.domain.User;
 import com.devil.service.FollowService;
 import com.devil.service.UserService;
@@ -53,11 +54,42 @@ public class UserController {
   }
 
   @GetMapping("list")
-  public String list(Model model, String keyword, HttpSession session) throws Exception {
+  public void list(
+      @RequestParam(defaultValue = "1") int type,
+      String keyword,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "10") int pageSize,
+      Model model) throws Exception {
 
-    model.addAttribute("list", userService.list(keyword));
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+    if (pageSize < 3 || pageSize > 100) {
+      pageSize = 5;
+    }
 
-    return "user/list";
+    model.addAttribute("list", userService.adminList(keyword, pageNo, pageSize));
+
+    int size = userService.size(keyword);
+    int totalPage = size / pageSize;
+    if (size % pageSize > 0) {
+      totalPage++;
+    }
+
+    int prevPageNo = pageNo > 1 ? pageNo - 1 : 1;
+    int nextPageNo = pageNo + 1;
+    if (nextPageNo > totalPage) {
+      nextPageNo = totalPage;
+    }
+
+    model.addAttribute("currPageNo", pageNo);
+    model.addAttribute("prevPageNo", prevPageNo);
+    model.addAttribute("nextPageNo", nextPageNo);
+    model.addAttribute("totalPage", nextPageNo);
+    model.addAttribute("size", size);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("keyword", keyword);
+
   }
 
   @GetMapping("inactivate")

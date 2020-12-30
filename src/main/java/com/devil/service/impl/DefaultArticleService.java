@@ -1,5 +1,6 @@
 package com.devil.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -35,14 +36,32 @@ public class DefaultArticleService implements ArticleService {
   public List<Article> list(String keyword) throws Exception {
     return articleDao.findAll(keyword);
   }
+
   @Override
   public List<Article> list(int categoryNo) throws Exception {
     return articleDao.findByCategoryNo(categoryNo);
   }
 
   @Override
+  public List<Article> listByCategoryNoKeyword(Map<String, Object> map) throws Exception {
+    return articleDao.findByCategoryNoKeyword(map);
+  }
+
+  @Override
   public List<Article> list() throws Exception {
     return articleDao.findAll((String)null);
+  }
+
+  @Override
+  public List<Article> adminList(String keyword, int pageNo, int pageSize) throws Exception {
+    Map<String,Object> map = new HashMap<>();
+    if (keyword != null) {
+      map.put("keyword", keyword);
+    }
+    map.put("startRowNo", (pageNo - 1) * pageSize);
+    map.put("pageSize", pageSize);
+
+    return articleDao.findAllAdmin(map);
   }
 
   @Override
@@ -88,7 +107,17 @@ public class DefaultArticleService implements ArticleService {
   }
 
   @Override
+  public List<Article> listByTagNoKeyword(Map<String, Object> map) throws Exception {
+    return articleDao.findByTagNoKeyword(map);
+  }
+
+  @Override
   public List<Article> feedList(User user) throws Exception {
     return articleDao.findFeedByUser(user);
+  }
+
+  @Override
+  public int size(String keyword) throws Exception {
+    return articleDao.count(keyword);
   }
 }

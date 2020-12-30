@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${appRoot}/node_modules/@sweetalert2/themes/dark/dark.css"/>
 <link rel="stylesheet" type="text/css" href='${appRoot}/custom.css'>
 <link rel="stylesheet" type="text/css" href='${appRoot}/style.css'>
+<meta name = "google-signin-client_id"content = "196126019480-h8mapmdeh9st0oc8cp4dletk1v3v6r6n.apps.googleusercontent.com">
 </head>
 <body>
 	<script
