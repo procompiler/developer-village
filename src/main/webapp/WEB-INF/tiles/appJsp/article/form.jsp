@@ -2,9 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <h1 style="margin-left: 70px; font-weight: bold">게시글 작성</h1>
-	
+	<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"
+  />
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  <style>
+    .tui-editor-contents p, .tui-editor-contents h1, .tui-editor-contents h2, .tui-editor-contents h3, .tui-editor-contents h4, .tui-editor-contents h5, .tui-editor-contents h6{
+      color: white;
+    }
+  </style>
+</head>
 <div id="articleForm">
 	<form id="articleForm" action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example" name='categoryNo'>
@@ -18,12 +28,19 @@
 			<input  type="text" class="form-control"
 				     id="inputTitle" placeholder="게시글 제목" name='title'>
 		</div>
-		<div class="mb-3">
-			<label for="exampleFormControlTextarea1" class="form-label"
-				></label>
-			<textarea class="form-control" id="inputContent" placeholder="게시글을 작성하세요!"
-				rows="20" name='content'></textarea>
-		</div>
+		<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+		<input type="text" name="content" id="content" hidden='hidden'/>
+		 <div id="editor">
+		 </div>
+		<script>
+	      const editor = new toastui.Editor({
+	          el: document.querySelector('#editor'),
+	          previewStyle: 'vertical',
+	          height: '500px',
+	          in
+	        });
+	      initialValue: ${content}
+		</script>
 		<p>
 			태그<br>
 			<c:forEach items="${tags}" var="tag">
@@ -34,14 +51,17 @@
 				<c:if test="${tag.no % 9 == 0 }"><br></c:if>
 			</c:forEach>
 		</p>
-
-		<button type="submit" class="btn btn-primary">게시글 작성</button>
+		<button type="submit" class="btn btn-primary" id="form-submit">게시글 작성</button>
 		<button type='button' class='btn btn-danger'
 			onclick="location.href='list'">취소</button>
 	</form>
 	<script>
 	  
-
+	  var formSubmitButton = document.querySelector("#form-submit");
+	  formSubmitButton.addEventListener("click", function() {
+	    var content = document.querySelector("#content");
+	    content.value = editor.getHtml();
+	  })
 	  
 	document.querySelector("#articleForm").onsubmit = () => {
 		var query = 'input[name="tagNo"]:checked';

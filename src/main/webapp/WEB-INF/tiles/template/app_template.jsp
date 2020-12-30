@@ -20,7 +20,7 @@
 <script src="${appRoot}/node_modules/handlebars/dist/handlebars.min.js"></script>
 		<script src="${appRoot}/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="${appRoot}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="../node_modules/jquery-ui/dist/jquery.min.js"></script>
+    <script src="${appRoot}/node_modules/jquery-ui/dist/jquery.min.js"></script>
 	<tiles:insertAttribute name="header" />
 	<div class="container">
 		<tiles:insertAttribute name="body" />
