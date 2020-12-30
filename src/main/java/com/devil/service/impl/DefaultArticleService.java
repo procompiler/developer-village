@@ -35,14 +35,25 @@ public class DefaultArticleService implements ArticleService {
   public List<Article> list(String keyword) throws Exception {
     return articleDao.findAll(keyword);
   }
+
   @Override
   public List<Article> list(int categoryNo) throws Exception {
     return articleDao.findByCategoryNo(categoryNo);
   }
 
   @Override
+  public List<Article> listByCategoryNoKeyword(Map<String, Object> map) throws Exception {
+    return articleDao.findByCategoryNoKeyword(map);
+  }
+
+  @Override
   public List<Article> list() throws Exception {
     return articleDao.findAll((String)null);
+  }
+
+  @Override
+  public List<Article> adminList() throws Exception {
+    return articleDao.findAllAdmin((String)null);
   }
 
   @Override
@@ -85,6 +96,11 @@ public class DefaultArticleService implements ArticleService {
   @Override
   public List<Article> listByTagNo(int tagNo) throws Exception {
     return articleDao.findByTagNo(tagNo);
+  }
+
+  @Override
+  public List<Article> listByTagNoKeyword(Map<String, Object> map) throws Exception {
+    return articleDao.findByTagNoKeyword(map);
   }
 
   @Override

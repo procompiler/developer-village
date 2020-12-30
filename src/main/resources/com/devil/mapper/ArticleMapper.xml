@@ -165,11 +165,23 @@
     where a.writer=#{no}
   </select>
   
-  <select id="findAll" resultMap="ArticleMap" parameterType="string">
+  <select id="findAllAdmin" resultMap="ArticleMap" parameterType="string">
   	<include refid="sql1"/>
   	<if test="keyword != null">
   	where
   		a.title like concat('%', #{keyword}, '%')
+  		or u.nick like concat('%', #{keyword}, '%')
+  		or t.name like concat('%', #{tag}, '%')
+  	</if>
+  	order by a.arno desc
+  </select>
+  
+  <select id="findAll" resultMap="ArticleMap" parameterType="string">
+  	<include refid="sql1"/>
+  	where
+  	 a.state = 1
+  	<if test="keyword != null">
+  		and a.title like concat('%', #{keyword}, '%')
   		or u.nick like concat('%', #{keyword}, '%')
   		or t.name like concat('%', #{tag}, '%')
   	</if>
@@ -203,7 +215,7 @@
     
     <select id="findByNo" resultMap="ArticleMap" parameterType="int">
       <include refid="sql1"/>
-      where a.arno=#{no}  
+      where a.arno=#{no}
     </select>
     
     <select id="findByCategoryNo" resultMap="ArticleMap" parameterType="int">
@@ -212,11 +224,31 @@
      order by a.arno desc
     </select>
     
+    <select id="findByCategoryNoKeyword" resultMap="ArticleMap" parameterType="map">
+     <include refid="sql1"/>
+     where a.cano=#{categoryNo} and a.state=1
+    <if test="keyword != null">
+      and 
+      (a.title like concat('%', #{keyword}, '%')
+      or u.nick like concat('%', #{keyword}, '%'))
+    </if>
+     order by a.arno desc
+    </select>
   
-  <select id="findByTagNo" resultMap="ArticleMap"
-    parameterType="int">
+  <select id="findByTagNo" resultMap="ArticleMap" parameterType="int">
     <include refid="sql1"/>
-    where at.tno=#{no} and a.state=1
+    where at.tno=#{tagNo} and a.state=1
+    order by a.cdt desc
+  </select>
+  
+  <select id="findByTagNoKeyword" resultMap="ArticleMap" parameterType="map">
+    <include refid="sql1"/>
+    where at.tno=#{tagNo} and a.state=1
+    <if test="keyword != null">
+      and 
+      (a.title like concat('%', #{keyword}, '%')
+      or u.nick like concat('%', #{keyword}, '%'))
+    </if>
     order by a.cdt desc
   </select>
   

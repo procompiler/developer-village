@@ -49,7 +49,7 @@ public class ArticleController {
       model.addAttribute("tag", tagService.get(tagNo));
       model.addAttribute("articles", articleService.listByTagNo(tagNo));
     } else {
-      model.addAttribute("articles", articleService.list());
+      model.addAttribute("articles", articleService.adminList());
     }
   }
 
