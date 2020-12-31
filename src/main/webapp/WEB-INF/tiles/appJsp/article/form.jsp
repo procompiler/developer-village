@@ -17,16 +17,10 @@
 </style>
 </head>
 <div id="articleForm">
-<<<<<<< HEAD
 	<form id="articleForm" action='add' method='post'>
 		카테고리 <select class="form-select" aria-label="Default select example"
 			name='categoryNo'>
 			<option value='1'>자유게시판</option>
-=======
-	<form id="articleForm" action='add' method='post' style="width:1100px;">
-		카테고리 <select class="form-select" aria-label="Default select example" name='categoryNo'>
-    	<option value='1'>자유게시판</option> 
->>>>>>> 4009e17727059fbff66a0a724b8ad0e612582f80
 			<option value='2'>QnA</option>
 			<option value='3'>채용공고</option>
 			<option value='4'>스터디</option>
@@ -51,7 +45,6 @@ const { Editor } = toastui;
 		<p>
 			태그<br>
 			<c:forEach items="${tags}" var="tag">
-<<<<<<< HEAD
 				<input class="form-check-input" type="checkbox" value="${tag.no}"
 					id="flexCheckDefault" name="tagNo">
 				<label class="form-check-label" for="flexCheckDefault">
@@ -60,13 +53,6 @@ const { Editor } = toastui;
 					<br>
 				</c:if>
 
-=======
-					<input class="form-check-input" type="checkbox" value="${tag.no}"
-						id="flexCheckDefault" name="tagNo"> <label
-						class="form-check-label" for="flexCheckDefault">
-						${tag.name}</label>
-				<c:if test="${tag.no % 13 == 1 }"><br></c:if>
->>>>>>> 4009e17727059fbff66a0a724b8ad0e612582f80
 			</c:forEach>
 		</p>
 		<button type="submit" class="btn btn-primary" id="form-submit">게시글
