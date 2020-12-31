@@ -221,7 +221,7 @@ INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (4, 2, '5','3','2020-11-29
 
 
 INSERT INTO bdg_eva (beno,bename) VALUES (1, '가입일');
-INSERT INTO bdg_eva (beno,bename) VALUES (2, '방문횟수');
+INSERT INTO bdg_eva (beno,bename) VALUES (2, '팔로워수');
 INSERT INTO bdg_eva (beno,bename) VALUES (3, '댓글수');
 INSERT INTO bdg_eva (beno,bename) VALUES (4, '게시글수');
 

@@ -80,9 +80,9 @@ public class UserController {
     map.put("followeeNo", no);
 
     if (followService.getUser(map) != null) {
-      session.setAttribute("followed", true);
+      user.setFollowed(true);
     } else {
-      session.setAttribute("followed", false);
+      user.setFollowed(false);
     }
     return "redirect:../article/writtenList?no=" + no;
   }
