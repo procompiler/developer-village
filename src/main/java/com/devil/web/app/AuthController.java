@@ -56,17 +56,16 @@ public class AuthController {
   }
 
   @SuppressWarnings("unchecked")
-  @PostMapping("googleLogin")
+  @GetMapping("googleLogin")
   public String googleLogin(
       String accessToken, HttpSession session) throws Exception {
 
     RestTemplate restTemplate = new RestTemplate();
 
     Map<String,Object> googleUserInfo = restTemplate.getForObject(
-        "https://graph.facebook.com/v9.0/me?access_token={1}&fields={2}",
+        "https://www.googleapis.com/oauth2/v1/userinfo?access_token={1}",
         Map.class,
-        accessToken,
-        "id,name,email,gender");
+        accessToken);
 
     // 사용자 정보 확인
     String email = (String) googleUserInfo.get("email");
@@ -94,7 +93,7 @@ public class AuthController {
 
     return "redirect:../../index.jsp";
   }
-  
+
   /*
   @SuppressWarnings("unchecked")
   @PostMapping("githubLogin")
@@ -134,7 +133,7 @@ public class AuthController {
 
     return "redirect:../../index.jsp";
   }
-*/
+   */
   @GetMapping("loginError")
   public void loginError() {
   }
