@@ -14,6 +14,7 @@ import com.devil.domain.User;
 import com.devil.service.ArticleService;
 import com.devil.service.BadgeService;
 import com.devil.service.CommentService;
+import com.devil.service.FollowService;
 import com.devil.service.UserService;
 
 @Controller
@@ -28,6 +29,8 @@ public class CommentController {
   UserService userService;
   @Autowired
   BadgeService badgeService;
+  @Autowired
+  FollowService followService;
 
   @PostMapping("add")
   public String add(Comment comment, HttpSession session) throws Exception {
@@ -46,7 +49,7 @@ public class CommentController {
   }
 
   @GetMapping("writtenList")
-  public void list(User user, Model model) throws Exception {
+  public void list(User user, Model model, HttpSession session) throws Exception {
 
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("type", "app");
@@ -54,6 +57,16 @@ public class CommentController {
 
     model.addAttribute("user", userService.get(params));
     model.addAttribute("commentList", commentService.listByWriter(user));
+    User loginUser = (User) session.getAttribute("loginUser");
+    Map<String, Object> map = new HashMap<>();
+    map.put("userNo", loginUser.getNo());
+    map.put("followeeNo", user.getNo());
+
+    if (followService.getUser(map) != null) {
+      session.setAttribute("followed", true);
+    } else {
+      session.setAttribute("followed", false);
+    }
   }
 
   @PostMapping("update")

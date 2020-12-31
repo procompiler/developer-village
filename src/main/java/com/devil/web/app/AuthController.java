@@ -94,7 +94,47 @@ public class AuthController {
 
     return "redirect:../../index.jsp";
   }
+  
+  /*
+  @SuppressWarnings("unchecked")
+  @PostMapping("githubLogin")
+  public String githubLogin(
+      String accessToken, HttpSession session) throws Exception {
+    RestTemplate restTemplate = new RestTemplate();
 
+    Map<String,Object> githubUserInfo = restTemplate.getForObject(
+        "https://graph.facebook.com/v9.0/me?access_token={1}&fields={2}",
+        Map.class,
+        accessToken,
+        "id,name,email,gender");
+
+    // 사용자 정보 확인
+    String email = (String) githubUserInfo.get("email");
+    if (email == null) {
+      session.invalidate();
+      return "/auth/loginError.jsp";
+    }
+
+    User user = userService.get(email);
+    if (user == null) {
+      // 자동 회원 가입
+      user = new User();
+      user.setEmail(email);
+      user.setPassword("1111");
+      user.setName((String) githubUserInfo.get("name"));
+      user.setLoginType("2");
+      userService.add(user);
+
+      // 회원 등록 후 DB의 등록된 회원 정보를 가져온다.
+      session.setAttribute("loginUser", userService.get(email));
+
+    } else {
+      session.setAttribute("loginUser", user);
+    }
+
+    return "redirect:../../index.jsp";
+  }
+*/
   @GetMapping("loginError")
   public void loginError() {
   }

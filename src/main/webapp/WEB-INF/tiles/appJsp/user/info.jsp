@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-  System.out.println(request.getRequestURL());
-%>
 <div class="py-1">
 	<c:choose>
 		<c:when test="${user.no != loginUser.no && null ne user}">
