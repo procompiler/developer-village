@@ -50,9 +50,9 @@
 			<div class="row mt-4">
 				<div class="col-2">
 					<div class="btn-group-vertical float-start">
-						<a class="btn btn-outline-primary"
+						<a class="btn btn-secondary py-3"
 							href="../article/writtenList?no=${user.no}">작성 게시글</a> <a
-							class="btn btn-outline-primary"
+							class="btn btn-secondary py-3"
 							href="../comment/writtenList?no=${user.no}">작성 댓글</a>
 					</div>
 				</div>
