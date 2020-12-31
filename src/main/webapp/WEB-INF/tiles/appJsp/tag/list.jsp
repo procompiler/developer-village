@@ -9,6 +9,7 @@
 <h1 style="margin-left: 70px; font-weight: bold">커뮤니티</h1>
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 70px;">
   <c:forEach items="${tagList}" var="t">
+  <c:if test="${t.state == 1}">
     <div class="col">
       <div class="card" style="width: 15rem;">
         <div class="card-band" style="background-color: ${t.tagColor}"></div>
@@ -31,5 +32,6 @@
         </div>
       </div>
     </div>
+  </c:if>
   </c:forEach>
 </div>

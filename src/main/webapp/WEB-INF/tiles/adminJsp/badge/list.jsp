@@ -13,12 +13,9 @@
   <span style="float: left">뱃지 검색</span>
   <form action='list' method='get' autocomplete="off">
   <input id="search" type="search" name='keyword' 
-  value='${parm.keyword}' placeholder="검색어 입력.." style=" padding-left: 40px; margin-right: 30px;">
+  value='${param.keyword}' placeholder="검색어 입력.." style=" padding-left: 40px; margin-right: 30px;">
   <button class="btn btn-primary">검색</button>
   </form>
-  <c:if test="${param.keyword != null}">
-  '${param.keyword}'(으)로 검색한 결과입니다.
-  </c:if>
   </div>
 </div>
 
