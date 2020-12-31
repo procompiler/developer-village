@@ -67,7 +67,7 @@ public class ArticleController {
   }
 
   @GetMapping("list")
-  public void list(String keyword, Integer categoryNo, Integer tagNo, Model model) throws Exception {
+  public void list(String keyword, Integer categoryNo, Integer tagNo,Model model) throws Exception {
     Map<String, Object> map = new HashMap<>();
     map.put("keyword", keyword);
 

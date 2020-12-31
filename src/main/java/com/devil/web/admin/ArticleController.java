@@ -65,7 +65,6 @@ public class ArticleController {
     model.addAttribute("size", size);
     model.addAttribute("pageSize", pageSize);
     model.addAttribute("keyword", keyword);
-
   }
 
   @GetMapping("{no}")

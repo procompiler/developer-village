@@ -4,21 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-  <div class="mini-navi">
-  <a href='../article/list' style='text-decoration: none;'>전체글</a>
-  <a href='../article/list?categoryNo=1' style='text-decoration: none;'>자유게시판</a>
-  <a href='../article/list?categoryNo=2' style='text-decoration: none;'>QnA</a>
-  <a href='../article/list?categoryNo=3' style='text-decoration: none;'>채용공고</a>
-  <a href='../article/list?categoryNo=4' style='text-decoration: none;'>스터디</a>
-  </div>
   <h1>
     <a href='../article/list' style='text-decoration: none;'>게시글 관리</a>
   </h1>
 
   <div id="search-bar">
-  <span style="float: left">제목 검색</span>
+  <span style="float: left">게시글 검색</span>
   <form action='${contextPath}?' method='get' autocomplete="off">
-  <input id="search" name="keyword" type="text" value='${param.keyword}' placeholder="제목 검색" style=" padding-left: 40px; margin-right: 30px;">
+  <input id="search" name="keyword" type="text" value='${param.keyword}' placeholder="제목 or 작성자" style=" padding-left: 40px; margin-right: 30px;">
   <button class="btn btn-primary">검색</button>
   </form>
   </div>
