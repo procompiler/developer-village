@@ -28,7 +28,8 @@
      <button class="btn btn-primary">로그인</button>
     </div>
     
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!-- 구글로그인버튼 -->
+   <!--  <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
     
     <div style="text-align:center;">
 		<a href="searchId">이메일 계정 찾기</a>
@@ -51,6 +52,7 @@
 </script>
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <script>
 function autoServerLogin(accessToken) {
     location.href = "googleLogin?accessToken=" + accessToken;
@@ -62,8 +64,15 @@ function onSignIn(googleUser) {
 	  console.log('Name: ' + profile.getName());
 	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	
+	  
+	  autoServerLogin(googleUser.getAuthResponse().id_token);
 	}
 
+// 토큰발급
+var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+      
 // 구글 로그아웃 코드
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
