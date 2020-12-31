@@ -32,9 +32,9 @@
    <!--  <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
    
    <!-- 깃허브 로그인버튼-->
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <a class="btn btn-primary" href="https://github.com/login/oauth/authorize?client_id=71a8f9b1c58cc9318bc3&redirect_uri=http:/localhost:8080/developer-village/"
-      >GitHub 아이디로 로그인</a>
+      >GitHub 아이디로 로그인</a> -->
     
     <div style="text-align:center;">
 		<a href="searchId">이메일 계정 찾기</a>
