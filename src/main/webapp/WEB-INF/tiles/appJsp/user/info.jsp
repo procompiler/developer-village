@@ -24,7 +24,7 @@
 					<br>
 					<h5 class="card-title">${user.nickname}</h5>
 					<a class="card-link" href="../follow/userList">팔로잉
-						${loginUser.followingCount}</a> <a class="card-link"
+						${user.followingCount}</a> <a class="card-link"
 						href="../follow/followerList">팔로워 ${user.followerCount}</a>
 					<p class="card-text">${user.bio}</p>
 					<div class="urls">

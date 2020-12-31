@@ -278,7 +278,7 @@
       (a.title like concat('%', #{keyword}, '%')
       or u.nick like concat('%', #{keyword}, '%'))
     </if>
-    order by a.cdt desc
+    order by a.arno desc
   </select>
   
     <update id="updateViewCount" parameterType="int">

@@ -68,8 +68,13 @@ INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (30, 15, 
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (31, 19, 3,'프론트엔드 개발자 채용(javascript 능통자)','프론트엔드 개발자 채용','2020-12-20',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (32, 12, 3,'인공지능(AI) 분야 경력 개발자 채용','인공지능(AI) 분야 경력 개발자 채용','2020-12-20',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (33, 21, 4,'이펙티브 자바 같이 읽어요(온라인 스터디)','각자 읽고, 토론하는 방식으로 진행해요.','2020-12-22',3);
-INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (34, 2, 1,'자바 호환 언어가 코틀린인가?','자바 다음에 공부할 언어 고민중인데, 파이썬이랑 코틀린 중 뭐가 좋을까요?','2020-12-23',3);
-INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (35, 4, 1,'데빌 너무 좋아','여기서 개발자 친구들 많이 사겼어요!!','2020-12-24',5);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (34, 2, 1,'자바 호환 언어가 코틀린인가?','자바 다음에 공부할 언어 고민중인데, 파이썬이랑 코틀린 중 뭐가 좋을까요?','2020-12-22',3);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (35, 4, 1,'데빌 너무 좋아','여기서 개발자 친구들 많이 사겼어요!!','2020-12-22',5);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (36, 19, 2,'포트폴리오 만들 때 뭐가 중요한가요?','취준생인데, 포트폴리오 만드는거 너무 어려워요ㅠㅠ','2020-12-23',2);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (37, 24, 3,'네이버 2021 동계 인턴십(채용 전제형)','네이버 2021 동계 인턴십(채용 전제형)','2020-12-23',22);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (38, 20, 3,'카카오 쇼핑 백엔드 개발자 수시 채용(신입 및 경력)','카카오 쇼핑 백엔드 개발자 수시 채용(신입 및 경력)','2020-12-24',5);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (39, 17, 4,'웹 개발 프로젝트 같이 하실분!','국비지원 웹 개발자 과정 이번에 수료하는데 프로젝트 더 해보고 싶어서요..! 연락주세요!!','2020-12-24',11);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (40, 2, 1,'연말에는 역시 코딩입니다.','코로나라 연말 느낌도 안나고 춥기만 하네요ㅠㅠ','2020-12-25',2);
 
 
 
@@ -126,8 +131,8 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (1, 'java', 'java',
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (2, 'python', 'python','#6D9AF1','##37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (3, 'ruby', 'ruby','#F56C6E','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (4, 'go', 'go','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js','#E8EBA7','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (5, 'javascript', 'js','#F56C6E','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (6, 'C', 'c','#5EA4AE','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (7, 'C++', 'cpp','#6D9AF1','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (8, 'android', 'android','#5EA4AE','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (9, 'swift', 'swift','#E8EBA7','#37393E');
@@ -138,7 +143,7 @@ INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (13, '스터디', '
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (14, '비전공', 'nonmj','#6C5DDF','FFFFFF');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (15, '취업', 'chwi','#6C5DDF','FFFFFF');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (16, 'react', 'react','#6D9AF1','#37393E');
-INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker','#6D9AF1','#37393E');
+INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (17, 'docker', 'docker','#5EA4AE','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (18, 'typescript', 'typescript','#6D9AF1','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (19, 'linux', 'linux','#5EA4AE','#37393E');
 INSERT INTO tag (tno,name,photo,tag_color,font_color) VALUES (20, 'css', 'css','#F56C6E','#37393E');
@@ -274,6 +279,15 @@ INSERT INTO arc_tag (arno,tno) VALUES (33, 13);
 INSERT INTO arc_tag (arno,tno) VALUES (34, 1);
 INSERT INTO arc_tag (arno,tno) VALUES (34, 2);
 INSERT INTO arc_tag (arno,tno) VALUES (35, 12);
+INSERT INTO arc_tag (arno,tno) VALUES (36, 5);
+INSERT INTO arc_tag (arno,tno) VALUES (36, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (36, 21);
+INSERT INTO arc_tag (arno,tno) VALUES (36, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (39, 22);
+INSERT INTO arc_tag (arno,tno) VALUES (39, 21);
+INSERT INTO arc_tag (arno,tno) VALUES (39, 1);
+INSERT INTO arc_tag (arno,tno) VALUES (39, 5);
+INSERT INTO arc_tag (arno,tno) VALUES (40, 12);
 
 
 
