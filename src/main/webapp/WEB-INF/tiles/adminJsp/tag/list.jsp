@@ -12,15 +12,11 @@
   <div id="search-bar">
   <span style="float: left">태그 검색</span>
   <form action='${contextPath}?' method='get' autocomplete="off">
-  <input id="search" name="keyword" type="text" placeholder="태그 이름 검색.." style=" padding-left: 40px; margin-right: 30px;">
+  <input id="search" name="keyword" value='${param.keyword}' type="text" placeholder="태그 이름 검색.." style=" padding-left: 40px; margin-right: 30px;">
   <button class="btn btn-primary">검색</button>
   </form>
   </div>
-  <c:if test="${param.keyword != null}">
-  '${param.keyword}'(으)로 검색한 결과입니다.
-  </c:if>
 </div>
-
 
 <div class="row col-sm-10 g-3">
 	<c:forEach items="${tagList}" var="t">
