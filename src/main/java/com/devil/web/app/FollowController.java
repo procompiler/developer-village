@@ -1,7 +1,9 @@
 package com.devil.web.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,18 +57,30 @@ public class FollowController{
   }
 
   @GetMapping("addUser")
-  public String addUser(Follow follow, HttpSession httpSession, HttpServletRequest request)
+  public String addUser(Follow follow, HttpSession session, HttpServletRequest request)
       throws Exception {
-    follow.setFollower((User) httpSession.getAttribute("loginUser"));
+    User loginUser = (User) session.getAttribute("loginUser");
+    follow.setFollower(loginUser);
     followService.addUser(follow);
+    
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", loginUser.getNo());
+    session.setAttribute("loginUser", userService.get(params));
     return "redirect:" + request.getHeader("Referer");
   }
 
   @GetMapping("deleteUser")
-  public String deleteUser(Follow follow, HttpSession httpSession, HttpServletRequest request)
+  public String deleteUser(Follow follow, HttpSession session, HttpServletRequest request)
       throws Exception {
-    follow.setFollower((User) httpSession.getAttribute("loginUser"));
+    User loginUser = (User) session.getAttribute("loginUser");
+    follow.setFollower(loginUser);
     followService.deleteUser(follow);
+    
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("type", "app");
+    params.put("userNo", loginUser.getNo());
+    session.setAttribute("loginUser", userService.get(params));
     return "redirect:" + request.getHeader("Referer");
   }
 
@@ -85,7 +99,6 @@ public class FollowController{
     for (User user : userService.listFollowing(loginUser)) {
       userFollowingNoList.add(user.getNo());
     }
-
     for (User user : followerList) {
       if (!userFollowingNoList.contains(user.getNo())) {
         continue;

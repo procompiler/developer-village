@@ -27,7 +27,6 @@ public class UserController {
 
   @GetMapping("/delete")
   public String delete(int no) throws Exception {
-
     if (userService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
