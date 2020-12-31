@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div id="auth">
 	<form id="loginForm" action='login' method='post'>
@@ -28,9 +29,10 @@
      <button class="btn btn-primary">로그인</button>
     </div>
     
+    
     <!-- 구글로그인버튼 -->
-   <!--  <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-   
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
    <!-- 깃허브 로그인버튼-->
     <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <a class="btn btn-primary" href="https://github.com/login/oauth/authorize?client_id=71a8f9b1c58cc9318bc3&redirect_uri=http:/localhost:8080/developer-village/"
@@ -59,27 +61,32 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <script>
+var isLogin = false;
+
 function autoServerLogin(accessToken) {
     location.href = "googleLogin?accessToken=" + accessToken;
 }
 
 function onSignIn(googleUser) {
+	if (!isLogin) {
+		isLogin = true;
+		return;
+	}
+	console.log("호출됨!!!!!!")
+	console.log(googleUser);
 	  var profile = googleUser.getBasicProfile();
 	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 	  console.log('Name: ' + profile.getName());
 	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 	
-	  
-	  autoServerLogin(googleUser.getAuthResponse().id_token);
+	  console.log(googleUser.getAuthResponse(true).access_token);
+	  autoServerLogin(googleUser.getAuthResponse(true).access_token);
 	}
 
-// 토큰발급
-var id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token);
       
 // 구글 로그아웃 코드
-function signOut() {
+function onSignOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
