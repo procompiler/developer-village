@@ -27,7 +27,7 @@
 					<h5 class="card-title">
 						<a href='${t.no}'>#${t.name}</a>
 					</h5>
-					<img style="float: right;"
+					<img style="float: right;" class="rounded-circle" 
 						src='../../upload/tag/${t.photo}_80x80.png' alt='${t.name}'>
 					<a class="btn btn-outline-primary" href='${t.no}'>태그 수정</a>
 					<c:if test="${t.state == 0}">
