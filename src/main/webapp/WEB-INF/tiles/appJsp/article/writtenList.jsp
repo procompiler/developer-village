@@ -26,8 +26,9 @@
         <div class="card-body">
           <div style="height: 40px;">
             <c:forEach items="${a.tags}" var="tag">
+            <a href="list?tagNo=${tag.no}">
               <span class="badge"
-                style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</span>
+                style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</span></a>
             </c:forEach>
           </div>
           <div class="float-start">

@@ -20,7 +20,7 @@
     <div class="row g-0">
       <div class="col-sm-2">
         <div class="text-center mr-2 mt-4">
-          <a href='../user/detail?no=${a.writer.no}'><img
+          <a href='../app/user/${a.writer.no}'><img
             class="card-img-top rounded-circle"
             src='../upload/user/${a.writer.photo}_60x60.jpg'
             alt='[${a.writer.nickname}]' /></a><br> <small>${a.writer.nickname}</small>
@@ -30,8 +30,9 @@
         <div class="card-body">
           <div style="height: 40px;">
             <c:forEach items="${a.tags}" var="tag">
+            <a href="article/list?tagNo=${tag.no}">
               <span class="badge"
-                style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</span>
+                style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</span></a>
             </c:forEach>
           </div>
           <div class="float-start">
@@ -77,8 +78,9 @@
           <td id='title' style="width: 400px;">
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
+              <a href="article/list?tagNo=${tag.no}">
                 <li id='color'
-                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li></a>
               </c:forEach>
             </ul> <a href='article/${article.no}'>${article.title}</a>
           </td>
@@ -103,8 +105,9 @@
           <td id='title'>
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
+              <a href="article/list?tagNo=${tag.no}">
                 <li id='color'
-                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li></a>
               </c:forEach>
             </ul> <a href='article/${article.no}'>${article.title}</a>
           </td>

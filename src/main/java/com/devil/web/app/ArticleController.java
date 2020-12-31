@@ -67,14 +67,19 @@ public class ArticleController {
   }
 
   @GetMapping("list")
-  public void list(String keyword, Integer tagNo, Model model) throws Exception {
+  public void list(String keyword, Integer categoryNo, Integer tagNo, Model model) throws Exception {
+    Map<String, Object> map = new HashMap<>();
+    map.put("keyword", keyword);
 
-    if (keyword != null) {
+    if (keyword != null && categoryNo == null && tagNo == null) {
       model.addAttribute("articles", articleService.list(keyword));
-
+    } else if (categoryNo != null) {
+      map.put("categoryNo", categoryNo);
+      model.addAttribute("articles", articleService.listByCategoryNoKeyword(map));
     } else if (tagNo != null) {
+      map.put("tagNo", tagNo);
       model.addAttribute("tag", tagService.get(tagNo));
-      model.addAttribute("articles", articleService.listByTagNo(tagNo));
+      model.addAttribute("articles", articleService.listByTagNoKeyword(map));
     } else {
       model.addAttribute("articles", articleService.list());
     }
