@@ -21,6 +21,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         request.getPathInfo().startsWith("/user/add") ||
         request.getPathInfo().startsWith("/article/list") ||
         request.getPathInfo().startsWith("/tag/list") ||
+        request.getPathInfo().startsWith("/auth/googleLogin") ||
         request.getSession().getAttribute("loginUser") != null) {
       return true; // 다음 인터셉터나 페이지 컨트롤러 실행!
     }
