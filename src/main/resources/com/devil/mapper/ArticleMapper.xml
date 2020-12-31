@@ -163,6 +163,7 @@
   <select id="findByWriter" resultMap="ArticleMap" parameterType="user">
     <include refid="sql1"/>
     where a.writer=#{no}
+    order by ua.cdt desc
   </select>
   
   <select id="findAllAdmin" resultMap="ArticleMap" parameterType="map">

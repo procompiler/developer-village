@@ -48,13 +48,22 @@
 				</div>
 			</div>
 			<div class="row mt-4">
-				<div class="col-2">
-					<div class="btn-group-vertical float-start">
+        <div class="col-2">
+					<div class="btn-group-vertical">
 						<a class="btn btn-secondary py-3"
 							href="../article/writtenList?no=${user.no}">작성 게시글</a> <a
 							class="btn btn-secondary py-3"
 							href="../comment/writtenList?no=${user.no}">작성 댓글</a>
 					</div>
+				<c:if test="${not emptyuser.tech}">
+				<br>
+				<div class="px-3 mt-3">
+        <h6 class="fw-bold"><i class="fas fa-tools"></i> 기술스택</h6>
+        <p>
+            ${user.tech}
+        </p>
+        </div>
+        </c:if>
 				</div>
 				<div class="col-7">
 		</c:when>
