@@ -163,7 +163,7 @@
   <select id="findByWriter" resultMap="ArticleMap" parameterType="user">
     <include refid="sql1"/>
     where a.writer=#{no}
-    order by ua.cdt desc
+    order by a.cdt desc
   </select>
   
   <select id="findAllAdmin" resultMap="ArticleMap" parameterType="map">
@@ -217,7 +217,6 @@
   	</if>
   	order by a.arno desc
   </select>
-  
   <select id="findByDetailKeyword" resultMap="ArticleMap" parameterType="map">
     <include refid="sql1"/>
     <where>
