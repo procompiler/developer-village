@@ -105,6 +105,7 @@
 		  feed.tag_name,
 		  feed.tag_color,
 		  feed.font_color,
+		  feed.state,
 		  (select count(*) from comment c where feed.arno = c.arno) as cmt_cnt
 		from (
 		  select
@@ -129,7 +130,7 @@
 		    inner join tag t on at.tno = t.tno
 		    inner join user u on a.writer = u.uno
 		  where 
-		    fwer_no = #{no}
+		    fwer_no = #{no} and a.state=1
 		    
 		  union
 		  
@@ -155,14 +156,14 @@
 		    inner join article a on at.arno = a.arno
 		    inner join user u on a.writer = u.uno
 		  where 
-		    ut.uno = #{no}
+		    ut.uno = #{no} and a.state=1
 		) feed
-		order by feed.arno desc
+		order by feed.arno desc 
   </select>
   
   <select id="findByWriter" resultMap="ArticleMap" parameterType="user">
     <include refid="sql1"/>
-    where a.writer=#{no}
+    where a.writer=#{no} and a.state=1
     order by a.cdt desc
   </select>
   
