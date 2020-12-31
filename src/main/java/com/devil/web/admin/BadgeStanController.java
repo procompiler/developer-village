@@ -22,11 +22,11 @@ public class BadgeStanController {
   }
 
   @PostMapping("update")
-  public String update(BadgeStan badgeStan, int stanNo) throws Exception {
-    badgeStanService.update(badgeStan.setNo(stanNo));
+  public String update(BadgeStan badgeStan, int no) throws Exception {
+    badgeStanService.update(badgeStan.setNo(no));
     return "redirect:../badge/" + badgeStan.getBadgeNo();
   }
-  
+
   @GetMapping("delete")
   public String delete(BadgeStan badgeStan) throws Exception {
     badgeStanService.delete(badgeStan.getNo());

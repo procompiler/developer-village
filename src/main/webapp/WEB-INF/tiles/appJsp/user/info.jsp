@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-  System.out.println(request.getRequestURL());
-%>
 <div class="py-1">
 	<c:choose>
 		<c:when test="${user.no != loginUser.no && null ne user}">
@@ -53,9 +50,9 @@
 			<div class="row mt-4">
 				<div class="col-2">
 					<div class="btn-group-vertical float-start">
-						<a class="btn btn-outline-primary"
+						<a class="btn btn-secondary py-3"
 							href="../article/writtenList?no=${user.no}">작성 게시글</a> <a
-							class="btn btn-outline-primary"
+							class="btn btn-secondary py-3"
 							href="../comment/writtenList?no=${user.no}">작성 댓글</a>
 					</div>
 				</div>
