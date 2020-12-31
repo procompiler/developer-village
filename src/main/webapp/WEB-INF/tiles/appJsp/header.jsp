@@ -85,7 +85,7 @@
 						class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
 						style="margin-left: -10px; margin-top: 5px">${loginUser.notiCount}</div>
 				</button>
-				<div class="dropdown-menu dropdown-menu-dark"
+				<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
 					aria-labelledby="noti-list"></div>
 			</div>
 			<a class="btn" href="${appRoot}/app/auth/logout">로그아웃</a>

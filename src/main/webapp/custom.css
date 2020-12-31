@@ -98,6 +98,9 @@ p {
   margin-top: 0;
   margin-bottom: 1rem; }
 
+p2 {
+  margin-bottom: 1rem; }
+
 abbr[title],
 abbr[data-bs-original-title] {
   text-decoration: underline;
@@ -162,7 +165,7 @@ sup {
 
 a {
   color: #6C5DDF;
-  text-decoration: underline; }
+  text-decoration: underline;}
   a:hover {
     color: #564ab2; }
 

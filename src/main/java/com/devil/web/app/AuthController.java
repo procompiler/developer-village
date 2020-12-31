@@ -66,7 +66,7 @@ public class AuthController {
         "https://graph.facebook.com/v9.0/me?access_token={1}&fields={2}",
         Map.class,
         accessToken,
-        "id,name,email,gender");
+        "id,name,email");
 
     // 사용자 정보 확인
     String email = (String) googleUserInfo.get("email");

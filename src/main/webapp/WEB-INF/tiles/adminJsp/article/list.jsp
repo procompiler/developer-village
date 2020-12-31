@@ -48,16 +48,16 @@
 					</td>
 					<td><c:choose>
 							<c:when test="${article.categoryNo == 1}">
-								<p>자유게시판</p>
+								<p2>자유게시판</p2>
 							</c:when>
 							<c:when test="${article.categoryNo == 2}">
-								<p>QnA</p>
+								<p2>QnA</p2>
 							</c:when>
 							<c:when test="${article.categoryNo == 3}">
-								<p>채용공고</p>
+								<p2>채용공고</p2>
 							</c:when>
 							<c:when test="${article.categoryNo == 4}">
-								<p>스터디</p>
+								<p2>스터디</p2>
 							</c:when>
 						</c:choose></td>
 					<td>${article.writer.nickname}</td>
@@ -77,16 +77,16 @@
           </td>
           <td><c:choose>
               <c:when test="${article.categoryNo == 1}">
-                <p>자유게시판</p>
+                <p2>자유게시판</p2>
               </c:when>
               <c:when test="${article.categoryNo == 2}">
-                <p>QnA</p>
+                <p2>QnA</p2>
               </c:when>
               <c:when test="${article.categoryNo == 3}">
-                <p>채용공고</p>
+                <p2>채용공고</p2>
               </c:when>
               <c:when test="${article.categoryNo == 4}">
-                <p>스터디</p>
+                <p2>스터디</p2>
               </c:when>
             </c:choose></td>
           <td>${article.writer.nickname}</td>
