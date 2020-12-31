@@ -25,7 +25,8 @@
 
   <ul id='tags' class="mx-3">
     <c:forEach items="${tags}" var="tag">
-      <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li>
+    <a href="list?tagNo=${tag.no}">
+      <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li></a>
     </c:forEach>
   </ul>
 

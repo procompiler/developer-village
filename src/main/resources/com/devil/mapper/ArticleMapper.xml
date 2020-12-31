@@ -217,6 +217,7 @@
   	</if>
   	order by a.arno desc
   </select>
+  
   <select id="findByDetailKeyword" resultMap="ArticleMap" parameterType="map">
     <include refid="sql1"/>
     <where>

@@ -12,7 +12,7 @@
 			<th>게시글제목</th>
 			<th>댓글내용</th>
 			<th>등록일</th>
-			<th>삭제</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,8 +23,11 @@
 				</td>
 				<td><fmt:formatDate value="${c.createdDate}"
 						pattern="yyyy.MM.dd" /></td>
-				<td><a class='btn btn-outline-danger'
-					href='delete?no=${c.no}'>삭제</a></td>
+				<td>
+			  <c:if test="${c.writer.no == loginUser.no}">
+					  <a class='btn btn-outline-danger' href='delete?no=${c.no}'>삭제</a>
+			  </c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>

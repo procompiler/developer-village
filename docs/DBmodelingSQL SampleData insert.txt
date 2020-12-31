@@ -1,7 +1,7 @@
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti, rnt_vsdt,tel) VALUES (1, 'park@gmail.com', '민섭짱짱', '박민섭', password(1111), 3, 'user1', 'http://aaa.com', 'https://github.com/parkmineob', 0, 'java, JavaScript',0,1,now(),'01011110000');
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (2, 'haha@naver.com', '깃허브망령', '김하연', password(1111), 2, 'user2', 'https://hayeon17kim.github.io/', 'https://github.com/hayeon17kim', 0, 'java',0,0,now(),'01022220000');
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (3, 'leejy@gamil.com', 'leejty', '이종엽', password(1111), 3, 'user3', 'https://github.com/leejyeop', 'https://github.com/leejyeop', 1, 'java,css',0,1,now(),'01033330000');
-INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4', 'https://github.com/jiyounyou', 'https://github.com/jiyounyou', 0, 'java,phython',0,0,now(),'01044440000');
+INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (4, 'younny418@gmail.com', '감튀조앙', '유지연', password(1111), 2, 'user4', 'https://jiyounyou.github.io/', 'https://github.com/jiyounyou', 0, 'java,phython',0,0,now(),'01044440000');
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (5, 'jinyoung@gmail.com', '민초짱짱', '최진영', password(1111), 3, 'user5', 'https://github.com/cchoijjinyoung', 'https://github.com/cchoijjinyoung', 0, 'java',0,1,now(),'01055550000');
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (6, 'jinyoung.eom@gmail.com', '오호라', '엄진영', password(1111), 1, 'user6', 'https://eomcs.github.io/', 'https://github.com/eomjinyoung', 0, 'java, javascript',0,0,now(),'01066660000');
 INSERT INTO user (uno,email,nick,name,pwd,log_type,photo,hp_url,gh_url,blocked,tech,auth,noti,rnt_vsdt,tel) VALUES (7, 'minsub.prk@gmail.com', '생유산균맛있다', '최민섭', password(1111), 1, 'user7', 'https://parkminseob.github.io/', 'https://github.com/parkmineob', 0, 'go',0,0,now(),'01077770000');
@@ -62,18 +62,18 @@ INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (24, 24, 
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (25, 5, 1,'얼죽아 오늘부로 탈퇴합니다.','날씨 진짜 춥네요.','2020-12-06',3);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (26, 4, 1,'Ruby가 뭔가요?','보석인가요?','2020-12-09',5);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (27, 4, 1,'Go가 뭔가요?','포켓몬고 인가요?','2020-12-11',3);
-INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (28, 11, 1,'자바스크립트..ㅠ','이제 시작 하면 언제 끝내나요...ㅠㅠ','2020-12-15',1);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (28, 11, 1,'자바스크립트..ㅠ','이제 시작 하면 언제 끝내나요...ㅠㅠ','2020-12-15',7);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (29, 8, 1,'바닐라js가 뭔가요?','그냥 자바스크립트랑 차이가 뭔가요ㅠㅠ','2020-12-16',3);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (30, 15, 2,'현업에서 jquery 많이 쓰나요?','필수로 공부해야하나요?','2020-12-20',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (31, 19, 3,'프론트엔드 개발자 채용(javascript 능통자)','프론트엔드 개발자 채용','2020-12-20',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (32, 12, 3,'인공지능(AI) 분야 경력 개발자 채용','인공지능(AI) 분야 경력 개발자 채용','2020-12-20',2);
-INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (33, 21, 4,'이펙티브 자바 같이 읽어요(온라인 스터디)','각자 읽고, 토론하는 방식으로 진행해요.','2020-12-22',3);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (33, 21, 4,'이펙티브 자바 같이 읽어요(온라인 스터디)','각자 읽고, 토론하는 방식으로 진행해요.','2020-12-22',13);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (34, 2, 1,'자바 호환 언어가 코틀린인가?','자바 다음에 공부할 언어 고민중인데, 파이썬이랑 코틀린 중 뭐가 좋을까요?','2020-12-22',3);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (35, 4, 1,'데빌 너무 좋아','여기서 개발자 친구들 많이 사겼어요!!','2020-12-22',5);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (36, 19, 2,'포트폴리오 만들 때 뭐가 중요한가요?','취준생인데, 포트폴리오 만드는거 너무 어려워요ㅠㅠ','2020-12-23',2);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (37, 24, 3,'네이버 2021 동계 인턴십(채용 전제형)','네이버 2021 동계 인턴십(채용 전제형)','2020-12-23',22);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (38, 20, 3,'카카오 쇼핑 백엔드 개발자 수시 채용(신입 및 경력)','카카오 쇼핑 백엔드 개발자 수시 채용(신입 및 경력)','2020-12-24',5);
-INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (39, 17, 4,'웹 개발 프로젝트 같이 하실분!','국비지원 웹 개발자 과정 이번에 수료하는데 프로젝트 더 해보고 싶어서요..! 연락주세요!!','2020-12-24',11);
+INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (39, 17, 4,' 프로젝트 같이 하실분!','국비지원 웹 개발자 과정 이번에 수료하는데 프로젝트 더 해보고 싶어서요..! 연락주세요!!','2020-12-24',11);
 INSERT INTO article (arno,writer,cano,title,content,cdt,vw_cnt) VALUES (40, 2, 1,'연말에는 역시 코딩입니다.','코로나라 연말 느낌도 안나고 춥기만 하네요ㅠㅠ','2020-12-25',2);
 
 
@@ -120,8 +120,12 @@ INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (36, 28, 23,'헐....ㅠㅠ
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (37, 29, 10,'바닐라 아이스크림 최애','2020-12-20');
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (38, 33, 4,'헐.. 저도 관심 있어요!','2020-12-22');
 INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (39, 33, 2,'저도 같이 하고싶어요!','2020-12-22');
-INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (40, 33,21,'관심 가져주셔서 감사합니다!!','2020-11-23',38);
-INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (41, 33,21,'관심 가져주셔서 감사합니다!!','2020-11-23',39);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (40, 33,21,'관심 가져주셔서 감사합니다!!','2020-12-23',1,38);
+INSERT INTO comment (cno,arno,uno,content,cdt,step,momno) VALUES (41, 33,21,'관심 가져주셔서 감사합니다!!','2020-12-23',1,39);
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (42,39,4,'저 같이 하고싶어요!!','2020-12-24');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (43,21,19,'아직도 구하시나요?','2020-12-24');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (44,35,15,'저도 데빌 너무 좋아요 ㅋㅋㅋ','2020-12-24');
+INSERT INTO comment (cno,arno,uno,content,cdt) VALUES (45,40,18,'ㅋㅋㅋ연말에도 신년에도 코딩이 짱이죠ㅋㅋ','2020-12-25');
 
 
 
@@ -283,10 +287,9 @@ INSERT INTO arc_tag (arno,tno) VALUES (36, 5);
 INSERT INTO arc_tag (arno,tno) VALUES (36, 1);
 INSERT INTO arc_tag (arno,tno) VALUES (36, 21);
 INSERT INTO arc_tag (arno,tno) VALUES (36, 22);
-INSERT INTO arc_tag (arno,tno) VALUES (39, 22);
 INSERT INTO arc_tag (arno,tno) VALUES (39, 21);
 INSERT INTO arc_tag (arno,tno) VALUES (39, 1);
-INSERT INTO arc_tag (arno,tno) VALUES (39, 5);
+INSERT INTO arc_tag (arno,tno) VALUES (39, 13);
 INSERT INTO arc_tag (arno,tno) VALUES (40, 12);
 
 

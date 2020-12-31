@@ -30,8 +30,9 @@
         <div class="card-body">
           <div style="height: 40px;">
             <c:forEach items="${a.tags}" var="tag">
+            <a href="article/list?tagNo=${tag.no}">
               <span class="badge"
-                style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</span>
+                style="background-color: ${tag.tagColor}; color: ${tag.fontColor}">${tag.name}</span></a>
             </c:forEach>
           </div>
           <div class="float-start">
@@ -77,8 +78,9 @@
           <td id='title' style="width: 400px;">
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
+              <a href="article/list?tagNo=${tag.no}">
                 <li id='color'
-                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li></a>
               </c:forEach>
             </ul> <a href='article/${article.no}'>${article.title}</a>
           </td>
@@ -103,8 +105,9 @@
           <td id='title'>
             <ul id='tags'>
               <c:forEach items="${article.tags}" var="tag">
+              <a href="article/list?tagNo=${tag.no}">
                 <li id='color'
-                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+                  style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li></a>
               </c:forEach>
             </ul> <a href='article/${article.no}'>${article.title}</a>
           </td>

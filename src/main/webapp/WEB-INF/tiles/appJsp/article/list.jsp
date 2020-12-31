@@ -72,8 +72,9 @@
 					<td id='title'>
 						<ul id='tags'>
 							<c:forEach items="${article.tags}" var="tag">
+							<a href="list?tagNo=${tag.no}">
 								<li id='color'
-									style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+									style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li></a>
 							</c:forEach>
 						</ul> <a href='${article.no}'>${article.title}</a><span
 						style="color: #6C5DDF;"></span>
@@ -91,8 +92,9 @@
 					<td id='title'>
 						<ul id='tags'>
 							<c:forEach items="${article.tags}" var="tag">
+							<a href="list?tagNo=${tag.no}">
 								<li id='color'
-									style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li>
+									style="background-color: ${tag.tagColor}; color: ${tag.fontColor};">${tag.name}</li></a>
 							</c:forEach>
 						</ul> <a href='${article.no}'>${article.title}</a>
 					</td>
