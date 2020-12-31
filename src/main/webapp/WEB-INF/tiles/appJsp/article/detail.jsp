@@ -23,7 +23,7 @@
   <input type='hidden' name='no' value='${article.no}'>
   <br>
 
-  <ul id='tags'>
+  <ul id='tags' class="mx-3">
     <c:forEach items="${tags}" var="tag">
       <li id='color' style="background-color: ${tag.tagColor}">${tag.name}</li>
     </c:forEach>
