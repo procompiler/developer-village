@@ -44,22 +44,22 @@
 					</c:if></td>
 				<td><c:choose>
 						<c:when test="${report.reportTypeNo == 1}">
-							<p>욕설</p>
+							<p2>욕설</p2>
 						</c:when>
 						<c:when test="${report.reportTypeNo == 2}">
-							<p>권리침해</p>
+							<p2>권리침해</p2>
 						</c:when>
 						<c:when test="${report.reportTypeNo == 3}">
-							<p>폭력적 또는 혐오성 게시글</p>
+							<p2>폭력적 또는 혐오성 게시글</p2>
 						</c:when>
 						<c:when test="${report.reportTypeNo == 4}">
-							<p>불법광고</p>
+							<p2>불법광고</p2>
 						</c:when>
 						<c:when test="${report.reportTypeNo == 5}">
-							<p>음란성</p>
+							<p2>음란성</p2>
 						</c:when>
 						<c:otherwise>
-							<p>도배</p>
+							<p2>도배</p2>
 						</c:otherwise>
 					</c:choose></td>
 
@@ -78,10 +78,10 @@
 								<button class="btn btn-primary">신고승인</button>
 							</c:when>
 							<c:when test="${report.status == 2}">
-								<p style="color:red">차단중</p>
+								<p2 style="color:red">차단중</p2>
 							</c:when>
 							<c:otherwise>
-								<p style="color:yellow;">차단해제</p>
+								<p2 style="color:yellow;">차단해제</p2>
 							</c:otherwise>
 						</c:choose>
 					</form>
