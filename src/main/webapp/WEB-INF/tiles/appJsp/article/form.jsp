@@ -16,7 +16,7 @@
   </style>
 </head>
 <div id="articleForm">
-	<form id="articleForm" action='add' method='post'>
+	<form id="articleForm" action='add' method='post' style="width:1100px;">
 		카테고리 <select class="form-select" aria-label="Default select example" name='categoryNo'>
     	<option value='1'>자유게시판</option> 
 			<option value='2'>QnA</option>
@@ -46,7 +46,7 @@
 						id="flexCheckDefault" name="tagNo"> <label
 						class="form-check-label" for="flexCheckDefault">
 						${tag.name}</label>
-				<c:if test="${tag.no % 9 == 0 }"><br></c:if>
+				<c:if test="${tag.no % 13 == 1 }"><br></c:if>
 			</c:forEach>
 		</p>
 		<button type="submit" class="btn btn-primary" id="form-submit">게시글 작성</button>
