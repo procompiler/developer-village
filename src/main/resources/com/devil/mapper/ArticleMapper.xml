@@ -305,5 +305,4 @@
       state = 1
     where arno=#{no}
     </update>
-  
 </mapper>

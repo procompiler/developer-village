@@ -231,8 +231,8 @@ INSERT INTO report (rpno,rptno,uno,status,pdt) VALUES (4, 2, '5','3','2020-11-29
 
 INSERT INTO bdg_eva (beno,bename) VALUES (1, '가입일');
 INSERT INTO bdg_eva (beno,bename) VALUES (2, '팔로워수');
-INSERT INTO bdg_eva (beno,bename) VALUES (3, '댓글수');
-INSERT INTO bdg_eva (beno,bename) VALUES (4, '게시글수');
+INSERT INTO bdg_eva (beno,bename) VALUES (3, '게시글수');
+INSERT INTO bdg_eva (beno,bename) VALUES (4, '댓글수');
 
 
 
@@ -453,7 +453,7 @@ INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (107,27,'3', '20');
 INSERT INTO bdg_stan (bsno,bno,beno,count) VALUES (108,27,'4', '50');
 
 
-INSERT INTO region(rgno, name) VALUES(10001,'서울'); 
+INSERT INTO region (rgno, name) VALUES(10001,'서울'); 
 INSERT INTO region (rgno,name) VALUES (10002, '부산');
 INSERT INTO region (rgno,name) VALUES (10003, '대구');
 INSERT INTO region (rgno,name) VALUES (10004, '인천');
