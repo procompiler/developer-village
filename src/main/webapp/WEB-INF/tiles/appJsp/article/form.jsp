@@ -44,11 +44,13 @@ const { Editor } = toastui;
 		<p>
 			태그<br>
 			<c:forEach items="${tags}" var="tag">
+			<c:if test="${tag.state == 1}">
 					<input class="form-check-input" type="checkbox" value="${tag.no}"
 						id="flexCheckDefault" name="tagNo"> <label
 						class="form-check-label" for="flexCheckDefault">
 						${tag.name}</label>
 				<c:if test="${tag.no % 13 == 1 }"><br></c:if>
+			</c:if>
 			</c:forEach>
 		</p>
 		<button type="submit" class="btn btn-primary" id="form-submit">게시글

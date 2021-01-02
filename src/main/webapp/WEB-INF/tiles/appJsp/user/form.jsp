@@ -80,10 +80,10 @@ document.querySelector("#userForm").onsubmit = () => {
 	var inputName = document.querySelector("#inputName");
 	
 	if (inputEmail.value.length < 8) {
-		alert("이름을 알맞게 입력했는지 확인하세요!");
+		alert("이메일을 알맞게 입력했는지 확인하세요!");
 		return false;
 	}
-
+ 
 	if (inputPassword.value.length < 8) {
 		alert("비밀번호를 8자 이상 입력하세요!");
 		return false;
