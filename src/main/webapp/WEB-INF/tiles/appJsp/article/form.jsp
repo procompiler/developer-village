@@ -33,14 +33,16 @@
 			src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 		<input type="text" name="content" id="content" hidden='hidden' />
 		<div id="editor"></div>
+		
 		<script>
-const { Editor } = toastui;
-	      const editor = new toastui.Editor({
-	          el: document.querySelector('#editor'),
-	          previewStyle: 'vertical',
-	          height: '500px'
-	        });
+			const { Editor } = toastui;
+				      const editor = new toastui.Editor({
+				          el: document.querySelector('#editor'),
+				          previewStyle: 'vertical',
+				          height: '500px'
+				        });
 		</script>
+		
 		<p>
 			태그<br>
 			<c:forEach items="${tags}" var="tag">

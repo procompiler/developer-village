@@ -15,7 +15,7 @@
     }
   </style>
 </head>
-	<h1>
+  <h1 style="margin-left: 70px; font-weight: bold"> 
 		<c:choose>
 			<c:when test="${article.categoryNo == 1}">
 				<p>커뮤니티</p>
@@ -32,7 +32,8 @@
 		</c:choose>
 	</h1>
 
-	<form action='<c:url value='update?no=${article.no}'/>' method='post'>
+<div id="articleForm">
+	<form action='<c:url value='update?no=${article.no}'/>' method='post' style="width:1100px;">
 		<input type='hidden' name='no' value='${article.no}'><br>
 		<input type='text' class="form-control" name='title' value='${article.title}'><br>
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
@@ -64,6 +65,7 @@
   
 		<button class="btn btn-primary" id="form-submit">수정</button>
 	</form>
+</div>
 <script>
     
     var formSubmitButton = document.querySelector("#form-submit");

@@ -167,7 +167,7 @@ public class ArticleController {
     if (articleService.update(article) == 0) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
-    return "redirect:detail" + article.getNo();
+    return "redirect:./" + article.getNo();
   }
 
   @GetMapping("delete")

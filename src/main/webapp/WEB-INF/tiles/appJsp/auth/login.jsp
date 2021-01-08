@@ -24,11 +24,11 @@
       <label class="form-check-label" for="defaultCheck1" style="text-align: left;">
       이메일 저장
       </label>
+
 		</div>
 		<div class="d-grid gap-2">
      <button class="btn btn-primary">로그인</button>
     </div>
-    
     
     <!-- 구글로그인버튼 -->
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
