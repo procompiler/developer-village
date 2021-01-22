@@ -4,6 +4,8 @@
 :pushpin: [발표 PPT](https://docs.google.com/presentation/d/1YRAt4UJY--kdYYx2JAo1ukq3rW8kx6nlbPc2kJ8exfU/edit#slide=id.ga6864e8c28_3_0)
 
 :pushpin:[개발 일지 기록](https://www.notion.so/48d1b112fcd04129ab601c0692ef93cb)
+
+
 <br>
 
 ## 1. 제작 기간 & 참여 인원
@@ -36,12 +38,12 @@ Figma를 사용하여 UI 프로토타입을 만들었습니다. [바로가기](h
 
 <br>
 
-## 3. ERD 설계
+## 4. ERD 설계
 ![mysql-model](https://user-images.githubusercontent.com/50407047/105466251-4cbb4f00-5cd7-11eb-9075-35ad804753f5.png)
 
 <br>
 
-## 4. 핵심 기능
+## 5. 핵심 기능
 
 - 게시글 및 댓글 관리
 - 유저  및 태그 팔로잉
@@ -57,8 +59,8 @@ Figma를 사용하여 UI 프로토타입을 만들었습니다. [바로가기](h
 
 <br>
 
-## 5. 트러블 슈팅
+## 6. 트러블 슈팅
 
 <br>
 
-## 6. 회고 / 느낀점
+## 7. 회고 / 느낀점
