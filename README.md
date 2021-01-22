@@ -4,13 +4,13 @@
 :pushpin: [발표 PPT](https://docs.google.com/presentation/d/1YRAt4UJY--kdYYx2JAo1ukq3rW8kx6nlbPc2kJ8exfU/edit#slide=id.ga6864e8c28_3_0)
 
 :pushpin:[개발 일지 기록](https://www.notion.so/48d1b112fcd04129ab601c0692ef93cb)
-</br>
+<br>
 
 ## 1. 제작 기간 & 참여 인원
 - 2020년 10월 27일 ~ 12월 31일
 - 팀 프로젝트: [김하연](https://github.com/hayeon17kim), [유지연](https://github.com/jiyounyou), [박민섭](https://github.com/parkminseob), [이종엽](https://github.com/leejyeop), [최진영](https://github.com/cchoijjinyoung)
 
-</br>
+<br>
 
 ## 2. 사용 기술
 #### `Back-end`
@@ -29,15 +29,17 @@
   - Ajax
   - JQuery
 
-</br>
+<br>
 
 ## 3. UI 프로토타이핑
 Figma를 사용하여 UI 프로토타입을 만들었습니다. [바로가기](https://www.figma.com/file/Irabu6J2iBDQ4kZk0Ze0UB/Devil-UI-Prototype?node-id=113%3A2)
 
+<br>
+
 ## 3. ERD 설계
 ![mysql-model](https://user-images.githubusercontent.com/50407047/105466251-4cbb4f00-5cd7-11eb-9075-35ad804753f5.png)
 
-</br>
+<br>
 
 ## 4. 핵심 기능
 
@@ -53,8 +55,10 @@ Figma를 사용하여 UI 프로토타입을 만들었습니다. [바로가기](h
 - 개인 피드 조회
 - 개인정보 관리
 
-</br>
+<br>
 
 ## 5. 트러블 슈팅
+
+<br>
 
 ## 6. 회고 / 느낀점
