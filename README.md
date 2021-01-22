@@ -3,14 +3,13 @@
 
 :pushpin: [발표 PPT](https://docs.google.com/presentation/d/1YRAt4UJY--kdYYx2JAo1ukq3rW8kx6nlbPc2kJ8exfU/edit#slide=id.ga6864e8c28_3_0)
 
-:pushpin:[개발 일지 기록](https://www.notion.so/48d1b112fcd04129ab601c0692ef93cb)
-
 
 <br>
 
 ## 1. 제작 기간 & 참여 인원
 - 2020년 10월 27일 ~ 12월 31일
 - 팀 프로젝트: [김하연](https://github.com/hayeon17kim), [유지연](https://github.com/jiyounyou), [박민섭](https://github.com/parkminseob), [이종엽](https://github.com/leejyeop), [최진영](https://github.com/cchoijjinyoung)
+- [팀 소개](https://www.notion.so/48d1b112fcd04129ab601c0692ef93cb)
 
 <br>
 
