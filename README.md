@@ -14,19 +14,13 @@
 <br>
 
 ## 2. 사용 기술
-#### `Back-end`
   - Java 11
   - Spring MVC 5.3.2
   - Gradle
   - MyBatis 3.5.6
   - MariaDB 
-  - Spring Security
   - JSP
   - Tiles
-  
-#### `Front-end`
-  - HTML
-  - CSS
   - Ajax
   - JQuery
 
