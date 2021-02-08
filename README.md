@@ -4,12 +4,12 @@
 :pushpin: [발표 PPT](https://docs.google.com/presentation/d/1YRAt4UJY--kdYYx2JAo1ukq3rW8kx6nlbPc2kJ8exfU/edit#slide=id.ga6864e8c28_3_0)
 
 ## 바로가기
-1. [제작기간 & 참여 인원](#)
-2. [사용 기술](#)
-3. [UI 프로토타입](#)
-4. [ERD 설계](#)
-5. [핵심 기능](#)
-6. [트러블 슈팅](#)
+1. [제작기간 & 참여 인원](https://github.com/procompiler/developer-village/blob/main/README.md#1-%EC%A0%9C%EC%9E%91-%EA%B8%B0%EA%B0%84--%EC%B0%B8%EC%97%AC-%EC%9D%B8%EC%9B%90)
+2. [사용 기술](https://github.com/procompiler/developer-village/blob/main/README.md#2-%EC%82%AC%EC%9A%A9-%EA%B8%B0%EC%88%A0)
+3. [UI 프로토타입](https://github.com/procompiler/developer-village/blob/main/README.md#3-ui-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85)
+4. [ERD 설계](https://github.com/procompiler/developer-village/blob/main/README.md#4-erd-%EC%84%A4%EA%B3%84)
+5. [핵심 기능](https://github.com/procompiler/developer-village/blob/main/README.md#5-%ED%95%B5%EC%8B%AC-%EA%B8%B0%EB%8A%A5)
+6. [트러블 슈팅](https://github.com/procompiler/developer-village/blob/main/README.md#6-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
 
 
 <br>
