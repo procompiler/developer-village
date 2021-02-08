@@ -3,6 +3,14 @@
 
 :pushpin: [발표 PPT](https://docs.google.com/presentation/d/1YRAt4UJY--kdYYx2JAo1ukq3rW8kx6nlbPc2kJ8exfU/edit#slide=id.ga6864e8c28_3_0)
 
+## 바로가기
+1. [제작기간 & 참여 인원](#)
+2. [사용 기술](#)
+3. [UI 프로토타입](#)
+4. [ERD 설계](#)
+5. [핵심 기능](#)
+6. [트러블 슈팅](#)
+
 
 <br>
 
@@ -26,7 +34,7 @@
 
 <br>
 
-## 3. UI 프로토타이핑
+## 3. UI 프로토타입
 Figma를 사용하여 UI 프로토타입을 만들었습니다. [바로가기](https://www.figma.com/file/Irabu6J2iBDQ4kZk0Ze0UB/Devil-UI-Prototype?node-id=113%3A2)
 
 <br>
