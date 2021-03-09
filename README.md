@@ -49,7 +49,7 @@ Figma를 사용하여 UI 프로토타입을 만들었습니다. [바로가기](h
 - 게시글 및 댓글 관리
 - 유저  및 태그 팔로잉
 - 뱃지 시스템: 유저 활동량에 기반한 뱃지 획득
-  [상세점보 바로가기](https://hayeon17kim.github.io/posts/devil-badge/)
+  - [뱃지 시스템 구현 회고 바로가기](https://hayeon17kim.github.io/posts/devil-badge/)
 - 태그 시스템
 - 신고차단 기능
 - 게시글 북마크
