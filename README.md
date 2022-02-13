@@ -16,7 +16,7 @@
 
 ## 1. 제작 기간 & 참여 인원
 - 2020년 10월 27일 ~ 12월 31일
-- 팀 프로젝트: [김하연](https://github.com/hayeon17kim), [유지연](https://github.com/jiyounyou), [박민섭](https://github.com/parkminseob), [이종엽](https://github.com/leejyeop), [최진영](https://github.com/cchoijjinyoung)
+- 팀 프로젝트: [김하연](https://github.com/hayeon17kim), [유지연](https://github.com/jiyoun-yoo), [박민섭](https://github.com/parkminseob), [이종엽](https://github.com/leejyeop), [최진영](https://github.com/cchoijjinyoung)
 - [팀 소개](https://www.notion.so/48d1b112fcd04129ab601c0692ef93cb)
 
 <br>
